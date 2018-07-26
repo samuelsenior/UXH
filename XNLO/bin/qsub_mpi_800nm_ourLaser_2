@@ -1,0 +1,26 @@
+#!/bin/bash
+# Job script to run simple mpi job in parallel on 1 node
+
+# set default resource requirements for job (32 cores on 2 nodes for 1 hours)
+# - these can be overridden on the qsub command line
+#PBS -l nodes=4:ppn=16
+#PBS -l walltime=01:30:00
+#PBS -l mem=4gb
+#PBS -m ae -M s.m.senior@soton.ac.uk
+
+#Change to directory from which job was submitted
+cd $PBS_O_WORKDIR
+
+# load openmpi module so that we find the mpirun command
+# module load intel_mpi
+module load openmpi
+module load intel/mkl/2017
+
+# . /local/software/intel/2017/mkl/bin/mklvars.sh -intel64
+
+# Run executable in parallel over number of node/processors requested
+# by the job, output messages go to output_file
+
+# mpirun XNLO-v1-1-0 -cf config.txt > ../output/output_file
+
+./800nm_ourLaser_2.sh > ../output/output_800nm_ourLaser_2

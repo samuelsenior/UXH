@@ -1,0 +1,8 @@
+New RAL laser: 170 uJ, 1700nm, 50fs, 100kHz
+
+Notes:  
+------ 
+170J = 17W
+(E = P / RR => P = E * RR)
+
+-So could do P_av = 1.0W to 17W in steps of 1W

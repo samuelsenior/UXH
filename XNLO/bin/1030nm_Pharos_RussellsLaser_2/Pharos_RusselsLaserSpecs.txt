@@ -1,0 +1,8 @@
+Pharos laser (Russell's): 1030nm, 280fs, 200 uJ, 200 kHz
+
+Notes:  
+------ 
+200uJ = 40W
+(E = P / RR => P = E * RR)
+
+-So, could do P_av = 2W to 40W in steps of 2W

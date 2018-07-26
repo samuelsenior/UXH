@@ -1,0 +1,9 @@
+RAL blue source: 2mJ, 400nm_RALBlueLightSource, 30fs 1 kHz
+
+Notes:  
+------ 
+2mJ = 2W
+(E = P / RR => P = E * RR)
+
+-So something like 19 sims with P_av = 0.1W to 2W in steps of 0.1W
+   -Or could do more, like 39 steps, P_av = 0.05W to 2W

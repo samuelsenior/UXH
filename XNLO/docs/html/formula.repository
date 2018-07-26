@@ -1,0 +1,16 @@
+\form#0:\[ \psi_0(x) = test. \]
+\form#1:\[ i\frac{\partial \psi}{\partial t} = \hat{H}\psi, \]
+\form#2:\[ t = -i\tau. \]
+\form#3:\[ \psi(x, t) \rightarrow e^{-\tau E_0}c_0\phi_0. \]
+\form#4:\[ t = -i\tau, \]
+\form#5:\[ \psi(x, t+\Delta t) = e^{\frac{-i\hat{k}\Delta t}{2}}e^{-i\hat{V}\Delta t}e^{\frac{-i\hat{K}\Delta t}{2}}\psi(x, t). \]
+\form#6:\[ i\frac{\partial \psi}{\partial t} = \hat{H}\psi. \]
+\form#7:$\alpha$
+\form#8:$V_{Coulomb} = -\frac{1}{\alpha = x^2}$
+\form#9:$V_{Coulomb} = -\frac{1}{\sqrt{\alpha + x^2}}$
+\form#10:\[V_{Coulomb} = -\frac{1}{\sqrt{\alpha + x^2}}\]
+\form#11:\[V_{Coulomb} = \frac{-1}{\sqrt{\alpha + x^2}}\]
+\form#12:$t$
+\form#13:\[ a(t) = \langle\left[\hat{H}, \left[\hat{H}, \hat{x}\right]\right]\rangle. \]
+\form#14:\[V_{Coulomb} = \frac{-1}{\sqrt{\alpha + x^2}}.\]
+\form#15:\[ \langle E \rangle = \int \psi^*\hat{K}\psi dx + \int \psi^*\hat{V}\psi dx. \]

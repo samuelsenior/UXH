@@ -1,0 +1,11 @@
+Our laser: 2.5mJ, 800nm, 50fs, 1kHz 
+(our laser if it actually ran at its spec: 3mJ, 800 nm, 35fs, 1 kHz)
+
+Notes:
+------
+2.5mJ = 2.5W
+3mJ = 3W
+(E = P / RR => P = E * RR)
+
+-So for 50fs, 2.5mJ could do P_av = 0.1W to 2.5W in steps of 0.1W
+-And for 35fs, 3mJ could do P_av = 0.1W to 3.0W in steps of 0.1W

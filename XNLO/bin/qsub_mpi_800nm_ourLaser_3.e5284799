@@ -1,0 +1,5 @@
+mpiexec: killing job...
+
+mpiexec: abort is already in progress...hit ctrl-c again to forcibly terminate
+
+=>> PBS: job killed: walltime 5408 exceeded limit 5400

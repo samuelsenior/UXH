@@ -1,0 +1,22 @@
+ Running PBS prologue script on green0550
+
+ ===============================================================================
+ Job started on Tue May 15 21:38:20 BST 2018
+
+ JOB ID: 5283135.blue101
+ JOB NAME: qsub_mpi_800nm_ourLaser
+ Num Hosts: 4
+ Num Tasks: 64
+ Nodes used: 
+ green0550 green0572 green0593 green0606
+ ===============================================================================
+ Job Output Follows:
+ ===============================================================================
+
+
+ ===============================================================================
+ Job finished at Tue May 15 23:00:41 BST 2018
+
+
+Requested resource limits are mem=4gb,neednodes=4:ppn=16,nodes=4:ppn=16,pmem=4000mb,walltime=01:30:00
+Used resource limits are cput=24:06:36,mem=1762584kb,vmem=21736004kb,walltime=01:22:20
