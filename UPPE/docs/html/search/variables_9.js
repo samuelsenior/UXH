@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['k_5fb',['k_B',['../classphysics__textbook.html#a666f84f0f7f65910169ed6b82129e5c8',1,'physics_textbook']]],
-  ['kappa',['kappa',['../classkeldysh__gas.html#a836c6a6c2f1bec80ea15344822a07ea5',1,'keldysh_gas']]],
-  ['kr',['kr',['../classgrid__rkr.html#aa09a97ce2aa9975fb4d2c1ee5da98b26',1,'grid_rkr']]]
+  ['l_5f0',['l_0',['../classlaser__pulse.html#a214fb26a450ff4c8c643da8bd6f2b712',1,'laser_pulse']]],
+  ['l_5f0_5f',['l_0_',['../class_config___settings.html#ae98143cb0c84b137e26a4b439e48aada',1,'Config_Settings']]],
+  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_config___settings.html#a04bc9c9966974183a306593a492644f4',1,'Config_Settings']]],
+  ['l_5fat',['l_at',['../classphysics__textbook.html#a4479790cea56c47a7db44d2d331c4cef',1,'physics_textbook']]]
 ];

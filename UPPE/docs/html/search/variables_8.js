@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['j0_5fzeros',['J0_zeros',['../classmaths__textbook.html#a41398eada5e3eb88fb64d044c14aed26',1,'maths_textbook']]]
+  ['k_5fb',['k_B',['../classphysics__textbook.html#a666f84f0f7f65910169ed6b82129e5c8',1,'physics_textbook']]],
+  ['kappa',['kappa',['../classkeldysh__gas.html#a836c6a6c2f1bec80ea15344822a07ea5',1,'keldysh_gas']]],
+  ['kr',['kr',['../classgrid__rkr.html#aa09a97ce2aa9975fb4d2c1ee5da98b26',1,'grid_rkr']]]
 ];
