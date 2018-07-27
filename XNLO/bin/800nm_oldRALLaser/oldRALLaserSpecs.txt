@@ -1,8 +1,0 @@
-Old RAL laser: 8mJ, 800nm, 40fs 1 kHz 
-
-Notes:  
------- 
-8mJ = 8W
-(E = P / RR => P = E * RR)
-
--So something like P_av = 0.4W to 8W, in 20 steps
