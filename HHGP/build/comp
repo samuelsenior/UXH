@@ -1,0 +1,22 @@
+#! /bin/bash
+
+if [ "$#" -ne 0 ]
+then
+
+    # Checks if there is an argument to increment the version number and passes it on to version_incrememnt
+    if [ "$1" == -vi ]
+    then
+        if [ "$#" -ne 1 ]
+        then
+            ../scripts/version_increment "$2"
+        else
+            echo "Warning: -vi flag given but with no following argument"
+        fi
+    fi
+fi
+
+#export TBBROOT=fdsljkfds
+source /local/software/intel/2017/mkl/bin/mklvars.sh intel64 ilp64
+# cmake -D CMAKE_C_COMPILER=gcc-6 -D CMAKE_CXX_COMPILER=g++-6 ..
+cmake -D CMAKE_C_COMPILER=mpicc -D CMAKE_CXX_COMPILER=mpic++ ..
+make

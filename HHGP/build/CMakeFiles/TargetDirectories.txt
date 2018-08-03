@@ -1,0 +1,4 @@
+/home/sam/Project/XNLO/HHGP/build/CMakeFiles/edit_cache.dir
+/home/sam/Project/XNLO/HHGP/build/CMakeFiles/rebuild_cache.dir
+/home/sam/Project/XNLO/HHGP/build/CMakeFiles/doc_doxygen.dir
+/home/sam/Project/XNLO/HHGP/build/CMakeFiles/HPPG.dir
