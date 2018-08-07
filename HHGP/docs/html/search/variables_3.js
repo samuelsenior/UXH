@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['h',['H',['../class_d_h_t.html#ac17a580b606f25c937dbdc81dba517d7',1,'DHT']]],
-  ['h_5fbar',['h_bar',['../classphysics__textbook.html#a5ec9850f0fa1b25180d8f6d1ed734848',1,'physics_textbook']]],
-  ['ht',['ht',['../classpropagate.html#a9cd602470fff3502b3b048f9aa915805',1,'propagate']]]
+  ['fwhm_5f',['fwhm_',['../class_config___settings.html#a40bcd732fb3b33e6424c31a442e04441',1,'Config_Settings']]],
+  ['fwhm_5fdescription_5f',['fwhm_description_',['../class_config___settings.html#a79ea5af7b0bdaba77a061d5f407e7f19',1,'Config_Settings']]]
 ];

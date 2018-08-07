@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/HPPG.dir/src/config_settings.cpp.o"
   "CMakeFiles/HPPG.dir/src/DHT.cpp.o"
   "CMakeFiles/HPPG.dir/src/grid_rkr.cpp.o"
+  "CMakeFiles/HPPG.dir/src/grid_tw.cpp.o"
+  "CMakeFiles/HPPG.dir/src/propagation.cpp.o"
   "CMakeFiles/HPPG.dir/src/IO.cpp.o"
   "CMakeFiles/HPPG.dir/src/maths_textbook.cpp.o"
   "CMakeFiles/HPPG.dir/src/physics_textbook.cpp.o"

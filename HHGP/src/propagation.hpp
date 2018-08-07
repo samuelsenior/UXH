@@ -4,10 +4,11 @@
 #include "physics_textbook.hpp"
 #include "maths_textbook.hpp"
 #include "grid_rkr.hpp"
+#include "grid_tw.hpp"
 #include "DHT.hpp"
 #include "Eigen/Dense"
 
-using namespace Eigen;
+//using namespace Eigen;
 
 //------------------------------------------------------------------------------------------------//
 //  Class definition
@@ -18,16 +19,21 @@ class propagation{
     physics_textbook physics;  /*!< Physical constants */
     maths_textbook maths;      /*!< Mathematical constants and functions */
     grid_rkr rkr;              /*!< Radial grid */
+    grid_tw tw;
     DHT ht;                    /*!< Hankel transform */
 
-    ArrayXd w_active;
-    ArrayXXcd A_w_active;
+    Eigen::ArrayXd k_r;
+
+    Eigen::ArrayXd w_active;
+    Eigen::ArrayXXcd A_r_w;
 
 public:
     // Data
 
     // Functions
-    propagation();
+    propagation(grid_rkr rkr, grid_tw tw, DHT ht);
+
+    double n(double k);
 
     void propagate();
 };
