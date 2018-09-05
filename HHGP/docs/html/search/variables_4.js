@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['h',['H',['../class_d_h_t.html#ac17a580b606f25c937dbdc81dba517d7',1,'DHT']]],
-  ['h_5fbar',['h_bar',['../classphysics__textbook.html#a5ec9850f0fa1b25180d8f6d1ed734848',1,'physics_textbook']]],
-  ['ht',['ht',['../classpropagation.html#a044544975e7fc2ec3df9a55d92f8cc90',1,'propagation']]]
+  ['e_5fat',['E_at',['../classphysics__textbook.html#aed1451ff3400dce39969e5ac319f033a',1,'physics_textbook']]],
+  ['e_5fev',['E_eV',['../classphysics__textbook.html#a73e078553f4f440e99aacad83f7df6d6',1,'physics_textbook']]],
+  ['e_5fmin',['E_min',['../classpropagation.html#ab5a753d760a135806a93b9082e8019fb',1,'propagation']]],
+  ['eps_5f0',['eps_0',['../classphysics__textbook.html#a8ea9a65f207ec6ad3388e605f385454c',1,'physics_textbook']]]
 ];

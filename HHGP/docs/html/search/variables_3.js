@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['fwhm_5f',['fwhm_',['../class_config___settings.html#a40bcd732fb3b33e6424c31a442e04441',1,'Config_Settings']]],
-  ['fwhm_5fdescription_5f',['fwhm_description_',['../class_config___settings.html#a79ea5af7b0bdaba77a061d5f407e7f19',1,'Config_Settings']]]
+  ['data_5fsize',['data_size',['../class_i_o.html#a39a8a0474a288522d847f6be0fb2403f',1,'IO']]],
+  ['double_5fsize',['double_size',['../class_i_o.html#a3af3bf77eacd18c1c50cbf78b46c4228',1,'IO']]]
 ];

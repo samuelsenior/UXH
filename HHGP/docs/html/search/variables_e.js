@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['t',['t',['../classgrid__tw.html#a918f1e6d18056d0f6da08fe01089b9b0',1,'grid_tw']]],
-  ['t_5f',['T_',['../class_config___settings.html#a4f774e23910af488b9006a9c2a0aa1d3',1,'Config_Settings']]],
-  ['t_5fat',['t_at',['../classphysics__textbook.html#acdcf772ff70c544f8394b3a9fc57674c',1,'physics_textbook']]],
-  ['t_5fdescription_5f',['T_description_',['../class_config___settings.html#a6975e74e82073d2ae4d75c38fb56c83c',1,'Config_Settings']]],
-  ['tw',['tw',['../classpropagation.html#a14a2868bc422552a4708b1915475acc5',1,'propagation']]]
+  ['r',['r',['../classgrid__rkr.html#a0c68f261e53153368d0edab4c9a8ef88',1,'grid_rkr::r()'],['../classgrid__rkr.html#a2da8ae00c520a66c9cac2784a2149dcb',1,'grid_rkr::R()']]],
+  ['r_5f',['R_',['../class_config___settings.html#aac0df4d04613e4a96f9f65d26a4a0520',1,'Config_Settings']]],
+  ['r_5fdescription_5f',['R_description_',['../class_config___settings.html#adb774b19a0c38a58d6035087b949af72',1,'Config_Settings']]],
+  ['rep_5f',['rep_',['../class_config___settings.html#a23a02326925c4c726a5047593435bd72',1,'Config_Settings']]],
+  ['rep_5fdescription_5f',['rep_description_',['../class_config___settings.html#ac885ade71abffd480f1324d67438daff',1,'Config_Settings']]],
+  ['rkr',['rkr',['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation']]]
 ];

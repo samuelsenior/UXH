@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setting_5fname',['setting_name',['../class_config___settings.html#a05f6108c286f7e7bbbbb1063a77b9a71',1,'Config_Settings']]]
+  ['q_5fat',['q_at',['../classphysics__textbook.html#aba33444d21762e4cbcfec165e6fd3ece',1,'physics_textbook']]]
 ];

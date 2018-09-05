@@ -4,7 +4,7 @@ var indexSectionsWithContent =
   1: "cdgimp",
   2: "cdgimpv",
   3: "bcdfgilmnoprstwz",
-  4: "acefhjklmnpqrstwz",
+  4: "abcdefhjklmnpqrstwz",
   5: "s",
   6: "cflnprtwz",
   7: "_"
