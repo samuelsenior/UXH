@@ -33,6 +33,7 @@ public:
     maths_textbook(std::string path_input_j0_);
     double trapz(ArrayXd x_, ArrayXd y_);
     ArrayXd interp1D(ArrayXd input_array, int input_length, int output_length, int spline_order);
+    ArrayXd interp1D(ArrayXd x, int nx, ArrayXd y, ArrayXd site, int output_length, int spline_order);
 
 };
 
