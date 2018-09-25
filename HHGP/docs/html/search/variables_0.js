@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['a_5fw_5fr',['A_w_r',['../classpropagation.html#ad3a84addde67e43bbb606408193f78ee',1,'propagation']]]
+  ['a_5fw_5fr',['A_w_r',['../classpropagation.html#ad3a84addde67e43bbb606408193f78ee',1,'propagation']]],
+  ['atom_5fdensity_5fmax',['atom_density_max',['../classkeldysh__gas.html#a287e2c7a3081d8b65ba126288a3174bd',1,'keldysh_gas']]]
 ];

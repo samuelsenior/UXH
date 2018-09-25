@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['l_5f0',['l_0',['../class_config___settings.html#a42be7e23a13a58de4f33f4f0a7ff420a',1,'Config_Settings']]],
-  ['l_5f0_5fdescription',['l_0_description',['../class_config___settings.html#a3757b7cd606c810059079437075245b9',1,'Config_Settings']]],
-  ['l_5f0_5fdescription_5fset',['l_0_description_set',['../class_config___settings.html#a1be31eb27a929d913838c85d35abed7d',1,'Config_Settings']]],
-  ['l_5f0_5fset',['l_0_set',['../class_config___settings.html#a0e6a1ad74cd5ef799383623316ef293d',1,'Config_Settings']]]
+  ['getsource',['GetSource',['../main_8cpp.html#ace1b1ce2aa4a1b23cd8ee5a4110c6342',1,'main.cpp']]],
+  ['grid_5frkr',['grid_rkr',['../classgrid__rkr.html#a8c3f61553704783780b89fb19aeb400c',1,'grid_rkr::grid_rkr()'],['../classgrid__rkr.html#adc3dbfbeb1dcc1ac948b58d26a83ffd1',1,'grid_rkr::grid_rkr(int n_r_, double R_, int n_m_, maths_textbook &amp;maths_)']]],
+  ['grid_5ftw',['grid_tw',['../classgrid__tw.html#af1e2316561c84a2262e374600895010d',1,'grid_tw::grid_tw()'],['../classgrid__tw.html#a583d4c2b423305ef3806d6221ed3f543',1,'grid_tw::grid_tw(int N_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook &amp;maths_)']]]
 ];
