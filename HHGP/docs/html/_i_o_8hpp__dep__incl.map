@@ -1,6 +1,8 @@
 <map id="/home/sam/Project/XNLO/HHGP/src/IO.hpp" name="/home/sam/Project/XNLO/HHGP/src/IO.hpp">
-<area shape="rect" id="node2" href="$_i_o_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/IO.cpp" alt="" coords="5,95,177,136"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="201,95,373,136"/>
-<area shape="rect" id="node4" href="$maths__textbook_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/maths_textbook.cpp" alt="" coords="397,95,607,136"/>
-<area shape="rect" id="node5" href="$propagation_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.cpp" alt="" coords="631,95,813,136"/>
+<area shape="rect" id="node2" href="$_h_h__source_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HH_source.hpp" alt="" coords="107,95,289,136"/>
+<area shape="rect" id="node3" href="$_h_h__source_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HH_source.cpp" alt="" coords="5,184,188,225"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="227,184,399,225"/>
+<area shape="rect" id="node5" href="$_i_o_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/IO.cpp" alt="" coords="365,95,537,136"/>
+<area shape="rect" id="node6" href="$maths__textbook_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/maths_textbook.cpp" alt="" coords="561,95,771,136"/>
+<area shape="rect" id="node7" href="$propagation_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.cpp" alt="" coords="795,95,977,136"/>
 </map>
