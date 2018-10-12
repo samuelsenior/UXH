@@ -1,0 +1,24 @@
+{n_z} {100} {(int) Number of steps in Z}
+{n_r} {127} {(int) The z_r value}
+{n_m} {127} {(int) Number of modes}
+{n_t} {16384} {(int) The n_t value}
+{T} {1e-12} {(double) The T value}
+{w_active_min} {2e+14} {(double) Minimum positive angular frequency - was 2.0e-14 originally}
+{w_active_max} {8e+15} {(double) Maximum positive angular frequency}
+{Z} {0.07} {(double) Length of capillary}
+{R} {7.5e-05} {(double) Radius of capillary}
+{press} {0.05} {(double) Pressure of the gas}
+{p_av} {0.8} {(double) The p_av value}
+{rep} {1000} {(double) The rep value}
+{fwhm} {5e-14} {(double) Full width at half maximum}
+{l_0} {8e-07} {(double) Laser central wavelength}
+{ceo} {0} {(double) The ceo value}
+{waist} {4.8e-05} {(double) The beam waist}
+{pend_path} {prepend} {(std::string) Pending switch}
+{path_input_j0} {../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
+{path_A_w_R} {../../../Results/UPPE-XNLO/800nm_ourLaser/0.8W/data/001_1_HHG_R.bin} {(std::string) Output path of A_w_R}
+{path_A_w_I} {../../../Results/UPPE-XNLO/800nm_ourLaser/0.8W/data/001_1_HHG_R.bin} {(std::string) Output path of A_w_I}
+{path_w_active} {../../../Results/UPPE-XNLO/800nm_ourLaser/0.8W/data/001_1_HHG_w.bin} {(std::string) Output path of w_active}
+{path_HHG_R} {../output/HHG_R.bin} {(default) (std::string) Path of HHG_R}
+{path_config_file} {../configFiles/config.txt} {(default) (std::string) config.txt path}
+{path_config_log} {../output/config_log.txt} {(std::string) Output path to config_log.txt}

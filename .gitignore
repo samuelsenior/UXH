@@ -1,0 +1,88 @@
+#----------------------------------#
+#- Excluding .DS_Store from MacOS -#
+#----------------------------------#
+.DS_Store
+XNLO/.DS_Store
+XNLO/Eigen/.DS_Store
+XNLO/bin/.DS_Store
+XNLO/build/.DS_Store
+XNLO/include/.DS_Store
+XNLO/src/.DS_Store
+
+UPPE/.DS_Store
+UPPE/Eigen/.DS_Store
+UPPE/bin/.DS_Score
+UPPE/build/.DS_Store
+UPPE/include/.DS_Store
+UPPE/src/.DS_Store
+
+#------------------------------------------#
+#- Excluding Jupyter notebook checkpoints -#
+#------------------------------------------#
+.ipynb_checkpoints/*
+# XNLO/.ipynb_checkpoints/*
+# UPPE/.ipynb_checkpoints/*
+
+#-----------------------------------------------------------#
+#- Excluding documentation files that aren't the final pdf -#
+#- or the webpages of the docs                             -#
+#-----------------------------------------------------------#
+!docs/
+docs/*
+!docs/XNLO_Documentation.pdf
+
+!XNLO/docs/
+XNLO/docs/*
+!XNLO/docs/XNLO_Documentation.pdf
+!XNLO/docs/html/
+!XNLO/docs/html/*
+!XNLO/docs/latex/refman.pdf
+
+!UPPE/docs/
+UPPE/docs/*
+!UPPE/docs/XNLO_Documentation.pdf
+!UPPE/docs/html/
+!UPPE/docs/html/*
+!UPPE/docs/latex/refman.pdf
+
+#-------------------------#
+#- Excluding build files -#
+#-------------------------#
+XNLO/build/*
+!XNLO/build/comp
+!XNLO/build/Doxyfile
+UPPE/build/*
+!UPPE/build/comp*
+!UPPE/build/Doxyfile
+
+#--------------------------------------------------#
+#- Excluding library files that aren't the header -#
+#--------------------------------------------------#
+XNLO/lib/*
+!XNLO/lib/XNLO.hpp
+
+#-------------------------------------------#
+#- Exclude executables from the bin folder -#
+#-------------------------------------------#
+XNLO/bin/XNLO-v1-1-0
+UPPE/bin/UPPE-v1-3-0
+
+#--------------------------#
+#- Exclude pycache folder -#
+#--------------------------#
+UPPE/__pycache__/*
+XNLO/__pycache__/*
+
+#------------------------------#
+#- Exclude output directories -#
+#------------------------------#
+UPPE/output
+XNLO/output
+UPPE/output/*
+XNLO/output/*
+
+#---------#
+#- Misc. -#
+#---------#
+UPPE/BatchJobTest.py
+
