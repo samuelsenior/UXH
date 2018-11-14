@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Code modified by Samuel Senior on 01/02/2017
+# This script increments the version number in version.hpp by 1 (awk is used to do this)
+# An argument of 'b' increments the major version number
+# An argument of 's' increments the minor version number
+# An argument of 't' increments the subminor version number
+
+# Check that arguments have been passed to it, if not then do nothing
+if [ "$#" -ne 0 ]
+then
+    # Check only one argument has been passed to it, if not the do nothing and give warning
+    if [ "$#" == 1 ]
+    then
+        # Take the argument passed to determine which version part to incriment
+        ver_part=$1
+        if [ "${ver_part}" == "b" ]
+        then
+            echo "Incrementing major version number"
+            awk '$0 !~ /#define _VERSION_MAJOR/ { print $0 } $0  ~ /#define _VERSION_MAJOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version.hpp > ../src/version_temp.hpp
+            touch -r ../src/version.hpp ../src/version_temp.hpp
+            cp -p ../src/version_temp.hpp ../src/version.hpp
+            rm -f ../src/version_temp.hpp
+        elif [ "${ver_part}" == "s" ]
+        then
+            echo "Incrementing minor version number"
+            awk '$0 !~ /#define _VERSION_MINOR/ { print $0 } $0  ~ /#define _VERSION_MINOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version.hpp > ../src/version_temp.hpp
+            touch -r ../src/version.hpp ../src/version_temp.hpp
+            cp -p ../src/version_temp.hpp ../src/version.hpp
+            rm -f ../src/version_temp.hpp
+        elif [ "${ver_part}" == "t" ]
+        then
+            echo "Incrementing subminor version number"
+            awk '$0 !~ /#define _VERSION_SUBMINOR/ { print $0 } $0  ~ /#define _VERSION_SUBMINOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version.hpp > ../src/version_temp.hpp
+            touch -r ../src/version.hpp ../src/version_temp.hpp
+            cp -p ../src/version_temp.hpp ../src/version.hpp
+            rm -f ../src/version_temp.hpp
+        else
+            echo "Error: incorrect argument ($1) passed to version_increment, skipping incrementation..."
+        fi
+    else
+        echo "Warning: multiple arguments ($#) passed to version_increment, skipping incrementation..."
+    fi
+else
+    echo "Warning: no arguments passed to version_increment, skipping incrementation..."
+fi

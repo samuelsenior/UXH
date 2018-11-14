@@ -1,0 +1,1247 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"atol",
+				"atol_original"
+			],
+			[
+				"rtol",
+				"rtol_original"
+			],
+			[
+				"power",
+				"power_index"
+			],
+			[
+				"35muCore",
+				"35muCore22-4muWaist"
+			],
+			[
+				"rad",
+				"radially_integrated"
+			],
+			[
+				"radially",
+				"radially_integrated"
+			],
+			[
+				"Ph",
+				"Pharos_smallerCoreFibre"
+			],
+			[
+				"ourl",
+				"ourLaser_35fs"
+			],
+			[
+				"ourL",
+				"ourLaser_50fs"
+			],
+			[
+				"show",
+				"show_labels"
+			],
+			[
+				"mult",
+				"multi_wavelength"
+			],
+			[
+				"_w",
+				"_w_active"
+			],
+			[
+				"_c",
+				"_combined_lamda"
+			],
+			[
+				"w_",
+				"w_active_HHG"
+			],
+			[
+				"conf",
+				"config_XNLO"
+			],
+			[
+				"_head",
+				"_header_w_active"
+			],
+			[
+				"axis",
+				"axis_titles"
+			],
+			[
+				"at",
+				"atoms_per_worker"
+			],
+			[
+				"_I_p",
+				"_I_peak"
+			],
+			[
+				"electron",
+				"_electronDensity"
+			],
+			[
+				"radiall",
+				"radially_weighted"
+			],
+			[
+				"_header",
+				"_header_ionisation"
+			],
+			[
+				"ion",
+				"ionisation_rate_w_active_r"
+			],
+			[
+				"_combin",
+				"_combined_A_t_r"
+			],
+			[
+				"radial",
+				"radial_grid"
+			],
+			[
+				"_inpu",
+				"_inputs_namedTuple"
+			],
+			[
+				"Plo",
+				"Plot_spec"
+			],
+			[
+				"UPP",
+				"UPPE_spec"
+			],
+			[
+				"_Z",
+				"_Z_min"
+			],
+			[
+				"_set_A_t_r",
+				"_set_A_t_r_padded"
+			],
+			[
+				"A_w_r",
+				"A_w_r_padded"
+			],
+			[
+				"_set_A_t_",
+				"_set_A_t_m_padded"
+			],
+			[
+				"A_w_m",
+				"A_w_m_padded"
+			],
+			[
+				"_r",
+				"_radial_grid"
+			],
+			[
+				"_radi",
+				"_radial_grid"
+			],
+			[
+				"_rad",
+				"_radial_grid"
+			],
+			[
+				"_ra",
+				"_radial_grid"
+			],
+			[
+				"_com",
+				"_combined_A_t_r"
+			],
+			[
+				"_ha",
+				"_Hankel_transform"
+			],
+			[
+				"han",
+				"hankel_transform"
+			],
+			[
+				"_N",
+				"_N_modes"
+			],
+			[
+				"A_w",
+				"A_w_R_header"
+			],
+			[
+				"ha",
+				"hankel_transform"
+			],
+			[
+				"header",
+				"_header_A_w_R"
+			],
+			[
+				"_h",
+				"_header_A_w_R"
+			],
+			[
+				"__ra",
+				"__radial_grid__"
+			],
+			[
+				"__",
+				"__N_modes__"
+			],
+			[
+				"A_t_c",
+				"A_t_slice_interp"
+			],
+			[
+				"interp",
+				"interp_length"
+			],
+			[
+				"N",
+				"N_t"
+			],
+			[
+				"head",
+				"header_size"
+			],
+			[
+				"las",
+				"laser_pulse_file"
+			],
+			[
+				"XNLO_d",
+				"XNLO_double_size"
+			],
+			[
+				"XNLO_b",
+				"XNLO_binary_format_subversion"
+			],
+			[
+				"XNLO_bin",
+				"XNLO_binary_format_version"
+			],
+			[
+				"path_w",
+				"path_w_active"
+			],
+			[
+				"b",
+				"boundary_tmp_2"
+			],
+			[
+				"boundary",
+				"boundary_tmp_2"
+			],
+			[
+				"boun",
+				"boundary_tmp"
+			],
+			[
+				"Arra",
+				"ArrayXcd"
+			],
+			[
+				"P",
+				"P_NL_t"
+			],
+			[
+				"atom",
+				"atom_density"
+			],
+			[
+				"densi",
+				"density_neutral_atoms"
+			],
+			[
+				"n",
+				"n_active"
+			],
+			[
+				"w_act",
+				"w_active_min_index"
+			],
+			[
+				"w_active",
+				"w_active_max_"
+			],
+			[
+				"__A_w_",
+				"__A_w_R__"
+			],
+			[
+				"__A",
+				"__header_A_w_R__"
+			],
+			[
+				"__h",
+				"__Hankel_transform__"
+			],
+			[
+				"__A_w",
+				"__A_w_abs_2_mode_area__"
+			],
+			[
+				"zero",
+				"zeros_like"
+			],
+			[
+				"__c",
+				"__combined_A_w_abs_2__"
+			],
+			[
+				"__combined_A_w_",
+				"__combined_A_w_abs_2__"
+			],
+			[
+				"combined_A_w_",
+				"__combined_A_w_abs_2__"
+			],
+			[
+				"__A_t__a",
+				"__A_t_abs_2__"
+			],
+			[
+				"__comb",
+				"__combined_A_w__"
+			],
+			[
+				"__com",
+				"__combined_A_w__"
+			],
+			[
+				"math",
+				"maths_textbook"
+			],
+			[
+				"UPPE_d",
+				"UPPE_double_size"
+			],
+			[
+				"bin",
+				"binary_format_len"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "UPPE/src/keldysh_gas.cpp",
+			"settings":
+			{
+				"buffer_size": 6615,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "UPPE/src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 18347,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "UPPE/src/config_settings.hpp",
+			"settings":
+			{
+				"buffer_size": 9117,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "XNLO/src/Schrodinger_atom_1D.cpp",
+			"settings":
+			{
+				"buffer_size": 10093,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "XNLO/src/config_settings.cpp",
+			"settings":
+			{
+				"buffer_size": 26167,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "UPPE/src/config_settings.cpp",
+			"settings":
+			{
+				"buffer_size": 38091,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "XNLO/src/Schrodinger_atom_1D.hpp",
+			"settings":
+			{
+				"buffer_size": 2103,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "XNLO/src/IO.cpp",
+			"settings":
+			{
+				"buffer_size": 11614,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "XNLO/src/IO.hpp",
+			"settings":
+			{
+				"buffer_size": 1735,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sam/Project/Results/Scripts/XNLO_Figures.py",
+			"settings":
+			{
+				"buffer_size": 61000,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sam/Project/Results/Scripts/UPPE-XNLO_Figures.py",
+			"settings":
+			{
+				"buffer_size": 46788,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sam/Project/Postprocessing/UPPEPostprocessing.py",
+			"settings":
+			{
+				"buffer_size": 69316,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/sam/Project/Postprocessing/XNLOPostprocessing.py",
+			"settings":
+			{
+				"buffer_size": 83233,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 214.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"git diff",
+				"git: diff current file inline"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
+			[
+				"package control i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 461.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/sam/Project/XNLO/UPPE",
+		"/home/sam/Project/XNLO/UPPE/src"
+	],
+	"file_history":
+	[
+		"/home/sam/Project/Results/Scripts/UPPE-XNLO_Figures.py",
+		"/home/sam/Project/Results/Scripts/UPPEPostprocessing.py",
+		"/home/sam/Project/Results/Scripts/XNLOPostprocessing.py",
+		"/home/sam/Project/XNLO/XNLO/src/main.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/laser_pulse.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/maths_textbook.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/XNLO.cpp",
+		"/home/sam/Project/NineMonthReport/Report/Scripts/UPPEPostprocessing.py",
+		"/home/sam/Project/NineMonthReport/Report/Scripts/XNLOPostprocessing.py",
+		"/home/sam/Project/NineMonthReport/Report/Scripts/UPPE-XNLO_Figures.py",
+		"/home/sam/Project/NineMonthReport/Report/Scripts/UPPE_Animaitons.py",
+		"/home/sam/Project/NineMonthReport/Report/Scripts/XNLO_Figures.py",
+		"/home/sam/Project/NineMonthReport/Report/Scripts/UPPE_Figures.py",
+		"/home/sam/Project/XNLO/XNLO/src/laser_pulse.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/grid_xkx.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/grid_xkx.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/grid_tw.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/grid_tw.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/grid_rkr.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/grid_rkr.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/DHT.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/DHT.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/config_settings.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/XNLO.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/maths_textbook.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/physics_textbook.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/physics_textbook.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/Schrodinger_atom_1D.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/text.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/config_settings.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/text.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/Schrodinger_atom_1D.hpp",
+		"/home/sam/Project/XNLO/XNLO/XNLOPostprocessing.py",
+		"/home/sam/Project/XNLO/UPPE/UPPEPostprocessing.py",
+		"/home/sam/Project/XNLO/UPPE/animaitons.py",
+		"/home/sam/Project/XNLO/XNLO/XNLO_Figures.py",
+		"/home/sam/Project/XNLO/UPPE/UPPE_Figures.py",
+		"/home/sam/Project/XNLO/UPPE/src/main.cpp",
+		"/home/sam/Project/XNLO/UPPE/UPPE_Output.py",
+		"/home/sam/Project/Results/UPPE/UPPE_Figures.py",
+		"/home/sam/Project/XNLO/UPPE/src/IO.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/laser_pulse.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/keldysh_gas.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/keldysh_gas.hpp",
+		"/home/sam/Project/XNLO/XNLO/bin/800nm_ourLaser_3.sh",
+		"/home/sam/Project/XNLO/XNLO/bin/qsub_mpi_800nm_ourLaser_3",
+		"/home/sam/Project/XNLO/XNLO/bin/qsub_mpi_800nm_ourLaser_2",
+		"/home/sam/Project/XNLO/XNLO/XNLO_Output.ipynb",
+		"/home/sam/Project/XNLO/UPPE/src/config_settings.hpp",
+		"/home/sam/Project/XNLO/UPPE/src/config_settings.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/laser_pulse.hpp",
+		"/home/sam/Project/XNLO/XNLO/bin/config.txt",
+		"/home/sam/.cache/.fr-jcFNU1/datafittingc/source/dfdcubicsplineint2der.c",
+		"/home/sam/Project/XNLO/UPPE/src/maths_textbook.hpp",
+		"/home/sam/Project/XNLO/UPPE/src/maths_textbook.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/grid_tw.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/IO.hpp",
+		"/home/sam/Project/XNLO/UPPE/src/physics_textbook.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/dipole_moment.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/grid_rkr.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/DHT.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/capillary_fibre.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/DHT.hpp",
+		"/home/sam/Project/XNLO/UPPE/src/physics_textbook.hpp",
+		"/home/sam/Project/XNLO/UPPE/src/grid_rkr.hpp",
+		"/home/sam/Project/XNLO/UPPE/eigen_3_3/Eigen/src/Core/GlobalFunctions.h",
+		"/home/sam/Project/XNLO_dev/UPPE/src/grid_tw.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/IO.hpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/main.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/laser_pulse.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/IO.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/physics_textbook.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/grid_rkr.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/keldysh_gas.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/maths_textbook.cpp",
+		"/home/sam/FromXrayServer/Patrick/MM code original/mmplasma_v3.m",
+		"/home/sam/Project/XNLO_dev/XNLO/output/004_dipole.txt",
+		"/home/sam/Project/XNLO_dev/XNLO/src/main.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/scripts/version_increment",
+		"/home/sam/FromXrayServer/Patrick/MMcodeCpp_mpi_HF/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/MMcodeCpp_mpi/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/TDSE CODES C++/TDSE/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/TDSE CODES C++/TDSE/atom.h",
+		"/home/sam/FromXrayServer/Patrick/TDSE CODES C++/TDSE/vect.h",
+		"/home/sam/FromXrayServer/Patrick/capillary_cpp_v1/atom.h",
+		"/home/sam/FromXrayServer/Patrick/capillary_cpp_v1/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/capillary_cpp_v1/carrier.h",
+		"/home/sam/Project/XNLO_dev/XNLO/build/comp",
+		"/home/sam/Project/XNLO_dev/XNLO/CMakeLists.txt",
+		"/home/sam/Downloads/openmpi-3.0.0/configure",
+		"/run/user/1000/gvfs/smb-share:server=soton.ac.uk,share=resource/PhysicsandAstronomyResearch/Private/xraylab/Patrick/main.cpp",
+		"/run/user/1000/gvfs/smb-share:server=soton.ac.uk,share=resource/PhysicsandAstronomyResearch/Private/xraylab/Patrick/MMcodeCpp_mpi/main.cpp"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"j0",
+			"hankel",
+			"hank",
+			"'jet'",
+			"75muCore46muWaist",
+			"text",
+			"../Results/XNLO",
+			"../../../Results/",
+			"output_wavefunction",
+			"energy",
+			"get_",
+			"get_acceleration",
+			"get_dipole",
+			"position",
+			"V_mod",
+			"ionisa",
+			"cut",
+			"_E_c",
+			"cuto",
+			"../../Results",
+			"Intens",
+			"ionis",
+			"legend",
+			"$|\\mu|m",
+			"Figures",
+			"../../Results",
+			"Figures",
+			"radial",
+			"on-",
+			"sim_run",
+			"save",
+			"1242",
+			"_format",
+			"format",
+			"True",
+			"_z",
+			"current_density",
+			"z",
+			"atom_density",
+			"_ionisation",
+			"_t ",
+			"_t",
+			"electron_density",
+			"_read_in_data",
+			"_header_w_active",
+			"ion",
+			"_combined_A_t_m_padded",
+			"lamda",
+			"_set_w_active_min_index",
+			"parameters",
+			"label",
+			"_w_active_min_index",
+			"_A_t_r_padded",
+			"_A_t_m_padded",
+			"_A_t_r",
+			"_A_t_m",
+			"_N_t",
+			"_N_row",
+			"_N_modes",
+			"_A_w_r",
+			"_A_w_m",
+			"_radial_grid",
+			"}\n",
+			"_combined_A_w_r_padded",
+			"A_w_m_padded",
+			"combined_A_w_m_padded",
+			"_combined_T",
+			"_combined_lamda",
+			"_combined_dw",
+			"_boundary_factor",
+			"_t_min",
+			"_T",
+			"_lamda",
+			"_dw",
+			"_A_t_m_padded",
+			"_A_w_m_padded",
+			"_A_t_m_padded",
+			"_A_w_r_padded",
+			"_A_t_r_padded",
+			"_A_w_r_padded",
+			"_A_t_r_padded",
+			"_envelope_t_m_padded",
+			"_E_t_r",
+			"_E_t_m",
+			"_A_w_m",
+			"_I_w_m",
+			"_I_t_m",
+			"_A_w_m_abs",
+			"_z",
+			"())",
+			"Plot",
+			"__radius__",
+			"__A_w_r_abs_2_mode_area__",
+			"__combined_A_w_r_abs_2_summed__",
+			"__combined_A_t_r__",
+			"__combined_A_t_m__",
+			"__combined_A_w_m__",
+			"__combined_A_w_r__",
+			"__A_w_r_abs_2_mode_area__",
+			"__combined_A_w_r_abs_2_summed__",
+			"__combined_I_t_r__",
+			"__combined_A_t_m_padded__",
+			"__combined_A_t_r_padded__",
+			">();\n",
+			"IO"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'viridis'",
+			"75muCore48muWaist",
+			"../XNLO",
+			"../Results/",
+			"../../../Results",
+			"$\\mu m",
+			"figures",
+			"../../../Results"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/home/sam/Project/XNLO/XNLO"
+		},
+		{
+			"path": "/home/sam/Project/XNLO/UPPE"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "UPPE/src/keldysh_gas.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6615,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								846,
+								846
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "UPPE/src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1117,
+								1117
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 969.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "UPPE/src/config_settings.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2645,
+								2645
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 765.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "XNLO/src/Schrodinger_atom_1D.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10093,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5687,
+								5687
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1863.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "XNLO/src/config_settings.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8289,
+								8289
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 48.0,
+						"translation.y": 3701.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "UPPE/src/config_settings.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 38091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25627,
+								25640
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 168.0,
+						"translation.y": 8345.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "XNLO/src/Schrodinger_atom_1D.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2103,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1645,
+								1645
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "XNLO/src/IO.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2525,
+								2525
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "XNLO/src/IO.hpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1735,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								388,
+								388
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/sam/Project/Results/Scripts/XNLO_Figures.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 61000,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								311,
+								311
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/Results",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/home/sam/Project/Results/Scripts/UPPE-XNLO_Figures.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 46788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45288,
+								45288
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/Results",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 15430.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 11,
+					"file": "/home/sam/Project/Postprocessing/UPPEPostprocessing.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 69316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22214,
+								22214
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/Postprocessing",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1938.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/home/sam/Project/Postprocessing/XNLOPostprocessing.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 83233,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45959,
+								45959
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/Postprocessing",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 17119.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.797626112759,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 235.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

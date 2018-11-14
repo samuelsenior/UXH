@@ -1,0 +1,337 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"w",
+				"w_active"
+			],
+			[
+				"n",
+				"n_active"
+			],
+			[
+				"w_act",
+				"w_active_min_index"
+			],
+			[
+				"w_active",
+				"w_active_max_"
+			],
+			[
+				"__A_w_",
+				"__A_w_R__"
+			],
+			[
+				"__A",
+				"__header_A_w_R__"
+			],
+			[
+				"__h",
+				"__Hankel_transform__"
+			],
+			[
+				"__A_w",
+				"__A_w_abs_2_mode_area__"
+			],
+			[
+				"zero",
+				"zeros_like"
+			],
+			[
+				"__c",
+				"__combined_A_w_abs_2__"
+			],
+			[
+				"__combined_A_w_",
+				"__combined_A_w_abs_2__"
+			],
+			[
+				"combined_A_w_",
+				"__combined_A_w_abs_2__"
+			],
+			[
+				"__A_t__a",
+				"__A_t_abs_2__"
+			],
+			[
+				"__comb",
+				"__combined_A_w__"
+			],
+			[
+				"__com",
+				"__combined_A_w__"
+			],
+			[
+				"math",
+				"maths_textbook"
+			],
+			[
+				"UPPE_d",
+				"UPPE_double_size"
+			],
+			[
+				"UPP",
+				"UPPE_header_size"
+			],
+			[
+				"bin",
+				"binary_format_len"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "keldysh_gas.cpp",
+			"settings":
+			{
+				"buffer_size": 5439,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/sam/Project/XNLO/UPPE/src"
+	],
+	"file_history":
+	[
+		"/home/sam/Project/XNLO/UPPE/src/physics_textbook.hpp",
+		"/home/sam/Project/XNLO/UPPE/src/laser_pulse.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/grid_xkx.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/Schrodinger_atom_1D.cpp",
+		"/home/sam/Project/XNLO/XNLO/src/text.hpp",
+		"/home/sam/Project/XNLO/XNLO/src/text.cpp",
+		"/home/sam/Project/XNLO/UPPE/src/grid_rkr.hpp",
+		"/home/sam/Project/XNLO/UPPE/eigen_3_3/Eigen/src/Core/GlobalFunctions.h",
+		"/home/sam/Project/XNLO/UPPE/UPPE_Output.py",
+		"/home/sam/Project/XNLO_dev/UPPE/src/grid_tw.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/IO.hpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/main.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/laser_pulse.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/IO.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/physics_textbook.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/grid_rkr.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/keldysh_gas.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/src/maths_textbook.cpp",
+		"/home/sam/FromXrayServer/Patrick/MM code original/mmplasma_v3.m",
+		"/home/sam/Project/XNLO_dev/XNLO/output/004_dipole.txt",
+		"/home/sam/Project/XNLO_dev/XNLO/src/main.cpp",
+		"/home/sam/Project/XNLO_dev/UPPE/scripts/version_increment",
+		"/home/sam/FromXrayServer/Patrick/MMcodeCpp_mpi_HF/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/MMcodeCpp_mpi/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/TDSE CODES C++/TDSE/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/TDSE CODES C++/TDSE/atom.h",
+		"/home/sam/FromXrayServer/Patrick/TDSE CODES C++/TDSE/vect.h",
+		"/home/sam/FromXrayServer/Patrick/capillary_cpp_v1/atom.h",
+		"/home/sam/FromXrayServer/Patrick/capillary_cpp_v1/main.cpp",
+		"/home/sam/FromXrayServer/Patrick/capillary_cpp_v1/carrier.h",
+		"/home/sam/Project/XNLO_dev/XNLO/build/comp",
+		"/home/sam/Project/XNLO_dev/XNLO/CMakeLists.txt",
+		"/home/sam/Downloads/openmpi-3.0.0/configure",
+		"/run/user/1000/gvfs/smb-share:server=soton.ac.uk,share=resource/PhysicsandAstronomyResearch/Private/xraylab/Patrick/main.cpp",
+		"/run/user/1000/gvfs/smb-share:server=soton.ac.uk,share=resource/PhysicsandAstronomyResearch/Private/xraylab/Patrick/MMcodeCpp_mpi/main.cpp"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+			"/home/sam/Project/XNLO/UPPE/src"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			";\n",
+			"\"\"\n",
+			"__combined_A_w_abs_2__",
+			"):\n",
+			"ht",
+			"j",
+			"j1",
+			"j0",
+			"j1",
+			"j0",
+			"press",
+			"gas",
+			"nonl",
+			"density",
+			"linear",
+			"bess",
+			"w0"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "keldysh_gas.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5439,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_savvy.repo_path": "/home/sam/Project/XNLO",
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "UPPE.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 235.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

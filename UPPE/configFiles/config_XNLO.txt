@@ -1,0 +1,33 @@
+{atoms_per_worker} {1} {(int) The number of atoms per worker}
+
+{x_min} {2.1027018070766638e-06} {(double) The x_min value}  // No longer used
+{x_max} {75.0e-6}                {(double) the x_max value}
+
+{N_t}   {20000}    {(int) The N_t value} // Was 26214, but originally 262144
+{n_t}   {20000}    {(int) The N_t value} // Was 26214, but originally 262144
+{t_min} {-75.0e-15} {(double) The t_min value}  // To match Peter's code: -1.04e-14
+{t_max} {100.0e-15}  {(double) The t_max value}  // To match Peter's code: 1.55948e-14
+
+{P_av}        {0.8} {(double) The P_av value}  // Was 0.115 last
+{RR}          {1000}     {(double) The RR value}
+{FWHM}        {50.0e-15}  {(double) The FWHM value}
+{l_0}         {400.0e-9}   {(double) The l_0 value}
+{CEO}         {0.0}      {(double) The CEO value}  // Was -1.570796 before Xmas
+{spot_radius} {48.0e-6}  {(double) The spot_radius value}  // Was 46e-6 originally - i.e. 0.64*75e-6
+
+{alpha} {1.45} {(double) The alpha value}  // Was 1.45 originally
+
+{read_in_laser_pulse} {0} {(int) Switch to read in laser pulse}
+{output_wavefunction} {0} {(int) Switch to output wavefunction}
+
+{pend_path}     {prepend} {(std::string) Pending switch}
+
+{path_laser_A_w_R}    {../../UPPE/output/000_1_A_w_R.bin}    {(std::string) Path to A_w_R of laser pulse input}
+{path_laser_A_w_I}    {../../UPPE/output/000_1_A_w_I.bin}    {(std::string) Path to A_w_I of laser pulse input}
+{path_laser_w_active} {../../UPPE/output/000_1_w_active.bin} {(std::string) Path to w_active of laser pulse input}
+
+{path_dipole} {../output/dipole.bin} {(std::string) Output path of dipole.txt}
+{path_w}      {../output/w.bin}      {(std::string) Output path of w.txt}
+{path_E}      {../output/E.bin}      {(std::string) Output path of E.txt}
+
+{path_config_log}  {../output/config_log.txt} {(std::string) Output path of config_log.txt}

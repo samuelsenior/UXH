@@ -1,0 +1,33 @@
+The structure of this config file is fairly simple. Each row has three values to be read in, the first is the variable/input parameter name, the second is it's value, and the third is a brief description of it. Each of these values is incased in curly braces. Anything outside of a pair of curly braces is not read in and can therefore be used as comments in this file etc. If there are less than three pairs of curly braces on a line then an error message is thrown and that lines value isn't read in. If there are more than three pairs of curly braces then only the first three are considered and the rest are ignored.
+
+{n_z} {100} {(int) Number of steps in Z}
+{n_r} {100} {(int) The z_r value}
+{n_m} {100} {(int) Number of modes}
+
+{n_t}          {16384}      {(int) The n_t value}
+{T}            {1000.0e-15} {(double) The T value}
+{w_active_min} {2.0e14}    {(double) Minimum positive angular frequency - was 2.0e-14 originally}
+{w_active_max} {8.0e15}    {(double) Maximum positive angular frequency}
+
+{Z} {70.0e-3}  {(double) Length of capillary}
+{R} {75.0e-6} {(double) Radius of capillary}
+
+{press} {50.0e-3} {(double) Pressure of the gas}
+
+{p_av}  {4.0}     {(double) The p_av value}
+{rep}   {1.0e3}   {(double) The rep value}
+{fwhm}  {30e-15}  {(double) Full width at half maximum}
+{l_0}   {400.0e-9}  {(double) Laser central wavelength}
+{ceo}   {0.0}     {(double) The ceo value}  // Carrier Envelope Phase
+{waist} {100.0e-6} {(double) The beam waist} // 48.0e-6 orignally
+
+{pend_path}     {prepend} {(std::string) Pending switch}
+
+{path_input_j0} {../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
+
+{path_A_w_R}    {../output/A_w_R.bin}    {(std::string) Output path of A_w_R}
+{path_A_w_I}    {../output/A_w_I.bin}    {(std::string) Output path of A_w_I}
+{path_w_active} {../output/w_active.bin} {(std::string) Output path of w_active}
+
+{path_config_log}  {../output/config_log.txt}  {(std::string) Output path to config_log.txt}
+
