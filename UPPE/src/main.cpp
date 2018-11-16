@@ -271,7 +271,7 @@ int main(int argc, char** argv){
                 DftiCreateDescriptor(&ft_HHG, DFTI_DOUBLE, DFTI_COMPLEX, dimensions_HHG, length_HHG);
                 DftiSetValue(ft_HHG, DFTI_BACKWARD_SCALE, scale_HHG);
                 DftiCommitDescriptor(ft_HHG);
-std::cout << "foo 1" std::endl;
+std::cout << "foo 1" << std::endl;
                 ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.n_t(), -500.0e-15, 500.0e-15);
                 ArrayXd window = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
                 dipole = tmp.acceleration;
@@ -280,23 +280,23 @@ std::cout << "foo 1" std::endl;
                         dipole.row(i).col(j) *= neutral_atoms.row(i).col(0) * window.row(i);// / (w.row(i)).pow(2);
                     }
                 }
-std::cout << "foo 2" std::endl;
+std::cout << "foo 2" << std::endl;
                 // Apply forward spectral transform
                 ArrayXXcd temp_1 = dipole.cast<std::complex<double> >();
                 for (int ii = 0; ii < rkr.n_r; ii++)
                     DftiComputeForward(ft_HHG, temp_1.col(ii).data());
-std::cout << "foo 3" std::endl;
+std::cout << "foo 3" << std::endl;
                 ArrayXXcd temp_2 = temp_1;
                 for (int ii = 0; ii < config_XNLO.n_t(); ii++)
                     temp_2.row(ii) = ht.forward(temp_2.row(ii));
                 hhg = temp_2.block(0, 0, n_active_HHG, rkr.n_m);
-std::cout << "foo 4" std::endl;
+std::cout << "foo 4" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-std::cout << "foo 5" std::endl;
+std::cout << "foo 5" << std::endl;
 
                 // Propagate the harmonics here and loose the outputted source terms?
                 // or, propagate them after this and keep the outputted source terms?
