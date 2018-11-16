@@ -16,12 +16,20 @@ UPPE/build/.DS_Store
 UPPE/include/.DS_Store
 UPPE/src/.DS_Store
 
+HHGP/.DS_Store
+HHGP/Eigen/.DS_Store
+HHGP/bin/.DS_Score
+HHGP/build/.DS_Store
+HHGP/include/.DS_Store
+HHGP/src/.DS_Store
+
 #------------------------------------------#
 #- Excluding Jupyter notebook checkpoints -#
 #------------------------------------------#
 .ipynb_checkpoints/*
 # XNLO/.ipynb_checkpoints/*
 # UPPE/.ipynb_checkpoints/*
+# HHGP/.ipynb_checkpoints/*
 
 #-----------------------------------------------------------#
 #- Excluding documentation files that aren't the final pdf -#
@@ -45,6 +53,13 @@ UPPE/docs/*
 !UPPE/docs/html/*
 !UPPE/docs/latex/refman.pdf
 
+!HHGP/docs/
+HHGP/docs/*
+!HHGP/docs/XNLO_Documentation.pdf
+!HHGP/docs/html/
+!HHGP/docs/html/*
+!HHGP/docs/latex/refman.pdf
+
 #-------------------------#
 #- Excluding build files -#
 #-------------------------#
@@ -54,32 +69,41 @@ XNLO/build/*
 UPPE/build/*
 !UPPE/build/comp*
 !UPPE/build/Doxyfile
+HHGP/build/*
+!HHGP/build/comp*
+!HHGP/build/Doxyfile
 
 #--------------------------------------------------#
 #- Excluding library files that aren't the header -#
 #--------------------------------------------------#
 XNLO/lib/*
 !XNLO/lib/XNLO.hpp
+HHGP/lib/*
+!HHGP/lib/HHGP.hpp
 
 #-------------------------------------------#
 #- Exclude executables from the bin folder -#
 #-------------------------------------------#
 XNLO/bin/XNLO-v1-1-0
 UPPE/bin/UPPE-v1-3-0
+HHGP/bin/HHGP-v1-0-0
 
 #--------------------------#
 #- Exclude pycache folder -#
 #--------------------------#
-UPPE/__pycache__/*
 XNLO/__pycache__/*
+UPPE/__pycache__/*
+HHGO/__pycache__/*
 
 #------------------------------#
 #- Exclude output directories -#
 #------------------------------#
-UPPE/output
 XNLO/output
-UPPE/output/*
+UPPE/output
+HHGP/output
 XNLO/output/*
+UPPE/output/*
+HHGP/output/*
 
 #---------#
 #- Misc. -#
