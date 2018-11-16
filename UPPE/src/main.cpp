@@ -275,8 +275,12 @@ std::cout << "foo 1" << std::endl;
                 ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.n_t(), -500.0e-15, 500.0e-15);
                 ArrayXd window = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
                 dipole = tmp.acceleration;
+std::cout << "foo 1.1" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config_XNLO.n_t(); i++) {
+std::cout << "foo 1.2: " << std::endl;
+std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
+std::cout << "i: " << i << ", j: " << j << std::endl;
                         dipole.row(i).col(j) *= neutral_atoms.row(i).col(0) * window.row(i);// / (w.row(i)).pow(2);
                     }
                 }
