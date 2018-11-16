@@ -281,7 +281,7 @@ std::cout << "foo 1.1" << std::endl;
 std::cout << "foo 1.2: " << std::endl;
 std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
 std::cout << "i: " << i << ", j: " << j << std::endl;
-                        dipole.row(i).col(j) *= neutral_atoms.row(i).col(0) * window.row(i);// / (w.row(i)).pow(2);
+                        dipole.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(0) * window.row(i);// / (w.row(i)).pow(2);
                     }
                 }
 std::cout << "foo 2" << std::endl;
