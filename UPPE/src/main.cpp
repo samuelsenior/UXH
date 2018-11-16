@@ -277,7 +277,7 @@ int main(int argc, char** argv){
                 dipole = tmp.acceleration;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config_XNLO.n_t(); i++) {
-                        dipole.row(i).col(j) *= neutral_atoms.row(j).col(0) * window.row(i);// / (w.row(i)).pow(2);
+                        dipole.row(i).col(j) *= neutral_atoms.row(i).col(0) * window.row(i);// / (w.row(i)).pow(2);
                     }
                 }
                 // Apply forward spectral transform
@@ -294,7 +294,6 @@ int main(int argc, char** argv){
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-                //dipole = tmp.acceleration * (laser_driving.atom_density_max - laser_driving.electron_density.row(laser_driving.electron_density.rows()-1));
 
                 // Propagate the harmonics here and loose the outputted source terms?
                 // or, propagate them after this and keep the outputted source terms?
