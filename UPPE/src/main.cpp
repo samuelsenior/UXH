@@ -147,7 +147,7 @@ int main(int argc, char** argv){
     // 3. Propagation
     //--------------------------------------------------------------------------------------------//
     // Main loop
-    double dz = capillary_driving.Z / config.n_z();
+    double dz = capillary_driving.Z / double(config.n_z());
     //double dz_hhg = capillary_hhg.Z / config.n_z();
 
     if (this_process == 0) {
@@ -227,8 +227,14 @@ int main(int argc, char** argv){
             // Need rank 0 to send laser_driving.A_w_active to the other ranks as they done
             // calculate it
 
-            if (total_processes > 1) {
+            int response_rate = config.n_z() / 10;
+            if (total_processes > 1 && (ii % response_rate == 0) || ii == 1) {
                 tmp = XNLO::XNLO(A_w_active, tw_driving.w_active);
+            } else {
+                // Don't need a phase shift here as it's taken into account in the propagation?
+                //for (int j = 0; j < tmp.acceleration.cols(); j++) {
+                //    tmp.acceleration.col(j) *= step_phase_shift;
+                //}
             }
 
             if (this_process == 0 && total_processes > 1) {
@@ -257,12 +263,12 @@ int main(int argc, char** argv){
                 w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
                 E = tmp.E;
 
-                std::cout << "dipole.rows(): " << dipole.rows() << ", dipole.cols(): " << dipole.cols() << std::endl;
-                std::cout << "tmp.acceleration.rows(): " << tmp.acceleration.rows() << ", tmp.acceleration.cols(): " << tmp.acceleration.cols() << std::endl;
-                std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
-                std::cout << "w.rows(): " << w.rows() << ", w.cols(): " << w.cols() << std::endl;
-                std::cout << "w.row(0): " << w.row(0) << ", w.row(1000): " << w.row(1000) << std::endl;
-                std::cout << neutral_atoms.row(0).col(0) << std::endl;
+                //std::cout << "dipole.rows(): " << dipole.rows() << ", dipole.cols(): " << dipole.cols() << std::endl;
+                //std::cout << "tmp.acceleration.rows(): " << tmp.acceleration.rows() << ", tmp.acceleration.cols(): " << tmp.acceleration.cols() << std::endl;
+                //std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
+                //std::cout << "w.rows(): " << w.rows() << ", w.cols(): " << w.cols() << std::endl;
+                //std::cout << "w.row(0): " << w.row(0) << ", w.row(1000): " << w.row(1000) << std::endl;
+                //std::cout << neutral_atoms.row(0).col(0) << std::endl;
 
                 MKL_LONG dimensions_HHG = 1;
                 MKL_LONG length_HHG = config_XNLO.n_t();
@@ -271,36 +277,60 @@ int main(int argc, char** argv){
                 DftiCreateDescriptor(&ft_HHG, DFTI_DOUBLE, DFTI_COMPLEX, dimensions_HHG, length_HHG);
                 DftiSetValue(ft_HHG, DFTI_BACKWARD_SCALE, scale_HHG);
                 DftiCommitDescriptor(ft_HHG);
-std::cout << "foo 1" << std::endl;
+
                 ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.n_t(), -500.0e-15, 500.0e-15);
                 ArrayXd window = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
+                // Delete tmp after use to save ram
                 dipole = tmp.acceleration;
-std::cout << "foo 1.1" << std::endl;
+
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config_XNLO.n_t(); i++) {
-std::cout << "foo 1.2: " << std::endl;
-std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
-std::cout << "i: " << i << ", j: " << j << std::endl;
-                        dipole.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(0) * window.row(i);// / (w.row(i)).pow(2);
+                        // Or is it (0, 0)?
+                        // So, physically, what is going on?
+                        // The laser pulse at each propagation step interacts with the gas.
+                        // Some atoms become ionised by the laser, these atoms do not add to the
+                        // HHG response
+                        // The neutral atoms do add to the response
+                        // The acceleration at this point is as a function of time, as is the neutral atoms
+                        // these are both on different, independent time grid though, as...?
+                        // So, we only want the number of neutral atoms at one point in time, but which point?
+                        // At the start time there are a maximum number of neutral atoms
+                        // At the end time there are a minimum
+                        // So, laser comes through, ionises gas, causes HHG response
+                        // if gas is ionised it can't add to HHG response
+                        // as the atom has no electron to it
+                        // So it needs to be the final number of neutral atoms?
+                        // If so then can save a load of ram by only storing this value and not for all time steps
+                        dipole.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
+
+                        dipole.row(i).col(j) *= window.row(i);// / (w.row(i)).pow(2);
+
+                        // How to do volume normalisation?
+                        // Step increases to integrate over, or trapezoidal rule
+                        // First is easier to implement, second is more accurate
                     }
                 }
-std::cout << "foo 2" << std::endl;
+
                 // Apply forward spectral transform
                 ArrayXXcd temp_1 = dipole.cast<std::complex<double> >();
                 for (int ii = 0; ii < rkr.n_r; ii++)
                     DftiComputeForward(ft_HHG, temp_1.col(ii).data());
-std::cout << "foo 3" << std::endl;
+
+                // Why is there a Hankel transform here?
+                // This would be putting it in terms of modes, whereas the
+                // postprocessing code expects it in radial representation
+                // and XNLO::acceleration is (N_t, N_r) / in radial rep.
                 ArrayXXcd temp_2 = temp_1;
-                for (int ii = 0; ii < config_XNLO.n_t(); ii++)
-                    temp_2.row(ii) = ht.forward(temp_2.row(ii));
-                hhg = temp_2.block(0, 0, n_active_HHG, rkr.n_m);
-std::cout << "foo 4" << std::endl;
+                //for (int ii = 0; ii < config_XNLO.n_t(); ii++)
+                //    temp_2.row(ii) = ht.forward(temp_2.row(ii));
+
+                hhg = temp_2.block(0, 0, n_active_HHG, rkr.n_r);
+
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-std::cout << "foo 5" << std::endl;
 
                 // Propagate the harmonics here and loose the outputted source terms?
                 // or, propagate them after this and keep the outputted source terms?
@@ -334,12 +364,12 @@ std::cout << "foo 5" << std::endl;
                 // but outputting hhg_new using .rows() and .cols() would cause no issues
 
                 file_prop_step.overwrite(config.path_HHG_R(), false);
-                file_prop_step.write_header(config.path_HHG_R(), n_active_HHG, rkr.n_m, false);
-                file_prop_step.write_double(config.path_HHG_R(), hhg.real(), n_active_HHG, rkr.n_m, false);
+                file_prop_step.write_header(config.path_HHG_R(), n_active_HHG, rkr.n_r, false);
+                file_prop_step.write_double(config.path_HHG_R(), hhg.real(), n_active_HHG, rkr.n_r, false);
 
                 file_prop_step.overwrite(config.path_HHG_I(), false);
-                file_prop_step.write_header(config.path_HHG_I(), n_active_HHG, rkr.n_m, false);
-                file_prop_step.write_double(config.path_HHG_I(), hhg.imag(), n_active_HHG, rkr.n_m, false);
+                file_prop_step.write_header(config.path_HHG_I(), n_active_HHG, rkr.n_r, false);
+                file_prop_step.write_double(config.path_HHG_I(), hhg.imag(), n_active_HHG, rkr.n_r, false);
 
                 file_prop_step.overwrite(config.path_HHG_w(), false);
                 file_prop_step.write_header(config.path_HHG_w(), w_active_HHG.rows(), w_active_HHG.cols(), false);
