@@ -227,7 +227,7 @@ int main(int argc, char** argv){
             // Need rank 0 to send laser_driving.A_w_active to the other ranks as they done
             // calculate it
 
-            int response_rate = config.n_z() / 10;
+            int response_rate = 1;//config.n_z() / 10;
             if (total_processes > 1 && (ii % response_rate == 0) || ii == 1) {
                 tmp = XNLO::XNLO(A_w_active, tw_driving.w_active);
             } else {
