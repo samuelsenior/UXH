@@ -25,6 +25,7 @@
 #include <string>
 
 #include "../../XNLO/lib/XNLO.hpp"
+#include "../../HHGP/lib/HHGP.hpp"
 
 using namespace Eigen;
 
@@ -228,13 +229,8 @@ int main(int argc, char** argv){
             // calculate it
 
             int response_rate = 1;//config.n_z() / 10;
-            if (total_processes > 1 && (ii % response_rate == 0) || ii == 1) {
+            if (total_processes > 1 && ((ii % response_rate == 0) || ii == 1)) {
                 tmp = XNLO::XNLO(A_w_active, tw_driving.w_active);
-            } else {
-                // Don't need a phase shift here as it's taken into account in the propagation?
-                //for (int j = 0; j < tmp.acceleration.cols(); j++) {
-                //    tmp.acceleration.col(j) *= step_phase_shift;
-                //}
             }
 
             if (this_process == 0 && total_processes > 1) {
@@ -246,6 +242,9 @@ int main(int argc, char** argv){
                 }
 
                 ArrayXXcd hhg;
+                ArrayXXcd hhg_new;
+                ArrayXXcd hhg_source;
+                ArrayXXcd hhg_previous;
                 double w_active_min_HHG = 1.2566371e+16;
                 double w_active_max_HHG = 3.1415927e+17;
                 int n_active_HHG = 0;
@@ -339,16 +338,19 @@ int main(int argc, char** argv){
                 // though would that even work in this case? (i think so, but not 100%)
                 //
                 // Something like this:
-                // if (i == 1) {
-                //     previous = hhg
-                //     source = hhg
-                // } else {
-                //     source = hhg
-                //     hhg_new = HHGP::nearFieldStep(source, previous, ...)
-                //     previous = hhg_new
-                //     hhg = hhg_new
-                //     
-                // }
+                if (ii == 1) {
+                    hhg_previous = hhg;
+                    hhg_source = hhg;
+                } else {
+                    double z = dz * double(ii);
+                    hhg_source = hhg;
+                    hhg_new = HHGP::nearFieldStep(hhg_source, hhg_previous,
+                                                  w_active_HHG,
+                                                  z, dz);
+                    hhg_previous = hhg_new;
+                    hhg = hhg_new;
+                    //HHGP::HHGP();
+                }
                 // Explaination of the above:
                 // -At the first step we just want the source term as nothing from any previous steps is
                 //  propagated to the first position since nothing before
