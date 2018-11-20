@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['backward',['backward',['../class_d_h_t.html#a923f3d375e55f2dbdab2763de372f440',1,'DHT']]],
-  ['block',['block',['../classpropagation.html#af12b15d9b91f98516c0ff25efc1233d1',1,'propagation']]]
+  ['backward',['backward',['../class_h_h_g_p_1_1_d_h_t.html#a4c5f6451f318fe8242d6668cf2cda372',1,'HHGP::DHT']]],
+  ['block',['block',['../class_h_h_g_p_1_1propagation.html#aa574e372782fa6399e77e3fae3e2181d',1,'HHGP::propagation']]]
 ];

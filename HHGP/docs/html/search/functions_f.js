@@ -1,17 +1,17 @@
 var searchData=
 [
-  ['r',['R',['../class_config___settings.html#a1efaf096c7e87d4af210396dfc922999',1,'Config_Settings']]],
-  ['r_5fdescription',['R_description',['../class_config___settings.html#ade0c3d32a8320560d325388b21ad5c18',1,'Config_Settings']]],
-  ['r_5fdescription_5fset',['R_description_set',['../class_config___settings.html#a14ced9f9c6df3c24b96cbb91be6314ec',1,'Config_Settings']]],
-  ['r_5fset',['R_set',['../class_config___settings.html#ac91047810edd5c7ca6879a4ec3b27530',1,'Config_Settings']]],
-  ['read_5fascii_5fdouble',['read_ascii_double',['../class_i_o.html#a3ddd4b5d95a8a5cfffb56cfcf7c186e1',1,'IO']]],
-  ['read_5fdouble',['read_double',['../class_i_o.html#aa2d53b758b98c564688d00ca5236744e',1,'IO::read_double(const std::string path, int N_row_, int N_col_, bool print=true)'],['../class_i_o.html#a34ed8843269915cb0b4eb8719da3535d',1,'IO::read_double(const std::string path, bool skip_header=true, bool print=true)']]],
-  ['read_5fheader',['read_header',['../class_i_o.html#aed76c50d1122060292bfb10181edc990',1,'IO']]],
-  ['read_5fin',['read_in',['../class_config___settings.html#a5896509ff0479fc36acc1319d6ada608',1,'Config_Settings']]],
-  ['read_5fint',['read_int',['../class_i_o.html#a7b78b5f726c5299423e72b2b44bce0c9',1,'IO']]],
-  ['read_5fuint16',['read_uint16',['../class_i_o.html#a0ba1550dc3c2b6fd4675bc03408b8d95',1,'IO']]],
-  ['rep',['rep',['../class_config___settings.html#a2d7cd824c2d98ef18359a062a802dca5',1,'Config_Settings']]],
-  ['rep_5fdescription',['rep_description',['../class_config___settings.html#a7ed33a5b7a724d356ff374017f31d94b',1,'Config_Settings']]],
-  ['rep_5fdescription_5fset',['rep_description_set',['../class_config___settings.html#af0b5006b967b95f83ff5f793d8b5b949',1,'Config_Settings']]],
-  ['rep_5fset',['rep_set',['../class_config___settings.html#a190867ecfbe068e79f3cfe95947423d1',1,'Config_Settings']]]
+  ['r',['R',['../class_h_h_g_p_1_1_config___settings.html#a07859cfea6378b47ec9f255259e61816',1,'HHGP::Config_Settings']]],
+  ['r_5fdescription',['R_description',['../class_h_h_g_p_1_1_config___settings.html#a72bdfd24b7a17320a37b29a8f36a0418',1,'HHGP::Config_Settings']]],
+  ['r_5fdescription_5fset',['R_description_set',['../class_h_h_g_p_1_1_config___settings.html#a8d83f52e5292eb5e3d27f137959b87d2',1,'HHGP::Config_Settings']]],
+  ['r_5fset',['R_set',['../class_h_h_g_p_1_1_config___settings.html#a094c095511b53e9bf6b5ed3a4fc1c0fd',1,'HHGP::Config_Settings']]],
+  ['read_5fascii_5fdouble',['read_ascii_double',['../class_h_h_g_p_1_1_i_o.html#aa374b6604030021e35ed16138d5399a8',1,'HHGP::IO']]],
+  ['read_5fdouble',['read_double',['../class_h_h_g_p_1_1_i_o.html#a3ab82943e6e42868724df34b87aecc69',1,'HHGP::IO::read_double(const std::string path, int N_row_, int N_col_, bool print=true)'],['../class_h_h_g_p_1_1_i_o.html#a56549109aae833c565e13dc5b024bb55',1,'HHGP::IO::read_double(const std::string path, bool skip_header=true, bool print=true)']]],
+  ['read_5fheader',['read_header',['../class_h_h_g_p_1_1_i_o.html#ab1cfbe0e1a385fc43248664854126712',1,'HHGP::IO']]],
+  ['read_5fin',['read_in',['../class_h_h_g_p_1_1_config___settings.html#a33fb59f2be3e53086630d80a55a9d4aa',1,'HHGP::Config_Settings']]],
+  ['read_5fint',['read_int',['../class_h_h_g_p_1_1_i_o.html#a3b0d90e4d3eedc4f239e0fae4fb72ad0',1,'HHGP::IO']]],
+  ['read_5fuint16',['read_uint16',['../class_h_h_g_p_1_1_i_o.html#a18eb13c13d0ac200297261633cbf2fb9',1,'HHGP::IO']]],
+  ['rep',['rep',['../class_h_h_g_p_1_1_config___settings.html#a93af08b92c2c1ee2a6496dc685870249',1,'HHGP::Config_Settings']]],
+  ['rep_5fdescription',['rep_description',['../class_h_h_g_p_1_1_config___settings.html#ad7d1f54cd13811f7ca04e0baf1a23c7e',1,'HHGP::Config_Settings']]],
+  ['rep_5fdescription_5fset',['rep_description_set',['../class_h_h_g_p_1_1_config___settings.html#a72b0651bd533a48f0c7f6c185e6a9701',1,'HHGP::Config_Settings']]],
+  ['rep_5fset',['rep_set',['../class_h_h_g_p_1_1_config___settings.html#a32fb9cf21db3002b8f1c9f7f90accde0',1,'HHGP::Config_Settings']]]
 ];

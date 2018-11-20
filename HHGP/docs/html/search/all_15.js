@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['u',['U',['../classkeldysh__gas.html#a752b70afe289a798cc0ab7b688b9ed3d',1,'keldysh_gas']]]
+  ['u',['U',['../class_h_h_g_p_1_1keldysh__gas.html#a69676644e37a51be4c53bfce1248648e',1,'HHGP::keldysh_gas']]]
 ];

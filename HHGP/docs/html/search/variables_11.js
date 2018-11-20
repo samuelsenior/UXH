@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setting_5fname',['setting_name',['../class_config___settings.html#a05f6108c286f7e7bbbbb1063a77b9a71',1,'Config_Settings']]]
+  ['setting_5fname',['setting_name',['../class_h_h_g_p_1_1_config___settings.html#a99ec43c3efe1054b4cc6c66e91d4206f',1,'HHGP::Config_Settings']]]
 ];

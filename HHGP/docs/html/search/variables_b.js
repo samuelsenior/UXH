@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['l_5f0_5f',['l_0_',['../class_config___settings.html#ae98143cb0c84b137e26a4b439e48aada',1,'Config_Settings']]],
-  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_config___settings.html#a04bc9c9966974183a306593a492644f4',1,'Config_Settings']]],
-  ['l_5fat',['l_at',['../classphysics__textbook.html#a4479790cea56c47a7db44d2d331c4cef',1,'physics_textbook']]],
-  ['lamda',['lamda',['../classpropagation.html#a5ae0154dc8db04188ba92e10ba981000',1,'propagation']]]
+  ['l_5f0_5f',['l_0_',['../class_h_h_g_p_1_1_config___settings.html#adc37cc95c9d636c52c69466137207c54',1,'HHGP::Config_Settings']]],
+  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_h_h_g_p_1_1_config___settings.html#a65b5d48c8313c20f67e5999725afe29d',1,'HHGP::Config_Settings']]],
+  ['l_5fat',['l_at',['../class_h_h_g_p_1_1physics__textbook.html#aa4a0c9d5a0baef5a93122746a57be727',1,'HHGP::physics_textbook']]],
+  ['lamda',['lamda',['../class_h_h_g_p_1_1propagation.html#a3ad76ae937e1c7ef07b24b18bebe2d59',1,'HHGP::propagation']]]
 ];

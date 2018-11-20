@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['interp1d',['interp1D',['../classmaths__textbook.html#a803caea252953788b96a898a3bab9bd0',1,'maths_textbook::interp1D(ArrayXd input_array, int input_length, int output_length, int spline_order)'],['../classmaths__textbook.html#ac4789e1e67a597303faab6cc5fa889ec',1,'maths_textbook::interp1D(ArrayXd x, int nx, ArrayXd y, ArrayXd site, int output_length, int spline_order)']]],
-  ['io',['IO',['../class_i_o.html#a49b27a2ee79bce0de4e3ef163cbebd30',1,'IO']]],
-  ['ionization_5frate',['ionization_rate',['../classkeldysh__gas.html#a42dc79816adcae9c25499baa7256ec10',1,'keldysh_gas']]]
+  ['interp1d',['interp1D',['../class_h_h_g_p_1_1maths__textbook.html#ad2836e36b0eb205366ceb0c88bc3ccf2',1,'HHGP::maths_textbook::interp1D(ArrayXd input_array, int input_length, int output_length, int spline_order)'],['../class_h_h_g_p_1_1maths__textbook.html#a48ff28272ba74a6fbd44620d4148cad8',1,'HHGP::maths_textbook::interp1D(ArrayXd x, int nx, ArrayXd y, ArrayXd site, int output_length, int spline_order)']]],
+  ['io',['IO',['../class_h_h_g_p_1_1_i_o.html#a69258f1edb0067fe31a9331cadf160c6',1,'HHGP::IO']]],
+  ['ionization_5frate',['ionization_rate',['../class_h_h_g_p_1_1keldysh__gas.html#ae2dd6757a3a9e5ac5736855ff34b1ecc',1,'HHGP::keldysh_gas']]]
 ];

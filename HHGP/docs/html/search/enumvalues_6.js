@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['t',['T',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fab9ece18c950afbfa6b0fdbfa4ff731d3',1,'Config_Settings']]]
+  ['t',['T',['../class_h_h_g_p_1_1_config___settings.html#aebc95c6b09b701548e03bc4cf5867fe7ab9ece18c950afbfa6b0fdbfa4ff731d3',1,'HHGP::Config_Settings']]]
 ];

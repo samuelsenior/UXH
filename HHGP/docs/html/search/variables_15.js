@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['z',['z',['../classpropagation.html#aeacfc091fafd1fdb1af4536f6f587e55',1,'propagation']]],
-  ['z_5f',['Z_',['../class_config___settings.html#a32281faced0dc663ce2b0a4dc6dd25a7',1,'Config_Settings']]],
-  ['z_5fdescription_5f',['Z_description_',['../class_config___settings.html#a50cd3c7bc111833774726cd688e3a52b',1,'Config_Settings']]],
-  ['z_5fmax',['z_max',['../classkeldysh__gas.html#a117691dd8b6fd06b34a73392c0e73e32',1,'keldysh_gas']]]
+  ['z',['z',['../class_h_h_g_p_1_1propagation.html#a2e6d455490baabc1435f81a079586133',1,'HHGP::propagation']]],
+  ['z_5f',['Z_',['../class_h_h_g_p_1_1_config___settings.html#ab55106aa55adf5dcebb779c772dcc808',1,'HHGP::Config_Settings']]],
+  ['z_5fdescription_5f',['Z_description_',['../class_h_h_g_p_1_1_config___settings.html#a54d5cc824b997a9634e8de863687bd79',1,'HHGP::Config_Settings']]],
+  ['z_5fmax',['z_max',['../class_h_h_g_p_1_1keldysh__gas.html#a375b3757acfab008551be021600870ac',1,'HHGP::keldysh_gas']]]
 ];

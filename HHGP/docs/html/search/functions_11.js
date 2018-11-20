@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['t',['T',['../class_config___settings.html#a1ed40710ec225b2f91d275b4fc8f64ef',1,'Config_Settings']]],
-  ['t_5fdescription',['T_description',['../class_config___settings.html#a0a851a218a87393dfe8710fae9a21115',1,'Config_Settings']]],
-  ['t_5fdescription_5fset',['T_description_set',['../class_config___settings.html#aab5604b25a35978883a804e6a628c6b3',1,'Config_Settings']]],
-  ['t_5fset',['T_set',['../class_config___settings.html#ae5124cda8f87a2abb733912ad49264b3',1,'Config_Settings']]],
-  ['trapz',['trapz',['../classmaths__textbook.html#a158ce9c89ee1db5495810c25ee2aed57',1,'maths_textbook']]]
+  ['t',['T',['../class_h_h_g_p_1_1_config___settings.html#a602481f91caf4e95453d84e0ba25a657',1,'HHGP::Config_Settings']]],
+  ['t_5fdescription',['T_description',['../class_h_h_g_p_1_1_config___settings.html#add98f1fa5f852ed55f86045512338948',1,'HHGP::Config_Settings']]],
+  ['t_5fdescription_5fset',['T_description_set',['../class_h_h_g_p_1_1_config___settings.html#a8ecb8b0db74bbe8ba125e085d8242dd1',1,'HHGP::Config_Settings']]],
+  ['t_5fset',['T_set',['../class_h_h_g_p_1_1_config___settings.html#a9d0e29bc5e343925c649eb3ac9fb36be',1,'HHGP::Config_Settings']]],
+  ['trapz',['trapz',['../class_h_h_g_p_1_1maths__textbook.html#a17aa4721aa2fc5fd7c3dff49b7daa4f7',1,'HHGP::maths_textbook']]]
 ];
