@@ -129,7 +129,16 @@ set(LIBRARIES ${LIBRARIES} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthrea
 #                    Get XNLO Library                      #
 #----------------------------------------------------------#
 
+set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP-v1-0-0)
 set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../XNLO/lib -lXNLO-v1-1-0)
+
+#----------------------------------------------------------#
+#                    Get HHGP Library                      #
+#----------------------------------------------------------#
+
+#set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP-v1-0-0)
+
+message("libraries: " ${LIBRARIES})
 
 #----------------------------------------------------------#
 #                    Get OpenMPI                           #
