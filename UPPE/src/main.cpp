@@ -349,7 +349,6 @@ int main(int argc, char** argv){
                                                   z, dz);
                     hhg_previous = hhg_new;
                     hhg = hhg_new;
-                    //HHGP::HHGP();
                 }
                 // Explaination of the above:
                 // -At the first step we just want the source term as nothing from any previous steps is
@@ -366,12 +365,12 @@ int main(int argc, char** argv){
                 // but outputting hhg_new using .rows() and .cols() would cause no issues
 
                 file_prop_step.overwrite(config.path_HHG_R(), false);
-                file_prop_step.write_header(config.path_HHG_R(), n_active_HHG, rkr.n_r, false);
-                file_prop_step.write_double(config.path_HHG_R(), hhg.real(), n_active_HHG, rkr.n_r, false);
+                file_prop_step.write_header(config.path_HHG_R(), hhg.cols(), hhg.rows(), false);
+                file_prop_step.write_double(config.path_HHG_R(), hhg.real(), hhg.cols(), hhg.rows(), false);
 
                 file_prop_step.overwrite(config.path_HHG_I(), false);
-                file_prop_step.write_header(config.path_HHG_I(), n_active_HHG, rkr.n_r, false);
-                file_prop_step.write_double(config.path_HHG_I(), hhg.imag(), n_active_HHG, rkr.n_r, false);
+                file_prop_step.write_header(config.path_HHG_I(), hhg.cols(), hhg.rows(), false);
+                file_prop_step.write_double(config.path_HHG_I(), hhg.imag(), hhg.cols(), hhg.rows(), false);
 
                 file_prop_step.overwrite(config.path_HHG_w(), false);
                 file_prop_step.write_header(config.path_HHG_w(), w_active_HHG.rows(), w_active_HHG.cols(), false);
