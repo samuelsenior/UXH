@@ -312,8 +312,8 @@ int main(int argc, char** argv){
 
                 // Apply forward spectral transform
                 ArrayXXcd temp_1 = dipole.cast<std::complex<double> >();
-                for (int ii = 0; ii < rkr.n_r; ii++)
-                    DftiComputeForward(ft_HHG, temp_1.col(ii).data());
+                for (int i = 0; i < rkr.n_r; i++)
+                    DftiComputeForward(ft_HHG, temp_1.col(i).data());
 
                 // Why is there a Hankel transform here?
                 // This would be putting it in terms of modes, whereas the
