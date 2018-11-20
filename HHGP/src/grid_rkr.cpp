@@ -13,6 +13,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
@@ -27,3 +29,5 @@ grid_rkr::grid_rkr(int n_r_, double R_, int n_m_, maths_textbook& maths_) :
     r = R * maths_.J0_zeros.head(n_r) / maths_.J0_zeros(n_r);
     kr = maths_.J0_zeros.head(n_r) / R;
 }
+
+} // HHGP namespace

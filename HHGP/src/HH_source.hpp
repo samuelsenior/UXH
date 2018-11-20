@@ -13,6 +13,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -27,5 +29,7 @@ public:
     ArrayXXcd GetSource(int fileNumber, Config_Settings config, maths_textbook maths);
 
 };
+
+} // HHGP namespace
 
 #endif

@@ -7,6 +7,8 @@
 
 #include "physics_textbook.hpp"
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
@@ -40,3 +42,4 @@ physics_textbook::physics_textbook() {
     k_B = 1.38065e-23;    // Boltzmann Constant
 }
 
+} // HHGP namespace

@@ -19,6 +19,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -56,5 +58,7 @@ public:
     ArrayXd electron_density(ArrayXd W_t_, double z);
     ArrayXcd current_density(ArrayXd E_t_, double z);
 };
+
+} // HHGP namespace
 
 #endif

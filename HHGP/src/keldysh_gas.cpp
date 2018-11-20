@@ -18,6 +18,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
@@ -115,3 +117,5 @@ ArrayXcd keldysh_gas::current_density(ArrayXd E_t_, double z) {
                        C.segment(tw.w_active_min_index, tw.n_active));
     return(output);
 }
+
+} // HHGP namespace

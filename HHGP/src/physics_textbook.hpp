@@ -8,6 +8,8 @@
 #ifndef __PHYSICS_TEXTBOOK_HPP_INCLUDED__
 #define __PHYSICS_TEXTBOOK_HPP_INCLUDED__
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -37,5 +39,7 @@ public:
     // Functions
     physics_textbook();
 };
+
+} // HHGP namespace
 
 #endif

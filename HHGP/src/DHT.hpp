@@ -15,6 +15,8 @@
 
 //using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -39,5 +41,7 @@ public:
     Eigen::ArrayXcd forward(Eigen::ArrayXcd f_r_);
     Eigen::ArrayXcd backward(Eigen::ArrayXcd f_kr_);
 };
+
+} // HHGP namespace
 
 #endif

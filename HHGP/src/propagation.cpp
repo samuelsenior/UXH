@@ -14,6 +14,8 @@
 
 #include <complex>
 
+namespace HHGP {
+
 //using namespace Eigen;
 
 //------------------------------------------------------------------------------------------------//
@@ -193,3 +195,5 @@ void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
 void propagation::farFieldPropagation() {
 
 }
+
+} // HHGP namespace

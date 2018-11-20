@@ -11,6 +11,8 @@
 
 //using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -56,5 +58,7 @@ public:
     void nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_);
     void farFieldPropagation();
 };
+
+} // HHGP namespace
 
 #endif

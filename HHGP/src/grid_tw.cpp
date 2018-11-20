@@ -15,6 +15,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
@@ -45,3 +47,5 @@ grid_tw::grid_tw(int n_t_, double T_, double w_active_min_, double w_active_max_
 
     std::cout << "w_active_min_index: " << w_active_min_index << std::endl;
 }
+
+} // HHGP namespace

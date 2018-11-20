@@ -12,6 +12,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 /*!
@@ -37,5 +39,7 @@ public:
     ArrayXd interp1D(ArrayXd x, int nx, ArrayXd y, ArrayXd site, int output_length, int spline_order);
 
 };
+
+} // HHGP namespace
 
 #endif

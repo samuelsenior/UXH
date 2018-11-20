@@ -13,6 +13,8 @@
 
 //using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
@@ -55,3 +57,5 @@ Eigen::ArrayXcd DHT::backward(Eigen::ArrayXcd f_kr_) {
 
     return(output);
 }
+
+} // HHGP namespace

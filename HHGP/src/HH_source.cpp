@@ -11,13 +11,15 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 HH_source::HH_source () {}
 
 ArrayXXcd HH_source::GetSource(int fileNumber,
                            Config_Settings config, maths_textbook maths) {
 
-    std::string dir = "../../../Results/UPPE-XNLO/Convergence/iridis5/20-11-18/nz-1000/data/";
-    std::string prepend = "001_";
+    std::string dir = "../../../Results/UPPE-XNLO/Convergence/iridis5/20-11-18/nz-5000/data/";
+    std::string prepend = "002_";
     std::string propStep = std::to_string(static_cast<unsigned long long>(fileNumber));
     std::string restOfName_R = "_HHG_R.bin";
     std::string restOfName_I = "_HHG_I.bin";
@@ -54,3 +56,5 @@ ArrayXXcd HH_source::GetSource(int fileNumber,
 
     return A_w_r;
 }
+
+} // HHGP namespace

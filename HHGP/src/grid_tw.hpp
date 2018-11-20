@@ -15,6 +15,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -37,5 +39,7 @@ public:
     grid_tw();
     grid_tw(int N_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook& maths_);
 };
+
+} // HHGP namespace
 
 #endif

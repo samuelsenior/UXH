@@ -16,6 +16,8 @@
 
 using namespace Eigen;
 
+namespace HHGP {
+
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
@@ -344,3 +346,5 @@ void IO::write_ascii_double(ArrayXd data, std::string path, bool print) {
     }
 
 }
+
+} // HHGP namespace
