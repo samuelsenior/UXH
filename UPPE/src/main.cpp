@@ -349,9 +349,9 @@ std::cout << "Foo2 " << std::endl;
                     double z = dz * double(ii);
                     hhg_source = hhg;
 std::cout << "Foo3 " << std::endl;
-//                    hhg_new = HHGP::nearFieldStep(hhg_source, hhg_previous,
-//                                                  w_active_HHG,
-//                                                  z, dz);
+                    hhg_new = HHGP::nearFieldStep(hhg_source, hhg_previous,
+                                                  w_active_HHG,
+                                                  z, dz);
 std::cout << "Foo4 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
 std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;
