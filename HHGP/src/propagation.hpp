@@ -48,6 +48,7 @@ public:
 
     // Functions
     // E_min should really come from config or a data_config
+    propagation();
     propagation(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
 
     Eigen::ArrayXd segment(Eigen::ArrayXd k);

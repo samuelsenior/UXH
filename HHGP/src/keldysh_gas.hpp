@@ -51,6 +51,7 @@ public:
     double kappa;
 
     // Functions
+    keldysh_gas();
     keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_);
     double atom_density(double z);
     ArrayXcd nl_polarization(ArrayXd E_t_);

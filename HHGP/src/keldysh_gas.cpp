@@ -24,6 +24,7 @@ namespace HHGP {
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
 /*! Constructor */
+keldysh_gas::keldysh_gas() {}
 keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_) :
     maths(maths_), tw(tw_), ft(ft_) {
 

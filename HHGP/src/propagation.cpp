@@ -24,6 +24,7 @@ namespace HHGP {
 /*!
     Constructor
 */
+propagation::propagation() {}
 propagation::propagation(double E_min,
                          Eigen::ArrayXd w_active,
                          keldysh_gas gas,
