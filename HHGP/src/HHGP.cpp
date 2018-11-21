@@ -94,6 +94,7 @@ namespace HHGP {
 	    A_w_r = source;//hh_source.GetSource(i, config, maths);
 	    A_w_r_tmp = prop.block(A_w_r);
 	    A_w_r_tmp += prop.A_w_r;
+std::cout << "BAR 1." << std::endl;
 
 		return A_w_r_tmp;
 	}
