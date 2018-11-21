@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+#include <mpi.h>
+
 #include "Eigen/Dense"
 
 #include "HHGP.hpp"
@@ -20,62 +22,78 @@ namespace HHGP {
 
 	HHGP::HHGP() {
 
-        config_file_path = "./config_HHGP_test.txt";
-        // Input Settings and Parameters
-        Config_Settings config;
-        if(config_file_path.empty()) {
-            std::cout << "Using default config file path " << config.path_config_file() << std::endl;
-        } else {
-            config.path_config_file_set(config_file_path);
-            config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-            std::cout << "Using config file path " << config.path_config_file() << std::endl;
-        }
-        config.read_in(config.path_config_file());
-        config.check_paths();
-        config.print();
+		// MPI
+        int this_node;
+        int total_nodes;
+        MPI_Status status;
 
-    //    // Am I expecting spectral amplitudes in terms of radial position or mode?
-	//	int N_cols = source.cols();
-	//    int N_rows = source.rows();
-    //
-	//    int N_cols_w = w_active.cols();
-	//    int N_rows_w = w_active.rows();
+        //MPI_Init(&argc, &argv);
+        MPI_Comm_size(MPI_COMM_WORLD, &total_nodes);
+        MPI_Comm_rank(MPI_COMM_WORLD, &this_node);
 
-	    maths_textbook maths(config.path_input_j0());
+        int world_rank, world_size;
+        MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+        MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-	    // Set up Hankel transform
-	//    DHT ht(N_cols, maths);
-	//    int n_active = N_rows;
+        if (this_node == 0) {
 
-	    //--------------------------------------------------------------------------------------------//
-	    // 2. Constructors
-	    //--------------------------------------------------------------------------------------------//
+	        config_file_path = "./config_HHGP_test.txt";
+	        // Input Settings and Parameters
+	        Config_Settings config;
+	        if(config_file_path.empty()) {
+	            std::cout << "Using default config file path " << config.path_config_file() << std::endl;
+	        } else {
+	            config.path_config_file_set(config_file_path);
+	            config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+	            std::cout << "Using config file path " << config.path_config_file() << std::endl;
+	        }
+	        config.read_in(config.path_config_file());
+	        config.check_paths();
+	        config.print();
 
-	    // General
-	    //Used above...
-	    physics_textbook physics;
+	    //    // Am I expecting spectral amplitudes in terms of radial position or mode?
+		//	int N_cols = source.cols();
+		//    int N_rows = source.rows();
+	    //
+		//    int N_cols_w = w_active.cols();
+		//    int N_rows_w = w_active.rows();
 
-	    // Grids
-	    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
-	    
-	    MKL_LONG dimensions = 1;
-	    MKL_LONG length = config.n_t();
-	    double scale = 1.0 / config.n_t();
-	    DFTI_DESCRIPTOR_HANDLE ft;
-	    DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
-	    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
-	    DftiCommitDescriptor(ft);
+		    maths_textbook maths(config.path_input_j0());
 
-	    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-	    keldysh_gas gas(config.press(), tw, ft, maths);
+		    // Set up Hankel transform
+		//    DHT ht(N_cols, maths);
+		//    int n_active = N_rows;
 
-	    // Change this to be read in from file eventually!
-	    // E_min should really come from config or a data_config
-	    E_min = 10.0;
-	    // Propagation
-	//    propagation prop(E_min, w_active, gas, rkr, ht);
+		    //--------------------------------------------------------------------------------------------//
+		    // 2. Constructors
+		    //--------------------------------------------------------------------------------------------//
 
-	    config.print(config.path_config_log());
+		    // General
+		    //Used above...
+		    physics_textbook physics;
+
+		    // Grids
+		    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+		    
+		    MKL_LONG dimensions = 1;
+		    MKL_LONG length = config.n_t();
+		    double scale = 1.0 / config.n_t();
+		    DFTI_DESCRIPTOR_HANDLE ft;
+		    DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
+		    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
+		    DftiCommitDescriptor(ft);
+
+		    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+		    keldysh_gas gas(config.press(), tw, ft, maths);
+
+		    // Change this to be read in from file eventually!
+		    // E_min should really come from config or a data_config
+		    E_min = 10.0;
+		    // Propagation
+		//    propagation prop(E_min, w_active, gas, rkr, ht);
+
+		    config.print(config.path_config_log());
+		}
 
 	}
 

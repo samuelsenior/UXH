@@ -263,6 +263,7 @@ int main(int argc, char** argv){
                 n_active_HHG = count - w_active_min_index_HHG;
                 w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
                 E = tmp.E;
+                //hhgp.set_w_active(w_active_HHG);
 
                 //std::cout << "dipole.rows(): " << dipole.rows() << ", dipole.cols(): " << dipole.cols() << std::endl;
                 //std::cout << "tmp.acceleration.rows(): " << tmp.acceleration.rows() << ", tmp.acceleration.cols(): " << tmp.acceleration.cols() << std::endl;
