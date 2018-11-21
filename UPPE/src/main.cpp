@@ -340,6 +340,8 @@ int main(int argc, char** argv){
                 // Something like this:
 std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
+                    //These would have different sizes to the HHG outputted for other steps
+                    // This needs to be corrected!
                     hhg_previous = hhg;
                     hhg_source = hhg;
 std::cout << "Foo2 " << std::endl;
@@ -347,15 +349,16 @@ std::cout << "Foo2 " << std::endl;
                     double z = dz * double(ii);
                     hhg_source = hhg;
 std::cout << "Foo3 " << std::endl;
-                    hhg_new = HHGP::nearFieldStep(hhg_source, hhg_previous,
-                                                  w_active_HHG,
-                                                  z, dz);
+//                    hhg_new = HHGP::nearFieldStep(hhg_source, hhg_previous,
+//                                                  w_active_HHG,
+//                                                  z, dz);
 std::cout << "Foo4 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
+std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;
 std::cout << "hhg_previous.cols(): " << hhg_previous.cols() << ", hhg_previous.rows(): " << hhg_previous.rows() << std::endl;
 std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << std::endl;
-                    hhg_previous = hhg_new;
-                    hhg = hhg_new;
+//                    hhg_previous = hhg_new;
+//                    hhg = hhg_new;
 std::cout << "Foo5 " << std::endl;
                 }
                 // Explaination of the above:
