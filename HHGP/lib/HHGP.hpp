@@ -51,9 +51,10 @@ namespace HHGP {
 
 
 	public:
-		HHGP(ArrayXd w_active);
+		HHGP();
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
+								ArrayXd w_active,
 								double z, double dz);
 		propagation prop;
 	};

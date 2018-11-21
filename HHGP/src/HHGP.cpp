@@ -18,9 +18,7 @@ using namespace Eigen;
 
 namespace HHGP {
 
-	HHGP::HHGP(ArrayXd w_active)
-			  :
-			   w_active(w_active) {
+	HHGP::HHGP() {
 
         config_file_path = "./config_HHGP_test.txt";
         // Input Settings and Parameters
@@ -82,6 +80,7 @@ namespace HHGP {
 	}
 
 	ArrayXXcd HHGP::nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
+                                  ArrayXd w_active,
                                   double z, double dz) {
 
 	//	std::string config_file_path;

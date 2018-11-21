@@ -176,6 +176,8 @@ int main(int argc, char** argv){
 
     ArrayXXcd A_w_active;
 
+    HHGP::HHGP hhgp;
+
     MPI_Barrier(MPI_COMM_WORLD);
 
         for (int ii = 1; ii < config.n_z() + 1; ii++) {
@@ -261,8 +263,6 @@ int main(int argc, char** argv){
                 n_active_HHG = count - w_active_min_index_HHG;
                 w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
                 E = tmp.E;
-
-                HHGP::HHGP hhgp(w_active_HHG);
 
                 //std::cout << "dipole.rows(): " << dipole.rows() << ", dipole.cols(): " << dipole.cols() << std::endl;
                 //std::cout << "tmp.acceleration.rows(): " << tmp.acceleration.rows() << ", tmp.acceleration.cols(): " << tmp.acceleration.cols() << std::endl;
@@ -352,6 +352,7 @@ std::cout << "Foo2 " << std::endl;
                     hhg_source = hhg;
 std::cout << "Foo3 " << std::endl;
                     hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
+                                                 w_active_HHG,
                                                  z, dz);
 std::cout << "Foo4 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
