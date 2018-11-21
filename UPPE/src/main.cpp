@@ -351,6 +351,9 @@ std::cout << "Foo3 " << std::endl;
                                                   w_active_HHG,
                                                   z, dz);
 std::cout << "Foo4 " << std::endl;
+std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
+std::cout << "hhg_previous.cols(): " << hhg_previous.cols() << ", hhg_previous.rows(): " << hhg_previous.rows() << std::endl;
+std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << std::endl;
                     hhg_previous = hhg_new;
                     hhg = hhg_new;
 std::cout << "Foo5 " << std::endl;
