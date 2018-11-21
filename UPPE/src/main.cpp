@@ -338,17 +338,22 @@ int main(int argc, char** argv){
                 // though would that even work in this case? (i think so, but not 100%)
                 //
                 // Something like this:
+std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
                     hhg_previous = hhg;
                     hhg_source = hhg;
+std::cout << "Foo2 " << std::endl;
                 } else {
                     double z = dz * double(ii);
                     hhg_source = hhg;
+std::cout << "Foo3 " << std::endl;
                     hhg_new = HHGP::nearFieldStep(hhg_source, hhg_previous,
                                                   w_active_HHG,
                                                   z, dz);
+std::cout << "Foo4 " << std::endl;
                     hhg_previous = hhg_new;
                     hhg = hhg_new;
+std::cout << "Foo5 " << std::endl;
                 }
                 // Explaination of the above:
                 // -At the first step we just want the source term as nothing from any previous steps is
