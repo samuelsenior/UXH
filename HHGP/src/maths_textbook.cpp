@@ -318,7 +318,6 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
     std::cout << "   dfdInterpolate1D status: " << status << std::endl;
     Nerrs += status;
 
-std::cout << "Foo 4" << std::endl;
 std::cout << "nsite: " << nsite << std::endl;
 std::cout << "site max: " << site.maxCoeff() << ", r max: " << r.maxCoeff() << std::endl;
 

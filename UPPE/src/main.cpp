@@ -362,6 +362,7 @@ std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << s
 //                    hhg = hhg_new;
 std::cout << "Foo5 " << std::endl;
                 }
+std::cout << "Foo6 " << std::endl;
                 // Explaination of the above:
                 // -At the first step we just want the source term as nothing from any previous steps is
                 //  propagated to the first position since nothing before
@@ -392,7 +393,7 @@ std::cout << "Foo5 " << std::endl;
                 file_prop_step.write_header(config.path_HHG_E(), E.rows(), E.cols(), false);
                 file_prop_step.write_double(config.path_HHG_E(), E, E.rows(), E.cols(), false);
 
-                //
+std::cout << "Foo7 " << std::endl;
             }
         }
         std::cout << "-------------------------------------------------------------------------------\n";
