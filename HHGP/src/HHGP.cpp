@@ -100,7 +100,7 @@ namespace HHGP {
 	ArrayXXcd HHGP::nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
                                   ArrayXd w_active,
                                   double z, double dz) {
-
+std::cout << "bar 1" << std::endl;
 	//	std::string config_file_path;
     //    config_file_path = "./config_HHGP_test.txt";
     //    // Input Settings and Parameters
@@ -119,16 +119,16 @@ namespace HHGP {
 		// Am I expecting spectral amplitudes in terms of radial position or mode?
 		N_cols = source.cols();
 	    N_rows = source.rows();
-
+std::cout << "bar 2" << std::endl;
 	    N_cols_w = w_active.cols();
 	    N_rows_w = w_active.rows();
-
+std::cout << "bar 3" << std::endl;
 	//    maths_textbook maths(config.path_input_j0());
 
 	    // Set up Hankel transform
 	    DHT ht(N_cols, maths);
 	    n_active = N_rows;
-
+std::cout << "bar 4" << std::endl;
 	    //--------------------------------------------------------------------------------------------//
 	    // 2. Constructors
 	    //--------------------------------------------------------------------------------------------//
@@ -162,20 +162,24 @@ namespace HHGP {
 	    // ????
 	    A_w_r = ArrayXXcd::Zero(n_active, N_cols);
 	    A_w_r_tmp = ArrayXXcd::Zero(prop.n_k, N_cols);
-
+std::cout << "bar 5" << std::endl;
 	    // Want to propagate to the end fo the capillary and include the very final
 	    // source terms but not propagate them outside of the capillary
 	    // Don't need a step 1 for this when being called from UPPE
 	    
         //prop.z += dz;
 	    prop.z = z + dz;
+std::cout << "bar 6" << std::endl;
         prop.nearFieldPropagationStep(dz, previous);
+std::cout << "bar 7" << std::endl;
 	    A_w_r_tmp = prop.A_w_r;
 	    //
 	    A_w_r = source;//hh_source.GetSource(i, config, maths);
+std::cout << "bar 8" << std::endl;
 	    A_w_r_tmp = prop.block(A_w_r);
+std::cout << "bar 9" << std::endl;
 	    A_w_r_tmp += prop.A_w_r;
-std::cout << "BAR 1." << std::endl;
+std::cout << "BAR 10" << std::endl;
 
 		return A_w_r_tmp;
 	}
