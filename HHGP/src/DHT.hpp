@@ -34,7 +34,7 @@ class DHT {
 
 public:
     // Data
-   	MatrixXcd H;
+   	MatrixXcd H; // Change this back to being private once bug testing done
 
     // Functions
     DHT();

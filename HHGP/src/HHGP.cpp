@@ -174,6 +174,12 @@ std::cout << "bar 5" << std::endl;
 	    prop.z = z + dz;
 std::cout << "bar 6" << std::endl;
 std::cout << "dz: " << dz << ", previous.row(0).col(0): " << previous.row(0).col(0) << std::endl;
+        
+        std::cout << "prop.z: " << prop.z << ", prop.n_k: " << prop.n_k;
+	    std::cout << ", prop.w_active(0): " << prop.w_active(0);
+	    std::cout << ", prop.k_r(0): " << prop.k_r(0);
+	    std::cout << ", prop.A_w_r.col(0).row(0)" << prop.A_w_r.col(0).row(0) << std::endl;
+
         prop.nearFieldPropagationStep(dz, previous);
 std::cout << "bar 7" << std::endl;
 	    A_w_r_tmp = prop.A_w_r;
