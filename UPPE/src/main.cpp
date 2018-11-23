@@ -178,6 +178,11 @@ int main(int argc, char** argv){
 
     HHGP::HHGP hhgp;
 
+    ArrayXXcd hhg;
+    ArrayXXcd hhg_new;
+    ArrayXXcd hhg_source;
+    ArrayXXcd hhg_previous;
+
     MPI_Barrier(MPI_COMM_WORLD);
 
         for (int ii = 1; ii < config.n_z() + 1; ii++) {
@@ -243,10 +248,10 @@ int main(int argc, char** argv){
                     }
                 }
 
-                ArrayXXcd hhg;
-                ArrayXXcd hhg_new;
-                ArrayXXcd hhg_source;
-                ArrayXXcd hhg_previous;
+                //ArrayXXcd hhg;
+                //ArrayXXcd hhg_new;
+                //ArrayXXcd hhg_source;
+                //ArrayXXcd hhg_previous;
                 double w_active_min_HHG = 1.2566371e+16;
                 double w_active_max_HHG = 3.1415927e+17;
                 int n_active_HHG = 0;
