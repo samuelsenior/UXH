@@ -173,6 +173,7 @@ std::cout << "bar 5" << std::endl;
         //prop.z += dz;
 	    prop.z = z + dz;
 std::cout << "bar 6" << std::endl;
+std::cout << "dz: " << dz << ", previous.row(0).col(0): " << previous.row(0).col(0) << std::endl;
         prop.nearFieldPropagationStep(dz, previous);
 std::cout << "bar 7" << std::endl;
 	    A_w_r_tmp = prop.A_w_r;
