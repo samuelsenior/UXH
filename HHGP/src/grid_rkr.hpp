@@ -28,6 +28,8 @@ accessible.
 */
 class grid_rkr {
 
+	maths_textbook maths;
+
 public:
     // Data
     ArrayXd r;

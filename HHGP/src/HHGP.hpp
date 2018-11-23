@@ -41,7 +41,7 @@ namespace HHGP {
 	    double scale;
 	    DFTI_DESCRIPTOR_HANDLE ft;
 
-	    grid_tw tw;
+	    grid_tw tw(int, double, double, double, maths_textbook);
 	    keldysh_gas gas;
 
 	    double E_min;

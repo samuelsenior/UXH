@@ -139,7 +139,7 @@ std::cout << "bar 4" << std::endl;
 	//    physics_textbook physics;
 	//
 	//    // Grids
-	//    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+	    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 	//    
 	//    MKL_LONG dimensions = 1;
 	//    MKL_LONG length = config.n_t();
@@ -156,7 +156,7 @@ std::cout << "bar 4" << std::endl;
 	//    // E_min should really come from config or a data_config
 	//    double E_min = 10.0;
 	//    // Propagation
-std::cout << "E_min: " << E_min << ", w_active(0): " << w_active(0) << ", gas.atom_density_max: " << gas.atom_density_max << ", rkr.r(0): " << rkr.r(0) << ", ht.H(0): " << ht.H(0) << std::endl;
+std::cout << "E_min: " << E_min << ", w_active(0): " << w_active(0) << ", gas.atom_density_max: " << gas.atom_density_max << ", rkr.n_r: " << rkr.n_r << ", ht.H(0): " << ht.H(0) << std::endl;
 	    propagation prop(E_min, w_active, gas, rkr, ht);
     //
 	//    config.print(config.path_config_log());
