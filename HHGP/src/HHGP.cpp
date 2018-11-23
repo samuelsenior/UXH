@@ -58,7 +58,7 @@ namespace HHGP {
 		//    int N_cols_w = w_active.cols();
 		//    int N_rows_w = w_active.rows();
 
-		    maths_textbook maths(config.path_input_j0());
+		//    maths_textbook maths(config.path_input_j0());
 
 		    // Set up Hankel transform
 		//    DHT ht(N_cols, maths);
@@ -123,7 +123,7 @@ std::cout << "bar 2" << std::endl;
 	    N_cols_w = w_active.cols();
 	    N_rows_w = w_active.rows();
 std::cout << "bar 3" << std::endl;
-	//    maths_textbook maths(config.path_input_j0());
+	    maths_textbook maths(config.path_input_j0());
 std::cout << "N_cols: " << N_cols << ", j0 zeros: " << maths.J0_zeros << std::endl;
 	    // Set up Hankel transform
 	    DHT ht(N_cols, maths);
