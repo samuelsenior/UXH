@@ -127,6 +127,7 @@ std::cout << "bar 3" << std::endl;
 std::cout << "N_cols: " << N_cols << ", j0 zeros: " << maths.J0_zeros << std::endl;
 	    // Set up Hankel transform
 	    DHT ht(N_cols, maths);
+std::cout << "bar 3.2" << std::endl;
 	    n_active = N_rows;
 std::cout << "bar 4" << std::endl;
 	    //--------------------------------------------------------------------------------------------//
