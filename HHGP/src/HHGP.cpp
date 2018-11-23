@@ -156,12 +156,14 @@ std::cout << "bar 4" << std::endl;
 	//    // E_min should really come from config or a data_config
 	//    double E_min = 10.0;
 	//    // Propagation
+std::cout << "E_min: " << E_min << ", w_active(0): " << w_active(0) << ", gas.atom_density_max: " << gas.atom_density_max << ", rkr.r(0): " << rkr.r(0) << ", ht.H(0): " << ht.H(0) << std::endl;
 	    propagation prop(E_min, w_active, gas, rkr, ht);
     //
 	//    config.print(config.path_config_log());
-
+std::cout << "bar 4.1" << std::endl;
 	    // ????
 	    A_w_r = ArrayXXcd::Zero(n_active, N_cols);
+std::cout << "bar 4.2" << std::endl;
 	    A_w_r_tmp = ArrayXXcd::Zero(prop.n_k, N_cols);
 std::cout << "bar 5" << std::endl;
 	    // Want to propagate to the end fo the capillary and include the very final

@@ -26,9 +26,9 @@ namespace HHGP {
 		int N_cols_w;
 	    int N_rows_w;
 
-	    maths_textbook maths;
+	    maths_textbook maths(std::string);
 
-	    DHT ht;
+	    DHT ht(int, maths_textbook);
 	    int n_active;
 
 	    physics_textbook physics;

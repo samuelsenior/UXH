@@ -28,12 +28,13 @@ Physics Communications, 43 (1987). Complex datatype used here, should really tem
 */
 class DHT {
     // Data
-    MatrixXcd H;
+    //MatrixXcd H; // Change this back to being private once bug testing done
 
     // Functions
 
 public:
     // Data
+   	MatrixXcd H;
 
     // Functions
     DHT();
