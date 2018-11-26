@@ -176,7 +176,7 @@ std::cout << "bar 6" << std::endl;
 std::cout << "dz: " << dz << ", previous.row(0).col(0): " << previous.row(0).col(0) << std::endl;
 std::cout << "previous.cols(): " << previous.cols() << ", previous.rows(): " << previous.rows() << std::endl;
         std::cout << "prop.z: " << prop.z << ", prop.n_k: " << prop.n_k;
-	    std::cout << ", prop.w_active(0): " << prop.w_active(0);
+	    std::cout << ", prop.w_active.rows(): " << prop.w_active.rows();
 	    std::cout << ", prop.k_r(0): " << prop.k_r(0);
 	    std::cout << ", prop.A_w_r.col(0).row(0)" << prop.A_w_r.col(0).row(0) << std::endl;
 
