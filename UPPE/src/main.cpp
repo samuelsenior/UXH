@@ -362,6 +362,7 @@ std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows():
 std::cout << "hhg_previous.cols(): " << hhg_previous.cols() << ", hhg_previous.rows(): " << hhg_previous.rows() << std::endl;
 //std::cout << "hhg_previous.col(0): " << hhg_previous.col(0) << ", hhg_previous.row(0): " << hhg_previous.row(0) << std::endl;
 std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << std::endl;
+std::cout << "w_active_HHG.rows(): " << w_active_HHG.rows() << std::endl;
                     hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
                                                  w_active_HHG,
                                                  z, dz);
