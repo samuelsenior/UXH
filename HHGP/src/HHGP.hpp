@@ -58,7 +58,7 @@ namespace HHGP {
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,
 								double z, double dz);
-		propagation prop;
+		propagation prop(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
 	};
 
 } // HHGP namespace

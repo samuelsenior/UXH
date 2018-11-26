@@ -83,8 +83,8 @@ namespace HHGP {
 		    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
 		    DftiCommitDescriptor(ft);
 
-		    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-		    keldysh_gas gas(config.press(), tw, ft, maths);
+		    //grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+		    //keldysh_gas gas(config.press(), tw, ft, maths);
 
 		    // Change this to be read in from file eventually!
 		    // E_min should really come from config or a data_config
@@ -149,8 +149,8 @@ std::cout << "bar 4" << std::endl;
 	//    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
 	//    DftiCommitDescriptor(ft);
     //
-	//    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-	//    keldysh_gas gas(config.press(), tw, ft, maths);
+	    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+	    keldysh_gas gas(config.press(), tw, ft, maths);
     //
 	//    // Change this to be read in from file eventually!
 	//    // E_min should really come from config or a data_config
