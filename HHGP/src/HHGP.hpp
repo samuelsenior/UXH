@@ -16,7 +16,7 @@ using namespace Eigen;
 namespace HHGP {
 
 	class HHGP {
-		ArrayXd w_active;
+		//ArrayXd w_active;
 
 		std::string config_file_path;
 		Config_Settings config;
