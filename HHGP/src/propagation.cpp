@@ -37,6 +37,11 @@ propagation::propagation(double E_min,
                          rkr(rkr),
                          ht(ht) {
 
+std::cout << "E_min: " << E_min << ", w_active.rows(): " << w_active.rows() << std::endl;
+std::cout << "gas.atom_density_max: " << gas.atom_density_max << std::endl;
+std::cout << "rkr.r.rows(): " << rkr.r.rows() << std::endl;
+std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
+
       z = 0.0;
       k_r = rkr.kr;
       k_excluded = 0;
