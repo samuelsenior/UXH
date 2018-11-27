@@ -20,8 +20,8 @@ using namespace Eigen;
 
 namespace HHGP {
 
-	HHGP::HHGP(Config_Settings config)
-		       : config(config) {
+	HHGP::HHGP(int n_r)
+		       : n_r(n_r) {
 
 		// MPI
         int this_node;
@@ -38,18 +38,20 @@ namespace HHGP {
 
         if (this_node == 0) {
 
-	        //config_file_path = "./config_HHGP_test.txt";
-	        //// Input Settings and Parameters
-	        //Config_Settings config;
-	        //if(config_file_path.empty()) {
-	        //    std::cout << "Using default config file path " << config.path_config_file() << std::endl;
-	        //} else {
-	        //    config.path_config_file_set(config_file_path);
-	        //    config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-	        //    std::cout << "Using config file path " << config.path_config_file() << std::endl;
-	        //}
-	        //config.read_in(config.path_config_file());
-	        //config.check_paths(false);
+	        config_file_path = "./config_HHGP_test.txt";
+	        // Input Settings and Parameters
+	        Config_Settings config;
+	        if(config_file_path.empty()) {
+	            std::cout << "Using default config file path " << config.path_config_file() << std::endl;
+	        } else {
+	            config.path_config_file_set(config_file_path);
+	            config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+	            std::cout << "Using config file path " << config.path_config_file() << std::endl;
+	        }
+	        config.read_in(config.path_config_file());
+	        config.check_paths(false);
+	        config.n_r_set(n_r);
+	        config.n_m_set(n_r);
 	        //if (total_nodes > 1) {
 		    //    config.n_m_set(total_nodes-1);
 		    //    config.n_r_set(total_nodes-1);
@@ -97,7 +99,7 @@ namespace HHGP {
 		    // Propagation
 		//    propagation prop(E_min, w_active, gas, rkr, ht);
 
-		    config.print(config.path_config_log());
+		//    config.print(config.path_config_log());
 		}
 
 	}

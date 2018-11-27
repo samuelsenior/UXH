@@ -26,6 +26,7 @@
 
 #include "../../XNLO/lib/XNLO.hpp"
 #include "../../HHGP/lib/HHGP.hpp"
+//#include "../../HHGP/src/config_settings.hpp"
 
 using namespace Eigen;
 
@@ -199,7 +200,7 @@ int main(int argc, char** argv){
 
     ArrayXXcd A_w_active;
 
-    HHGP::HHGP hhgp(config_HHGP);
+    HHGP::HHGP hhgp(config_HHGP.n_r());
 
     ArrayXXcd hhg;
     ArrayXXcd hhg_new;
