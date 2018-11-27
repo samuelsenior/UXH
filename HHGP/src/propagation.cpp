@@ -109,6 +109,10 @@ std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
 
 
       Eigen::ArrayXcd A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
+
+std::cout << "foobar 1: " << std::endl;
+std::cout << "w_active_tmp.rows(): " << w_active_tmp.rows() << std::endl;
+std::cout << "w_active.rows(): " << w_active.rows() << std::endl;
 }
 
 Eigen::ArrayXd propagation::segment(Eigen::ArrayXd K) {

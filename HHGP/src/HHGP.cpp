@@ -68,7 +68,7 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 		//    int N_cols_w = w_active.cols();
 		//    int N_rows_w = w_active.rows();
 
-		    maths_textbook maths(config.path_input_j0());
+		//    maths_textbook maths(config.path_input_j0());
 
 		    // Set up Hankel transform
 		//    DHT ht(N_cols, maths);
@@ -80,7 +80,7 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 
 		    // General
 		    //Used above...
-		    physics_textbook physics;
+		//    physics_textbook physics;
 
 		    // Grids
 		//    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
@@ -164,7 +164,7 @@ std::cout << "bar 4" << std::endl;
 
 	//    // General
 	//    //Used above...
-	//    physics_textbook physics;
+	    physics_textbook physics;
 	//
 	//    // Grids
 std::cout << "config.n_r(): " << config.n_r() << ", config.R(): " << config.R() << std::endl;
@@ -207,7 +207,7 @@ std::cout << "previous.cols(): " << previous.cols() << ", previous.rows(): " << 
         std::cout << "prop.z: " << prop.z << ", prop.n_k: " << prop.n_k;
 	    std::cout << ", prop.w_active.rows(): " << prop.w_active.rows();
 	    std::cout << ", prop.k_r(0): " << prop.k_r(0);
-	    std::cout << ", prop.A_w_r.col(0).row(0)" << prop.A_w_r.col(0).row(0) << std::endl;
+	    std::cout << ", prop.A_w_r.rows()" << prop.A_w_r.rows() << std::endl;
 
         prop.nearFieldPropagationStep(dz, previous);
 std::cout << "bar 7" << std::endl;
