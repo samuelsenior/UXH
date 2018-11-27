@@ -220,6 +220,8 @@ std::cout << "bar 9" << std::endl;
 	    A_w_r_tmp += prop.A_w_r;
 std::cout << "BAR 10" << std::endl;
 
+std::cout << "A_w_r_tmp.rows(): " << A_w_r_tmp.rows() << ", A_w_r_tmp.cols(): " << A_w_r_tmp.cols() << std::endl;
+
 		return A_w_r_tmp;
 	}
 } // HHGP namespace
