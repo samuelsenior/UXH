@@ -16,7 +16,9 @@ namespace HHGP {
 	class HHGP {
 		//ArrayXd w_active;
 
-		//std::string config_file_path;
+		int n_r;
+
+		std::string config_file_path;
 		Config_Settings config;
 
 		int N_cols;
@@ -51,7 +53,7 @@ namespace HHGP {
 
 
 	public:
-		HHGP(Config_Settings config);
+		HHGP(int n_r);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,
