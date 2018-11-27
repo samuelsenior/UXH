@@ -49,9 +49,9 @@ namespace HHGP {
 	        }
 	        config.read_in(config.path_config_file());
 	        config.check_paths(false);
-	        if (total_processes > 1) {
-		        config.n_m_set(total_processes-1);
-		        config.n_r_set(total_processes-1);
+	        if (total_nodes > 1) {
+		        config.n_m_set(total_nodes-1);
+		        config.n_r_set(total_nodes-1);
 		    }
 	        config.print();
 
