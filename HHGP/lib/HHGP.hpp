@@ -14,9 +14,9 @@ using namespace Eigen;
 namespace HHGP {
 
 	class HHGP {
-		ArrayXd w_active;
+		//ArrayXd w_active;
 
-		std::string config_file_path;
+		//std::string config_file_path;
 		Config_Settings config;
 
 		int N_cols;
@@ -24,9 +24,9 @@ namespace HHGP {
 		int N_cols_w;
 	    int N_rows_w;
 
-	    maths_textbook maths;
+	    maths_textbook maths(std::string);
 
-	    DHT ht;
+	    DHT ht(int, maths_textbook);
 	    int n_active;
 
 	    physics_textbook physics;
@@ -39,7 +39,7 @@ namespace HHGP {
 	    double scale;
 	    DFTI_DESCRIPTOR_HANDLE ft;
 
-	    grid_tw tw;
+	    grid_tw tw(int, double, double, double, maths_textbook);
 	    keldysh_gas gas;
 
 	    double E_min;
@@ -51,12 +51,12 @@ namespace HHGP {
 
 
 	public:
-		HHGP();
+		HHGP(Config_Settings config);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,
 								double z, double dz);
-		propagation prop;
+		propagation prop(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
 	};
 
 } // HHGP namespace
