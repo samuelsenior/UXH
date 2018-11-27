@@ -20,7 +20,8 @@ using namespace Eigen;
 
 namespace HHGP {
 
-	HHGP::HHGP() {
+	HHGP::HHGP(Config_Settings config)
+		       : config(config) {
 
 		// MPI
         int this_node;
@@ -37,23 +38,23 @@ namespace HHGP {
 
         if (this_node == 0) {
 
-	        config_file_path = "./config_HHGP_test.txt";
-	        // Input Settings and Parameters
-	        Config_Settings config;
-	        if(config_file_path.empty()) {
-	            std::cout << "Using default config file path " << config.path_config_file() << std::endl;
-	        } else {
-	            config.path_config_file_set(config_file_path);
-	            config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-	            std::cout << "Using config file path " << config.path_config_file() << std::endl;
-	        }
-	        config.read_in(config.path_config_file());
-	        config.check_paths(false);
-	        if (total_nodes > 1) {
-		        config.n_m_set(total_nodes-1);
-		        config.n_r_set(total_nodes-1);
-		    }
-	        config.print();
+	        //config_file_path = "./config_HHGP_test.txt";
+	        //// Input Settings and Parameters
+	        //Config_Settings config;
+	        //if(config_file_path.empty()) {
+	        //    std::cout << "Using default config file path " << config.path_config_file() << std::endl;
+	        //} else {
+	        //    config.path_config_file_set(config_file_path);
+	        //    config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+	        //    std::cout << "Using config file path " << config.path_config_file() << std::endl;
+	        //}
+	        //config.read_in(config.path_config_file());
+	        //config.check_paths(false);
+	        //if (total_nodes > 1) {
+		    //    config.n_m_set(total_nodes-1);
+		    //    config.n_r_set(total_nodes-1);
+		    //}
+	        //config.print();
 
 	    //    // Am I expecting spectral amplitudes in terms of radial position or mode?
 		//	int N_cols = source.cols();
@@ -77,7 +78,7 @@ namespace HHGP {
 		    physics_textbook physics;
 
 		    // Grids
-		    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+		//    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 		    
 		    MKL_LONG dimensions = 1;
 		    MKL_LONG length = config.n_t();

@@ -40,6 +40,7 @@ int main(int argc, char** argv){
     std::string args[argc];
     std::string config_file_path;
     std::string config_XNLO_file_path = "../configFiles/config_XNLO.txt";
+    std::string config_HHGP_file_path = "./config_HHGP_test.txt";
     for (int i = 0; i < argc; i++) {
       args[i] = argv[i];
     }
@@ -106,6 +107,28 @@ int main(int argc, char** argv){
         config_XNLO.check_paths(false);
         if (this_process == 0) {
             config_XNLO.print();
+        }
+    }
+
+    Config_Settings config_HHGP;
+    if (total_processes > 1) {
+        if(this_process == 0 && config_HHGP_file_path.empty()) {
+          std::cout << "Using default config file path " << config_HHGP.path_config_file() << std::endl;
+        } else {
+            config_HHGP.path_config_file_set(config_HHGP_file_path);
+            config_HHGP.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+            if (this_process == 0) {
+                std::cout << "Using config file path " << config_HHGP.path_config_file() << std::endl;
+            }
+        }
+        config_HHGP.read_in(config_HHGP.path_config_file(), false);
+        config_HHGP.check_paths(false);
+        if (total_processes > 1) {
+            config_HHGP.n_m_set(total_processes-1);
+            config_HHGP.n_r_set(total_processes-1);
+        }
+        if (this_process == 0) {
+            config_HHGP.print();
         }
     }
 
