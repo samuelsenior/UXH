@@ -122,15 +122,15 @@ int main(int argc, char** argv){
                 std::cout << "Using config file path " << config_HHGP.path_config_file() << std::endl;
             }
         }
-        config_HHGP.read_in(config_HHGP.path_config_file(), false);
-        config_HHGP.check_paths(false);
-        if (total_processes > 1) {
-            config_HHGP.n_m_set(total_processes-1);
-            config_HHGP.n_r_set(total_processes-1);
-        }
-        if (this_process == 0) {
-            config_HHGP.print();
-        }
+    }
+    config_HHGP.read_in(config_HHGP.path_config_file(), false);
+    config_HHGP.check_paths(false);
+    if (total_processes > 1) {
+        config_HHGP.n_m_set(total_processes-1);
+        config_HHGP.n_r_set(total_processes-1);
+    }
+    if (this_process == 0) {
+        config_HHGP.print();
     }
 
     //--------------------------------------------------------------------------------------------//
