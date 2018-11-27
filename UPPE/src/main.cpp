@@ -376,7 +376,7 @@ std::cout << "Foo1 " << std::endl;
                     // This needs to be corrected!
                     hhg_previous = hhg;
                     hhg_source = hhg;
-std::cout << "Foo2 " << std::endl;
+//std::cout << "Foo2 " << std::endl;
                 } else {
                     double z = dz * double(ii);
                     hhg_source = hhg;
@@ -387,9 +387,11 @@ std::cout << "hhg_previous.cols(): " << hhg_previous.cols() << ", hhg_previous.r
 //std::cout << "hhg_previous.col(0): " << hhg_previous.col(0) << ", hhg_previous.row(0): " << hhg_previous.row(0) << std::endl;
 std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << std::endl;
 std::cout << "w_active_HHG.rows(): " << w_active_HHG.rows() << std::endl;
-                    hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
+                    Eigen::ArrayXXcd tmp;
+                    tmp = hhgp.nearFieldStep(hhg_source, hhg_previous,
                                                  w_active_HHG,
                                                  z, dz);
+                    hhg_new = tmp;
 std::cout << "Foo4 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
 std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;

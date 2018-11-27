@@ -206,6 +206,7 @@ std::cout << "dz: " << dz << ", previous.row(0).col(0): " << previous.row(0).col
 std::cout << "previous.cols(): " << previous.cols() << ", previous.rows(): " << previous.rows() << std::endl;
         std::cout << "prop.z: " << prop.z << ", prop.n_k: " << prop.n_k;
 	    std::cout << ", prop.w_active.rows(): " << prop.w_active.rows();
+	    std::cout << ", prop.w_active.cols(): " << prop.w_active.cols();
 	    std::cout << ", prop.k_r(0): " << prop.k_r(0);
 	    std::cout << ", prop.A_w_r.rows()" << prop.A_w_r.rows() << std::endl;
 

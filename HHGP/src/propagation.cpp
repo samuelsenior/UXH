@@ -196,6 +196,7 @@ void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
             // Backtransform to put back into radial representation
             A_w_r.row(i) = ht.backward(A_w_kr);
       }
+std::cout << "prop.nfs: A_w_r.rows(): " << A_w_r.rows() << std::endl;
 //std::cout << "lamda(3000): " << 1.0e9 * 2.0*maths.pi / k.row(3000) << "nm, A_w_r(3000): "<< A_w_r.row(3000).col(0) << std::endl;
 }
 
