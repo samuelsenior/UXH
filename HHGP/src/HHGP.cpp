@@ -111,6 +111,24 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
                                   ArrayXd w_active,
                                   double z, double dz) {
 std::cout << "bar 1" << std::endl;
+
+		config_file_path = "./config_HHGP_test.txt";
+        // Input Settings and Parameters
+        Config_Settings config;
+        if(config_file_path.empty()) {
+            std::cout << "Using default config file path " << config.path_config_file() << std::endl;
+        } else {
+            config.path_config_file_set(config_file_path);
+            config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+            std::cout << "Using config file path " << config.path_config_file() << std::endl;
+        }
+        config.read_in(config.path_config_file());
+        config.check_paths(false);
+        config.n_r_set(n_r);
+        config.n_m_set(n_r);
+
+		std::cout << "n_r: " << n_r << std::endl;
+		std::cout << "config.n_r(): " << config.n_r() << std::endl;
 	//	std::string config_file_path;
     //    config_file_path = "./config_HHGP_test.txt";
     //    // Input Settings and Parameters
