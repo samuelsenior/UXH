@@ -149,6 +149,7 @@ std::cout << "bar 4" << std::endl;
 	//    physics_textbook physics;
 	//
 	//    // Grids
+std::cout << "config.n_r(): " << config.n_r() << ", config.R(): " << config.R() << std::endl;
 	    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 	//    
 	//    MKL_LONG dimensions = 1;
