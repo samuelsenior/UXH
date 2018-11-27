@@ -48,7 +48,11 @@ namespace HHGP {
 	            std::cout << "Using config file path " << config.path_config_file() << std::endl;
 	        }
 	        config.read_in(config.path_config_file());
-	        config.check_paths();
+	        config.check_paths(false);
+	        if (total_processes > 1) {
+		        config.n_m_set(total_processes-1);
+		        config.n_r_set(total_processes-1);
+		    }
 	        config.print();
 
 	    //    // Am I expecting spectral amplitudes in terms of radial position or mode?
