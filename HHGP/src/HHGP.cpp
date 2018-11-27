@@ -52,6 +52,9 @@ namespace HHGP {
 	        config.check_paths(false);
 	        config.n_r_set(n_r);
 	        config.n_m_set(n_r);
+
+std::cout << "n_r: " << n_r << std::endl;
+std::cout << "config.n_r(): " << config.n_r() << std::endl;
 	        //if (total_nodes > 1) {
 		    //    config.n_m_set(total_nodes-1);
 		    //    config.n_r_set(total_nodes-1);
