@@ -199,7 +199,7 @@ int main(int argc, char** argv){
 
     ArrayXXcd A_w_active;
 
-    HHGP::HHGP hhgp;
+    hhgp = HHGP::HHGP(config_HHGP);
 
     ArrayXXcd hhg;
     ArrayXXcd hhg_new;
