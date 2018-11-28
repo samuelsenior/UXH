@@ -363,6 +363,10 @@ int main(int argc, char** argv){
                     }
                 }
 
+
+                // This is a test, it may not work
+                hhg.block(w_active_min_index_HHG, 0, n_active_HHG, 119);
+
                 // Propagate the harmonics here and loose the outputted source terms?
                 // or, propagate them after this and keep the outputted source terms?
                 // If I'm make HHGP a class then it'll keep variables between calss

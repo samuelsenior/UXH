@@ -152,7 +152,7 @@ std::cout << "bar 2" << std::endl;
 	    N_rows_w = w_active.rows();
 std::cout << "bar 3" << std::endl;
 	    maths_textbook maths(config.path_input_j0());
-std::cout << "N_cols: " << N_cols << ", j0 zeros: " << maths.J0_zeros << std::endl;
+std::cout << "N_cols: " << N_cols << ", J0_zeros.rows(): " << maths.J0_zeros.rows() << std::endl;
 	    // Set up Hankel transform
 	    DHT ht(N_cols, maths);
 std::cout << "bar 3.2" << std::endl;
