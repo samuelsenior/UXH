@@ -363,10 +363,6 @@ int main(int argc, char** argv){
                     }
                 }
 
-
-                // This is a test, it may not work
-                hhg.block(w_active_min_index_HHG, 0, n_active_HHG, 119);
-
                 // Propagate the harmonics here and loose the outputted source terms?
                 // or, propagate them after this and keep the outputted source terms?
                 // If I'm make HHGP a class then it'll keep variables between calss
@@ -378,12 +374,12 @@ std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
                     //These would have different sizes to the HHG outputted for other steps
                     // This needs to be corrected!
-                    hhg_previous = hhg;
-                    hhg_source = hhg;
+                    hhg_previous = hhg.block(w_active_min_index_HHG, 0, n_active_HHG, 119);
+                    hhg_source = hhg.block(w_active_min_index_HHG, 0, n_active_HHG, 119);
 //std::cout << "Foo2 " << std::endl;
                 } else {
                     double z = dz * double(ii);
-                    hhg_source = hhg;
+                    hhg_source = hhg.block(w_active_min_index_HHG, 0, n_active_HHG, 119);
 std::cout << "Foo3 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
 std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;
