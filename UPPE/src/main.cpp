@@ -7,17 +7,17 @@
 //
 
 #include <mpi.h>
-#include "maths_textbook.hpp"
-#include "physics_textbook.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/physics_textbook.hpp"
 #include <mkl.h>
-#include "DHT.hpp"
-#include "grid_rkr.hpp"
-#include "grid_tw.hpp"
+#include "../../src/DHT.hpp"
+#include "../../src/grid_rkr.hpp"
+#include "../../src/grid_tw.hpp"
 #include "laser_pulse.hpp"
 #include "capillary_fibre.hpp"
-#include "keldysh_gas.hpp"
+#include "../../src/keldysh_gas.hpp"
 #include "Eigen/Dense"
-#include "IO.hpp"
+#include "../../src/IO.hpp"
 
 #include "config_settings.hpp"
 
@@ -26,6 +26,8 @@
 
 #include "../../XNLO/lib/XNLO.hpp"
 #include "../../HHGP/lib/HHGP.hpp"
+
+#include "../../HHGP/src/propagation.hpp"
 //#include "../../HHGP/src/config_settings.hpp"
 
 using namespace Eigen;
@@ -200,7 +202,7 @@ int main(int argc, char** argv){
 
     ArrayXXcd A_w_active;
 
-    HHGP::HHGP hhgp(config_HHGP.n_r());
+    HHGP hhgp(config_HHGP.n_r());
 
     ArrayXXcd hhg;
     ArrayXXcd hhg_new;
@@ -370,17 +372,20 @@ int main(int argc, char** argv){
                 // though would that even work in this case? (i think so, but not 100%)
                 //
                 // Something like this:
+
+                double E_min = 10.0;
+                propagation prop(E_min, w_active_HHG, gas, rkr, ht);
 std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
                     //These would have different sizes to the HHG outputted for other steps
                     // This needs to be corrected!
-                    hhg_previous = hhg.block(w_active_min_index_HHG, 0, n_active_HHG - w_active_min_index_HHG, 119);
-                    hhg_source = hhg.block(w_active_min_index_HHG, 0, n_active_HHG - w_active_min_index_HHG, 119);
+                    hhg_previous = prop.block(hhg);
+                    hhg_source = prop.block(hhg);
 //std::cout << "Foo2 " << std::endl;
                 } else {
 std::cout << "w_active_min_index_HHG: " << w_active_min_index_HHG << std::endl;
                     double z = dz * double(ii);
-                    hhg_source = hhg.block(w_active_min_index_HHG, 0, n_active_HHG - w_active_min_index_HHG, 119);
+                    hhg_source = prop.block(hhg);
 std::cout << "Foo3 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
 std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;

@@ -4,14 +4,14 @@
 #include "Eigen/Dense"
 
 #include "config_settings.hpp"
-#include "maths_textbook.hpp"
-#include "physics_textbook.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/physics_textbook.hpp"
 #include "HH_source.hpp"
-#include "keldysh_gas.hpp"
-#include "DHT.hpp"
-#include "grid_rkr.hpp"
+#include "../../src/keldysh_gas.hpp"
+#include "../../src/DHT.hpp"
+#include "../../src/grid_rkr.hpp"
 #include "propagation.hpp"
-#include "IO.hpp"
+#include "../../src/IO.hpp"
 
 using namespace Eigen;
 
@@ -39,7 +39,7 @@ int main(int argc, char** argv){
     //--------------------------------------------------------------------------------------------//
 
     // Input Settings and Parameters
-    HHGP::Config_Settings config;
+    Config_Settings config;
     if(config_file_path.empty()) {
         std::cout << "Using default config file path " << config.path_config_file() << std::endl;
     } else {
@@ -62,10 +62,10 @@ int main(int argc, char** argv){
     // at different radial positions
 
 
-    HHGP::maths_textbook maths(config.path_input_j0());
-    HHGP::HH_source hh_source;
+    maths_textbook maths(config.path_input_j0());
+    HH_source hh_source;
     ArrayXXcd tmp_A_w_r = hh_source.GetSource(1, config, maths);
-    HHGP::IO laser_pulse_file;
+    IO laser_pulse_file;
 
     //laser_pulse_file.read_header(config.path_A_w_R(), false);
     //ArrayXXd A_w_R = laser_pulse_file.read_double(config.path_A_w_R(), true, false);
@@ -80,7 +80,7 @@ int main(int argc, char** argv){
     int N_rows_w = laser_pulse_file.N_row_;
 
     // Set up Hankel transform
-    HHGP::DHT ht(N_cols, maths);
+    DHT ht(N_cols, maths);
     int n_active = N_rows;
 
     //--------------------------------------------------------------------------------------------//
@@ -90,14 +90,14 @@ int main(int argc, char** argv){
     // General
     //Used above...
     //maths_textbook maths(config.path_input_j0());
-    HHGP::physics_textbook physics;
+    physics_textbook physics;
 
     //Set up above
     //DHT ht(config.n_r(), maths);
 
     // Grids
     //grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
-    HHGP::grid_rkr rkr(N_cols, config.R(), N_cols, maths);
+    grid_rkr rkr(N_cols, config.R(), N_cols, maths);
     
     MKL_LONG dimensions = 1;
     MKL_LONG length = config.n_t();
@@ -106,14 +106,14 @@ int main(int argc, char** argv){
     DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
     DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
     DftiCommitDescriptor(ft);
-    HHGP::grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-    HHGP::keldysh_gas gas(config.press(), tw, ft, maths);
+    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+    keldysh_gas gas(config.press(), tw, ft, maths);
 
     // Change this to be read in from file eventually!
     // E_min should really come from config or a data_config
     double E_min = 10.0;
     // Propagation
-    HHGP::propagation prop(E_min, w_active, gas, rkr, ht);
+    propagation prop(E_min, w_active, gas, rkr, ht);
 
 
     config.print(config.path_config_log());
@@ -126,7 +126,7 @@ int main(int argc, char** argv){
     ArrayXXcd A_w_r = ArrayXXcd::Zero(n_active, N_cols);
     ArrayXXcd A_w_r_tmp = ArrayXXcd::Zero(prop.n_k, N_cols);
 
-    HHGP::IO file_prop_step;
+    IO file_prop_step;
     std::string dir = "../output/";
     std::string prepend = "000_";
     std::string restOfName_R = "_HHG_R.bin";

@@ -1,17 +1,17 @@
 #ifndef __PROPAGATION_HPP_INCLUDED__
 #define __PROPAGATION_HPP_INCLUDED__
 
-#include "keldysh_gas.hpp"
-#include "physics_textbook.hpp"
-#include "maths_textbook.hpp"
-#include "grid_rkr.hpp"
-#include "grid_tw.hpp"
-#include "DHT.hpp"
+#include "../../src/keldysh_gas.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/grid_rkr.hpp"
+#include "../../src/grid_tw.hpp"
+#include "../../src/DHT.hpp"
 #include "Eigen/Dense"
 
 //using namespace Eigen;
 
-namespace HHGP {
+//namespace HHGP {
 
 //------------------------------------------------------------------------------------------------//
 //  Class definition
@@ -60,6 +60,6 @@ public:
     void farFieldPropagation();
 };
 
-} // HHGP namespace
+//} // HHGP namespace
 
 #endif

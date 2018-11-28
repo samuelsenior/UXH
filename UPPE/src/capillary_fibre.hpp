@@ -11,10 +11,10 @@
 #define __CAPILLARY_FIBRE_HPP_INCLUDED__
 
 #include "Eigen/Dense"
-#include "grid_tw.hpp"
-#include "grid_rkr.hpp"
-#include "physics_textbook.hpp"
-#include "maths_textbook.hpp"
+#include "../../src/grid_tw.hpp"
+#include "../../src/grid_rkr.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/maths_textbook.hpp"
 
 using namespace Eigen;
 

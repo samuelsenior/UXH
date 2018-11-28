@@ -1,17 +1,17 @@
 #include "../Eigen/Dense"
 
 #include "../src/config_settings.hpp"
-#include "../src/maths_textbook.hpp"
-#include "../src/physics_textbook.hpp"
-#include "../src/keldysh_gas.hpp"
-#include "../src/DHT.hpp"
-#include "../src/grid_rkr.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/keldysh_gas.hpp"
+#include "../../src/DHT.hpp"
+#include "../../src/grid_rkr.hpp"
 #include "../src/propagation.hpp"
-#include "../src/IO.hpp"
+#include "../../src/IO.hpp"
 
 using namespace Eigen;
 
-namespace HHGP {
+//namespace HHGP {
 
 	class HHGP {
 		//ArrayXd w_active;
@@ -61,4 +61,4 @@ namespace HHGP {
 		propagation prop(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
 	};
 
-} // HHGP namespace
+//} // HHGP namespace

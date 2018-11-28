@@ -6,14 +6,14 @@
 
 #include "Eigen/Dense"
 
-#include "IO.hpp"
+#include "../../src/IO.hpp"
 #include "config_settings.hpp"
-#include "maths_textbook.hpp"
-#include "DHT.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/DHT.hpp"
 
 using namespace Eigen;
 
-namespace HHGP {
+//namespace HHGP {
 
 //------------------------------------------------------------------------------------------------//
 //  Class definition
@@ -30,6 +30,6 @@ public:
 
 };
 
-} // HHGP namespace
+//} // HHGP namespace
 
 #endif

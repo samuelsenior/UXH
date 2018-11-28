@@ -1,20 +1,20 @@
 #include "propagation.hpp"
-#include "keldysh_gas.hpp"
-#include "grid_rkr.hpp"
-#include "grid_tw.hpp"
-#include "DHT.hpp"
-#include "physics_textbook.hpp"
-#include "maths_textbook.hpp"
+#include "../../src/keldysh_gas.hpp"
+#include "../../src/grid_rkr.hpp"
+#include "../../src/grid_tw.hpp"
+#include "../../src/DHT.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/maths_textbook.hpp"
 #include "Eigen/Dense"
 
 #include <iostream>
 
 // Remove this if IO for E, f1, f2 goes into another class etc
-#include "IO.hpp"
+#include "../../src/IO.hpp"
 
 #include <complex>
 
-namespace HHGP {
+//namespace HHGP {
 
 //using namespace Eigen;
 
@@ -207,4 +207,4 @@ void propagation::farFieldPropagation() {
 
 }
 
-} // HHGP namespace
+//} // HHGP namespace

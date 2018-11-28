@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace HHGP {
+//namespace HHGP {
 
 //------------------------------------------------------------------------------------------------//
 //  Class definition
@@ -261,6 +261,6 @@ public:
 
 };
 
-} // HHGP namespace
+//} // HHGP namespace
 
 #endif

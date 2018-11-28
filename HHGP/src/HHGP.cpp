@@ -8,17 +8,17 @@
 #include "HHGP.hpp"
 
 #include "config_settings.hpp"
-#include "maths_textbook.hpp"
-#include "physics_textbook.hpp"
-#include "keldysh_gas.hpp"
-#include "DHT.hpp"
-#include "grid_rkr.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/keldysh_gas.hpp"
+#include "../../src/DHT.hpp"
+#include "../../src/grid_rkr.hpp"
 #include "propagation.hpp"
-#include "IO.hpp"
+#include "../../src/IO.hpp"
 
 using namespace Eigen;
 
-namespace HHGP {
+//namespace HHGP {
 
 	HHGP::HHGP(int n_r)
 		       : n_r(n_r) {
@@ -225,4 +225,4 @@ std::cout << "A_w_r_tmp.rows(): " << A_w_r_tmp.rows() << ", A_w_r_tmp.cols(): " 
 
 		return A_w_r_tmp;
 	}
-} // HHGP namespace
+//} // HHGP namespace

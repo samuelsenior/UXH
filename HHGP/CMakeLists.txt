@@ -141,16 +141,16 @@ set(SOURCES
    ${SOURCES}
    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/config_settings.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/DHT.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_rkr.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_tw.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_rkr.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_tw.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/HHGP.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/HH_source.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/IO.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/keldysh_gas.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/IO.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/keldysh_gas.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/propagation.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/maths_textbook.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/physics_textbook.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths_textbook.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics_textbook.cpp
    #PARENT_SCOPE
 )
 set(HEADERS

@@ -10,15 +10,15 @@
 #ifndef __LASER_PULSE_HPP_INCLUDED__
 #define __LASER_PULSE_HPP_INCLUDED__
 
-#include "physics_textbook.hpp"
-#include "maths_textbook.hpp"
-#include "grid_tw.hpp"
-#include "grid_rkr.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/grid_tw.hpp"
+#include "../../src/grid_rkr.hpp"
 #include <mkl.h>
-#include "DHT.hpp"
+#include "../../src/DHT.hpp"
 #include "Eigen/Dense"
 #include "capillary_fibre.hpp"
-#include "keldysh_gas.hpp"
+#include "../../src/keldysh_gas.hpp"
 
 using namespace Eigen;
 

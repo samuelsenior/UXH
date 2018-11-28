@@ -4,14 +4,14 @@
 #include "Eigen/Dense"
 
 #include "HH_source.hpp"
-#include "IO.hpp"
+#include "../../src/IO.hpp"
 #include "config_settings.hpp"
-#include "maths_textbook.hpp"
-#include "DHT.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/DHT.hpp"
 
 using namespace Eigen;
 
-namespace HHGP {
+//namespace HHGP {
 
 HH_source::HH_source () {}
 
@@ -57,4 +57,4 @@ ArrayXXcd HH_source::GetSource(int fileNumber,
     return A_w_r;
 }
 
-} // HHGP namespace
+//} // HHGP namespace
