@@ -37,6 +37,7 @@ propagation::propagation(double E_min,
                          rkr(rkr),
                          ht(ht) {
 
+std::cout << "prop.foo 1: " << std::endl;
 std::cout << "E_min: " << E_min << ", w_active.rows(): " << w_active.rows() << std::endl;
 std::cout << "gas.atom_density_max: " << gas.atom_density_max << std::endl;
 std::cout << "rkr.r.rows(): " << rkr.r.rows() << std::endl;
@@ -50,66 +51,85 @@ std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
       // Do it like this in the future so less calculations:
       //    w_min = C * E_min^B
       //    while () {...}
+std::cout << "prop.foo 2: " << std::endl;
       while ((physics.h / (2.0*maths.pi) * w_active(k_excluded) * physics.E_eV) < (E_min)) {
             k_excluded++;
 
             //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
       }
+std::cout << "prop.foo 3: " << std::endl;
       n_k = w_active.rows() - k_excluded;
+std::cout << "prop.foo 4: " << std::endl;
       w_active = w_active_tmp.segment(k_excluded, n_k);
-
+std::cout << "prop.foo 5: " << std::endl;
       k = std::complex<double>(1, 0) * w_active / physics.c;
+std::cout << "prop.foo 6: " << std::endl;
       A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
+std::cout << "prop.foo 7: " << std::endl;
 
       refractiveIndex = Eigen::ArrayXcd::Zero(n_k);
+std::cout << "prop.foo 8: " << std::endl;
       Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV!!
+std::cout << "prop.foo 9: " << std::endl;
 
       // Put these in their own class or in the physics class?
       // Also, how to know how much to read in?
       std::string E_f1_f2_data_path = "../../AtomicScatteringFactors/ar.nff";
+std::cout << "prop.foo 10: " << std::endl;
       IO file;
+std::cout << "prop.foo 11: " << std::endl;
       Eigen::ArrayXXd E_f1_f2_data = file.read_ascii_double(E_f1_f2_data_path, 506, 3);
+std::cout << "prop.foo 12: " << std::endl;
       Eigen::ArrayXd E = E_f1_f2_data.col(0);
+std::cout << "prop.foo 13: " << std::endl;
       Eigen::ArrayXd f1 = E_f1_f2_data.col(1);
+std::cout << "prop.foo 14: " << std::endl;
       Eigen::ArrayXd f2 = E_f1_f2_data.col(2);
+std::cout << "prop.foo 15: " << std::endl;
 
       // Read in E, f_1, and f_2 from the data file for Ar
       // Interpolate each onto a new grid with spacing from E_grid
       // Calculate refractive index
       int splineOrder = 4;
+std::cout << "prop.foo 16: " << std::endl;
       int E_length = 506;  // Length of Ar.nff file
+std::cout << "prop.foo 17: " << std::endl;
       Eigen::ArrayXd test_f1 = Eigen::ArrayXd::Zero(n_k);
+std::cout << "prop.foo 18: " << std::endl;
       f1 = maths.interp1D(E, E_length, f1, E_grid, n_k, splineOrder);
+std::cout << "prop.foo 19: " << std::endl;
       Eigen::ArrayXd test_f2 = Eigen::ArrayXd::Zero(n_k);
+std::cout << "prop.foo 20: " << std::endl;
       f2 = maths.interp1D(E, E_length, f2, E_grid, n_k, splineOrder);
+std::cout << "prop.foo 21: " << std::endl;
 
       //double pressure = 50e-3;
       //double _atom_density_max = pressure * 1.0e5 / (physics.k_B * 300.0);
       //double rho_0 = _atom_density_max;
       //ArrayXd rho = rho_0 * physics.r_0 * (2.0*maths.pi*physics.c / w_active).pow(2.0) / (2.0*maths.pi);
       ArrayXd rho = physics.r_0 * (2.0*maths.pi*physics.c / w_active).pow(2.0) / (2.0*maths.pi);
-
+std::cout << "prop.foo 22: " << std::endl;
       //ArrayXcd lamda = 2.0*maths.pi / k;
       lamda = 2.0*maths.pi / k;
-
+std::cout << "prop.foo 23: " << std::endl;
       // Split up the calculation as we don't need to do the full calculation at every
       // propagation step, only the position dependent atom density bit
       //refractiveIndex = 1 - (rho_0 * physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);//1 - rho * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);
       refractiveIndex = (physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (f1 + std::complex<double>(0.0, 1.0) * f2);
-
+std::cout << "prop.foo 24: " << std::endl;
       //config.step_path(i);
       file.overwrite("../output/f1.bin", false);
       file.write_header("../output/f1.bin", n_k, 1, false);
       file.write_double("../output/f1.bin", refractiveIndex.real(), n_k, 1, false);
-
+std::cout << "prop.foo 25: " << std::endl;
       file.overwrite("../output/f2.bin", false);
       file.write_header("../output/f2.bin", n_k, 1, false);
       file.write_double("../output/f2.bin", refractiveIndex.imag(), n_k, 1, false);
-
+std::cout << "prop.foo 26: " << std::endl;
 
 
       Eigen::ArrayXcd A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
-
+std::cout << "prop.foo 27: " << std::endl;
 std::cout << "foobar 1: " << std::endl;
 std::cout << "w_active_tmp.rows(): " << w_active_tmp.rows() << std::endl;
 std::cout << "w_active.rows(): " << w_active.rows() << std::endl;
