@@ -60,6 +60,7 @@ std::cout << "prop.foo 2: " << std::endl;
 std::cout << "prop.foo 3: " << std::endl;
       n_k = w_active.rows() - k_excluded;
 std::cout << "prop.foo 4: " << std::endl;
+std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp.rows()" << w_active_tmp.rows() << std::endl;
       w_active = w_active_tmp.segment(k_excluded, n_k);
 std::cout << "prop.foo 5: " << std::endl;
       k = std::complex<double>(1, 0) * w_active / physics.c;
