@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['electron_5fdensity',['electron_density',['../class_h_h_g_p_1_1keldysh__gas.html#a546883cd549b68a36f2a12294c13ecb4',1,'HHGP::keldysh_gas']]]
+  ['electron_5fdensity',['electron_density',['../classkeldysh__gas.html#a8dddacdfabea4d6c3049088cc868715a',1,'keldysh_gas']]]
 ];

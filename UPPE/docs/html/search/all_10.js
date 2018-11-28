@@ -84,8 +84,6 @@ var searchData=
   ['pend_5fpath_5fset',['pend_path_set',['../class_config___settings.html#a304590e5ee1997f8ba77b8f5b8616a0a',1,'Config_Settings']]],
   ['physics',['physics',['../classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4',1,'keldysh_gas::physics()'],['../classlaser__pulse.html#af4d3c841315b4f532eb7218f0b65257b',1,'laser_pulse::physics()']]],
   ['physics_5ftextbook',['physics_textbook',['../classphysics__textbook.html',1,'physics_textbook'],['../classphysics__textbook.html#a89b6993c2aecf444cd2fa540c73a110b',1,'physics_textbook::physics_textbook()']]],
-  ['physics_5ftextbook_2ecpp',['physics_textbook.cpp',['../physics__textbook_8cpp.html',1,'']]],
-  ['physics_5ftextbook_2ehpp',['physics_textbook.hpp',['../physics__textbook_8hpp.html',1,'']]],
   ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['press',['press',['../class_config___settings.html#a937591286a884213021151708e4483b0',1,'Config_Settings::press()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa5f0038e170564c7ad98d949c741a4da2',1,'Config_Settings::press()']]],
   ['press_5f',['press_',['../class_config___settings.html#afc35b2b38b6e991d38a1a8b7cfae8df4',1,'Config_Settings']]],

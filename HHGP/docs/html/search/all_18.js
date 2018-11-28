@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['z',['Z',['../class_h_h_g_p_1_1_config___settings.html#a9bf1c474bce92c17377150b5118cf6ef',1,'HHGP::Config_Settings::Z()'],['../class_h_h_g_p_1_1_config___settings.html#aebc95c6b09b701548e03bc4cf5867fe7a21c2e59531c8710156d34a3c30ac81d5',1,'HHGP::Config_Settings::Z()'],['../class_h_h_g_p_1_1propagation.html#a2e6d455490baabc1435f81a079586133',1,'HHGP::propagation::z()']]],
-  ['z_5f',['Z_',['../class_h_h_g_p_1_1_config___settings.html#ab55106aa55adf5dcebb779c772dcc808',1,'HHGP::Config_Settings']]],
-  ['z_5fdescription',['Z_description',['../class_h_h_g_p_1_1_config___settings.html#a595667f66e051ca28389911ebc4ec9dd',1,'HHGP::Config_Settings']]],
-  ['z_5fdescription_5f',['Z_description_',['../class_h_h_g_p_1_1_config___settings.html#a54d5cc824b997a9634e8de863687bd79',1,'HHGP::Config_Settings']]],
-  ['z_5fdescription_5fset',['Z_description_set',['../class_h_h_g_p_1_1_config___settings.html#aa6d5932cdaabfec417f3dd561d783af8',1,'HHGP::Config_Settings']]],
-  ['z_5fmax',['z_max',['../class_h_h_g_p_1_1keldysh__gas.html#a375b3757acfab008551be021600870ac',1,'HHGP::keldysh_gas']]],
-  ['z_5fset',['Z_set',['../class_h_h_g_p_1_1_config___settings.html#a3f8bd3f1dcaf706c5611ef2cb56f5f10',1,'HHGP::Config_Settings']]]
+  ['z',['Z',['../class_config___settings.html#a1c01d83346316e0467ccbb0051e7461d',1,'Config_Settings::Z()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa21c2e59531c8710156d34a3c30ac81d5',1,'Config_Settings::Z()'],['../classpropagation.html#aeacfc091fafd1fdb1af4536f6f587e55',1,'propagation::z()']]],
+  ['z_5f',['Z_',['../class_config___settings.html#a32281faced0dc663ce2b0a4dc6dd25a7',1,'Config_Settings']]],
+  ['z_5fdescription',['Z_description',['../class_config___settings.html#afcb63f53c1a6a4e4d6240a10be72970c',1,'Config_Settings']]],
+  ['z_5fdescription_5f',['Z_description_',['../class_config___settings.html#a50cd3c7bc111833774726cd688e3a52b',1,'Config_Settings']]],
+  ['z_5fdescription_5fset',['Z_description_set',['../class_config___settings.html#a8e956243cd53b6bb7bf5c0cf66029e3c',1,'Config_Settings']]],
+  ['z_5fmax',['z_max',['../classkeldysh__gas.html#a117691dd8b6fd06b34a73392c0e73e32',1,'keldysh_gas']]],
+  ['z_5fset',['Z_set',['../class_config___settings.html#a3e2dbb19bd98a0ffe03e110be7b67887',1,'Config_Settings']]]
 ];

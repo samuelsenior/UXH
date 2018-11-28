@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['j0_5fzeros',['J0_zeros',['../class_h_h_g_p_1_1maths__textbook.html#a34c4e4415b70f4c11cab16fccf63593d',1,'HHGP::maths_textbook']]]
+  ['j0_5fzeros',['J0_zeros',['../classmaths__textbook.html#a41398eada5e3eb88fb64d044c14aed26',1,'maths_textbook']]]
 ];

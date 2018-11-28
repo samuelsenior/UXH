@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ceo',['ceo',['../class_h_h_g_p_1_1_config___settings.html#aebc95c6b09b701548e03bc4cf5867fe7a55161575f3e05dfb61145c5d63d67d29',1,'HHGP::Config_Settings']]]
+  ['ceo',['ceo',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55161575f3e05dfb61145c5d63d67d29',1,'Config_Settings']]]
 ];

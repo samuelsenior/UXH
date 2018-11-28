@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['grid_5frkr_2ecpp',['grid_rkr.cpp',['../grid__rkr_8cpp.html',1,'']]],
-  ['grid_5frkr_2ehpp',['grid_rkr.hpp',['../grid__rkr_8hpp.html',1,'']]],
-  ['grid_5ftw_2ecpp',['grid_tw.cpp',['../grid__tw_8cpp.html',1,'']]],
-  ['grid_5ftw_2ehpp',['grid_tw.hpp',['../grid__tw_8hpp.html',1,'']]]
+  ['laser_5fpulse_2ecpp',['laser_pulse.cpp',['../laser__pulse_8cpp.html',1,'']]],
+  ['laser_5fpulse_2ehpp',['laser_pulse.hpp',['../laser__pulse_8hpp.html',1,'']]]
 ];

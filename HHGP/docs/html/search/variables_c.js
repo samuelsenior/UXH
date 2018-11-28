@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['m_5fat',['m_at',['../class_h_h_g_p_1_1physics__textbook.html#a90c60031651fcda58daf92c23896b7ec',1,'HHGP::physics_textbook']]],
-  ['maths',['maths',['../class_h_h_g_p_1_1_h_h__source.html#a172447ab9f0b050ba82f745360bd7a62',1,'HHGP::HH_source::maths()'],['../class_h_h_g_p_1_1keldysh__gas.html#ad61318c5d36a55d126230063b84ad832',1,'HHGP::keldysh_gas::maths()'],['../class_h_h_g_p_1_1propagation.html#a5145e2874a17f5a7fd21e829c18f75c9',1,'HHGP::propagation::maths()']]],
-  ['mu_5f0',['mu_0',['../class_h_h_g_p_1_1physics__textbook.html#a92af267aa937c965c82e49c652af85b4',1,'HHGP::physics_textbook']]]
+  ['m_5fat',['m_at',['../classphysics__textbook.html#a6bb18bb140fbce54e2c73a7f2a72509f',1,'physics_textbook']]],
+  ['maths',['maths',['../class_h_h_g_p_1_1grid__rkr.html#a635bd216715159e513a9e5dd6acdd898',1,'HHGP::grid_rkr::maths()'],['../classkeldysh__gas.html#a501614b541b9056bb05b378a39962524',1,'keldysh_gas::maths()'],['../class_h_h__source.html#a93637ad30af846dd04eb741437114f8f',1,'HH_source::maths()'],['../classpropagation.html#ab5a5024c2d06c0dad06c745af7c6416c',1,'propagation::maths()']]],
+  ['mu_5f0',['mu_0',['../classphysics__textbook.html#a300762c199172d9f76183b49db5f0f33',1,'physics_textbook']]]
 ];

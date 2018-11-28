@@ -1,7 +1,8 @@
 <map id="/home/sam/Project/XNLO/HHGP/src/keldysh_gas.hpp" name="/home/sam/Project/XNLO/HHGP/src/keldysh_gas.hpp">
-<area shape="rect" id="node2" href="$_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.cpp" alt="" coords="5,184,177,225"/>
-<area shape="rect" id="node3" href="$propagation_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.hpp" alt="" coords="232,95,415,136"/>
-<area shape="rect" id="node4" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="201,184,373,225"/>
-<area shape="rect" id="node5" href="$propagation_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.cpp" alt="" coords="397,184,580,225"/>
-<area shape="rect" id="node6" href="$keldysh__gas_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/keldysh_gas.cpp" alt="" coords="490,95,679,136"/>
+<area shape="rect" id="node2" href="$_h_h_g_p_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.hpp" alt="" coords="24,184,196,225"/>
+<area shape="rect" id="node3" href="$_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.cpp" alt="" coords="24,273,196,315"/>
+<area shape="rect" id="node4" href="$propagation_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.hpp" alt="" coords="145,95,328,136"/>
+<area shape="rect" id="node5" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="272,184,444,225"/>
+<area shape="rect" id="node6" href="$propagation_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.cpp" alt="" coords="468,184,651,225"/>
+<area shape="rect" id="node7" href="$keldysh__gas_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/keldysh_gas.cpp" alt="" coords="454,95,643,136"/>
 </map>

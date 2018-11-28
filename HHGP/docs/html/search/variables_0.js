@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['a_5fw_5fkr',['A_w_kr',['../class_h_h_g_p_1_1propagation.html#acd420a71aca9437989c2dc606f26d755',1,'HHGP::propagation']]],
-  ['a_5fw_5fr',['A_w_r',['../class_h_h_g_p_1_1propagation.html#ad06d480def204505bd94af6e644be113',1,'HHGP::propagation']]],
-  ['atom_5fdensity_5fmax',['atom_density_max',['../class_h_h_g_p_1_1keldysh__gas.html#a7e2d1450519d5dd722d69ad7cc6d3512',1,'HHGP::keldysh_gas']]]
+  ['a_5fw_5fkr',['A_w_kr',['../classpropagation.html#a4df23dd19a8cca8a4cb032718dc2b258',1,'propagation']]],
+  ['a_5fw_5fr',['A_w_r',['../class_h_h_g_p.html#ac5770470d3f703295cd7f48a6f1f0ab4',1,'HHGP::A_w_r()'],['../classpropagation.html#ad3a84addde67e43bbb606408193f78ee',1,'propagation::A_w_r()']]],
+  ['a_5fw_5fr_5ftmp',['A_w_r_tmp',['../class_h_h_g_p.html#aa01ff6195d02fac876a12d91c214119a',1,'HHGP']]],
+  ['atom_5fdensity_5fmax',['atom_density_max',['../classkeldysh__gas.html#a287e2c7a3081d8b65ba126288a3174bd',1,'keldysh_gas']]]
 ];
