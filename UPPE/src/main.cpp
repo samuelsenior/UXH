@@ -378,6 +378,7 @@ std::cout << "Foo1 " << std::endl;
                     hhg_source = hhg.block(w_active_min_index_HHG, 0, n_active_HHG - w_active_min_index_HHG, 119);
 //std::cout << "Foo2 " << std::endl;
                 } else {
+std::cout << "w_active_min_index_HHG: " << w_active_min_index_HHG << std::endl;
                     double z = dz * double(ii);
                     hhg_source = hhg.block(w_active_min_index_HHG, 0, n_active_HHG - w_active_min_index_HHG, 119);
 std::cout << "Foo3 " << std::endl;
