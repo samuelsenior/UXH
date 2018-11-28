@@ -26,16 +26,18 @@
 */
 propagation::propagation() {}
 propagation::propagation(double E_min,
-                         Eigen::ArrayXd w_active,
+                         Eigen::ArrayXd w_active_,
                          keldysh_gas gas,
                          grid_rkr rkr,
                          DHT ht)
                         :
                          E_min(E_min),
-                         w_active_tmp(w_active),
+                         w_active_tmp(w_active_),
                          gas(gas),
                          rkr(rkr),
                          ht(ht) {
+
+Eigen::ArrayXd w_active = w_active_tmp;
 
 std::cout << "prop.foo 1: " << std::endl;
 std::cout << "E_min: " << E_min << ", w_active.rows(): " << w_active.rows() << std::endl;
