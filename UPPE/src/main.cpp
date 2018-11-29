@@ -378,19 +378,42 @@ std::cout << " main.foo 0.8" << std::endl;
                 double E_min = 10.0;
                 //propagation prop(E_min, w_active_HHG, gas, rkr, ht);
                 // May need a destructor at the end of the loop
-                prop = propagation(E_min, w_active_HHG, gas, rkr, ht);
+                ArrayXd k_r = rkr.kr;
+                double k_excluded = 0;
+                // Put the divides on the other side to become multiplies to save
+                // computational time
+                // Do it like this in the future so less calculations:
+                //    w_min = C * E_min^B
+                //    while () {...}
+                std::cout << "prop.foo 2: " << std::endl;
+                while ((physics.h / (2.0*maths.pi) * w_active_HHG(k_excluded) * physics.E_eV) < (E_min)) {
+                      k_excluded++;
+
+                    //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
+                }
+                std::cout << "prop.foo 3: " << std::endl;
+                int n_k = w_active_HHG.rows() - k_excluded;
+                std::cout << "prop.foo 4: " << std::endl;
+                std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_HHG.rows()" << w_active_HHG.rows() << std::endl;
+                Eigen::ArrayXd w_active_HHG_tmp = w_active_HHG;
+                w_active_HHG = w_active_HHG_tmp.segment(k_excluded, n_k);
+
+                //prop = propagation(E_min, w_active_HHG, gas, rkr, ht);
 std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
 std::cout << "foo 1.1" << std::endl;
                     //These would have different sizes to the HHG outputted for other steps
                     // This needs to be corrected!
-                    hhg_previous = prop.block(hhg);
-                    hhg_source = prop.block(hhg);
+                    hhg_previous = hhg.block(k_excluded, 0, n_k, 119);
+                    hhg_source = hhg.block(k_excluded, 0, n_k, 119);
+                    //hhg_previous = prop.block(hhg);
+                    //hhg_source = prop.block(hhg);
 //std::cout << "Foo2 " << std::endl;
                 } else {
 std::cout << "w_active_min_index_HHG: " << w_active_min_index_HHG << std::endl;
                     double z = dz * double(ii);
-                    hhg_source = prop.block(hhg);
+                    hhg_source = hhg.block(k_excluded, 0, n_k, 119);
+                    //hhg_source = prop.block(hhg);
 std::cout << "Foo3 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
 std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;
