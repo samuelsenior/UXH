@@ -186,7 +186,7 @@ std::cout << "config.n_r(): " << config.n_r() << ", config.R(): " << config.R() 
 	//    double E_min = 10.0;
 	//    // Propagation
 std::cout << "E_min: " << E_min << ", w_active(0): " << w_active(0) << ", gas.atom_density_max: " << gas.atom_density_max << ", rkr.n_r: " << rkr.n_r << ", ht.H(0): " << ht.H(0) << std::endl;
-	    propagation prop(E_min, w_active, gas, rkr, ht);
+	    prop = propagation(E_min, w_active, gas, rkr, ht);
     //
 	//    config.print(config.path_config_log());
 std::cout << "bar 4.1" << std::endl;

@@ -52,7 +52,7 @@ class HHGP {
 
     double E_min;
 
-    //propagation prop;
+    propagation prop;
 
     ArrayXXcd A_w_r;
     ArrayXXcd A_w_r_tmp;
@@ -64,7 +64,7 @@ class HHGP {
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,
 								double z, double dz);
-		propagation prop(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
+		//propagation prop(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
 };
 
 //} // HHGP namespace
