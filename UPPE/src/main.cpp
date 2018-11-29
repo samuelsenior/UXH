@@ -377,6 +377,7 @@ std::cout << " main.foo 0.8" << std::endl;
                 propagation prop(E_min, w_active_HHG, gas, rkr, ht);
 std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
+std::cout << "foo 1.1" << std::endl;
                     //These would have different sizes to the HHG outputted for other steps
                     // This needs to be corrected!
                     hhg_previous = prop.block(hhg);

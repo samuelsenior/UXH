@@ -165,6 +165,7 @@ set(SOURCES
    ${CMAKE_CURRENT_SOURCE_DIR}/src/laser_pulse.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths_textbook.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics_textbook.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../HHGP/src/HHGP.cpp
    #PARENT_SCOPE
 )
 set(HEADERS
