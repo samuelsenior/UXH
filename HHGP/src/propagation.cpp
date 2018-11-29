@@ -25,17 +25,17 @@
     Constructor
 */
 propagation::propagation() {}
-propagation::propagation(double E_min,
+propagation::propagation(double E_min_,
                          Eigen::ArrayXd w_active_,
-                         keldysh_gas gas,
-                         grid_rkr rkr,
-                         DHT ht)
+                         keldysh_gas& gas_,
+                         grid_rkr& rkr_,
+                         DHT ht_)
                         :
-                         E_min(E_min),
+                         E_min(E_min_),
                          w_active_tmp(w_active_),
-                         gas(gas),
-                         rkr(rkr),
-                         ht(ht) {
+                         gas(gas_),
+                         rkr(rkr_),
+                         ht(ht_) {
 
 Eigen::ArrayXd w_active = w_active_tmp;
 
