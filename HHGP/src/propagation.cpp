@@ -37,7 +37,7 @@ propagation::propagation(double E_min_,
                          rkr(rkr_),
                          ht(ht_) {
 
-Eigen::ArrayXd w_active = w_active_tmp;
+//Eigen::ArrayXd w_active = w_active_tmp;
 
 std::cout << "prop.foo 1: " << std::endl;
 std::cout << "E_min: " << E_min << ", w_active.rows(): " << w_active.rows() << std::endl;
@@ -54,13 +54,13 @@ std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
       //    w_min = C * E_min^B
       //    while () {...}
 std::cout << "prop.foo 2: " << std::endl;
-      while ((physics.h / (2.0*maths.pi) * w_active(k_excluded) * physics.E_eV) < (E_min)) {
+      while ((physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) < (E_min)) {
             k_excluded++;
 
             //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
       }
 std::cout << "prop.foo 3: " << std::endl;
-      n_k = w_active.rows() - k_excluded;
+      n_k = w_active_tmp.rows() - k_excluded;
 std::cout << "prop.foo 4: " << std::endl;
 std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp.rows()" << w_active_tmp.rows() << std::endl;
       w_active = w_active_tmp.segment(k_excluded, n_k);
@@ -133,7 +133,6 @@ std::cout << "prop.foo 26: " << std::endl;
 
       Eigen::ArrayXcd A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
 std::cout << "prop.foo 27: " << std::endl;
-std::cout << "foobar 1: " << std::endl;
 std::cout << "w_active_tmp.rows(): " << w_active_tmp.rows() << std::endl;
 std::cout << "w_active.rows(): " << w_active.rows() << std::endl;
 }
