@@ -273,7 +273,7 @@ int main(int argc, char** argv){
                         neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
                     }
                 }
-
+std::cout << " main.foo 0.0" << std::endl;
                 //ArrayXXcd hhg;
                 //ArrayXXcd hhg_new;
                 //ArrayXXcd hhg_source;
@@ -290,19 +290,19 @@ int main(int argc, char** argv){
                 while (w(count) < w_active_max_HHG) {
                     count++;
                 }
-
+std::cout << " main.foo 0.1" << std::endl;
                 n_active_HHG = count - w_active_min_index_HHG;
                 w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
                 E = tmp.E;
                 //hhgp.set_w_active(w_active_HHG);
-
+std::cout << " main.foo 0.2" << std::endl;
                 //std::cout << "dipole.rows(): " << dipole.rows() << ", dipole.cols(): " << dipole.cols() << std::endl;
                 //std::cout << "tmp.acceleration.rows(): " << tmp.acceleration.rows() << ", tmp.acceleration.cols(): " << tmp.acceleration.cols() << std::endl;
                 //std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
                 //std::cout << "w.rows(): " << w.rows() << ", w.cols(): " << w.cols() << std::endl;
                 //std::cout << "w.row(0): " << w.row(0) << ", w.row(1000): " << w.row(1000) << std::endl;
                 //std::cout << neutral_atoms.row(0).col(0) << std::endl;
-
+std::cout << " main.foo 0.3" << std::endl;
                 MKL_LONG dimensions_HHG = 1;
                 MKL_LONG length_HHG = config_XNLO.n_t();
                 double scale_HHG = 1.0 / config_XNLO.n_t();
@@ -310,12 +310,12 @@ int main(int argc, char** argv){
                 DftiCreateDescriptor(&ft_HHG, DFTI_DOUBLE, DFTI_COMPLEX, dimensions_HHG, length_HHG);
                 DftiSetValue(ft_HHG, DFTI_BACKWARD_SCALE, scale_HHG);
                 DftiCommitDescriptor(ft_HHG);
-
+std::cout << " main.foo 0.4" << std::endl;
                 ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.n_t(), -500.0e-15, 500.0e-15);
                 ArrayXd window = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
                 // Delete tmp after use to save ram
                 dipole = tmp.acceleration;
-
+std::cout << " main.foo 0.5" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config_XNLO.n_t(); i++) {
                         // Or is it (0, 0)?
@@ -343,7 +343,7 @@ int main(int argc, char** argv){
                         // First is easier to implement, second is more accurate
                     }
                 }
-
+std::cout << " main.foo 0.6" << std::endl;
                 // Apply forward spectral transform
                 ArrayXXcd temp_1 = dipole.cast<std::complex<double> >();
                 for (int i = 0; i < rkr.n_r; i++)
@@ -358,13 +358,13 @@ int main(int argc, char** argv){
                 //    temp_2.row(ii) = ht.forward(temp_2.row(ii));
 
                 hhg = temp_2.block(0, 0, n_active_HHG, rkr.n_r);
-
+std::cout << " main.foo 0.7" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-
+std::cout << " main.foo 0.8" << std::endl;
                 // Propagate the harmonics here and loose the outputted source terms?
                 // or, propagate them after this and keep the outputted source terms?
                 // If I'm make HHGP a class then it'll keep variables between calss
