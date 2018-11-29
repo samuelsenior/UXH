@@ -209,6 +209,8 @@ int main(int argc, char** argv){
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
 
+    propagation prop;
+
     MPI_Barrier(MPI_COMM_WORLD);
 
         for (int ii = 1; ii < config.n_z() + 1; ii++) {
@@ -374,7 +376,9 @@ std::cout << " main.foo 0.8" << std::endl;
                 // Something like this:
 
                 double E_min = 10.0;
-                propagation prop(E_min, w_active_HHG, gas, rkr, ht);
+                //propagation prop(E_min, w_active_HHG, gas, rkr, ht);
+                // May need a destructor at the end of the loop
+                prop = propagation(E_min, w_active_HHG, gas, rkr, ht);
 std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
 std::cout << "foo 1.1" << std::endl;
