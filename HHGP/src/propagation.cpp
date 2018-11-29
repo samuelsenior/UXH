@@ -131,7 +131,7 @@ std::cout << "prop.foo 25: " << std::endl;
 std::cout << "prop.foo 26: " << std::endl;
 
 
-      Eigen::ArrayXcd A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
+      A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
 std::cout << "prop.foo 27: " << std::endl;
 std::cout << "w_active_tmp.rows(): " << w_active_tmp.rows() << std::endl;
 std::cout << "w_active.rows(): " << w_active.rows() << std::endl;
