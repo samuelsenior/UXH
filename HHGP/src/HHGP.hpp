@@ -60,7 +60,7 @@ class HHGP {
 
 	public:
 		HHGP();
-		HHGP(int n_r);
+		HHGP(propagation prop, int n_r);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,

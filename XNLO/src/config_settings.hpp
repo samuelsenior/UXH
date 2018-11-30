@@ -5,8 +5,8 @@
 //  Reads in input parameters and settings from a config file.
 //
 
-#ifndef __CONFIG_SETTINGS_HPP_INCLUDED__
-#define __CONFIG_SETTINGS_HPP_INCLUDED__
+#ifndef __XNLO_CONFIG_SETTINGS_HPP_INCLUDED__
+#define __XNLO_CONFIG_SETTINGS_HPP_INCLUDED__
 
 #include <string>
 

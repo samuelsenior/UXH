@@ -6,8 +6,8 @@
 //  made accessible.
 //
 
-#ifndef __GRID_TW_HPP_INCLUDED__
-#define __GRID_TW_HPP_INCLUDED__
+#ifndef __XNLO_GRID_TW_HPP_INCLUDED__
+#define __XNLO_GRID_TW_HPP_INCLUDED__
 
 #include "../../Eigen/Dense"
 

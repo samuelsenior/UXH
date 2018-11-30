@@ -27,6 +27,9 @@
 #include "../../XNLO/lib/XNLO.hpp"
 #include "../../HHGP/lib/HHGP.hpp"
 
+#include "../../XNLO/src/config_settings.hpp"
+#include "../../XNLO/src/grid_tw.hpp"
+
 #include "../../HHGP/src/propagation.hpp"
 //#include "../../HHGP/src/config_settings.hpp"
 
@@ -95,7 +98,7 @@ int main(int argc, char** argv){
         config.print();
     }
 
-    Config_Settings config_XNLO;
+    XNLO::Config_Settings config_XNLO;
     if (total_processes > 1) {
         if(this_process == 0 && config_XNLO_file_path.empty()) {
           std::cout << "Using default config file path " << config_XNLO.path_config_file() << std::endl;
@@ -193,16 +196,36 @@ int main(int argc, char** argv){
     std::string ionisation_rate_test = "ionisation_rate_test.bin";
 
     //Fix this at some point
-    ArrayXXd dipole = ArrayXXd::Zero(config_XNLO.n_t(), config.n_r());
-    ArrayXXd w = ArrayXXd::Zero(config_XNLO.n_t(), config.n_r());
-    ArrayXXd E = ArrayXXd::Zero(config_XNLO.n_t(), config.n_r());
+    ArrayXXd dipole = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+    ArrayXXd w = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+    ArrayXXd E = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
     XNLO::Result tmp;// = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
     //ArrayXd neutral_atoms = ArrayXd::Zero(config.n_r());
     ArrayXXd neutral_atoms = ArrayXXd::Zero(config.n_t(), config.n_r());
 
     ArrayXXcd A_w_active;
 
-    HHGP hhgp(config_HHGP.n_r());
+    ArrayXd w_tmp = ArrayXd::Zero(config_XNLO.N_t());
+    XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
+    double w_active_min_HHG = 1.2566371e+16;
+    double w_active_max_HHG = 3.1415927e+17;
+    double E_min = 10.0;
+    int n_active_HHG = 0;
+    ArrayXd w_active_HHG;
+    w_tmp = tw_XNLO.w;
+    int w_active_min_index_HHG = 0;
+    while (w(w_active_min_index_HHG) < w_active_min_HHG)
+        w_active_min_index_HHG++;
+    int count = 0;
+    while (w(count) < w_active_max_HHG) {
+        count++;
+    }
+    n_active_HHG = count - w_active_min_index_HHG;
+    w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
+
+    propagation prop(E_min, w_active_HHG, gas, rkr, ht);
+    HHGP hhgp(prop, config_HHGP.n_r());
+
     //HHGP hhgp;
 
     ArrayXXcd hhg;
@@ -210,7 +233,7 @@ int main(int argc, char** argv){
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
 
-    propagation prop;
+    //propagation prop;
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -283,21 +306,21 @@ std::cout << " main.foo 0.0" << std::endl;
                 //ArrayXXcd hhg_new;
                 //ArrayXXcd hhg_source;
                 //ArrayXXcd hhg_previous;
-                double w_active_min_HHG = 1.2566371e+16;
-                double w_active_max_HHG = 3.1415927e+17;
-                int n_active_HHG = 0;
-                ArrayXd w_active_HHG;
-                w = tmp.w;
-                int w_active_min_index_HHG = 0;
-                while (w(w_active_min_index_HHG) < w_active_min_HHG)
-                    w_active_min_index_HHG++;
-                int count = 0;
-                while (w(count) < w_active_max_HHG) {
-                    count++;
-                }
+            //    double w_active_min_HHG = 1.2566371e+16;
+            //    double w_active_max_HHG = 3.1415927e+17;
+            //    int n_active_HHG = 0;
+            //    ArrayXd w_active_HHG;
+            //    w = tmp.w;
+            //    int w_active_min_index_HHG = 0;
+            //    while (w(w_active_min_index_HHG) < w_active_min_HHG)
+            //        w_active_min_index_HHG++;
+            //    int count = 0;
+            //    while (w(count) < w_active_max_HHG) {
+            //        count++;
+            //    }
 std::cout << " main.foo 0.1" << std::endl;
-                n_active_HHG = count - w_active_min_index_HHG;
-                w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
+            //    n_active_HHG = count - w_active_min_index_HHG;
+            //    w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
                 E = tmp.E;
                 //hhgp.set_w_active(w_active_HHG);
 std::cout << " main.foo 0.2" << std::endl;
@@ -309,20 +332,20 @@ std::cout << " main.foo 0.2" << std::endl;
                 //std::cout << neutral_atoms.row(0).col(0) << std::endl;
 std::cout << " main.foo 0.3" << std::endl;
                 MKL_LONG dimensions_HHG = 1;
-                MKL_LONG length_HHG = config_XNLO.n_t();
-                double scale_HHG = 1.0 / config_XNLO.n_t();
+                MKL_LONG length_HHG = config_XNLO.N_t();
+                double scale_HHG = 1.0 / config_XNLO.N_t();
                 DFTI_DESCRIPTOR_HANDLE ft_HHG;
                 DftiCreateDescriptor(&ft_HHG, DFTI_DOUBLE, DFTI_COMPLEX, dimensions_HHG, length_HHG);
                 DftiSetValue(ft_HHG, DFTI_BACKWARD_SCALE, scale_HHG);
                 DftiCommitDescriptor(ft_HHG);
 std::cout << " main.foo 0.4" << std::endl;
-                ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.n_t(), -500.0e-15, 500.0e-15);
+                ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);
                 ArrayXd window = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
                 // Delete tmp after use to save ram
                 dipole = tmp.acceleration;
 std::cout << " main.foo 0.5" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
-                    for (int i = 0; i < config_XNLO.n_t(); i++) {
+                    for (int i = 0; i < config_XNLO.N_t(); i++) {
                         // Or is it (0, 0)?
                         // So, physically, what is going on?
                         // The laser pulse at each propagation step interacts with the gas.
