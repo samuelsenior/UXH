@@ -16,7 +16,7 @@
 #include "../../src/grid_rkr.hpp"
 #include <mkl.h>
 #include "../../src/DHT.hpp"
-#include "Eigen/Dense"
+#include "../../Eigen/Dense"
 #include "capillary_fibre.hpp"
 #include "../../src/keldysh_gas.hpp"
 

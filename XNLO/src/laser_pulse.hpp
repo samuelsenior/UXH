@@ -9,7 +9,7 @@
 #ifndef __LASER_PULSE_HPP_INCLUDED__
 #define __LASER_PULSE_HPP_INCLUDED__
 
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 #include "grid_rkr.hpp"
 #include "grid_tw.hpp"
 

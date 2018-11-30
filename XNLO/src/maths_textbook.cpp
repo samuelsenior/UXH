@@ -8,7 +8,7 @@
 #include "maths_textbook.hpp"
 #include "IO.hpp"
 #include <cmath>
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include <mkl.h>
 #include <iostream>

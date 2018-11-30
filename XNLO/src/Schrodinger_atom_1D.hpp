@@ -11,7 +11,7 @@
 
 #include "grid_tw.hpp"
 #include "grid_xkx.hpp"
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 using namespace Eigen;
 

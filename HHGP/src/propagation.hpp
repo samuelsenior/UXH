@@ -7,7 +7,7 @@
 #include "../../src/grid_rkr.hpp"
 #include "../../src/grid_tw.hpp"
 #include "../../src/DHT.hpp"
-#include "Eigen/Dense"
+#include "../../Eigen/Dense"
 
 //using namespace Eigen;
 

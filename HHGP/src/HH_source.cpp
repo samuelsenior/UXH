@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include "HH_source.hpp"
 #include "../../src/IO.hpp"

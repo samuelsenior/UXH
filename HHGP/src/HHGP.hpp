@@ -2,7 +2,7 @@
 #define __HHGP_HPP_INCLUDED__
 
 
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include "config_settings.hpp"
 

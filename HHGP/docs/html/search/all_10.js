@@ -88,8 +88,8 @@ var searchData=
   ['press_5fdescription_5fset',['press_description_set',['../class_config___settings.html#a21e1e3dad8bff784a753ec82ff528464',1,'Config_Settings']]],
   ['press_5fset',['press_set',['../class_config___settings.html#a6995d1f5f91fbc5229f9634b0daba17b',1,'Config_Settings']]],
   ['print',['print',['../class_config___settings.html#adf2afd6d78d715587922166b19cfe82f',1,'Config_Settings::print()'],['../class_config___settings.html#a6224a7b0a59a3735a873b77ed53282cf',1,'Config_Settings::print(std::string)']]],
-  ['prop',['prop',['../class_h_h_g_p.html#ad653f16479155a815c3d5f2bc15d9084',1,'HHGP']]],
-  ['propagation',['propagation',['../classpropagation.html',1,'propagation'],['../classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7',1,'propagation::propagation()'],['../classpropagation.html#a2580bb2332faef03bfb6d761ee55bb6d',1,'propagation::propagation(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht)']]],
+  ['prop',['prop',['../class_h_h_g_p.html#a407ef8595cb78c57d259a4c8b091c250',1,'HHGP']]],
+  ['propagation',['propagation',['../classpropagation.html',1,'propagation'],['../classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7',1,'propagation::propagation()'],['../classpropagation.html#a0b55b96c5435ebd57666ef9800f957e7',1,'propagation::propagation(double E_min_, Eigen::ArrayXd w_active_, keldysh_gas &amp;gas_, grid_rkr &amp;rkr_, DHT ht_)']]],
   ['propagation_2ecpp',['propagation.cpp',['../propagation_8cpp.html',1,'']]],
   ['propagation_2ehpp',['propagation.hpp',['../propagation_8hpp.html',1,'']]]
 ];

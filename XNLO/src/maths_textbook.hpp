@@ -8,7 +8,7 @@
 #ifndef __MATHS_TEXTBOOK_HPP_INCLUDED__
 #define __MATHS_TEXTBOOK_HPP_INCLUDED__
 
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 using namespace Eigen;
 

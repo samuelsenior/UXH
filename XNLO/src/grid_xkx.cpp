@@ -8,7 +8,7 @@
 
 #include "grid_xkx.hpp"
 #include "maths_textbook.hpp"
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 using namespace Eigen;
 

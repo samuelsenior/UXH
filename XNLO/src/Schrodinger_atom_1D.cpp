@@ -12,7 +12,7 @@
 #include "physics_textbook.hpp"
 #include "grid_tw.hpp"
 #include "grid_xkx.hpp"
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 #include "mkl.h"
 
 #include <iostream>

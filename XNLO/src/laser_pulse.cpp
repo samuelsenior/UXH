@@ -11,7 +11,7 @@
 #include "grid_tw.hpp"
 #include "physics_textbook.hpp"
 #include "maths_textbook.hpp"
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 #include "IO.hpp"
 #include "DHT.hpp"
 

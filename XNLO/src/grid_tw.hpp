@@ -9,7 +9,7 @@
 #ifndef __GRID_TW_HPP_INCLUDED__
 #define __GRID_TW_HPP_INCLUDED__
 
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 using namespace Eigen;
 

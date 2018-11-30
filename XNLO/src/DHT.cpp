@@ -8,7 +8,7 @@
 //
 
 #include "DHT.hpp"
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 #include "maths_textbook.hpp"
 
 //using namespace Eigen;

@@ -10,7 +10,7 @@
 #ifndef __CAPILLARY_FIBRE_HPP_INCLUDED__
 #define __CAPILLARY_FIBRE_HPP_INCLUDED__
 
-#include "Eigen/Dense"
+#include "../../Eigen/Dense"
 #include "../../src/grid_tw.hpp"
 #include "../../src/grid_rkr.hpp"
 #include "../../src/physics_textbook.hpp"

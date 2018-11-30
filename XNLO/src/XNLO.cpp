@@ -21,7 +21,7 @@
 
 #include <iostream>
 
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 /*!
     Originally created by Patrick Anderson.

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include "../../src/IO.hpp"
 #include "config_settings.hpp"

@@ -3,7 +3,7 @@
 
 //#include <mpi.h>
 
-#include "Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include "HHGP.hpp"
 

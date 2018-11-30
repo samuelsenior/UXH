@@ -1,4 +1,4 @@
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include "../src/config_settings.hpp"
 #include "../../src/maths_textbook.hpp"

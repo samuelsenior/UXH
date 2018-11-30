@@ -5,7 +5,7 @@
 #include "../../src/DHT.hpp"
 #include "../../src/physics_textbook.hpp"
 #include "../../src/maths_textbook.hpp"
-#include "Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include <iostream>
 

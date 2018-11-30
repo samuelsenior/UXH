@@ -8,7 +8,7 @@
 #ifndef __IO_HPP_INCLUDED__
 #define __IO_HPP_INCLUDED__
 
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 #include <string>
 
 using namespace Eigen;

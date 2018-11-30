@@ -6,7 +6,7 @@ var searchData=
   ['hh_5fsource',['HH_source',['../class_h_h__source.html',1,'HH_source'],['../class_h_h__source.html#a0b3c052d274495b4f90fb09d15fff9fa',1,'HH_source::HH_source()']]],
   ['hh_5fsource_2ecpp',['HH_source.cpp',['../_h_h__source_8cpp.html',1,'']]],
   ['hh_5fsource_2ehpp',['HH_source.hpp',['../_h_h__source_8hpp.html',1,'']]],
-  ['hhgp',['HHGP',['../class_h_h_g_p.html',1,'HHGP'],['../namespace_h_h_g_p.html',1,'HHGP'],['../class_h_h_g_p.html#acaa557ac9ce797b18385954446d398d8',1,'HHGP::HHGP()']]],
+  ['hhgp',['HHGP',['../class_h_h_g_p.html',1,'HHGP'],['../namespace_h_h_g_p.html',1,'HHGP'],['../class_h_h_g_p.html#ac427b46994326abe397a3b712a15b259',1,'HHGP::HHGP()'],['../class_h_h_g_p.html#acaa557ac9ce797b18385954446d398d8',1,'HHGP::HHGP(int n_r)']]],
   ['hhgp_2ecpp',['HHGP.cpp',['../_h_h_g_p_8cpp.html',1,'']]],
   ['hhgp_2ehpp',['HHGP.hpp',['../_h_h_g_p_8hpp.html',1,'']]],
   ['ht',['ht',['../classpropagation.html#a044544975e7fc2ec3df9a55d92f8cc90',1,'propagation::ht()'],['../class_h_h_g_p.html#ad3280bc8195c18eaf343868d008a7edd',1,'HHGP::ht()']]]
