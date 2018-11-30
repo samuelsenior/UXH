@@ -53,6 +53,7 @@ using namespace Eigen;
 
 
 	public:
+		HHGP();
 		HHGP(int n_r);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,

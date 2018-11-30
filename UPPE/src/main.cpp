@@ -202,7 +202,8 @@ int main(int argc, char** argv){
 
     ArrayXXcd A_w_active;
 
-    HHGP hhgp(config_HHGP.n_r());
+    //HHGP hhgp(config_HHGP.n_r());
+    HHGP hhgp;
 
     ArrayXXcd hhg;
     ArrayXXcd hhg_new;
@@ -269,6 +270,8 @@ int main(int argc, char** argv){
             }
 
             if (this_process == 0 && total_processes > 1) {
+                HHGP hhgp(config_HHGP.n_r());
+                
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {

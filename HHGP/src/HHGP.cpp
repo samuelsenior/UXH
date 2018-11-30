@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include <mpi.h>
+//#include <mpi.h>
 
 #include "Eigen/Dense"
 
@@ -19,24 +19,25 @@
 using namespace Eigen;
 
 //namespace HHGP {
+	HHGP::HHGP() {}
 
 	HHGP::HHGP(int n_r)
 		       : n_r(n_r) {
 
-		// MPI
-        int this_node;
-        int total_nodes;
-        MPI_Status status;
+	//	// MPI
+    //    int this_node;
+    //    int total_nodes;
+    //    MPI_Status status;
+	//
+    //    //MPI_Init(&argc, &argv);
+    //    MPI_Comm_size(MPI_COMM_WORLD, &total_nodes);
+    //    MPI_Comm_rank(MPI_COMM_WORLD, &this_node);
+	//
+    //    int world_rank, world_size;
+    //    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+    //    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-        //MPI_Init(&argc, &argv);
-        MPI_Comm_size(MPI_COMM_WORLD, &total_nodes);
-        MPI_Comm_rank(MPI_COMM_WORLD, &this_node);
-
-        int world_rank, world_size;
-        MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-        MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-
-        if (this_node == 0) {
+        //if (this_node == 0) {
 
 	        config_file_path = "./config_HHGP_test.txt";
 	        // Input Settings and Parameters
@@ -103,7 +104,7 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 		//    propagation prop(E_min, w_active, gas, rkr, ht);
 
 		//    config.print(config.path_config_log());
-		}
+		//}
 
 	}
 
