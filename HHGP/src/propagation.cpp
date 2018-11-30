@@ -29,16 +29,17 @@ propagation::propagation(double E_min_,
                          Eigen::ArrayXd w_active_,
                          keldysh_gas& gas_,
                          grid_rkr& rkr_,
-                         DHT ht_)
+                         physics_textbook& physics_,
+                         maths_textbook& maths_,
+                         DHT& ht_)
                         :
                          E_min(E_min_),
                          w_active_tmp(w_active_),
                          gas(gas_),
                          rkr(rkr_),
+                         physics(physics_),
+                         maths(maths_),
                          ht(ht_) {
-
-      physics_textbook physics;
-      maths_textbook maths;
 
 //Eigen::ArrayXd w_active = w_active_tmp;
 

@@ -113,7 +113,8 @@ int main(int argc, char** argv){
     // E_min should really come from config or a data_config
     double E_min = 10.0;
     // Propagation
-    propagation prop(E_min, w_active, gas, rkr, ht);
+    propagation prop(E_min, w_active, gas, rkr,
+                     physics, maths, ht);
 
 
     config.print(config.path_config_log());
