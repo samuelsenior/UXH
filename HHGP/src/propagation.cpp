@@ -37,6 +37,9 @@ propagation::propagation(double E_min_,
                          rkr(rkr_),
                          ht(ht_) {
 
+      physics_textbook physics;
+      maths_textbook maths;
+
 //Eigen::ArrayXd w_active = w_active_tmp;
 
 std::cout << "prop.foo 1: " << std::endl;
