@@ -217,10 +217,10 @@ std::cout << " main.foo 0.0.2" << std::endl;
     w_tmp = tw_XNLO.w;
 std::cout << " main.foo 0.0.3" << std::endl;
     int w_active_min_index_HHG = 0;
-    while (w(w_active_min_index_HHG) < w_active_min_HHG)
+    while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
         w_active_min_index_HHG++;
     int count = 0;
-    while (w(count) < w_active_max_HHG) {
+    while (w_tmp(count) < w_active_max_HHG) {
         count++;
     }
 std::cout << " main.foo 0.0.4" << std::endl;
