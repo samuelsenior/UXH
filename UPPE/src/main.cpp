@@ -228,10 +228,15 @@ std::cout << " main.foo 0.0.4" << std::endl;
 std::cout << " main.foo 0.0.5" << std::endl;
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
 std::cout << " main.foo 0.0.6" << std::endl;
-    propagation prop(E_min, w_active_HHG, gas, rkr, ht);
+
+    propagation prop;
+    HHGP hhgp;
+    if (this_process == 0) {
+        prop = propagation(E_min, w_active_HHG, gas, rkr, ht);
 std::cout << " main.foo 0.0.7" << std::endl;
-    HHGP hhgp(prop, config_HHGP.n_r());
+        hhgp = HHGP(prop, config_HHGP.n_r());
 std::cout << " main.foo 0.0.8" << std::endl;
+    }
 
     //HHGP hhgp;
 
