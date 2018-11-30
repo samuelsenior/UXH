@@ -168,7 +168,8 @@ std::cout << "bar 4" << std::endl;
 	//
 	//    // Grids
 std::cout << "config.n_r(): " << config.n_r() << ", config.R(): " << config.R() << std::endl;
-	    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+	    //grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+		rkr = grid_rkr(config.n_r(), config.R(), config.n_m(), maths);
 	//    
 	//    MKL_LONG dimensions = 1;
 	//    MKL_LONG length = config.n_t();
@@ -178,8 +179,8 @@ std::cout << "config.n_r(): " << config.n_r() << ", config.R(): " << config.R() 
 	//    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
 	//    DftiCommitDescriptor(ft);
     //
-	    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-	    keldysh_gas gas(config.press(), tw, ft, maths);
+	    tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+	    gas = keldysh_gas(config.press(), tw, ft, maths);
     //
 	//    // Change this to be read in from file eventually!
 	//    // E_min should really come from config or a data_config
