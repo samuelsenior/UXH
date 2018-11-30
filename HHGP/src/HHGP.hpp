@@ -47,8 +47,8 @@ class HHGP {
     double scale;
     DFTI_DESCRIPTOR_HANDLE ft;
 
-    grid_tw tw(int, double, double, double, maths_textbook);
-    keldysh_gas gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_);
+    grid_tw tw;//(int, double, double, double, maths_textbook);
+    keldysh_gas gas;//(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_);
 
     double E_min;
 
