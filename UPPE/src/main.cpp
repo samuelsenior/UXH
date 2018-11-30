@@ -194,7 +194,7 @@ int main(int argc, char** argv){
     IO file_prop_step;
 
     std::string ionisation_rate_test = "ionisation_rate_test.bin";
-
+std::cout << " main.foo 0.0.0" << std::endl;
     //Fix this at some point
     ArrayXXd dipole = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
     ArrayXXd w = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
@@ -204,15 +204,18 @@ int main(int argc, char** argv){
     ArrayXXd neutral_atoms = ArrayXXd::Zero(config.n_t(), config.n_r());
 
     ArrayXXcd A_w_active;
-
+std::cout << " main.foo 0.0.1" << std::endl;
     ArrayXd w_tmp = ArrayXd::Zero(config_XNLO.N_t());
     XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
+std::cout << " main.foo 0.0" << std::endl;
     double w_active_min_HHG = 1.2566371e+16;
     double w_active_max_HHG = 3.1415927e+17;
     double E_min = 10.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
+std::cout << " main.foo 0.0.2" << std::endl;
     w_tmp = tw_XNLO.w;
+std::cout << " main.foo 0.0.3" << std::endl;
     int w_active_min_index_HHG = 0;
     while (w(w_active_min_index_HHG) < w_active_min_HHG)
         w_active_min_index_HHG++;
@@ -220,11 +223,15 @@ int main(int argc, char** argv){
     while (w(count) < w_active_max_HHG) {
         count++;
     }
+std::cout << " main.foo 0.0.4" << std::endl;
     n_active_HHG = count - w_active_min_index_HHG;
+std::cout << " main.foo 0.0.5" << std::endl;
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
-
+std::cout << " main.foo 0.0.6" << std::endl;
     propagation prop(E_min, w_active_HHG, gas, rkr, ht);
+std::cout << " main.foo 0.0.7" << std::endl;
     HHGP hhgp(prop, config_HHGP.n_r());
+std::cout << " main.foo 0.0.8" << std::endl;
 
     //HHGP hhgp;
 
