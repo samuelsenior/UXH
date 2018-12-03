@@ -229,7 +229,7 @@ int main(int argc, char** argv){
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
 //std::cout << " main.foo 0.0.6" << std::endl;
 
-    //propagation prop;
+    propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
 std::cout << " main.foo 0.0.6" << std::endl;

@@ -21,8 +21,8 @@ using namespace Eigen;
 //namespace HHGP {
 	HHGP::HHGP() {}
 
-	HHGP::HHGP(propagation& prop, HH::Config_Settings& config)
-		       : prop(prop), config(config) {
+	HHGP::HHGP(propagation& prop_, HH::Config_Settings& config_)
+		       : prop(prop_), config(config_) {
 
 	//	// MPI
     //    int this_node;

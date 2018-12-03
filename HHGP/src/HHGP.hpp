@@ -60,7 +60,7 @@ class HHGP {
 
 	public:
 		HHGP();
-		HHGP(propagation& prop, HH::Config_Settings& config);
+		HHGP(propagation& prop_, HH::Config_Settings& config_);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,
