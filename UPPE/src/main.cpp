@@ -239,6 +239,7 @@ std::cout << " main.foo 0.0.7" << std::endl;
        HHGP hhgp(prop, config_HHGP.n_r());
 std::cout << " main.foo 0.0.8" << std::endl;
     }
+std::cout << " main.foo 0.0.9" << std::endl;
 
     //HHGP hhgp;
 
@@ -246,10 +247,12 @@ std::cout << " main.foo 0.0.8" << std::endl;
     ArrayXXcd hhg_new;
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
+std::cout << " main.foo 0.0.10" << std::endl;
 
     //propagation prop;
 
     MPI_Barrier(MPI_COMM_WORLD);
+std::cout << " main.foo 0.0.11" << std::endl;
 
         for (int ii = 1; ii < config.n_z() + 1; ii++) {
             if (this_process == 0) {
