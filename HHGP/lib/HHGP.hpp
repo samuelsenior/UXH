@@ -1,3 +1,6 @@
+#ifndef __HHGP_HPP_INCLUDED__
+#define __HHGP_HPP_INCLUDED__
+
 #include "../../Eigen/Dense"
 
 #include "../src/config_settings.hpp"
@@ -13,43 +16,43 @@ using namespace Eigen;
 
 //namespace HHGP {
 
-	class HHGP {
-		//ArrayXd w_active;
+class HHGP {
+	//ArrayXd w_active;
 
-		int n_r;
+	int n_r;
 
-		std::string config_file_path;
-		Config_Settings config;
+	std::string config_file_path;
+	Config_Settings config;
 
-		int N_cols;
-		int N_rows;
-		int N_cols_w;
-	    int N_rows_w;
+	int N_cols;
+	int N_rows;
+	int N_cols_w;
+    int N_rows_w;
 
-	    maths_textbook maths(std::string);
+//    maths_textbook maths(std::string);
 
-	    DHT ht(int, maths_textbook);
-	    int n_active;
+//    DHT ht(int, maths_textbook);
+    int n_active;
 
-	    physics_textbook physics;
+//    physics_textbook physics;
 
-	    // Grids
-	    grid_rkr rkr;
-	    
-	    MKL_LONG dimensions;
-	    MKL_LONG length;
-	    double scale;
-	    DFTI_DESCRIPTOR_HANDLE ft;
+    // Grids
+//    grid_rkr rkr;
+    
+//    MKL_LONG dimensions;
+//    MKL_LONG length;
+//    double scale;
+//    DFTI_DESCRIPTOR_HANDLE ft;
 
-	    grid_tw tw(int, double, double, double, maths_textbook);
-	    keldysh_gas gas;
+//    grid_tw tw;//(int, double, double, double, maths_textbook);
+//    keldysh_gas gas;//(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_);
 
-	    double E_min;
+    double E_min;
 
-	    //propagation prop;
+    propagation prop;
 
-	    ArrayXXcd A_w_r;
-	    ArrayXXcd A_w_r_tmp;
+    ArrayXXcd A_w_r;
+    ArrayXXcd A_w_r_tmp;
 
 
 	public:
@@ -59,7 +62,9 @@ using namespace Eigen;
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,
 								double z, double dz);
-		propagation prop(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
-	};
+		//propagation prop(double E_min, Eigen::ArrayXd w_active, keldysh_gas gas, grid_rkr rkr, DHT ht);
+};
 
 //} // HHGP namespace
+
+#endif
