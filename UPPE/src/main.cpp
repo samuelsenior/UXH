@@ -230,7 +230,7 @@ int main(int argc, char** argv){
 //std::cout << " main.foo 0.0.6" << std::endl;
 
     //propagation prop;
-    //HHGP hhgp;
+    HHGP hhgp;
     if (this_process == 0) {
 std::cout << " main.foo 0.0.6" << std::endl;
         propagation prop(E_min, w_active_HHG, gas, rkr,
@@ -461,11 +461,11 @@ std::cout << "hhg_previous.cols(): " << hhg_previous.cols() << ", hhg_previous.r
 //std::cout << "hhg_previous.col(0): " << hhg_previous.col(0) << ", hhg_previous.row(0): " << hhg_previous.row(0) << std::endl;
 std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << std::endl;
 std::cout << "w_active_HHG.rows(): " << w_active_HHG.rows() << std::endl;
-                    Eigen::ArrayXXcd tmp;
-                    tmp = hhgp.nearFieldStep(hhg_source, hhg_previous,
+                    Eigen::ArrayXXcd hhg_tmp;
+                    hhg_tmp = hhgp.nearFieldStep(hhg_source, hhg_previous,
                                                  w_active_HHG,
                                                  z, dz);
-                    hhg_new = tmp;
+                    hhg_new = hhg_tmp;
 std::cout << "Foo4 " << std::endl;
 std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
 std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;
