@@ -447,11 +447,13 @@ std::cout << "Foo1 " << std::endl;
 std::cout << "foo 1.1" << std::endl;
                     //These would have different sizes to the HHG outputted for other steps
                     // This needs to be corrected!
+std::cout << "hhg.rows(): " << hhg.rows() << ", hhg.cols(): " << hhg.cols() << std::endl;
+std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << std::endl;
                     hhg_previous = hhg.block(k_excluded, 0, n_k, 119);
                     hhg_source = hhg.block(k_excluded, 0, n_k, 119);
                     //hhg_previous = prop.block(hhg);
                     //hhg_source = prop.block(hhg);
-//std::cout << "Foo2 " << std::endl;
+std::cout << "foo 1.2 " << std::endl;
                 } else {
 std::cout << "w_active_min_index_HHG: " << w_active_min_index_HHG << std::endl;
                     double z = dz * double(ii);
