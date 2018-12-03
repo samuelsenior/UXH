@@ -19,9 +19,9 @@ using namespace Eigen;
 class HHGP {
 	//ArrayXd w_active;
 
-	int n_r;
+	//int n_r;
 
-	std::string config_file_path;
+	//std::string config_file_path;
 	HH::Config_Settings config;
 
 //	int N_cols;
@@ -57,7 +57,7 @@ class HHGP {
 
 	public:
 		HHGP();
-		HHGP(propagation& prop, HH::Config_Settings& config);
+		HHGP(propagation& prop_, HH::Config_Settings& config_);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,

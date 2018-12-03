@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['r',['R',['../class_h_h_g_p_1_1grid__rkr.html#a431122df5806cb1cadf66194e95e6680',1,'HHGP::grid_rkr::R()'],['../class_h_h_g_p_1_1grid__rkr.html#a0f8111c298b7b82de4622ae463c46021',1,'HHGP::grid_rkr::r()']]],
-  ['r_5f',['R_',['../class_config___settings.html#aac0df4d04613e4a96f9f65d26a4a0520',1,'Config_Settings']]],
+  ['r',['r',['../class_h_h_g_p_1_1grid__rkr.html#a0f8111c298b7b82de4622ae463c46021',1,'HHGP::grid_rkr::r()'],['../class_h_h_g_p_1_1grid__rkr.html#a431122df5806cb1cadf66194e95e6680',1,'HHGP::grid_rkr::R()']]],
+  ['r_5f',['R_',['../class_h_h_1_1_config___settings.html#a1b5d710e51425081ec00cd0259a78b5b',1,'HH::Config_Settings']]],
   ['r_5f0',['r_0',['../classphysics__textbook.html#ac429976f0dc885d846d8b31c24f45bd6',1,'physics_textbook']]],
-  ['r_5fdescription_5f',['R_description_',['../class_config___settings.html#adb774b19a0c38a58d6035087b949af72',1,'Config_Settings']]],
+  ['r_5fdescription_5f',['R_description_',['../class_h_h_1_1_config___settings.html#a162d4bd26044fa9dcfc1763a3f85a4ed',1,'HH::Config_Settings']]],
   ['refractiveindex',['refractiveIndex',['../classpropagation.html#aba601a0df3c63b13215c55d8ade2bcd7',1,'propagation']]],
-  ['rep_5f',['rep_',['../class_config___settings.html#a23a02326925c4c726a5047593435bd72',1,'Config_Settings']]],
-  ['rep_5fdescription_5f',['rep_description_',['../class_config___settings.html#ac885ade71abffd480f1324d67438daff',1,'Config_Settings']]],
-  ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()']]]
+  ['rep_5f',['rep_',['../class_h_h_1_1_config___settings.html#a05c908d4dd4f744dbdd6573c650f9f68',1,'HH::Config_Settings']]],
+  ['rep_5fdescription_5f',['rep_description_',['../class_h_h_1_1_config___settings.html#a0aa4bf3b59a5de2ad47dda83dfe02a02',1,'HH::Config_Settings']]],
+  ['rkr',['rkr',['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation']]]
 ];

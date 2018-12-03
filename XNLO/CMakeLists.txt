@@ -22,8 +22,9 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
    # export CXX=/usr/local/bin/g++-6
 
    # Set the optimisation level flag
-   # set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -fopenmp -mavx")
-   set(CMAKE_CXX_FLAGS "-std=c++14 -g -fopenmp -mavx")
+   set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -fopenmp -mavx")
+   set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -fopenmp -mavx")
+   #set(CMAKE_CXX_FLAGS "-std=c++14 -g -fopenmp -mavx")
 
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
    MESSAGE("-- Compiling using the Intel compiler")

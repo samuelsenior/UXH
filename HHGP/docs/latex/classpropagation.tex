@@ -18,7 +18,7 @@ Collaboration diagram for propagation\+:\nopagebreak
 \item 
 \hyperlink{classpropagation_a9d7b9f42ce1c0bc741d3016a07ba13f7}{propagation} ()
 \item 
-\hyperlink{classpropagation_a0b55b96c5435ebd57666ef9800f957e7}{propagation} (double E\+\_\+min\+\_\+, Eigen\+::\+Array\+Xd w\+\_\+active\+\_\+, \hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&gas\+\_\+, grid\+\_\+rkr \&rkr\+\_\+, D\+HT ht\+\_\+)
+\hyperlink{classpropagation_ab815c7ad4d93eaa7b7b821908fdc3203}{propagation} (double E\+\_\+min\+\_\+, Eigen\+::\+Array\+Xd w\+\_\+active\+\_\+, \hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&gas\+\_\+, grid\+\_\+rkr \&rkr\+\_\+, \hyperlink{classphysics__textbook}{physics\+\_\+textbook} \&physics\+\_\+, \hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&maths\+\_\+, D\+HT \&ht\+\_\+)
 \item 
 Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a39126bbbd4977c140c0077b849e78bc1}{segment} (Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a49a30e941421cd5e3f0b62bd1335a767}{k})
 \item 
@@ -69,6 +69,16 @@ Eigen\+::\+Array\+Xcd \hyperlink{classpropagation_aba601a0df3c63b13215c55d8ade2b
 Eigen\+::\+Array\+Xcd \hyperlink{classpropagation_a5ae0154dc8db04188ba92e10ba981000}{lamda}
 \item 
 Eigen\+::\+Array\+Xcd \hyperlink{classpropagation_a4df23dd19a8cca8a4cb032718dc2b258}{A\+\_\+w\+\_\+kr}
+\item 
+std\+::string \hyperlink{classpropagation_abd78bf6976f2b2d0a3fc82b9cf0d9dc6}{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path}
+\item 
+Eigen\+::\+Array\+X\+Xd \hyperlink{classpropagation_a53ab4838e0e66b55c2ab1398389a22f5}{E\+\_\+f1\+\_\+f2\+\_\+data}
+\item 
+Eigen\+::\+Array\+Xd \hyperlink{classpropagation_aff3713e9170542e31c952a2d1b760eec}{E}
+\item 
+Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a747dcaf8f7405a17af992bae39b7fab5}{f2}
+\item 
+Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a14d6e72396c1c354c6d9986f2d79f85f}{f1}
 \end{DoxyCompactItemize}
 
 
@@ -79,11 +89,11 @@ Eigen\+::\+Array\+Xcd \hyperlink{classpropagation_a4df23dd19a8cca8a4cb032718dc2b
 \subsubsection{\texorpdfstring{propagation()}{propagation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily propagation\+::propagation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Constructor \mbox{\Hypertarget{classpropagation_a0b55b96c5435ebd57666ef9800f957e7}\label{classpropagation_a0b55b96c5435ebd57666ef9800f957e7}} 
+Constructor \mbox{\Hypertarget{classpropagation_ab815c7ad4d93eaa7b7b821908fdc3203}\label{classpropagation_ab815c7ad4d93eaa7b7b821908fdc3203}} 
 \index{propagation@{propagation}!propagation@{propagation}}
 \index{propagation@{propagation}!propagation@{propagation}}
 \subsubsection{\texorpdfstring{propagation()}{propagation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily propagation\+::propagation (\begin{DoxyParamCaption}\item[{double}]{E\+\_\+min\+\_\+,  }\item[{Eigen\+::\+Array\+Xd}]{w\+\_\+active\+\_\+,  }\item[{\hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&}]{gas\+\_\+,  }\item[{grid\+\_\+rkr \&}]{rkr\+\_\+,  }\item[{D\+HT}]{ht\+\_\+ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily propagation\+::propagation (\begin{DoxyParamCaption}\item[{double}]{E\+\_\+min\+\_\+,  }\item[{Eigen\+::\+Array\+Xd}]{w\+\_\+active\+\_\+,  }\item[{\hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&}]{gas\+\_\+,  }\item[{grid\+\_\+rkr \&}]{rkr\+\_\+,  }\item[{\hyperlink{classphysics__textbook}{physics\+\_\+textbook} \&}]{physics\+\_\+,  }\item[{\hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&}]{maths\+\_\+,  }\item[{D\+HT \&}]{ht\+\_\+ }\end{DoxyParamCaption})}
 
 
 
@@ -133,11 +143,41 @@ Angular Spectrum Method (A\+SM) for propagating in the near-\/field, in the gas-
 \subsubsection{\texorpdfstring{A\+\_\+w\+\_\+r}{A\_w\_r}}
 {\footnotesize\ttfamily Eigen\+::\+Array\+X\+Xcd propagation\+::\+A\+\_\+w\+\_\+r}
 
+\mbox{\Hypertarget{classpropagation_aff3713e9170542e31c952a2d1b760eec}\label{classpropagation_aff3713e9170542e31c952a2d1b760eec}} 
+\index{propagation@{propagation}!E@{E}}
+\index{E@{E}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{E}{E}}
+{\footnotesize\ttfamily Eigen\+::\+Array\+Xd propagation\+::E\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpropagation_a53ab4838e0e66b55c2ab1398389a22f5}\label{classpropagation_a53ab4838e0e66b55c2ab1398389a22f5}} 
+\index{propagation@{propagation}!E\+\_\+f1\+\_\+f2\+\_\+data@{E\+\_\+f1\+\_\+f2\+\_\+data}}
+\index{E\+\_\+f1\+\_\+f2\+\_\+data@{E\+\_\+f1\+\_\+f2\+\_\+data}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{E\+\_\+f1\+\_\+f2\+\_\+data}{E\_f1\_f2\_data}}
+{\footnotesize\ttfamily Eigen\+::\+Array\+X\+Xd propagation\+::\+E\+\_\+f1\+\_\+f2\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpropagation_abd78bf6976f2b2d0a3fc82b9cf0d9dc6}\label{classpropagation_abd78bf6976f2b2d0a3fc82b9cf0d9dc6}} 
+\index{propagation@{propagation}!E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path@{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path}}
+\index{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path@{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path}{E\_f1\_f2\_data\_path}}
+{\footnotesize\ttfamily std\+::string propagation\+::\+E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classpropagation_ab5a753d760a135806a93b9082e8019fb}\label{classpropagation_ab5a753d760a135806a93b9082e8019fb}} 
 \index{propagation@{propagation}!E\+\_\+min@{E\+\_\+min}}
 \index{E\+\_\+min@{E\+\_\+min}!propagation@{propagation}}
 \subsubsection{\texorpdfstring{E\+\_\+min}{E\_min}}
 {\footnotesize\ttfamily double propagation\+::\+E\+\_\+min\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpropagation_a14d6e72396c1c354c6d9986f2d79f85f}\label{classpropagation_a14d6e72396c1c354c6d9986f2d79f85f}} 
+\index{propagation@{propagation}!f1@{f1}}
+\index{f1@{f1}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{f1}{f1}}
+{\footnotesize\ttfamily Eigen\+::\+Array\+Xd propagation\+::f1\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpropagation_a747dcaf8f7405a17af992bae39b7fab5}\label{classpropagation_a747dcaf8f7405a17af992bae39b7fab5}} 
+\index{propagation@{propagation}!f2@{f2}}
+\index{f2@{f2}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{f2}{f2}}
+{\footnotesize\ttfamily Eigen\+::\+Array\+Xd propagation\+::f2\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classpropagation_a4152dc9a226a7ff91aff2338d0bd813f}\label{classpropagation_a4152dc9a226a7ff91aff2338d0bd813f}} 
 \index{propagation@{propagation}!gas@{gas}}

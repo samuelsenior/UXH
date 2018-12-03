@@ -233,13 +233,12 @@ int main(int argc, char** argv){
     HHGP hhgp;
     if (this_process == 0) {
 std::cout << " main.foo 0.0.6" << std::endl;
-        propagation prop(E_min, w_active_HHG, gas, rkr,
+        prop = propagation(E_min, w_active_HHG, gas, rkr,
                            physics, maths, ht);
 std::cout << " main.foo 0.0.7" << std::endl;
-       HHGP hhgp(prop, config_HHGP);
+       hhgp = HHGP(prop, config_HHGP);
 std::cout << " main.foo 0.0.8" << std::endl;
     }
-std::cout << " main.foo 0.0.9" << std::endl;
 
     //HHGP hhgp;
 
@@ -247,12 +246,12 @@ std::cout << " main.foo 0.0.9" << std::endl;
     ArrayXXcd hhg_new;
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
-std::cout << " main.foo 0.0.10" << std::endl;
+    int n_k = 0;
+    int k_excluded = 0;
 
     //propagation prop;
 
     MPI_Barrier(MPI_COMM_WORLD);
-std::cout << " main.foo 0.0.11" << std::endl;
 
         for (int ii = 1; ii < config.n_z() + 1; ii++) {
             if (this_process == 0) {
@@ -401,7 +400,9 @@ std::cout << " main.foo 0.6" << std::endl;
                 ArrayXXcd temp_2 = temp_1;
                 //for (int ii = 0; ii < config_XNLO.n_t(); ii++)
                 //    temp_2.row(ii) = ht.forward(temp_2.row(ii));
-
+std::cout << "hhg.rows(): " << hhg.rows() << ", hhg.cols(): " << hhg.cols() << std::endl;
+std::cout << "temp_2.rows(): " << temp_2.rows() << ", temp_2.cols(): " << temp_2.cols() << std::endl;
+std::cout << "n_active_HHG: " << n_active_HHG << ", rkr.n_r: " << rkr.n_r << std::endl;
                 hhg = temp_2.block(0, 0, n_active_HHG, rkr.n_r);
 std::cout << " main.foo 0.7" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
@@ -422,7 +423,7 @@ std::cout << " main.foo 0.8" << std::endl;
                 //propagation prop(E_min, w_active_HHG, gas, rkr, ht);
                 // May need a destructor at the end of the loop
                 ArrayXd k_r = rkr.kr;
-                double k_excluded = 0;
+                k_excluded = 0;
                 // Put the divides on the other side to become multiplies to save
                 // computational time
                 // Do it like this in the future so less calculations:
@@ -435,7 +436,8 @@ std::cout << " main.foo 0.8" << std::endl;
                     //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
                 }
                 std::cout << "prop.foo 3: " << std::endl;
-                int n_k = w_active_HHG.rows() - k_excluded;
+                n_k = w_active_HHG.rows() - k_excluded;
+                n_active_HHG = n_k;
                 std::cout << "prop.foo 4: " << std::endl;
                 std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_HHG.rows()" << w_active_HHG.rows() << std::endl;
                 Eigen::ArrayXd w_active_HHG_tmp = w_active_HHG;

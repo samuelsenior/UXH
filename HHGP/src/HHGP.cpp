@@ -114,22 +114,22 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 
 std::cout << "bar 1" << std::endl;
 
-		config_file_path = "./config_HHGP_test.txt";
-        // Input Settings and Parameters
-        HH::Config_Settings config;
-        if(config_file_path.empty()) {
-            std::cout << "Using default config file path " << config.path_config_file() << std::endl;
-        } else {
-            config.path_config_file_set(config_file_path);
-            config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-            std::cout << "Using config file path " << config.path_config_file() << std::endl;
-        }
-        config.read_in(config.path_config_file());
-        config.check_paths(false);
-        config.n_r_set(n_r);
-        config.n_m_set(n_r);
-
-		std::cout << "n_r: " << n_r << std::endl;
+		//config_file_path = "./config_HHGP_test.txt";
+        //// Input Settings and Parameters
+        //HH::Config_Settings config;
+        //if(config_file_path.empty()) {
+        //    std::cout << "Using default config file path " << config.path_config_file() << std::endl;
+        //} else {
+        //    config.path_config_file_set(config_file_path);
+        //    config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+        //    std::cout << "Using config file path " << config.path_config_file() << std::endl;
+        //}
+        //config.read_in(config.path_config_file());
+        //config.check_paths(false);
+        //config.n_r_set(n_r);
+        //config.n_m_set(n_r);
+		//
+		//std::cout << "n_r: " << n_r << std::endl;
 		std::cout << "config.n_r(): " << config.n_r() << std::endl;
 	//	std::string config_file_path;
     //    config_file_path = "./config_HHGP_test.txt";
@@ -219,7 +219,8 @@ std::cout << "bar 7" << std::endl;
 	    //
 	    A_w_r = source;//hh_source.GetSource(i, config, maths);
 std::cout << "bar 8" << std::endl;
-	    A_w_r_tmp = prop.block(A_w_r);
+		// The block is now taken in the main loop, so isn't needed here anymore
+	    //A_w_r_tmp = prop.block(A_w_r);
 std::cout << "bar 9" << std::endl;
 	    A_w_r_tmp += prop.A_w_r;
 std::cout << "BAR 10" << std::endl;

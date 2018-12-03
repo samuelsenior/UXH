@@ -22,9 +22,9 @@ using namespace Eigen;
 class HHGP {
 	//ArrayXd w_active;
 
-	int n_r;
+	//int n_r;
 
-	std::string config_file_path;
+	//std::string config_file_path;
 	HH::Config_Settings config;
 
 //	int N_cols;

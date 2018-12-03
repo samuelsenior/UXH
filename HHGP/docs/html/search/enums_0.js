@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sn',['SN',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474f',1,'Config_Settings']]]
+  ['sn',['SN',['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3',1,'HH::Config_Settings']]]
 ];
