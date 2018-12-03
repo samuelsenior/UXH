@@ -236,7 +236,7 @@ std::cout << " main.foo 0.0.6" << std::endl;
         propagation prop(E_min, w_active_HHG, gas, rkr,
                            physics, maths, ht);
 std::cout << " main.foo 0.0.7" << std::endl;
-       HHGP hhgp(prop, config_HHGP.n_r());
+       HHGP hhgp(prop, config_HHGP);
 std::cout << " main.foo 0.0.8" << std::endl;
     }
 std::cout << " main.foo 0.0.9" << std::endl;

@@ -21,8 +21,8 @@ using namespace Eigen;
 //namespace HHGP {
 	HHGP::HHGP() {}
 
-	HHGP::HHGP(propagation prop, int n_r)
-		       : prop(prop), n_r(n_r) {
+	HHGP::HHGP(propagation& prop, Config_Settings& config)
+		       : prop(prop), config(config) {
 
 	//	// MPI
     //    int this_node;
@@ -39,34 +39,28 @@ using namespace Eigen;
 
         //if (this_node == 0) {
 
-	        config_file_path = "./config_HHGP_test.txt";
-	        // Input Settings and Parameters
-	        Config_Settings config;
-	        if(config_file_path.empty()) {
-	            std::cout << "Using default config file path " << config.path_config_file() << std::endl;
-	        } else {
-	            config.path_config_file_set(config_file_path);
-	            config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-	            std::cout << "Using config file path " << config.path_config_file() << std::endl;
-	        }
-	        config.read_in(config.path_config_file());
-	        config.check_paths(false);
-	        config.n_r_set(n_r);
-	        config.n_m_set(n_r);
+	    //    config_file_path = "./config_HHGP_test.txt";
+	    //    // Input Settings and Parameters
+	    //    Config_Settings config;
+	    //    if(config_file_path.empty()) {
+	    //        std::cout << "Using default config file path " << config.path_config_file() << std::endl;
+	    //    } else {
+	    //        config.path_config_file_set(config_file_path);
+	    //        config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+	    //        std::cout << "Using config file path " << config.path_config_file() << std::endl;
+	    //    }
+	    //    config.read_in(config.path_config_file());
+	    //    config.check_paths(false);
+	    //    config.n_r_set(n_r);
+	    //    config.n_m_set(n_r);
 
-std::cout << "n_r: " << n_r << std::endl;
+//std::cout << "n_r: " << n_r << std::endl;
 std::cout << "config.n_r(): " << config.n_r() << std::endl;
 	        //if (total_nodes > 1) {
 		    //    config.n_m_set(total_nodes-1);
 		    //    config.n_r_set(total_nodes-1);
 		    //}
 	        //config.print();
-
-			N_cols = 0;
-			N_rows = 0;
-			N_cols_w = 0;
-			N_rows_w = 0;
-			n_active = 0;
 
 	    //    // Am I expecting spectral amplitudes in terms of radial position or mode?
 		//	int N_cols = source.cols();
@@ -112,9 +106,6 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 		//    config.print(config.path_config_log());
 		//}
 
-		ArrayXXcd A_w_r;
-		ArrayXXcd A_w_r_tmp;
-
 	}
 
 	ArrayXXcd HHGP::nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
@@ -156,18 +147,18 @@ std::cout << "bar 1" << std::endl;
     //    config.print();
 
 		// Am I expecting spectral amplitudes in terms of radial position or mode?
-		N_cols = source.cols();
-	    N_rows = source.rows();
+		int N_cols = source.cols();
+	    int N_rows = source.rows();
 std::cout << "bar 2" << std::endl;
-	    N_cols_w = w_active.cols();
-	    N_rows_w = w_active.rows();
+	    int N_cols_w = w_active.cols();
+	    int N_rows_w = w_active.rows();
 std::cout << "bar 3" << std::endl;
 	    maths_textbook maths(config.path_input_j0());
 std::cout << "N_cols: " << N_cols << ", J0_zeros.rows(): " << maths.J0_zeros.rows() << std::endl;
 	    // Set up Hankel transform
 	    DHT ht(N_cols, maths);
 std::cout << "bar 3.2" << std::endl;
-	    n_active = N_rows;
+	    int n_active = N_rows;
 std::cout << "bar 4" << std::endl;
 	    //--------------------------------------------------------------------------------------------//
 	    // 2. Constructors
@@ -203,9 +194,9 @@ std::cout << "E_min: " << E_min << ", w_active(0): " << w_active(0) << ", gas.at
 	//    config.print(config.path_config_log());
 std::cout << "bar 4.1" << std::endl;
 	    // ????
-	    A_w_r = ArrayXXcd::Zero(n_active, N_cols);
+	    ArrayXXcd A_w_r = ArrayXXcd::Zero(n_active, N_cols);
 std::cout << "bar 4.2" << std::endl;
-	    A_w_r_tmp = ArrayXXcd::Zero(prop.n_k, N_cols);
+	    ArrayXXcd A_w_r_tmp = ArrayXXcd::Zero(prop.n_k, N_cols);
 std::cout << "bar 5" << std::endl;
 	    // Want to propagate to the end fo the capillary and include the very final
 	    // source terms but not propagate them outside of the capillary
