@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 
-//namespace HHGP {
+namespace HH {
 
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
@@ -932,4 +932,4 @@ void Config_Settings::path_config_log_description_set(std::string description) {
   path_config_log_description_ = description;
 }
 
-//} // HHGP namespace
+} // HHGP namespace

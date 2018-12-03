@@ -22,7 +22,7 @@ class HHGP {
 	int n_r;
 
 	std::string config_file_path;
-	Config_Settings config;
+	HH::Config_Settings config;
 
 //	int N_cols;
 //	int N_rows;
@@ -57,7 +57,7 @@ class HHGP {
 
 	public:
 		HHGP();
-		HHGP(propagation& prop, Config_Settings& config);
+		HHGP(propagation& prop, HH::Config_Settings& config);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,

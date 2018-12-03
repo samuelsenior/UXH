@@ -39,7 +39,7 @@ int main(int argc, char** argv){
     //--------------------------------------------------------------------------------------------//
 
     // Input Settings and Parameters
-    Config_Settings config;
+    HH::Config_Settings config;
     if(config_file_path.empty()) {
         std::cout << "Using default config file path " << config.path_config_file() << std::endl;
     } else {

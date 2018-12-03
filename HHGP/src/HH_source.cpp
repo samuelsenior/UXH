@@ -16,7 +16,7 @@ using namespace Eigen;
 HH_source::HH_source () {}
 
 ArrayXXcd HH_source::GetSource(int fileNumber,
-                           Config_Settings config, maths_textbook maths) {
+                           HH::Config_Settings config, maths_textbook maths) {
 
     std::string dir = "../../../Results/UPPE-XNLO/Convergence/iridis5/reference/nz-1000/data/";
     std::string prepend = "003_";

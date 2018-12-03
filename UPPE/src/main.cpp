@@ -116,7 +116,7 @@ int main(int argc, char** argv){
         }
     }
 
-    Config_Settings config_HHGP;
+    HH::Config_Settings config_HHGP;
     if (total_processes > 1) {
         if(this_process == 0 && config_HHGP_file_path.empty()) {
           std::cout << "Using default config file path " << config_HHGP.path_config_file() << std::endl;

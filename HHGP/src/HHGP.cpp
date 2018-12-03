@@ -21,7 +21,7 @@ using namespace Eigen;
 //namespace HHGP {
 	HHGP::HHGP() {}
 
-	HHGP::HHGP(propagation& prop, Config_Settings& config)
+	HHGP::HHGP(propagation& prop, HH::Config_Settings& config)
 		       : prop(prop), config(config) {
 
 	//	// MPI
@@ -116,7 +116,7 @@ std::cout << "bar 1" << std::endl;
 
 		config_file_path = "./config_HHGP_test.txt";
         // Input Settings and Parameters
-        Config_Settings config;
+        HH::Config_Settings config;
         if(config_file_path.empty()) {
             std::cout << "Using default config file path " << config.path_config_file() << std::endl;
         } else {

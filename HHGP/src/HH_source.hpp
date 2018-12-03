@@ -20,13 +20,13 @@ using namespace Eigen;
 //------------------------------------------------------------------------------------------------//
 class HH_source{
     int fileNumber;
-    Config_Settings config;
+    HH::Config_Settings config;
     maths_textbook maths;
 
 public:
 
     HH_source();
-    ArrayXXcd GetSource(int fileNumber, Config_Settings config, maths_textbook maths);
+    ArrayXXcd GetSource(int fileNumber, HH::Config_Settings config, maths_textbook maths);
 
 };
 

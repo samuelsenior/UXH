@@ -5,12 +5,12 @@
 //  Reads in input parameters and settings from a config file.
 //
 
-#ifndef __CONFIG_SETTINGS_HPP_INCLUDED__
-#define __CONFIG_SETTINGS_HPP_INCLUDED__
+#ifndef __HHGP_CONFIG_SETTINGS_HPP_INCLUDED__
+#define __HHGP_CONFIG_SETTINGS_HPP_INCLUDED__
 
 #include <string>
 
-//namespace HHGP {
+namespace HH {
 
 //------------------------------------------------------------------------------------------------//
 //  Class definition
@@ -261,6 +261,6 @@ public:
 
 };
 
-//} // HHGP namespace
+} // HHGP namespace
 
 #endif
