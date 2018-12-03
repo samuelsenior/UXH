@@ -111,6 +111,7 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 	ArrayXXcd HHGP::nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
                                   ArrayXd w_active,
                                   double z, double dz) {
+/*
 std::cout << "bar 1" << std::endl;
 
 		config_file_path = "./config_HHGP_test.txt";
@@ -224,7 +225,7 @@ std::cout << "bar 9" << std::endl;
 std::cout << "BAR 10" << std::endl;
 
 std::cout << "A_w_r_tmp.rows(): " << A_w_r_tmp.rows() << ", A_w_r_tmp.cols(): " << A_w_r_tmp.cols() << std::endl;
-
+*/
 		return A_w_r_tmp;
 	}
 //} // HHGP namespace
