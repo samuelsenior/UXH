@@ -72,15 +72,15 @@ std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp
       refractiveIndex = Eigen::ArrayXcd::Zero(n_k);
       Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV!!
 
-//      // Put these in their own class or in the physics class?
-//      // Also, how to know how much to read in?
-//      std::string E_f1_f2_data_path = "../../AtomicScatteringFactors/ar.nff";
-//      IO file;
-//      Eigen::ArrayXXd E_f1_f2_data = file.read_ascii_double(E_f1_f2_data_path, 506, 3);
-//      Eigen::ArrayXd E = E_f1_f2_data.col(0);
-//      Eigen::ArrayXd f1 = E_f1_f2_data.col(1);
-//      Eigen::ArrayXd f2 = E_f1_f2_data.col(2);
-//
+      // Put these in their own class or in the physics class?
+      // Also, how to know how much to read in?
+      std::string E_f1_f2_data_path = "../../AtomicScatteringFactors/ar.nff";
+      IO file;
+      Eigen::ArrayXXd E_f1_f2_data = file.read_ascii_double(E_f1_f2_data_path, 506, 3);
+      Eigen::ArrayXd E = E_f1_f2_data.col(0);
+      Eigen::ArrayXd f1 = E_f1_f2_data.col(1);
+      Eigen::ArrayXd f2 = E_f1_f2_data.col(2);
+
 //      // Read in E, f_1, and f_2 from the data file for Ar
 //      // Interpolate each onto a new grid with spacing from E_grid
 //      // Calculate refractive index
