@@ -230,13 +230,13 @@ int main(int argc, char** argv){
 //std::cout << " main.foo 0.0.6" << std::endl;
 
     //propagation prop;
-    HHGP hhgp;
+    //HHGP hhgp;
     if (this_process == 0) {
 std::cout << " main.foo 0.0.6" << std::endl;
         propagation prop(E_min, w_active_HHG, gas, rkr,
                            physics, maths, ht);
 std::cout << " main.foo 0.0.7" << std::endl;
-        hhgp = HHGP(prop, config_HHGP.n_r());
+       HHGP hhgp(prop, config_HHGP.n_r());
 std::cout << " main.foo 0.0.8" << std::endl;
     }
 
