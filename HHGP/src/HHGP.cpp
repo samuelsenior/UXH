@@ -23,7 +23,7 @@ using namespace Eigen;
 
 	HHGP::HHGP(propagation prop, int n_r)
 		       : prop(prop), n_r(n_r) {
-
+/*
 	//	// MPI
     //    int this_node;
     //    int total_nodes;
@@ -105,7 +105,7 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 
 		//    config.print(config.path_config_log());
 		//}
-
+*/
 	}
 
 	ArrayXXcd HHGP::nearFieldStep(ArrayXXcd source, ArrayXXcd previous,

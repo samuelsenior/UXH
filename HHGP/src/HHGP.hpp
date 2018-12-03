@@ -20,10 +20,10 @@ using namespace Eigen;
 //namespace HHGP {
 
 class HHGP {
-	//ArrayXd w_active;
-
+//	//ArrayXd w_active;
+//
 	int n_r;
-
+//
 	std::string config_file_path;
 	Config_Settings config;
 
@@ -32,21 +32,21 @@ class HHGP {
 	int N_cols_w;
     int N_rows_w;
 
-    maths_textbook maths(std::string);
-
-    DHT ht(int, maths_textbook);
+//    maths_textbook maths(std::string);
+//
+//    DHT ht(int, maths_textbook);
     int n_active;
-
-    physics_textbook physics;
-
+//
+//    physics_textbook physics;
+//
     // Grids
     grid_rkr rkr;
-    
-    MKL_LONG dimensions;
-    MKL_LONG length;
-    double scale;
+//    
+//    MKL_LONG dimensions;
+//    MKL_LONG length;
+//    double scale;
     DFTI_DESCRIPTOR_HANDLE ft;
-
+//
     grid_tw tw;//(int, double, double, double, maths_textbook);
     keldysh_gas gas;//(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_);
 
