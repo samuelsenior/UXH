@@ -62,16 +62,16 @@ std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
 
             //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
       }
-//      n_k = w_active_tmp.rows() - k_excluded;
-//std::cout << "prop.foo 4: " << std::endl;
-//std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp.rows()" << w_active_tmp.rows() << std::endl;
-//      w_active = w_active_tmp.segment(k_excluded, n_k);
-//      k = std::complex<double>(1, 0) * w_active / physics.c;
-//      A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
-//
-//      refractiveIndex = Eigen::ArrayXcd::Zero(n_k);
-//      Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV!!
-//
+      n_k = w_active_tmp.rows() - k_excluded;
+std::cout << "prop.foo 4: " << std::endl;
+std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp.rows()" << w_active_tmp.rows() << std::endl;
+      w_active = w_active_tmp.segment(k_excluded, n_k);
+      k = std::complex<double>(1, 0) * w_active / physics.c;
+      A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
+
+      refractiveIndex = Eigen::ArrayXcd::Zero(n_k);
+      Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV!!
+
 //      // Put these in their own class or in the physics class?
 //      // Also, how to know how much to read in?
 //      std::string E_f1_f2_data_path = "../../AtomicScatteringFactors/ar.nff";
