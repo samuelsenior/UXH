@@ -20,41 +20,41 @@ using namespace Eigen;
 //namespace HHGP {
 
 class HHGP {
-//	//ArrayXd w_active;
-//
+	//ArrayXd w_active;
+
 	int n_r;
-//
-//	std::string config_file_path;
-//	Config_Settings config;
 
-//	int N_cols;
-//	int N_rows;
-//	int N_cols_w;
-//    int N_rows_w;
+	std::string config_file_path;
+	Config_Settings config;
 
-//    maths_textbook maths(std::string);
-//
-//    DHT ht(int, maths_textbook);
-//    int n_active;
-//
-//    physics_textbook physics;
-//
+	int N_cols;
+	int N_rows;
+	int N_cols_w;
+    int N_rows_w;
+
+    maths_textbook maths(std::string);
+
+    DHT ht(int, maths_textbook);
+    int n_active;
+
+    physics_textbook physics;
+
     // Grids
-//    grid_rkr rkr;
-//    
-//    MKL_LONG dimensions;
-//    MKL_LONG length;
-//    double scale;
-//    DFTI_DESCRIPTOR_HANDLE ft;
-//
-//    grid_tw tw;//(int, double, double, double, maths_textbook);
-//    keldysh_gas gas;//(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_);
+    grid_rkr rkr;
+    
+    MKL_LONG dimensions;
+    MKL_LONG length;
+    double scale;
+    DFTI_DESCRIPTOR_HANDLE ft;
 
-//    double E_min;
+    grid_tw tw;//(int, double, double, double, maths_textbook);
+    keldysh_gas gas;//(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_);
+
+    double E_min;
 
     propagation prop;
 
-//    ArrayXXcd A_w_r;
+    ArrayXXcd A_w_r;
     ArrayXXcd A_w_r_tmp;
 
 
