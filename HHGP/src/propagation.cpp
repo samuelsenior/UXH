@@ -62,55 +62,55 @@ std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
 
             //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
       }
-      n_k = w_active_tmp.rows() - k_excluded;
-std::cout << "prop.foo 4: " << std::endl;
-std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp.rows()" << w_active_tmp.rows() << std::endl;
-      w_active = w_active_tmp.segment(k_excluded, n_k);
-      k = std::complex<double>(1, 0) * w_active / physics.c;
-      A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
-
-      refractiveIndex = Eigen::ArrayXcd::Zero(n_k);
-      Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV!!
-
-      // Put these in their own class or in the physics class?
-      // Also, how to know how much to read in?
-      std::string E_f1_f2_data_path = "../../AtomicScatteringFactors/ar.nff";
-      IO file;
-      Eigen::ArrayXXd E_f1_f2_data = file.read_ascii_double(E_f1_f2_data_path, 506, 3);
-      Eigen::ArrayXd E = E_f1_f2_data.col(0);
-      Eigen::ArrayXd f1 = E_f1_f2_data.col(1);
-      Eigen::ArrayXd f2 = E_f1_f2_data.col(2);
-
-      // Read in E, f_1, and f_2 from the data file for Ar
-      // Interpolate each onto a new grid with spacing from E_grid
-      // Calculate refractive index
-      int splineOrder = 4;
-      int E_length = 506;  // Length of Ar.nff file
-      Eigen::ArrayXd test_f1 = Eigen::ArrayXd::Zero(n_k);
-      f1 = maths.interp1D(E, E_length, f1, E_grid, n_k, splineOrder);
-      Eigen::ArrayXd test_f2 = Eigen::ArrayXd::Zero(n_k);
-      f2 = maths.interp1D(E, E_length, f2, E_grid, n_k, splineOrder);
-
-      //double pressure = 50e-3;
-      //double _atom_density_max = pressure * 1.0e5 / (physics.k_B * 300.0);
-      //double rho_0 = _atom_density_max;
-      //ArrayXd rho = rho_0 * physics.r_0 * (2.0*maths.pi*physics.c / w_active).pow(2.0) / (2.0*maths.pi);
-      ArrayXd rho = physics.r_0 * (2.0*maths.pi*physics.c / w_active).pow(2.0) / (2.0*maths.pi);
-      //ArrayXcd lamda = 2.0*maths.pi / k;
-      lamda = 2.0*maths.pi / k;
-      // Split up the calculation as we don't need to do the full calculation at every
-      // propagation step, only the position dependent atom density bit
-      //refractiveIndex = 1 - (rho_0 * physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);//1 - rho * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);
-      refractiveIndex = (physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (f1 + std::complex<double>(0.0, 1.0) * f2);
-
-      //config.step_path(i);
-      file.overwrite("../output/f1.bin", false);
-      file.write_header("../output/f1.bin", n_k, 1, false);
-      file.write_double("../output/f1.bin", refractiveIndex.real(), n_k, 1, false);
-
-      file.overwrite("../output/f2.bin", false);
-      file.write_header("../output/f2.bin", n_k, 1, false);
-      file.write_double("../output/f2.bin", refractiveIndex.imag(), n_k, 1, false);
+//      n_k = w_active_tmp.rows() - k_excluded;
+//std::cout << "prop.foo 4: " << std::endl;
+//std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp.rows()" << w_active_tmp.rows() << std::endl;
+//      w_active = w_active_tmp.segment(k_excluded, n_k);
+//      k = std::complex<double>(1, 0) * w_active / physics.c;
+//      A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
+//
+//      refractiveIndex = Eigen::ArrayXcd::Zero(n_k);
+//      Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV!!
+//
+//      // Put these in their own class or in the physics class?
+//      // Also, how to know how much to read in?
+//      std::string E_f1_f2_data_path = "../../AtomicScatteringFactors/ar.nff";
+//      IO file;
+//      Eigen::ArrayXXd E_f1_f2_data = file.read_ascii_double(E_f1_f2_data_path, 506, 3);
+//      Eigen::ArrayXd E = E_f1_f2_data.col(0);
+//      Eigen::ArrayXd f1 = E_f1_f2_data.col(1);
+//      Eigen::ArrayXd f2 = E_f1_f2_data.col(2);
+//
+//      // Read in E, f_1, and f_2 from the data file for Ar
+//      // Interpolate each onto a new grid with spacing from E_grid
+//      // Calculate refractive index
+//      int splineOrder = 4;
+//      int E_length = 506;  // Length of Ar.nff file
+//      Eigen::ArrayXd test_f1 = Eigen::ArrayXd::Zero(n_k);
+//      f1 = maths.interp1D(E, E_length, f1, E_grid, n_k, splineOrder);
+//      Eigen::ArrayXd test_f2 = Eigen::ArrayXd::Zero(n_k);
+//      f2 = maths.interp1D(E, E_length, f2, E_grid, n_k, splineOrder);
+//
+//      //double pressure = 50e-3;
+//      //double _atom_density_max = pressure * 1.0e5 / (physics.k_B * 300.0);
+//      //double rho_0 = _atom_density_max;
+//      //ArrayXd rho = rho_0 * physics.r_0 * (2.0*maths.pi*physics.c / w_active).pow(2.0) / (2.0*maths.pi);
+//      ArrayXd rho = physics.r_0 * (2.0*maths.pi*physics.c / w_active).pow(2.0) / (2.0*maths.pi);
+//      //ArrayXcd lamda = 2.0*maths.pi / k;
+//      lamda = 2.0*maths.pi / k;
+//      // Split up the calculation as we don't need to do the full calculation at every
+//      // propagation step, only the position dependent atom density bit
+//      //refractiveIndex = 1 - (rho_0 * physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);//1 - rho * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);
+//      refractiveIndex = (physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (f1 + std::complex<double>(0.0, 1.0) * f2);
+//
+//      //config.step_path(i);
+//      file.overwrite("../output/f1.bin", false);
+//      file.write_header("../output/f1.bin", n_k, 1, false);
+//      file.write_double("../output/f1.bin", refractiveIndex.real(), n_k, 1, false);
+//
+//      file.overwrite("../output/f2.bin", false);
+//      file.write_header("../output/f2.bin", n_k, 1, false);
+//      file.write_double("../output/f2.bin", refractiveIndex.imag(), n_k, 1, false);
 
       A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
 
