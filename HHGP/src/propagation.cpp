@@ -40,7 +40,7 @@ propagation::propagation(double E_min_,
                          physics(physics_),
                          maths(maths_),
                          ht(ht_) {
-
+/*
 //Eigen::ArrayXd w_active = w_active_tmp;
 
 std::cout << "prop.foo 1: " << std::endl;
@@ -113,6 +113,7 @@ std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp
       file.write_double("../output/f2.bin", refractiveIndex.imag(), n_k, 1, false);
 
       A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
+*/
 std::cout << "prop.foo 27: " << std::endl;
 
 }
