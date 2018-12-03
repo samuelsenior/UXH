@@ -81,16 +81,16 @@ std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp
       f1 = E_f1_f2_data.col(1);
       f2 = E_f1_f2_data.col(2);
 
-//      // Read in E, f_1, and f_2 from the data file for Ar
-//      // Interpolate each onto a new grid with spacing from E_grid
-//      // Calculate refractive index
-//      int splineOrder = 4;
-//      int E_length = 506;  // Length of Ar.nff file
-//      Eigen::ArrayXd test_f1 = Eigen::ArrayXd::Zero(n_k);
-//      f1 = maths.interp1D(E, E_length, f1, E_grid, n_k, splineOrder);
-//      Eigen::ArrayXd test_f2 = Eigen::ArrayXd::Zero(n_k);
-//      f2 = maths.interp1D(E, E_length, f2, E_grid, n_k, splineOrder);
-//
+      // Read in E, f_1, and f_2 from the data file for Ar
+      // Interpolate each onto a new grid with spacing from E_grid
+      // Calculate refractive index
+      int splineOrder = 4;
+      int E_length = 506;  // Length of Ar.nff file
+      Eigen::ArrayXd test_f1 = Eigen::ArrayXd::Zero(n_k);
+      f1 = maths.interp1D(E, E_length, f1, E_grid, n_k, splineOrder);
+      Eigen::ArrayXd test_f2 = Eigen::ArrayXd::Zero(n_k);
+      f2 = maths.interp1D(E, E_length, f2, E_grid, n_k, splineOrder);
+
 //      //double pressure = 50e-3;
 //      //double _atom_density_max = pressure * 1.0e5 / (physics.k_B * 300.0);
 //      //double rho_0 = _atom_density_max;
