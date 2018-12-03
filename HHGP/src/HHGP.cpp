@@ -86,13 +86,13 @@ std::cout << "config.n_r(): " << config.n_r() << std::endl;
 		    // Grids
 		//    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 		    
-		    MKL_LONG dimensions = 1;
-		    MKL_LONG length = config.n_t();
-		    double scale = 1.0 / config.n_t();
-		    DFTI_DESCRIPTOR_HANDLE ft;
-		    DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
-		    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
-		    DftiCommitDescriptor(ft);
+		//    MKL_LONG dimensions = 1;
+		//    MKL_LONG length = config.n_t();
+		//    double scale = 1.0 / config.n_t();
+		//    DFTI_DESCRIPTOR_HANDLE ft;
+		//    DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
+		//    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
+		//    DftiCommitDescriptor(ft);
 
 		    //grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
 		    //keldysh_gas gas(config.press(), tw, ft, maths);
@@ -173,13 +173,13 @@ std::cout << "config.n_r(): " << config.n_r() << ", config.R(): " << config.R() 
 	    //grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 		rkr = grid_rkr(config.n_r(), config.R(), config.n_m(), maths);
 	//    
-	//    MKL_LONG dimensions = 1;
-	//    MKL_LONG length = config.n_t();
-	//    double scale = 1.0 / config.n_t();
-	//    DFTI_DESCRIPTOR_HANDLE ft;
-	//    DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
-	//    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
-	//    DftiCommitDescriptor(ft);
+	    MKL_LONG dimensions = 1;
+	    MKL_LONG length = config.n_t();
+	    double scale = 1.0 / config.n_t();
+	    DFTI_DESCRIPTOR_HANDLE ft;
+	    DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
+	    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
+	    DftiCommitDescriptor(ft);
     //
 	    tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
 	    gas = keldysh_gas(config.press(), tw, ft, maths);
