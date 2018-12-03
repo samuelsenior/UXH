@@ -41,14 +41,6 @@ propagation::propagation(double E_min_,
                          maths(maths_),
                          ht(ht_) {
 
-//Eigen::ArrayXd w_active = w_active_tmp;
-
-std::cout << "prop.foo 1: " << std::endl;
-std::cout << "E_min: " << E_min << ", w_active.rows(): " << w_active.rows() << std::endl;
-std::cout << "gas.atom_density_max: " << gas.atom_density_max << std::endl;
-std::cout << "rkr.r.rows(): " << rkr.r.rows() << std::endl;
-std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
-
       z = 0.0;
       k_r = rkr.kr;
       k_excluded = 0;
@@ -63,8 +55,6 @@ std::cout << "ht.H.rows(): " << ht.H.rows() << std::endl;
             //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
       }
       n_k = w_active_tmp.rows() - k_excluded;
-std::cout << "prop.foo 4: " << std::endl;
-std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp.rows()" << w_active_tmp.rows() << std::endl;
       w_active = w_active_tmp.segment(k_excluded, n_k);
       k = std::complex<double>(1, 0) * w_active / physics.c;
       A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
@@ -114,8 +104,6 @@ std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_tmp
       RI_output.write_double("../output/f2.bin", refractiveIndex.imag(), n_k, 1, false);
 
       A_w_kr = Eigen::ArrayXcd::Zero(rkr.n_r);
-
-std::cout << "prop.foo 27: " << std::endl;
 
 }
 
@@ -200,8 +188,6 @@ void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
             // Backtransform to put back into radial representation
             A_w_r.row(i) = ht.backward(A_w_kr);
       }
-std::cout << "prop.nfs: A_w_r.rows(): " << A_w_r.rows() << std::endl;
-//std::cout << "lamda(3000): " << 1.0e9 * 2.0*maths.pi / k.row(3000) << "nm, A_w_r(3000): "<< A_w_r.row(3000).col(0) << std::endl;
 }
 
 /*!
