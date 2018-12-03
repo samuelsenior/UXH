@@ -38,6 +38,14 @@ class propagation{
 //
     Eigen::ArrayXcd A_w_kr;
 
+
+    // Bug testing...
+    std::string E_f1_f2_data_path;
+    Eigen::ArrayXXd E_f1_f2_data;
+    Eigen::ArrayXd E;
+    Eigen::ArrayXd f2;
+    Eigen::ArrayXd f1;
+
 public:
     // Data
     double z;
