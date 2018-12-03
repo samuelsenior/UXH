@@ -223,21 +223,16 @@ int main(int argc, char** argv){
     while (w_tmp(count) < w_active_max_HHG) {
         count++;
     }
-//std::cout << " main.foo 0.0.4" << std::endl;
+
     n_active_HHG = count - w_active_min_index_HHG;
-//std::cout << " main.foo 0.0.5" << std::endl;
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
-//std::cout << " main.foo 0.0.6" << std::endl;
 
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
-std::cout << " main.foo 0.0.6" << std::endl;
         prop = propagation(E_min, w_active_HHG, gas, rkr,
                            physics, maths, ht);
-std::cout << " main.foo 0.0.7" << std::endl;
        hhgp = HHGP(prop, config_HHGP);
-std::cout << " main.foo 0.0.8" << std::endl;
     }
 
     //HHGP hhgp;
@@ -317,7 +312,6 @@ std::cout << " main.foo 0.0.8" << std::endl;
                         neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
                     }
                 }
-std::cout << " main.foo 0.0" << std::endl;
                 //ArrayXXcd hhg;
                 //ArrayXXcd hhg_new;
                 //ArrayXXcd hhg_source;
@@ -334,19 +328,16 @@ std::cout << " main.foo 0.0" << std::endl;
             //    while (w(count) < w_active_max_HHG) {
             //        count++;
             //    }
-std::cout << " main.foo 0.1" << std::endl;
             //    n_active_HHG = count - w_active_min_index_HHG;
             //    w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
                 E = tmp.E;
                 //hhgp.set_w_active(w_active_HHG);
-std::cout << " main.foo 0.2" << std::endl;
                 //std::cout << "dipole.rows(): " << dipole.rows() << ", dipole.cols(): " << dipole.cols() << std::endl;
                 //std::cout << "tmp.acceleration.rows(): " << tmp.acceleration.rows() << ", tmp.acceleration.cols(): " << tmp.acceleration.cols() << std::endl;
                 //std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
                 //std::cout << "w.rows(): " << w.rows() << ", w.cols(): " << w.cols() << std::endl;
                 //std::cout << "w.row(0): " << w.row(0) << ", w.row(1000): " << w.row(1000) << std::endl;
                 //std::cout << neutral_atoms.row(0).col(0) << std::endl;
-std::cout << " main.foo 0.3" << std::endl;
                 MKL_LONG dimensions_HHG = 1;
                 MKL_LONG length_HHG = config_XNLO.N_t();
                 double scale_HHG = 1.0 / config_XNLO.N_t();
@@ -354,12 +345,10 @@ std::cout << " main.foo 0.3" << std::endl;
                 DftiCreateDescriptor(&ft_HHG, DFTI_DOUBLE, DFTI_COMPLEX, dimensions_HHG, length_HHG);
                 DftiSetValue(ft_HHG, DFTI_BACKWARD_SCALE, scale_HHG);
                 DftiCommitDescriptor(ft_HHG);
-std::cout << " main.foo 0.4" << std::endl;
                 ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);
                 ArrayXd window = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
                 // Delete tmp after use to save ram
                 dipole = tmp.acceleration;
-std::cout << " main.foo 0.5" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config_XNLO.N_t(); i++) {
                         // Or is it (0, 0)?
@@ -387,7 +376,6 @@ std::cout << " main.foo 0.5" << std::endl;
                         // First is easier to implement, second is more accurate
                     }
                 }
-std::cout << " main.foo 0.6" << std::endl;
                 // Apply forward spectral transform
                 ArrayXXcd temp_1 = dipole.cast<std::complex<double> >();
                 for (int i = 0; i < rkr.n_r; i++)
@@ -400,17 +388,12 @@ std::cout << " main.foo 0.6" << std::endl;
                 ArrayXXcd temp_2 = temp_1;
                 //for (int ii = 0; ii < config_XNLO.n_t(); ii++)
                 //    temp_2.row(ii) = ht.forward(temp_2.row(ii));
-std::cout << "hhg.rows(): " << hhg.rows() << ", hhg.cols(): " << hhg.cols() << std::endl;
-std::cout << "temp_2.rows(): " << temp_2.rows() << ", temp_2.cols(): " << temp_2.cols() << std::endl;
-std::cout << "n_active_HHG: " << n_active_HHG << ", rkr.n_r: " << rkr.n_r << std::endl;
                 hhg = temp_2.block(0, 0, n_active_HHG, rkr.n_r);
-std::cout << " main.foo 0.7" << std::endl;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-std::cout << " main.foo 0.8" << std::endl;
                 // Propagate the harmonics here and loose the outputted source terms?
                 // or, propagate them after this and keep the outputted source terms?
                 // If I'm make HHGP a class then it'll keep variables between calss
@@ -429,60 +412,37 @@ std::cout << " main.foo 0.8" << std::endl;
                 // Do it like this in the future so less calculations:
                 //    w_min = C * E_min^B
                 //    while () {...}
-                std::cout << "prop.foo 2: " << std::endl;
                 while ((physics.h / (2.0*maths.pi) * w_active_HHG(k_excluded) * physics.E_eV) < (E_min)) {
                       k_excluded++;
 
                     //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
                 }
-                std::cout << "prop.foo 3: " << std::endl;
                 n_k = w_active_HHG.rows() - k_excluded;
                 n_active_HHG = n_k;
-                std::cout << "prop.foo 4: " << std::endl;
-                std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << ", w_active_HHG.rows()" << w_active_HHG.rows() << std::endl;
                 Eigen::ArrayXd w_active_HHG_tmp = w_active_HHG;
                 w_active_HHG = w_active_HHG_tmp.segment(k_excluded, n_k);
 
                 //prop = propagation(E_min, w_active_HHG, gas, rkr, ht);
-std::cout << "Foo1 " << std::endl;
                 if (ii == 1) {
-std::cout << "foo 1.1" << std::endl;
                     //These would have different sizes to the HHG outputted for other steps
                     // This needs to be corrected!
-std::cout << "hhg.rows(): " << hhg.rows() << ", hhg.cols(): " << hhg.cols() << std::endl;
-std::cout << "k_excluded: " << k_excluded << ", n_k: " << n_k << std::endl;
                     hhg_previous = hhg.block(k_excluded, 0, n_k, hhg.cols());
                     hhg_source = hhg.block(k_excluded, 0, n_k, hhg.cols());
+                    hhg = hhg_source;
                     //hhg_previous = prop.block(hhg);
                     //hhg_source = prop.block(hhg);
-std::cout << "foo 1.2 " << std::endl;
                 } else {
-std::cout << "w_active_min_index_HHG: " << w_active_min_index_HHG << std::endl;
                     double z = dz * double(ii);
                     hhg_source = hhg.block(k_excluded, 0, n_k, hhg.cols());
                     //hhg_source = prop.block(hhg);
-std::cout << "Foo3 " << std::endl;
-std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
-std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;
-std::cout << "hhg_previous.cols(): " << hhg_previous.cols() << ", hhg_previous.rows(): " << hhg_previous.rows() << std::endl;
-//std::cout << "hhg_previous.col(0): " << hhg_previous.col(0) << ", hhg_previous.row(0): " << hhg_previous.row(0) << std::endl;
-std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << std::endl;
-std::cout << "w_active_HHG.rows(): " << w_active_HHG.rows() << std::endl;
                     Eigen::ArrayXXcd hhg_tmp;
                     hhg_tmp = hhgp.nearFieldStep(hhg_source, hhg_previous,
                                                  w_active_HHG,
                                                  z, dz);
                     hhg_new = hhg_tmp;
-std::cout << "Foo4 " << std::endl;
-std::cout << "hhg_new.cols(): " << hhg_new.cols() << ", hhg_new.rows(): " << hhg_new.rows() << std::endl;
-std::cout << "hhg_source.cols(): " << hhg_source.cols() << ", hhg_source.rows(): " << hhg_source.rows() << std::endl;
-std::cout << "hhg_previous.cols(): " << hhg_previous.cols() << ", hhg_previous.rows(): " << hhg_previous.rows() << std::endl;
-std::cout << "hhg.cols(): " << hhg.cols() << ", hhg.rows(): " << hhg.rows() << std::endl;
-//                    hhg_previous = hhg_new;
-//                    hhg = hhg_new;
-std::cout << "Foo5 " << std::endl;
+                    hhg_previous = hhg_new;
+                    hhg = hhg_new;
                 }
-std::cout << "Foo6 " << std::endl;
                 // Explaination of the above:
                 // -At the first step we just want the source term as nothing from any previous steps is
                 //  propagated to the first position since nothing before
@@ -513,7 +473,6 @@ std::cout << "Foo6 " << std::endl;
                 file_prop_step.write_header(config.path_HHG_E(), E.rows(), E.cols(), false);
                 file_prop_step.write_double(config.path_HHG_E(), E, E.rows(), E.cols(), false);
 
-std::cout << "Foo7 " << std::endl;
             }
         }
         std::cout << "-------------------------------------------------------------------------------\n";
