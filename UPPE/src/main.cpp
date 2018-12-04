@@ -435,11 +435,9 @@ int main(int argc, char** argv){
                     double z = dz * double(ii);
                     hhg_source = hhg.block(k_excluded, 0, n_k, hhg.cols());
                     //hhg_source = prop.block(hhg);
-                    Eigen::ArrayXXcd hhg_tmp;
-                    hhg_tmp = hhgp.nearFieldStep(hhg_source, hhg_previous,
+                    hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
                                                  w_active_HHG,
                                                  z, dz);
-                    hhg_new = hhg_tmp;
                     hhg_previous = hhg_new;
                     hhg = hhg_new;
                 }

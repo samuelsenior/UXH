@@ -191,7 +191,7 @@ using namespace Eigen;
 	    // Don't need a step 1 for this when being called from UPPE
 	    
         //prop.z += dz;
-	    prop.z = z + dz;
+	    prop.z = z;// + dz;
 
         prop.nearFieldPropagationStep(dz, previous);
 	    A_w_r_tmp = prop.A_w_r;
@@ -199,7 +199,7 @@ using namespace Eigen;
 	    A_w_r = source;//hh_source.GetSource(i, config, maths);
 		// The block is now taken in the main loop, so isn't needed here anymore
 	    //A_w_r_tmp = prop.block(A_w_r);
-	    A_w_r_tmp += prop.A_w_r;
+	    A_w_r_tmp += source;
 
 		return A_w_r_tmp;
 	}
