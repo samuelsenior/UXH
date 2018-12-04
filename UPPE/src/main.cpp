@@ -458,12 +458,12 @@ int main(int argc, char** argv){
                 // but outputting hhg_new using .rows() and .cols() would cause no issues
 
                 file_prop_step.overwrite(config.path_HHG_R(), false);
-                file_prop_step.write_header(config.path_HHG_R(), hhg.cols(), hhg.rows(), false);
-                file_prop_step.write_double(config.path_HHG_R(), hhg.real(), hhg.cols(), hhg.rows(), false);
+                file_prop_step.write_header(config.path_HHG_R(), hhg.rows(), hhg.cols(), false);
+                file_prop_step.write_double(config.path_HHG_R(), hhg.real(), hhg.rows(), hhg.cols(), false);
 
                 file_prop_step.overwrite(config.path_HHG_I(), false);
-                file_prop_step.write_header(config.path_HHG_I(), hhg.cols(), hhg.rows(), false);
-                file_prop_step.write_double(config.path_HHG_I(), hhg.imag(), hhg.cols(), hhg.rows(), false);
+                file_prop_step.write_header(config.path_HHG_I(), hhg.rows(), hhg.cols(), false);
+                file_prop_step.write_double(config.path_HHG_I(), hhg.imag(), hhg.rows(), hhg.cols(), false);
 
                 file_prop_step.overwrite(config.path_HHG_w(), false);
                 file_prop_step.write_header(config.path_HHG_w(), w_active_HHG.rows(), w_active_HHG.cols(), false);
