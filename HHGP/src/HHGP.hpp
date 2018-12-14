@@ -26,16 +26,21 @@ class HHGP {
 
 	//std::string config_file_path;
 	HH::Config_Settings config;
+    grid_rkr rkr;
+    grid_tw tw;
+    keldysh_gas gas;
+    maths_textbook maths;
+    DHT ht;
 
-//	int N_cols;
-//	int N_rows;
-//	int N_cols_w;
-//    int N_rows_w;
+	int N_cols;
+	int N_rows;
+	int N_cols_w;
+    int N_rows_w;
 
 //    maths_textbook maths(std::string);
 
 //    DHT ht(int, maths_textbook);
-//    int n_active;
+    int n_active;
 
 //    physics_textbook physics;
 
@@ -60,7 +65,10 @@ class HHGP {
 
 	public:
 		HHGP();
-		HHGP(propagation& prop_, HH::Config_Settings& config_);
+		HHGP(propagation& prop_,
+             HH::Config_Settings& config_,
+             grid_rkr& rkr_, grid_tw& tw_, keldysh_gas& gas_,
+             maths_textbook& maths_, DHT& ht_);
 
 		ArrayXXcd nearFieldStep(ArrayXXcd source, ArrayXXcd previous,
 								ArrayXd w_active,

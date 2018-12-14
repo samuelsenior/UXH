@@ -230,9 +230,13 @@ int main(int argc, char** argv){
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
-        prop = propagation(E_min, w_active_HHG, gas, rkr,
+        prop = propagation(E_min, w_active_HHG,
+                           gas, rkr,
                            physics, maths, ht);
-       hhgp = HHGP(prop, config_HHGP);
+       hhgp = HHGP(prop,
+                   config_HHGP,
+                   rkr, tw_driving, gas,
+                   maths, ht);
     }
 
     //HHGP hhgp;

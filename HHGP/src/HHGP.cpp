@@ -9,7 +9,6 @@
 
 #include "config_settings.hpp"
 #include "../../src/maths_textbook.hpp"
-#include "../../src/physics_textbook.hpp"
 #include "../../src/keldysh_gas.hpp"
 #include "../../src/DHT.hpp"
 #include "../../src/grid_rkr.hpp"
@@ -21,8 +20,14 @@ using namespace Eigen;
 //namespace HHGP {
 	HHGP::HHGP() {}
 
-	HHGP::HHGP(propagation& prop_, HH::Config_Settings& config_)
-		       : prop(prop_), config(config_) {
+	HHGP::HHGP(propagation& prop_,
+			   HH::Config_Settings& config_,
+			   grid_rkr& rkr_, grid_tw& tw_, keldysh_gas& gas_,
+			   maths_textbook& maths_, DHT& ht_)
+		       : prop(prop_),
+		       config(config_),
+		       rkr(rkr_), tw(tw_), gas(gas_),
+		       maths(maths_), ht(ht_) {
 
 	//	// MPI
     //    int this_node;
@@ -67,6 +72,13 @@ using namespace Eigen;
 	    //
 		//    int N_cols_w = w_active.cols();
 		//    int N_rows_w = w_active.rows();
+
+		N_cols = -1;
+		N_rows = -1;
+		N_cols_w = -1;
+	    N_rows_w = -1;
+
+	    n_active = -1;
 
 		//    maths_textbook maths(config.path_input_j0());
 
@@ -143,15 +155,15 @@ using namespace Eigen;
     //    config.print();
 
 		// Am I expecting spectral amplitudes in terms of radial position or mode?
-		int N_cols = source.cols();
-	    int N_rows = source.rows();
-	    int N_cols_w = w_active.cols();
-	    int N_rows_w = w_active.rows();
-	    maths_textbook maths(config.path_input_j0());
+		N_cols = source.cols();
+	    N_rows = source.rows();
+	    N_cols_w = w_active.cols();
+	    N_rows_w = w_active.rows();
+	    //maths_textbook maths(config.path_input_j0());
 
 	    // Set up Hankel transform
-	    DHT ht(N_cols, maths);
-	    int n_active = N_rows;
+	    //DHT ht(N_cols, maths);
+	    n_active = N_rows;
 
 	    //--------------------------------------------------------------------------------------------//
 	    // 2. Constructors
@@ -159,11 +171,11 @@ using namespace Eigen;
 
 	//    // General
 	//    //Used above...
-	    physics_textbook physics;
+	//    physics_textbook physics;
 	//
 	//    // Grids
 	    //grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
-		grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+	// 	grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 	//    
 	    MKL_LONG dimensions = 1;
 	    MKL_LONG length = config.n_t();
@@ -173,8 +185,8 @@ using namespace Eigen;
 	    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
 	    DftiCommitDescriptor(ft);
     //
-	    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-	    keldysh_gas gas(config.press(), tw, ft, maths);
+	//    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+	//    keldysh_gas gas(config.press(), tw, ft, maths);
     //
 	//    // Change this to be read in from file eventually!
 	//    // E_min should really come from config or a data_config
