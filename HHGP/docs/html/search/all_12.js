@@ -20,5 +20,5 @@ var searchData=
   ['rep_5fdescription_5f',['rep_description_',['../class_h_h_1_1_config___settings.html#a0aa4bf3b59a5de2ad47dda83dfe02a02',1,'HH::Config_Settings']]],
   ['rep_5fdescription_5fset',['rep_description_set',['../class_h_h_1_1_config___settings.html#a8651c65f1ac726e2d16e307e94b0beb1',1,'HH::Config_Settings']]],
   ['rep_5fset',['rep_set',['../class_h_h_1_1_config___settings.html#a60355aa95d281838cfbb0ac8504246ae',1,'HH::Config_Settings']]],
-  ['rkr',['rkr',['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation']]]
+  ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()']]]
 ];

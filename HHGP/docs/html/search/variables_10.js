@@ -7,5 +7,5 @@ var searchData=
   ['refractiveindex',['refractiveIndex',['../classpropagation.html#aba601a0df3c63b13215c55d8ade2bcd7',1,'propagation']]],
   ['rep_5f',['rep_',['../class_h_h_1_1_config___settings.html#a05c908d4dd4f744dbdd6573c650f9f68',1,'HH::Config_Settings']]],
   ['rep_5fdescription_5f',['rep_description_',['../class_h_h_1_1_config___settings.html#a0aa4bf3b59a5de2ad47dda83dfe02a02',1,'HH::Config_Settings']]],
-  ['rkr',['rkr',['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation']]]
+  ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()']]]
 ];

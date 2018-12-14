@@ -9,5 +9,5 @@ var searchData=
   ['t_5fset',['T_set',['../class_h_h_1_1_config___settings.html#aad7bc83f3b2f4a798df135fef90ac56a',1,'HH::Config_Settings']]],
   ['transitionlength',['transitionLength',['../classkeldysh__gas.html#a88f63ff18217c60729a67b10ee838ee4',1,'keldysh_gas']]],
   ['trapz',['trapz',['../classmaths__textbook.html#a158ce9c89ee1db5495810c25ee2aed57',1,'maths_textbook']]],
-  ['tw',['tw',['../classkeldysh__gas.html#a1cd7129f9ba9d62f4084049e529cab49',1,'keldysh_gas']]]
+  ['tw',['tw',['../classkeldysh__gas.html#a1cd7129f9ba9d62f4084049e529cab49',1,'keldysh_gas::tw()'],['../class_h_h_g_p.html#a94b7a8e735f2be43aed829c801a74df5',1,'HHGP::tw()']]]
 ];
