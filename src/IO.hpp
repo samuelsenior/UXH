@@ -49,6 +49,16 @@ public:
     void write_header(const std::string path_, int N_row_, int N_col_, bool print=true);
    	void overwrite(const std::string path, bool print=true);
    	void write_ascii_double(ArrayXd data, std::string path, bool print=true);
+    template<typename T> void write(T output, std::string path, std::string otuput_type, bool print=true);
 };
+
+template<typename T>
+void IO::write(T output, std::string path, std::string output_type, bool print) {
+    IO::overwrite(path, print);
+    if (output_type == "Eigen::ArrayXXd") {
+        IO::write_header(path, output.rows(), output.cols(), print);
+        IO::write_double(path, output, output.rows(), output.cols(), print);
+    }
+}
 
 #endif

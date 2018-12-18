@@ -344,4 +344,3 @@ void IO::write_ascii_double(ArrayXd data, std::string path, bool print) {
     }
 
 }
-
