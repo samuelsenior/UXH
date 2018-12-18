@@ -154,31 +154,32 @@ int main(int argc, char** argv){
     DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
     DftiCommitDescriptor(ft);
 
+    MKL_LONG dimensions_HHG = 1;
+    MKL_LONG length_HHG = config_XNLO.N_t();
+    double scale_HHG = 1.0 / config_XNLO.N_t();
+    DFTI_DESCRIPTOR_HANDLE ft_HHG;
+    DftiCreateDescriptor(&ft_HHG, DFTI_DOUBLE, DFTI_COMPLEX, dimensions_HHG, length_HHG);
+    DftiSetValue(ft_HHG, DFTI_BACKWARD_SCALE, scale_HHG);
+    DftiCommitDescriptor(ft_HHG);
+
     DHT ht(config.n_r(), maths);
 
     // Grids
     grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
     grid_tw tw_driving(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-    //grid_tw tw_hhg(80000, config.T(), 1.88e16, 1.88e17, maths);
 
     // Physical
     laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(), tw_driving, rkr, ft, ht, maths);
-    //laser_pulse laser_hhg(0.0, config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(), tw_hhg, rkr, ft, ht, maths); //Make it a zero field - possibly with contructor overloading
-    
+
     capillary_fibre capillary_driving(config.Z(), rkr, tw_driving, physics, maths);
-    //capillary_fibre capillary_hhg(config.Z(), rkr, tw_hhg, physics, maths);
-    
-    //Dipole_moment dipole;
 
     keldysh_gas gas(config.press(), tw_driving, ft, maths);
-    //keldysh_gas gas_hhg(config.press(), tw_hhg, ft, maths, dipole);
 
     //--------------------------------------------------------------------------------------------//
     // 3. Propagation
     //--------------------------------------------------------------------------------------------//
     // Main loop
     double dz = capillary_driving.Z / double(config.n_z());
-    //double dz_hhg = capillary_hhg.Z / config.n_z();
 
     if (this_process == 0) {
         config.print(config.path_config_log());
@@ -194,28 +195,32 @@ int main(int argc, char** argv){
     IO file_prop_step;
 
     std::string ionisation_rate_test = "ionisation_rate_test.bin";
-//std::cout << " main.foo 0.0.0" << std::endl;
+
     //Fix this at some point
-    ArrayXXd dipole = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+    ArrayXXd acceleration_HHG = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
     ArrayXXd w = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
     ArrayXXd E = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
-    XNLO::Result tmp;// = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+    XNLO::Result atomResponse;
     //ArrayXd neutral_atoms = ArrayXd::Zero(config.n_r());
     ArrayXXd neutral_atoms = ArrayXXd::Zero(config.n_t(), config.n_r());
+    ArrayXd temp_linSpace_HHG_acceleration = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);
+    ArrayXd window_HHG_acceleration = (1 - ((0.5 * maths.pi * temp_linSpace_HHG_acceleration / 500e-15).sin()).pow(50));
 
     ArrayXXcd A_w_active;
-//std::cout << " main.foo 0.0.1" << std::endl;
+
     ArrayXd w_tmp = ArrayXd::Zero(config_XNLO.N_t());
     XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
-//std::cout << " main.foo 0.0" << std::endl;
-    double w_active_min_HHG = 1.2566371e+16;
-    double w_active_max_HHG = 3.1415927e+17;
+
+    double lamda_min_HHG = 6.0e-9;
+    double lamda_max_HHG = 150e-9;
+    double w_active_min_HHG = 2.0 * maths.pi * physics.c / lamda_max_HHG;
+    double w_active_max_HHG = 2.0 * maths.pi * physics.c / lamda_min_HHG;
     double E_min = 10.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
-//std::cout << " main.foo 0.0.2" << std::endl;
+
     w_tmp = tw_XNLO.w;
-//std::cout << " main.foo 0.0.3" << std::endl;
+
     int w_active_min_index_HHG = 0;
     while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
         w_active_min_index_HHG++;
@@ -233,10 +238,11 @@ int main(int argc, char** argv){
         prop = propagation(E_min, w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
-       hhgp = HHGP(prop,
-                   config_HHGP,
-                   rkr, tw_driving, gas,
-                   maths, ht);
+        w_active_HHG = prop.segment(w_active_HHG);
+        hhgp = HHGP(prop,
+                    config_HHGP,
+                    rkr, gas,
+                    maths, ht);
     }
 
     //HHGP hhgp;
@@ -259,21 +265,10 @@ int main(int argc, char** argv){
 
                 // Driving pulse:
                 config.step_path(ii);
-                file_prop_step.overwrite(config.path_A_w_R(), false);
-                file_prop_step.write_header(config.path_A_w_R(), tw_driving.n_active, rkr.n_m, false);
-                file_prop_step.write_double(config.path_A_w_R(), laser_driving.A_w_active.real(), tw_driving.n_active, rkr.n_m, false);
-                
-                file_prop_step.overwrite(config.path_A_w_I(), false);
-                file_prop_step.write_header(config.path_A_w_I(), tw_driving.n_active, rkr.n_m, false);
-                file_prop_step.write_double(config.path_A_w_I(), laser_driving.A_w_active.imag(), tw_driving.n_active, rkr.n_m, false);
-                
-                file_prop_step.overwrite(config.path_w_active(), false);
-                file_prop_step.write_header(config.path_w_active(), tw_driving.n_active, 1, false);
-                file_prop_step.write_double(config.path_w_active(), tw_driving.w_active, tw_driving.n_active, 1, false);
-
-                file_prop_step.overwrite(config.path_electron_density(), false);
-                file_prop_step.write_header(config.path_electron_density(), tw_driving.n_t, rkr.n_m, false);
-                file_prop_step.write_double(config.path_electron_density(), laser_driving.electron_density, tw_driving.n_t, rkr.n_m, false);
+                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), std::string("Eigen::ArrayXXd"), false);
+                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), std::string("Eigen::ArrayXXd"), false);
+                file_prop_step.write(tw_driving.w_active, config.path_w_active(), std::string("Eigen::ArrayXXd"), false);
+                file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), std::string("Eigen::ArrayXXd"), false);
 
                 A_w_active = laser_driving.A_w_active;
 
@@ -304,12 +299,10 @@ int main(int argc, char** argv){
 
             int response_rate = 1;//config.n_z() / 10;
             if (total_processes > 1 && ((ii % response_rate == 0) || ii == 1)) {
-                tmp = XNLO::XNLO(A_w_active, tw_driving.w_active);
+                atomResponse = XNLO::XNLO(A_w_active, tw_driving.w_active);
             }
 
             if (this_process == 0 && total_processes > 1) {
-                //HHGP hhgp(config_HHGP.n_r());
-
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
@@ -317,43 +310,10 @@ int main(int argc, char** argv){
                         neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - 0.0*laser_driving.electron_density.row(i).col(j));
                     }
                 }
-                //ArrayXXcd hhg;
-                //ArrayXXcd hhg_new;
-                //ArrayXXcd hhg_source;
-                //ArrayXXcd hhg_previous;
-            //    double w_active_min_HHG = 1.2566371e+16;
-            //    double w_active_max_HHG = 3.1415927e+17;
-            //    int n_active_HHG = 0;
-            //    ArrayXd w_active_HHG;
-            //    w = tmp.w;
-            //    int w_active_min_index_HHG = 0;
-            //    while (w(w_active_min_index_HHG) < w_active_min_HHG)
-            //        w_active_min_index_HHG++;
-            //    int count = 0;
-            //    while (w(count) < w_active_max_HHG) {
-            //        count++;
-            //    }
-            //    n_active_HHG = count - w_active_min_index_HHG;
-            //    w_active_HHG = w.col(0).segment(w_active_min_index_HHG, n_active_HHG);
-                E = tmp.E;
-                //hhgp.set_w_active(w_active_HHG);
-                //std::cout << "dipole.rows(): " << dipole.rows() << ", dipole.cols(): " << dipole.cols() << std::endl;
-                //std::cout << "tmp.acceleration.rows(): " << tmp.acceleration.rows() << ", tmp.acceleration.cols(): " << tmp.acceleration.cols() << std::endl;
-                //std::cout << "neutral_atoms.rows(): " << neutral_atoms.rows() << ", neutral_atoms.cols(): " << neutral_atoms.cols() << std::endl;
-                //std::cout << "w.rows(): " << w.rows() << ", w.cols(): " << w.cols() << std::endl;
-                //std::cout << "w.row(0): " << w.row(0) << ", w.row(1000): " << w.row(1000) << std::endl;
-                //std::cout << neutral_atoms.row(0).col(0) << std::endl;
-                MKL_LONG dimensions_HHG = 1;
-                MKL_LONG length_HHG = config_XNLO.N_t();
-                double scale_HHG = 1.0 / config_XNLO.N_t();
-                DFTI_DESCRIPTOR_HANDLE ft_HHG;
-                DftiCreateDescriptor(&ft_HHG, DFTI_DOUBLE, DFTI_COMPLEX, dimensions_HHG, length_HHG);
-                DftiSetValue(ft_HHG, DFTI_BACKWARD_SCALE, scale_HHG);
-                DftiCommitDescriptor(ft_HHG);
-                ArrayXd temp_linSpace = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);
-                ArrayXd window = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
-                // Delete tmp after use to save ram
-                dipole = tmp.acceleration;
+
+                E = atomResponse.E;
+                // Delete atomResponse after use to save ram
+                acceleration_HHG = atomResponse.acceleration;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config_XNLO.N_t(); i++) {
                         // Or is it (0, 0)?
@@ -372,9 +332,8 @@ int main(int argc, char** argv){
                         // as the atom has no electron to it
                         // So it needs to be the final number of neutral atoms?
                         // If so then can save a load of ram by only storing this value and not for all time steps
-                        dipole.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
-
-                        dipole.row(i).col(j) *= window.row(i);// / (w.row(i)).pow(2);
+                        acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
+                        acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
 
                         // How to do volume normalisation?
                         // Step increases to integrate over, or trapezoidal rule
@@ -382,20 +341,13 @@ int main(int argc, char** argv){
                     }
                 }
                 // Apply forward spectral transform
-                ArrayXXcd temp_1 = dipole.cast<std::complex<double> >();
+                ArrayXXcd accelerationToHHSource = acceleration_HHG.cast<std::complex<double> >();
                 for (int i = 0; i < rkr.n_r; i++)
-                    DftiComputeForward(ft_HHG, temp_1.col(i).data());
+                    DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
 
-                // Why is there a Hankel transform here?
-                // This would be putting it in terms of modes, whereas the
-                // postprocessing code expects it in radial representation
-                // and XNLO::acceleration is (N_t, N_r) / in radial rep.
-                ArrayXXcd temp_2 = temp_1;
-                //for (int ii = 0; ii < config_XNLO.n_t(); ii++)
-                //    temp_2.row(ii) = ht.forward(temp_2.row(ii));
-                hhg = temp_2.block(0, 0, n_active_HHG, rkr.n_r);
+                hhg = prop.block(accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r));
                 for (int j = 0; j < rkr.n_r; j++) {
-                    for (int i = 0; i < n_active_HHG; i++) {
+                    for (int i = 0; i < prop.n_k; i++) {//n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
@@ -407,45 +359,16 @@ int main(int argc, char** argv){
                 //
                 // Something like this:
 
-                double E_min = 10.0;
-                //propagation prop(E_min, w_active_HHG, gas, rkr, ht);
-                // May need a destructor at the end of the loop
-                ArrayXd k_r = rkr.kr;
-                k_excluded = 0;
-                // Put the divides on the other side to become multiplies to save
-                // computational time
-                // Do it like this in the future so less calculations:
-                //    w_min = C * E_min^B
-                //    while () {...}
-                while ((physics.h / (2.0*maths.pi) * w_active_HHG(k_excluded) * physics.E_eV) < (E_min)) {
-                      k_excluded++;
-
-                    //std::cout << "foobar: " << (physics.h / (2.0*maths.pi) * w_active(k_excluded-1) * physics.E_eV) << std::endl;
-                }
-                n_k = w_active_HHG.rows() - k_excluded;
-                n_active_HHG = n_k;
-                Eigen::ArrayXd w_active_HHG_tmp = w_active_HHG;
-                w_active_HHG = w_active_HHG_tmp.segment(k_excluded, n_k);
-
-                //prop = propagation(E_min, w_active_HHG, gas, rkr, ht);
                 if (ii == 1) {
-                    //These would have different sizes to the HHG outputted for other steps
-                    // This needs to be corrected!
-                    hhg_previous = hhg.block(k_excluded, 0, n_k, hhg.cols());
-                    hhg_source = hhg.block(k_excluded, 0, n_k, hhg.cols());
-                    hhg = hhg_source;
-                    //hhg_previous = prop.block(hhg);
-                    //hhg_source = prop.block(hhg);
+                    hhg_previous = hhg;
                 } else {
                     double z = dz * double(ii);
-                    hhg_source = hhg.block(k_excluded, 0, n_k, hhg.cols());
+                    hhg_source = hhg;
                     //hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
                     //                             w_active_HHG,
                     //                             z, dz);
                     //hhg_previous = hhg_new;
                     //hhg = hhg_new;
-
-                    hhg = hhg_source;
                 }
                 // Explaination of the above:
                 // -At the first step we just want the source term as nothing from any previous steps is
@@ -461,21 +384,10 @@ int main(int argc, char** argv){
                 // so the outputting below will be be wrong as different n_active
                 // but outputting hhg_new using .rows() and .cols() would cause no issues
 
-                file_prop_step.overwrite(config.path_HHG_R(), false);
-                file_prop_step.write_header(config.path_HHG_R(), hhg.rows(), hhg.cols(), false);
-                file_prop_step.write_double(config.path_HHG_R(), hhg.real(), hhg.rows(), hhg.cols(), false);
-
-                file_prop_step.overwrite(config.path_HHG_I(), false);
-                file_prop_step.write_header(config.path_HHG_I(), hhg.rows(), hhg.cols(), false);
-                file_prop_step.write_double(config.path_HHG_I(), hhg.imag(), hhg.rows(), hhg.cols(), false);
-
-                file_prop_step.overwrite(config.path_HHG_w(), false);
-                file_prop_step.write_header(config.path_HHG_w(), w_active_HHG.rows(), w_active_HHG.cols(), false);
-                file_prop_step.write_double(config.path_HHG_w(), w_active_HHG, w_active_HHG.rows(), w_active_HHG.cols(), false);
-
-                file_prop_step.overwrite(config.path_HHG_E(), false);
-                file_prop_step.write_header(config.path_HHG_E(), E.rows(), E.cols(), false);
-                file_prop_step.write_double(config.path_HHG_E(), E, E.rows(), E.cols(), false);
+                file_prop_step.write(hhg.real(), config.path_HHG_R(), std::string("Eigen::ArrayXXd"));
+                file_prop_step.write(hhg.imag(), config.path_HHG_I(), std::string("Eigen::ArrayXXd"));
+                file_prop_step.write(w_active_HHG, config.path_HHG_w(), std::string("Eigen::ArrayXXd"));
+                file_prop_step.write(E, config.path_HHG_E(), std::string("Eigen::ArrayXXd"));
 
             }
         }
@@ -484,18 +396,9 @@ int main(int argc, char** argv){
         if (this_process == 0) {
             // Output
             IO file;
-
-            file.overwrite(config.path_A_w_R());
-            file.write_header(config.path_A_w_R(), tw_driving.n_active, rkr.n_m);
-            file.write_double(config.path_A_w_R(), laser_driving.A_w_active.real(), tw_driving.n_active, rkr.n_m);
-            
-            file.overwrite(config.path_A_w_I());
-            file.write_header(config.path_A_w_I(), tw_driving.n_active, rkr.n_m);
-            file.write_double(config.path_A_w_I(), laser_driving.A_w_active.imag(), tw_driving.n_active, rkr.n_m);
-            
-            file.overwrite(config.path_w_active());
-            file.write_header(config.path_w_active(), tw_driving.n_active, 1);
-            file.write_double(config.path_w_active(), tw_driving.w_active, tw_driving.n_active, 1);
+            file.write(laser_driving.A_w_active.real(), config.path_A_w_R(), std::string("Eigen::ArrayXXd"));
+            file.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), std::string("Eigen::ArrayXXd"));
+            file.write(tw_driving.w_active, config.path_w_active(), std::string("Eigen::ArrayXXd"));
         }
 
         // Clean up
