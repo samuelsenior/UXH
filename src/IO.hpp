@@ -9,6 +9,8 @@
 #ifndef __IO_HPP_INCLUDED__
 #define __IO_HPP_INCLUDED__
 
+#include <iostream>
+
 #include "../Eigen/Dense"
 
 #include <string>
@@ -52,13 +54,45 @@ public:
     template<typename T> void write(T output, std::string path, std::string otuput_type, bool print=true);
 };
 
+// See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4502.pdf.
+template <typename...>
+using void_t = void;
+// Primary template handles all types not supporting the operation.
+template <typename, template <typename> class, typename = void_t<>>
+struct detect : std::false_type {};
+// Specialization recognizes/validates only types supporting the archetype.
+template <typename T, template <typename> class Op>
+struct detect<T, Op, void_t<Op<T>>> : std::true_type {};
+// Variable part, where testing for specific function that we're looking for
+// 1. rows() - to give the number of rows in the array
+template <typename T>
+using rows_t = decltype(std::declval<T>().rows());
+template <typename T>
+using has_rows = detect<T, rows_t>;
+// 2. cols() - to give the number of cols in the array
+template <typename T>
+using cols_t = decltype(std::declval<T>().cols());
+template <typename T>
+using has_cols = detect<T, cols_t>;
+
 template<typename T>
 void IO::write(T output, std::string path, std::string output_type, bool print) {
-    IO::overwrite(path, print);
-    if (output_type == "Eigen::ArrayXXd") {
-        IO::write_header(path, output.rows(), output.cols(), print);
-        IO::write_double(path, output, output.rows(), output.cols(), print);
+    int rows = -1;
+    int cols = -1;
+
+    // Check if tyoe T has the functions rows() and cols(),
+    // which are used to get the number of rows and cols of the
+    // array that is about to be outputted.
+    if (has_rows<T>() == true) {
+        rows = output.rows();
     }
+    if(has_cols<T>() == true) {
+        cols = output.cols();
+    }
+
+    IO::overwrite(path, print);
+    IO::write_header(path, rows, cols, print);
+    IO::write_double(path, output, rows, cols, print);
 }
 
 #endif
