@@ -18,6 +18,6 @@ var searchData=
   ['n_5fz_5fdescription_5fset',['n_z_description_set',['../class_h_h_1_1_config___settings.html#ad2e96cf383086297a5a53818b9f4f1f1',1,'HH::Config_Settings']]],
   ['n_5fz_5fset',['n_z_set',['../class_h_h_1_1_config___settings.html#a94507305a335437e50a055f4aa474fa7',1,'HH::Config_Settings']]],
   ['nearfieldpropagationstep',['nearFieldPropagationStep',['../classpropagation.html#a65e272beb6b5b73f433456361bcde914',1,'propagation']]],
-  ['nearfieldstep',['nearFieldStep',['../class_h_h_g_p.html#a7cf02cbc90259051a40da992c053a004',1,'HHGP']]],
+  ['nearfieldstep',['nearFieldStep',['../class_h_h_g_p.html#af9dfaf85a3893354288e1a59dcb2611a',1,'HHGP']]],
   ['nl_5fpolarization',['nl_polarization',['../classkeldysh__gas.html#a1cd65d1983cb6c5ff9d04eeb29e94dd5',1,'keldysh_gas']]]
 ];

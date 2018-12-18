@@ -4,7 +4,6 @@ var searchData=
   ['n_5factive',['n_active',['../classgrid__tw.html#a1fbf854a0f7bd025aa98671009602c5c',1,'grid_tw::n_active()'],['../class_h_h_g_p.html#a81f5b6135264c93725cee052314db9db',1,'HHGP::n_active()']]],
   ['n_5fcol_5f',['N_col_',['../class_i_o.html#a64aae2d2be35348233f8ddac4d6791f2',1,'IO']]],
   ['n_5fcols',['N_cols',['../class_h_h_g_p.html#aa9099163fbab46f03255ecfa65d34d7d',1,'HHGP']]],
-  ['n_5fcols_5fw',['N_cols_w',['../class_h_h_g_p.html#a3896da264ec20aaddde562f8db226904',1,'HHGP']]],
   ['n_5fk',['n_k',['../classpropagation.html#a93033ee98c04a6fe007eae5c856e76b3',1,'propagation']]],
   ['n_5fm',['n_m',['../class_h_h_g_p_1_1grid__rkr.html#a20f5465ba6f840c4039ee650a1883b73',1,'HHGP::grid_rkr::n_m()'],['../class_h_h_1_1_config___settings.html#ac73782a678deffe86161d68b88676f7c',1,'HH::Config_Settings::n_m()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a9593f0d35505947f38a4cd3d5bc1e881',1,'HH::Config_Settings::n_m()']]],
   ['n_5fm_5f',['n_m_',['../class_h_h_1_1_config___settings.html#a529227d1486b3c0cb464c37684023f4b',1,'HH::Config_Settings']]],
@@ -19,8 +18,6 @@ var searchData=
   ['n_5fr_5fdescription_5fset',['n_r_description_set',['../class_h_h_1_1_config___settings.html#abe96b09440f2794304087ed73d46e5a9',1,'HH::Config_Settings']]],
   ['n_5fr_5fset',['n_r_set',['../class_h_h_1_1_config___settings.html#a2f26f2be6db9d69e3bbbb96987a231e0',1,'HH::Config_Settings']]],
   ['n_5frow_5f',['N_row_',['../class_i_o.html#ab8aa1490df2e2e758766030afdae3a40',1,'IO']]],
-  ['n_5frows',['N_rows',['../class_h_h_g_p.html#a73a41766f514e09d1c748d91d71d7949',1,'HHGP']]],
-  ['n_5frows_5fw',['N_rows_w',['../class_h_h_g_p.html#a8a0a8b4f0fd3b25062b94670294710f8',1,'HHGP']]],
   ['n_5fstar',['n_star',['../classkeldysh__gas.html#a22ba35c494b37c8a8e78db09d6d8748c',1,'keldysh_gas']]],
   ['n_5ft',['n_t',['../classgrid__tw.html#ac121ce740479f628bdaa54627540ad42',1,'grid_tw::n_t()'],['../class_h_h_1_1_config___settings.html#ac77b4ee5e6d2885ecab83c9e0128f329',1,'HH::Config_Settings::n_t()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a871b354d265716a852eea9970e53ff5e',1,'HH::Config_Settings::n_t()']]],
   ['n_5ft_5f',['n_t_',['../class_h_h_1_1_config___settings.html#a8cdaae01dfeec9a2a73bd28eeb2e140c',1,'HH::Config_Settings']]],
@@ -35,6 +32,6 @@ var searchData=
   ['n_5fz_5fdescription_5fset',['n_z_description_set',['../class_h_h_1_1_config___settings.html#ad2e96cf383086297a5a53818b9f4f1f1',1,'HH::Config_Settings']]],
   ['n_5fz_5fset',['n_z_set',['../class_h_h_1_1_config___settings.html#a94507305a335437e50a055f4aa474fa7',1,'HH::Config_Settings']]],
   ['nearfieldpropagationstep',['nearFieldPropagationStep',['../classpropagation.html#a65e272beb6b5b73f433456361bcde914',1,'propagation']]],
-  ['nearfieldstep',['nearFieldStep',['../class_h_h_g_p.html#a7cf02cbc90259051a40da992c053a004',1,'HHGP']]],
+  ['nearfieldstep',['nearFieldStep',['../class_h_h_g_p.html#af9dfaf85a3893354288e1a59dcb2611a',1,'HHGP']]],
   ['nl_5fpolarization',['nl_polarization',['../classkeldysh__gas.html#a1cd65d1983cb6c5ff9d04eeb29e94dd5',1,'keldysh_gas']]]
 ];
