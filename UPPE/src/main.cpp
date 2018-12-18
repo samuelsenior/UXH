@@ -313,7 +313,8 @@ int main(int argc, char** argv){
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
-                        neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
+                        // Change this back once testing done!
+                        neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - 0.0*laser_driving.electron_density.row(i).col(j));
                     }
                 }
                 //ArrayXXcd hhg;
@@ -438,12 +439,13 @@ int main(int argc, char** argv){
                 } else {
                     double z = dz * double(ii);
                     hhg_source = hhg.block(k_excluded, 0, n_k, hhg.cols());
-                    //hhg_source = prop.block(hhg);
-                    hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
-                                                 w_active_HHG,
-                                                 z, dz);
-                    hhg_previous = hhg_new;
-                    hhg = hhg_new;
+                    //hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
+                    //                             w_active_HHG,
+                    //                             z, dz);
+                    //hhg_previous = hhg_new;
+                    //hhg = hhg_new;
+
+                    hhg = hhg_source;
                 }
                 // Explaination of the above:
                 // -At the first step we just want the source term as nothing from any previous steps is
