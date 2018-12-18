@@ -71,8 +71,6 @@ int main(int argc, char** argv){
         std::cout << "-------------------------------------------------------------------------------\n";
     }
 
-    //if (this_process == 0) {
-
     //--------------------------------------------------------------------------------------------//
     // 1. Program input
     //--------------------------------------------------------------------------------------------//
@@ -166,14 +164,12 @@ int main(int argc, char** argv){
 
     // Grids
     grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
-    grid_tw tw_driving(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
 
     // Physical
-    laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(), tw_driving, rkr, ft, ht, maths);
-
-    capillary_fibre capillary_driving(config.Z(), rkr, tw_driving, physics, maths);
-
-    keldysh_gas gas(config.press(), tw_driving, ft, maths);
+    laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(), tw, rkr, ft, ht, maths);
+    capillary_fibre capillary_driving(config.Z(), rkr, tw, physics, maths);
+    keldysh_gas gas(config.press(), tw, ft, maths);
 
     //--------------------------------------------------------------------------------------------//
     // 3. Propagation
@@ -194,9 +190,6 @@ int main(int argc, char** argv){
     
     IO file_prop_step;
 
-    std::string ionisation_rate_test = "ionisation_rate_test.bin";
-
-    //Fix this at some point
     ArrayXXd acceleration_HHG = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
     ArrayXXd w = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
     ArrayXXd E = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
@@ -249,10 +242,6 @@ int main(int argc, char** argv){
     ArrayXXcd hhg_new;
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
-    int n_k = 0;
-    int k_excluded = 0;
-
-    //propagation prop;
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -265,7 +254,7 @@ int main(int argc, char** argv){
                 config.step_path(ii);
                 file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), false);
                 file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), false);
-                file_prop_step.write(tw_driving.w_active, config.path_w_active(), false);
+                file_prop_step.write(tw.w_active, config.path_w_active(), false);
                 file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), false);
 
                 A_w_active = laser_driving.A_w_active;
@@ -274,37 +263,27 @@ int main(int argc, char** argv){
                     // Send
                     for (int j = 1; j < total_processes; j++) {
                         MPI_Send(laser_driving.A_w_active.real().data(),
-                                 1242 * rkr.n_r, MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                                 laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+                                 MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                     }
                 }
             } else {
                 // Receive
-                A_w_active = ArrayXXd::Zero(1242, rkr.n_r);
-                MPI_Recv(A_w_active.real().data(), 1242 * rkr.n_r, MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+                A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
+                MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+                         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
             }
-
-            // Needs an MPI Send and Recv to collect up the acceleration from all processes
-            // So don't want XNLO::XNLO to do the collecting itself but rather the logic in here to instead
-            //    So Rank 0 holds all the information
-            //    Ranks !0 have a block sent to them
-            //    They do work and return the result
-            //    So basically how the main of XNLO does it but split up between here and XNLO::XNLO
-            //        So here manages splitting up the work, does the MPI_Send
-            //        XNLO::XNLO has the MPI_Resvs and send back the results with the MPI_Send
-
-            // Need rank 0 to send laser_driving.A_w_active to the other ranks as they done
-            // calculate it
 
             int response_rate = 1;//config.n_z() / 10;
             if (total_processes > 1 && ((ii % response_rate == 0) || ii == 1)) {
-                atomResponse = XNLO::XNLO(A_w_active, tw_driving.w_active);
+                atomResponse = XNLO::XNLO(A_w_active, tw.w_active);
             }
 
             if (this_process == 0 && total_processes > 1) {
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
-                        // Change this back once testing done!
+// -- Take Note Here -- // Change this back once testing done!
                         neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - 0.0*laser_driving.electron_density.row(i).col(j));
                     }
                 }
@@ -333,8 +312,7 @@ int main(int argc, char** argv){
                         acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
                         acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
 
-                        // How to do volume normalisation?
-                        // Step increases to integrate over, or trapezoidal rule
+                        // How to do volume normalisation? Step increases to integrate over, or trapezoidal rule
                         // First is easier to implement, second is more accurate
                     }
                 }
@@ -349,13 +327,6 @@ int main(int argc, char** argv){
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-                // Propagate the harmonics here and loose the outputted source terms?
-                // or, propagate them after this and keep the outputted source terms?
-                // If I'm make HHGP a class then it'll keep variables between calss
-                // otherwise I'll need to add statics in to stop so many copy/desctuctor calls
-                // though would that even work in this case? (i think so, but not 100%)
-                //
-                // Something like this:
 
                 if (ii == 1) {
                     hhg_previous = hhg;
@@ -372,15 +343,11 @@ int main(int argc, char** argv){
                 // -At the first step we just want the source term as nothing from any previous steps is
                 //  propagated to the first position since nothing before
                 // -Keep the hhg term here as the sources from the previous step
-                // -At the next step, take the HHG as teh current source term
+                // -At the next step, take the HHG as the current source term
                 //  and use previous as the sources from the previous steps
                 //  propagate previous to current and add source to it
                 // -This is now also the previous term for the next step
                 // -Repeat
-                //
-                // BUT REMEMBER THAT THE SIZE OF HHG WILL CHANGE AS HHGP TAKES THE USABLE SEGMENT!
-                // so the outputting below will be be wrong as different n_active
-                // but outputting hhg_new using .rows() and .cols() would cause no issues
 
                 file_prop_step.write(hhg.real(), config.path_HHG_R(), false);
                 file_prop_step.write(hhg.imag(), config.path_HHG_I(), false);
@@ -396,7 +363,7 @@ int main(int argc, char** argv){
             IO file;
             file.write(laser_driving.A_w_active.real(), config.path_A_w_R());
             file.write(laser_driving.A_w_active.imag(), config.path_A_w_I());
-            file.write(tw_driving.w_active, config.path_w_active());
+            file.write(tw.w_active, config.path_w_active());
         }
 
         // Clean up

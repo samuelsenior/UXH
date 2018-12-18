@@ -70,10 +70,6 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
 
     z_position = 0.0;
 
-    //P_NL_r_t = ArrayXXcd::Zero(tw.n_t, rkr.n_r);
-    //P_NL_m_t = ArrayXXcd::Zero(tw.n_t, rkr.n_m);
-    //P_NL_w = ArrayXXcd::Zero(tw.n_active, rkr.n_m);
-
  }
 
 
@@ -95,8 +91,6 @@ void laser_pulse::propagate(double dz_, capillary_fibre& capillary_, keldysh_gas
     int i = 0;
     //static
     int j = 0;
-
-    atom_density_max = gas_.atom_density_max;// = press_ * 1.0e5 / (physics.k_B * 300.0);  // [atoms/m^3]
 
     //static
     double z = 0;
