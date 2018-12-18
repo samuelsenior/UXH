@@ -51,7 +51,7 @@ public:
     void write_header(const std::string path_, int N_row_, int N_col_, bool print=true);
    	void overwrite(const std::string path, bool print=true);
    	void write_ascii_double(ArrayXd data, std::string path, bool print=true);
-    template<typename T> void write(T output, std::string path, std::string otuput_type, bool print=true);
+    template<typename T> void write(T output, std::string path, bool print=true);
 };
 
 // See http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4502.pdf.
@@ -60,10 +60,10 @@ using void_t = void;
 // Primary template handles all types not supporting the operation.
 template <typename, template <typename> class, typename = void_t<>>
 struct detect : std::false_type {};
-// Specialization recognizes/validates only types supporting the archetype.
+// Specialisation recognises/validates only types supporting the archetype.
 template <typename T, template <typename> class Op>
 struct detect<T, Op, void_t<Op<T>>> : std::true_type {};
-// Variable part, where testing for specific function that we're looking for
+// Variable part, testing for specific functions that we're looking for
 // 1. rows() - to give the number of rows in the array
 template <typename T>
 using rows_t = decltype(std::declval<T>().rows());
@@ -76,13 +76,12 @@ template <typename T>
 using has_cols = detect<T, cols_t>;
 
 template<typename T>
-void IO::write(T output, std::string path, std::string output_type, bool print) {
+void IO::write(T output, std::string path, bool print) {
     int rows = -1;
     int cols = -1;
 
-    // Check if tyoe T has the functions rows() and cols(),
-    // which are used to get the number of rows and cols of the
-    // array that is about to be outputted.
+    // Check if tyoe T has the functions rows() and cols(), which are used to get
+    // the number of rows and cols of the array that is about to be outputted.
     if (has_rows<T>() == true) {
         rows = output.rows();
     }

@@ -245,8 +245,6 @@ int main(int argc, char** argv){
                     maths, ht);
     }
 
-    //HHGP hhgp;
-
     ArrayXXcd hhg;
     ArrayXXcd hhg_new;
     ArrayXXcd hhg_source;
@@ -265,10 +263,10 @@ int main(int argc, char** argv){
 
                 // Driving pulse:
                 config.step_path(ii);
-                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), std::string("Eigen::ArrayXXd"), false);
-                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), std::string("Eigen::ArrayXXd"), false);
-                file_prop_step.write(tw_driving.w_active, config.path_w_active(), std::string("Eigen::ArrayXXd"), false);
-                file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), std::string("Eigen::ArrayXXd"), false);
+                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), false);
+                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), false);
+                file_prop_step.write(tw_driving.w_active, config.path_w_active(), false);
+                file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), false);
 
                 A_w_active = laser_driving.A_w_active;
 
@@ -384,10 +382,10 @@ int main(int argc, char** argv){
                 // so the outputting below will be be wrong as different n_active
                 // but outputting hhg_new using .rows() and .cols() would cause no issues
 
-                file_prop_step.write(hhg.real(), config.path_HHG_R(), std::string("Eigen::ArrayXXd"));
-                file_prop_step.write(hhg.imag(), config.path_HHG_I(), std::string("Eigen::ArrayXXd"));
-                file_prop_step.write(w_active_HHG, config.path_HHG_w(), std::string("Eigen::ArrayXXd"));
-                file_prop_step.write(E, config.path_HHG_E(), std::string("Eigen::ArrayXXd"));
+                file_prop_step.write(hhg.real(), config.path_HHG_R(), false);
+                file_prop_step.write(hhg.imag(), config.path_HHG_I(), false);
+                file_prop_step.write(w_active_HHG, config.path_HHG_w(), false);
+                file_prop_step.write(E, config.path_HHG_E(), false);
 
             }
         }
@@ -396,9 +394,9 @@ int main(int argc, char** argv){
         if (this_process == 0) {
             // Output
             IO file;
-            file.write(laser_driving.A_w_active.real(), config.path_A_w_R(), std::string("Eigen::ArrayXXd"));
-            file.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), std::string("Eigen::ArrayXXd"));
-            file.write(tw_driving.w_active, config.path_w_active(), std::string("Eigen::ArrayXXd"));
+            file.write(laser_driving.A_w_active.real(), config.path_A_w_R());
+            file.write(laser_driving.A_w_active.imag(), config.path_A_w_I());
+            file.write(tw_driving.w_active, config.path_w_active());
         }
 
         // Clean up
