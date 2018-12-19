@@ -40,10 +40,6 @@ keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft
 }
 
 double keldysh_gas::atom_density(double z) {
-
-    // Change this back once testing done
-    return atom_density_max;
-
     if (z >= inlet_1 && z <= inlet_2) {
         // Constant max value
         return atom_density_max;

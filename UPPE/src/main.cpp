@@ -283,8 +283,7 @@ int main(int argc, char** argv){
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
-// -- Take Note Here -- // Change this back once testing done!
-                        neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - 0.0*laser_driving.electron_density.row(i).col(j));
+                        neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
                     }
                 }
 
@@ -309,7 +308,9 @@ int main(int argc, char** argv){
                         // as the atom has no electron to it
                         // So it needs to be the final number of neutral atoms?
                         // If so then can save a load of ram by only storing this value and not for all time steps
-                        acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
+// --- TAKE NOTE --- // Change back once testing done!
+                        acceleration_HHG.row(i).col(j) *= dz;
+                        //acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
                         acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
 
                         // How to do volume normalisation? Step increases to integrate over, or trapezoidal rule
