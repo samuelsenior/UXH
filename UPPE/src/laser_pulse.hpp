@@ -20,6 +20,8 @@
 #include "capillary_fibre.hpp"
 #include "../../src/keldysh_gas.hpp"
 
+#include "config_settings.hpp"
+
 using namespace Eigen;
 
 //------------------------------------------------------------------------------------------------//
@@ -39,6 +41,11 @@ class laser_pulse {
     double l_0;
     double ceo;
     double waist;
+
+    int read_in_laser_pulse;
+    double initial_position;
+
+    Config_Settings config;
 
     // Data
     physics_textbook physics;  /*!< Physical constants */
@@ -73,7 +80,9 @@ public:
 
     // Functions
     laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, double ceo_, double waist_,
-                grid_tw& tw_, grid_rkr& rkr_, DFTI_DESCRIPTOR_HANDLE& ft_, DHT& ht_, maths_textbook& maths_);
+                grid_tw& tw_, grid_rkr& rkr_, DFTI_DESCRIPTOR_HANDLE& ft_, DHT& ht_, maths_textbook& maths_,
+                Config_Settings config,
+                int read_in_laser_pulse, double initial_position);
     void propagate(double dz_, capillary_fibre& capillary_, keldysh_gas& gas_);
 };
 

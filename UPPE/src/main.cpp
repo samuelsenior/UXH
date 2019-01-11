@@ -87,7 +87,9 @@ int main(int argc, char** argv){
         }
     }
     config.read_in(config.path_config_file(), false);
-    config.check_paths(false);
+    if (config.read_in_laser_pulse() == 0) {
+        config.check_paths(false);
+    }
     if (total_processes > 1) {
         config.n_m_set(total_processes-1);
         config.n_r_set(total_processes-1);
@@ -161,13 +163,58 @@ int main(int argc, char** argv){
     DftiCommitDescriptor(ft_HHG);
 
     DHT ht(config.n_r(), maths);
-
+std::cout << "Foo 1" << std::endl;
     // Grids
     grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
     grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
 
+    double dz = config.Z() / double(config.n_z());
+std::cout << "Foo 2" << std::endl;
+    int propagation_step;
+    if (config.read_in_laser_pulse() == 1) {
+        std::size_t found = config.path_A_w_R().find_last_of("/");
+        std::string tmp = config.path_A_w_R().substr(found+1);
+        found = tmp.find_first_of("_");
+
+std::cout << config.path_A_w_R() << std::endl;
+std::cout << tmp << std::endl;
+
+std::cout << "Foo 3" << std::endl;
+        std::string sim_no_str = tmp.substr(0, found);
+        
+
+        std::size_t found_2 = tmp.find_first_of("_", found+1);
+std::cout << found << found_2 << std::endl;
+
+std::cout << "tmp: " << tmp << std::endl;
+        std::string tmp_2 = tmp.substr(found+1, found_2-found-1);
+        int sim_no = std::stoi(sim_no_str);
+
+std::cout << "tmp_2: " << tmp_2 << std::endl;
+std::cout << "Foo 4" << std::endl;
+std::cout << sim_no_str << std::endl;
+std::cout << sim_no << std::endl;
+
+        propagation_step = stoi(tmp_2);
+
+        //std::string tmp_prop_step_str = 
+
+        //if (found == -1) {
+        //path = pre_path + "_" + path;
+        //} else {
+        //path = path.substr(0, found+1) + pre_path + "_" + path.substr(found+1);
+        //}
+        //return path;
+    } else {
+        propagation_step = 1;
+    }
+    double initial_position = dz * propagation_step;
+
     // Physical
-    laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(), tw, rkr, ft, ht, maths);
+    laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
+                              tw, rkr, ft, ht, maths,
+                              config,
+                              config.read_in_laser_pulse(), initial_position);
     capillary_fibre capillary_driving(config.Z(), rkr, tw, physics, maths);
     keldysh_gas gas(config.press(), tw, ft, maths);
 
@@ -175,7 +222,7 @@ int main(int argc, char** argv){
     // 3. Propagation
     //--------------------------------------------------------------------------------------------//
     // Main loop
-    double dz = capillary_driving.Z / double(config.n_z());
+    //double dz = capillary_driving.Z / double(config.n_z());
 
     if (this_process == 0) {
         config.print(config.path_config_log());
@@ -184,8 +231,8 @@ int main(int argc, char** argv){
         std::cout << "Main Program:\n";
         std::cout << "-------------------------------------------------------------------------------\n";
 
-        std::cout << "Laser p_pk: " << laser_driving.p_pk << std::endl;
-        std::cout << "Laser E_pk: " << laser_driving.E_pk << std::endl;
+        //std::cout << "Laser p_pk: " << laser_driving.p_pk << std::endl;
+        //std::cout << "Laser E_pk: " << laser_driving.E_pk << std::endl;
     }
     
     IO file_prop_step;
@@ -245,7 +292,7 @@ int main(int argc, char** argv){
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-        for (int ii = 1; ii < config.n_z() + 1; ii++) {
+        for (int ii = propagation_step; ii < config.n_z() + 1; ii++) {
             if (this_process == 0) {
                 std::cout << "Propagation step: " << ii << std::endl;
                 laser_driving.propagate(dz, capillary_driving, gas);

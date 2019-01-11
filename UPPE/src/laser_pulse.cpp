@@ -18,6 +18,9 @@
 #include "capillary_fibre.hpp"
 #include "../../src/keldysh_gas.hpp"
 
+#include "../../src/IO.hpp"
+#include "config_settings.hpp"
+
 #include <iostream>
 
 using namespace Eigen;
@@ -30,7 +33,9 @@ using namespace Eigen;
 */
 laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, double ceo_,
                          double waist_, grid_tw& tw_, grid_rkr& rkr_, DFTI_DESCRIPTOR_HANDLE& ft_,
-                         DHT& ht_, maths_textbook& maths_)
+                         DHT& ht_, maths_textbook& maths_,
+                         Config_Settings config,
+                         int read_in_laser_pulse, double initial_position)
                         :
                          p_av(p_av_),
                          rep(rep_),
@@ -42,34 +47,53 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
                          rkr(rkr_),
                          ft(ft_),
                          ht(ht_),
-                         maths(maths_) {
+                         maths(maths_),
+                         config(config),
+                         read_in_laser_pulse(read_in_laser_pulse),
+                         initial_position(initial_position) {
 
-    // Temporal
-    p_pk = 0.94 * ((p_av / rep) / fwhm);
-    E_pk = std::sqrt((4 * p_pk) / (physics.c * physics.eps_0 * maths.pi *
-                                          (std::pow(waist, 2))));
-    ArrayXd env_t = (-2.77 * (tw.t / fwhm).pow(2)).exp();
-    ArrayXd carr_t = (((2 * maths.pi * physics.c / l_0) * tw.t) + ceo).cos();
+    if (read_in_laser_pulse = 0) {
 
-    // Spatial
-    ArrayXd env_r = (-(rkr.r / waist).pow(2)).exp();
+        // Temporal
+        p_pk = 0.94 * ((p_av / rep) / fwhm);
+        E_pk = std::sqrt((4 * p_pk) / (physics.c * physics.eps_0 * maths.pi *
+                                              (std::pow(waist, 2))));
+        ArrayXd env_t = (-2.77 * (tw.t / fwhm).pow(2)).exp();
+        ArrayXd carr_t = (((2 * maths.pi * physics.c / l_0) * tw.t) + ceo).cos();
 
-    // Spatio-temporal
-    ArrayXXd E_t_r = (E_pk * env_t * carr_t).matrix() * env_r.matrix().transpose();
+        // Spatial
+        ArrayXd env_r = (-(rkr.r / waist).pow(2)).exp();
 
-    // Apply forward spectral transform
-    ArrayXXcd temp_1 = E_t_r.cast<std::complex<double> >();
-    for (int ii = 0; ii < rkr.n_r; ii++)
-        DftiComputeForward(ft, temp_1.col(ii).data());
-    ArrayXXcd temp_2 = temp_1.block(tw.w_active_min_index, 0, tw.n_active, rkr.n_r);
-    for (int ii = 0; ii < tw.n_active; ii++)
-        temp_2.row(ii) = ht.forward(temp_2.row(ii));
-    A_w_active = temp_2.block(0, 0, tw.n_active, rkr.n_m);
+        // Spatio-temporal
+        ArrayXXd E_t_r = (E_pk * env_t * carr_t).matrix() * env_r.matrix().transpose();
 
-    electron_density = ArrayXXd::Zero(tw.n_t, rkr.n_r);//tw.n_active, rkr.n_r);
+        // Apply forward spectral transform
+        ArrayXXcd temp_1 = E_t_r.cast<std::complex<double> >();
+        for (int ii = 0; ii < rkr.n_r; ii++)
+            DftiComputeForward(ft, temp_1.col(ii).data());
+        ArrayXXcd temp_2 = temp_1.block(tw.w_active_min_index, 0, tw.n_active, rkr.n_r);
+        for (int ii = 0; ii < tw.n_active; ii++)
+            temp_2.row(ii) = ht.forward(temp_2.row(ii));
+        A_w_active = temp_2.block(0, 0, tw.n_active, rkr.n_m);
 
-    z_position = 0.0;
+        electron_density = ArrayXXd::Zero(tw.n_t, rkr.n_r);//tw.n_active, rkr.n_r);
 
+        z_position = 0.0;
+    } else if (read_in_laser_pulse == 1) {
+        // Read in spectral amplitudes from file
+        IO laser_pulse_file;
+        laser_pulse_file.read_header(config.path_A_w_R(), false);
+        ArrayXXd A_w_R = laser_pulse_file.read_double(config.path_A_w_R());
+        laser_pulse_file.read_header(config.path_A_w_I(), false);
+        ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I());
+        int N_cols = laser_pulse_file.N_col_;
+        int N_rows = laser_pulse_file.N_row_;
+        // Combine the two real array that represent the real and complex parts and make a complex array from them
+        A_w_active = (A_w_R.cast<std::complex<double> >() + (std::complex<double>(0.0, 1.0) * A_w_I));
+
+        electron_density = ArrayXXd::Zero(tw.n_t, rkr.n_r);//tw.n_active, rkr.n_r);
+        z_position = initial_position;
+    }
  }
 
 
@@ -85,7 +109,7 @@ void laser_pulse::propagate(double dz_, capillary_fibre& capillary_, keldysh_gas
     //static
     double h = dz_ / 5;    // Initial guess
     //static
-    double tol = 1e-4;     // Relative error tolerance
+    double tol = 1e-5;     // Relative error tolerance
 
     //static
     int i = 0;

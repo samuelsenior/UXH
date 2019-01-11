@@ -30,6 +30,7 @@ private:
     Z, R,
     press,
     p_av, rep, fwhm, l_0, ceo, waist,
+    read_in_laser_pulse,
     pend_path,
     path_input_j0,
     path_A_w_R, path_A_w_I, path_w_active,
@@ -59,6 +60,8 @@ private:
     double l_0_ = 800e-9;
     double ceo_ = 0.0;
     double waist_ = 48.0e-6;
+
+    int read_in_laser_pulse_ = 0;
 
     std::string path_input_j0_ = "../input/J0_zeros.bin";
 
@@ -98,6 +101,8 @@ private:
     std::string l_0_description_ = "(default) (double) Laser central wavelength";
     std::string ceo_description_ = "(default) (double) The ceo value";
     std::string waist_description_= "(default) (double) The waist value";
+
+    std::string read_in_laser_pulse_description_= "(default) (int) Switch to read in an initial laser pulse";
 
     std::string pend_path_description_ = "(default) (std::string) Pending switch";
 
@@ -201,6 +206,11 @@ public:
     void waist_set(double);
     std::string waist_description();
     void waist_description_set(std::string);
+
+    int read_in_laser_pulse();
+    void read_in_laser_pulse_set(int);
+    std::string read_in_laser_pulse_description();
+    void read_in_laser_pulse_description_set(std::string);
 
     std::string pend_path();
     void pend_path_set(std::string);

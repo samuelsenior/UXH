@@ -28,6 +28,7 @@ const char * Config_Settings::setting_name[] = {
   "Z", "R",
   "press",
   "p_av", "rep", "fwhm", "l_0", "ceo", "waist",
+  "read_in_laser_pulse",
   "pend_path",
   "path_input_j0",
   "path_A_w_R", "path_A_w_I", "path_w_active",
@@ -194,6 +195,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::waist :
         waist_set(std::stod(variable_value_str));
         waist_description_set(input_description_char);
+        break;
+
+      case SN::read_in_laser_pulse :
+        read_in_laser_pulse_set(std::stoi(variable_value_str));
+        read_in_laser_pulse_description_set(input_description_char);
         break;
 
       case SN::pend_path :
@@ -511,12 +517,13 @@ void Config_Settings::print() {
     std::cout << "   l_0:              " << l_0() << "                        " << l_0_description() << std::endl;
     std::cout << "   ceo:              " << ceo() << "                            " << ceo_description() << std::endl;
     std::cout << "   waist:            " << waist() << "                      " << waist_description() << std::endl;
+    std::cout << "   read_in_laser_pulse: " << read_in_laser_pulse() << "          " << read_in_laser_pulse_description() << std::endl;
     std::cout << "   pend_path         " << pend_path() << "                      " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:    " << path_input_j0() << "        " << path_input_j0_description() << std::endl;
     std::cout << "   path_A_w_R:       " << path_A_w_R() << "      " << path_A_w_R_description() << std::endl;
     std::cout << "   path_A_w_I:       " << path_A_w_I() << "      " << path_A_w_I_description() << std::endl;
     std::cout << "   path_w_active:    " << path_w_active() << "   " << path_w_active_description() << std::endl;
-    std::cout << "   path_HHG_R:         " << path_HHG_R() << "   " << path_HHG_R_description() << std::endl;
+    std::cout << "   path_HHG_R:       " << path_HHG_R() << "   " << path_HHG_R_description() << std::endl;
     std::cout << "   path_config_file: " << path_config_file() << "                 " << path_config_file_description() << std::endl;
     std::cout << "   path_config_log:  " << path_config_log() << " " << path_config_log_description() << std::endl;
     std::cout << "-------------------------------------------------------------------------------\n";
@@ -546,6 +553,8 @@ void Config_Settings::print(std::string path_) {
       config_log << "{l_0} {" << l_0() << "} {" << l_0_description() << "}\n";
       config_log << "{ceo} {" << ceo() << "} {" << ceo_description() << "}\n";
       config_log << "{waist} {" << waist() << "} {" << waist_description() << "}\n";
+
+      config_log << "{read_in_laser_pulse} {" << read_in_laser_pulse() << "} {" << read_in_laser_pulse_description() << "}\n";
 
       config_log << "{pend_path} {" << pend_path() << "} {" << pend_path_description() << "}\n";
 
@@ -774,6 +783,19 @@ std::string Config_Settings::waist_description() {
 }
 void Config_Settings::waist_description_set(std::string description) {
   waist_description_ = description;
+}
+
+int Config_Settings::read_in_laser_pulse() {
+    return read_in_laser_pulse_;
+}
+void Config_Settings::read_in_laser_pulse_set(int value) {
+    read_in_laser_pulse_ = value;
+}
+std::string Config_Settings::read_in_laser_pulse_description() {
+  return read_in_laser_pulse_description_;
+}
+void Config_Settings::read_in_laser_pulse_description_set(std::string description) {
+  read_in_laser_pulse_description_ = description;
 }
 
 std::string Config_Settings::pend_path() {
