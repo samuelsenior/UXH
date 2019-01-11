@@ -216,6 +216,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a849ae9f7a6ef85215c04a79004ac129b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54a52d9c629a4675067bd60878482b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a54a52d9c629a4675067bd60878482b53">waist_description_set</a> (std::string)</td></tr>
 <tr class="separator:a54a52d9c629a4675067bd60878482b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6080e88779098f8537a622dac6fbe70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ac6080e88779098f8537a622dac6fbe70">read_in_laser_pulse</a> ()</td></tr>
+<tr class="separator:ac6080e88779098f8537a622dac6fbe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f9f2d7b9526a734620d0e165ff8ce7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a1f9f2d7b9526a734620d0e165ff8ce7d">read_in_laser_pulse_set</a> (int)</td></tr>
+<tr class="separator:a1f9f2d7b9526a734620d0e165ff8ce7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1af53ecc2970f55f44fd8725665aa8c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ad1af53ecc2970f55f44fd8725665aa8c">read_in_laser_pulse_description</a> ()</td></tr>
+<tr class="separator:ad1af53ecc2970f55f44fd8725665aa8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f74955aafdab8923c15f754e9c8ae74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a7f74955aafdab8923c15f754e9c8ae74">read_in_laser_pulse_description_set</a> (std::string)</td></tr>
+<tr class="separator:a7f74955aafdab8923c15f754e9c8ae74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5586e450111a71ad50709abea538cc7c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a5586e450111a71ad50709abea538cc7c">pend_path</a> ()</td></tr>
 <tr class="separator:a5586e450111a71ad50709abea538cc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a304590e5ee1997f8ba77b8f5b8616a0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a304590e5ee1997f8ba77b8f5b8616a0a">pend_path_set</a> (std::string)</td></tr>
@@ -336,20 +344,22 @@ Private Types</h2></td></tr>
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55161575f3e05dfb61145c5d63d67d29">SN::ceo</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa54680ce9dccba6570053db39038a9d7a">SN::waist</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13">SN::pend_path</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa077dddf74f82da8ff2cf059ab37f93a1">SN::read_in_laser_pulse</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13">SN::pend_path</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf">SN::path_input_j0</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9">SN::path_A_w_R</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa723f16bd44b5c519243c37ac165df732">SN::path_A_w_I</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa64b9d0f9f55fb6ad349ff704f3d710bb">SN::path_w_active</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa723f16bd44b5c519243c37ac165df732">SN::path_A_w_I</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa64b9d0f9f55fb6ad349ff704f3d710bb">SN::path_w_active</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55ae11324ef03ba27814d1175e8d12f0">SN::path_HHG_R</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa656218c9143eb88ee385dfe7ea618d6c">SN::path_HHG_I</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faaf71223a57febdc55d591cfec7acdff5">SN::path_HHG_w</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3e723a56c4eccaf90be08c4f0b8a4dc8">SN::path_HHG_E</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faaf71223a57febdc55d591cfec7acdff5">SN::path_HHG_w</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3e723a56c4eccaf90be08c4f0b8a4dc8">SN::path_HHG_E</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faea30eaeccb42cf92fa55ea6f3518b2e6">SN::path_config_file</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9bd8b67c10b9b673ee424a957d1a953a">SN::path_config_log</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45">SN::LAST_SN_ENTRY</a>
+<br />
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45">SN::LAST_SN_ENTRY</a>
 <br />
  }</td></tr>
 <tr class="separator:af7668729f6d56b25d126b0a9ce06474f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -399,6 +409,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a55a73ac8703ae56cb81bbf601dec24d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a769316096d7aa4e2939ed7fbf7db21e2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a769316096d7aa4e2939ed7fbf7db21e2">waist_</a> = 48.0e-6</td></tr>
 <tr class="separator:a769316096d7aa4e2939ed7fbf7db21e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9e24a9e2075db1510e0cb285edb7fe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ab9e24a9e2075db1510e0cb285edb7fe6">read_in_laser_pulse_</a> = 0</td></tr>
+<tr class="separator:ab9e24a9e2075db1510e0cb285edb7fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ab5ee2270acc68dc4757bb4bbe4dc9a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a6ab5ee2270acc68dc4757bb4bbe4dc9a">path_input_j0_</a> = &quot;../input/J0_zeros.bin&quot;</td></tr>
 <tr class="separator:a6ab5ee2270acc68dc4757bb4bbe4dc9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c22201375acb2a3d1b21ed40e59c023"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a0c22201375acb2a3d1b21ed40e59c023">path_A_w_R_</a> = &quot;../output/A_w_R.bin&quot;</td></tr>
@@ -455,6 +467,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a3e00769ffcd7bef60f9b5cb4c17d3c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa23531b1d4459fa9a2f2ae8132e32e30"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30">waist_description_</a> = &quot;(default) (double) The <a class="el" href="class_config___settings.html#a9bec079708e647e77006394d68ea3ad3">waist</a> value&quot;</td></tr>
 <tr class="separator:aa23531b1d4459fa9a2f2ae8132e32e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a97598432a48d95259ab73b2905db9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ad2a97598432a48d95259ab73b2905db9">read_in_laser_pulse_description_</a> = &quot;(default) (int) Switch to read in an initial laser pulse&quot;</td></tr>
+<tr class="separator:ad2a97598432a48d95259ab73b2905db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f8f961fb92591750f397fbaeca57dfd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a6f8f961fb92591750f397fbaeca57dfd">pend_path_description_</a> = &quot;(default) (std::string) Pending switch&quot;</td></tr>
 <tr class="separator:a6f8f961fb92591750f397fbaeca57dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8370a038f54438143863503ffbe01581"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a8370a038f54438143863503ffbe01581">path_input_j0_description_</a> = &quot;(default) (std::string) Path to J0_zeros.bin&quot;</td></tr>
@@ -524,6 +538,7 @@ Static Private Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474faa5feddd336f95a73db3d846da3a050ea"></a>l_0&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa55161575f3e05dfb61145c5d63d67d29"></a>ceo&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa54680ce9dccba6570053db39038a9d7a"></a>waist&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa077dddf74f82da8ff2cf059ab37f93a1"></a>read_in_laser_pulse&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13"></a>pend_path&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf"></a>path_input_j0&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9"></a>path_A_w_R&#160;</td><td class="fielddoc"></td></tr>
@@ -2181,6 +2196,76 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac6080e88779098f8537a622dac6fbe70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6080e88779098f8537a622dac6fbe70">&#9670;&nbsp;</a></span>read_in_laser_pulse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Config_Settings::read_in_laser_pulse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1af53ecc2970f55f44fd8725665aa8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1af53ecc2970f55f44fd8725665aa8c">&#9670;&nbsp;</a></span>read_in_laser_pulse_description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::read_in_laser_pulse_description </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f74955aafdab8923c15f754e9c8ae74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f74955aafdab8923c15f754e9c8ae74">&#9670;&nbsp;</a></span>read_in_laser_pulse_description_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::read_in_laser_pulse_description_set </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f9f2d7b9526a734620d0e165ff8ce7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f9f2d7b9526a734620d0e165ff8ce7d">&#9670;&nbsp;</a></span>read_in_laser_pulse_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::read_in_laser_pulse_set </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2d7cd824c2d98ef18359a062a802dca5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d7cd824c2d98ef18359a062a802dca5">&#9670;&nbsp;</a></span>rep()</h2>
 
@@ -3750,6 +3835,50 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab9e24a9e2075db1510e0cb285edb7fe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9e24a9e2075db1510e0cb285edb7fe6">&#9670;&nbsp;</a></span>read_in_laser_pulse_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Config_Settings::read_in_laser_pulse_ = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2a97598432a48d95259ab73b2905db9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2a97598432a48d95259ab73b2905db9">&#9670;&nbsp;</a></span>read_in_laser_pulse_description_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::read_in_laser_pulse_description_ = &quot;(default) (int) Switch to read in an initial laser pulse&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a23a02326925c4c726a5047593435bd72"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23a02326925c4c726a5047593435bd72">&#9670;&nbsp;</a></span>rep_</h2>
 
@@ -3813,7 +3942,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;read_in_laser_pulse&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a4f774e23910af488b9006a9c2a0aa1d3"></a>

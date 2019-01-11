@@ -12,6 +12,7 @@ var searchData=
   ['ceo_5fdescription_5fset',['ceo_description_set',['../class_config___settings.html#a4b3d3758bfb8c9934224c16f5e25dcd3',1,'Config_Settings']]],
   ['ceo_5fset',['ceo_set',['../class_config___settings.html#ad5a6d758ff0ffbde06f5fac2a83a0b4a',1,'Config_Settings']]],
   ['check_5fpaths',['check_paths',['../class_config___settings.html#a3421f43e3bfdd8c6429dfde9887230d8',1,'Config_Settings']]],
+  ['config',['config',['../classlaser__pulse.html#a44890431f11f1d883dffd7fe581f2ce8',1,'laser_pulse']]],
   ['config_5fsettings',['Config_Settings',['../class_config___settings.html',1,'Config_Settings'],['../class_config___settings.html#afe5c14778eaa36a9559977d54a7fda72',1,'Config_Settings::Config_Settings()']]],
   ['config_5fsettings_2ecpp',['config_settings.cpp',['../config__settings_8cpp.html',1,'']]],
   ['config_5fsettings_2ehpp',['config_settings.hpp',['../config__settings_8hpp.html',1,'']]],
