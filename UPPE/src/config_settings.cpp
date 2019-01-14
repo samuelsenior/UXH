@@ -32,6 +32,7 @@ const char * Config_Settings::setting_name[] = {
   "pend_path",
   "path_input_j0",
   "path_A_w_R", "path_A_w_I", "path_w_active",
+  "path_electron_density",
   "path_HHG_R", "path_HHG_I", "path_HHG_w", "path_HHG_E",
   "path_config_file", "path_config_log"
 };
@@ -223,6 +224,10 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::path_w_active :
         path_w_active_set(variable_value_str);
         path_w_active_description_set(input_description_char);
+        break;
+      case SN::path_electron_density :
+        path_electron_density_set(variable_value_str);
+        path_electron_density_description_set(input_description_char);
         break;
 
       case SN::path_HHG_R :
@@ -427,16 +432,70 @@ void Config_Settings::step_path(int step) {
       path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+9);
       path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+9);
       path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+9);
+    } else if (step > 10000 && step < 100000) {
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+10);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+10);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+10);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+10);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+10);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+10);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+10);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+10);
+    } else if (step == 100000) {
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+10);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+10);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+10);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+10);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+10);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+10);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+10);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+10);
+    } else if (step > 100000 && step < 1000000) {
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+11);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+11);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+11);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+11);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+11);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+11);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+11);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+11);
+    } else if (step == 1000000) {
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+11);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+11);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+11);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+11);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+11);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+11);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+11);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+11);
+    } else if (step > 1000000 && step < 10000000) {
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+12);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+12);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+12);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+12);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+12);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+12);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+12);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+12);
+    } else if (step == 10000000) {
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+12);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+12);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+12);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+12);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+12);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+12);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+12);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+12);
     } else {
-      std::cout << "Config_Settings::step_path: Error, currently do not support nz values greater than 10000!" << std::endl;
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+9);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+9);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+9);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+9);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+9);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+9);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+9);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+9);
+      std::cout << "Config_Settings::step_path: Error, currently do not support nz values greater than 10000000!" << std::endl;
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+13);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+13);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+13);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+13);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+13);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+13);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+13);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+13);
     }
   }
 
@@ -517,13 +576,17 @@ void Config_Settings::print() {
     std::cout << "   l_0:              " << l_0() << "                        " << l_0_description() << std::endl;
     std::cout << "   ceo:              " << ceo() << "                            " << ceo_description() << std::endl;
     std::cout << "   waist:            " << waist() << "                      " << waist_description() << std::endl;
-    std::cout << "   read_in_laser_pulse: " << read_in_laser_pulse() << "          " << read_in_laser_pulse_description() << std::endl;
+    std::cout << "   read_in_laser_pulse: " << read_in_laser_pulse() << "   " << read_in_laser_pulse_description() << std::endl;
     std::cout << "   pend_path         " << pend_path() << "                      " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:    " << path_input_j0() << "        " << path_input_j0_description() << std::endl;
     std::cout << "   path_A_w_R:       " << path_A_w_R() << "      " << path_A_w_R_description() << std::endl;
     std::cout << "   path_A_w_I:       " << path_A_w_I() << "      " << path_A_w_I_description() << std::endl;
     std::cout << "   path_w_active:    " << path_w_active() << "   " << path_w_active_description() << std::endl;
+    std::cout << "   path_electron_density: " << path_electron_density() << "   " << path_electron_density_description() << std::endl;
     std::cout << "   path_HHG_R:       " << path_HHG_R() << "   " << path_HHG_R_description() << std::endl;
+    std::cout << "   path_HHG_I:       " << path_HHG_I() << "   " << path_HHG_I_description() << std::endl;
+    std::cout << "   path_HHG_w:       " << path_HHG_w() << "   " << path_HHG_w_description() << std::endl;
+    std::cout << "   path_HHG_E:       " << path_HHG_E() << "   " << path_HHG_E_description() << std::endl;
     std::cout << "   path_config_file: " << path_config_file() << "                 " << path_config_file_description() << std::endl;
     std::cout << "   path_config_log:  " << path_config_log() << " " << path_config_log_description() << std::endl;
     std::cout << "-------------------------------------------------------------------------------\n";
@@ -562,8 +625,12 @@ void Config_Settings::print(std::string path_) {
 
       config_log << "{path_A_w_R} {" << path_A_w_R() << "} {" << path_A_w_R_description() << "}\n";
       config_log << "{path_A_w_I} {" << path_A_w_I() << "} {" << path_A_w_I_description() << "}\n";
+      config_log << "{path_electron_density} {" << path_electron_density() << "} {" << path_electron_density_description() << "}\n";
       config_log << "{path_w_active} {" << path_w_active() << "} {" << path_w_active_description() << "}\n";
       config_log << "{path_HHG_R} {" << path_HHG_R() << "} {" << path_HHG_R_description() << "}\n";
+      config_log << "{path_HHG_I} {" << path_HHG_I() << "} {" << path_HHG_I_description() << "}\n";
+      config_log << "{path_HHG_w} {" << path_HHG_w() << "} {" << path_HHG_w_description() << "}\n";
+      config_log << "{path_HHG_E} {" << path_HHG_E() << "} {" << path_HHG_E_description() << "}\n";
 
       config_log << "{path_config_file} {" << path_config_file() << "} {" << path_config_file_description() << "}\n";
       config_log << "{path_config_log} {" << path_config_log() << "} {" << path_config_log_description() << "}\n";

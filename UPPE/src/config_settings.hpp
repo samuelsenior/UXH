@@ -34,6 +34,7 @@ private:
     pend_path,
     path_input_j0,
     path_A_w_R, path_A_w_I, path_w_active,
+    path_electron_density,
     path_HHG_R, path_HHG_I, path_HHG_w, path_HHG_E,
     path_config_file, path_config_log,
     LAST_SN_ENTRY

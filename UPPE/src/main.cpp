@@ -170,7 +170,9 @@ std::cout << "Foo 1" << std::endl;
 
     double dz = config.Z() / double(config.n_z());
 std::cout << "Foo 2" << std::endl;
+    int initial_step;
     int propagation_step;
+    double initial_position;
     if (config.read_in_laser_pulse() == 1) {
         std::size_t found = config.path_A_w_R().find_last_of("/");
         std::string tmp = config.path_A_w_R().substr(found+1);
@@ -195,7 +197,12 @@ std::cout << "Foo 4" << std::endl;
 std::cout << sim_no_str << std::endl;
 std::cout << sim_no << std::endl;
 
-        propagation_step = stoi(tmp_2);
+        initial_step = stoi(tmp_2);  
+        propagation_step = initial_step + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
+                                              // initial step being read in is step i-1
+        initial_position = dz * initial_step;
+std::cout << "Simulation run (read in): " << sim_no << std::endl;
+std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
 
         //std::string tmp_prop_step_str = 
 
@@ -208,13 +215,15 @@ std::cout << sim_no << std::endl;
     } else {
         propagation_step = 1;
     }
-    double initial_position = dz * propagation_step;
+    initial_position = dz * propagation_step;
 
     // Physical
     laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
                               tw, rkr, ft, ht, maths,
                               config,
                               config.read_in_laser_pulse(), initial_position);
+
+std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_active.real().rows() << ", laser_driving.A_w_active.real().cols():" << laser_driving.A_w_active.real().cols() << std::endl;
     capillary_fibre capillary_driving(config.Z(), rkr, tw, physics, maths);
     keldysh_gas gas(config.press(), tw, ft, maths);
 

@@ -52,7 +52,7 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
                          read_in_laser_pulse(read_in_laser_pulse),
                          initial_position(initial_position) {
 
-    if (read_in_laser_pulse = 0) {
+    if (read_in_laser_pulse == 0) {
 
         // Temporal
         p_pk = 0.94 * ((p_av / rep) / fwhm);
@@ -80,6 +80,8 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
 
         z_position = 0.0;
     } else if (read_in_laser_pulse == 1) {
+
+std::cout << "Reading in initial laser pulse from file..." << std::endl;
         // Read in spectral amplitudes from file
         IO laser_pulse_file;
         laser_pulse_file.read_header(config.path_A_w_R(), false);
@@ -88,11 +90,13 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
         ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I());
         int N_cols = laser_pulse_file.N_col_;
         int N_rows = laser_pulse_file.N_row_;
+std::cout << "N_cols: " << N_cols << ", N_rows: " << N_rows << std::endl;
         // Combine the two real array that represent the real and complex parts and make a complex array from them
         A_w_active = (A_w_R.cast<std::complex<double> >() + (std::complex<double>(0.0, 1.0) * A_w_I));
 
         electron_density = ArrayXXd::Zero(tw.n_t, rkr.n_r);//tw.n_active, rkr.n_r);
         z_position = initial_position;
+std::cout << "A_w_active.rows(): " << A_w_active.rows() << ", A_w_active.cols(): " << A_w_active.cols() << std::endl;
     }
  }
 
