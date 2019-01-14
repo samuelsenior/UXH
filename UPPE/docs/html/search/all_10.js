@@ -34,7 +34,7 @@ var searchData=
   ['path_5fconfig_5flog_5fdescription_5f',['path_config_log_description_',['../class_config___settings.html#aaae6998d89fe68cfb33abbdb30929cb1',1,'Config_Settings']]],
   ['path_5fconfig_5flog_5fdescription_5fset',['path_config_log_description_set',['../class_config___settings.html#a88176fb9973d013cbb761f9197743ae5',1,'Config_Settings']]],
   ['path_5fconfig_5flog_5fset',['path_config_log_set',['../class_config___settings.html#a6bf8dc0bd1b6504cab6407ca10249a93',1,'Config_Settings']]],
-  ['path_5felectron_5fdensity',['path_electron_density',['../class_config___settings.html#af9012a39fcba1d28f740c459e4715ac5',1,'Config_Settings']]],
+  ['path_5felectron_5fdensity',['path_electron_density',['../class_config___settings.html#af9012a39fcba1d28f740c459e4715ac5',1,'Config_Settings::path_electron_density()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9b3bab21c25c20785bbda176ecc8b40c',1,'Config_Settings::path_electron_density()']]],
   ['path_5felectron_5fdensity_5f',['path_electron_density_',['../class_config___settings.html#a43616eb0aeec1c10f069a082da0747b5',1,'Config_Settings']]],
   ['path_5felectron_5fdensity_5fdescription',['path_electron_density_description',['../class_config___settings.html#a81ea2d6d1fa946492fb2d2f096f6b152',1,'Config_Settings']]],
   ['path_5felectron_5fdensity_5fdescription_5f',['path_electron_density_description_',['../class_config___settings.html#aab69520f2d9a32adb57e801d7e3aff41',1,'Config_Settings']]],

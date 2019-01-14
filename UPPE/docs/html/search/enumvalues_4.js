@@ -5,6 +5,7 @@ var searchData=
   ['path_5fa_5fw_5fr',['path_A_w_R',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9',1,'Config_Settings']]],
   ['path_5fconfig_5ffile',['path_config_file',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faea30eaeccb42cf92fa55ea6f3518b2e6',1,'Config_Settings']]],
   ['path_5fconfig_5flog',['path_config_log',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9bd8b67c10b9b673ee424a957d1a953a',1,'Config_Settings']]],
+  ['path_5felectron_5fdensity',['path_electron_density',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9b3bab21c25c20785bbda176ecc8b40c',1,'Config_Settings']]],
   ['path_5fhhg_5fe',['path_HHG_E',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3e723a56c4eccaf90be08c4f0b8a4dc8',1,'Config_Settings']]],
   ['path_5fhhg_5fi',['path_HHG_I',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa656218c9143eb88ee385dfe7ea618d6c',1,'Config_Settings']]],
   ['path_5fhhg_5fr',['path_HHG_R',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55ae11324ef03ba27814d1175e8d12f0',1,'Config_Settings']]],
