@@ -365,7 +365,9 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
                         // So it needs to be the final number of neutral atoms?
                         // If so then can save a load of ram by only storing this value and not for all time steps
 // --- TAKE NOTE --- // Change back once testing done!
-                        acceleration_HHG.row(i).col(j) *= dz;
+                        //acceleration_HHG.row(i).col(j) *= dz;  // Should be done in the HHG prop program rather than here
+                                                                 // to keep the sources terms as unmodified source terms
+                                                                 // for now.
                         //acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
                         acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
 
