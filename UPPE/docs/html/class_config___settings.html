@@ -224,6 +224,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad1af53ecc2970f55f44fd8725665aa8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f74955aafdab8923c15f754e9c8ae74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a7f74955aafdab8923c15f754e9c8ae74">read_in_laser_pulse_description_set</a> (std::string)</td></tr>
 <tr class="separator:a7f74955aafdab8923c15f754e9c8ae74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63980a67cd0ead8a2094a81c6f580a98"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a63980a67cd0ead8a2094a81c6f580a98">gas_pressure_profile</a> ()</td></tr>
+<tr class="separator:a63980a67cd0ead8a2094a81c6f580a98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a167daa947c16bc735d496fa944773721"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a167daa947c16bc735d496fa944773721">gas_pressure_profile_set</a> (std::string)</td></tr>
+<tr class="separator:a167daa947c16bc735d496fa944773721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61f7ec25e064f8aa108f95cacef58aaa"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a61f7ec25e064f8aa108f95cacef58aaa">gas_pressure_profile_description</a> ()</td></tr>
+<tr class="separator:a61f7ec25e064f8aa108f95cacef58aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007088f008ed62a5778f09096913cf89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a007088f008ed62a5778f09096913cf89">gas_pressure_profile_description_set</a> (std::string)</td></tr>
+<tr class="separator:a007088f008ed62a5778f09096913cf89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5586e450111a71ad50709abea538cc7c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a5586e450111a71ad50709abea538cc7c">pend_path</a> ()</td></tr>
 <tr class="separator:a5586e450111a71ad50709abea538cc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a304590e5ee1997f8ba77b8f5b8616a0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a304590e5ee1997f8ba77b8f5b8616a0a">pend_path_set</a> (std::string)</td></tr>
@@ -345,21 +353,22 @@ Private Types</h2></td></tr>
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa54680ce9dccba6570053db39038a9d7a">SN::waist</a>, 
 <br />
 &#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa077dddf74f82da8ff2cf059ab37f93a1">SN::read_in_laser_pulse</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa5fe684b755e79d4c8fba92b02baf5e7c">SN::gas_pressure_profile</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13">SN::pend_path</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf">SN::path_input_j0</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9">SN::path_A_w_R</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa723f16bd44b5c519243c37ac165df732">SN::path_A_w_I</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9">SN::path_A_w_R</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa723f16bd44b5c519243c37ac165df732">SN::path_A_w_I</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa64b9d0f9f55fb6ad349ff704f3d710bb">SN::path_w_active</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9b3bab21c25c20785bbda176ecc8b40c">SN::path_electron_density</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55ae11324ef03ba27814d1175e8d12f0">SN::path_HHG_R</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa656218c9143eb88ee385dfe7ea618d6c">SN::path_HHG_I</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55ae11324ef03ba27814d1175e8d12f0">SN::path_HHG_R</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa656218c9143eb88ee385dfe7ea618d6c">SN::path_HHG_I</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faaf71223a57febdc55d591cfec7acdff5">SN::path_HHG_w</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3e723a56c4eccaf90be08c4f0b8a4dc8">SN::path_HHG_E</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faea30eaeccb42cf92fa55ea6f3518b2e6">SN::path_config_file</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9bd8b67c10b9b673ee424a957d1a953a">SN::path_config_log</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faea30eaeccb42cf92fa55ea6f3518b2e6">SN::path_config_file</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9bd8b67c10b9b673ee424a957d1a953a">SN::path_config_log</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45">SN::LAST_SN_ENTRY</a>
 <br />
  }</td></tr>
@@ -412,6 +421,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a769316096d7aa4e2939ed7fbf7db21e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9e24a9e2075db1510e0cb285edb7fe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ab9e24a9e2075db1510e0cb285edb7fe6">read_in_laser_pulse_</a> = 0</td></tr>
 <tr class="separator:ab9e24a9e2075db1510e0cb285edb7fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b2b81a5c3e009c3e6e786b25d4b8e4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ae9b2b81a5c3e009c3e6e786b25d4b8e4">gas_pressure_profile_</a> = &quot;capillary&quot;</td></tr>
+<tr class="separator:ae9b2b81a5c3e009c3e6e786b25d4b8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ab5ee2270acc68dc4757bb4bbe4dc9a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a6ab5ee2270acc68dc4757bb4bbe4dc9a">path_input_j0_</a> = &quot;../input/J0_zeros.bin&quot;</td></tr>
 <tr class="separator:a6ab5ee2270acc68dc4757bb4bbe4dc9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c22201375acb2a3d1b21ed40e59c023"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a0c22201375acb2a3d1b21ed40e59c023">path_A_w_R_</a> = &quot;../output/A_w_R.bin&quot;</td></tr>
@@ -470,6 +481,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aa23531b1d4459fa9a2f2ae8132e32e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a97598432a48d95259ab73b2905db9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ad2a97598432a48d95259ab73b2905db9">read_in_laser_pulse_description_</a> = &quot;(default) (int) Switch to read in an initial laser pulse&quot;</td></tr>
 <tr class="separator:ad2a97598432a48d95259ab73b2905db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c3e6f81faed8d636d874ec164b1b80"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a75c3e6f81faed8d636d874ec164b1b80">gas_pressure_profile_description_</a> = &quot;(default) (string) Switch for gas pressure profile&quot;</td></tr>
+<tr class="separator:a75c3e6f81faed8d636d874ec164b1b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f8f961fb92591750f397fbaeca57dfd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a6f8f961fb92591750f397fbaeca57dfd">pend_path_description_</a> = &quot;(default) (std::string) Pending switch&quot;</td></tr>
 <tr class="separator:a6f8f961fb92591750f397fbaeca57dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8370a038f54438143863503ffbe01581"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a8370a038f54438143863503ffbe01581">path_input_j0_description_</a> = &quot;(default) (std::string) Path to J0_zeros.bin&quot;</td></tr>
@@ -540,6 +553,7 @@ Static Private Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa55161575f3e05dfb61145c5d63d67d29"></a>ceo&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa54680ce9dccba6570053db39038a9d7a"></a>waist&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa077dddf74f82da8ff2cf059ab37f93a1"></a>read_in_laser_pulse&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa5fe684b755e79d4c8fba92b02baf5e7c"></a>gas_pressure_profile&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13"></a>pend_path&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf"></a>path_input_j0&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9"></a>path_A_w_R&#160;</td><td class="fielddoc"></td></tr>
@@ -727,6 +741,76 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">void Config_Settings::fwhm_set </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63980a67cd0ead8a2094a81c6f580a98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63980a67cd0ead8a2094a81c6f580a98">&#9670;&nbsp;</a></span>gas_pressure_profile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::gas_pressure_profile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61f7ec25e064f8aa108f95cacef58aaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61f7ec25e064f8aa108f95cacef58aaa">&#9670;&nbsp;</a></span>gas_pressure_profile_description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::gas_pressure_profile_description </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a007088f008ed62a5778f09096913cf89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a007088f008ed62a5778f09096913cf89">&#9670;&nbsp;</a></span>gas_pressure_profile_description_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::gas_pressure_profile_description_set </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a167daa947c16bc735d496fa944773721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a167daa947c16bc735d496fa944773721">&#9670;&nbsp;</a></span>gas_pressure_profile_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::gas_pressure_profile_set </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2957,6 +3041,50 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae9b2b81a5c3e009c3e6e786b25d4b8e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9b2b81a5c3e009c3e6e786b25d4b8e4">&#9670;&nbsp;</a></span>gas_pressure_profile_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::gas_pressure_profile_ = &quot;capillary&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75c3e6f81faed8d636d874ec164b1b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75c3e6f81faed8d636d874ec164b1b80">&#9670;&nbsp;</a></span>gas_pressure_profile_description_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::gas_pressure_profile_description_ = &quot;(default) (string) Switch for gas pressure profile&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae98143cb0c84b137e26a4b439e48aada"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae98143cb0c84b137e26a4b439e48aada">&#9670;&nbsp;</a></span>l_0_</h2>
 
@@ -3944,7 +4072,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;read_in_laser_pulse&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;read_in_laser_pulse&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;gas_pressure_profile&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a4f774e23910af488b9006a9c2a0aa1d3"></a>
