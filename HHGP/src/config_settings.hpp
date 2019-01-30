@@ -30,6 +30,8 @@ private:
     Z, R,
     press,
     p_av, rep, fwhm, l_0, ceo, waist,
+    inital_propagation_step,
+    gas_pressure_profile,
     pend_path,
     path_input_j0,
     path_A_w_R, path_A_w_I, path_w_active,
@@ -59,6 +61,10 @@ private:
     double l_0_ = 800e-9;
     double ceo_ = 0.0;
     double waist_ = 48.0e-6;
+
+    int inital_propagation_step_ = 1;
+
+    std::string gas_pressure_profile_ = "capillary";
 
     std::string path_input_j0_ = "../input/J0_zeros.bin";
 
@@ -98,6 +104,10 @@ private:
     std::string l_0_description_ = "(default) (double) Laser central wavelength";
     std::string ceo_description_ = "(default) (double) The ceo value";
     std::string waist_description_= "(default) (double) The waist value";
+
+    std::string inital_propagation_step_description_ = "(default) (int) The initial propagation step";
+
+    std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
 
     std::string pend_path_description_ = "(default) (std::string) Pending switch";
 
@@ -201,6 +211,16 @@ public:
     void waist_set(double);
     std::string waist_description();
     void waist_description_set(std::string);
+
+    int inital_propagation_step();
+    void inital_propagation_step_set(int);
+    std::string inital_propagation_step_description();
+    void inital_propagation_step_description_set(std::string);
+
+    std::string gas_pressure_profile();
+    void gas_pressure_profile_set(std::string);
+    std::string gas_pressure_profile_description();
+    void gas_pressure_profile_description_set(std::string);
 
     std::string pend_path();
     void pend_path_set(std::string);

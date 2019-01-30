@@ -61,10 +61,11 @@ int main(int argc, char** argv){
     // Read in spectral amplitudes from file and transfrom them into the spectral amplitudes
     // at different radial positions
 
+    int inital_propagation_step = config.inital_propagation_step();
 
     maths_textbook maths(config.path_input_j0());
     HH_source hh_source;
-    ArrayXXcd tmp_A_w_r = hh_source.GetSource(1, config, maths);
+    ArrayXXcd tmp_A_w_r = hh_source.GetSource(inital_propagation_step, config, maths);
     IO laser_pulse_file;
 
     //laser_pulse_file.read_header(config.path_A_w_R(), false);
@@ -107,7 +108,7 @@ int main(int argc, char** argv){
     DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
     DftiCommitDescriptor(ft);
     grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-    keldysh_gas gas(config.press(), tw, ft, maths);
+    keldysh_gas gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
     // Change this to be read in from file eventually!
     // E_min should really come from config or a data_config
@@ -115,7 +116,6 @@ int main(int argc, char** argv){
     // Propagation
     propagation prop(E_min, w_active, gas, rkr,
                      physics, maths, ht);
-
 
     config.print(config.path_config_log());
 
@@ -137,17 +137,20 @@ int main(int argc, char** argv){
     // Want to propagate to the end fo the capillary and include the very final
     // source terms but not propagate them outside of the capillary
     //ArrayXXcd A_w_m_out = ArrayXXcd::Zero(prop.n_k, rkr.n_r);
-    for (int i = 1; i < config.n_z() + 1; i++) {
+    for (int i = inital_propagation_step; i < config.n_z() + 1; i++) {
         std::cout << "Propagation Step: " << i << std::endl;
-        if (i == 1) {
+        if (i == inital_propagation_step) {
             prop.z += dz;
-            A_w_r = hh_source.GetSource(i, config, maths);
+            // Get source at step, set current and previous values to it
+            A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
             A_w_r_tmp = prop.block(A_w_r);
         } else {
             prop.z += dz;
+            // Propagate source at previous step to the current step and store the previous step as it
             prop.nearFieldPropagationStep(dz, A_w_r_tmp);
             A_w_r_tmp = prop.A_w_r;
-            A_w_r = hh_source.GetSource(i, config, maths);
+            // Get the new source at the current step and add the propagted source from the previous step to this
+            A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
             A_w_r_tmp = prop.block(A_w_r);
             A_w_r_tmp += prop.A_w_r;
         }
