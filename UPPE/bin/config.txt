@@ -23,6 +23,8 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {read_in_laser_pulse} {0} {(int) Switch to read in an initial laser pulse}
 
+{gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
+
 {pend_path}     {prepend} {(std::string) Pending switch}
 
 {path_input_j0} {../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}

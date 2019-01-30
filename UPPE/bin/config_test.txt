@@ -27,14 +27,14 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {path_input_j0} {../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
 
-{path_A_w_R}    {../output/000_9999999_A_w_R.bin}    {(std::string) Output path of A_w_R}
-{path_A_w_I}    {../output/000_9999999_A_w_I.bin}    {(std::string) Output path of A_w_I}
-{path_w_active} {../output/000_9999999_w_active.bin} {(std::string) Output path of w_active}
-{path_electron_density} {../output/000_9999999_electron_density.bin} {(std::string) Path of electron_density}
-{path_HHG_R} {../output/000_9999999_HHG_R.bin} {(std::string) Path of HHG_R}
-{path_HHG_I} {../output/000_9999999_HHG_I.bin} {(default) (std::string) Path of HHG_I}
-{path_HHG_w} {../output/000_9999999_HHG_w.bin} {(default) (std::string) Path of HHG w}
-{path_HHG_E} {../output/000_9999999_HHG_E.bin} {(default) (std::string) Path of HHG E}
+{path_A_w_R}    {../output/005_64000_A_w_R.bin}    {(std::string) Output path of A_w_R}
+{path_A_w_I}    {../output/005_64000_A_w_I.bin}    {(std::string) Output path of A_w_I}
+{path_w_active} {../output/005_64000_w_active.bin} {(std::string) Output path of w_active}
+{path_electron_density} {../output/005_64000_electron_density.bin} {(std::string) Path of electron_density}
+{path_HHG_R} {../output/005_64000_HHG_R.bin} {(std::string) Path of HHG_R}
+{path_HHG_I} {../output/005_64000_HHG_I.bin} {(default) (std::string) Path of HHG_I}
+{path_HHG_w} {../output/005_64000_HHG_w.bin} {(default) (std::string) Path of HHG w}
+{path_HHG_E} {../output/005_64000_HHG_E.bin} {(default) (std::string) Path of HHG E}
 
-{path_config_log}  {../output/000_9999999_config_log.txt}  {(std::string) Output path to config_log.txt}
+{path_config_log}  {../output/005_64000_config_log.txt}  {(std::string) Output path to config_log.txt}
 
