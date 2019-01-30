@@ -119,7 +119,6 @@ void laser_pulse::propagate(double dz_, capillary_fibre& capillary_, keldysh_gas
     int i = 0;
     //static
     int j = 0;
-
     //static
     double z = 0;
     //static
@@ -142,7 +141,6 @@ void laser_pulse::propagate(double dz_, capillary_fibre& capillary_, keldysh_gas
             last_step = false;
         }
     }
-
     // Backward spectral transform
     //static
     ArrayXXcd temp_2 = ArrayXXcd::Zero(tw.n_active, rkr.n_r);
@@ -162,7 +160,6 @@ void laser_pulse::propagate(double dz_, capillary_fibre& capillary_, keldysh_gas
         temp_4 = gas_.electron_density(gas_.ionization_rate(temp_3.col(ii).real()), z_position);
         electron_density.col(ii) = temp_4;//.segment(tw.w_active_min_index, tw.n_active);
     }
-
     z_position += z;
 
     // Apply additional shift

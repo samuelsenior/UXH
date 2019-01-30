@@ -31,6 +31,7 @@ private:
     press,
     p_av, rep, fwhm, l_0, ceo, waist,
     read_in_laser_pulse,
+    gas_pressure_profile,
     pend_path,
     path_input_j0,
     path_A_w_R, path_A_w_I, path_w_active,
@@ -63,6 +64,8 @@ private:
     double waist_ = 48.0e-6;
 
     int read_in_laser_pulse_ = 0;
+
+    std::string gas_pressure_profile_ = "capillary";
 
     std::string path_input_j0_ = "../input/J0_zeros.bin";
 
@@ -104,6 +107,8 @@ private:
     std::string waist_description_= "(default) (double) The waist value";
 
     std::string read_in_laser_pulse_description_= "(default) (int) Switch to read in an initial laser pulse";
+
+    std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
 
     std::string pend_path_description_ = "(default) (std::string) Pending switch";
 
@@ -212,6 +217,11 @@ public:
     void read_in_laser_pulse_set(int);
     std::string read_in_laser_pulse_description();
     void read_in_laser_pulse_description_set(std::string);
+
+    std::string gas_pressure_profile();
+    void gas_pressure_profile_set(std::string);
+    std::string gas_pressure_profile_description();
+    void gas_pressure_profile_description_set(std::string);
 
     std::string pend_path();
     void pend_path_set(std::string);

@@ -163,13 +163,11 @@ int main(int argc, char** argv){
     DftiCommitDescriptor(ft_HHG);
 
     DHT ht(config.n_r(), maths);
-std::cout << "Foo 1" << std::endl;
     // Grids
     grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
     grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
 
     double dz = config.Z() / double(config.n_z());
-std::cout << "Foo 2" << std::endl;
     int initial_step;
     int propagation_step;
     double initial_position;
@@ -178,24 +176,13 @@ std::cout << "Foo 2" << std::endl;
         std::string tmp = config.path_A_w_R().substr(found+1);
         found = tmp.find_first_of("_");
 
-std::cout << config.path_A_w_R() << std::endl;
-std::cout << tmp << std::endl;
-
-std::cout << "Foo 3" << std::endl;
         std::string sim_no_str = tmp.substr(0, found);
         
 
         std::size_t found_2 = tmp.find_first_of("_", found+1);
-std::cout << found << found_2 << std::endl;
 
-std::cout << "tmp: " << tmp << std::endl;
         std::string tmp_2 = tmp.substr(found+1, found_2-found-1);
         int sim_no = std::stoi(sim_no_str);
-
-std::cout << "tmp_2: " << tmp_2 << std::endl;
-std::cout << "Foo 4" << std::endl;
-std::cout << sim_no_str << std::endl;
-std::cout << sim_no << std::endl;
 
         initial_step = stoi(tmp_2);  
         propagation_step = initial_step + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
@@ -225,7 +212,7 @@ std::cout << "Next propagation step (read in from initial step): " << propagatio
 
 std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_active.real().rows() << ", laser_driving.A_w_active.real().cols():" << laser_driving.A_w_active.real().cols() << std::endl;
     capillary_fibre capillary_driving(config.Z(), rkr, tw, physics, maths);
-    keldysh_gas gas(config.press(), tw, ft, maths);
+    keldysh_gas gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
     //--------------------------------------------------------------------------------------------//
     // 3. Propagation
