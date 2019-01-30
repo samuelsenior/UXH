@@ -23,8 +23,10 @@ using namespace Eigen;
 //------------------------------------------------------------------------------------------------//
 /*! Constructor */
 keldysh_gas::keldysh_gas() {}
-keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_) :
-    maths(maths_), tw(tw_), ft(ft_) {
+keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_,
+                         std::string gas_pressure_profile_) :
+    maths(maths_), tw(tw_), ft(ft_),
+    gas_pressure_profile(gas_pressure_profile_) {
 
     atom_density_max = press_ * 1.0e5 / (physics.k_B * 300.0);  // [atoms/m^3]
     z_max = 0.07;
@@ -37,9 +39,29 @@ keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft
     C_kl = 0.95;
     n_star = 0.93;
     kappa = std::sqrt(U / 13.60);
+
+    // Witchcraft to switch around which pressure profile function atom_density
+    // points to.
+    if (gas_pressure_profile == "capillary") {
+        std::cout << "keldysh_gas: capillary gas pressure profile chosen!" << std::endl;
+        set_atom_density_ptr(&keldysh_gas::capillary_pressure_profile);
+    } else if (gas_pressure_profile == "constant") {
+        std::cout << "keldysh_gas: constant gas pressure profile chosen!" << std::endl;
+        set_atom_density_ptr(&keldysh_gas::constant_pressure_profile);
+    }
 }
 
+// Witchcraft to switch around which pressure profile function atom_density
+// points to.
+void keldysh_gas::set_atom_density_ptr(atom_density_func_ptr ptr) {
+    atom_density_func = ptr;
+}
 double keldysh_gas::atom_density(double z) {
+    return (this->*atom_density_func)(z);
+}
+
+// Pressure profile functions
+double keldysh_gas::capillary_pressure_profile(double z) {
     if (z >= inlet_1 && z <= inlet_2) {
         // Constant max value
         return atom_density_max;
@@ -59,6 +81,32 @@ double keldysh_gas::atom_density(double z) {
         return 0.0;
     }
 }
+
+double keldysh_gas::constant_pressure_profile(double z) {
+        // Constant max value
+        return atom_density_max;
+}
+
+//double keldysh_gas::atom_density(double z) {
+//    if (z >= inlet_1 && z <= inlet_2) {
+//        // Constant max value
+//        return atom_density_max;
+//    } else if (z < inlet_1 - transitionLength) {
+//        // Ramp function up to 80%
+//        return atom_density_max*(z/(inlet_1 - transitionLength)) * 0.8;
+//    } else if (z >= inlet_1 - transitionLength && z < inlet_1) {
+//        // Step up from 80% to 100%
+//        return atom_density_max * (0.8 + 0.2*(z - (inlet_1 - transitionLength)) / (transitionLength));
+//    } else if (z > inlet_2 && z <= inlet_2 + transitionLength) {
+//        // Step down from 100% to 80%
+//        return atom_density_max * (1 - ((z - inlet_2)/(transitionLength)) * 0.2);
+//    } else if (z > inlet_2 + transitionLength && z <= z_max) {
+//        // Ramp down from 80% to 0%
+//        return atom_density_max * (1 - (z - (inlet_2 + transitionLength)) / (z_max - (inlet_2 + transitionLength))) * 0.8;
+//    } else {
+//        return 0.0;
+//    }
+//}
 
 //------------------------------------------------------------------------------------------------//
 /*! Evaluate nonlinear polarization for active frequencies */
@@ -86,9 +134,7 @@ ArrayXd keldysh_gas::ionization_rate(ArrayXd E_t_) {
 //------------------------------------------------------------------------------------------------//
 /*! Calculate free electron density (solve rate equations) */
 ArrayXd keldysh_gas::electron_density(ArrayXd W_t_, double z) {
-
     ArrayXd output =  atom_density(z) * (1.0 - (-maths.cumtrapz(tw.t, W_t_)).exp());
-
     return(output);
 }
 
