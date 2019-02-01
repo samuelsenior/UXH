@@ -372,7 +372,7 @@ std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 
 
 // Uncomment the below when the debugging and testing longer wavelegnths is done
 //                hhg = prop.block(accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r));
-                hhg = accelerationToHHSource;
+                hhg = accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r);
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < prop.n_k; i++) {//n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
