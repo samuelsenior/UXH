@@ -254,9 +254,11 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     double E_min = 10.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
-std::cout << "Foo 1" << std::endl;
-std::cout << "HHG w(0): " << tw_XNLO.w(0) << ", HHG w(" << tw_XNLO.w.cols() << "): " << tw_XNLO.w(tw_XNLO.w.cols()) << std::endl;
+
     w_tmp = tw_XNLO.w;
+
+std::cout << "Foo 1" << std::endl;
+std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
 
     int w_active_min_index_HHG = 0;
     while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
@@ -368,7 +370,8 @@ std::cout << "HHG w(0): " << tw_XNLO.w(0) << ", HHG w(" << tw_XNLO.w.cols() << "
                 for (int i = 0; i < rkr.n_r; i++)
                     DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
 
-                hhg = prop.block(accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r));
+// Uncomment the below when the debugging and testing longer wavelegnths is done
+//                hhg = prop.block(accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r));
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < prop.n_k; i++) {//n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
