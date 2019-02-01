@@ -269,19 +269,19 @@ std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 
     }
 
     n_active_HHG = count - w_active_min_index_HHG;
-    w_active_HHG = w_tmp;//.segment(w_active_min_index_HHG, n_active_HHG);
+    w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
 
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
-//        prop = propagation(E_min, w_active_HHG,
-//                           gas, rkr,
-//                           physics, maths, ht);
-//        w_active_HHG = prop.segment(w_active_HHG);
-//        hhgp = HHGP(prop,
-//                    config_HHGP,
-//                    rkr, gas,
-//                    maths, ht);
+        prop = propagation(E_min, w_active_HHG,
+                           gas, rkr,
+                           physics, maths, ht);
+        w_active_HHG = prop.segment(w_active_HHG);
+        hhgp = HHGP(prop,
+                    config_HHGP,
+                    rkr, gas,
+                    maths, ht);
     }
 
     ArrayXXcd hhg;
@@ -372,7 +372,9 @@ std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 
 
 // Uncomment the below when the debugging and testing longer wavelegnths is done
 //                hhg = prop.block(accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r));
-                hhg = accelerationToHHSource;
+                hhg = prop.block(accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r));
+                //hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
+                //hhg = accelerationToHHSource;
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < prop.n_k; i++) {//n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
