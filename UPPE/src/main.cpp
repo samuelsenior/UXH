@@ -248,7 +248,7 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
 
     double lamda_min_HHG = 6.0e-9;
-    double lamda_max_HHG = 150e-9;
+    double lamda_max_HHG = 1200e-9;//150e-9;
     double w_active_min_HHG = 2.0 * maths.pi * physics.c / lamda_max_HHG;
     double w_active_max_HHG = 2.0 * maths.pi * physics.c / lamda_min_HHG;
     double E_min = 10.0;

@@ -59,7 +59,7 @@ private:
     double p_av_ = 1.0;
     double rep_ = 1.0e3;
     double fwhm_ = 40e-15;
-    double l_0_ = 800e-9;
+    double l_0_ = 800.0e-9;
     double ceo_ = 0.0;
     double waist_ = 48.0e-6;
 
