@@ -239,7 +239,7 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     XNLO::Result atomResponse;
     //ArrayXd neutral_atoms = ArrayXd::Zero(config.n_r());
     ArrayXXd neutral_atoms = ArrayXXd::Zero(config.n_t(), config.n_r());
-    ArrayXd temp_linSpace_HHG_acceleration = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);
+    ArrayXd temp_linSpace_HHG_acceleration = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);  // I think this is wring and should be using T_min/T_max of XNLO???
     ArrayXd window_HHG_acceleration = (1 - ((0.5 * maths.pi * temp_linSpace_HHG_acceleration / 500e-15).sin()).pow(50));
 
     ArrayXXcd A_w_active;
@@ -254,7 +254,8 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     double E_min = 10.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
-
+std::cout << "Foo 1" << std::endl;
+std::cout << "HHG w(0): " << tw_XNLO.w(0) << ", HHG w(" << tw_XNLO.w.cols() << "): " << tw_XNLO.w(tw_XNLO.w.cols()) << std::endl;
     w_tmp = tw_XNLO.w;
 
     int w_active_min_index_HHG = 0;
@@ -271,14 +272,14 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
-        prop = propagation(E_min, w_active_HHG,
-                           gas, rkr,
-                           physics, maths, ht);
-        w_active_HHG = prop.segment(w_active_HHG);
-        hhgp = HHGP(prop,
-                    config_HHGP,
-                    rkr, gas,
-                    maths, ht);
+//        prop = propagation(E_min, w_active_HHG,
+//                           gas, rkr,
+//                           physics, maths, ht);
+//        w_active_HHG = prop.segment(w_active_HHG);
+//        hhgp = HHGP(prop,
+//                    config_HHGP,
+//                    rkr, gas,
+//                    maths, ht);
     }
 
     ArrayXXcd hhg;
