@@ -251,7 +251,7 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     double lamda_max_HHG = 1200e-9;//150e-9;
     double w_active_min_HHG = 2.0 * maths.pi * physics.c / lamda_max_HHG;
     double w_active_max_HHG = 2.0 * maths.pi * physics.c / lamda_min_HHG;
-    double E_min = 10.0;
+    double E_min = 1.0;//10.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
 
@@ -270,6 +270,10 @@ std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 
 
     n_active_HHG = count - w_active_min_index_HHG;
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
+std::cout << "Foo 2" << std::endl;
+std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
+std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
+
 
     propagation prop;
     HHGP hhgp;
