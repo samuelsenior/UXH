@@ -379,12 +379,11 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 hhg = prop.block(accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r));
                 //hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
                 //hhg = accelerationToHHSource;
-// Uncomment after debugging, and when it's known this is right
-//                for (int j = 0; j < rkr.n_r; j++) {
-//                    for (int i = 0; i < prop.n_k; i++) {//n_active_HHG; i++) {
-//                        hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
-//                    }
-//                }
+                for (int j = 0; j < rkr.n_r; j++) {
+                    for (int i = 0; i < prop.n_k; i++) {//n_active_HHG; i++) {
+                        hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
+                    }
+                }
 
                 if (ii == 1) {
                     hhg_previous = hhg;
