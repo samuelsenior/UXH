@@ -204,7 +204,7 @@ std::cout << "XNLO FOO 6" << std::endl;
 std::cout << "tempt_3.rows(): " << temp_3.rows() << ", temp_3.cols(): " << temp_3.cols() << std::endl;
 std::cout << "N_t: " << N_t << ", n_active: " << n_active << ", w_active_min_index: " << w_active_min_index << std::endl;
 std::cout << "temp_2.rows(): " << temp_2.rows() << ", " << "temp_2.cols(): " << temp_2.cols() << std::endl;
-    temp_3.block(N_t - n_active - w_active_min_index + 1, 0,
+    temp_3.block(N_t - n_active - w_active_min_index + 1*0, 0,
                  n_active, N_cols) = temp_2.conjugate().colwise().reverse();
 std::cout << "XNLO FOO 7" << std::endl;
 
