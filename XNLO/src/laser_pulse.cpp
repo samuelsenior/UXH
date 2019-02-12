@@ -187,15 +187,23 @@ laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, Array
 
     int N_t = int(T_u / dt_X);
 
+std::cout << "XNLO FOO 1" << std::endl;
+
     // Backward spectral transform
     ArrayXXcd temp_2 = ArrayXXcd::Zero(n_active, N_cols);
+std::cout << "XNLO FOO 2" << std::endl;
     temp_2.block(0, 0, n_active, N_cols) = A_w_m;
+std::cout << "XNLO FOO 3" << std::endl;
     for (int ii = 0; ii < n_active; ii++)
         temp_2.row(ii) = ht.backward(A_w_m.row(ii));
+std::cout << "XNLO FOO 4" << std::endl;
     ArrayXXcd temp_3 = ArrayXXcd::Zero(N_t, N_cols);
+std::cout << "XNLO FOO 5" << std::endl;
     temp_3.block(w_active_min_index , 0, n_active, N_cols) = temp_2;
+std::cout << "XNLO FOO 6" << std::endl;
     temp_3.block(N_t - n_active - w_active_min_index + 1, 0,
                  n_active, N_cols) = temp_2.conjugate().colwise().reverse();
+std::cout << "XNLO FOO 7" << std::endl;
 
     // Set up transform, MKL
     MKL_LONG dimension = 1;
