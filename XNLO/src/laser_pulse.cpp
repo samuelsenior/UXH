@@ -179,7 +179,7 @@ laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, Array
     DHT ht(N_cols, maths);
 
     int n_active = N_rows;
-    int w_active_min_index = 32;
+    int w_active_min_index = 0;//32;
 
     double dw_U = std::abs(w_active(0) - w_active(1));
     double dt_X = std::abs(tw_.t(0) - tw_.t(1));
