@@ -152,7 +152,7 @@ laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, do
 }
 
 /*! Constructor */
-laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active) {
+laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, w_active_min_index_UPPE) {
 
     maths_textbook maths("../input/J0_zeros.bin");
     physics_textbook physics;
@@ -179,7 +179,7 @@ laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, Array
     DHT ht(N_cols, maths);
 
     int n_active = N_rows;
-    int w_active_min_index = 32;//0;//32;
+    //int w_active_min_index = 32;//0;//32;
 
     double dw_U = std::abs(w_active(0) - w_active(1));
     double dt_X = std::abs(tw_.t(0) - tw_.t(1));
@@ -199,12 +199,12 @@ std::cout << "XNLO FOO 3" << std::endl;
 std::cout << "XNLO FOO 4" << std::endl;
     ArrayXXcd temp_3 = ArrayXXcd::Zero(N_t, N_cols);
 std::cout << "XNLO FOO 5" << std::endl;
-    temp_3.block(w_active_min_index , 0, n_active, N_cols) = temp_2;
+    temp_3.block(w_active_min_index_UPPE , 0, n_active, N_cols) = temp_2;
 std::cout << "XNLO FOO 6" << std::endl;
 std::cout << "tempt_3.rows(): " << temp_3.rows() << ", temp_3.cols(): " << temp_3.cols() << std::endl;
-std::cout << "N_t: " << N_t << ", n_active: " << n_active << ", w_active_min_index: " << w_active_min_index << std::endl;
+std::cout << "N_t: " << N_t << ", n_active: " << n_active << ", w_active_min_index_UPPE: " << w_active_min_index_UPPE << std::endl;
 std::cout << "temp_2.rows(): " << temp_2.rows() << ", " << "temp_2.cols(): " << temp_2.cols() << std::endl;
-    temp_3.block(N_t - n_active - w_active_min_index + 1*0, 0,
+    temp_3.block(N_t - n_active - w_active_min_index_UPPE + 1*0, 0,
                  n_active, N_cols) = temp_2.conjugate().colwise().reverse();
 std::cout << "XNLO FOO 7" << std::endl;
 std::cout << "temp_3.row(N_t).col(0): " << temp_3.row(N_t-1).col(0) << "temp_2.conjugate().row(0).col(0): " << temp_2.conjugate().row(0).col(0) << std::endl;

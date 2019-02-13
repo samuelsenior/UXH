@@ -326,7 +326,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 
             int response_rate = 1;//config.n_z() / 10;
             if (total_processes > 1 && ((ii % response_rate == 0) || ii == 1)) {
-                atomResponse = XNLO::XNLO(A_w_active, tw.w_active);
+                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index);
             }
 
             if (this_process == 0 && total_processes > 1) {

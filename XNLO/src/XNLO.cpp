@@ -37,7 +37,7 @@ using namespace Eigen;
 */
 namespace XNLO {
 
-    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active){
+    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE){
 
       std::string config_file_path;
       config_file_path = "../configFiles/config_XNLO.txt";
@@ -99,7 +99,7 @@ namespace XNLO {
 
             // Field
             double ROC = std::numeric_limits<double>::max();
-            laser_pulse pulse(rkr, tw, A_w_active, w_active);
+            laser_pulse pulse(rkr, tw, A_w_active, w_active, w_active_min_index_UPPE);
 
             // Send
             for (int ii = 1; ii < total_nodes; ii++) {
