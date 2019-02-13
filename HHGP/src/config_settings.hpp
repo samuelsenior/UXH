@@ -78,8 +78,8 @@ private:
     std::string path_HHG_w_ = "../output/HHG_w.bin";
     std::string path_HHG_E_ = "../output/HHG_E.bin";
 
-    std::string path_config_file_ = "../configFiles/config.txt";
-    std::string path_config_log_ = "../output/config_log.txt";
+    std::string path_config_file_ = "../configFiles/config_HHGP.txt";
+    std::string path_config_log_ = "../output/config_log_HHGP.txt";
 
     std::string pend_path_ = "prepend";
 

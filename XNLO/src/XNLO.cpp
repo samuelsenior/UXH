@@ -40,7 +40,7 @@ namespace XNLO {
     Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active){
 
       std::string config_file_path;
-      config_file_path = "./config_XNLO_test.txt";
+      config_file_path = "../configFiles/config_XNLO.txt";
 
         // MPI
         int this_node;

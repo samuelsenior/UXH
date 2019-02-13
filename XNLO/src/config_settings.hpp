@@ -77,8 +77,8 @@ private:
 
     std::string path_E_ = "../output/E.bin";
 
-    std::string path_config_file_ = "./config.txt";
-    std::string path_config_log_ = "../output/config_log.txt";
+    std::string path_config_file_ = "../configFiles/config_XNLO.txt";
+    std::string path_config_log_ = "../output/config_log_XNLO.txt";
 
     // Input parameters and settings descriptions (the default value is just '(default value)')
     std::string atoms_per_worker_description_ = "(default) (int) The number of atoms per worker";
