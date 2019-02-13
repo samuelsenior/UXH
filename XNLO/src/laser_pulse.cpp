@@ -152,7 +152,7 @@ laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, do
 }
 
 /*! Constructor */
-laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, w_active_min_index_UPPE) {
+laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE) {
 
     maths_textbook maths("../input/J0_zeros.bin");
     physics_textbook physics;
