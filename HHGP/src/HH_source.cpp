@@ -19,7 +19,7 @@ ArrayXXcd HH_source::GetSource(int fileNumber,
                            HH::Config_Settings config, maths_textbook maths) {
 
     std::string dir = "../../../Results/UPPE-XNLO/13-02-19/data/";
-    std::string prepend = "062_";
+    std::string prepend = "063_";
     std::string propStep = std::to_string(static_cast<unsigned long long>(fileNumber));
     std::string restOfName_R = "_HHG_R.bin";
     std::string restOfName_I = "_HHG_I.bin";
@@ -40,19 +40,20 @@ ArrayXXcd HH_source::GetSource(int fileNumber,
 
     // Combine the two real array that represent the real and complex parts and make a complex array from them
     // Not longer have the inputs in A_w_m form, rahter now A_w_r, therefore should change variable names
-    ArrayXXcd A_w_m = (A_w_R.cast<std::complex<double> >() + (std::complex<double>(0.0, 1.0) * A_w_I));
+    ArrayXXcd A_w_r = (A_w_R.cast<std::complex<double> >() + (std::complex<double>(0.0, 1.0) * A_w_I));
 
     //maths_textbook maths(config.path_input_j0());
     // Set up Hankel transform
-    DHT ht(N_cols, maths);
-    int n_active = N_rows;
-    // Backward spectral transform
-    // Changed to have the read in HHG outputs in the form A_w_r rather than A_w_m,
-    // therefore no longer need this Hankel transform here
-    ArrayXXcd A_w_r = ArrayXXcd::Zero(n_active, N_cols);
-    A_w_r.block(0, 0, n_active, N_cols) = A_w_m;
-    //for (int ii = 0; ii < n_active; ii++)
-    //    A_w_r.row(ii) = ht.backward(A_w_m.row(ii));
+//    DHT ht(N_cols, maths);
+//    int n_active = N_rows;
+//    // Backward spectral transform
+//    // Changed to have the read in HHG outputs in the form A_w_r rather than A_w_m,
+//    // therefore no longer need this Hankel transform here
+//std::cout << "A_w_m.rows(): " << A_w_m.rows() << ", A_w_m.cols(): " << A_w_m.cols() << ", n_active: " << n_active << std::endl;
+//    ArrayXXcd A_w_r = ArrayXXcd::Zero(n_active, N_cols);
+//    A_w_r.block(0, 0, n_active, N_cols) = A_w_m;
+//    //for (int ii = 0; ii < n_active; ii++)
+//    //    A_w_r.row(ii) = ht.backward(A_w_m.row(ii));
 
     return A_w_r;
 }
