@@ -281,7 +281,8 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
         prop = propagation(E_min, w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
-        w_active_HHG = prop.segment(w_active_HHG);
+// Uncomment when known if this is correct or not - 15-02-19
+        //w_active_HHG = prop.segment(w_active_HHG);
         hhgp = HHGP(prop,
                     config_HHGP,
                     rkr, gas,
