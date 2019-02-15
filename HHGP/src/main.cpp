@@ -107,6 +107,7 @@ int main(int argc, char** argv){
     DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
     DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
     DftiCommitDescriptor(ft);
+    // Is this UPPE or XNLO tw that is wanted?
     grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
     keldysh_gas gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
