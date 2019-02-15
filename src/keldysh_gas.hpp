@@ -60,7 +60,8 @@ public:
     double kappa;
 
     // Functions
-keldysh_gas();
+    keldysh_gas();
+    keldysh_gas(double press_, std::string gas_pressure_profile_);
     keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_,
                 std::string gas_pressure_profile_);
     //std::function<double(double)> atom_density;

@@ -51,6 +51,7 @@ propagation::propagation(double E_min_,
       //    while () {...}
       while ((physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) < (E_min)) {
             k_excluded++;
+std::cout << "k_excluded: " << k_excluded << ", w_active_tmp(k_excluded): " << w_active_tmp(k_excluded) << ", E: " << (physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) << std::endl;
       }
       n_k = w_active_tmp.rows() - k_excluded;
       w_active = w_active_tmp.segment(k_excluded, n_k);

@@ -93,23 +93,10 @@ int main(int argc, char** argv){
     //maths_textbook maths(config.path_input_j0());
     physics_textbook physics;
 
-    //Set up above
-    //DHT ht(config.n_r(), maths);
-
     // Grids
     //grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
     grid_rkr rkr(N_cols, config.R(), N_cols, maths);
-    
-    MKL_LONG dimensions = 1;
-    MKL_LONG length = config.n_t();
-    double scale = 1.0 / config.n_t();
-    DFTI_DESCRIPTOR_HANDLE ft;
-    DftiCreateDescriptor(&ft, DFTI_DOUBLE, DFTI_COMPLEX, dimensions, length);
-    DftiSetValue(ft, DFTI_BACKWARD_SCALE, scale);
-    DftiCommitDescriptor(ft);
-    // Is this UPPE or XNLO tw that is wanted?
-    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
-    keldysh_gas gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
+    keldysh_gas gas(config.press(), config.gas_pressure_profile());
 
     // Change this to be read in from file eventually!
     // E_min should really come from config or a data_config
@@ -152,8 +139,8 @@ int main(int argc, char** argv){
             A_w_r_tmp = prop.A_w_r;
             // Get the new source at the current step and add the propagted source from the previous step to this
             A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
-            A_w_r_tmp = prop.block(A_w_r);
-            A_w_r_tmp += prop.A_w_r;
+            //A_w_r_tmp = prop.block(A_w_r);
+            A_w_r_tmp += prop.block(A_w_r);//prop.A_w_r;
         }
 
         // Output step
@@ -173,7 +160,7 @@ int main(int argc, char** argv){
 
         file_prop_step.overwrite(HHG_w, false);
         file_prop_step.write_header(HHG_w, prop.n_k, 1, false);
-        file_prop_step.write_double(HHG_w, prop.segment(w_active), prop.n_k, 1, false);
+        file_prop_step.write_double(HHG_w, prop.w_active, prop.n_k, 1, false);
         // This would output the source and propagated HHG at the current position
     }
 

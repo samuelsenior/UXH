@@ -23,6 +23,32 @@ using namespace Eigen;
 //------------------------------------------------------------------------------------------------//
 /*! Constructor */
 keldysh_gas::keldysh_gas() {}
+keldysh_gas::keldysh_gas(double press_,
+                         std::string gas_pressure_profile_) :
+                         gas_pressure_profile(gas_pressure_profile_) {
+
+    atom_density_max = press_ * 1.0e5 / (physics.k_B * 300.0);  // [atoms/m^3]
+    z_max = 0.07;
+    inlet_1 = 0.02;
+    inlet_2 = z_max - 0.02;
+    transitionLength = 0.001;
+
+    // Ionization parameters, argon
+    U = 15.76;  // [eV]
+    C_kl = 0.95;
+    n_star = 0.93;
+    kappa = std::sqrt(U / 13.60);
+
+    // Witchcraft to switch around which pressure profile function atom_density
+    // points to.
+    if (gas_pressure_profile == "capillary") {
+        std::cout << "keldysh_gas: capillary gas pressure profile chosen!" << std::endl;
+        set_atom_density_ptr(&keldysh_gas::capillary_pressure_profile);
+    } else if (gas_pressure_profile == "constant") {
+        std::cout << "keldysh_gas: constant gas pressure profile chosen!" << std::endl;
+        set_atom_density_ptr(&keldysh_gas::constant_pressure_profile);
+    }
+}
 keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_,
                          std::string gas_pressure_profile_) :
     maths(maths_), tw(tw_), ft(ft_),
