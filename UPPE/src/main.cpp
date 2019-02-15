@@ -381,7 +381,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
                 //hhg = accelerationToHHSource;
                 for (int j = 0; j < rkr.n_r; j++) {
-                    for (int i = 0; i < prop.n_k; i++) {//n_active_HHG; i++) {
+                    for (int i = 0; i < n_active_HHG/*prop.n_k*/; i++) {//n_active_HHG; i++) {
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
