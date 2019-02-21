@@ -252,6 +252,7 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     double w_active_min_HHG = 2.0 * maths.pi * physics.c / lamda_max_HHG;
     double w_active_max_HHG = 2.0 * maths.pi * physics.c / lamda_min_HHG;
     double E_min = 10.0;
+    double E_max = 206.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
 
@@ -278,7 +279,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
-        prop = propagation(E_min, w_active_HHG,
+        prop = propagation(E_min, E_max, w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
 // Uncomment when known if this is correct or not - 15-02-19
