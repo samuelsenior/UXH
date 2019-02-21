@@ -26,6 +26,7 @@
 */
 propagation::propagation() {}
 propagation::propagation(double E_min_,
+                         double E_max_,
                          Eigen::ArrayXd w_active_,
                          keldysh_gas& gas_,
                          grid_rkr& rkr_,
@@ -34,6 +35,7 @@ propagation::propagation(double E_min_,
                          DHT& ht_)
                         :
                          E_min(E_min_),
+                         E_max(E_max_),
                          w_active_tmp(w_active_),
                          gas(gas_),
                          rkr(rkr_),
@@ -53,7 +55,13 @@ propagation::propagation(double E_min_,
             k_excluded++;
 std::cout << "k_excluded: " << k_excluded << ", w_active_tmp(k_excluded): " << w_active_tmp(k_excluded) << ", E: " << (physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) << std::endl;
       }
-      n_k = w_active_tmp.rows() - k_excluded;
+      int count = 0;
+      while ((physics.h / (2.0*maths.pi) * w_active_tmp(count) * physics.E_eV) < (E_max)) {
+            count++;
+      }
+std::cout << "count: " << count << std::endl;
+
+      n_k = count-k_excluded;//w_active_tmp.rows() - k_excluded;
       w_active = w_active_tmp.segment(k_excluded, n_k);
       k = std::complex<double>(1, 0) * w_active / physics.c;
       A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
@@ -159,14 +167,21 @@ void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
       // numbers of k
 
       // For each active frequency, propagate that frequency a step in z
+std::cout << "dz: " << dz << ", z: " << z << std::endl;
 
       for(int i = 0; i < n_k; i++) {
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it
             for(int j = 0; j < rkr.n_r; j++) {
+//std::cout << "k.rows(): " << k.rows() << ", k.cols(): " << k.cols() << std::endl;
                   //
-                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+                  //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(n(i)*n(i)*k(i)*k(i) - k_r(j)*k_r(j), 0.5));
+//                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(k(i)*k(i) - k_r(j)*k_r(j), 0.5));
+                  //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+
+//std::cout << "std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)): " << std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5) << std::endl;
             }
             // Backtransform to put back into radial representation
             A_w_r.row(i) = ht.backward(A_w_kr);

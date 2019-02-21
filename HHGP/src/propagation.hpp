@@ -21,6 +21,7 @@ class propagation{
     // Data
     // E_min should really come from config or a data_config
     double E_min;
+    double E_max;
     physics_textbook physics;  /*!< Physical constants */
     maths_textbook maths;      /*!< Mathematical constants and functions */
     keldysh_gas gas;
@@ -57,7 +58,7 @@ public:
     // Functions
     // E_min should really come from config or a data_config
     propagation();
-    propagation(double E_min_, Eigen::ArrayXd w_active_,
+    propagation(double E_min_, double E_max_, Eigen::ArrayXd w_active_,
                 keldysh_gas& gas_, grid_rkr& rkr_,
                 physics_textbook& physics_, maths_textbook& maths_,
                 DHT& ht_);
