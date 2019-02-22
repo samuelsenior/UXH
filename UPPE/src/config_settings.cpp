@@ -29,6 +29,7 @@ const char * Config_Settings::setting_name[] = {
   "press",
   "p_av", "rep", "fwhm", "l_0", "ceo", "waist",
   "read_in_laser_pulse",
+  "original_n_z",
   "gas_pressure_profile",
   "pend_path",
   "path_input_j0",
@@ -202,6 +203,10 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::read_in_laser_pulse :
         read_in_laser_pulse_set(std::stoi(variable_value_str));
         read_in_laser_pulse_description_set(input_description_char);
+        break;
+      case SN::original_n_z :
+        original_n_z_set(std::stoi(variable_value_str));
+        original_n_z_description_set(input_description_char);
         break;
 
       case SN::gas_pressure_profile:
@@ -583,6 +588,7 @@ void Config_Settings::print() {
     std::cout << "   ceo:              " << ceo() << "                            " << ceo_description() << std::endl;
     std::cout << "   waist:            " << waist() << "                      " << waist_description() << std::endl;
     std::cout << "   read_in_laser_pulse: " << read_in_laser_pulse() << "   " << read_in_laser_pulse_description() << std::endl;
+    std::cout << "   original_n_z: " << original_n_z() << "   " << original_n_z_description() << std::endl;
     std::cout << "   gas_pressure_profile: " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
     std::cout << "   pend_path         " << pend_path() << "                      " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:    " << path_input_j0() << "        " << path_input_j0_description() << std::endl;
@@ -625,6 +631,7 @@ void Config_Settings::print(std::string path_) {
       config_log << "{waist} {" << waist() << "} {" << waist_description() << "}\n";
 
       config_log << "{read_in_laser_pulse} {" << read_in_laser_pulse() << "} {" << read_in_laser_pulse_description() << "}\n";
+      config_log << "{original_n_z} {" << original_n_z() << "} {" << original_n_z_description() << "}\n";
 
       config_log << "{gas_pressure_profile} {" << gas_pressure_profile() << "} {" << gas_pressure_profile_description() << "}\n";
 
@@ -737,6 +744,12 @@ int Config_Settings::read_in_laser_pulse() { return read_in_laser_pulse_; }
 void Config_Settings::read_in_laser_pulse_set(int value) { read_in_laser_pulse_ = value; }
 std::string Config_Settings::read_in_laser_pulse_description() { return read_in_laser_pulse_description_; }
 void Config_Settings::read_in_laser_pulse_description_set(std::string description) { read_in_laser_pulse_description_ = description; }
+
+int Config_Settings::original_n_z() { return original_n_z_; }
+void Config_Settings::original_n_z_set(int value) { original_n_z_ = value; }
+std::string Config_Settings::original_n_z_description() { return original_n_z_description_; }
+void Config_Settings::original_n_z_description_set(std::string description) { original_n_z_description_ = description; }
+
 
 std::string Config_Settings::gas_pressure_profile() { return gas_pressure_profile_; }
 void Config_Settings::gas_pressure_profile_set(std::string value) { gas_pressure_profile_ = value; }

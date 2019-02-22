@@ -31,6 +31,7 @@ private:
     press,
     p_av, rep, fwhm, l_0, ceo, waist,
     read_in_laser_pulse,
+    original_n_z,
     gas_pressure_profile,
     pend_path,
     path_input_j0,
@@ -65,6 +66,8 @@ private:
 
     int read_in_laser_pulse_ = 0;
 
+    int original_n_z_ = n_z_;
+
     std::string gas_pressure_profile_ = "capillary";
 
     std::string path_input_j0_ = "../input/J0_zeros.bin";
@@ -89,7 +92,7 @@ private:
     std::string n_r_description_ = "(default) (int) The z_r value";
     std::string n_m_description_ = "(default) (int) Number of modes";
 
-    std::string n_t_description_ = "(default) (int) The z_t value";
+    std::string n_t_description_ = "(default) (int) The n_t value";
     std::string T_description_ = "(default) (double) The T value";
     std::string w_active_min_description_ = "(default) (double) Minimum angular frequency";
     std::string w_active_max_description_ = "(default) (double) Maximum angular frequency";
@@ -107,6 +110,7 @@ private:
     std::string waist_description_= "(default) (double) The waist value";
 
     std::string read_in_laser_pulse_description_= "(default) (int) Switch to read in an initial laser pulse";
+    std::string original_n_z_descritpion_ = "(default) (int) Original n_z from read in file";
 
     std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
 
@@ -217,6 +221,10 @@ public:
     void read_in_laser_pulse_set(int);
     std::string read_in_laser_pulse_description();
     void read_in_laser_pulse_description_set(std::string);
+    int original_n_z();
+    void original_n_z_set(int);
+    std::string original_n_z_description();
+    void original_n_z_set(std::string);
 
     std::string gas_pressure_profile();
     void gas_pressure_profile_set(std::string);
