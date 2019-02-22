@@ -110,7 +110,7 @@ private:
     std::string waist_description_= "(default) (double) The waist value";
 
     std::string read_in_laser_pulse_description_= "(default) (int) Switch to read in an initial laser pulse";
-    std::string original_n_z_descritpion_ = "(default) (int) Original n_z from read in file";
+    std::string original_n_z_description_ = "(default) (int) Original n_z from read in file";
 
     std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
 
