@@ -224,7 +224,7 @@ public:
     int original_n_z();
     void original_n_z_set(int);
     std::string original_n_z_description();
-    void original_n_z_set(std::string);
+    void original_n_z_description_set(std::string);
 
     std::string gas_pressure_profile();
     void gas_pressure_profile_set(std::string);
