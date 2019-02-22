@@ -184,12 +184,17 @@ int main(int argc, char** argv){
         std::string tmp_2 = tmp.substr(found+1, found_2-found-1);
         int sim_no = std::stoi(sim_no_str);
 
-        initial_step = stoi(tmp_2);  
+        initial_step = stoi(tmp_2);
+        initial_step = int(double(config.n_z()) * double(stoi(tmp_2)) / double(config.original_n_z()));
+
         propagation_step = initial_step + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
                                               // initial step being read in is step i-1
         initial_position = dz * initial_step;
 std::cout << "Simulation run (read in): " << sim_no << std::endl;
+std::cout << "Initial step: " << initial_step << std::endl;
 std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
+std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
+std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
 
         //std::string tmp_prop_step_str = 
 

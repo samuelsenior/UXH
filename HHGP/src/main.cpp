@@ -128,27 +128,27 @@ int main(int argc, char** argv){
     //ArrayXXcd A_w_m_out = ArrayXXcd::Zero(prop.n_k, rkr.n_r);
     for (int i = inital_propagation_step; i < config.n_z() + 1; i++) {
         std::cout << "Propagation Step: " << i << std::endl;
-//        if (i == inital_propagation_step) {
-//// NOT SURE
-//            prop.z += dz/2.0;
-//            // Get source at step, set current and previous values to it
-//            A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
-//            A_w_r_tmp = prop.block(A_w_r);
-//        } else {
-//            prop.z += dz;
-//            // Propagate source at previous step to the current step and store the previous step as it
-//            prop.nearFieldPropagationStep(dz, A_w_r_tmp);
-//            A_w_r_tmp = prop.A_w_r;
-//            // Get the new source at the current step and add the propagted source from the previous step to this
-//            A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
-//            A_w_r_tmp += prop.block(A_w_r);//prop.A_w_r;
-//        }
+        if (i == inital_propagation_step) {
+// NOT SURE
+            prop.z += dz/2.0;
+            // Get source at step, set current and previous values to it
+            A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
+            A_w_r_tmp = prop.block(A_w_r);
+        } else {
+            prop.z += dz;
+            // Propagate source at previous step to the current step and store the previous step as it
+            prop.nearFieldPropagationStep(dz, A_w_r_tmp);
+            A_w_r_tmp = prop.A_w_r;
+            // Get the new source at the current step and add the propagted source from the previous step to this
+            A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
+            A_w_r_tmp += prop.block(A_w_r);//prop.A_w_r;
+        }
         //A_w_r = hh_source.GetSource(i, config, maths);
-        prop.z += dz;
-        A_w_r = prop.block(hh_source.GetSource(i, config, maths));
-        prop.nearFieldPropagationStep(config.Z() - prop.z, A_w_r);
-        A_w_r = prop.A_w_r;
-        A_w_r_tmp += A_w_r;
+//        prop.z += dz;
+//        A_w_r = prop.block(hh_source.GetSource(i, config, maths));
+//        prop.nearFieldPropagationStep(config.Z() - prop.z, A_w_r);
+//        A_w_r = prop.A_w_r;
+//        A_w_r_tmp += A_w_r;
 
 
         // Output step
