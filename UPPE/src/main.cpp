@@ -310,9 +310,13 @@ std::cout << "Step Foo 1" << std::endl;
 std::cout << "Step Foo 2" << std::endl;
                 // Driving pulse:
                 config.step_path(ii);
+std::cout << "Step Foo 2.1" << std::endl;
                 file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), false);
+std::cout << "Step Foo 2.2" << std::endl;
                 file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), false);
+std::cout << "Step Foo 2.3" << std::endl;
                 file_prop_step.write(tw.w_active, config.path_w_active(), false);
+std::cout << "Step Foo 2.4" << std::endl;
                 file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), false);
 std::cout << "Step Foo 3" << std::endl;
                 A_w_active = laser_driving.A_w_active;
