@@ -194,7 +194,7 @@ std::cout << "Simulation run (read in): " << sim_no << std::endl;
 std::cout << "Initial step: " << initial_step << std::endl;
 std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
 std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
-std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() <<
+std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
 
         //std::string tmp_prop_step_str = 
 
