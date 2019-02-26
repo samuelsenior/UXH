@@ -372,7 +372,7 @@ std::cout << "pending_string_len: " << pending_string_len << std::endl;
 std::cout << "found: " << found << std::endl;
 std::cout << "path: " << path_A_R << std::endl;
 
-std::string tmp = path_A_R.substr(found+1);
+  std::string tmp = path_A_R.substr(found+1);
 std::cout << "tmp: " << tmp << std::endl;
   size_t count_underscore = std::count(tmp.begin(), tmp.end(), '_');
 std::cout << "count_underscore: " << count_underscore << std::endl;

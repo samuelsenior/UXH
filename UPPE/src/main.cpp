@@ -311,13 +311,13 @@ std::cout << "Step Foo 2" << std::endl;
                 // Driving pulse:
                 config.step_path(ii);
 std::cout << "Step Foo 2.1" << std::endl;
-                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), false);
+                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), true);
 std::cout << "Step Foo 2.2" << std::endl;
-                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), false);
+                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), true);
 std::cout << "Step Foo 2.3" << std::endl;
-                file_prop_step.write(tw.w_active, config.path_w_active(), false);
+                file_prop_step.write(tw.w_active, config.path_w_active(), true);
 std::cout << "Step Foo 2.4" << std::endl;
-                file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), false);
+                file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), true);
 std::cout << "Step Foo 3" << std::endl;
                 A_w_active = laser_driving.A_w_active;
 std::cout << "Step Foo 4" << std::endl;
