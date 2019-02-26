@@ -386,7 +386,7 @@ std::cout << "count_underscore: " << count_underscore << std::endl;
       path_A_R = pending_string + "_" + path_A_R.substr(2, path_A_R.size());
     }
   } else {
-    if (step == 1 || count_underscore == 3) {
+    if (step == 1 || count_underscore <= 3) {
       path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+1);
       path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+1);
       path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+1);
