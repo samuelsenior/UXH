@@ -30,7 +30,7 @@ private:
     Z, R,
     press,
     p_av, rep, fwhm, l_0, ceo, waist,
-    read_in_laser_pulse,
+    read_in_laser_pulse, path_A_w_R_initial, path_A_w_I_initial, path_w_active_initial,
     original_n_z,
     gas_pressure_profile,
     pend_path,
@@ -65,6 +65,9 @@ private:
     double waist_ = 48.0e-6;
 
     int read_in_laser_pulse_ = 0;
+    std::string path_A_w_R_initial_ = "../output/A_w_R.bin";
+    std::string path_A_w_I_initial_ = "../output/A_w_I.bin";
+    std::string path_w_active_initial_ = "../output/w_active.bin";
 
     int original_n_z_ = n_z_;
 
@@ -110,6 +113,9 @@ private:
     std::string waist_description_= "(default) (double) The waist value";
 
     std::string read_in_laser_pulse_description_= "(default) (int) Switch to read in an initial laser pulse";
+    std::string path_A_w_R_initial_description_ = "(default) (std::string) Initial path of A_w_R";
+    std::string path_A_w_I_initial_description_ = "(default) (std::string) Initial path of A_w_I";
+    std::string path_w_active_initial_description_ = "(default) (std::string) Initial path of w_active";
     std::string original_n_z_description_ = "(default) (int) Original n_z from read in file";
 
     std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
@@ -221,6 +227,18 @@ public:
     void read_in_laser_pulse_set(int);
     std::string read_in_laser_pulse_description();
     void read_in_laser_pulse_description_set(std::string);
+    std::string path_A_w_R_initial();
+    void path_A_w_R_initial_set(std::string);
+    std::string path_A_w_R_initial_description();
+    void path_A_w_R_initial_description_set(std::string);
+    std::string path_A_w_I_initial();
+    void path_A_w_I_initial_set(std::string);
+    std::string path_A_w_I_initial_description();
+    void path_A_w_I_initial_description_set(std::string);
+    std::string path_w_active_initial();
+    void path_w_active_initial_set(std::string);
+    std::string path_w_active_initial_description();
+    void path_w_active_initial_description_set(std::string);
     int original_n_z();
     void original_n_z_set(int);
     std::string original_n_z_description();

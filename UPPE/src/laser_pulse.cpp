@@ -84,10 +84,10 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
 std::cout << "Reading in initial laser pulse from file..." << std::endl;
         // Read in spectral amplitudes from file
         IO laser_pulse_file;
-        laser_pulse_file.read_header(config.path_A_w_R(), false);
-        ArrayXXd A_w_R = laser_pulse_file.read_double(config.path_A_w_R());
-        laser_pulse_file.read_header(config.path_A_w_I(), false);
-        ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I());
+        laser_pulse_file.read_header(config.path_A_w_R_initial(), false);
+        ArrayXXd A_w_R = laser_pulse_file.read_double(config.path_A_w_R_initial());
+        laser_pulse_file.read_header(config.path_A_w_I_initial(), false);
+        ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I_initial());
         int N_cols = laser_pulse_file.N_col_;
         int N_rows = laser_pulse_file.N_row_;
 std::cout << "N_cols: " << N_cols << ", N_rows: " << N_rows << std::endl;

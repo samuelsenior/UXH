@@ -172,8 +172,8 @@ int main(int argc, char** argv){
     int propagation_step;
     double initial_position;
     if (config.read_in_laser_pulse() == 1) {
-        std::size_t found = config.path_A_w_R().find_last_of("/");
-        std::string tmp = config.path_A_w_R().substr(found+1);
+        std::size_t found = config.path_A_w_R_initial().find_last_of("/");
+        std::string tmp = config.path_A_w_R_initial().substr(found+1);
         found = tmp.find_first_of("_");
 
         std::string sim_no_str = tmp.substr(0, found);
@@ -194,7 +194,7 @@ std::cout << "Simulation run (read in): " << sim_no << std::endl;
 std::cout << "Initial step: " << initial_step << std::endl;
 std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
 std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
-std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
+std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() <<
 
         //std::string tmp_prop_step_str = 
 
@@ -413,10 +413,10 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 // -This is now also the previous term for the next step
                 // -Repeat
 
-                file_prop_step.write(hhg.real(), config.path_HHG_R(), false);
-                file_prop_step.write(hhg.imag(), config.path_HHG_I(), false);
-                file_prop_step.write(w_active_HHG, config.path_HHG_w(), false);
-                file_prop_step.write(E, config.path_HHG_E(), false);
+                file_prop_step.write(hhg.real(), config.path_HHG_R(), true);
+                file_prop_step.write(hhg.imag(), config.path_HHG_I(), true);
+                file_prop_step.write(w_active_HHG, config.path_HHG_w(), true);
+                file_prop_step.write(E, config.path_HHG_E(), true);
 
             }
         }
