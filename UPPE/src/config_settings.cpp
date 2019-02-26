@@ -12,6 +12,8 @@
 #include <iostream>
 #include <string>
 
+#include <algorithm> // For std::count
+
 //namespace UPPE {
 
 //------------------------------------------------------------------------------------------------//
@@ -369,6 +371,12 @@ std::cout << "pending_string_len: " << pending_string_len << std::endl;
   static std::size_t found = path_A_R.find_last_of("/");
 std::cout << "found: " << found << std::endl;
 std::cout << "path: " << path_A_R << std::endl;
+
+std::string tmp = path_A_R.substr(found+1);
+std::cout << "tmp: " << tmp << std::endl;
+  size_t count_underscore = std::count(tmp.begin(), tmp.end(), '_');
+std::cout << "count_underscore: " << count_underscore << std::endl;
+
   if (found == -1) {
     if (step == 1) {
       path_A_R = path_A_R.substr(0, 3) + "_" + pending_string + "_" + path_A_R.substr(3);
@@ -378,7 +386,7 @@ std::cout << "path: " << path_A_R << std::endl;
       path_A_R = pending_string + "_" + path_A_R.substr(2, path_A_R.size());
     }
   } else {
-    if (step == 1) {
+    if (step == 1 || count_underscore == 3) {
       path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+1);
       path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+1);
       path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+1);
