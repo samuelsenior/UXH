@@ -352,6 +352,8 @@ void Config_Settings::check_paths(bool print_to_screen) {
 void Config_Settings::step_path(int step) {
 
   std::string pending_string = std::to_string(static_cast<unsigned long long>(step));
+  int pending_string_len = std::to_string(static_cast<unsigned long long>(step - 1)).length();
+std::cout << "pending_string_len: " << pending_string_len << std::endl;
   std::string path_A_R = path_A_w_R();
   std::string path_A_I = path_A_w_I();
   std::string path_w = path_w_active();
@@ -365,6 +367,8 @@ void Config_Settings::step_path(int step) {
 
 
   static std::size_t found = path_A_R.find_last_of("/");
+std::cout << "found: " << found << std::endl;
+std::cout << "path: " << path_A_R << std::endl;
   if (found == -1) {
     if (step == 1) {
       path_A_R = path_A_R.substr(0, 3) + "_" + pending_string + "_" + path_A_R.substr(3);
@@ -375,151 +379,23 @@ void Config_Settings::step_path(int step) {
     }
   } else {
     if (step == 1) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+4);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+4);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+4);
-      //path_A = path_A.substr(0, found+1) + pending_string + "_" + path_A.substr(found+1);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+4);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+4);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+4);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+4);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+4);
-    } else if (step > 1 && step < 10) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+6);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+6);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+6);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+6);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+6);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+6);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+6);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+6);
-    } else if (step == 10) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+6);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+6);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+6);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+6);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+6);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+6);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+6);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+6);
-    } else if (step > 10 && step < 100) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+7);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+7);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+7);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+7);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+7);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+7);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+7);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+7);
-    } else if (step == 100) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+7);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+7);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+7);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+7);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+7);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+7);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+7);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+7);
-    } else if (step > 100 && step < 1000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+8);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+8);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+8);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+8);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+8);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+8);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+8);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+8);
-    } else if (step == 1000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+8);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+8);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+8);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+8);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+8);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+8);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+8);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+8);
-    } else if (step > 1000 && step < 10000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+9);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+9);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+9);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+9);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+9);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+9);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+9);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+9);
-    } else if (step == 10000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+9);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+9);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+9);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+9);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+9);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+9);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+9);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+9);
-    } else if (step > 10000 && step < 100000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+10);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+10);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+10);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+10);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+10);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+10);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+10);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+10);
-    } else if (step == 100000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+10);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+10);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+10);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+10);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+10);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+10);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+10);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+10);
-    } else if (step > 100000 && step < 1000000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+11);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+11);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+11);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+11);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+11);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+11);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+11);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+11);
-    } else if (step == 1000000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+11);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+11);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+11);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+11);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+11);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+11);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+11);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+11);
-    } else if (step > 1000000 && step < 10000000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+12);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+12);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+12);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+12);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+12);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+12);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+12);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+12);
-    } else if (step == 10000000) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+12);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+12);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+12);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+12);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+12);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+12);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+12);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+12);
-    } else {
-      std::cout << "Config_Settings::step_path: Error, currently do not support nz values greater than 10000000!" << std::endl;
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+13);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+13);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+13);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+13);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+13);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+13);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+13);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+13);
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+1);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+1);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+1);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+3+1);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+3+1);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+3+1);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+1);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+3+1);
+    } else if (step > 1) {
+      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+2+pending_string_len);
+      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+2+pending_string_len);
+      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+2+pending_string_len);
+      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+3+2+pending_string_len);
+      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+3+2+pending_string_len);
+      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+3+2+pending_string_len);
+      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+2+pending_string_len);
+      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+3+2+pending_string_len);
     }
   }
 
