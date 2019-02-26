@@ -305,17 +305,18 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
         for (int ii = propagation_step; ii < config.n_z() + 1; ii++) {
             if (this_process == 0) {
                 std::cout << "Propagation step: " << ii << std::endl;
+std::cout << "Step Foo 1" << std::endl;
                 laser_driving.propagate(dz, capillary_driving, gas);
-
+std::cout << "Step Foo 2" << std::endl;
                 // Driving pulse:
                 config.step_path(ii);
                 file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), false);
                 file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), false);
                 file_prop_step.write(tw.w_active, config.path_w_active(), false);
                 file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), false);
-
+std::cout << "Step Foo 3" << std::endl;
                 A_w_active = laser_driving.A_w_active;
-
+std::cout << "Step Foo 4" << std::endl;
                 if (total_processes > 1) {
                     // Send
                     for (int j = 1; j < total_processes; j++) {
@@ -324,6 +325,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                     }
                 }
+std::cout << "Step Foo 5" << std::endl;
             } else {
                 // Receive
                 A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
@@ -337,13 +339,14 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
             }
 
             if (this_process == 0 && total_processes > 1) {
+std::cout << "Step Foo 6" << std::endl;
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
                         neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
                     }
                 }
-
+std::cout << "Step Foo 7" << std::endl;
                 E = atomResponse.E;
                 // Delete atomResponse after use to save ram
                 acceleration_HHG = atomResponse.acceleration;
@@ -376,11 +379,12 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                         // First is easier to implement, second is more accurate
                     }
                 }
+std::cout << "Step Foo 8" << std::endl;
                 // Apply forward spectral transform
                 ArrayXXcd accelerationToHHSource = acceleration_HHG.cast<std::complex<double> >();
                 for (int i = 0; i < rkr.n_r; i++)
                     DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
-
+std::cout << "Step Foo 9" << std::endl;
 // Uncomment the below when the debugging and testing longer wavelegnths is done
 //                hhg = prop.block(accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r));
                 //hhg = prop.block(accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r));
@@ -391,7 +395,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-
+std::cout << "Step Foo 10" << std::endl;
                 if (ii == 1) {
                     hhg_previous = hhg;
                 } else {
@@ -412,12 +416,12 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 //  propagate previous to current and add source to it
                 // -This is now also the previous term for the next step
                 // -Repeat
-
+std::cout << "Step Foo 11" << std::endl;
                 file_prop_step.write(hhg.real(), config.path_HHG_R(), true);
                 file_prop_step.write(hhg.imag(), config.path_HHG_I(), true);
                 file_prop_step.write(w_active_HHG, config.path_HHG_w(), true);
                 file_prop_step.write(E, config.path_HHG_E(), true);
-
+std::cout << "Step Foo 12" << std::endl;
             }
         }
         std::cout << "-------------------------------------------------------------------------------\n";
