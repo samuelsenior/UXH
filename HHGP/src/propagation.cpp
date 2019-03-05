@@ -130,7 +130,8 @@ std::complex<double> propagation::n(int i) {
       //
       // Rename to refractiveIndex or something similar
 
-      return (1.0 - gas.atom_density(z) * refractiveIndex(i));
+// Don't know if atom_density should be complex or double...?
+      return (1.0 - std::complex<double>(1, 1) * gas.atom_density(z) * refractiveIndex(i));
 }
 
 /*!
