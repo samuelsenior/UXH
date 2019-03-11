@@ -106,6 +106,8 @@ int main(int argc, char** argv){
     propagation prop(E_min, E_max, w_active, gas, rkr,
                      physics, maths, ht);
 
+   prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z());;
+
     config.print(config.path_config_log());
 
     std::cout << "-------------------------------------------------------------------------------\n";
