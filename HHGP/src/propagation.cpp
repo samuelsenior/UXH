@@ -97,7 +97,7 @@ std::cout << "count: " << count << std::endl;
       // propagation step, only the position dependent atom density bit
       //refractiveIndex = 1 - (rho_0 * physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);//1 - rho * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);
       
-      refractiveIndex = (physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (f1 + std::complex<double>(0.0, 1.0) * f2);
+      refractiveIndex = (physics.r_0 * (lamda.real()).pow(2.0))/(2.0 * maths.pi) * (f1 + std::complex<double>(0.0, 1.0) * f2);
 
       //config.step_path(i);
       IO RI_output;
@@ -177,10 +177,10 @@ std::cout << "dz: " << dz << ", z: " << z << std::endl;
             for(int j = 0; j < rkr.n_r; j++) {
 //std::cout << "k.rows(): " << k.rows() << ", k.cols(): " << k.cols() << std::endl;
                   //
-                  //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(n(i)*n(i)*k(i)*k(i) - k_r(j)*k_r(j), 0.5));
+                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+                  //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(n(i)*n(i)*k(i)*k(i) - k_r(j)*k_r(j), 0.5));
 //                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(k(i)*k(i) - k_r(j)*k_r(j), 0.5));
-                  //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+//                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
 
 //std::cout << "std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)): " << std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5) << std::endl;
             }
