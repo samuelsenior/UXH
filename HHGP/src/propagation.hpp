@@ -1,6 +1,7 @@
 #ifndef __PROPAGATION_HPP_INCLUDED__
 #define __PROPAGATION_HPP_INCLUDED__
 
+#include "config_settings.hpp"
 #include "../../src/keldysh_gas.hpp"
 #include "../../src/physics_textbook.hpp"
 #include "../../src/maths_textbook.hpp"
@@ -27,6 +28,9 @@ class propagation{
     keldysh_gas gas;
     grid_rkr rkr;              /*!< Radial grid */
     DHT ht;                    /*!< Hankel transform */
+    HH::Config_Settings config;
+
+    bool to_end_only;
 
     Eigen::ArrayXd w_active_tmp;
     int k_excluded;
@@ -61,7 +65,7 @@ public:
     propagation(double E_min_, double E_max_, Eigen::ArrayXd w_active_,
                 keldysh_gas& gas_, grid_rkr& rkr_,
                 physics_textbook& physics_, maths_textbook& maths_,
-                DHT& ht_);
+                DHT& ht_, HH::Config_Settings config_);
 
     Eigen::ArrayXd segment(Eigen::ArrayXd k);
     Eigen::ArrayXXcd block(Eigen::ArrayXXcd A_w_e_);

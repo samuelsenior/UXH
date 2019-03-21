@@ -1,4 +1,5 @@
 #include "propagation.hpp"
+#include "config_settings.hpp"
 #include "../../src/keldysh_gas.hpp"
 #include "../../src/grid_rkr.hpp"
 #include "../../src/grid_tw.hpp"
@@ -32,7 +33,8 @@ propagation::propagation(double E_min_,
                          grid_rkr& rkr_,
                          physics_textbook& physics_,
                          maths_textbook& maths_,
-                         DHT& ht_)
+                         DHT& ht_,
+                         HH::Config_Settings config_)
                         :
                          E_min(E_min_),
                          E_max(E_max_),
@@ -41,11 +43,14 @@ propagation::propagation(double E_min_,
                          rkr(rkr_),
                          physics(physics_),
                          maths(maths_),
-                         ht(ht_) {
+                         ht(ht_),
+                         config(config_) {
 
       z = 0.0;
       k_r = rkr.kr;
       k_excluded = 0;
+
+      to_end_only = true;
       // Put the divides on the other side to become multiplies to save
       // computational time
       // Do it like this in the future so less calculations:
@@ -131,7 +136,26 @@ std::complex<double> propagation::n(int i) {
       // Rename to refractiveIndex or something similar
 
 // Don't know if atom_density should be complex or double...?
-      return (1.0 - gas.atom_density(z) * refractiveIndex(i));
+      //bool to_end_only = true;
+      double z_max_prime = config.Z() - (gas.inlet_2 + gas.transitionLength);
+      double z_prime = z - (gas.inlet_2 + gas.transitionLength);
+      if (to_end_only == true) {
+//std::cout << "z: " << z << ", " << (1.0 - (0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) << std::endl;
+//std::cout << "z: " << z << ", " << (0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2.0*z_max_prime) << std::endl;
+//std::cout << "gas.atom_density_max: " << gas.atom_density_max << std::endl;
+//std::cout << "gas.inlet_2: " << gas.inlet_2 << std::endl;
+//std::cout << "gas.transitionLength: " << gas.transitionLength << std::endl;
+//std::cout << "config.Z(): " << config.Z() << std::endl;
+//std::cout << "z_max_prime: " << z_max_prime << std::endl;
+//std::cout << "z_prime: " << z_prime << std::endl;
+//std::cout << "N(z): " << gas.atom_density(z) << std::endl;
+//std::cout << "-----" << std::endl;
+
+
+        return (1.0 - ((0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) * refractiveIndex(i));
+      } else {
+        return (1.0 - gas.atom_density(z) * refractiveIndex(i));
+      }
 }
 
 /*!
@@ -168,8 +192,26 @@ void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
       // numbers of k
 
       // For each active frequency, propagate that frequency a step in z
-std::cout << "dz: " << dz << ", z: " << z << std::endl;
+//std::cout << "dz: " << dz << ", z: " << z << std::endl;
 
+      if (to_end_only == true) {
+std::cout << "z: " << z << ", delta_z: " << config.Z() - z << std::endl;
+        for(int i = 0; i < n_k; i++) {
+            // Transform from radial representation to frequency representation
+            A_w_kr = ht.forward(A_w_r_.row(i));
+            // For each radial point (/radial frequency), apply the propagator to it
+            for(int j = 0; j < rkr.n_r; j++) {
+//std::cout << "A_w_kr(j): " << A_w_kr(j) << " -> ";
+                A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (config.Z() - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+//std::cout << std::exp(std::complex<double>(0, -1) * (config.Z() - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)) << std::endl;
+
+//std::cout << "A_w_kr(j): " << A_w_kr(j) << std::endl;
+            }
+            // Backtransform to put back into radial representation
+            A_w_r.row(i) = ht.backward(A_w_kr);
+        }
+      } else {
+std::cout << "dz: " << dz << ", z: " << z << std::endl;
       for(int i = 0; i < n_k; i++) {
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
@@ -187,6 +229,7 @@ std::cout << "dz: " << dz << ", z: " << z << std::endl;
             // Backtransform to put back into radial representation
             A_w_r.row(i) = ht.backward(A_w_kr);
       }
+    }
 }
 
 /*!
