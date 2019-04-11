@@ -26,6 +26,7 @@ Config_Settings::Config_Settings() {  }
 
 const char * Config_Settings::setting_name[] = {
   "n_z", "n_r", "n_m",
+  "output_sampling_rate",
   "n_t", "T", "w_active_min", "w_active_max",
   "Z", "R",
   "press",
@@ -145,6 +146,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::n_m :
         n_m_set(std::stoi(variable_value_str));
         n_m_description_set(input_description_char);
+        break;
+
+      case SN::output_sampling_rate :
+        output_sampling_rate_set(std::stoi(variable_value_str));
+        output_sampling_rate_description_set(input_description_char);
         break;
 
       case SN::n_t :
@@ -351,33 +357,28 @@ void Config_Settings::check_paths(bool print_to_screen) {
   //path_config_log_set(path);
 }
 
-void Config_Settings::step_path(int step) {
+void Config_Settings::step_path(int step, std::string variable) {
 
-  std::string pending_string = std::to_string(static_cast<unsigned long long>(step));
-  int pending_string_len = std::to_string(static_cast<unsigned long long>(step - 1)).length();
-std::cout << "pending_string_len: " << pending_string_len << std::endl;
-  std::string path_A_R = path_A_w_R();
-  std::string path_A_I = path_A_w_I();
-  std::string path_w = path_w_active();
+  pending_string_stepWorkings = std::to_string(static_cast<unsigned long long>(step));
+  pending_string_len_stepWorkings = std::to_string(static_cast<unsigned long long>(step - 1)).length();
+  path_A_R_stepWorkings = path_A_w_R();
+  path_A_I_stepWorkings = path_A_w_I();
+  path_w_stepWorkings = path_w_active();
 
-  std::string path_e = path_electron_density();
+  path_e_stepWorkings = path_electron_density();
 
-  std::string path_hhg_r = path_HHG_R();
-  std::string path_hhg_i = path_HHG_I();
-  std::string path_hhg_w = path_HHG_w();
-  std::string path_hhg_E = path_HHG_E();
+  path_hhg_r_stepWorkings = path_HHG_R();
+  path_hhg_i_stepWorkings = path_HHG_I();
+  path_hhg_w_stepWorkings = path_HHG_w();
+  path_hhg_E_stepWorkings = path_HHG_E();
 
 
-  static std::size_t found = path_A_R.find_last_of("/");
-std::cout << "found: " << found << std::endl;
-std::cout << "path: " << path_A_R << std::endl;
+  found_stepWorkings = path_A_R_stepWorkings.find_last_of("/");
+  tmp_stepWorkings = path_A_R_stepWorkings.substr(found_stepWorkings+1);
+  count_underscore_stepWorkings = std::count(tmp_stepWorkings.begin(), tmp_stepWorkings.end(), '_');
 
-  std::string tmp = path_A_R.substr(found+1);
-std::cout << "tmp: " << tmp << std::endl;
-  size_t count_underscore = std::count(tmp.begin(), tmp.end(), '_');
-std::cout << "count_underscore: " << count_underscore << std::endl;
-
-  if (found == -1) {
+// Trying something new and clever below
+/*  if (found == -1) {
     if (step == 1) {
       path_A_R = path_A_R.substr(0, 3) + "_" + pending_string + "_" + path_A_R.substr(3);
     } else if (step > 1 && step < 10) {
@@ -389,20 +390,24 @@ std::cout << "count_underscore: " << count_underscore << std::endl;
     if (step == 1 || count_underscore <= 3) {
       path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+1);
       path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+1);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+1);
+      // Only needs to be output once!
+      //path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+1);
       path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+3+1);
       path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+3+1);
       path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+3+1);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+1);
+      // Only needs to be output once!
+      //path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+1);
       path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+3+1);
     } else if (step > 1) {
       path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+2+pending_string_len);
       path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+2+pending_string_len);
-      path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+2+pending_string_len);
+      // Only needs to be output once!
+      //path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+2+pending_string_len);
       path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+3+2+pending_string_len);
       path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+3+2+pending_string_len);
       path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+3+2+pending_string_len);
-      path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+2+pending_string_len);
+      // Only needs to be output once!
+      //path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+2+pending_string_len);
       path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+3+2+pending_string_len);
     }
   }
@@ -414,20 +419,62 @@ std::cout << "count_underscore: " << count_underscore << std::endl;
   //if (step >= 10) path_A_w_R_set(path_A_w_R().substr(3, path_A_w_R().size()));
   //std::string path = set_path(path_A_w_R(), pending_string, "prepend");
   //std::cout << path << std::endl;
-  path_A_w_R_set(path_A_R);
-
+  if (variable == "UPPE_A_w") {
+    path_A_w_R_step_set(path_A_R);
+    path_A_w_I_step_set(path_A_I);
+  } else if (variable == "HHG_A_w") {
+    path_HHG_R_step_set(path_hhg_r);
+    path_HHG_I_step_set(path_hhg_i);
+  } else if (variable == "UPPE_electron_density") {
+    path_electron_density_step_set(path_e);
+  } else if (variable == "HHG_electric_field") {
+    path_HHG_E_step_set(path_hhg_E);
+  }
   //std::string path = set_path(path_A_w_I(), pending_string, "prepend");
-  path_A_w_I_set(path_A_I);
-
   //path = set_path(path_w_active(), pending_string, "prepend");
-  path_w_active_set(path_w);
+  // Only needs to be output once!
+  //path_w_step_active_set(path_w);
+  // Only needs to be output once!
+  //path_HHG_w_step_set(path_hhg_w);
+*/
 
-  path_electron_density_set(path_e);
-
-  path_HHG_R_set(path_hhg_r);
-  path_HHG_I_set(path_hhg_i);
-  path_HHG_w_set(path_hhg_w);
-  path_HHG_E_set(path_hhg_E);
+  if (found_stepWorkings == -1) {
+    if (variable == "UPPE_A_w") {
+      path_A_R_stepWorkings = path_A_R_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_A_R_stepWorkings.substr(3);
+      path_A_I_stepWorkings = path_A_I_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_A_I_stepWorkings.substr(3);
+      path_A_w_R_step_set(path_A_R_stepWorkings);
+      path_A_w_I_step_set(path_A_I_stepWorkings);
+    } else if (variable == "HHG_A_w") {
+      path_hhg_r_stepWorkings = path_hhg_r_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_hhg_r_stepWorkings.substr(3);
+      path_hhg_i_stepWorkings = path_hhg_i_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_hhg_i_stepWorkings.substr(3);
+      path_HHG_R_step_set(path_hhg_r_stepWorkings);
+      path_HHG_I_step_set(path_hhg_i_stepWorkings);
+    } else if (variable == "UPPE_electron_density") {
+      path_e_stepWorkings = path_e_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_e_stepWorkings.substr(3);
+      path_electron_density_step_set(path_e_stepWorkings);
+    } else if (variable == "HHG_electric_field") {
+      path_hhg_E_stepWorkings = path_hhg_E_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_hhg_E_stepWorkings.substr(3);
+      path_HHG_E_step_set(path_hhg_E_stepWorkings);
+    }
+  } else {
+    if (variable == "UPPE_A_w") {
+      path_A_R_stepWorkings = path_A_R_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_A_R_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_A_I_stepWorkings = path_A_I_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_A_I_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_A_w_R_step_set(path_A_R_stepWorkings);
+      path_A_w_I_step_set(path_A_I_stepWorkings);
+    } else if (variable == "HHG_A_w") {
+      path_hhg_r_stepWorkings = path_hhg_r_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_hhg_r_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_hhg_i_stepWorkings = path_hhg_i_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_hhg_i_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_HHG_R_step_set(path_hhg_r_stepWorkings);
+      path_HHG_I_step_set(path_hhg_i_stepWorkings);
+    } else if (variable == "UPPE_electron_density") {
+      path_e_stepWorkings = path_e_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_e_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_electron_density_step_set(path_e_stepWorkings);
+    } else if (variable == "HHG_electric_field") {
+      path_hhg_E_stepWorkings = path_hhg_E_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_hhg_E_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_HHG_E_step_set(path_hhg_E_stepWorkings);
+    }
+  }
 }
 
 std::string Config_Settings::set_path(std::string path, std::string pending_string, std::string pend) {
@@ -468,9 +515,10 @@ void Config_Settings::print() {
     std::cout << "-------------------------------------------------------------------------------\n";
     std::cout << "Input Parameters and Settings:\n";
     std::cout << "-------------------------------------------------------------------------------\n";
-    std::cout << "   n_z:              " << n_z() << "                           " << n_z_description() << std::endl;
-    std::cout << "   n_r:              " << n_r() << "                           " << n_r_description() << std::endl;
-    std::cout << "   n_m:              " << n_m() << "                           " << n_m_description() << std::endl;
+    std::cout << "   n_z:                  " << n_z() << "                       " << n_z_description() << std::endl;
+    std::cout << "   n_r:                  " << n_r() << "                       " << n_r_description() << std::endl;
+    std::cout << "   n_m:                  " << n_m() << "                       " << n_m_description() << std::endl;
+    std::cout << "   output_sampling_rate: " << output_sampling_rate() << "                       " << output_sampling_rate_description() << std::endl;
     std::cout << "   n_t:              " << n_t() << "                         " << n_t_description() << std::endl;
     std::cout << "   T:                " << T() << "                        " << T_description() << std::endl;
     std::cout << "   w_active_min:     " << w_active_min() << "                        " << w_active_min_description() << std::endl;
@@ -509,6 +557,8 @@ void Config_Settings::print(std::string path_) {
       config_log << "{n_z} {" << n_z() << "} {" << n_z_description() << "}\n";
       config_log << "{n_r} {" << n_r() << "} {" << n_r_description() << "}\n";
       config_log << "{n_m} {" << n_m() << "} {" << n_m_description() << "}\n";
+
+      config_log << "{output_sampling_rate} {" << output_sampling_rate() << "} {" << output_sampling_rate_description() << "}\n";
 
       config_log << "{n_t} {" << n_t() << "} {" << n_t_description() << "}\n";
       config_log << "{T} {" << T() << "} {" << T_description() << "}\n";
@@ -571,6 +621,13 @@ int Config_Settings::n_m() { return n_m_; }
 void Config_Settings::n_m_set(int value) { n_m_ = value; }
 std::string Config_Settings::n_m_description() { return n_m_description_; }
 void Config_Settings::n_m_description_set(std::string description) { n_m_description_ = description; }
+
+
+int Config_Settings::output_sampling_rate() { return output_sampling_rate_; }
+void Config_Settings::output_sampling_rate_set(int value) { output_sampling_rate_ = value; }
+std::string Config_Settings::output_sampling_rate_description() { return output_sampling_rate_description_; }
+void Config_Settings::output_sampling_rate_description_set(std::string description) { output_sampling_rate_description_ = description; }
+
 
 int Config_Settings::n_t() { return n_t_; }
 void Config_Settings::n_t_set(int value) { n_t_ = value; }
@@ -678,6 +735,7 @@ void Config_Settings::path_input_j0_set(std::string value) { path_input_j0_ = va
 std::string Config_Settings::path_input_j0_description() { return path_input_j0_description_; }
 void Config_Settings::path_input_j0_description_set(std::string description) { path_input_j0_description_ = description; }
 
+
 std::string Config_Settings::path_A_w_R() { return path_A_w_R_; }
 void Config_Settings::path_A_w_R_set(std::string value) { path_A_w_R_ = value; }
 std::string Config_Settings::path_A_w_R_description() { return path_A_w_R_description_; }
@@ -698,6 +756,28 @@ void Config_Settings::path_electron_density_set(std::string value) { path_electr
 std::string Config_Settings::path_electron_density_description() { return path_electron_density_description_; }
 void Config_Settings::path_electron_density_description_set(std::string description) { path_electron_density_description_ = description; }
 
+
+std::string Config_Settings::path_A_w_R_step() { return path_A_w_R_step_; }
+void Config_Settings::path_A_w_R_step_set(std::string value) { path_A_w_R_step_ = value; }
+std::string Config_Settings::path_A_w_R_description_step() { return path_A_w_R_description_step_; }
+void Config_Settings::path_A_w_R_description_step_set(std::string description) { path_A_w_R_description_step_ = description; }
+
+std::string Config_Settings::path_A_w_I_step() { return path_A_w_I_step_; }
+void Config_Settings::path_A_w_I_step_set(std::string value) { path_A_w_I_step_ = value; }
+std::string Config_Settings::path_A_w_I_description_step() { return path_A_w_I_description_step_; }
+void Config_Settings::path_A_w_I_description_step_set(std::string description) { path_A_w_I_description_step_ = description; }
+
+std::string Config_Settings::path_w_active_step() { return path_w_active_step_; }
+void Config_Settings::path_w_active_step_set(std::string value) { path_w_active_step_ = value; }
+std::string Config_Settings::path_w_active_description_step() { return path_w_active_description_step_; }
+void Config_Settings::path_w_active_description_step_set(std::string description) { path_w_active_description_step_ = description; }
+
+std::string Config_Settings::path_electron_density_step() { return path_electron_density_step_; }
+void Config_Settings::path_electron_density_step_set(std::string value) { path_electron_density_step_ = value; }
+std::string Config_Settings::path_electron_density_description_step() { return path_electron_density_description_step_; }
+void Config_Settings::path_electron_density_description_step_set(std::string description) { path_electron_density_description_step_ = description; }
+
+
 std::string Config_Settings::path_HHG_R() { return path_HHG_R_; }
 void Config_Settings::path_HHG_R_set(std::string value) { path_HHG_R_ = value; }
 std::string Config_Settings::path_HHG_R_description() { return path_HHG_R_description_; }
@@ -717,6 +797,28 @@ std::string Config_Settings::path_HHG_E() { return path_HHG_E_; }
 void Config_Settings::path_HHG_E_set(std::string value) { path_HHG_E_ = value; }
 std::string Config_Settings::path_HHG_E_description() { return path_HHG_E_description_; }
 void Config_Settings::path_HHG_E_description_set(std::string description) { path_HHG_E_description_ = description; }
+
+
+std::string Config_Settings::path_HHG_R_step() { return path_HHG_R_step_; }
+void Config_Settings::path_HHG_R_step_set(std::string value) { path_HHG_R_step_ = value; }
+std::string Config_Settings::path_HHG_R_description_step() { return path_HHG_R_description_step_; }
+void Config_Settings::path_HHG_R_description_step_set(std::string description) { path_HHG_R_description_step_ = description; }
+
+std::string Config_Settings::path_HHG_I_step() { return path_HHG_I_step_; }
+void Config_Settings::path_HHG_I_step_set(std::string value) { path_HHG_I_step_ = value; }
+std::string Config_Settings::path_HHG_I_description_step() { return path_HHG_I_description_step_; }
+void Config_Settings::path_HHG_I_description_step_set(std::string description) { path_HHG_I_description_step_ = description; }
+
+std::string Config_Settings::path_HHG_w_step() { return path_HHG_w_step_; }
+void Config_Settings::path_HHG_w_step_set(std::string value) { path_HHG_w_step_ = value; }
+std::string Config_Settings::path_HHG_w_description_step() { return path_HHG_w_description_step_; }
+void Config_Settings::path_HHG_w_description_step_set(std::string description) { path_HHG_w_description_step_ = description; }
+
+std::string Config_Settings::path_HHG_E_step() { return path_HHG_E_step_; }
+void Config_Settings::path_HHG_E_step_set(std::string value) { path_HHG_E_step_ = value; }
+std::string Config_Settings::path_HHG_E_description_step() { return path_HHG_E_description_step_; }
+void Config_Settings::path_HHG_E_description_step_set(std::string description) { path_HHG_E_description_step_ = description; }
+
 
 std::string Config_Settings::path_config_file() { return path_config_file_; }
 void Config_Settings::path_config_file_set(std::string value) { path_config_file_ = value; }

@@ -1,5 +1,5 @@
 #include "propagation.hpp"
-#include "config_settings.hpp"
+//#include "config_settings.hpp"
 #include "../../src/keldysh_gas.hpp"
 #include "../../src/grid_rkr.hpp"
 #include "../../src/grid_tw.hpp"
@@ -28,23 +28,25 @@
 propagation::propagation() {}
 propagation::propagation(double E_min_,
                          double E_max_,
+                         double Z_max_,
                          Eigen::ArrayXd w_active_,
                          keldysh_gas& gas_,
                          grid_rkr& rkr_,
                          physics_textbook& physics_,
                          maths_textbook& maths_,
-                         DHT& ht_,
-                         HH::Config_Settings config_)
+                         DHT& ht_)//,
+                         //HH::Config_Settings config_)
                         :
                          E_min(E_min_),
                          E_max(E_max_),
+                         Z_max(Z_max_),
                          w_active_tmp(w_active_),
                          gas(gas_),
                          rkr(rkr_),
                          physics(physics_),
                          maths(maths_),
-                         ht(ht_),
-                         config(config_) {
+                         ht(ht_) {//,
+                         //config(config_) {
 
       z = 0.0;
       k_r = rkr.kr;
@@ -137,15 +139,15 @@ std::complex<double> propagation::n(int i) {
 
 // Don't know if atom_density should be complex or double...?
       //bool to_end_only = true;
-      double z_max_prime = config.Z() - (gas.inlet_2 + gas.transitionLength);
+      double z_max_prime = Z_max - (gas.inlet_2 + gas.transitionLength);
       double z_prime = z - (gas.inlet_2 + gas.transitionLength);
       if (to_end_only == true) {
-//std::cout << "z: " << z << ", " << (1.0 - (0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) << std::endl;
-//std::cout << "z: " << z << ", " << (0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2.0*z_max_prime) << std::endl;
+//std::cout << "z: " << z << ", " << (1.0 - (0.8*gas.atom_density_max)/(Z_max - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) << std::endl;
+//std::cout << "z: " << z << ", " << (0.8*gas.atom_density_max)/(Z_max - z) * std::pow(z_max_prime - z_prime, 2.0) / (2.0*z_max_prime) << std::endl;
 //std::cout << "gas.atom_density_max: " << gas.atom_density_max << std::endl;
 //std::cout << "gas.inlet_2: " << gas.inlet_2 << std::endl;
 //std::cout << "gas.transitionLength: " << gas.transitionLength << std::endl;
-//std::cout << "config.Z(): " << config.Z() << std::endl;
+//std::cout << "Z_max: " << Z_max << std::endl;
 //std::cout << "z_max_prime: " << z_max_prime << std::endl;
 //std::cout << "z_prime: " << z_prime << std::endl;
 //std::cout << "N(z): " << gas.atom_density(z) << std::endl;
@@ -193,17 +195,17 @@ std::complex<double> propagation::n(int i) {
            N_tot += gas.atom_density_max / gas.transitionLength * (0.1*std::pow(z_4, 2.0) - z_4*(gas.transitionLength + 0.2*gas.inlet_2) - 0.1*std::pow(z_5, 2.0) + z_5*(gas.transitionLength + 0.2*gas.inlet_2));
         }
         // Section 5
-        if (z <= config.Z()) {
+        if (z <= Z_max) {
            if ( z > (gas.inlet_2 + gas.transitionLength)) {
-              N_tot += 0.4*gas.atom_density_max / (config.Z() - (gas.inlet_2 + gas.transitionLength)) * (2.0*config.Z()*(config.Z() - z) - std::pow(config.Z(), 2.0) + std::pow(z, 2.0));
+              N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - z) - std::pow(Z_max, 2.0) + std::pow(z, 2.0));
            } else {
-              N_tot += 0.4*gas.atom_density_max / (config.Z() - (gas.inlet_2 + gas.transitionLength)) * (2.0*config.Z()*(config.Z() - (gas.inlet_2 + gas.transitionLength)) - std::pow(config.Z(), 2.0) + std::pow((gas.inlet_2 + gas.transitionLength), 2.0));
+              N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - (gas.inlet_2 + gas.transitionLength)) - std::pow(Z_max, 2.0) + std::pow((gas.inlet_2 + gas.transitionLength), 2.0));
            }
         }
         // Return the average value
         // Maybe make this an if statement so can return total if needed as well???
-        return N_tot / (config.Z() - z);
-        //return (1.0 - ((0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) * refractiveIndex(i));
+        return N_tot / (Z_max - z);
+        //return (1.0 - ((0.8*gas.atom_density_max)/(Z_max - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) * refractiveIndex(i));
       } else {
         return (1.0 - gas.atom_density(z) * refractiveIndex(i));
       }
@@ -246,15 +248,15 @@ void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
 //std::cout << "dz: " << dz << ", z: " << z << std::endl;
 
       if (to_end_only == true) {
-std::cout << "z: " << z << ", delta_z: " << config.Z() - z << std::endl;
+std::cout << "z: " << z << ", delta_z: " << Z_max - z << std::endl;
         for(int i = 0; i < n_k; i++) {
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it
             for(int j = 0; j < rkr.n_r; j++) {
 //std::cout << "A_w_kr(j): " << A_w_kr(j) << " -> ";
-                A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (config.Z() - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-//std::cout << std::exp(std::complex<double>(0, -1) * (config.Z() - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)) << std::endl;
+                A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (Z_max - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+//std::cout << std::exp(std::complex<double>(0, -1) * (Z_max - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)) << std::endl;
 
 //std::cout << "A_w_kr(j): " << A_w_kr(j) << std::endl;
             }
@@ -270,7 +272,7 @@ std::cout << "dz: " << dz << ", z: " << z << std::endl;
             for(int j = 0; j < rkr.n_r; j++) {
 //std::cout << "k.rows(): " << k.rows() << ", k.cols(): " << k.cols() << std::endl;
                   //
-                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (config.Z() - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (Z_max - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
 //                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
                   //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(n(i)*n(i)*k(i)*k(i) - k_r(j)*k_r(j), 0.5));
 //                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(k(i)*k(i) - k_r(j)*k_r(j), 0.5));

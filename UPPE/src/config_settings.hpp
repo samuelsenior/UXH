@@ -26,6 +26,7 @@ private:
 
   enum class SN{
     n_z = 0, n_r, n_m,
+    output_sampling_rate, 
     n_t, T, w_active_min, w_active_max,
     Z, R,
     press,
@@ -46,6 +47,8 @@ private:
     int n_z_ = 50;
     int n_r_ = 20;
     int n_m_ = 20;
+
+    int output_sampling_rate_ = 1;
 
     int n_t_ = 4096;
     double T_ = 500.0e-15;
@@ -80,10 +83,20 @@ private:
     std::string path_w_active_ = "../output/w_active.bin";
     std::string path_electron_density_ = "../output/electron_density.bin";
 
+    std::string path_A_w_R_step_ = "../output/A_w_R.bin";
+    std::string path_A_w_I_step_ = "../output/A_w_I.bin";
+    std::string path_w_active_step_ = "../output/w_active.bin";
+    std::string path_electron_density_step_ = "../output/electron_density.bin";
+
     std::string path_HHG_R_ = "../output/HHG_R.bin";
     std::string path_HHG_I_ = "../output/HHG_I.bin";
     std::string path_HHG_w_ = "../output/HHG_w.bin";
     std::string path_HHG_E_ = "../output/HHG_E.bin";
+
+    std::string path_HHG_R_step_ = "../output/HHG_R.bin";
+    std::string path_HHG_I_step_ = "../output/HHG_I.bin";
+    std::string path_HHG_w_step_ = "../output/HHG_w.bin";
+    std::string path_HHG_E_step_ = "../output/HHG_E.bin";
 
     std::string path_config_file_ = "../configFiles/config_UPPE.txt";
     std::string path_config_log_ = "../output/config_log_UPPE.txt";
@@ -94,6 +107,8 @@ private:
     std::string n_z_description_ = "(default) (int) Number of steps in Z";
     std::string n_r_description_ = "(default) (int) The z_r value";
     std::string n_m_description_ = "(default) (int) Number of modes";
+
+    std::string output_sampling_rate_description_ = "(default) (int) Output sampling rate in Z";
 
     std::string n_t_description_ = "(default) (int) The n_t value";
     std::string T_description_ = "(default) (double) The T value";
@@ -129,15 +144,40 @@ private:
     std::string path_w_active_description_ = "(default) (std::string) Path of w_active";
     std::string path_electron_density_description_ = "(default) (std::string) Path of electron_density";
 
+    std::string path_A_w_R_description_step_ = "(default) (std::string) Path of A_w_R step";
+    std::string path_A_w_I_description_step_ = "(default) (std::string) Path of A_w_I step";
+    std::string path_w_active_description_step_ = "(default) (std::string) Path of w_active step";
+    std::string path_electron_density_description_step_ = "(default) (std::string) Path of electron_density step";
+
     std::string path_HHG_R_description_ = "(default) (std::string) Path of HHG_R";
     std::string path_HHG_I_description_ = "(default) (std::string) Path of HHG_I";
     std::string path_HHG_w_description_ = "(default) (std::string) Path of HHG w";
     std::string path_HHG_E_description_ = "(default) (std::string) Path of HHG E";
 
+    std::string path_HHG_R_description_step_ = "(default) (std::string) Path of HHG_R step";
+    std::string path_HHG_I_description_step_ = "(default) (std::string) Path of HHG_I step";
+    std::string path_HHG_w_description_step_ = "(default) (std::string) Path of HHG w step";
+    std::string path_HHG_E_description_step_ = "(default) (std::string) Path of HHG E step";
+
     std::string path_config_file_description_ = "(default) (std::string) config.txt path";
     std::string path_config_log_description_ = "(default) (std::string) config_log.txt path";
 
     static const char * setting_name[];
+
+    // Private variables for the step path workings
+    std::string pending_string_stepWorkings;// = std::to_string(static_cast<unsigned long long>(step));
+    int pending_string_len_stepWorkings;// = std::to_string(static_cast<unsigned long long>(step - 1)).length();
+    std::string path_A_R_stepWorkings;// = path_A_w_R();
+    std::string path_A_I_stepWorkings;// = path_A_w_I();
+    std::string path_w_stepWorkings;// = path_w_active();
+    std::string path_e_stepWorkings;// = path_electron_density();
+    std::string path_hhg_r_stepWorkings;// = path_HHG_R();
+    std::string path_hhg_i_stepWorkings;// = path_HHG_I();
+    std::string path_hhg_w_stepWorkings;// = path_HHG_w();
+    std::string path_hhg_E_stepWorkings;// = path_HHG_E();
+    std::size_t found_stepWorkings;// = path_A_R.find_last_of("/");
+    std::string tmp_stepWorkings;// = path_A_R.substr(found+1);
+    size_t count_underscore_stepWorkings;// = std::count(tmp.begin(), tmp.end(), '_');
 
     // Private Functions
     void set_variable(std::string&, std::string&, std::string&, bool print_to_screen=true);
@@ -150,7 +190,7 @@ public:
     Config_Settings();
     void read_in(std::string, bool print_to_screen = true);
     void check_paths(bool print_to_screen = true);
-    void step_path(int step);
+    void step_path(int step, std::string variable);
     void print();
     void print(std::string);
 
@@ -166,6 +206,11 @@ public:
     void n_m_set(int);
     std::string n_m_description();
     void n_m_description_set(std::string);
+
+    int output_sampling_rate();
+    void output_sampling_rate_set(int);
+    std::string output_sampling_rate_description();
+    void output_sampling_rate_description_set(std::string);
 
     int n_t();
     void n_t_set(int);
@@ -271,31 +316,61 @@ public:
     void path_w_active_set(std::string);
     std::string path_w_active_description();
     void path_w_active_description_set(std::string);
-
     std::string path_electron_density();
     void path_electron_density_set(std::string);
     std::string path_electron_density_description();
     void path_electron_density_description_set(std::string);
 
+    std::string path_A_w_R_step();
+    void path_A_w_R_step_set(std::string);
+    std::string path_A_w_R_description_step();
+    void path_A_w_R_description_step_set(std::string);
+    std::string path_A_w_I_step();
+    void path_A_w_I_step_set(std::string);
+    std::string path_A_w_I_description_step();
+    void path_A_w_I_description_step_set(std::string);
+    std::string path_w_active_step();
+    void path_w_active_step_set(std::string);
+    std::string path_w_active_description_step();
+    void path_w_active_description_step_set(std::string);
+    std::string path_electron_density_step();
+    void path_electron_density_step_set(std::string);
+    std::string path_electron_density_description_step();
+    void path_electron_density_description_step_set(std::string);
+
     std::string path_HHG_R();
     void path_HHG_R_set(std::string);
     std::string path_HHG_R_description();
     void path_HHG_R_description_set(std::string);
-
     std::string path_HHG_I();
     void path_HHG_I_set(std::string);
     std::string path_HHG_I_description();
     void path_HHG_I_description_set(std::string);
-
     std::string path_HHG_w();
     void path_HHG_w_set(std::string);
     std::string path_HHG_w_description();
     void path_HHG_w_description_set(std::string);
-
     std::string path_HHG_E();
     void path_HHG_E_set(std::string);
     std::string path_HHG_E_description();
     void path_HHG_E_description_set(std::string);
+
+    std::string path_HHG_R_step();
+    void path_HHG_R_step_set(std::string);
+    std::string path_HHG_R_description_step();
+    void path_HHG_R_description_step_set(std::string);
+    std::string path_HHG_I_step();
+    void path_HHG_I_step_set(std::string);
+    std::string path_HHG_I_description_step();
+    void path_HHG_I_description_step_set(std::string);
+    std::string path_HHG_w_step();
+    void path_HHG_w_step_set(std::string);
+    std::string path_HHG_w_description_step();
+    void path_HHG_w_description_step_set(std::string);
+    std::string path_HHG_E_step();
+    void path_HHG_E_step_set(std::string);
+    std::string path_HHG_E_description_step();
+    void path_HHG_E_description_step_set(std::string);
 
     std::string path_config_file();
     void path_config_file_set(std::string);

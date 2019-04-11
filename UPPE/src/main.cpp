@@ -190,20 +190,11 @@ int main(int argc, char** argv){
         propagation_step = initial_step + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
                                               // initial step being read in is step i-1
         initial_position = dz * initial_step;
-std::cout << "Simulation run (read in): " << sim_no << std::endl;
-std::cout << "Initial step: " << initial_step << std::endl;
-std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
-std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
-std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
-
-        //std::string tmp_prop_step_str = 
-
-        //if (found == -1) {
-        //path = pre_path + "_" + path;
-        //} else {
-        //path = path.substr(0, found+1) + pre_path + "_" + path.substr(found+1);
-        //}
-        //return path;
+        std::cout << "Simulation run (read in): " << sim_no << std::endl;
+        std::cout << "Initial step: " << initial_step << std::endl;
+        std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
+        std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
+        std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
     } else {
         propagation_step = 1;
     }
@@ -223,7 +214,6 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     // 3. Propagation
     //--------------------------------------------------------------------------------------------//
     // Main loop
-    //double dz = capillary_driving.Z / double(config.n_z());
 
     if (this_process == 0) {
         config.print(config.path_config_log());
@@ -262,8 +252,6 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     ArrayXd w_active_HHG;
 
     w_tmp = tw_XNLO.w;
-
-std::cout << "Foo 1" << std::endl;
 std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
 
     int w_active_min_index_HHG = 0;
@@ -276,15 +264,13 @@ std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 
 
     n_active_HHG = count - w_active_min_index_HHG;
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
-std::cout << "Foo 2" << std::endl;
 std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
 std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
-
 
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
-        prop = propagation(E_min, E_max, w_active_HHG,
+        prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
 // Uncomment when known if this is correct or not - 15-02-19
@@ -305,22 +291,19 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
         for (int ii = propagation_step; ii < config.n_z() + 1; ii++) {
             if (this_process == 0) {
                 std::cout << "Propagation step: " << ii << std::endl;
-std::cout << "Step Foo 1" << std::endl;
                 laser_driving.propagate(dz, capillary_driving, gas);
-std::cout << "Step Foo 2" << std::endl;
                 // Driving pulse:
-                config.step_path(ii);
-std::cout << "Step Foo 2.1" << std::endl;
-                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R(), true);
-std::cout << "Step Foo 2.2" << std::endl;
-                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I(), true);
-std::cout << "Step Foo 2.3" << std::endl;
-                file_prop_step.write(tw.w_active, config.path_w_active(), true);
-std::cout << "Step Foo 2.4" << std::endl;
-                file_prop_step.write(laser_driving.electron_density, config.path_electron_density(), true);
-std::cout << "Step Foo 3" << std::endl;
+                // Always start at 1, so first step is always outputted, even when reading in
+                if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                    config.step_path(ii, "UPPE_A_w");
+                    file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
+                    file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
+                }
+                // Only needed once!
+                //file_prop_step.write(tw.w_active, config.path_w_active_step(), true);
+                // Change to an if statement so can be outputted if needed
+                //file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
                 A_w_active = laser_driving.A_w_active;
-std::cout << "Step Foo 4" << std::endl;
                 if (total_processes > 1) {
                     // Send
                     for (int j = 1; j < total_processes; j++) {
@@ -329,7 +312,6 @@ std::cout << "Step Foo 4" << std::endl;
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                     }
                 }
-std::cout << "Step Foo 5" << std::endl;
             } else {
                 // Receive
                 A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
@@ -337,20 +319,18 @@ std::cout << "Step Foo 5" << std::endl;
                          MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
             }
 
-            int response_rate = 1;//config.n_z() / 10;
-            if (total_processes > 1 && ((ii % response_rate == 0) || ii == 1)) {
+            //int response_rate = 1;//config.n_z() / 10;
+            if (total_processes > 1) {// && ((ii % response_rate == 0) || ii == 1)) {
                 atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index);
             }
 
             if (this_process == 0 && total_processes > 1) {
-std::cout << "Step Foo 6" << std::endl;
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
                         neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
                     }
                 }
-std::cout << "Step Foo 7" << std::endl;
                 E = atomResponse.E;
                 // Delete atomResponse after use to save ram
                 acceleration_HHG = atomResponse.acceleration;
@@ -383,12 +363,10 @@ std::cout << "Step Foo 7" << std::endl;
                         // First is easier to implement, second is more accurate
                     }
                 }
-std::cout << "Step Foo 8" << std::endl;
                 // Apply forward spectral transform
                 ArrayXXcd accelerationToHHSource = acceleration_HHG.cast<std::complex<double> >();
                 for (int i = 0; i < rkr.n_r; i++)
                     DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
-std::cout << "Step Foo 9" << std::endl;
 // Uncomment the below when the debugging and testing longer wavelegnths is done
 //                hhg = prop.block(accelerationToHHSource.block(0, 0, n_active_HHG, rkr.n_r));
                 //hhg = prop.block(accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r));
@@ -399,7 +377,6 @@ std::cout << "Step Foo 9" << std::endl;
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-std::cout << "Step Foo 10" << std::endl;
                 if (ii == 1) {
                     hhg_previous = hhg;
                 } else {
@@ -420,12 +397,16 @@ std::cout << "Step Foo 10" << std::endl;
                 //  propagate previous to current and add source to it
                 // -This is now also the previous term for the next step
                 // -Repeat
-std::cout << "Step Foo 11" << std::endl;
-                file_prop_step.write(hhg.real(), config.path_HHG_R(), true);
-                file_prop_step.write(hhg.imag(), config.path_HHG_I(), true);
-                file_prop_step.write(w_active_HHG, config.path_HHG_w(), true);
-                file_prop_step.write(E, config.path_HHG_E(), true);
-std::cout << "Step Foo 12" << std::endl;
+                // Always start at 1, so first step is always outputted, even when reading in
+                if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                    config.step_path(ii, "HHG_A_w");
+                    file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
+                    file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
+                }
+                // Only needed once!
+                //file_prop_step.write(w_active_HHG, config.path_HHG_w_step(), true);
+                // Change to an if statement so can be outputted if needed
+                //file_prop_step.write(E, config.path_HHG_E_step(), true);
             }
         }
         std::cout << "-------------------------------------------------------------------------------\n";
@@ -436,6 +417,10 @@ std::cout << "Step Foo 12" << std::endl;
             file.write(laser_driving.A_w_active.real(), config.path_A_w_R());
             file.write(laser_driving.A_w_active.imag(), config.path_A_w_I());
             file.write(tw.w_active, config.path_w_active());
+
+            file.write(hhg.real(), config.path_HHG_R());
+            file.write(hhg.imag(), config.path_HHG_I());
+            file.write(w_active_HHG, config.path_HHG_w());
         }
 
         // Clean up

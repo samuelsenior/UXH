@@ -103,8 +103,8 @@ int main(int argc, char** argv){
     double E_min = 10.0;
     double E_max = 206.0;
     // Propagation
-    propagation prop(E_min, E_max, w_active, gas, rkr,
-                     physics, maths, ht, config);
+    propagation prop(E_min, E_max, config.Z(), w_active, gas, rkr,
+                     physics, maths, ht);//, config);
 
 double dz = config.Z() / config.n_z();
    prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z());;

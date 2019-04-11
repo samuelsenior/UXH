@@ -23,12 +23,13 @@ class propagation{
     // E_min should really come from config or a data_config
     double E_min;
     double E_max;
+    double Z_max;
     physics_textbook physics;  /*!< Physical constants */
     maths_textbook maths;      /*!< Mathematical constants and functions */
     keldysh_gas gas;
     grid_rkr rkr;              /*!< Radial grid */
     DHT ht;                    /*!< Hankel transform */
-    HH::Config_Settings config;
+    //HH::Config_Settings config;
 
     bool to_end_only;
 
@@ -62,10 +63,10 @@ public:
     // Functions
     // E_min should really come from config or a data_config
     propagation();
-    propagation(double E_min_, double E_max_, Eigen::ArrayXd w_active_,
+    propagation(double E_min_, double E_max_, double Z_max_, Eigen::ArrayXd w_active_,
                 keldysh_gas& gas_, grid_rkr& rkr_,
                 physics_textbook& physics_, maths_textbook& maths_,
-                DHT& ht_, HH::Config_Settings config_);
+                DHT& ht_);//, HH::Config_Settings config_);
 
     Eigen::ArrayXd segment(Eigen::ArrayXd k);
     Eigen::ArrayXXcd block(Eigen::ArrayXXcd A_w_e_);
