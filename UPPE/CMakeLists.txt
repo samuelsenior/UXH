@@ -37,6 +37,9 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
    # set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -O3")#-O3 -fopenmp")
    ## This is the equivalent C flag setting:
    # set(CMAKE_C_FLAGS "-O3 -fopenmp")
+else ()
+   MESSAGE("-- Warning: Complier Specified Not Found!")
+   MESSAGE("   Systemm being: ${CMAKE_CXX_COMPILER_ID}")
 
 endif()
 
