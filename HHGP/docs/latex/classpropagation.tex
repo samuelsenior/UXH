@@ -10,7 +10,7 @@ Collaboration diagram for propagation\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=345pt]{classpropagation__coll__graph}
+\includegraphics[width=350pt]{classpropagation__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -18,7 +18,7 @@ Collaboration diagram for propagation\+:\nopagebreak
 \item 
 \hyperlink{classpropagation_a9d7b9f42ce1c0bc741d3016a07ba13f7}{propagation} ()
 \item 
-\hyperlink{classpropagation_ab815c7ad4d93eaa7b7b821908fdc3203}{propagation} (double E\+\_\+min\+\_\+, Eigen\+::\+Array\+Xd w\+\_\+active\+\_\+, \hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&gas\+\_\+, grid\+\_\+rkr \&rkr\+\_\+, \hyperlink{classphysics__textbook}{physics\+\_\+textbook} \&physics\+\_\+, \hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&maths\+\_\+, D\+HT \&ht\+\_\+)
+\hyperlink{classpropagation_a8bd1597c1826d4e0ab4da839ed3c5380}{propagation} (double E\+\_\+min\+\_\+, double E\+\_\+max\+\_\+, Eigen\+::\+Array\+Xd w\+\_\+active\+\_\+, \hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&gas\+\_\+, grid\+\_\+rkr \&rkr\+\_\+, \hyperlink{classphysics__textbook}{physics\+\_\+textbook} \&physics\+\_\+, \hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&maths\+\_\+, D\+HT \&ht\+\_\+, \hyperlink{class_h_h_1_1_config___settings}{H\+H\+::\+Config\+\_\+\+Settings} config\+\_\+)
 \item 
 Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a39126bbbd4977c140c0077b849e78bc1}{segment} (Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a49a30e941421cd5e3f0b62bd1335a767}{k})
 \item 
@@ -48,6 +48,8 @@ Eigen\+::\+Array\+X\+Xcd \hyperlink{classpropagation_ad3a84addde67e43bbb60640819
 \item 
 double \hyperlink{classpropagation_ab5a753d760a135806a93b9082e8019fb}{E\+\_\+min}
 \item 
+double \hyperlink{classpropagation_a5d2b4202c82db47a1276c0ef1f7ad8c8}{E\+\_\+max}
+\item 
 \hyperlink{classphysics__textbook}{physics\+\_\+textbook} \hyperlink{classpropagation_a42a6e725e3dd53cf94192bf93c31c8de}{physics}
 \item 
 \hyperlink{classmaths__textbook}{maths\+\_\+textbook} \hyperlink{classpropagation_ab5a5024c2d06c0dad06c745af7c6416c}{maths}
@@ -57,6 +59,10 @@ double \hyperlink{classpropagation_ab5a753d760a135806a93b9082e8019fb}{E\+\_\+min
 grid\+\_\+rkr \hyperlink{classpropagation_a3d37531bb5918f972544d242aec7e72b}{rkr}
 \item 
 D\+HT \hyperlink{classpropagation_a044544975e7fc2ec3df9a55d92f8cc90}{ht}
+\item 
+\hyperlink{class_h_h_1_1_config___settings}{H\+H\+::\+Config\+\_\+\+Settings} \hyperlink{classpropagation_af9d267817858f221b28c0f8b7a872e88}{config}
+\item 
+bool \hyperlink{classpropagation_a939b7a85171b3e5ce06560a3885ef0ca}{to\+\_\+end\+\_\+only}
 \item 
 Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a07a80b67a345e3e9d8e934d2265ba288}{w\+\_\+active\+\_\+tmp}
 \item 
@@ -89,11 +95,11 @@ Eigen\+::\+Array\+Xd \hyperlink{classpropagation_a14d6e72396c1c354c6d9986f2d79f8
 \subsubsection{\texorpdfstring{propagation()}{propagation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily propagation\+::propagation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Constructor \mbox{\Hypertarget{classpropagation_ab815c7ad4d93eaa7b7b821908fdc3203}\label{classpropagation_ab815c7ad4d93eaa7b7b821908fdc3203}} 
+Constructor \mbox{\Hypertarget{classpropagation_a8bd1597c1826d4e0ab4da839ed3c5380}\label{classpropagation_a8bd1597c1826d4e0ab4da839ed3c5380}} 
 \index{propagation@{propagation}!propagation@{propagation}}
 \index{propagation@{propagation}!propagation@{propagation}}
 \subsubsection{\texorpdfstring{propagation()}{propagation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily propagation\+::propagation (\begin{DoxyParamCaption}\item[{double}]{E\+\_\+min\+\_\+,  }\item[{Eigen\+::\+Array\+Xd}]{w\+\_\+active\+\_\+,  }\item[{\hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&}]{gas\+\_\+,  }\item[{grid\+\_\+rkr \&}]{rkr\+\_\+,  }\item[{\hyperlink{classphysics__textbook}{physics\+\_\+textbook} \&}]{physics\+\_\+,  }\item[{\hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&}]{maths\+\_\+,  }\item[{D\+HT \&}]{ht\+\_\+ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily propagation\+::propagation (\begin{DoxyParamCaption}\item[{double}]{E\+\_\+min\+\_\+,  }\item[{double}]{E\+\_\+max\+\_\+,  }\item[{Eigen\+::\+Array\+Xd}]{w\+\_\+active\+\_\+,  }\item[{\hyperlink{classkeldysh__gas}{keldysh\+\_\+gas} \&}]{gas\+\_\+,  }\item[{grid\+\_\+rkr \&}]{rkr\+\_\+,  }\item[{\hyperlink{classphysics__textbook}{physics\+\_\+textbook} \&}]{physics\+\_\+,  }\item[{\hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&}]{maths\+\_\+,  }\item[{D\+HT \&}]{ht\+\_\+,  }\item[{\hyperlink{class_h_h_1_1_config___settings}{H\+H\+::\+Config\+\_\+\+Settings}}]{config\+\_\+ }\end{DoxyParamCaption})}
 
 
 
@@ -143,6 +149,12 @@ Angular Spectrum Method (A\+SM) for propagating in the near-\/field, in the gas-
 \subsubsection{\texorpdfstring{A\+\_\+w\+\_\+r}{A\_w\_r}}
 {\footnotesize\ttfamily Eigen\+::\+Array\+X\+Xcd propagation\+::\+A\+\_\+w\+\_\+r}
 
+\mbox{\Hypertarget{classpropagation_af9d267817858f221b28c0f8b7a872e88}\label{classpropagation_af9d267817858f221b28c0f8b7a872e88}} 
+\index{propagation@{propagation}!config@{config}}
+\index{config@{config}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily \hyperlink{class_h_h_1_1_config___settings}{H\+H\+::\+Config\+\_\+\+Settings} propagation\+::config\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classpropagation_aff3713e9170542e31c952a2d1b760eec}\label{classpropagation_aff3713e9170542e31c952a2d1b760eec}} 
 \index{propagation@{propagation}!E@{E}}
 \index{E@{E}!propagation@{propagation}}
@@ -160,6 +172,12 @@ Angular Spectrum Method (A\+SM) for propagating in the near-\/field, in the gas-
 \index{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path@{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path}!propagation@{propagation}}
 \subsubsection{\texorpdfstring{E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path}{E\_f1\_f2\_data\_path}}
 {\footnotesize\ttfamily std\+::string propagation\+::\+E\+\_\+f1\+\_\+f2\+\_\+data\+\_\+path\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpropagation_a5d2b4202c82db47a1276c0ef1f7ad8c8}\label{classpropagation_a5d2b4202c82db47a1276c0ef1f7ad8c8}} 
+\index{propagation@{propagation}!E\+\_\+max@{E\+\_\+max}}
+\index{E\+\_\+max@{E\+\_\+max}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{E\+\_\+max}{E\_max}}
+{\footnotesize\ttfamily double propagation\+::\+E\+\_\+max\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classpropagation_ab5a753d760a135806a93b9082e8019fb}\label{classpropagation_ab5a753d760a135806a93b9082e8019fb}} 
 \index{propagation@{propagation}!E\+\_\+min@{E\+\_\+min}}
@@ -245,7 +263,13 @@ Physical constants \mbox{\Hypertarget{classpropagation_aba601a0df3c63b13215c55d8
 \subsubsection{\texorpdfstring{rkr}{rkr}}
 {\footnotesize\ttfamily grid\+\_\+rkr propagation\+::rkr\hspace{0.3cm}{\ttfamily [private]}}
 
-Radial grid \mbox{\Hypertarget{classpropagation_a4c24f42d4148eded469c6479d6bf1661}\label{classpropagation_a4c24f42d4148eded469c6479d6bf1661}} 
+Radial grid \mbox{\Hypertarget{classpropagation_a939b7a85171b3e5ce06560a3885ef0ca}\label{classpropagation_a939b7a85171b3e5ce06560a3885ef0ca}} 
+\index{propagation@{propagation}!to\+\_\+end\+\_\+only@{to\+\_\+end\+\_\+only}}
+\index{to\+\_\+end\+\_\+only@{to\+\_\+end\+\_\+only}!propagation@{propagation}}
+\subsubsection{\texorpdfstring{to\+\_\+end\+\_\+only}{to\_end\_only}}
+{\footnotesize\ttfamily bool propagation\+::to\+\_\+end\+\_\+only\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classpropagation_a4c24f42d4148eded469c6479d6bf1661}\label{classpropagation_a4c24f42d4148eded469c6479d6bf1661}} 
 \index{propagation@{propagation}!w\+\_\+active@{w\+\_\+active}}
 \index{w\+\_\+active@{w\+\_\+active}!propagation@{propagation}}
 \subsubsection{\texorpdfstring{w\+\_\+active}{w\_active}}

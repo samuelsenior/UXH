@@ -1,6 +1,7 @@
 <map id="propagation" name="propagation">
 <area shape="rect" id="node2" href="$classphysics__textbook.html" title="physics_textbook" alt="" coords="5,5,129,32"/>
-<area shape="rect" id="node3" href="$classkeldysh__gas.html" title="keldysh_gas" alt="" coords="141,95,236,121"/>
+<area shape="rect" id="node3" href="$classkeldysh__gas.html" title="keldysh_gas" alt="" coords="148,95,243,121"/>
 <area shape="rect" id="node4" href="$classmaths__textbook.html" title="maths_textbook" alt="" coords="243,5,358,32"/>
 <area shape="rect" id="node5" href="$classgrid__tw.html" title="grid_tw" alt="" coords="155,5,219,32"/>
+<area shape="rect" id="node6" href="$class_h_h_1_1_config___settings.html" title="HH::Config_Settings" alt="" coords="365,95,508,121"/>
 </map>

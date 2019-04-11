@@ -58,5 +58,5 @@ var searchData=
   ['press_5fdescription_5fset',['press_description_set',['../class_h_h_1_1_config___settings.html#a3878bc5b0692789609893f9826fc48b0',1,'HH::Config_Settings']]],
   ['press_5fset',['press_set',['../class_h_h_1_1_config___settings.html#ad0a0c92c491c24449c167014f6fb27f3',1,'HH::Config_Settings']]],
   ['print',['print',['../class_h_h_1_1_config___settings.html#a3b6de62e6ca1a5019451e2ce25bfdc10',1,'HH::Config_Settings::print()'],['../class_h_h_1_1_config___settings.html#a8071daf184f094b569c4025f1362eb00',1,'HH::Config_Settings::print(std::string)']]],
-  ['propagation',['propagation',['../classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7',1,'propagation::propagation()'],['../classpropagation.html#ab815c7ad4d93eaa7b7b821908fdc3203',1,'propagation::propagation(double E_min_, Eigen::ArrayXd w_active_, keldysh_gas &amp;gas_, grid_rkr &amp;rkr_, physics_textbook &amp;physics_, maths_textbook &amp;maths_, DHT &amp;ht_)']]]
+  ['propagation',['propagation',['../classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7',1,'propagation::propagation()'],['../classpropagation.html#a8bd1597c1826d4e0ab4da839ed3c5380',1,'propagation::propagation(double E_min_, double E_max_, Eigen::ArrayXd w_active_, keldysh_gas &amp;gas_, grid_rkr &amp;rkr_, physics_textbook &amp;physics_, maths_textbook &amp;maths_, DHT &amp;ht_, HH::Config_Settings config_)']]]
 ];

@@ -1,8 +1,10 @@
 <map id="/home/sam/Project/XNLO/HHGP/src/config_settings.hpp" name="/home/sam/Project/XNLO/HHGP/src/config_settings.hpp">
 <area shape="rect" id="node2" href="$config__settings_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/config_settings.cpp" alt="" coords="5,95,209,136"/>
 <area shape="rect" id="node3" href="$_h_h__source_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HH_source.hpp" alt="" coords="285,95,468,136"/>
-<area shape="rect" id="node4" href="$_h_h__source_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HH_source.cpp" alt="" coords="184,184,367,225"/>
-<area shape="rect" id="node5" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="405,184,577,225"/>
-<area shape="rect" id="node6" href="$_h_h_g_p_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.hpp" alt="" coords="544,95,716,136"/>
-<area shape="rect" id="node7" href="$_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.cpp" alt="" coords="635,184,807,225"/>
+<area shape="rect" id="node4" href="$_h_h__source_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HH_source.cpp" alt="" coords="84,184,267,225"/>
+<area shape="rect" id="node5" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="291,184,463,225"/>
+<area shape="rect" id="node6" href="$_h_h_g_p_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.hpp" alt="" coords="487,184,659,225"/>
+<area shape="rect" id="node7" href="$_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.cpp" alt="" coords="611,273,783,315"/>
+<area shape="rect" id="node8" href="$propagation_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.hpp" alt="" coords="595,95,777,136"/>
+<area shape="rect" id="node9" href="$propagation_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.cpp" alt="" coords="735,184,917,225"/>
 </map>
