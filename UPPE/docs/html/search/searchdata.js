@@ -4,9 +4,9 @@ var indexSectionsWithContent =
   1: "cdgiklmp",
   2: "_clmv",
   3: "abcdefgiklmnoprstwz",
-  4: "acefghijklmnpqrstuwyz",
+  4: "acefghijklmnopqrstuwyz",
   5: "s",
-  6: "cfglnprtwz",
+  6: "cfglnoprtwz",
   7: "_"
 };
 
