@@ -106,7 +106,9 @@ int main(int argc, char** argv){
     propagation prop(E_min, E_max, w_active, gas, rkr,
                      physics, maths, ht, config);
 
+double dz = config.Z() / config.n_z();
    prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z());;
+//prop.z -= dz;
 
     config.print(config.path_config_log());
 
@@ -124,7 +126,7 @@ int main(int argc, char** argv){
     std::string restOfName_R = "_HHG_R.bin";
     std::string restOfName_I = "_HHG_I.bin";
     std::string restOfName_w = "_HHG_w.bin";
-    double dz = config.Z() / config.n_z();
+//    double dz = config.Z() / config.n_z();
     // Want to propagate to the end fo the capillary and include the very final
     // source terms but not propagate them outside of the capillary
     //ArrayXXcd A_w_m_out = ArrayXXcd::Zero(prop.n_k, rkr.n_r);
@@ -134,7 +136,7 @@ int main(int argc, char** argv){
         std::cout << "Propagation Step: " << i << std::endl;
         if (to_end_only == true){
             prop.z += dz;
-            A_w_r = prop.block(hh_source.GetSource(i, config, maths));// * dz;  // Normalisation to a dz volume
+            A_w_r = prop.block(hh_source.GetSource(i, config, maths)) * dz;  // Normalisation to a dz volume
 //std::cout << "A_w_r.real().row(0).col(0): " << A_w_r.real().row(0).col(0) << ", " << "A_w_r.imag().row(0).col(0): " << A_w_r.imag().row(0).col(0) << std::endl;
             //A_w_r_tmp = prop.block(A_w_r);
             prop.nearFieldPropagationStep(dz, A_w_r);
@@ -146,7 +148,7 @@ int main(int argc, char** argv){
                 // NOT SURE
                 prop.z += dz;///2.0;
                 // Get source at step, set current and previous values to it
-                A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
+                A_w_r = hh_source.GetSource(i, config, maths) * dz;  // Normalisation to a dz volume
                 A_w_r_tmp = prop.block(A_w_r);
             } else {
                 prop.z += dz;
@@ -154,7 +156,7 @@ int main(int argc, char** argv){
                 prop.nearFieldPropagationStep(dz, A_w_r_tmp);
                 A_w_r_tmp = prop.A_w_r;
                 // Get the new source at the current step and add the propagted source from the previous step to this
-                A_w_r = hh_source.GetSource(i, config, maths);// * dz;  // Normalisation to a dz volume
+                A_w_r = hh_source.GetSource(i, config, maths) * dz;  // Normalisation to a dz volume
                 A_w_r_tmp += prop.block(A_w_r);//prop.A_w_r;
             }
             //A_w_r = hh_source.GetSource(i, config, maths);

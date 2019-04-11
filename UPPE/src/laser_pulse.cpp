@@ -56,10 +56,10 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
 
         // Temporal
         p_pk = 0.94 * ((p_av / rep) / fwhm);
-        E_pk = std::sqrt((4 * p_pk) / (physics.c * physics.eps_0 * maths.pi *
+        E_pk = std::sqrt((4.0 * p_pk) / (physics.c * physics.eps_0 * maths.pi *
                                               (std::pow(waist, 2))));
         ArrayXd env_t = (-2.77 * (tw.t / fwhm).pow(2)).exp();
-        ArrayXd carr_t = (((2 * maths.pi * physics.c / l_0) * tw.t) + ceo).cos();
+        ArrayXd carr_t = (((2.0 * maths.pi * physics.c / l_0) * tw.t) + ceo).cos();
 
         // Spatial
         ArrayXd env_r = (-(rkr.r / waist).pow(2)).exp();

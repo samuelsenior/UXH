@@ -18,7 +18,7 @@ HH_source::HH_source () {}
 ArrayXXcd HH_source::GetSource(int fileNumber,
                            HH::Config_Settings config, maths_textbook maths) {
 
-    std::string dir = "../../../Results/UPPE-XNLO/18-03-19/data/";
+    std::string dir = "../../../Results/UPPE-XNLO/09-04-09/data/";
     std::string prepend = "006_";
     std::string propStep = std::to_string(static_cast<unsigned long long>(fileNumber));
     std::string restOfName_R = "_HHG_R.bin";

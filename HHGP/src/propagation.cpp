@@ -151,8 +151,59 @@ std::complex<double> propagation::n(int i) {
 //std::cout << "N(z): " << gas.atom_density(z) << std::endl;
 //std::cout << "-----" << std::endl;
 
+        double N_tot = 0.0;
 
-        return (1.0 - ((0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) * refractiveIndex(i));
+        // Section 1
+        if (z <= gas.inlet_1 - gas.transitionLength) {
+          if (z > 0.0) {
+             N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(z, 2.0));
+          } else {
+             N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(0.0, 2.0));
+          }
+        }
+        // Section 2
+        double z_2 = 0.0;
+        double z_3 = gas.inlet_1;
+        if (z <= z_3) {
+          if (z > gas.inlet_1 - gas.transitionLength) {
+             z_2 = z;
+          } else {
+             z_2 = gas.inlet_1 - gas.transitionLength;
+          }
+          N_tot += (gas.atom_density_max / gas.transitionLength) * 0.1*(std::pow(z_3, 2.0) - (0.2*gas.inlet_1 - gas.transitionLength)*z_3 - 0.1*std::pow(z_2, 2.0) + (2.0*gas.inlet_1 - gas.transitionLength)*z_2);
+        }
+        // Section 3
+        double z_4 = gas.inlet_2;
+        if (z <= z_4) {
+           if (z > gas.inlet_1) {
+              z_4 = z;
+           } else {
+              z_4 = gas.inlet_1 - gas.transitionLength;
+           }
+          N_tot += gas.atom_density_max * (z_4 - z_3);
+        }
+        // Section 4
+        double z_5 = gas.inlet_2 + gas.transitionLength;
+        if (z <= z_5) {
+           if (z > gas.inlet_2) {
+              z_4 = z;
+           } else {
+              z_4 = gas.inlet_2;
+           }
+           N_tot += gas.atom_density_max / gas.transitionLength * (0.1*std::pow(z_4, 2.0) - z_4*(gas.transitionLength + 0.2*gas.inlet_2) - 0.1*std::pow(z_5, 2.0) + z_5*(gas.transitionLength + 0.2*gas.inlet_2));
+        }
+        // Section 5
+        if (z <= config.Z()) {
+           if ( z > (gas.inlet_2 + gas.transitionLength)) {
+              N_tot += 0.4*gas.atom_density_max / (config.Z() - (gas.inlet_2 + gas.transitionLength)) * (2.0*config.Z()*(config.Z() - z) - std::pow(config.Z(), 2.0) + std::pow(z, 2.0));
+           } else {
+              N_tot += 0.4*gas.atom_density_max / (config.Z() - (gas.inlet_2 + gas.transitionLength)) * (2.0*config.Z()*(config.Z() - (gas.inlet_2 + gas.transitionLength)) - std::pow(config.Z(), 2.0) + std::pow((gas.inlet_2 + gas.transitionLength), 2.0));
+           }
+        }
+        // Return the average value
+        // Maybe make this an if statement so can return total if needed as well???
+        return N_tot / (config.Z() - z);
+        //return (1.0 - ((0.8*gas.atom_density_max)/(config.Z() - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) * refractiveIndex(i));
       } else {
         return (1.0 - gas.atom_density(z) * refractiveIndex(i));
       }
@@ -219,7 +270,8 @@ std::cout << "dz: " << dz << ", z: " << z << std::endl;
             for(int j = 0; j < rkr.n_r; j++) {
 //std::cout << "k.rows(): " << k.rows() << ", k.cols(): " << k.cols() << std::endl;
                   //
-                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (config.Z() - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+//                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
                   //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(n(i)*n(i)*k(i)*k(i) - k_r(j)*k_r(j), 0.5));
 //                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(k(i)*k(i) - k_r(j)*k_r(j), 0.5));
 //                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
