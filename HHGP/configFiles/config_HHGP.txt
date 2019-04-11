@@ -1,6 +1,6 @@
 The structure of this config file is fairly simple. Each row has three values to be read in, the first is the variable/input parameter name, the second is it's value, and the third is a brief description of it. Each of these values is incased in curly braces. Anything outside of a pair of curly braces is not read in and can therefore be used as comments in this file etc. If there are less than three pairs of curly braces on a line then an error message is thrown and that lines value isn't read in. If there are more than three pairs of curly braces then only the first three are considered and the rest are ignored.
 
-{n_z} {80000} {(int) Number of steps in Z}
+{n_z} {3200} {(int) Number of steps in Z}
 {n_r} {119} {(int) The z_r value}
 {n_m} {119} {(int) Number of modes}
 
@@ -12,7 +12,7 @@ The structure of this config file is fairly simple. Each row has three values to
 {Z} {70.0e-3}  {(double) Length of capillary}
 {R} {75.0e-6} {(double) Radius of capillary}
 
-{press} {10.0e-3} {(double) Pressure of the gas}
+{press} {50.0e-3} {(double) Pressure of the gas}
 
 {p_av}  {1.0}     {(double) The p_av value}
 {rep}   {1.0e3}   {(double) The rep value}
@@ -21,7 +21,7 @@ The structure of this config file is fairly simple. Each row has three values to
 {ceo}   {0.0}     {(double) The ceo value}  // Carrier Envelope Phase?
 {waist} {48.0e-6} {(double) The beam waist} // The beam waist, or beam focus - or spot size? // 48.0e-6 orignally
 
-{inital_propagation_step} {77601} {(int) The initial propagation step}
+{inital_propagation_step} {1} {(int) The initial propagation step} // was 77601
 
 {gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
 
@@ -29,8 +29,8 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {path_input_j0} {../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
 
-{path_A_w_R}    {../../../Results/UPPE-XNLO/12-03-19/data/002_77601_HHG_R.bin}    {(std::string) Output path of A_w_R}
-{path_A_w_I}    {../../../Results/UPPE-XNLO/12-03-19/data/002_77601_HHG_R.bin}    {(std::string) Output path of A_w_I}
-{path_w_active} {../../../Results/UPPE-XNLO/12-03-19/data/002_77601_HHG_w.bin} {(std::string) Output path of w_active}
+{path_A_w_R}    {../../../Results/UPPE-XNLO/09-04-09/data/006_1_HHG_R.bin}    {(std::string) Output path of A_w_R}
+{path_A_w_I}    {../../../Results/UPPE-XNLO/09-04-09/data/006_1_HHG_R.bin}    {(std::string) Output path of A_w_I}
+{path_w_active} {../../../Results/UPPE-XNLO/09-04-09/data/006_1_HHG_w.bin}    {(std::string) Output path of w_active}
 
 {path_config_log} {../output/config_log.txt} {(std::string) Output path to config_log.txt}
