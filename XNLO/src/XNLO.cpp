@@ -138,7 +138,12 @@ namespace XNLO {
             Result result;
             result.acceleration = dipole;
             result.w = tw.w;
-            result.E = pulse.E;
+            //result.E = pulse.E;
+            if (config.output_electric_field() == 1) {
+                result.E = pulse.E;
+            } else {
+                result.E = ArrayXXd::Zero(0, 0);
+            }
             result.wavefunction = wavefunction;
             return result;
         }

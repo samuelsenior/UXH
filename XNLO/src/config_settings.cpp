@@ -28,6 +28,7 @@ const char * Config_Settings::setting_name[] = {
   "alpha",
   "read_in_laser_pulse",
   "output_wavefunction",
+  "output_electric_field",
   "pend_path",
   "path_input_j0",
   "path_laser_A_w_R",
@@ -196,6 +197,10 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
         output_wavefunction_set(std::stoi(variable_value_str));
         output_wavefunction_description_set(input_description_char);
         break;
+      case SN::output_electric_field :
+        output_electric_field_set(std::stoi(variable_value_str));
+        output_electric_field_description_set(input_description_char);
+        break;
 
       case SN::pend_path :
         pend_path_set(variable_value_str);
@@ -345,8 +350,9 @@ void Config_Settings::print() {
     std::cout << "   CEO:                 " << CEO() << "                    " << CEO_description() << std::endl;
     std::cout << "   spot_radius:         " << spot_radius() << "              " << spot_radius_description() << std::endl;
     std::cout << "   alpha:               " << alpha() << "                 " << alpha_description() << std::endl;
-    std::cout << "   read_in_laser_pulse: " << read_in_laser_pulse() << "                    " << read_in_laser_pulse_description() << std::endl;
-    std::cout << "   output_wavefunction: " << output_wavefunction() << "                    " << output_wavefunction_description() << std::endl;
+    std::cout << "   read_in_laser_pulse:   " << read_in_laser_pulse() << "                    " << read_in_laser_pulse_description() << std::endl;
+    std::cout << "   output_wavefunction:   " << output_wavefunction() << "                    " << output_wavefunction_description() << std::endl;
+    std::cout << "   output_electric_field: " << output_electric_field() << "                    " << output_electric_field_description() << std::endl;
     std::cout << "   pend_path:           " << pend_path() << "                  " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:       " << path_input_j0() << "    " << path_input_j0_description() << std::endl;
     std::cout << "   path_laser_A_w_R:    " << path_laser_A_w_R() << "        " << path_laser_A_w_R_description() << std::endl;
@@ -385,6 +391,7 @@ void Config_Settings::print(std::string path_) {
       config_log << "{read_in_laser_pulse} {" << read_in_laser_pulse() << "} {" << read_in_laser_pulse_description() << "}\n";
 
       config_log << "{output_wavefunction} {" << output_wavefunction() << "} {" << output_wavefunction_description() << "}\n";
+      config_log << "{output_electric_field} {" << output_electric_field() << "} {" << output_electric_field_description() << "}\n";
 
       config_log << "{pend_path} {" << pend_path() << "} {" << pend_path_description() << "}\n";
 
@@ -411,327 +418,132 @@ void Config_Settings::print(std::string path_) {
     }
 }
 
-int Config_Settings::atoms_per_worker() {
-    return atoms_per_worker_;
-}
-void Config_Settings::atoms_per_worker_set(int val) {
-    atoms_per_worker_ = val;
-}
-std::string Config_Settings::atoms_per_worker_description() {
-  return atoms_per_worker_description_;
-}
-void Config_Settings::atoms_per_worker_description_set(std::string description) {
-  atoms_per_worker_description_ = description;
-}
+int Config_Settings::atoms_per_worker() { return atoms_per_worker_; }
+void Config_Settings::atoms_per_worker_set(int val) { atoms_per_worker_ = val; }
+std::string Config_Settings::atoms_per_worker_description() { return atoms_per_worker_description_; }
+void Config_Settings::atoms_per_worker_description_set(std::string description) { atoms_per_worker_description_ = description; }
 
-double Config_Settings::x_min() {
-    return x_min_;
-}
-void Config_Settings::x_min_set(double val) {
-    x_min_ = val;
-}
-std::string Config_Settings::x_min_description() {
-  return x_min_description_;
-}
-void Config_Settings::x_min_description_set(std::string description) {
-  x_min_description_ = description;
-}
+double Config_Settings::x_min() { return x_min_; }
+void Config_Settings::x_min_set(double val) { x_min_ = val; }
+std::string Config_Settings::x_min_description() { return x_min_description_; }
+void Config_Settings::x_min_description_set(std::string description) { x_min_description_ = description; }
 
-double Config_Settings::x_max() {
-    return x_max_;
-}
-void Config_Settings::x_max_set(double val) {
-    x_max_ = val;
-}
-std::string Config_Settings::x_max_description() {
-  return x_max_description_;
-}
-void Config_Settings::x_max_description_set(std::string description) {
-  x_max_description_ = description;
-}
+double Config_Settings::x_max() { return x_max_; }
+void Config_Settings::x_max_set(double val) { x_max_ = val; }
+std::string Config_Settings::x_max_description() { return x_max_description_; }
+void Config_Settings::x_max_description_set(std::string description) { x_max_description_ = description; }
 
-int Config_Settings::N_t() {
-    return N_t_;
-}
-void Config_Settings::N_t_set(int val) {
-    N_t_ = val;
-}
-std::string Config_Settings::N_t_description() {
-  return N_t_description_;
-}
-void Config_Settings::N_t_description_set(std::string description) {
-  N_t_description_ = description;
-}
+int Config_Settings::N_t() { return N_t_; }
+void Config_Settings::N_t_set(int val) { N_t_ = val; }
+std::string Config_Settings::N_t_description() { return N_t_description_; }
+void Config_Settings::N_t_description_set(std::string description) { N_t_description_ = description; }
 
-double Config_Settings::t_min() {
-    return t_min_;
-}
-void Config_Settings::t_min_set(double val) {
-    t_min_ = val;
-}
-std::string Config_Settings::t_min_description() {
-  return t_min_description_;
-}
-void Config_Settings::t_min_description_set(std::string description) {
-  t_min_description_ = description;
-}
+double Config_Settings::t_min() { return t_min_; }
+void Config_Settings::t_min_set(double val) { t_min_ = val; }
+std::string Config_Settings::t_min_description() { return t_min_description_; }
+void Config_Settings::t_min_description_set(std::string description) { t_min_description_ = description; }
 
-double Config_Settings::t_max() {
-    return t_max_;
-}
-void Config_Settings::t_max_set(double val) {
-    t_max_ = val;
-}
-std::string Config_Settings::t_max_description() {
-  return t_max_description_;
-}
-void Config_Settings::t_max_description_set(std::string description) {
-  t_max_description_ = description;
-}
+double Config_Settings::t_max() { return t_max_; }
+void Config_Settings::t_max_set(double val) { t_max_ = val; }
+std::string Config_Settings::t_max_description() { return t_max_description_; }
+void Config_Settings::t_max_description_set(std::string description) { t_max_description_ = description; }
 
-double Config_Settings::P_av() {
-    return P_av_;
-}
-void Config_Settings::P_av_set(double val) {
-    P_av_ = val;
-}
-std::string Config_Settings::P_av_description() {
-  return P_av_description_;
-}
-void Config_Settings::P_av_description_set(std::string description) {
-  P_av_description_ = description;
-}
+double Config_Settings::P_av() { return P_av_; }
+void Config_Settings::P_av_set(double val) { P_av_ = val; }
+std::string Config_Settings::P_av_description() { return P_av_description_; }
+void Config_Settings::P_av_description_set(std::string description) { P_av_description_ = description; }
 
-double Config_Settings::RR() {
-    return RR_;
-}
-void Config_Settings::RR_set(double val) {
-    RR_ = val;
-}
-std::string Config_Settings::RR_description() {
-  return RR_description_;
-}
-void Config_Settings::RR_description_set(std::string description) {
-  RR_description_ = description;
-}
+double Config_Settings::RR() { return RR_; }
+void Config_Settings::RR_set(double val) { RR_ = val; }
+std::string Config_Settings::RR_description() { return RR_description_; }
+void Config_Settings::RR_description_set(std::string description) { RR_description_ = description; }
 
-double Config_Settings::FWHM() {
-    return FWHM_;
-}
-void Config_Settings::FWHM_set(double val) {
-    FWHM_ = val;
-}
-std::string Config_Settings::FWHM_description() {
-  return FWHM_description_;
-}
-void Config_Settings::FWHM_description_set(std::string description) {
-  FWHM_description_ = description;
-}
+double Config_Settings::FWHM() { return FWHM_; }
+void Config_Settings::FWHM_set(double val) { FWHM_ = val; }
+std::string Config_Settings::FWHM_description() { return FWHM_description_; }
+void Config_Settings::FWHM_description_set(std::string description) { FWHM_description_ = description; }
 
-double Config_Settings::l_0() {
-    return l_0_;
-}
-void Config_Settings::l_0_set(double val) {
-    l_0_ = val;
-}
-std::string Config_Settings::l_0_description() {
-  return l_0_description_;
-}
-void Config_Settings::l_0_description_set(std::string description) {
-  l_0_description_ = description;
-}
+double Config_Settings::l_0() { return l_0_; }
+void Config_Settings::l_0_set(double val) { l_0_ = val; }
+std::string Config_Settings::l_0_description() { return l_0_description_; }
+void Config_Settings::l_0_description_set(std::string description) { l_0_description_ = description; }
 
-double Config_Settings::CEO() {
-    return CEO_;
-}
-void Config_Settings::CEO_set(double val) {
-    CEO_ = val;
-}
-std::string Config_Settings::CEO_description() {
-  return CEO_description_;
-}
-void Config_Settings::CEO_description_set(std::string description) {
-  CEO_description_ = description;
-}
+double Config_Settings::CEO() { return CEO_; }
+void Config_Settings::CEO_set(double val) { CEO_ = val; }
+std::string Config_Settings::CEO_description() { return CEO_description_; }
+void Config_Settings::CEO_description_set(std::string description) { CEO_description_ = description; }
 
-double Config_Settings::spot_radius() {
-    return spot_radius_;
-}
-void Config_Settings::spot_radius_set(double val) {
-    spot_radius_ = val;
-}
-std::string Config_Settings::spot_radius_description() {
-  return spot_radius_description_;
-}
-void Config_Settings::spot_radius_description_set(std::string description) {
-  spot_radius_description_ = description;
-}
+double Config_Settings::spot_radius() { return spot_radius_; }
+void Config_Settings::spot_radius_set(double val) { spot_radius_ = val; }
+std::string Config_Settings::spot_radius_description() { return spot_radius_description_; }
+void Config_Settings::spot_radius_description_set(std::string description) { spot_radius_description_ = description; }
 
-double Config_Settings::alpha() {
-    return alpha_;
-}
-void Config_Settings::alpha_set(double val) {
-    alpha_ = val;
-}
-std::string Config_Settings::alpha_description() {
-  return alpha_description_;
-}
-void Config_Settings::alpha_description_set(std::string description) {
-  alpha_description_ = description;
-}
+double Config_Settings::alpha() { return alpha_; }
+void Config_Settings::alpha_set(double val) { alpha_ = val; }
+std::string Config_Settings::alpha_description() { return alpha_description_; }
+void Config_Settings::alpha_description_set(std::string description) { alpha_description_ = description; }
 
-int Config_Settings::read_in_laser_pulse() {
-    return read_in_laser_pulse_;
-}
-void Config_Settings::read_in_laser_pulse_set(int val) {
-    read_in_laser_pulse_ = val;
-}
-std::string Config_Settings::read_in_laser_pulse_description() {
-  return read_in_laser_pulse_description_;
-}
-void Config_Settings::read_in_laser_pulse_description_set(std::string description) {
-  read_in_laser_pulse_description_ = description;
-}
+int Config_Settings::read_in_laser_pulse() { return read_in_laser_pulse_; }
+void Config_Settings::read_in_laser_pulse_set(int val) { read_in_laser_pulse_ = val; }
+std::string Config_Settings::read_in_laser_pulse_description() { return read_in_laser_pulse_description_; }
+void Config_Settings::read_in_laser_pulse_description_set(std::string description) { read_in_laser_pulse_description_ = description; }
 
-int Config_Settings::output_wavefunction() {
-    return output_wavefunction_;
-}
-void Config_Settings::output_wavefunction_set(int val) {
-    output_wavefunction_ = val;
-}
-std::string Config_Settings::output_wavefunction_description() {
-  return output_wavefunction_description_;
-}
-void Config_Settings::output_wavefunction_description_set(std::string description) {
-  output_wavefunction_description_ = description;
-}
+int Config_Settings::output_wavefunction() { return output_wavefunction_; }
+void Config_Settings::output_wavefunction_set(int val) { output_wavefunction_ = val; }
+std::string Config_Settings::output_wavefunction_description() { return output_wavefunction_description_; }
+void Config_Settings::output_wavefunction_description_set(std::string description) { output_wavefunction_description_ = description; }
 
-std::string Config_Settings::pend_path() {
-    return pend_path_;
-}
-void Config_Settings::pend_path_set(std::string pend_path_val) {
-    pend_path_ = pend_path_val;
-}
-std::string Config_Settings::pend_path_description() {
-  return pend_path_description_;
-}
-void Config_Settings::pend_path_description_set(std::string description_) {
-  pend_path_description_ = description_;
-}
+int Config_Settings::output_electric_field() { return output_electric_field_; }
+void Config_Settings::output_electric_field_set(int val) { output_electric_field_ = val; }
+std::string Config_Settings::output_electric_field_description() { return output_electric_field_description_; }
+void Config_Settings::output_electric_field_description_set(std::string description) { output_electric_field_description_ = description; }
 
-std::string Config_Settings::path_input_j0() {
-    return path_input_j0_;
-}
-void Config_Settings::path_input_j0_set(std::string value) {
-    path_input_j0_ = value;
-}
-std::string Config_Settings::path_input_j0_description() {
-  return path_input_j0_description_;
-}
-void Config_Settings::path_input_j0_description_set(std::string description) {
-  path_input_j0_description_ = description;
-}
+std::string Config_Settings::pend_path() { return pend_path_; }
+void Config_Settings::pend_path_set(std::string pend_path_val) { pend_path_ = pend_path_val; }
+std::string Config_Settings::pend_path_description() { return pend_path_description_; }
+void Config_Settings::pend_path_description_set(std::string description_) { pend_path_description_ = description_; }
 
-std::string Config_Settings::path_laser_A_w_R() {
-    return path_laser_A_w_R_;
-}
-void Config_Settings::path_laser_A_w_R_set(std::string value) {
-    path_laser_A_w_R_ = value;
-}
-std::string Config_Settings::path_laser_A_w_R_description() {
-  return path_laser_A_w_R_description_;
-}
-void Config_Settings::path_laser_A_w_R_description_set(std::string description) {
-  path_laser_A_w_R_description_ = description;
-}
-std::string Config_Settings::path_laser_A_w_I() {
-    return path_laser_A_w_I_;
-}
-void Config_Settings::path_laser_A_w_I_set(std::string value) {
-    path_laser_A_w_I_ = value;
-}
-std::string Config_Settings::path_laser_A_w_I_description() {
-  return path_laser_A_w_I_description_;
-}
-void Config_Settings::path_laser_A_w_I_description_set(std::string description) {
-  path_laser_A_w_I_description_ = description;
-}
-std::string Config_Settings::path_laser_w_active() {
-    return path_laser_w_active_;
-}
-void Config_Settings::path_laser_w_active_set(std::string value) {
-    path_laser_w_active_ = value;
-}
-std::string Config_Settings::path_laser_w_active_description() {
-  return path_laser_w_active_description_;
-}
-void Config_Settings::path_laser_w_active_description_set(std::string description) {
-  path_laser_w_active_description_ = description;
-}
+std::string Config_Settings::path_input_j0() { return path_input_j0_; }
+void Config_Settings::path_input_j0_set(std::string value) { path_input_j0_ = value; }
+std::string Config_Settings::path_input_j0_description() { return path_input_j0_description_; }
+void Config_Settings::path_input_j0_description_set(std::string description) { path_input_j0_description_ = description; }
 
-std::string Config_Settings::path_dipole() {
-    return path_dipole_;
-}
-void Config_Settings::path_dipole_set(std::string val) {
-    path_dipole_ = val;
-}
-std::string Config_Settings::path_dipole_description() {
-  return path_dipole_description_;
-}
-void Config_Settings::path_dipole_description_set(std::string description) {
-    path_dipole_description_ = description;
-}
+std::string Config_Settings::path_laser_A_w_R() { return path_laser_A_w_R_; }
+void Config_Settings::path_laser_A_w_R_set(std::string value) { path_laser_A_w_R_ = value; }
+std::string Config_Settings::path_laser_A_w_R_description() { return path_laser_A_w_R_description_; }
+void Config_Settings::path_laser_A_w_R_description_set(std::string description) { path_laser_A_w_R_description_ = description; }
+std::string Config_Settings::path_laser_A_w_I() { return path_laser_A_w_I_; }
+void Config_Settings::path_laser_A_w_I_set(std::string value) { path_laser_A_w_I_ = value; }
+std::string Config_Settings::path_laser_A_w_I_description() { return path_laser_A_w_I_description_; }
+void Config_Settings::path_laser_A_w_I_description_set(std::string description) { path_laser_A_w_I_description_ = description; }
+std::string Config_Settings::path_laser_w_active() { return path_laser_w_active_; }
+void Config_Settings::path_laser_w_active_set(std::string value) { path_laser_w_active_ = value; }
+std::string Config_Settings::path_laser_w_active_description() { return path_laser_w_active_description_; }
+void Config_Settings::path_laser_w_active_description_set(std::string description) { path_laser_w_active_description_ = description; }
 
-std::string Config_Settings::path_w() {
-    return path_w_;
-}
-void Config_Settings::path_w_set(std::string val) {
-    path_w_ = val;
-}
-std::string Config_Settings::path_w_description() {
-  return path_w_description_;
-}
-void Config_Settings::path_w_description_set(std::string description) {
-  path_w_description_ = description;
-}
+std::string Config_Settings::path_dipole() { return path_dipole_; }
+void Config_Settings::path_dipole_set(std::string val) { path_dipole_ = val; }
+std::string Config_Settings::path_dipole_description() { return path_dipole_description_; }
+void Config_Settings::path_dipole_description_set(std::string description) { path_dipole_description_ = description; }
 
-std::string Config_Settings::path_E() {
-    return path_E_;
-}
-void Config_Settings::path_E_set(std::string val) {
-    path_E_ = val;
-}
-std::string Config_Settings::path_E_description() {
-  return path_E_description_;
-}
-void Config_Settings::path_E_description_set(std::string description) {
-  path_E_description_ = description;
-}
+std::string Config_Settings::path_w() { return path_w_; }
+void Config_Settings::path_w_set(std::string val) { path_w_ = val; }
+std::string Config_Settings::path_w_description() { return path_w_description_; }
+void Config_Settings::path_w_description_set(std::string description) { path_w_description_ = description; }
 
-std::string Config_Settings::path_config_file() {
-    return path_config_file_;
-}
-void Config_Settings::path_config_file_set(std::string val) {
-    path_config_file_ = val;
-}
-std::string Config_Settings::path_config_file_description() {
-  return path_config_file_description_;
-}
-void Config_Settings::path_config_file_description_set(std::string description) {
-  path_config_file_description_ = description;
-}
+std::string Config_Settings::path_E() { return path_E_; }
+void Config_Settings::path_E_set(std::string val) { path_E_ = val; }
+std::string Config_Settings::path_E_description() { return path_E_description_; }
+void Config_Settings::path_E_description_set(std::string description) { path_E_description_ = description; }
 
-std::string Config_Settings::path_config_log() {
-    return path_config_log_;
-}
-void Config_Settings::path_config_log_set(std::string val) {
-    path_config_log_ = val;
-}
-std::string Config_Settings::path_config_log_description() {
-  return path_config_log_description_;
-}
-void Config_Settings::path_config_log_description_set(std::string description) {
-  path_config_log_description_ = description;
-}
+std::string Config_Settings::path_config_file() { return path_config_file_; }
+void Config_Settings::path_config_file_set(std::string val) { path_config_file_ = val; }
+std::string Config_Settings::path_config_file_description() { return path_config_file_description_; }
+void Config_Settings::path_config_file_description_set(std::string description) { path_config_file_description_ = description; }
 
-}
+std::string Config_Settings::path_config_log() { return path_config_log_; }
+void Config_Settings::path_config_log_set(std::string val) { path_config_log_ = val; }
+std::string Config_Settings::path_config_log_description() { return path_config_log_description_; }
+void Config_Settings::path_config_log_description_set(std::string description) { path_config_log_description_ = description; }
+
+} // XNLO namespace

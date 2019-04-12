@@ -31,6 +31,7 @@ private:
     alpha,
     read_in_laser_pulse,
     output_wavefunction,
+    output_electric_field,
     pend_path,
     path_input_j0,
     path_laser_A_w_R,
@@ -62,6 +63,7 @@ private:
     double alpha_ = 1.45;
 
     int output_wavefunction_ = 0;
+    int output_electric_field_ = 0;
     int read_in_laser_pulse_ = 0;
 
     std::string pend_path_ = "prepend";
@@ -102,6 +104,7 @@ private:
     std::string read_in_laser_pulse_description_ = "(default) (int) Switch to read in laser pulse";
 
     std::string output_wavefunction_description_ = "(default) (int) Switch to output wavefunction";
+    std::string output_electric_field_description_ = "(default) (int) Switch to output electric field";
 
     std::string pend_path_description_ = "(default) (std::string) Pending switch";
 
@@ -195,6 +198,11 @@ public:
     void output_wavefunction_set(int);
     std::string output_wavefunction_description();
     void output_wavefunction_description_set(std::string);
+
+    int output_electric_field();
+    void output_electric_field_set(int);
+    std::string output_electric_field_description();
+    void output_electric_field_description_set(std::string);
 
     int read_in_laser_pulse();
     void read_in_laser_pulse_set(int);
