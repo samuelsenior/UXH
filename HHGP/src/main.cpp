@@ -68,10 +68,6 @@ int main(int argc, char** argv){
     ArrayXXcd tmp_A_w_r = hh_source.GetSource(inital_propagation_step, config, maths);
     IO laser_pulse_file;
 
-    //laser_pulse_file.read_header(config.path_A_w_R(), false);
-    //ArrayXXd A_w_R = laser_pulse_file.read_double(config.path_A_w_R(), true, false);
-    //laser_pulse_file.read_header(config.path_A_w_I(), false);
-    //ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I(), true, false);
     int N_cols = tmp_A_w_r.cols();
     int N_rows = tmp_A_w_r.rows();
 
@@ -126,23 +122,19 @@ double dz = config.Z() / config.n_z();
     std::string restOfName_R = "_HHG_R.bin";
     std::string restOfName_I = "_HHG_I.bin";
     std::string restOfName_w = "_HHG_w.bin";
-//    double dz = config.Z() / config.n_z();
+
     // Want to propagate to the end fo the capillary and include the very final
     // source terms but not propagate them outside of the capillary
-    //ArrayXXcd A_w_m_out = ArrayXXcd::Zero(prop.n_k, rkr.n_r);
-
     bool to_end_only = true;
     for (int i = inital_propagation_step; i < config.n_z() + 1; i++) {
         std::cout << "Propagation Step: " << i << std::endl;
         if (to_end_only == true){
+// Need to rethink if z += dz comes here or after propagation, have a feeling it should be after if
+// propagating to end of capillary only...
             prop.z += dz;
             A_w_r = prop.block(hh_source.GetSource(i, config, maths)) * dz;  // Normalisation to a dz volume
-//std::cout << "A_w_r.real().row(0).col(0): " << A_w_r.real().row(0).col(0) << ", " << "A_w_r.imag().row(0).col(0): " << A_w_r.imag().row(0).col(0) << std::endl;
-            //A_w_r_tmp = prop.block(A_w_r);
             prop.nearFieldPropagationStep(dz, A_w_r);
-//std::cout << "prop.A_w_r.real().row(0).col(0): " << prop.A_w_r.real().row(0).col(0) << ", " << "prop.A_w_r.imag().row(0).col(0): " << prop.A_w_r.imag().row(0).col(0) << std::endl;
             A_w_r_tmp += prop.A_w_r;
-//std::cout << "A_w_r_tmp.real().row(0).col(0): " << A_w_r_tmp.real().row(0).col(0) << ", " << "A_w_r_tmp.imag().row(0).col(0): " << A_w_r_tmp.imag().row(0).col(0) << std::endl;
         } else {
             if (i == inital_propagation_step) {
                 // NOT SURE
@@ -159,12 +151,6 @@ double dz = config.Z() / config.n_z();
                 A_w_r = hh_source.GetSource(i, config, maths) * dz;  // Normalisation to a dz volume
                 A_w_r_tmp += prop.block(A_w_r);//prop.A_w_r;
             }
-            //A_w_r = hh_source.GetSource(i, config, maths);
-    //        prop.z += dz;
-    //        A_w_r = prop.block(hh_source.GetSource(i, config, maths));
-    //        prop.nearFieldPropagationStep(config.Z() - prop.z, A_w_r);
-    //        A_w_r = prop.A_w_r;
-    //        A_w_r_tmp += A_w_r;
         }
 
 
