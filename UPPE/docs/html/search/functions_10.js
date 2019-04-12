@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['t',['T',['../class_config___settings.html#a1ed40710ec225b2f91d275b4fc8f64ef',1,'Config_Settings']]],
-  ['t_5fdescription',['T_description',['../class_config___settings.html#a0a851a218a87393dfe8710fae9a21115',1,'Config_Settings']]],
-  ['t_5fdescription_5fset',['T_description_set',['../class_config___settings.html#aab5604b25a35978883a804e6a628c6b3',1,'Config_Settings']]],
-  ['t_5fset',['T_set',['../class_config___settings.html#ae5124cda8f87a2abb733912ad49264b3',1,'Config_Settings']]],
-  ['trapz',['trapz',['../classmaths__textbook.html#a158ce9c89ee1db5495810c25ee2aed57',1,'maths_textbook']]]
+  ['set_5fpath',['set_path',['../class_config___settings.html#a4d2c6e8c21b58d66491e90a0e04713dd',1,'Config_Settings']]],
+  ['set_5fpost_5fpath',['set_post_path',['../class_config___settings.html#a194d4bf62b0395b7f743c3101de5983b',1,'Config_Settings']]],
+  ['set_5fpre_5fpath',['set_pre_path',['../class_config___settings.html#aee649ed611ec780e1c98d81e5107f4b5',1,'Config_Settings']]],
+  ['set_5fvariable',['set_variable',['../class_config___settings.html#aac05d4283c44d73df79a31c4d9daeab0',1,'Config_Settings']]],
+  ['step_5fpath',['step_path',['../class_config___settings.html#ae92f4af9699ad471f096f6a17fef35da',1,'Config_Settings']]]
 ];
