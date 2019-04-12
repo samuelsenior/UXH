@@ -280,11 +280,20 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                     rkr, gas,
                     maths, ht);
     }
+    bool HH_prop_to_end_only = true;
+    //double dz = config.Z() / config.n_z();
+    //prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z());;
+    ////prop.z -= dz;
+    //int inital_propagation_step = config.inital_propagation_step();
+    double HHGP_starting_z = config.HHGP_starting_z();
 
     ArrayXXcd hhg;
     ArrayXXcd hhg_new;
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
+
+    ArrayXXcd HHG_tmp = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -304,7 +313,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 // Change to an if statement so can be outputted if needed
                 //file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
                 A_w_active = laser_driving.A_w_active;
-                if (total_processes > 1) {
+                if ((total_processes > 1) && (dz*ii >= HHGP_starting_z)) {
                     // Send
                     for (int j = 1; j < total_processes; j++) {
                         MPI_Send(laser_driving.A_w_active.real().data(),
@@ -312,7 +321,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                     }
                 }
-            } else {
+            } else if (dz*ii >= HHGP_starting_z) {
                 // Receive
                 A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
                 MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
@@ -320,11 +329,11 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
             }
 
             //int response_rate = 1;//config.n_z() / 10;
-            if (total_processes > 1) {// && ((ii % response_rate == 0) || ii == 1)) {
+            if ((total_processes > 1) && (dz*ii >= HHGP_starting_z)) {// && ((ii % response_rate == 0) || ii == 1)) {
                 atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index);
             }
 
-            if (this_process == 0 && total_processes > 1) {
+            if (this_process == 0 && total_processes > 1 && (dz*ii >= HHGP_starting_z)) {
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
@@ -379,35 +388,42 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                         hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                     }
                 }
-                if (ii == 1) {
-                    hhg_previous = hhg;
-                } else {
-                    double z = dz * double(ii);
-                    hhg_source = hhg;
-                    //hhg_new = hhgp.nearFieldStep(hhg_source, hhg_previous,
-                    //                             w_active_HHG,
-                    //                             z, dz);
-                    //hhg_previous = hhg_new;
-                    //hhg = hhg_new;
-                }
-                // Explaination of the above:
-                // -At the first step we just want the source term as nothing from any previous steps is
-                //  propagated to the first position since nothing before
-                // -Keep the hhg term here as the sources from the previous step
-                // -At the next step, take the HHG as the current source term
-                //  and use previous as the sources from the previous steps
-                //  propagate previous to current and add source to it
-                // -This is now also the previous term for the next step
-                // -Repeat
-                // Always start at 1, so first step is always outputted, even when reading in
+                // Propagate high harmonics from current step to end of capillary
+                //if (HH_prop_to_end_only == true){
+// Need to rethink if z += dz comes here or after propagation, have a feeling it should be after if
+// propagating to end of capillary only...
+                prop.z += dz;
+                HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
+                prop.nearFieldPropagationStep(dz, HHG_tmp);
+                HHP += prop.A_w_r;
+                //} else {
+                //    if (ii == inital_propagation_step) {
+                //        // NOT SURE
+                //        prop.z += dz;///2.0;
+                //        // Get source at step, set current and previous values to it
+                //        HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
+                //        HHP = HHG_tmp;
+                //    } else if (ii > inital_propagation_step) {
+                //        prop.z += dz;
+                //        // Propagate source at previous step to the current step and store the previous step as it
+                //        prop.nearFieldPropagationStep(dz, HHP);
+                //        HHP = prop.A_w_r;
+                //        // Get the new source at the current step and add the propagted source from the previous step to this
+                //        HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
+                //        HHP += A_w_r;//prop.A_w_r;
+                //    }
+                //}
                 if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
                     config.step_path(ii, "HHG_A_w");
                     file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
                     file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
+
+                    config.step_path(ii, "HHP_A_w");
+                    file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+                    file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
                 }
                 // Only needed once!
                 //file_prop_step.write(w_active_HHG, config.path_HHG_w_step(), true);
-                // Change to an if statement so can be outputted if needed
                 if (config_XNLO.output_electric_field() == 1) {
                     config.step_path(ii, "HHG_electric_field");
                     file_prop_step.write(E, config.path_HHG_E_step(), true);
@@ -426,6 +442,9 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
             file.write(hhg.real(), config.path_HHG_R());
             file.write(hhg.imag(), config.path_HHG_I());
             file.write(w_active_HHG, config.path_HHG_w());
+
+            file.write(HHP.real(), config.path_HHP_R());
+            file.write(HHP.imag(), config.path_HHP_I());
         }
 
         // Clean up

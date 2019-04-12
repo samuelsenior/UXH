@@ -34,12 +34,14 @@ const char * Config_Settings::setting_name[] = {
   "read_in_laser_pulse",
   "path_A_w_R_initial", "path_A_w_I_initial", "path_w_active_initial",
   "original_n_z",
+  "HHGP_starting_z",
   "gas_pressure_profile",
   "pend_path",
   "path_input_j0",
   "path_A_w_R", "path_A_w_I", "path_w_active",
   "path_electron_density",
   "path_HHG_R", "path_HHG_I", "path_HHG_w", "path_HHG_E",
+  "path_HHP_R", "path_HHP_I",
   "path_config_file", "path_config_log"
 };
 
@@ -230,6 +232,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
         original_n_z_description_set(input_description_char);
         break;
 
+      case SN::HHGP_starting_z :
+        HHGP_starting_z_set(std::stod(variable_value_str));
+        HHGP_starting_z_description_set(input_description_char);
+        break;
+
       case SN::gas_pressure_profile:
         gas_pressure_profile_set(variable_value_str);
         gas_pressure_profile_description_set(input_description_char);
@@ -277,6 +284,15 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::path_HHG_E :
         path_HHG_E_set(variable_value_str);
         path_HHG_E_description_set(input_description_char);
+        break;
+
+      case SN::path_HHP_R :
+        path_HHP_R_set(variable_value_str);
+        path_HHP_R_description_set(input_description_char);
+        break;
+      case SN::path_HHP_I :
+        path_HHP_I_set(variable_value_str);
+        path_HHP_I_description_set(input_description_char);
         break;
 
       case SN::path_config_file :
@@ -372,6 +388,9 @@ void Config_Settings::step_path(int step, std::string variable) {
   path_hhg_w_stepWorkings = path_HHG_w();
   path_hhg_E_stepWorkings = path_HHG_E();
 
+  path_hhp_r_stepWorkings = path_HHP_R();
+  path_hhp_i_stepWorkings = path_HHP_I();
+
 
   found_stepWorkings = path_A_R_stepWorkings.find_last_of("/");
   tmp_stepWorkings = path_A_R_stepWorkings.substr(found_stepWorkings+1);
@@ -449,6 +468,11 @@ void Config_Settings::step_path(int step, std::string variable) {
       path_hhg_i_stepWorkings = path_hhg_i_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_hhg_i_stepWorkings.substr(3);
       path_HHG_R_step_set(path_hhg_r_stepWorkings);
       path_HHG_I_step_set(path_hhg_i_stepWorkings);
+    } else if (variable == "HHP_A_w") {
+      path_hhp_r_stepWorkings = path_hhp_r_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_hhp_r_stepWorkings.substr(3);
+      path_hhp_i_stepWorkings = path_hhp_i_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_hhp_i_stepWorkings.substr(3);
+      path_HHP_R_step_set(path_hhp_r_stepWorkings);
+      path_HHP_I_step_set(path_hhp_i_stepWorkings);
     } else if (variable == "UPPE_electron_density") {
       path_e_stepWorkings = path_e_stepWorkings.substr(0, 3) + "_" + pending_string_stepWorkings + "_" + path_e_stepWorkings.substr(3);
       path_electron_density_step_set(path_e_stepWorkings);
@@ -467,6 +491,11 @@ void Config_Settings::step_path(int step, std::string variable) {
       path_hhg_i_stepWorkings = path_hhg_i_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_hhg_i_stepWorkings.substr(found_stepWorkings+1+3+1);
       path_HHG_R_step_set(path_hhg_r_stepWorkings);
       path_HHG_I_step_set(path_hhg_i_stepWorkings);
+    } else if (variable == "HHP_A_w") {
+      path_hhp_r_stepWorkings = path_hhp_r_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_hhp_r_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_hhp_i_stepWorkings = path_hhp_i_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_hhp_i_stepWorkings.substr(found_stepWorkings+1+3+1);
+      path_HHP_R_step_set(path_hhp_r_stepWorkings);
+      path_HHP_I_step_set(path_hhp_i_stepWorkings);
     } else if (variable == "UPPE_electron_density") {
       path_e_stepWorkings = path_e_stepWorkings.substr(0, found_stepWorkings+1+3) + "_" + pending_string_stepWorkings + "_" + path_e_stepWorkings.substr(found_stepWorkings+1+3+1);
       path_electron_density_step_set(path_e_stepWorkings);
@@ -532,8 +561,9 @@ void Config_Settings::print() {
     std::cout << "   l_0:              " << l_0() << "                        " << l_0_description() << std::endl;
     std::cout << "   ceo:              " << ceo() << "                            " << ceo_description() << std::endl;
     std::cout << "   waist:            " << waist() << "                      " << waist_description() << std::endl;
-    std::cout << "   read_in_laser_pulse: " << read_in_laser_pulse() << "   " << read_in_laser_pulse_description() << std::endl;
-    std::cout << "   original_n_z: " << original_n_z() << "   " << original_n_z_description() << std::endl;
+    std::cout << "   read_in_laser_pulse:  " << read_in_laser_pulse() << "   " << read_in_laser_pulse_description() << std::endl;
+    std::cout << "   original_n_z:         " << original_n_z() << "   " << original_n_z_description() << std::endl;
+    std::cout << "   HHGP_starting_z:      " << HHGP_starting_z() << "   " << HHGP_starting_z_description() << std::endl;
     std::cout << "   gas_pressure_profile: " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
     std::cout << "   pend_path         " << pend_path() << "                      " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:    " << path_input_j0() << "        " << path_input_j0_description() << std::endl;
@@ -545,6 +575,8 @@ void Config_Settings::print() {
     std::cout << "   path_HHG_I:       " << path_HHG_I() << "   " << path_HHG_I_description() << std::endl;
     std::cout << "   path_HHG_w:       " << path_HHG_w() << "   " << path_HHG_w_description() << std::endl;
     std::cout << "   path_HHG_E:       " << path_HHG_E() << "   " << path_HHG_E_description() << std::endl;
+    std::cout << "   path_HHP_R:       " << path_HHP_R() << "   " << path_HHP_R_description() << std::endl;
+    std::cout << "   path_HHP_I:       " << path_HHP_I() << "   " << path_HHP_I_description() << std::endl;
     std::cout << "   path_config_file: " << path_config_file() << "                 " << path_config_file_description() << std::endl;
     std::cout << "   path_config_log:  " << path_config_log() << " " << path_config_log_description() << std::endl;
     std::cout << "-------------------------------------------------------------------------------\n";
@@ -580,6 +612,8 @@ void Config_Settings::print(std::string path_) {
       config_log << "{read_in_laser_pulse} {" << read_in_laser_pulse() << "} {" << read_in_laser_pulse_description() << "}\n";
       config_log << "{original_n_z} {" << original_n_z() << "} {" << original_n_z_description() << "}\n";
 
+      config_log << "{HHGP_starting_z} {" << HHGP_starting_z() << "} {" << HHGP_starting_z_description() << "}\n";
+
       config_log << "{gas_pressure_profile} {" << gas_pressure_profile() << "} {" << gas_pressure_profile_description() << "}\n";
 
       config_log << "{pend_path} {" << pend_path() << "} {" << pend_path_description() << "}\n";
@@ -594,6 +628,8 @@ void Config_Settings::print(std::string path_) {
       config_log << "{path_HHG_I} {" << path_HHG_I() << "} {" << path_HHG_I_description() << "}\n";
       config_log << "{path_HHG_w} {" << path_HHG_w() << "} {" << path_HHG_w_description() << "}\n";
       config_log << "{path_HHG_E} {" << path_HHG_E() << "} {" << path_HHG_E_description() << "}\n";
+      config_log << "{path_HHP_R} {" << path_HHP_R() << "} {" << path_HHP_R_description() << "}\n";
+      config_log << "{path_HHP_I} {" << path_HHP_I() << "} {" << path_HHP_I_description() << "}\n";
 
       config_log << "{path_config_file} {" << path_config_file() << "} {" << path_config_file_description() << "}\n";
       config_log << "{path_config_log} {" << path_config_log() << "} {" << path_config_log_description() << "}\n";
@@ -720,6 +756,12 @@ std::string Config_Settings::original_n_z_description() { return original_n_z_de
 void Config_Settings::original_n_z_description_set(std::string description) { original_n_z_description_ = description; }
 
 
+double Config_Settings::HHGP_starting_z() { return HHGP_starting_z_; }
+void Config_Settings::HHGP_starting_z_set(double value) { HHGP_starting_z_ = value; }
+std::string Config_Settings::HHGP_starting_z_description() { return HHGP_starting_z_description_; }
+void Config_Settings::HHGP_starting_z_description_set(std::string description) { HHGP_starting_z_description_ = description; }
+
+
 std::string Config_Settings::gas_pressure_profile() { return gas_pressure_profile_; }
 void Config_Settings::gas_pressure_profile_set(std::string value) { gas_pressure_profile_ = value; }
 std::string Config_Settings::gas_pressure_profile_description() { return gas_pressure_profile_description_; }
@@ -799,6 +841,17 @@ std::string Config_Settings::path_HHG_E_description() { return path_HHG_E_descri
 void Config_Settings::path_HHG_E_description_set(std::string description) { path_HHG_E_description_ = description; }
 
 
+std::string Config_Settings::path_HHP_R() { return path_HHP_R_; }
+void Config_Settings::path_HHP_R_set(std::string value) { path_HHP_R_ = value; }
+std::string Config_Settings::path_HHP_R_description() { return path_HHP_R_description_; }
+void Config_Settings::path_HHP_R_description_set(std::string description) { path_HHP_R_description_ = description; }
+
+std::string Config_Settings::path_HHP_I() { return path_HHP_I_; }
+void Config_Settings::path_HHP_I_set(std::string value) { path_HHP_I_ = value; }
+std::string Config_Settings::path_HHP_I_description() { return path_HHP_I_description_; }
+void Config_Settings::path_HHP_I_description_set(std::string description) { path_HHP_I_description_ = description; }
+
+
 std::string Config_Settings::path_HHG_R_step() { return path_HHG_R_step_; }
 void Config_Settings::path_HHG_R_step_set(std::string value) { path_HHG_R_step_ = value; }
 std::string Config_Settings::path_HHG_R_description_step() { return path_HHG_R_description_step_; }
@@ -818,6 +871,17 @@ std::string Config_Settings::path_HHG_E_step() { return path_HHG_E_step_; }
 void Config_Settings::path_HHG_E_step_set(std::string value) { path_HHG_E_step_ = value; }
 std::string Config_Settings::path_HHG_E_description_step() { return path_HHG_E_description_step_; }
 void Config_Settings::path_HHG_E_description_step_set(std::string description) { path_HHG_E_description_step_ = description; }
+
+
+std::string Config_Settings::path_HHP_R_step() { return path_HHP_R_step_; }
+void Config_Settings::path_HHP_R_step_set(std::string value) { path_HHP_R_step_ = value; }
+std::string Config_Settings::path_HHP_R_description_step() { return path_HHP_R_description_step_; }
+void Config_Settings::path_HHP_R_description_step_set(std::string description) { path_HHP_R_description_step_ = description; }
+
+std::string Config_Settings::path_HHP_I_step() { return path_HHP_I_step_; }
+void Config_Settings::path_HHP_I_step_set(std::string value) { path_HHP_I_step_ = value; }
+std::string Config_Settings::path_HHP_I_description_step() { return path_HHP_I_description_step_; }
+void Config_Settings::path_HHP_I_description_step_set(std::string description) { path_HHP_I_description_step_ = description; }
 
 
 std::string Config_Settings::path_config_file() { return path_config_file_; }
