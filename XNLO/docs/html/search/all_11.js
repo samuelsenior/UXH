@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['R',['../class_x_n_l_o_1_1grid__rkr.html#a7fcb4965d2971614910b503736cb0227',1,'XNLO::grid_rkr::R()'],['../class_x_n_l_o_1_1grid__rkr.html#abda12cef9e560a1e5898cf1e25a17cb6',1,'XNLO::grid_rkr::r()']]],
+  ['r',['r',['../class_x_n_l_o_1_1grid__rkr.html#abda12cef9e560a1e5898cf1e25a17cb6',1,'XNLO::grid_rkr::r()'],['../class_x_n_l_o_1_1grid__rkr.html#a7fcb4965d2971614910b503736cb0227',1,'XNLO::grid_rkr::R()']]],
   ['read_5fdouble',['read_double',['../class_x_n_l_o_1_1_i_o.html#ab72c459ef35110b8e6912c4047ce668e',1,'XNLO::IO::read_double(const std::string path, int N_row_, int N_col_, bool print=true)'],['../class_x_n_l_o_1_1_i_o.html#aef691e987050dc0b80509f789c8b1902',1,'XNLO::IO::read_double(const std::string path, bool skip_header=true, bool print=true)']]],
   ['read_5fheader',['read_header',['../class_x_n_l_o_1_1_i_o.html#a4d7233b775222f5513ab160aa32e0280',1,'XNLO::IO']]],
   ['read_5fin',['read_in',['../class_x_n_l_o_1_1_config___settings.html#a4b227797e2d672d852612eeae3bbaf17',1,'XNLO::Config_Settings']]],
