@@ -155,10 +155,6 @@ int main(int argc, char** argv){
         file.write_header(config.path_w(), config.N_t(), 1);
         file.write_double(config.path_w(), tw.w, config.N_t(), 1);
 
-        file.overwrite(config.path_E());
-        file.write_header(config.path_E(), config.N_t(), total_atoms);
-        file.write_double(config.path_E(), pulse.E, config.N_t(), total_atoms);
-
         if (config.output_wavefunction() == 1) {
             std::string wavefunction_R = "wavefunction_R.bin";
             file.overwrite(wavefunction_R);
@@ -169,6 +165,11 @@ int main(int argc, char** argv){
             file.overwrite(wavefunction_I);
             file.write_header(wavefunction_I, config.N_t(), 4096);
             file.write_double(wavefunction_I, wavefunction.imag(), config.N_t(), 4096);
+        }
+        if (config.output_electric_field() == 1) {
+            file.overwrite(config.path_E());
+            file.write_header(config.path_E(), config.N_t(), total_atoms);
+            file.write_double(config.path_E(), pulse.E, config.N_t(), total_atoms);
         }
         
 
