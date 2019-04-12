@@ -331,7 +331,9 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                         neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
                     }
                 }
-                E = atomResponse.E;
+                if (config_XNLO.output_electric_field() == 1) {
+                    E = atomResponse.E;
+                }
                 // Delete atomResponse after use to save ram
                 acceleration_HHG = atomResponse.acceleration;
                 for (int j = 0; j < rkr.n_r; j++) {
@@ -406,7 +408,10 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 // Only needed once!
                 //file_prop_step.write(w_active_HHG, config.path_HHG_w_step(), true);
                 // Change to an if statement so can be outputted if needed
-                //file_prop_step.write(E, config.path_HHG_E_step(), true);
+                if (config_XNLO.output_electric_field() == 1) {
+                    config.step_path(ii, "HHG_electric_field");
+                    file_prop_step.write(E, config.path_HHG_E_step(), true);
+                }
             }
         }
         std::cout << "-------------------------------------------------------------------------------\n";
