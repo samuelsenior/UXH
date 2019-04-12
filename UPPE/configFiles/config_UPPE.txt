@@ -1,6 +1,6 @@
 The structure of this config file is fairly simple. Each row has three values to be read in, the first is the variable/input parameter name, the second is it's value, and the third is a brief description of it. Each of these values is incased in curly braces. Anything outside of a pair of curly braces is not read in and can therefore be used as comments in this file etc. If there are less than three pairs of curly braces on a line then an error message is thrown and that lines value isn't read in. If there are more than three pairs of curly braces then only the first three are considered and the rest are ignored.
 
-{n_z} {100} {(int) Number of steps in Z}
+{n_z} {50} {(int) Number of steps in Z}
 {n_r} {20} {(int) The z_r value}
 {n_m} {20} {(int) Number of modes}
 
