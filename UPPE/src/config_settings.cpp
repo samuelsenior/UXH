@@ -350,13 +350,10 @@ void Config_Settings::check_paths(bool print_to_screen) {
 
   path = set_path(path_A_w_R(), pending_string);
   path_A_w_R_set(path);
-
   path = set_path(path_A_w_I(), pending_string);
   path_A_w_I_set(path);
-
   path = set_path(path_w_active(), pending_string);
   path_w_active_set(path);
-
   path = set_path(path_electron_density(), pending_string);
   path_electron_density_set(path);
 
@@ -364,6 +361,10 @@ void Config_Settings::check_paths(bool print_to_screen) {
   path_HHG_R_set(path);
   path = set_path(path_HHG_I(), pending_string);
   path_HHG_I_set(path);
+  path = set_path(path_HHP_R(), pending_string);
+  path_HHP_R_set(path);
+  path = set_path(path_HHP_I(), pending_string);
+  path_HHP_I_set(path);
   path = set_path(path_HHG_w(), pending_string);
   path_HHG_w_set(path);
   path = set_path(path_HHG_E(), pending_string);
