@@ -336,7 +336,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 
             //int response_rate = 1;//config.n_z() / 10;
             if ((total_processes > 1) && (dz*ii >= HHGP_starting_z)) {// && ((ii % response_rate == 0) || ii == 1)) {
-                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index, false);
+                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index, "minimum");
             }
 
             if (this_process == 0 && total_processes > 1 && (dz*ii >= HHGP_starting_z)) {
@@ -400,8 +400,16 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 // propagating to end of capillary only...
                 prop.z += dz;
                 HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
-                prop.nearFieldPropagationStep(dz, HHG_tmp);
-                HHP += prop.A_w_r;
+                // If at the last step then we're at teh end of the capillary and so aren't looking
+                // to propagate the last HH source any further, but rather just use it's source as it's
+                // already at the desired position
+                if (ii < config.n_z()) {
+                    prop.nearFieldPropagationStep(dz, HHG_tmp);
+                    HHP += prop.A_w_r;
+                } else {
+                    //prop.nearFieldPropagationStep(dz, HHG_tmp);
+                    HHP += HHG_tmp;//prop.A_w_r;
+                }
                 //} else {
                 //    if (ii == inital_propagation_step) {
                 //        // NOT SURE
