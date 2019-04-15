@@ -103,7 +103,7 @@ int main(int argc, char** argv){
                      physics, maths, ht);//, config);
 
 double dz = config.Z() / config.n_z();
-   prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z());;
+   prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z()) - dz;
 //prop.z -= dz;
 
     config.print(config.path_config_log());
@@ -133,8 +133,16 @@ double dz = config.Z() / config.n_z();
 // propagating to end of capillary only...
             prop.z += dz;
             A_w_r = prop.block(hh_source.GetSource(i, config, maths)) * dz;  // Normalisation to a dz volume
-            prop.nearFieldPropagationStep(dz, A_w_r);
-            A_w_r_tmp += prop.A_w_r;
+            // If at the last step then we're at teh end of the capillary and so aren't looking
+            // to propagate the last HH source any further, but rather just use it's source as it's
+            // already at the desired position
+            if (i < config.n_z()) {
+                prop.nearFieldPropagationStep(dz, A_w_r);
+                A_w_r_tmp += prop.A_w_r;
+            } else {
+                //prop.nearFieldPropagationStep(dz, A_w_r);
+                A_w_r_tmp += A_w_r;//prop.A_w_r;
+            }
         } else {
             if (i == inital_propagation_step) {
                 // NOT SURE
