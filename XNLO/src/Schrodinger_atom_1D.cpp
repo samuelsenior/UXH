@@ -25,7 +25,7 @@ namespace XNLO {
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
 /*! Class constructor. */
-Schrodinger_atom_1D::Schrodinger_atom_1D(grid_tw& tw_, double alpha_, int output_wavefunction_) : tw(tw_) {
+Schrodinger_atom_1D::Schrodinger_atom_1D(grid_tw& tw_, double alpha_, int output_wavefunction_, bool print_) : tw(tw_), print(print_) {
     
     maths_textbook maths;
     physics_textbook physics;
@@ -90,7 +90,9 @@ void Schrodinger_atom_1D::set_GS(int N_it_) {
     // Solve TDSE
     ArrayXd temp = Schrodinger_atom_1D::solve_TDSE_PS(N_it_, dt, E, 0);
     wfn_GS = wfn;
-    std::cout << "Energy: "<< energy * 27.211 << " eV" << std::endl;
+    if (print == true) {
+        std::cout << "Energy: "<< energy * 27.211 << " eV" << std::endl;
+    }
 
 }
 
@@ -152,7 +154,7 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
     int step_print = 10000;
     for (int ii = 0; ii < N_it_; ii++) {
         
-        if (j*step_print == ii) {
+        if (j*step_print == ii && print == true) {
             std::cout << "step: " << ii << std::endl;
             j++;
         }

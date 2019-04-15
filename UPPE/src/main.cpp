@@ -190,11 +190,13 @@ int main(int argc, char** argv){
         propagation_step = initial_step + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
                                               // initial step being read in is step i-1
         initial_position = dz * initial_step;
-        std::cout << "Simulation run (read in): " << sim_no << std::endl;
-        std::cout << "Initial step: " << initial_step << std::endl;
-        std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
-        std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
-        std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
+        if (this_process == 0) {
+            std::cout << "Simulation run (read in): " << sim_no << std::endl;
+            std::cout << "Initial step: " << initial_step << std::endl;
+            std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
+            std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
+            std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
+        }
     } else {
         propagation_step = 1;
     }
@@ -206,7 +208,9 @@ int main(int argc, char** argv){
                               config,
                               config.read_in_laser_pulse(), initial_position);
 
+if (this_process == 0) {
 std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_active.real().rows() << ", laser_driving.A_w_active.real().cols():" << laser_driving.A_w_active.real().cols() << std::endl;
+}
     capillary_fibre capillary_driving(config.Z(), rkr, tw, physics, maths);
     keldysh_gas gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
@@ -252,8 +256,9 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     ArrayXd w_active_HHG;
 
     w_tmp = tw_XNLO.w;
-std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
-
+if (this_process == 0) {
+    std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
+}
     int w_active_min_index_HHG = 0;
     while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
         w_active_min_index_HHG++;
@@ -264,9 +269,10 @@ std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 
 
     n_active_HHG = count - w_active_min_index_HHG;
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
+if (this_process == 0) {
 std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
 std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
-
+}
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
@@ -330,7 +336,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 
             //int response_rate = 1;//config.n_z() / 10;
             if ((total_processes > 1) && (dz*ii >= HHGP_starting_z)) {// && ((ii % response_rate == 0) || ii == 1)) {
-                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index);
+                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index, false);
             }
 
             if (this_process == 0 && total_processes > 1 && (dz*ii >= HHGP_starting_z)) {
@@ -430,7 +436,9 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 }
             }
         }
-        std::cout << "-------------------------------------------------------------------------------\n";
+        if (this_process == 0) {
+            std::cout << "-------------------------------------------------------------------------------\n";
+        }
 
         if (this_process == 0) {
             // Output
@@ -451,7 +459,9 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
         DftiFreeDescriptor(&ft);
         MPI_Finalize();
 
-        std::cout << "\n-------------------------------------------------------------------------------\n";
-        std::cout << "UPPE successfully ran!\n";
-        std::cout << "-------------------------------------------------------------------------------\n";
+        if (this_process == 0) {
+            std::cout << "\n-------------------------------------------------------------------------------\n";
+            std::cout << "UPPE successfully ran!\n";
+            std::cout << "-------------------------------------------------------------------------------\n";
+        }
 }

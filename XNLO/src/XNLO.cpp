@@ -37,7 +37,7 @@ using namespace Eigen;
 */
 namespace XNLO {
 
-    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE){
+    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE, bool print){
 
       std::string config_file_path;
       config_file_path = "../configFiles/config_XNLO.txt";
@@ -132,7 +132,10 @@ namespace XNLO {
             }
 
             if (this_node == 0) {
-                std::cout << "XNLO finished" << std::endl;
+              //config.print(config.path_config_log());
+              std::cout << "\n-------------------------------------------------------------------------------\n";
+              std::cout << "XNLO successfully ran!\n";
+              std::cout << "-------------------------------------------------------------------------------\n";
             }
 
             Result result;

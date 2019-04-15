@@ -37,11 +37,13 @@ public:
     ArrayXcd wfn;    /*!< The wavefunction of the electron at a time \f$t\f$ and as a function of position. */
     double energy;   /*!< The energy expectation value of the elctron. */
 
+    bool print;      /*!< Switch to print details to screen. */
+
     int output_wavefunction; /*!< A switch to toggle outputting and saving the electron wavefunction, for every position and time step.*/
     ArrayXXcd wfn_output;    /*!< The electron wavefunction at every position and time step. */
     
     // Functions
-    Schrodinger_atom_1D(grid_tw& tw_, double alpha_, int output_wavefunction_);
+    Schrodinger_atom_1D(grid_tw& tw_, double alpha_, int output_wavefunction_, bool print=true);
     void set_GS(int N_it_);
     ArrayXd get_acceleration(int N_it_, double dt_, ArrayXd E_);
     ArrayXd solve_TDSE_PS(int N_it_, std::complex<double> dt_, ArrayXd E_, int e_);
