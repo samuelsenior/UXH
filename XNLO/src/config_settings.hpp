@@ -131,10 +131,12 @@ private:
     std::string set_post_path(std::string, std::string);
 
 public:
+
+    bool print_to_screen=true;
     // Functions
     Config_Settings();
-    void read_in(std::string, bool print_to_screen = true);
-    void check_paths(bool print_to_screen = true);
+    void read_in(std::string, bool print_to_screen_ = true);
+    void check_paths(bool print_to_screen_ = true);
     void print();
     void print(std::string);
 

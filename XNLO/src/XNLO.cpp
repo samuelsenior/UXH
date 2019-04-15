@@ -37,7 +37,7 @@ using namespace Eigen;
 */
 namespace XNLO {
 
-    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE, bool print){
+    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE, std::string print){
 
       std::string config_file_path;
       config_file_path = "../configFiles/config_XNLO.txt";
@@ -65,6 +65,11 @@ namespace XNLO {
 
         // Input Settings and Parameters
         Config_Settings config;
+        if (print == "minimum" || print == "false") {
+            config.print_to_screen = false;
+        } else {
+            config.print_to_screen = true;
+        }
         if(config_file_path.empty() && this_node == 0) {
             std::cout << "Using default config file path " << config.path_config_file() << std::endl;
         } else {
@@ -168,7 +173,18 @@ namespace XNLO {
                 wavefunction = ArrayXXcd::Zero(0, 0);
             }
 
-            Schrodinger_atom_1D atom(tw, config.alpha(), config.output_wavefunction());
+            Schrodinger_atom_1D atom(tw, config.alpha(), config.output_wavefunction(), true);
+            if (print == "minimum") {
+                if (this_node == 1) {
+                    atom.print = true;
+                } else {
+                    atom.print = false;
+                }
+            } else if (print == "false") {
+                atom.print = false;
+            } else {
+                atom.print = true;
+            }
             for (int ii = 0; ii < atoms_per_worker; ii++) {
 
                 dipole.col(ii) = atom.get_acceleration(tw.N_t, tw.dt, E.col(ii));

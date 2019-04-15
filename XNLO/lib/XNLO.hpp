@@ -11,6 +11,6 @@ struct Result {
 	ArrayXXcd wavefunction;
 };
 
-Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE, bool print);
+Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE, std::string print="minimum");
 
 }

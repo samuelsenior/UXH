@@ -39,7 +39,7 @@ const char * Config_Settings::setting_name[] = {
   "path_config_file", "path_config_log",
 };
 
-void Config_Settings::read_in(const std::string path, bool print_to_screen) {
+void Config_Settings::read_in(const std::string path, bool print_to_screen_) {
   std::string input_name_char;
   std::string input_value_char;
   std::string input_description_char;
@@ -106,10 +106,10 @@ void Config_Settings::read_in(const std::string path, bool print_to_screen) {
               set_variable(input_name_char, input_value_char, input_description_char);
             }
     } //while
-    if (config_file.eof() && print_to_screen == true) {
+    if (config_file.eof() && print_to_screen_ == true) {
       std::cout << "Config_Settings::read_in: Info, " << lines_found << " lines found and " << lines_read << " lines read in from config file!\n";
     }
-  } else if (print_to_screen == true) {
+  } else if (print_to_screen_ == true) {
     std::cout << "Config_Settings::read_in: Error, could not open config file, using default values instead...\n";
   }
   config_file.close();
@@ -251,11 +251,13 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       default: std::cout << "Config_Settings::set_variable: Error, SettingName (number value) " << static_cast<std::underlying_type<SN>::type>(SettingName) << " does not correspond to set values!" << std::endl;
     };
   } else {
-    std::cout << "Config_Settings::set_variable: Error, unknown variable name '" << variable_name << "'\n";
+    if (print_to_screen == true) {
+      std::cout << "Config_Settings::set_variable: Error, unknown variable name '" << variable_name << "'\n";
+    }
   }
 }
 
-void Config_Settings::check_paths(bool print_to_screen) {
+void Config_Settings::check_paths(bool print_to_screen_) {
   int i = 0, j = 0, k = 0;
   std::string pending_string = std::to_string(static_cast<unsigned long long>(i)) + std::to_string(static_cast<unsigned long long>(j)) + std::to_string(static_cast<unsigned long long>(k));
   std::string path = set_path(path_dipole(), pending_string);
@@ -280,7 +282,7 @@ void Config_Settings::check_paths(bool print_to_screen) {
         pending_string =  std::to_string(static_cast<unsigned long long>(i)) + std::to_string(static_cast<unsigned long long>(j)) + std::to_string(static_cast<unsigned long long>(k));
         path = set_path(path_dipole(), pending_string);
       } else {
-        if (print_to_screen == true) {
+        if (print_to_screen_ == true) {
           std::cout << "Config_Settings::check_paths: Info, unique path " << path << " found!\n";
         }
         unique_path = true;
