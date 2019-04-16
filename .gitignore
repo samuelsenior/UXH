@@ -38,6 +38,10 @@ HHGP/src/.DS_Store
 !docs/
 docs/*
 !docs/XNLO_Documentation.pdf
+!docs/XNLO_Documentation.pdf
+!docs/html/
+!docs/html/*
+!docs/latex/refman.pdf
 
 !XNLO/docs/
 XNLO/docs/*
@@ -63,6 +67,9 @@ HHGP/docs/*
 #-------------------------#
 #- Excluding build files -#
 #-------------------------#
+build/*
+!build/comp
+!build/Doxyfile
 XNLO/build/*
 !XNLO/build/comp
 !XNLO/build/Doxyfile
@@ -84,9 +91,9 @@ HHGP/lib/*
 #-------------------------------------------#
 #- Exclude executables from the bin folder -#
 #-------------------------------------------#
-XNLO/bin/XNLO-v1-1-0
-UPPE/bin/UPPE-v1-3-0
-HHGP/bin/HHGP-v1-0-0
+XNLO/bin/*
+UPPE/bin/*
+HHGP/bin/*
 
 #--------------------------#
 #- Exclude pycache folder -#
