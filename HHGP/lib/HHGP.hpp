@@ -1,15 +1,19 @@
 #ifndef __HHGP_HPP_INCLUDED__
 #define __HHGP_HPP_INCLUDED__
 
+
 #include "../../Eigen/Dense"
 
-#include "../src/config_settings.hpp"
-#include "../../src/maths_textbook.hpp"
-#include "../../src/keldysh_gas.hpp"
-#include "../../src/DHT.hpp"
-#include "../../src/grid_rkr.hpp"
-#include "../src/propagation.hpp"
-#include "../../src/IO.hpp"
+#include "config_settings.hpp"
+
+//#include "config_settings.hpp"
+#include "../maths/maths_textbook.hpp"
+#include "../physics/physics_textbook.hpp"
+#include "../gas/keldysh_gas.hpp"
+#include "../DHT/DHT.hpp"
+#include "../grid/grid_rkr.hpp"
+#include "propagation.hpp"
+#include "../IO/IO.hpp"
 
 using namespace Eigen;
 
