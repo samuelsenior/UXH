@@ -99,7 +99,7 @@ Collaboration diagram for laser_pulse:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3fc3771b0e32c7ad11511d8502114175"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a3fc3771b0e32c7ad11511d8502114175">laser_pulse</a> (double p_av_, double rep_, double fwhm_, double l_0_, double ceo_, double waist_, <a class="el" href="classgrid__tw.html">grid_tw</a> &amp;tw_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> &amp;rkr_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, <a class="el" href="class_d_h_t.html">DHT</a> &amp;ht_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="class_config___settings.html">Config_Settings</a> <a class="el" href="classlaser__pulse.html#a44890431f11f1d883dffd7fe581f2ce8">config</a>, int <a class="el" href="classlaser__pulse.html#a8a8dc5280d1ae28ebca74bd738110aac">read_in_laser_pulse</a>, double <a class="el" href="classlaser__pulse.html#a4550517f9323dc27c72c63ec155760d8">initial_position</a>)</td></tr>
 <tr class="separator:a3fc3771b0e32c7ad11511d8502114175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbf5712236ffdfa30027afd262300710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#afbf5712236ffdfa30027afd262300710">propagate</a> (double dz_, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
+<tr class="memitem:afbf5712236ffdfa30027afd262300710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#afbf5712236ffdfa30027afd262300710">propagate</a> (double dz_, capillary_fibre &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
 <tr class="separator:afbf5712236ffdfa30027afd262300710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -123,9 +123,9 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a204908b9056b97bbb5bd093b7a8816e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a204908b9056b97bbb5bd093b7a8816e5">RK_F_45</a> (double dz_, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
+<tr class="memitem:a204908b9056b97bbb5bd093b7a8816e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a204908b9056b97bbb5bd093b7a8816e5">RK_F_45</a> (double dz_, capillary_fibre &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
 <tr class="separator:a204908b9056b97bbb5bd093b7a8816e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bdca944386a5cdbb67ea0c344e65a69"><td class="memItemLeft" align="right" valign="top">ArrayXXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a7bdca944386a5cdbb67ea0c344e65a69">RHS_UPPE</a> (double dz_, ArrayXXcd <a class="el" href="classlaser__pulse.html#a1de4076f0eb2e5c4bd2e9ce644509eb6">A_w_active</a>, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
+<tr class="memitem:a7bdca944386a5cdbb67ea0c344e65a69"><td class="memItemLeft" align="right" valign="top">ArrayXXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a7bdca944386a5cdbb67ea0c344e65a69">RHS_UPPE</a> (double dz_, ArrayXXcd <a class="el" href="classlaser__pulse.html#a1de4076f0eb2e5c4bd2e9ce644509eb6">A_w_active</a>, capillary_fibre &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
 <tr class="separator:a7bdca944386a5cdbb67ea0c344e65a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -289,7 +289,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;&#160;</td>
+          <td class="paramtype">capillary_fibre &amp;&#160;</td>
           <td class="paramname"><em>capillary_</em>, </td>
         </tr>
         <tr>
@@ -333,7 +333,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;&#160;</td>
+          <td class="paramtype">capillary_fibre &amp;&#160;</td>
           <td class="paramname"><em>capillary_</em>, </td>
         </tr>
         <tr>
@@ -376,7 +376,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;&#160;</td>
+          <td class="paramtype">capillary_fibre &amp;&#160;</td>
           <td class="paramname"><em>capillary_</em>, </td>
         </tr>
         <tr>

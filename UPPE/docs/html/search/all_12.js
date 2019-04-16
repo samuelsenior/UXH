@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['R',['../classgrid__rkr.html#a2da8ae00c520a66c9cac2784a2149dcb',1,'grid_rkr::R()'],['../classcapillary__fibre.html#a2eb4489d19e3ec8f1b1e2f7c75f12550',1,'capillary_fibre::R()'],['../class_config___settings.html#a1efaf096c7e87d4af210396dfc922999',1,'Config_Settings::R()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fae1e1d3d40573127e9ee0480caf1283d6',1,'Config_Settings::R()'],['../classgrid__rkr.html#a0c68f261e53153368d0edab4c9a8ef88',1,'grid_rkr::r()']]],
+  ['r',['r',['../classgrid__rkr.html#a0c68f261e53153368d0edab4c9a8ef88',1,'grid_rkr::r()'],['../classgrid__rkr.html#a2da8ae00c520a66c9cac2784a2149dcb',1,'grid_rkr::R()'],['../class_config___settings.html#a1efaf096c7e87d4af210396dfc922999',1,'Config_Settings::R()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fae1e1d3d40573127e9ee0480caf1283d6',1,'Config_Settings::R()']]],
   ['r_5f',['R_',['../class_config___settings.html#aac0df4d04613e4a96f9f65d26a4a0520',1,'Config_Settings']]],
   ['r_5f0',['r_0',['../classphysics__textbook.html#ac429976f0dc885d846d8b31c24f45bd6',1,'physics_textbook']]],
   ['r_5fdescription',['R_description',['../class_config___settings.html#ade0c3d32a8320560d325388b21ad5c18',1,'Config_Settings']]],
