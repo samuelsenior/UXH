@@ -145,14 +145,14 @@ set(SOURCES
    ${SOURCES}
    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/config_settings.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/DHT.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_tw.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_xkx.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_rkr.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/IO.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_tw.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_xkx.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_rkr.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/IO.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/laser_pulse.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/maths_textbook.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/physics_textbook.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths_textbook.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics_textbook.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/Schrodinger_atom_1D.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/XNLO.cpp
    #PARENT_SCOPE
@@ -160,14 +160,14 @@ set(SOURCES
 set(HEADERS
    ${HEADERS}
    ${CMAKE_CURRENT_SOURCE_DIR}/src/config_settings.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/DHT.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_tw.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_xkx.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/grid_rkr.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/IO.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_tw.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_xkx.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_rkr.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/IO.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/laser_pulse.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/maths_textbook.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/physics_textbook.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths_textbook.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics_textbook.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/Schrodinger_atom_1D.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/src/XNLO.hpp
    #PARENT_SCOPE

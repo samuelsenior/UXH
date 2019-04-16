@@ -38,4 +38,32 @@ public:
     grid_tw(int N_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook& maths_);
 };
 
+namespace XNLO {
+
+//------------------------------------------------------------------------------------------------//
+//  Class definition
+/*!
+	Modified by Patrick Anderson on 07/05/2015.
+	"grid_tw" is a linear temporal grid. The spectral counterpart of this grid is evaluated and
+	made accessible.
+*/
+class grid_tw {
+    
+public:
+    
+    //Data
+    ArrayXd t;
+    ArrayXd w;
+    int N_t;
+    double t_min;
+    double t_max;
+    double dt;
+    
+    //Functions
+    grid_tw(int N_t_, double t_min_, double t_max_);
+    
+};
+
+}
+
 #endif

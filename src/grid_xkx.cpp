@@ -8,11 +8,9 @@
 
 #include "grid_xkx.hpp"
 #include "maths_textbook.hpp"
-#include "../../Eigen/Dense"
+#include "../Eigen/Dense"
 
 using namespace Eigen;
-
-namespace XNLO {
 
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
@@ -41,6 +39,4 @@ grid_xkx::grid_xkx(int N_x_, double x_min_, double x_max_) {
     kx *=  (2 * maths.pi / (N_x * (x(1) - x(0))));
     kx.tail(N_x / 2).swap(kx.head(N_x / 2));                                                        // Equivalent to fftshift(kx)
     
-}
-
 }

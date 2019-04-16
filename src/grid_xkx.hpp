@@ -9,11 +9,9 @@
 #ifndef __GRID_XKX_HPP_INCLUDED__
 #define __GRID_XKX_HPP_INCLUDED__
 
-#include "../../Eigen/Dense"
+#include "../Eigen/Dense"
 
 using namespace Eigen;
-
-namespace XNLO {
 
 //------------------------------------------------------------------------------------------------//
 //  Class definition
@@ -39,8 +37,6 @@ public:
     grid_xkx(int N_x_, double x_min_, double x_max_);
     
 };
-
-}
 
 #endif
 
