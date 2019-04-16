@@ -13,7 +13,7 @@ var searchData=
   ['waist_5f',['waist_',['../class_h_h_1_1_config___settings.html#af9f294ea092eedf7ba428ad45a37cbd6',1,'HH::Config_Settings::waist_()'],['../class_config___settings.html#a769316096d7aa4e2939ed7fbf7db21e2',1,'Config_Settings::waist_()']]],
   ['waist_5fdescription_5f',['waist_description_',['../class_h_h_1_1_config___settings.html#a123223e81433f6092d3a69d805043b8b',1,'HH::Config_Settings::waist_description_()'],['../class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30',1,'Config_Settings::waist_description_()']]],
   ['wavefunction',['wavefunction',['../struct_x_n_l_o_1_1_result.html#a3cc2dcbdbfecec769a89f37b15b4bab2',1,'XNLO::Result']]],
-  ['wfn',['wfn',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a23066f398063e2e2e8ffda154663a4b7',1,'XNLO::Schrodinger_atom_1D']]],
-  ['wfn_5fgs',['wfn_GS',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#ade8eaa2dc039948a69ac0fb45cfbd47f',1,'XNLO::Schrodinger_atom_1D']]],
-  ['wfn_5foutput',['wfn_output',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a31408af475542ac9004b5337ebc45a90',1,'XNLO::Schrodinger_atom_1D']]]
+  ['wfn',['wfn',['../class_schrodinger__atom__1_d.html#a00de5d2d5a686de4b95ca698390dc511',1,'Schrodinger_atom_1D']]],
+  ['wfn_5fgs',['wfn_GS',['../class_schrodinger__atom__1_d.html#a8ffbb068cd87127ceff5953c5a810d85',1,'Schrodinger_atom_1D']]],
+  ['wfn_5foutput',['wfn_output',['../class_schrodinger__atom__1_d.html#aea3a265d9bb0260a349b22eaa44f1792',1,'Schrodinger_atom_1D']]]
 ];

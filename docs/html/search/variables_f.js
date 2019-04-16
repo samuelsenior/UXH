@@ -1,7 +1,7 @@
 var searchData=
 [
   ['p_5fav',['p_av',['../classlaser__pulse.html#a5afe467c97db80c6aa3640be556f4309',1,'laser_pulse']]],
-  ['p_5fav_5f',['p_av_',['../class_h_h_1_1_config___settings.html#a2e392fe8a2d5a0d7f2dee16d0b46751a',1,'HH::Config_Settings::p_av_()'],['../class_config___settings.html#a13ef86da424752b11e8731dfc38ca4d3',1,'Config_Settings::p_av_()'],['../class_x_n_l_o_1_1_config___settings.html#a3fa6bcad675fbf782984b18b701b74c8',1,'XNLO::Config_Settings::P_av_()']]],
+  ['p_5fav_5f',['P_av_',['../class_x_n_l_o_1_1_config___settings.html#a3fa6bcad675fbf782984b18b701b74c8',1,'XNLO::Config_Settings::P_av_()'],['../class_h_h_1_1_config___settings.html#a2e392fe8a2d5a0d7f2dee16d0b46751a',1,'HH::Config_Settings::p_av_()'],['../class_config___settings.html#a13ef86da424752b11e8731dfc38ca4d3',1,'Config_Settings::p_av_()']]],
   ['p_5fav_5fdescription_5f',['p_av_description_',['../class_h_h_1_1_config___settings.html#a35e52b1b16991ef8b64911f59a61a22e',1,'HH::Config_Settings::p_av_description_()'],['../class_config___settings.html#afad39595749a9601390fcf4b284834fa',1,'Config_Settings::p_av_description_()'],['../class_x_n_l_o_1_1_config___settings.html#a5d01324f8c2ed052b6e9c7df3072232e',1,'XNLO::Config_Settings::P_av_description_()']]],
   ['p_5fnl_5fm_5ft',['P_NL_m_t',['../classlaser__pulse.html#a040ef573622852063801648ea19a624d',1,'laser_pulse']]],
   ['p_5fnl_5fr_5ft',['P_NL_r_t',['../classlaser__pulse.html#ae0c14fb0f768b7b092dd42d01e90aa4f',1,'laser_pulse']]],
@@ -90,7 +90,7 @@ var searchData=
   ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['press_5f',['press_',['../class_h_h_1_1_config___settings.html#a4fc5fa3714a17d3f178957b3d8ee01f0',1,'HH::Config_Settings::press_()'],['../class_config___settings.html#afc35b2b38b6e991d38a1a8b7cfae8df4',1,'Config_Settings::press_()']]],
   ['press_5fdescription_5f',['press_description_',['../class_h_h_1_1_config___settings.html#a978bdeb4769d0f70d3fea9c6ad073a02',1,'HH::Config_Settings::press_description_()'],['../class_config___settings.html#a6c0508d29779a253834967377df98934',1,'Config_Settings::press_description_()']]],
-  ['print',['print',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a744b1502564e9580c3e9bef8306fd336',1,'XNLO::Schrodinger_atom_1D']]],
+  ['print',['print',['../class_schrodinger__atom__1_d.html#a535e75205a93f4f050e53bbeda24f75f',1,'Schrodinger_atom_1D']]],
   ['print_5fto_5fscreen',['print_to_screen',['../class_x_n_l_o_1_1_config___settings.html#a71aa4cf3491851bd61a923272933c5ce',1,'XNLO::Config_Settings']]],
   ['prop',['prop',['../class_h_h_g_p.html#a407ef8595cb78c57d259a4c8b091c250',1,'HHGP']]]
 ];

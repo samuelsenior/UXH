@@ -13,7 +13,7 @@ var searchData=
   ['x_5fmin_5fdescription_5f',['x_min_description_',['../class_x_n_l_o_1_1_config___settings.html#ac1f974f487f2e08c74a769a2a75d836b',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a02baddcf2450c55332289e2f49a58fd6',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#ad776200ee998ac3bbfaf90e9edb4d525',1,'XNLO::Config_Settings']]],
-  ['xkx',['xkx',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a5d6391df6597e0a0e14f012d463a08b5',1,'XNLO::Schrodinger_atom_1D']]],
+  ['xkx',['xkx',['../class_schrodinger__atom__1_d.html#add2762038510414449a7e6f022babcb2',1,'Schrodinger_atom_1D']]],
   ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#aa99cf6f3aa87e58ea5b490d85cafec99',1,'XNLO::XNLO()']]],
   ['xnlo_2ecpp',['XNLO.cpp',['../_x_n_l_o_8cpp.html',1,'']]],
   ['xnlo_2ehpp',['XNLO.hpp',['../_x_n_l_o_8hpp.html',1,'']]]

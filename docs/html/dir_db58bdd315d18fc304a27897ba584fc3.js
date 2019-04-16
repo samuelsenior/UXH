@@ -9,10 +9,6 @@ var dir_db58bdd315d18fc304a27897ba584fc3 =
       [ "laser_pulse", "class_x_n_l_o_1_1laser__pulse.html", "class_x_n_l_o_1_1laser__pulse" ]
     ] ],
     [ "main.cpp", "_x_n_l_o_2main_8cpp.html", "_x_n_l_o_2main_8cpp" ],
-    [ "Schrodinger_atom_1D.cpp", "_schrodinger__atom__1_d_8cpp.html", null ],
-    [ "Schrodinger_atom_1D.hpp", "_schrodinger__atom__1_d_8hpp.html", [
-      [ "Schrodinger_atom_1D", "class_x_n_l_o_1_1_schrodinger__atom__1_d.html", "class_x_n_l_o_1_1_schrodinger__atom__1_d" ]
-    ] ],
     [ "version.hpp", "_x_n_l_o_2version_8hpp.html", "_x_n_l_o_2version_8hpp" ],
     [ "XNLO.cpp", "_x_n_l_o_8cpp.html", "_x_n_l_o_8cpp" ],
     [ "XNLO.hpp", "_x_n_l_o_8hpp.html", "_x_n_l_o_8hpp" ]

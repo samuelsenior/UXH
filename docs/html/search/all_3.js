@@ -2,7 +2,7 @@ var searchData=
 [
   ['c',['c',['../classphysics__textbook.html#a3c6dd19f14166d6c90d6f53aa4e31885',1,'physics_textbook']]],
   ['c_5fkl',['C_kl',['../classkeldysh__gas.html#a7a66e438ff78b240fe419c0a426b1648',1,'keldysh_gas']]],
-  ['capillary_5ffibre',['capillary_fibre',['../classcapillary__fibre.html',1,'capillary_fibre'],['../classcapillary__fibre.html#a671951793318487999e331c659056a3e',1,'capillary_fibre::capillary_fibre()']]],
+  ['capillary_5ffibre',['capillary_fibre',['../classcapillary__fibre.html',1,'capillary_fibre'],['../classcapillary__fibre.html#a671951793318487999e331c659056a3e',1,'capillary_fibre::capillary_fibre(double Z_, grid_rkr &amp;rkr_, grid_tw &amp;tw_, physics_textbook &amp;physics_, maths_textbook &amp;maths_)'],['../classcapillary__fibre.html#a671951793318487999e331c659056a3e',1,'capillary_fibre::capillary_fibre(double Z_, grid_rkr &amp;rkr_, grid_tw &amp;tw_, physics_textbook &amp;physics_, maths_textbook &amp;maths_)']]],
   ['capillary_5ffibre_2ecpp',['capillary_fibre.cpp',['../capillary__fibre_8cpp.html',1,'']]],
   ['capillary_5ffibre_2ehpp',['capillary_fibre.hpp',['../capillary__fibre_8hpp.html',1,'']]],
   ['capillary_5fpressure_5fprofile',['capillary_pressure_profile',['../classkeldysh__gas.html#a9eac2e3d9a39a2358e9b6eb7f4a868c6',1,'keldysh_gas']]],

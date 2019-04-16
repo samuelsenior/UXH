@@ -17,5 +17,6 @@ var annotated_dup =
     [ "laser_pulse", "classlaser__pulse.html", "classlaser__pulse" ],
     [ "maths_textbook", "classmaths__textbook.html", "classmaths__textbook" ],
     [ "physics_textbook", "classphysics__textbook.html", "classphysics__textbook" ],
-    [ "propagation", "classpropagation.html", "classpropagation" ]
+    [ "propagation", "classpropagation.html", "classpropagation" ],
+    [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html", "class_schrodinger__atom__1_d" ]
 ];

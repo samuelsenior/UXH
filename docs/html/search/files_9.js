@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['schrodinger_5fatom_5f1d_2ecpp',['Schrodinger_atom_1D.cpp',['../_schrodinger__atom__1_d_8cpp.html',1,'']]],
-  ['schrodinger_5fatom_5f1d_2ehpp',['Schrodinger_atom_1D.hpp',['../_schrodinger__atom__1_d_8hpp.html',1,'']]]
+  ['physics_5ftextbook_2ecpp',['physics_textbook.cpp',['../physics__textbook_8cpp.html',1,'']]],
+  ['physics_5ftextbook_2ehpp',['physics_textbook.hpp',['../physics__textbook_8hpp.html',1,'']]],
+  ['propagation_2ecpp',['propagation.cpp',['../propagation_8cpp.html',1,'']]],
+  ['propagation_2ehpp',['propagation.hpp',['../propagation_8hpp.html',1,'']]]
 ];

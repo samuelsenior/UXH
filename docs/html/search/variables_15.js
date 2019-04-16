@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['v_5fmodel',['V_model',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#aecce3b0803981127a9f1e82e2d81fdad',1,'XNLO::Schrodinger_atom_1D']]]
+  ['v_5fmodel',['V_model',['../class_schrodinger__atom__1_d.html#ad2e0f2f23742145fae4e7a20a3b6a058',1,'Schrodinger_atom_1D']]]
 ];

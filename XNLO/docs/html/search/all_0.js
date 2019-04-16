@@ -1,7 +1,7 @@
 var searchData=
 [
   ['acceleration',['acceleration',['../struct_x_n_l_o_1_1_result.html#aa627039efab8be98d4313f4e16f069fe',1,'XNLO::Result']]],
-  ['alpha',['alpha',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#ab3398f5df33d3054bd0370f7a14d15f4',1,'XNLO::Schrodinger_atom_1D::alpha()'],['../class_x_n_l_o_1_1_config___settings.html#a5a1ac8169305410267ee10a4d5c52862',1,'XNLO::Config_Settings::alpha()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda2c1743a391305fbf367df8e4f069f9f9',1,'XNLO::Config_Settings::alpha()']]],
+  ['alpha',['alpha',['../class_x_n_l_o_1_1_config___settings.html#a5a1ac8169305410267ee10a4d5c52862',1,'XNLO::Config_Settings::alpha()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda2c1743a391305fbf367df8e4f069f9f9',1,'XNLO::Config_Settings::alpha()']]],
   ['alpha_5f',['alpha_',['../class_x_n_l_o_1_1_config___settings.html#af7ebc20f8e6a7d8c33de6d1da956cab4',1,'XNLO::Config_Settings']]],
   ['alpha_5fdescription',['alpha_description',['../class_x_n_l_o_1_1_config___settings.html#a996513af3e22452b21823910ea39bb46',1,'XNLO::Config_Settings']]],
   ['alpha_5fdescription_5f',['alpha_description_',['../class_x_n_l_o_1_1_config___settings.html#aced75efb11b901604ef03a05b23d5ab5',1,'XNLO::Config_Settings']]],
