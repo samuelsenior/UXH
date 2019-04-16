@@ -73,20 +73,20 @@ build/*
 !build/Doxyfile
 !build/iridisComp
 XNLO/build/*
-!build/clean
-!build/comp
-!build/Doxyfile
-!build/iridisComp
+!XNLO/build/clean
+!XNLO/build/comp
+!XNLO/build/Doxyfile
+!XNLO/build/iridisComp
 UPPE/build/*
-!build/clean
-!build/comp
-!build/Doxyfile
-!build/iridisComp
+!UPPE/build/clean
+!UPPE/build/comp
+!UPPE/build/Doxyfile
+!UPPE/build/iridisComp
 HHGP/build/*
-!build/clean
-!build/comp
-!build/Doxyfile
-!build/iridisComp
+!HHGP/build/clean
+!HHGP/build/comp
+!HHGP/build/Doxyfile
+!HHGP/build/iridisComp
 
 #--------------------------------------------------#
 #- Excluding library files that aren't the header -#
