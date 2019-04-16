@@ -1,0 +1,11 @@
+#! /bin/bash
+
+echo "Cleaning build dirs..."
+
+rm -r CMake* &&
+rm Make* &&
+rm cmake* &&
+rm Doxyfile.out &&
+
+echo "Build dirs cleaned!"
+
