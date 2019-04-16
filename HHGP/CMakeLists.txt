@@ -49,7 +49,7 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
 
 # Get the beginning of each version part line
 # version.hpp needs to end in a new line for the subversion part to work correctly
-FILE(READ ${CMAKE_CURRENT_SOURCE_DIR}/src/version.hpp version)
+FILE(READ ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/version.hpp version)
 string(FIND "${version}" "\#define _VERSION_MAJOR" major_version_begin)
 string(FIND "${version}" "\#define _VERSION_MINOR" minor_version_begin)
 string(FIND "${version}" "\#define _VERSION_SUBMINOR" subminor_version_begin)
@@ -143,23 +143,23 @@ include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
 set(SOURCES
    ${SOURCES}
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/config_settings.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_rkr.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid_tw.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/HHGP.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/HH_source.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/IO.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/keldysh_gas.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/propagation.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths_textbook.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics_textbook.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/main.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/config_settings.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT/DHT.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_rkr.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_tw.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/HHGP.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/HH_source.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/IO/IO.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/gas/keldysh_gas.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/propagation.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths/maths_textbook.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics/physics_textbook.cpp
    #PARENT_SCOPE
 )
 set(HEADERS
    ${HEADERS}
-   ${CMAKE_CURRENT_SOURCE_DIR}/src/maths_textbook.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths/maths_textbook.hpp
    #PARENT_SCOPE
 )
 
