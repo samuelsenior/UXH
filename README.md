@@ -1,14 +1,14 @@
 # UXH
 
-### **U**nidirectional **P**ulse **P**ropagation **E**quation
+### Unidirectional Pulse Propagation Equation
 
 * UPPE - Propagates a laser pulse through a gas-filled hollow capillary.
 
-### e**X**treme **N**on**L**inear **O**ptics
+### eXtreme NonLinear Optics
 
 * XNLO - Calculates the single atom response for a given laser pulse.
 
-### **H**igh **H**armonic **G**eneration & **P**ropagation
+### High Harmonic Generation & Propagation
 
 * HHGP - Propagates the generated high harmonics through the gas-filled hollow capillary, and into the far-field.
 
