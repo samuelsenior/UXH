@@ -1,12 +1,16 @@
 var searchData=
 [
-  ['l_5f0',['l_0',['../class_x_n_l_o_1_1_config___settings.html#a754885f1ba90603027f2d6bcb0d0f323',1,'XNLO::Config_Settings::l_0()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdaa5feddd336f95a73db3d846da3a050ea',1,'XNLO::Config_Settings::l_0()']]],
-  ['l_5f0_5f',['l_0_',['../class_x_n_l_o_1_1_config___settings.html#a7bc8ad6836b5bc5390e3f5d976fbb4fd',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fdescription',['l_0_description',['../class_x_n_l_o_1_1_config___settings.html#ace8cfdf8b474cef0c5873b17a582d2c6',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_x_n_l_o_1_1_config___settings.html#a73ca8a6697b1604b84723752ab404a53',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fdescription_5fset',['l_0_description_set',['../class_x_n_l_o_1_1_config___settings.html#a3928d7e7e6980a691cd823b62272b2f3',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fset',['l_0_set',['../class_x_n_l_o_1_1_config___settings.html#a58dc900c90f436b8084e10b38327db6a',1,'XNLO::Config_Settings']]],
-  ['l_5fat',['l_at',['../class_x_n_l_o_1_1physics__textbook.html#a168e045569cc09b1d6b8eacfa80d8c16',1,'XNLO::physics_textbook']]],
-  ['laser_5fpulse',['laser_pulse',['../class_x_n_l_o_1_1laser__pulse.html',1,'XNLO::laser_pulse'],['../class_x_n_l_o_1_1laser__pulse.html#a1bb62e4650be18aa5e8020bc03ea6207',1,'XNLO::laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, double CEO_, double spot_radius_, double ROC_, grid_rkr rkr_, grid_tw tw_, std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int read_in_laser_pulse)'],['../class_x_n_l_o_1_1laser__pulse.html#a563cc02eedaef2b666aadc7df93a0a68',1,'XNLO::laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE)']]],
-  ['last_5fsn_5fentry',['LAST_SN_ENTRY',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda3c1a917b21de40f1eec670b1425c2e45',1,'XNLO::Config_Settings']]]
+  ['t_5fmax',['t_max',['../class_x_n_l_o_1_1_config___settings.html#a51858cad5562dc0c9c55f13be78aabc9',1,'XNLO::Config_Settings::t_max()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdac94f63d4aea827028db922581f2678d2',1,'XNLO::Config_Settings::t_max()']]],
+  ['t_5fmax_5f',['t_max_',['../class_x_n_l_o_1_1_config___settings.html#a0dd2806431da7f601ed6db0235142e52',1,'XNLO::Config_Settings']]],
+  ['t_5fmax_5fdescription',['t_max_description',['../class_x_n_l_o_1_1_config___settings.html#ad13ff4002afe541213a795d91e049211',1,'XNLO::Config_Settings']]],
+  ['t_5fmax_5fdescription_5f',['t_max_description_',['../class_x_n_l_o_1_1_config___settings.html#a0dc36bbd7ef34d379770739d8eb9d33c',1,'XNLO::Config_Settings']]],
+  ['t_5fmax_5fdescription_5fset',['t_max_description_set',['../class_x_n_l_o_1_1_config___settings.html#ae3fb26fb6a9fe759bb6dd9c4f8effce1',1,'XNLO::Config_Settings']]],
+  ['t_5fmax_5fset',['t_max_set',['../class_x_n_l_o_1_1_config___settings.html#a633db370dcf0ef769d4fbe13d4ae8290',1,'XNLO::Config_Settings']]],
+  ['t_5fmin',['t_min',['../class_x_n_l_o_1_1_config___settings.html#a243650b90156199ccd89b0368a9059f5',1,'XNLO::Config_Settings::t_min()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdad2b4a742d6146ad377a49ed796323be3',1,'XNLO::Config_Settings::t_min()']]],
+  ['t_5fmin_5f',['t_min_',['../class_x_n_l_o_1_1_config___settings.html#a056a9495abbd0207cdfd7371acd52ea5',1,'XNLO::Config_Settings']]],
+  ['t_5fmin_5fdescription',['t_min_description',['../class_x_n_l_o_1_1_config___settings.html#ac0b077e299d7f5f096624c5005c156f9',1,'XNLO::Config_Settings']]],
+  ['t_5fmin_5fdescription_5f',['t_min_description_',['../class_x_n_l_o_1_1_config___settings.html#ace2d3f5a20c13a7fe434cecf0376d3df',1,'XNLO::Config_Settings']]],
+  ['t_5fmin_5fdescription_5fset',['t_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a3d148c83adb488185057b4ecc40ecc6b',1,'XNLO::Config_Settings']]],
+  ['t_5fmin_5fset',['t_min_set',['../class_x_n_l_o_1_1_config___settings.html#ab5457db4a33b70770f4df64e66bc5efb',1,'XNLO::Config_Settings']]],
+  ['tw',['tw',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a47d18d168723f513d82bc864a78b62d9',1,'XNLO::Schrodinger_atom_1D']]]
 ];

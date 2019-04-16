@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['get_5facceleration',['get_acceleration',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#af0f1e686a5429fca431e87ff9012b1ce',1,'XNLO::Schrodinger_atom_1D']]],
-  ['grid_5frkr',['grid_rkr',['../class_x_n_l_o_1_1grid__rkr.html#aae9c4e3a3b20e50ee006965212f1ada6',1,'XNLO::grid_rkr']]],
-  ['grid_5ftw',['grid_tw',['../class_x_n_l_o_1_1grid__tw.html#a248b2a3065fa07e865c50d8746a26e12',1,'XNLO::grid_tw']]],
-  ['grid_5fxkx',['grid_xkx',['../class_x_n_l_o_1_1grid__xkx.html#aab40f517841e23529e3c0aacfda9be3b',1,'XNLO::grid_xkx::grid_xkx()'],['../class_x_n_l_o_1_1grid__xkx.html#a489ac1d39c7ad4cd034b0ccabdc494d7',1,'XNLO::grid_xkx::grid_xkx(int N_x_, double x_min_, double x_max_)']]]
+  ['n_5ft',['N_t',['../class_x_n_l_o_1_1_config___settings.html#acbfb4631f7ef7467fd49b518e450e752',1,'XNLO::Config_Settings']]],
+  ['n_5ft_5fdescription',['N_t_description',['../class_x_n_l_o_1_1_config___settings.html#a0034ef1b4689a59b81439aafc1c41929',1,'XNLO::Config_Settings']]],
+  ['n_5ft_5fdescription_5fset',['N_t_description_set',['../class_x_n_l_o_1_1_config___settings.html#a5889f3eb6012483991df18d55791bd46',1,'XNLO::Config_Settings']]],
+  ['n_5ft_5fset',['N_t_set',['../class_x_n_l_o_1_1_config___settings.html#a0181d80011215e52d8178648b7751062',1,'XNLO::Config_Settings']]]
 ];

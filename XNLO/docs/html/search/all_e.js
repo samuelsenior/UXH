@@ -1,16 +1,17 @@
 var searchData=
 [
-  ['output_5felectric_5ffield',['output_electric_field',['../class_x_n_l_o_1_1_config___settings.html#addd3f9b2465bae3174248313b9207e75',1,'XNLO::Config_Settings::output_electric_field()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdaf21bf5c58b5eb605240c23b263e60a5c',1,'XNLO::Config_Settings::output_electric_field()']]],
-  ['output_5felectric_5ffield_5f',['output_electric_field_',['../class_x_n_l_o_1_1_config___settings.html#a1c36de4fd4bd0169a515f07867e3d235',1,'XNLO::Config_Settings']]],
-  ['output_5felectric_5ffield_5fdescription',['output_electric_field_description',['../class_x_n_l_o_1_1_config___settings.html#ae7db25d01690f71924e7ed5495940a07',1,'XNLO::Config_Settings']]],
-  ['output_5felectric_5ffield_5fdescription_5f',['output_electric_field_description_',['../class_x_n_l_o_1_1_config___settings.html#a762adf3d2d65a99d7efb0d8d7d4ce440',1,'XNLO::Config_Settings']]],
-  ['output_5felectric_5ffield_5fdescription_5fset',['output_electric_field_description_set',['../class_x_n_l_o_1_1_config___settings.html#a59d64f12b74d8ff8421b63cd8878290d',1,'XNLO::Config_Settings']]],
-  ['output_5felectric_5ffield_5fset',['output_electric_field_set',['../class_x_n_l_o_1_1_config___settings.html#af48b71983fc87a637c2abc9c59a128a9',1,'XNLO::Config_Settings']]],
-  ['output_5fwavefunction',['output_wavefunction',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a48f7203b3e9897c57cb109e6da92e885',1,'XNLO::Schrodinger_atom_1D::output_wavefunction()'],['../class_x_n_l_o_1_1_config___settings.html#a805e770ebfd4806943500e6a2db791ed',1,'XNLO::Config_Settings::output_wavefunction()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdac0497c7f9934bf04b26ee137ed4e0384',1,'XNLO::Config_Settings::output_wavefunction()']]],
-  ['output_5fwavefunction_5f',['output_wavefunction_',['../class_x_n_l_o_1_1_config___settings.html#aec2e417f92dafbc2fba7fb4fb5d552ac',1,'XNLO::Config_Settings']]],
-  ['output_5fwavefunction_5fdescription',['output_wavefunction_description',['../class_x_n_l_o_1_1_config___settings.html#a06bb443f4bae7da4bfb1de29385d6932',1,'XNLO::Config_Settings']]],
-  ['output_5fwavefunction_5fdescription_5f',['output_wavefunction_description_',['../class_x_n_l_o_1_1_config___settings.html#a55e663a9ce232ea1861d432b25056b52',1,'XNLO::Config_Settings']]],
-  ['output_5fwavefunction_5fdescription_5fset',['output_wavefunction_description_set',['../class_x_n_l_o_1_1_config___settings.html#a2e51adaaca63c61ddf095ce1c1849213',1,'XNLO::Config_Settings']]],
-  ['output_5fwavefunction_5fset',['output_wavefunction_set',['../class_x_n_l_o_1_1_config___settings.html#a8f521c0235ba0c537e70e85eabbe3340',1,'XNLO::Config_Settings']]],
-  ['overwrite',['overwrite',['../class_x_n_l_o_1_1_i_o.html#a0b5b3b007d04104360b33c64e7941ce2',1,'XNLO::IO']]]
+  ['x_5fmax',['x_max',['../class_x_n_l_o_1_1_config___settings.html#aca1cac5d13216f771e388c8d3ab2d376',1,'XNLO::Config_Settings::x_max()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda4e7f4641659bb889320a1a9b47e38b0b',1,'XNLO::Config_Settings::x_max()']]],
+  ['x_5fmax_5f',['x_max_',['../class_x_n_l_o_1_1_config___settings.html#aa6ca2e4495b8d6918e0441cc34250866',1,'XNLO::Config_Settings']]],
+  ['x_5fmax_5fdescription',['x_max_description',['../class_x_n_l_o_1_1_config___settings.html#accede80e35cd9c238c71275cee4895d6',1,'XNLO::Config_Settings']]],
+  ['x_5fmax_5fdescription_5f',['x_max_description_',['../class_x_n_l_o_1_1_config___settings.html#acd8c12a6a8a214639b4a1ab97709e3ad',1,'XNLO::Config_Settings']]],
+  ['x_5fmax_5fdescription_5fset',['x_max_description_set',['../class_x_n_l_o_1_1_config___settings.html#acbccd3fe403b3b4453031e47edb04551',1,'XNLO::Config_Settings']]],
+  ['x_5fmax_5fset',['x_max_set',['../class_x_n_l_o_1_1_config___settings.html#ab25525419f493256edc11ca762934b3e',1,'XNLO::Config_Settings']]],
+  ['x_5fmin',['x_min',['../class_x_n_l_o_1_1_config___settings.html#a6a807dd19736b459da3e62f4887edc94',1,'XNLO::Config_Settings::x_min()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdacfca832d9b714dddc291ad152c84386e',1,'XNLO::Config_Settings::x_min()']]],
+  ['x_5fmin_5f',['x_min_',['../class_x_n_l_o_1_1_config___settings.html#a0840f18d60b05402448d7806d5181f6c',1,'XNLO::Config_Settings']]],
+  ['x_5fmin_5fdescription',['x_min_description',['../class_x_n_l_o_1_1_config___settings.html#a8e5be726bb7f551e1aae5c7c25c6eb81',1,'XNLO::Config_Settings']]],
+  ['x_5fmin_5fdescription_5f',['x_min_description_',['../class_x_n_l_o_1_1_config___settings.html#ac1f974f487f2e08c74a769a2a75d836b',1,'XNLO::Config_Settings']]],
+  ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a677b1c781d836348c274afc894c2c146',1,'XNLO::Config_Settings']]],
+  ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#a7628afa38bf54e0cac3b462022e02e50',1,'XNLO::Config_Settings']]],
+  ['xkx',['xkx',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a5d6391df6597e0a0e14f012d463a08b5',1,'XNLO::Schrodinger_atom_1D']]],
+  ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#aa99cf6f3aa87e58ea5b490d85cafec99',1,'XNLO::XNLO()']]]
 ];

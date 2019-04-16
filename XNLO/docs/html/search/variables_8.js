@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['k_5fb',['k_B',['../class_x_n_l_o_1_1physics__textbook.html#a62c0569d1ce03e15ec413352946f6ad8',1,'XNLO::physics_textbook']]],
-  ['kr',['kr',['../class_x_n_l_o_1_1grid__rkr.html#ab7ae359cbc67929518f838162933d016',1,'XNLO::grid_rkr']]],
-  ['kx',['kx',['../class_x_n_l_o_1_1grid__xkx.html#adcf1d037f059e1db30423f1743dde9d4',1,'XNLO::grid_xkx']]]
+  ['read_5fin_5flaser_5fpulse_5f',['read_in_laser_pulse_',['../class_x_n_l_o_1_1_config___settings.html#a8b87b87a928d9c93ba530bd4353ede6d',1,'XNLO::Config_Settings']]],
+  ['read_5fin_5flaser_5fpulse_5fdescription_5f',['read_in_laser_pulse_description_',['../class_x_n_l_o_1_1_config___settings.html#abe7e2ceac8a634be414cb90dc53e4daa',1,'XNLO::Config_Settings']]],
+  ['rr_5f',['RR_',['../class_x_n_l_o_1_1_config___settings.html#a1ef5c8025df6540682d14f5cd15c5c2c',1,'XNLO::Config_Settings']]],
+  ['rr_5fdescription_5f',['RR_description_',['../class_x_n_l_o_1_1_config___settings.html#acfa42c50c97b71898b0e1c114099c9fa',1,'XNLO::Config_Settings']]]
 ];

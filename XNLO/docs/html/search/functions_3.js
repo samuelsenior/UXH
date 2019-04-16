@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dht',['DHT',['../class_x_n_l_o_1_1_d_h_t.html#a5a4d798d39a4bea3f68a2ca6af881447',1,'XNLO::DHT::DHT()'],['../class_x_n_l_o_1_1_d_h_t.html#a1ffc81c15a231ab1241552432412e4f2',1,'XNLO::DHT::DHT(int n_r_, maths_textbook &amp;maths_)']]]
+  ['get_5facceleration',['get_acceleration',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#af0f1e686a5429fca431e87ff9012b1ce',1,'XNLO::Schrodinger_atom_1D']]]
 ];
