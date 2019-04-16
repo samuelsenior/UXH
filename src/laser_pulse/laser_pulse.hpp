@@ -1,29 +1,58 @@
 //
-//  laser_pulse.hpp
+//  laser_pulse.cpp
 //
-//  Originally created by Patrick Anderson.
-//  Modified by Samuel Senior on 10/03/2017.
-//  "laser_pulse" contains the active spectral amplitudes and governs their propagation over
-//  longitudinal step dz.
+//  Modified by Patrick Anderson on 07/05/2015.
+//  "laser_pulse" contains a time varying electric field. The intital conditions are passed to the
+//  constructor and field can be updated as it propagates.
 //
 
 #ifndef __LASER_PULSE_HPP_INCLUDED__
 #define __LASER_PULSE_HPP_INCLUDED__
 
+#include <mkl.h>
+
+#include "../../Eigen/Dense"
+
+#include "../capillary/capillary_fibre.hpp"
+#include "../DHT/DHT.hpp"
+#include "../gas/keldysh_gas.hpp"
+#include "../grid/grid_rkr.hpp"
+#include "../grid/grid_tw.hpp"
 #include "../physics/physics_textbook.hpp"
 #include "../maths/maths_textbook.hpp"
-#include "../grid/grid_tw.hpp"
-#include "../grid/grid_rkr.hpp"
-#include <mkl.h>
-#include "../DHT/DHT.hpp"
-#include "../../Eigen/Dense"
-#include "../capillary/capillary_fibre.hpp"
-#include "../gas/keldysh_gas.hpp"
 
-#include "config_settings.hpp"
+#include "../UPPE/config_settings.hpp"
 
 using namespace Eigen;
 
+namespace XNLO {
+
+//------------------------------------------------------------------------------------------------//
+//  Class definition
+/*!
+	Modified by Patrick Anderson on 07/05/2015.
+	"laser_pulse" contains a time varying electric field. The intital conditions are passed to the
+	constructor and field can be updated as it propagates.
+*/
+class laser_pulse {
+    
+public:
+    
+    // Data
+    ArrayXXd E;
+    
+    // Functions
+    laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, double CEO_,
+                double spot_radius_, double ROC_, grid_rkr rkr_, grid_tw tw_,
+                std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int read_in_laser_pulse);
+
+    laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE);
+
+};
+
+} // XNLO namespace
+
+namespace UPPE {
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -85,5 +114,6 @@ public:
                 int read_in_laser_pulse, double initial_position);
     void propagate(double dz_, capillary_fibre& capillary_, keldysh_gas& gas_);
 };
+} // UPPE namespace
 
 #endif

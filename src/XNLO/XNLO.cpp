@@ -12,7 +12,7 @@
 #include "../grid/grid_xkx.hpp"
 #include "../grid/grid_rkr.hpp"
 #include "../grid/grid_tw.hpp"
-#include "laser_pulse.hpp"
+#include "../laser_pulse/laser_pulse.hpp"
 #include <limits>
 #include "../atom/Schrodinger_atom_1D.hpp"
 

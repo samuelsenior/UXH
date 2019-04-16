@@ -14,7 +14,6 @@
 #include "../../Eigen/Dense"
 
 #include "config_settings.hpp"
-#include "laser_pulse.hpp"
 
 #include "../capillary/capillary_fibre.hpp"
 #include "../DHT/DHT.hpp"
@@ -22,6 +21,7 @@
 #include "../grid/grid_rkr.hpp"
 #include "../grid/grid_tw.hpp"
 #include "../IO/IO.hpp"
+#include "../laser_pulse/laser_pulse.hpp"
 #include "../maths/maths_textbook.hpp"
 #include "../physics/physics_textbook.hpp"
 
@@ -202,7 +202,7 @@ int main(int argc, char** argv){
     initial_position = dz * propagation_step;
 
     // Physical
-    laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
+    UPPE::laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
                               tw, rkr, ft, ht, maths,
                               config,
                               config.read_in_laser_pulse(), initial_position);
