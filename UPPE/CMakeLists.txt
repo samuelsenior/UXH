@@ -23,7 +23,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 
    # Set the optimisation level flag
    #set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -fopenmp -mavx")
-   set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -fopenmp -mavx")
+   set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -mavx")
    #set(CMAKE_CXX_FLAGS "-std=c++14 -g -fopenmp -mavx")
 
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
@@ -33,7 +33,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
    # export CXX=/usr/local/bin/g++-6
 
    # Set the optimisation level flag
-   set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -Ofast -mavx -inline-forceinline")
+   set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -mavx -inline-forceinline")
    # set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -O3")#-O3 -fopenmp")
    ## This is the equivalent C flag setting:
    # set(CMAKE_C_FLAGS "-O3 -fopenmp")
@@ -135,13 +135,14 @@ set(LIBRARIES ${LIBRARIES} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthrea
 #                    Get XNLO Library                      #
 #----------------------------------------------------------#
 
-set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP-v1-0-0)
-set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../XNLO/lib -lXNLO-v1-1-0)
+#set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP)
+set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../XNLO/lib -lXNLO)
 
 #----------------------------------------------------------#
 #                    Get HHGP Library                      #
 #----------------------------------------------------------#
 
+set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP)
 #set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP-v1-0-0)
 
 message("libraries: " ${LIBRARIES})

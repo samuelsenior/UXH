@@ -23,7 +23,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 
    # Set the optimisation level flag
    #set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -fopenmp -mavx")
-   set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -fopenmp -mavx")
+   set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -mavx")
    #set(CMAKE_CXX_FLAGS "-std=c++14 -g -fopenmp -mavx")
 
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
@@ -33,7 +33,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
    # export CXX=/usr/local/bin/g++-6
 
    # Set the optimisation level flag
-   set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -Ofast -mavx -inline-forceinline")
+   set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -mavx -inline-forceinline")
    # set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -O3")#-O3 -fopenmp")
    ## This is the equivalent C flag setting:
    # set(CMAKE_C_FLAGS "-O3 -fopenmp")
@@ -134,8 +134,8 @@ set(LIBRARIES ${LIBRARIES} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthrea
 #----------------------------------------------------------#
 
 #MPI
-find_package(MPI REQUIRED)
-include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+#find_package(MPI REQUIRED)
+#include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
 #----------------------------------------------------------#
 #                    Set Sources                           #
@@ -221,7 +221,7 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY 
 set_target_properties(${CMAKE_PROJECT_NAME}-bin PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 set(BUILD_POSTFIX ${BUILD_POSTFIX})
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME}-v${VERSION_NUMBER}${BUILD_POSTFIX})
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME}${BUILD_POSTFIX})
 set_target_properties(${CMAKE_PROJECT_NAME}-bin PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME}-v${VERSION_NUMBER}${BUILD_POSTFIX})
 
 set(MPI_COMPILE_FLAGS -openmp)

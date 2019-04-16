@@ -106,7 +106,7 @@ string(SUBSTRING ${version} ${subminor_version_begin} ${subminor_version_length}
 
 # Set the overall version number
 set(VERSION_NUMBER ${major_version}-${minor_version}-${subminor_version})
-MESSAGE("-- HPPG_version: " ${VERSION_NUMBER})
+MESSAGE("-- HHGP_version: " ${VERSION_NUMBER})
 
 #----------------------------------------------------------#
 #                    Get Eigen Headers                     #
@@ -134,8 +134,8 @@ set(LIBRARIES ${LIBRARIES} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthrea
 #----------------------------------------------------------#
 
 #MPI
-find_package(MPI REQUIRED)
-include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+#find_package(MPI REQUIRED)
+#include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
 #----------------------------------------------------------#
 #                    Set Sources                           #
@@ -210,7 +210,7 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY 
 set_target_properties(${CMAKE_PROJECT_NAME}-bin PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 set(BUILD_POSTFIX ${BUILD_POSTFIX})
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME}-v${VERSION_NUMBER}${BUILD_POSTFIX})
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME}${BUILD_POSTFIX})
 set_target_properties(${CMAKE_PROJECT_NAME}-bin PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME}-v${VERSION_NUMBER}${BUILD_POSTFIX})
 
 set(MPI_COMPILE_FLAGS -openmp)
