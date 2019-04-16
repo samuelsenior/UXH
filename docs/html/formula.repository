@@ -1,0 +1,10 @@
+\form#0:\[ E(z, r) = \mathcal{H}^{-1}\left(\mathcal{H}(E(0, r)) \times \exp(iz\sqrt{k^2 - k_r^2})\right). \]
+\form#1:\[ i\frac{\partial \psi}{\partial t} = \hat{H}\psi. \]
+\form#2:\[ t = -i\tau. \]
+\form#3:\[ \psi(x, t) \rightarrow e^{-\tau E_0}c_0\phi_0. \]
+\form#4:\[ \langle E \rangle = \int \psi^*\hat{K}\psi dx + \int \psi^*\hat{V}\psi dx. \]
+\form#5:\[ a(t) = \langle\left[\hat{H}, \left[\hat{H}, \hat{x}\right]\right]\rangle. \]
+\form#6:\[ \psi(x, t+\Delta t) = e^{\frac{-i\hat{k}\Delta t}{2}}e^{-i\hat{V}\Delta t}e^{\frac{-i\hat{K}\Delta t}{2}}\psi(x, t). \]
+\form#7:$\alpha$
+\form#8:\[V_{Coulomb} = \frac{-1}{\sqrt{\alpha + x^2}}.\]
+\form#9:$t$
