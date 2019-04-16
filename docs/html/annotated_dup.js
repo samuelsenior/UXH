@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "HH", "namespace_h_h.html", "namespace_h_h" ],
+    [ "UPPE", "namespace_u_p_p_e.html", "namespace_u_p_p_e" ],
     [ "XNLO", "namespace_x_n_l_o.html", "namespace_x_n_l_o" ],
     [ "capillary_fibre", "classcapillary__fibre.html", "classcapillary__fibre" ],
     [ "Config_Settings", "class_config___settings.html", "class_config___settings" ],
@@ -14,7 +15,6 @@ var annotated_dup =
     [ "HHGP", "class_h_h_g_p.html", "class_h_h_g_p" ],
     [ "IO", "class_i_o.html", "class_i_o" ],
     [ "keldysh_gas", "classkeldysh__gas.html", "classkeldysh__gas" ],
-    [ "laser_pulse", "classlaser__pulse.html", "classlaser__pulse" ],
     [ "maths_textbook", "classmaths__textbook.html", "classmaths__textbook" ],
     [ "physics_textbook", "classphysics__textbook.html", "classphysics__textbook" ],
     [ "propagation", "classpropagation.html", "classpropagation" ],

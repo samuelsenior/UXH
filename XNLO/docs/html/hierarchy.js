@@ -10,7 +10,6 @@ var hierarchy =
     [ "XNLO::grid_tw", "class_x_n_l_o_1_1grid__tw.html", null ],
     [ "grid_xkx", "classgrid__xkx.html", null ],
     [ "IO", "class_i_o.html", null ],
-    [ "XNLO::laser_pulse", "class_x_n_l_o_1_1laser__pulse.html", null ],
     [ "maths_textbook", "classmaths__textbook.html", null ],
     [ "physics_textbook", "classphysics__textbook.html", null ],
     [ "XNLO::Result", "struct_x_n_l_o_1_1_result.html", null ],

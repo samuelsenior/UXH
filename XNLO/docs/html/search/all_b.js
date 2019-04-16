@@ -7,6 +7,5 @@ var searchData=
   ['l_5f0_5fdescription_5fset',['l_0_description_set',['../class_x_n_l_o_1_1_config___settings.html#a3928d7e7e6980a691cd823b62272b2f3',1,'XNLO::Config_Settings']]],
   ['l_5f0_5fset',['l_0_set',['../class_x_n_l_o_1_1_config___settings.html#a58dc900c90f436b8084e10b38327db6a',1,'XNLO::Config_Settings']]],
   ['l_5fat',['l_at',['../classphysics__textbook.html#a4479790cea56c47a7db44d2d331c4cef',1,'physics_textbook']]],
-  ['laser_5fpulse',['laser_pulse',['../class_x_n_l_o_1_1laser__pulse.html',1,'XNLO::laser_pulse'],['../class_x_n_l_o_1_1laser__pulse.html#a1bb62e4650be18aa5e8020bc03ea6207',1,'XNLO::laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, double CEO_, double spot_radius_, double ROC_, grid_rkr rkr_, grid_tw tw_, std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int read_in_laser_pulse)'],['../class_x_n_l_o_1_1laser__pulse.html#a563cc02eedaef2b666aadc7df93a0a68',1,'XNLO::laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE)']]],
   ['last_5fsn_5fentry',['LAST_SN_ENTRY',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda3c1a917b21de40f1eec670b1425c2e45',1,'XNLO::Config_Settings']]]
 ];

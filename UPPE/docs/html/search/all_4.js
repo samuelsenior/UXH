@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['data_5fsize',['data_size',['../class_i_o.html#a39a8a0474a288522d847f6be0fb2403f',1,'IO']]],
-  ['detect',['detect',['../structdetect.html',1,'']]],
-  ['detect_3c_20t_2c_20op_2c_20void_5ft_3c_20op_3c_20t_20_3e_20_3e_20_3e',['detect&lt; T, Op, void_t&lt; Op&lt; T &gt; &gt; &gt;',['../structdetect_3_01_t_00_01_op_00_01void__t_3_01_op_3_01_t_01_4_01_4_01_4.html',1,'']]],
-  ['dht',['DHT',['../class_d_h_t.html',1,'DHT'],['../class_d_h_t.html#addc81efbe31ac923b054636f675a2d8b',1,'DHT::DHT()'],['../class_d_h_t.html#a9f6e442f2bc6f1e2f5d2dd2a3f9a557d',1,'DHT::DHT(int n_r_, maths_textbook &amp;maths_)']]],
-  ['dht_2ecpp',['DHT.cpp',['../_d_h_t_8cpp.html',1,'']]],
-  ['dht_2ehpp',['DHT.hpp',['../_d_h_t_8hpp.html',1,'']]],
-  ['double_5fsize',['double_size',['../class_i_o.html#a3af3bf77eacd18c1c50cbf78b46c4228',1,'IO']]],
-  ['dt',['dt',['../class_x_n_l_o_1_1grid__tw.html#a894654319f613bec7cd0af4f938e3757',1,'XNLO::grid_tw']]],
-  ['dx',['dx',['../classgrid__xkx.html#aca0942ecb8707b51c4023cff310d6be3',1,'grid_xkx']]]
+  ['e_5fat',['E_at',['../classphysics__textbook.html#aed1451ff3400dce39969e5ac319f033a',1,'physics_textbook']]],
+  ['e_5fev',['E_eV',['../classphysics__textbook.html#a73e078553f4f440e99aacad83f7df6d6',1,'physics_textbook']]],
+  ['electron_5fdensity',['electron_density',['../classkeldysh__gas.html#a8dddacdfabea4d6c3049088cc868715a',1,'keldysh_gas']]],
+  ['eps_5f0',['eps_0',['../classphysics__textbook.html#a8ea9a65f207ec6ad3388e605f385454c',1,'physics_textbook']]]
 ];

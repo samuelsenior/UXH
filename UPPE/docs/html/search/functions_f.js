@@ -17,7 +17,5 @@ var searchData=
   ['rep',['rep',['../class_config___settings.html#a2d7cd824c2d98ef18359a062a802dca5',1,'Config_Settings']]],
   ['rep_5fdescription',['rep_description',['../class_config___settings.html#a7ed33a5b7a724d356ff374017f31d94b',1,'Config_Settings']]],
   ['rep_5fdescription_5fset',['rep_description_set',['../class_config___settings.html#af0b5006b967b95f83ff5f793d8b5b949',1,'Config_Settings']]],
-  ['rep_5fset',['rep_set',['../class_config___settings.html#a190867ecfbe068e79f3cfe95947423d1',1,'Config_Settings']]],
-  ['rhs_5fuppe',['RHS_UPPE',['../classlaser__pulse.html#a7bdca944386a5cdbb67ea0c344e65a69',1,'laser_pulse']]],
-  ['rk_5ff_5f45',['RK_F_45',['../classlaser__pulse.html#a204908b9056b97bbb5bd093b7a8816e5',1,'laser_pulse']]]
+  ['rep_5fset',['rep_set',['../class_config___settings.html#a190867ecfbe068e79f3cfe95947423d1',1,'Config_Settings']]]
 ];

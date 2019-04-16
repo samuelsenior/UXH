@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['k',['k',['../classpropagation.html#a49a30e941421cd5e3f0b62bd1335a767',1,'propagation']]],
-  ['k_5fb',['k_B',['../classphysics__textbook.html#a666f84f0f7f65910169ed6b82129e5c8',1,'physics_textbook']]],
-  ['k_5fexcluded',['k_excluded',['../classpropagation.html#a76f3651eac23a69c1259dc0406fbe0d9',1,'propagation']]],
-  ['k_5fr',['k_r',['../classpropagation.html#a9e437271e452fa1732f50e006347b501',1,'propagation']]],
-  ['kappa',['kappa',['../classkeldysh__gas.html#a836c6a6c2f1bec80ea15344822a07ea5',1,'keldysh_gas']]],
-  ['keldysh_5fgas',['keldysh_gas',['../classkeldysh__gas.html',1,'keldysh_gas'],['../classkeldysh__gas.html#a25e559700c04e93efb560db511adbe72',1,'keldysh_gas::keldysh_gas()'],['../classkeldysh__gas.html#a7889120c043b13492fa58878c5459099',1,'keldysh_gas::keldysh_gas(double press_, std::string gas_pressure_profile_)'],['../classkeldysh__gas.html#ae5510e8e448e96280f71b410907debf6',1,'keldysh_gas::keldysh_gas(double press_, grid_tw &amp;tw_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, maths_textbook &amp;maths_, std::string gas_pressure_profile_)']]],
-  ['keldysh_5fgas_2ecpp',['keldysh_gas.cpp',['../keldysh__gas_8cpp.html',1,'']]],
-  ['keldysh_5fgas_2ehpp',['keldysh_gas.hpp',['../keldysh__gas_8hpp.html',1,'']]],
-  ['kr',['kr',['../classgrid__rkr.html#aa09a97ce2aa9975fb4d2c1ee5da98b26',1,'grid_rkr']]],
-  ['kx',['kx',['../classgrid__xkx.html#a5095a800b9e5947262cddaa227a50af7',1,'grid_xkx']]]
+  ['l_5f0',['l_0',['../class_h_h_1_1_config___settings.html#ab1217a9b20825d4c0bed3f6267611ad2',1,'HH::Config_Settings::l_0()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3aa5feddd336f95a73db3d846da3a050ea',1,'HH::Config_Settings::l_0()']]],
+  ['l_5f0_5f',['l_0_',['../class_h_h_1_1_config___settings.html#ab03e992321f6443150f028013ab07193',1,'HH::Config_Settings']]],
+  ['l_5f0_5fdescription',['l_0_description',['../class_h_h_1_1_config___settings.html#a5a18ca43cb417ec220c8bb896a8bf550',1,'HH::Config_Settings']]],
+  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_h_h_1_1_config___settings.html#aed09920a62029b3d605af38bfce7334a',1,'HH::Config_Settings']]],
+  ['l_5f0_5fdescription_5fset',['l_0_description_set',['../class_h_h_1_1_config___settings.html#a3f1fb67261eb20d19b1dc61e1d0a19b2',1,'HH::Config_Settings']]],
+  ['l_5f0_5fset',['l_0_set',['../class_h_h_1_1_config___settings.html#ae560a447e1b4c9ae129b1ed4ad080e05',1,'HH::Config_Settings']]],
+  ['l_5fat',['l_at',['../classphysics__textbook.html#a4479790cea56c47a7db44d2d331c4cef',1,'physics_textbook']]],
+  ['lamda',['lamda',['../classpropagation.html#a5ae0154dc8db04188ba92e10ba981000',1,'propagation']]],
+  ['last_5fsn_5fentry',['LAST_SN_ENTRY',['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a3c1a917b21de40f1eec670b1425c2e45',1,'HH::Config_Settings']]]
 ];

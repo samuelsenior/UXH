@@ -1,21 +1,12 @@
 var searchData=
 [
-  ['c',['c',['../classphysics__textbook.html#a3c6dd19f14166d6c90d6f53aa4e31885',1,'physics_textbook']]],
-  ['c_5fkl',['C_kl',['../classkeldysh__gas.html#a7a66e438ff78b240fe419c0a426b1648',1,'keldysh_gas']]],
-  ['capillary_5fpressure_5fprofile',['capillary_pressure_profile',['../classkeldysh__gas.html#a9eac2e3d9a39a2358e9b6eb7f4a868c6',1,'keldysh_gas']]],
-  ['ceo',['ceo',['../class_h_h_1_1_config___settings.html#a7c8587f7addbd41f3e4ae6ca464973bb',1,'HH::Config_Settings::ceo()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a55161575f3e05dfb61145c5d63d67d29',1,'HH::Config_Settings::ceo()']]],
-  ['ceo_5f',['ceo_',['../class_h_h_1_1_config___settings.html#a4526128df3efbececc3c529e20e20dcb',1,'HH::Config_Settings']]],
-  ['ceo_5fdescription',['ceo_description',['../class_h_h_1_1_config___settings.html#a8660367cd0f89117638fe9e38a754c1b',1,'HH::Config_Settings']]],
-  ['ceo_5fdescription_5f',['ceo_description_',['../class_h_h_1_1_config___settings.html#a8c2b975ac2589ce2987629c1b3ac3ca8',1,'HH::Config_Settings']]],
-  ['ceo_5fdescription_5fset',['ceo_description_set',['../class_h_h_1_1_config___settings.html#ae1928fa7ace30061da070f28cc512e13',1,'HH::Config_Settings']]],
-  ['ceo_5fset',['ceo_set',['../class_h_h_1_1_config___settings.html#a434b440854b6e8af592ce474f93cd20d',1,'HH::Config_Settings']]],
-  ['check_5fpaths',['check_paths',['../class_h_h_1_1_config___settings.html#a39e4b063a105da4e29cf8d6e5f326b4c',1,'HH::Config_Settings']]],
-  ['cols_5ft',['cols_t',['../_i_o_8hpp.html#a822dcce0f28c2d8fd194091525c36483',1,'IO.hpp']]],
-  ['config',['config',['../class_h_h__source.html#adbab95c09c583e2aeebbb4679e6998e8',1,'HH_source::config()'],['../class_h_h_g_p.html#a436b69506e25457dcdab0249a1c27d42',1,'HHGP::config()']]],
-  ['config_5fsettings',['Config_Settings',['../class_h_h_1_1_config___settings.html',1,'HH::Config_Settings'],['../class_h_h_1_1_config___settings.html#ac165abb58f307c9dd5c9c345bc64bb6b',1,'HH::Config_Settings::Config_Settings()']]],
-  ['config_5fsettings_2ecpp',['config_settings.cpp',['../config__settings_8cpp.html',1,'']]],
-  ['config_5fsettings_2ehpp',['config_settings.hpp',['../config__settings_8hpp.html',1,'']]],
-  ['constant_5fpressure_5fprofile',['constant_pressure_profile',['../classkeldysh__gas.html#ad70cb5ac156d96492a164774b80e7cdc',1,'keldysh_gas']]],
-  ['cumtrapz',['cumtrapz',['../classmaths__textbook.html#ae893700d202ab9a84e33974f9ca42da3',1,'maths_textbook']]],
-  ['current_5fdensity',['current_density',['../classkeldysh__gas.html#a7d5f16951d622544d814518a37768411',1,'keldysh_gas']]]
+  ['data_5fsize',['data_size',['../class_i_o.html#a39a8a0474a288522d847f6be0fb2403f',1,'IO']]],
+  ['detect',['detect',['../structdetect.html',1,'']]],
+  ['detect_3c_20t_2c_20op_2c_20void_5ft_3c_20op_3c_20t_20_3e_20_3e_20_3e',['detect&lt; T, Op, void_t&lt; Op&lt; T &gt; &gt; &gt;',['../structdetect_3_01_t_00_01_op_00_01void__t_3_01_op_3_01_t_01_4_01_4_01_4.html',1,'']]],
+  ['dht',['DHT',['../class_d_h_t.html',1,'DHT'],['../class_d_h_t.html#addc81efbe31ac923b054636f675a2d8b',1,'DHT::DHT()'],['../class_d_h_t.html#a9f6e442f2bc6f1e2f5d2dd2a3f9a557d',1,'DHT::DHT(int n_r_, maths_textbook &amp;maths_)']]],
+  ['dht_2ecpp',['DHT.cpp',['../_d_h_t_8cpp.html',1,'']]],
+  ['dht_2ehpp',['DHT.hpp',['../_d_h_t_8hpp.html',1,'']]],
+  ['double_5fsize',['double_size',['../class_i_o.html#a3af3bf77eacd18c1c50cbf78b46c4228',1,'IO']]],
+  ['dt',['dt',['../class_x_n_l_o_1_1grid__tw.html#a894654319f613bec7cd0af4f938e3757',1,'XNLO::grid_tw']]],
+  ['dx',['dx',['../classgrid__xkx.html#aca0942ecb8707b51c4023cff310d6be3',1,'grid_xkx']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['y_5f4',['Y_4',['../classlaser__pulse.html#a14cb833e7d8abf8c5d529879abc38ab5',1,'laser_pulse']]],
-  ['y_5f5',['Y_5',['../classlaser__pulse.html#a0887b8a3f33e2cde8359e6dd61210615',1,'laser_pulse']]]
+  ['y_5f4',['Y_4',['../class_u_p_p_e_1_1laser__pulse.html#adf4d8a1ae04163ec680dc23561654b81',1,'UPPE::laser_pulse']]],
+  ['y_5f5',['Y_5',['../class_u_p_p_e_1_1laser__pulse.html#ae904fba8ae27e1c565edbfb61f105696',1,'UPPE::laser_pulse']]]
 ];

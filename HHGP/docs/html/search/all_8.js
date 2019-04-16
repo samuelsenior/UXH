@@ -1,16 +1,16 @@
 var searchData=
 [
-  ['h',['h',['../classphysics__textbook.html#a416573e2d9fa6793711a69cdb291d824',1,'physics_textbook::h()'],['../class_d_h_t.html#ac17a580b606f25c937dbdc81dba517d7',1,'DHT::H()']]],
-  ['h_5fbar',['h_bar',['../classphysics__textbook.html#a5ec9850f0fa1b25180d8f6d1ed734848',1,'physics_textbook']]],
-  ['has_5fcols',['has_cols',['../_i_o_8hpp.html#aed10a3a50ad32113eab2f5502bf0b74f',1,'IO.hpp']]],
-  ['has_5frows',['has_rows',['../_i_o_8hpp.html#ab7cdbf26450213e8d47701a58c2c11ff',1,'IO.hpp']]],
-  ['header_5fsize',['header_size',['../class_i_o.html#aee540c40b18d5f9990bf8d7e12cb0827',1,'IO']]],
-  ['hh',['HH',['../namespace_h_h.html',1,'']]],
-  ['hh_5fsource',['HH_source',['../class_h_h__source.html',1,'HH_source'],['../class_h_h__source.html#a0b3c052d274495b4f90fb09d15fff9fa',1,'HH_source::HH_source()']]],
-  ['hh_5fsource_2ecpp',['HH_source.cpp',['../_h_h__source_8cpp.html',1,'']]],
-  ['hh_5fsource_2ehpp',['HH_source.hpp',['../_h_h__source_8hpp.html',1,'']]],
-  ['hhgp',['HHGP',['../class_h_h_g_p.html',1,'HHGP'],['../class_h_h_g_p.html#ac427b46994326abe397a3b712a15b259',1,'HHGP::HHGP()'],['../class_h_h_g_p.html#ad97d6b0e40224aee31c75d0b91d7485f',1,'HHGP::HHGP(propagation &amp;prop_, HH::Config_Settings &amp;config_, grid_rkr &amp;rkr_, keldysh_gas &amp;gas_, maths_textbook &amp;maths_, DHT &amp;ht_)']]],
-  ['hhgp_2ecpp',['HHGP.cpp',['../_h_h_g_p_8cpp.html',1,'']]],
-  ['hhgp_2ehpp',['HHGP.hpp',['../_h_h_g_p_8hpp.html',1,'']]],
-  ['ht',['ht',['../class_h_h_g_p.html#a95a55418c47407dfcb0925e8e5cd86e6',1,'HHGP::ht()'],['../classpropagation.html#a044544975e7fc2ec3df9a55d92f8cc90',1,'propagation::ht()']]]
+  ['inital_5fpropagation_5fstep',['inital_propagation_step',['../class_h_h_1_1_config___settings.html#a35fa0eb8e6bbb2e6f58c09213f99cfd0',1,'HH::Config_Settings::inital_propagation_step()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a125931e118e962505fe936bb5685b292',1,'HH::Config_Settings::inital_propagation_step()']]],
+  ['inital_5fpropagation_5fstep_5f',['inital_propagation_step_',['../class_h_h_1_1_config___settings.html#aafb70c3a95fa2e6b336a75d8bc3c3309',1,'HH::Config_Settings']]],
+  ['inital_5fpropagation_5fstep_5fdescription',['inital_propagation_step_description',['../class_h_h_1_1_config___settings.html#a12d639ef181d8b0a3752530c3a9c9672',1,'HH::Config_Settings']]],
+  ['inital_5fpropagation_5fstep_5fdescription_5f',['inital_propagation_step_description_',['../class_h_h_1_1_config___settings.html#ac5c4bcd6ad237180fac1897380f4791f',1,'HH::Config_Settings']]],
+  ['inital_5fpropagation_5fstep_5fdescription_5fset',['inital_propagation_step_description_set',['../class_h_h_1_1_config___settings.html#aa63ad23fb4afeb2cdcebb860e77626c5',1,'HH::Config_Settings']]],
+  ['inital_5fpropagation_5fstep_5fset',['inital_propagation_step_set',['../class_h_h_1_1_config___settings.html#a13737e03d967b9ffa612f9a87439b02c',1,'HH::Config_Settings']]],
+  ['inlet_5f1',['inlet_1',['../classkeldysh__gas.html#ab0dee35b9ad45af3fca4a2079389e632',1,'keldysh_gas']]],
+  ['inlet_5f2',['inlet_2',['../classkeldysh__gas.html#a685d93a796afba55c6fcd6d61c7e2bf8',1,'keldysh_gas']]],
+  ['interp1d',['interp1D',['../classmaths__textbook.html#a803caea252953788b96a898a3bab9bd0',1,'maths_textbook::interp1D(ArrayXd input_array, int input_length, int output_length, int spline_order)'],['../classmaths__textbook.html#ac4789e1e67a597303faab6cc5fa889ec',1,'maths_textbook::interp1D(ArrayXd x, int nx, ArrayXd y, ArrayXd site, int output_length, int spline_order)']]],
+  ['io',['IO',['../class_i_o.html',1,'IO'],['../class_i_o.html#a49b27a2ee79bce0de4e3ef163cbebd30',1,'IO::IO()']]],
+  ['io_2ecpp',['IO.cpp',['../_i_o_8cpp.html',1,'']]],
+  ['io_2ehpp',['IO.hpp',['../_i_o_8hpp.html',1,'']]],
+  ['ionization_5frate',['ionization_rate',['../classkeldysh__gas.html#a42dc79816adcae9c25499baa7256ec10',1,'keldysh_gas']]]
 ];

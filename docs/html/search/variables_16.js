@@ -9,7 +9,7 @@ var searchData=
   ['w_5factive_5fmin_5findex',['w_active_min_index',['../classgrid__tw.html#a27d987fb3c8cbacf9cd152b83477f0d9',1,'grid_tw']]],
   ['w_5factive_5ftmp',['w_active_tmp',['../classpropagation.html#a07a80b67a345e3e9d8e934d2265ba288',1,'propagation']]],
   ['w_5fat',['w_at',['../classphysics__textbook.html#a63250c79f053fa4aa1c8f3505971b4f1',1,'physics_textbook']]],
-  ['waist',['waist',['../classlaser__pulse.html#a42d24a25890ebb04c483fbb4e4811e03',1,'laser_pulse']]],
+  ['waist',['waist',['../class_u_p_p_e_1_1laser__pulse.html#a73557ffb2803330e28cfd987da5c3e05',1,'UPPE::laser_pulse']]],
   ['waist_5f',['waist_',['../class_h_h_1_1_config___settings.html#af9f294ea092eedf7ba428ad45a37cbd6',1,'HH::Config_Settings::waist_()'],['../class_config___settings.html#a769316096d7aa4e2939ed7fbf7db21e2',1,'Config_Settings::waist_()']]],
   ['waist_5fdescription_5f',['waist_description_',['../class_h_h_1_1_config___settings.html#a123223e81433f6092d3a69d805043b8b',1,'HH::Config_Settings::waist_description_()'],['../class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30',1,'Config_Settings::waist_description_()']]],
   ['wavefunction',['wavefunction',['../struct_x_n_l_o_1_1_result.html#a3cc2dcbdbfecec769a89f37b15b4bab2',1,'XNLO::Result']]],

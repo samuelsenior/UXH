@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['physics_5ftextbook',['physics_textbook',['../classphysics__textbook.html',1,'']]]
+  ['result',['Result',['../struct_x_n_l_o_1_1_result.html',1,'XNLO']]]
 ];

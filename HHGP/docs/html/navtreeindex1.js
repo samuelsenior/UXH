@@ -203,7 +203,6 @@ var NAVTREEINDEX1 =
 "functions_x.html":[1,3,0,22],
 "functions_z.html":[1,3,0,23],
 "globals.html":[2,1,0],
-"globals_defs.html":[2,1,3],
 "globals_func.html":[2,1,1],
 "globals_type.html":[2,1,2],
 "grid__rkr_8cpp.html":[2,0,0,2,0],
@@ -225,8 +224,8 @@ var NAVTREEINDEX1 =
 "maths__textbook_8cpp.html":[2,0,0,5,0],
 "maths__textbook_8hpp.html":[2,0,0,5,1],
 "maths__textbook_8hpp_source.html":[2,0,0,5,1],
-"namespace_h_h.html":[0,0,0],
 "namespace_h_h.html":[1,0,0],
+"namespace_h_h.html":[0,0,0],
 "namespace_x_n_l_o.html":[1,0,1],
 "namespace_x_n_l_o.html":[0,0,1],
 "namespaces.html":[0,0],
@@ -238,10 +237,5 @@ var NAVTREEINDEX1 =
 "propagation_8hpp.html":[2,0,0,3,8],
 "propagation_8hpp_source.html":[2,0,0,3,8],
 "structdetect.html":[1,0,2],
-"structdetect_3_01_t_00_01_op_00_01void__t_3_01_op_3_01_t_01_4_01_4_01_4.html":[1,0,3],
-"version_8hpp.html":[2,0,0,3,9],
-"version_8hpp.html#a1aac9829b460d4b1a2c8643fe7201524":[2,0,0,3,9,1],
-"version_8hpp.html#aac52b05128da45201ff8e39e39156b82":[2,0,0,3,9,0],
-"version_8hpp.html#abe78003459809bdd8d99f3b0b293b83f":[2,0,0,3,9,2],
-"version_8hpp_source.html":[2,0,0,3,9]
+"structdetect_3_01_t_00_01_op_00_01void__t_3_01_op_3_01_t_01_4_01_4_01_4.html":[1,0,3]
 };

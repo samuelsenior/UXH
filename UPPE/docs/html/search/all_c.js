@@ -1,14 +1,11 @@
 var searchData=
 [
-  ['l_5f0',['l_0',['../classlaser__pulse.html#a214fb26a450ff4c8c643da8bd6f2b712',1,'laser_pulse::l_0()'],['../class_config___settings.html#a42be7e23a13a58de4f33f4f0a7ff420a',1,'Config_Settings::l_0()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa5feddd336f95a73db3d846da3a050ea',1,'Config_Settings::l_0()']]],
-  ['l_5f0_5f',['l_0_',['../class_config___settings.html#ae98143cb0c84b137e26a4b439e48aada',1,'Config_Settings']]],
-  ['l_5f0_5fdescription',['l_0_description',['../class_config___settings.html#a3757b7cd606c810059079437075245b9',1,'Config_Settings']]],
-  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_config___settings.html#a04bc9c9966974183a306593a492644f4',1,'Config_Settings']]],
-  ['l_5f0_5fdescription_5fset',['l_0_description_set',['../class_config___settings.html#a1be31eb27a929d913838c85d35abed7d',1,'Config_Settings']]],
-  ['l_5f0_5fset',['l_0_set',['../class_config___settings.html#a0e6a1ad74cd5ef799383623316ef293d',1,'Config_Settings']]],
-  ['l_5fat',['l_at',['../classphysics__textbook.html#a4479790cea56c47a7db44d2d331c4cef',1,'physics_textbook']]],
-  ['laser_5fpulse',['laser_pulse',['../classlaser__pulse.html',1,'laser_pulse'],['../classlaser__pulse.html#a3fc3771b0e32c7ad11511d8502114175',1,'laser_pulse::laser_pulse()']]],
-  ['laser_5fpulse_2ecpp',['laser_pulse.cpp',['../laser__pulse_8cpp.html',1,'']]],
-  ['laser_5fpulse_2ehpp',['laser_pulse.hpp',['../laser__pulse_8hpp.html',1,'']]],
-  ['last_5fsn_5fentry',['LAST_SN_ENTRY',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45',1,'Config_Settings']]]
+  ['m_5fat',['m_at',['../classphysics__textbook.html#a6bb18bb140fbce54e2c73a7f2a72509f',1,'physics_textbook']]],
+  ['main',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
+  ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['maths',['maths',['../classkeldysh__gas.html#a501614b541b9056bb05b378a39962524',1,'keldysh_gas::maths()'],['../classgrid__rkr.html#acea8f6ec250de1407b452253edfc1eb0',1,'grid_rkr::maths()']]],
+  ['maths_5ftextbook',['maths_textbook',['../classmaths__textbook.html',1,'maths_textbook'],['../classmaths__textbook.html#a7be915ec6de7f305b96325ff5d821607',1,'maths_textbook::maths_textbook()'],['../classmaths__textbook.html#acca32bf0f3860cbb8e76687435f0fa24',1,'maths_textbook::maths_textbook(std::string path_input_j0_)']]],
+  ['maths_5ftextbook_2ecpp',['maths_textbook.cpp',['../maths__textbook_8cpp.html',1,'']]],
+  ['maths_5ftextbook_2ehpp',['maths_textbook.hpp',['../maths__textbook_8hpp.html',1,'']]],
+  ['mu_5f0',['mu_0',['../classphysics__textbook.html#a300762c199172d9f76183b49db5f0f33',1,'physics_textbook']]]
 ];

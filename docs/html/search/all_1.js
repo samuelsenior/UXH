@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_5fw_5factive',['A_w_active',['../classlaser__pulse.html#a1de4076f0eb2e5c4bd2e9ce644509eb6',1,'laser_pulse']]],
+  ['a_5fw_5factive',['A_w_active',['../class_u_p_p_e_1_1laser__pulse.html#a2bd92f2143a2957d18abd92929638305',1,'UPPE::laser_pulse']]],
   ['a_5fw_5fkr',['A_w_kr',['../classpropagation.html#a4df23dd19a8cca8a4cb032718dc2b258',1,'propagation']]],
   ['a_5fw_5fr',['A_w_r',['../class_h_h_g_p.html#ac5770470d3f703295cd7f48a6f1f0ab4',1,'HHGP::A_w_r()'],['../classpropagation.html#ad3a84addde67e43bbb606408193f78ee',1,'propagation::A_w_r()']]],
   ['a_5fw_5fr_5ftmp',['A_w_r_tmp',['../class_h_h_g_p.html#aa01ff6195d02fac876a12d91c214119a',1,'HHGP']]],
@@ -14,7 +14,7 @@ var searchData=
   ['atom_5fdensity',['atom_density',['../classkeldysh__gas.html#acfa0604a6f00bce28b72b9a07fb79314',1,'keldysh_gas']]],
   ['atom_5fdensity_5ffunc',['atom_density_func',['../classkeldysh__gas.html#aeb540c2cc32a862ab074638d53f172f7',1,'keldysh_gas']]],
   ['atom_5fdensity_5ffunc_5fptr',['atom_density_func_ptr',['../classkeldysh__gas.html#ab47ad59b466eee349a7500555869b988',1,'keldysh_gas']]],
-  ['atom_5fdensity_5fmax',['atom_density_max',['../classkeldysh__gas.html#a287e2c7a3081d8b65ba126288a3174bd',1,'keldysh_gas::atom_density_max()'],['../classlaser__pulse.html#a7f57af64ec1b6b15a41b63d60d48fbe5',1,'laser_pulse::atom_density_max()']]],
+  ['atom_5fdensity_5fmax',['atom_density_max',['../classkeldysh__gas.html#a287e2c7a3081d8b65ba126288a3174bd',1,'keldysh_gas::atom_density_max()'],['../class_u_p_p_e_1_1laser__pulse.html#aaff0e5b47cc5200975eb4ffd220cd9ae',1,'UPPE::laser_pulse::atom_density_max()']]],
   ['atoms_5fper_5fworker',['atoms_per_worker',['../class_x_n_l_o_1_1_config___settings.html#a0a9728ce32801e76d555f57d979d4d27',1,'XNLO::Config_Settings::atoms_per_worker()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdae96bcae12bb55c4c869b0903684227a8',1,'XNLO::Config_Settings::atoms_per_worker()']]],
   ['atoms_5fper_5fworker_5f',['atoms_per_worker_',['../class_x_n_l_o_1_1_config___settings.html#a4b5185c6ae82b2c10207c48889868a7d',1,'XNLO::Config_Settings']]],
   ['atoms_5fper_5fworker_5fdescription',['atoms_per_worker_description',['../class_x_n_l_o_1_1_config___settings.html#abb4f872d8dc7bff6acbaf35384e222fc',1,'XNLO::Config_Settings']]],

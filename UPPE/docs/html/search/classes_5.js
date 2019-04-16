@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['laser_5fpulse',['laser_pulse',['../classlaser__pulse.html',1,'']]]
+  ['maths_5ftextbook',['maths_textbook',['../classmaths__textbook.html',1,'']]]
 ];

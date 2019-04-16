@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['forward',['forward',['../class_d_h_t.html#a916089f65c6ad05eace5e1f9854f50f4',1,'DHT']]],
-  ['found_5fstepworkings',['found_stepWorkings',['../class_config___settings.html#a6a842d08b4c58f984d829300cd28d7c5',1,'Config_Settings']]],
-  ['ft',['ft',['../classkeldysh__gas.html#ac635d55dcbdfcde7c34d77de5cd75af6',1,'keldysh_gas::ft()'],['../classlaser__pulse.html#adb3cf51151c7f69c34afa09b793956a7',1,'laser_pulse::ft()']]],
-  ['fwhm',['fwhm',['../classlaser__pulse.html#a09d4c32a0c6b7bcfa75d8ec44d31fb83',1,'laser_pulse::fwhm()'],['../class_config___settings.html#abb82d61227a72fcf9fb09a8b53ed978f',1,'Config_Settings::fwhm()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa98442a7aa7ac53de79418391d75e0d34',1,'Config_Settings::fwhm()']]],
-  ['fwhm_5f',['fwhm_',['../class_config___settings.html#a40bcd732fb3b33e6424c31a442e04441',1,'Config_Settings']]],
-  ['fwhm_5fdescription',['fwhm_description',['../class_config___settings.html#adc823fae380105489fc516592cf6ec5f',1,'Config_Settings']]],
-  ['fwhm_5fdescription_5f',['fwhm_description_',['../class_config___settings.html#a79ea5af7b0bdaba77a061d5f407e7f19',1,'Config_Settings']]],
-  ['fwhm_5fdescription_5fset',['fwhm_description_set',['../class_config___settings.html#a056a2a568c405b96efd5ff0a9ee10161',1,'Config_Settings']]],
-  ['fwhm_5fset',['fwhm_set',['../class_config___settings.html#affdb0e9eaac7137b78615eacb84a1527',1,'Config_Settings']]]
+  ['gamma',['gamma',['../classcapillary__fibre.html#aac529850339a53f1262a497dd7a19931',1,'capillary_fibre']]],
+  ['gas_5fpressure_5fprofile',['gas_pressure_profile',['../classkeldysh__gas.html#a8e25aa7daf8df877e12db565294c3c72',1,'keldysh_gas::gas_pressure_profile()'],['../class_config___settings.html#a63980a67cd0ead8a2094a81c6f580a98',1,'Config_Settings::gas_pressure_profile()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa5fe684b755e79d4c8fba92b02baf5e7c',1,'Config_Settings::gas_pressure_profile()']]],
+  ['gas_5fpressure_5fprofile_5f',['gas_pressure_profile_',['../class_config___settings.html#ae9b2b81a5c3e009c3e6e786b25d4b8e4',1,'Config_Settings']]],
+  ['gas_5fpressure_5fprofile_5fdescription',['gas_pressure_profile_description',['../class_config___settings.html#a61f7ec25e064f8aa108f95cacef58aaa',1,'Config_Settings']]],
+  ['gas_5fpressure_5fprofile_5fdescription_5f',['gas_pressure_profile_description_',['../class_config___settings.html#a75c3e6f81faed8d636d874ec164b1b80',1,'Config_Settings']]],
+  ['gas_5fpressure_5fprofile_5fdescription_5fset',['gas_pressure_profile_description_set',['../class_config___settings.html#a007088f008ed62a5778f09096913cf89',1,'Config_Settings']]],
+  ['gas_5fpressure_5fprofile_5fset',['gas_pressure_profile_set',['../class_config___settings.html#a167daa947c16bc735d496fa944773721',1,'Config_Settings']]],
+  ['grid_5frkr',['grid_rkr',['../classgrid__rkr.html',1,'grid_rkr'],['../classgrid__rkr.html#a8c3f61553704783780b89fb19aeb400c',1,'grid_rkr::grid_rkr()'],['../classgrid__rkr.html#adc3dbfbeb1dcc1ac948b58d26a83ffd1',1,'grid_rkr::grid_rkr(int n_r_, double R_, int n_m_, maths_textbook &amp;maths_)']]],
+  ['grid_5frkr_2ecpp',['grid_rkr.cpp',['../grid__rkr_8cpp.html',1,'']]],
+  ['grid_5frkr_2ehpp',['grid_rkr.hpp',['../grid__rkr_8hpp.html',1,'']]],
+  ['grid_5ftw',['grid_tw',['../classgrid__tw.html',1,'grid_tw'],['../class_x_n_l_o_1_1grid__tw.html',1,'XNLO::grid_tw'],['../classgrid__tw.html#af1e2316561c84a2262e374600895010d',1,'grid_tw::grid_tw()'],['../classgrid__tw.html#a583d4c2b423305ef3806d6221ed3f543',1,'grid_tw::grid_tw(int N_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook &amp;maths_)'],['../class_x_n_l_o_1_1grid__tw.html#a54b8e8126ff23b9b3e6803c4cb223cfc',1,'XNLO::grid_tw::grid_tw()']]],
+  ['grid_5ftw_2ecpp',['grid_tw.cpp',['../grid__tw_8cpp.html',1,'']]],
+  ['grid_5ftw_2ehpp',['grid_tw.hpp',['../grid__tw_8hpp.html',1,'']]],
+  ['grid_5fxkx',['grid_xkx',['../classgrid__xkx.html',1,'grid_xkx'],['../classgrid__xkx.html#af0662ee6b6dbd498dd0d273a6a35cc68',1,'grid_xkx::grid_xkx()'],['../classgrid__xkx.html#a79005084997c1ce569572389bf9bebde',1,'grid_xkx::grid_xkx(int N_x_, double x_min_, double x_max_)']]],
+  ['grid_5fxkx_2ecpp',['grid_xkx.cpp',['../grid__xkx_8cpp.html',1,'']]],
+  ['grid_5fxkx_2ehpp',['grid_xkx.hpp',['../grid__xkx_8hpp.html',1,'']]]
 ];

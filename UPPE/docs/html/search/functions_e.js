@@ -117,6 +117,5 @@ var searchData=
   ['press_5fdescription',['press_description',['../class_config___settings.html#a3a3b7b753d201b5990e302cc2e399fe8',1,'Config_Settings']]],
   ['press_5fdescription_5fset',['press_description_set',['../class_config___settings.html#a21e1e3dad8bff784a753ec82ff528464',1,'Config_Settings']]],
   ['press_5fset',['press_set',['../class_config___settings.html#a6995d1f5f91fbc5229f9634b0daba17b',1,'Config_Settings']]],
-  ['print',['print',['../class_config___settings.html#adf2afd6d78d715587922166b19cfe82f',1,'Config_Settings::print()'],['../class_config___settings.html#a6224a7b0a59a3735a873b77ed53282cf',1,'Config_Settings::print(std::string)']]],
-  ['propagate',['propagate',['../classlaser__pulse.html#afbf5712236ffdfa30027afd262300710',1,'laser_pulse']]]
+  ['print',['print',['../class_config___settings.html#adf2afd6d78d715587922166b19cfe82f',1,'Config_Settings::print()'],['../class_config___settings.html#a6224a7b0a59a3735a873b77ed53282cf',1,'Config_Settings::print(std::string)']]]
 ];

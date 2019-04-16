@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['p_5fav',['p_av',['../classlaser__pulse.html#a5afe467c97db80c6aa3640be556f4309',1,'laser_pulse']]],
   ['p_5fav_5f',['p_av_',['../class_config___settings.html#a13ef86da424752b11e8731dfc38ca4d3',1,'Config_Settings']]],
   ['p_5fav_5fdescription_5f',['p_av_description_',['../class_config___settings.html#afad39595749a9601390fcf4b284834fa',1,'Config_Settings']]],
-  ['p_5fnl_5fm_5ft',['P_NL_m_t',['../classlaser__pulse.html#a040ef573622852063801648ea19a624d',1,'laser_pulse']]],
-  ['p_5fnl_5fr_5ft',['P_NL_r_t',['../classlaser__pulse.html#ae0c14fb0f768b7b092dd42d01e90aa4f',1,'laser_pulse']]],
-  ['p_5fnl_5fw',['P_NL_w',['../classlaser__pulse.html#a226206710b2b80dbd497847c8ac2c133',1,'laser_pulse']]],
-  ['p_5fpk',['p_pk',['../classlaser__pulse.html#a482ab2122328a572e2e2df875cf17fc8',1,'laser_pulse']]],
   ['path_5fa_5fi_5fstepworkings',['path_A_I_stepWorkings',['../class_config___settings.html#a4c237fa5b365657d142d6668f9a06a3d',1,'Config_Settings']]],
   ['path_5fa_5fr_5fstepworkings',['path_A_R_stepWorkings',['../class_config___settings.html#af524475614cc3cc183b5bbd2bd20e34b',1,'Config_Settings']]],
   ['path_5fa_5fw_5fi_5f',['path_A_w_I_',['../class_config___settings.html#a3dcb5a142b7887861ed876cda1e20278',1,'Config_Settings']]],
@@ -74,7 +69,7 @@ var searchData=
   ['pend_5fpath_5fdescription_5f',['pend_path_description_',['../class_config___settings.html#a6f8f961fb92591750f397fbaeca57dfd',1,'Config_Settings']]],
   ['pending_5fstring_5flen_5fstepworkings',['pending_string_len_stepWorkings',['../class_config___settings.html#a961df4887c642c66a76e97159c259ffe',1,'Config_Settings']]],
   ['pending_5fstring_5fstepworkings',['pending_string_stepWorkings',['../class_config___settings.html#a88bf9a4af9ab13c2b9fbfff05f8ef42c',1,'Config_Settings']]],
-  ['physics',['physics',['../classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4',1,'keldysh_gas::physics()'],['../classlaser__pulse.html#af4d3c841315b4f532eb7218f0b65257b',1,'laser_pulse::physics()']]],
+  ['physics',['physics',['../classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4',1,'keldysh_gas']]],
   ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['press_5f',['press_',['../class_config___settings.html#afc35b2b38b6e991d38a1a8b7cfae8df4',1,'Config_Settings']]],
   ['press_5fdescription_5f',['press_description_',['../class_config___settings.html#a6c0508d29779a253834967377df98934',1,'Config_Settings']]]

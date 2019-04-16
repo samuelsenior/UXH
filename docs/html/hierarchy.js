@@ -16,7 +16,7 @@ var hierarchy =
     [ "HHGP", "class_h_h_g_p.html", null ],
     [ "IO", "class_i_o.html", null ],
     [ "keldysh_gas", "classkeldysh__gas.html", null ],
-    [ "laser_pulse", "classlaser__pulse.html", null ],
+    [ "UPPE::laser_pulse", "class_u_p_p_e_1_1laser__pulse.html", null ],
     [ "XNLO::laser_pulse", "class_x_n_l_o_1_1laser__pulse.html", null ],
     [ "maths_textbook", "classmaths__textbook.html", null ],
     [ "physics_textbook", "classphysics__textbook.html", null ],

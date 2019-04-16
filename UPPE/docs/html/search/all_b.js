@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['k_5fb',['k_B',['../classphysics__textbook.html#a666f84f0f7f65910169ed6b82129e5c8',1,'physics_textbook']]],
-  ['kappa',['kappa',['../classkeldysh__gas.html#a836c6a6c2f1bec80ea15344822a07ea5',1,'keldysh_gas']]],
-  ['keldysh_5fgas',['keldysh_gas',['../classkeldysh__gas.html',1,'keldysh_gas'],['../classkeldysh__gas.html#a25e559700c04e93efb560db511adbe72',1,'keldysh_gas::keldysh_gas()'],['../classkeldysh__gas.html#a7889120c043b13492fa58878c5459099',1,'keldysh_gas::keldysh_gas(double press_, std::string gas_pressure_profile_)'],['../classkeldysh__gas.html#ae5510e8e448e96280f71b410907debf6',1,'keldysh_gas::keldysh_gas(double press_, grid_tw &amp;tw_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, maths_textbook &amp;maths_, std::string gas_pressure_profile_)']]],
-  ['keldysh_5fgas_2ecpp',['keldysh_gas.cpp',['../keldysh__gas_8cpp.html',1,'']]],
-  ['keldysh_5fgas_2ehpp',['keldysh_gas.hpp',['../keldysh__gas_8hpp.html',1,'']]],
-  ['kr',['kr',['../classgrid__rkr.html#aa09a97ce2aa9975fb4d2c1ee5da98b26',1,'grid_rkr']]],
-  ['kx',['kx',['../classgrid__xkx.html#a5095a800b9e5947262cddaa227a50af7',1,'grid_xkx']]]
+  ['l_5f0',['l_0',['../class_config___settings.html#a42be7e23a13a58de4f33f4f0a7ff420a',1,'Config_Settings::l_0()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa5feddd336f95a73db3d846da3a050ea',1,'Config_Settings::l_0()']]],
+  ['l_5f0_5f',['l_0_',['../class_config___settings.html#ae98143cb0c84b137e26a4b439e48aada',1,'Config_Settings']]],
+  ['l_5f0_5fdescription',['l_0_description',['../class_config___settings.html#a3757b7cd606c810059079437075245b9',1,'Config_Settings']]],
+  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_config___settings.html#a04bc9c9966974183a306593a492644f4',1,'Config_Settings']]],
+  ['l_5f0_5fdescription_5fset',['l_0_description_set',['../class_config___settings.html#a1be31eb27a929d913838c85d35abed7d',1,'Config_Settings']]],
+  ['l_5f0_5fset',['l_0_set',['../class_config___settings.html#a0e6a1ad74cd5ef799383623316ef293d',1,'Config_Settings']]],
+  ['l_5fat',['l_at',['../classphysics__textbook.html#a4479790cea56c47a7db44d2d331c4cef',1,'physics_textbook']]],
+  ['last_5fsn_5fentry',['LAST_SN_ENTRY',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45',1,'Config_Settings']]]
 ];
