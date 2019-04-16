@@ -48,7 +48,7 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
 
 # Get the beginning of each version part line
 # version.hpp needs to end in a new line for the subversion part to work correctly
-FILE(READ ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/version.hpp version)
+FILE(READ ${CMAKE_CURRENT_SOURCE_DIR}/../src/version/version.hpp version)
 string(FIND "${version}" "\#define _VERSION_MAJOR" major_version_begin)
 string(FIND "${version}" "\#define _VERSION_MINOR" minor_version_begin)
 string(FIND "${version}" "\#define _VERSION_SUBMINOR" subminor_version_begin)
@@ -145,12 +145,14 @@ set(SOURCES
    ${SOURCES}
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/main.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/config_settings.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/../src/UPPE/config_settings.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT/DHT.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/gas/keldysh_gas.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_tw.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_xkx.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_rkr.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/IO/IO.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/laser_pulse.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/laser_pulse/laser_pulse.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths/maths_textbook.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics/physics_textbook.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/atom/Schrodinger_atom_1D.cpp
@@ -165,7 +167,7 @@ set(HEADERS
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_xkx.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_rkr.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/IO/IO.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/laser_pulse.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/laser_pulse/laser_pulse.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths/maths_textbook.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics/physics_textbook.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/atom/Schrodinger_atom_1D.hpp

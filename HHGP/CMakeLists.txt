@@ -49,7 +49,7 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
 
 # Get the beginning of each version part line
 # version.hpp needs to end in a new line for the subversion part to work correctly
-FILE(READ ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/version.hpp version)
+FILE(READ ${CMAKE_CURRENT_SOURCE_DIR}/../src/version/version.hpp version)
 string(FIND "${version}" "\#define _VERSION_MAJOR" major_version_begin)
 string(FIND "${version}" "\#define _VERSION_MINOR" minor_version_begin)
 string(FIND "${version}" "\#define _VERSION_SUBMINOR" subminor_version_begin)
