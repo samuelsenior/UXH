@@ -22,12 +22,3 @@ cd ../../build
 
 echo "Generating combined Docs..."
 DOXYGEN_QUIET=YES doxygen Doxyfile
-
-
-#cd ../HHGP/build
-#./comp
-#cd ../../build
-#
-#cd ../UPPE/build
-#./comp
-#cd ../../build
