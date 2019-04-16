@@ -32,7 +32,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "UXH - UPPE"
+PROJECT_NAME           = "UXH"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -44,7 +44,7 @@ PROJECT_NUMBER         = 2.0.0
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "Unidirectional Pulse Propagation Equation"
+PROJECT_BRIEF          = "Unidirectional Pulse Propagation Equation - eXtreme NonLinear Optics - High harmonic Generation & Propagation"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
@@ -790,7 +790,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ../../src/DHT ../../src/gas ../../src/grid ../../src/IO ../../src/maths ../../src/physics ../../src/UPPE
+INPUT                  = ../src/
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
