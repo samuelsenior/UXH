@@ -68,17 +68,25 @@ HHGP/docs/*
 #- Excluding build files -#
 #-------------------------#
 build/*
+!build/clean
 !build/comp
 !build/Doxyfile
+!build/iridisComp
 XNLO/build/*
-!XNLO/build/comp
-!XNLO/build/Doxyfile
+!build/clean
+!build/comp
+!build/Doxyfile
+!build/iridisComp
 UPPE/build/*
-!UPPE/build/comp*
-!UPPE/build/Doxyfile
+!build/clean
+!build/comp
+!build/Doxyfile
+!build/iridisComp
 HHGP/build/*
-!HHGP/build/comp*
-!HHGP/build/Doxyfile
+!build/clean
+!build/comp
+!build/Doxyfile
+!build/iridisComp
 
 #--------------------------------------------------#
 #- Excluding library files that aren't the header -#
