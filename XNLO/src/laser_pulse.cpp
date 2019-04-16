@@ -7,13 +7,13 @@
 //
 
 #include "laser_pulse.hpp"
-#include "grid_rkr.hpp"
-#include "grid_tw.hpp"
-#include "physics_textbook.hpp"
-#include "maths_textbook.hpp"
+#include "../../src/grid_rkr.hpp"
+#include "../../src/grid_tw.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/maths_textbook.hpp"
 #include "../../Eigen/Dense"
-#include "IO.hpp"
-#include "DHT.hpp"
+#include "../../src/IO.hpp"
+#include "../../src/DHT.hpp"
 
 #include "mkl.h"
 

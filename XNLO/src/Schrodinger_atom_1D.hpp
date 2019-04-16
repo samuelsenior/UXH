@@ -9,8 +9,8 @@
 #ifndef __SCHRODINGER_ATOM_1D_HPP_INCLUDED__
 #define __SCHRODINGER_ATOM_1D_HPP_INCLUDED__
 
-#include "grid_tw.hpp"
-#include "grid_xkx.hpp"
+#include "../../src/grid_tw.hpp"
+#include "../../src/grid_xkx.hpp"
 #include "../../Eigen/Dense"
 
 using namespace Eigen;

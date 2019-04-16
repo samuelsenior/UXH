@@ -9,9 +9,9 @@
 
 #include <mpi.h>
 #include "XNLO.hpp"
-#include "grid_xkx.hpp"
-#include "grid_rkr.hpp"
-#include "grid_tw.hpp"
+#include "../../src/grid_xkx.hpp"
+#include "../../src/grid_rkr.hpp"
+#include "../../src/grid_tw.hpp"
 #include "laser_pulse.hpp"
 #include <limits>
 #include "Schrodinger_atom_1D.hpp"
@@ -93,7 +93,7 @@ namespace XNLO {
 
         // Grids
         grid_xkx xkx(N_x, config.x_min(), config.x_max());
-        grid_rkr rkr(N_x, config.x_max(), maths);
+        grid_rkr rkr(N_x, config.x_max(), N_x, maths);
         grid_tw tw(config.N_t(), config.t_min(), config.t_max());
         int atoms_per_worker = config.atoms_per_worker();
 

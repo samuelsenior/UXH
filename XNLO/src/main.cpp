@@ -8,12 +8,13 @@
 
 
 #include <mpi.h>
-#include "grid_xkx.hpp"
-#include "grid_rkr.hpp"
-#include "grid_tw.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/grid_xkx.hpp"
+#include "../../src/grid_rkr.hpp"
+#include "../../src/grid_tw.hpp"
 #include "laser_pulse.hpp"
 #include <limits>
-#include "IO.hpp"
+#include "../../src/IO.hpp"
 #include "Schrodinger_atom_1D.hpp"
 
 #include "config_settings.hpp"
@@ -80,11 +81,11 @@ int main(int argc, char** argv){
     int N_x = total_atoms;
 
     // Maths
-    XNLO::maths_textbook maths(config.path_input_j0());
+    maths_textbook maths(config.path_input_j0());
 
     // Grids
-    XNLO::grid_xkx xkx(N_x, config.x_min(), config.x_max());
-    XNLO::grid_rkr rkr(N_x, config.x_max(), maths);
+    grid_xkx xkx(N_x, config.x_min(), config.x_max());
+    grid_rkr rkr(N_x, config.x_max(), N_x, maths);
     XNLO::grid_tw tw(config.N_t(), config.t_min(), config.t_max());
     int atoms_per_worker = config.atoms_per_worker();
 
@@ -143,7 +144,7 @@ int main(int argc, char** argv){
         }
 
         // Output
-        XNLO::IO file;
+        IO file;
         //file::write_acsii_double(config.path_dipole(), dipole);
         //file::write_ascii_double(tw.w, config.path_w());
 

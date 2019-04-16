@@ -8,10 +8,10 @@
 //
 
 #include "Schrodinger_atom_1D.hpp"
-#include "maths_textbook.hpp"
-#include "physics_textbook.hpp"
-#include "grid_tw.hpp"
-#include "grid_xkx.hpp"
+#include "../../src/maths_textbook.hpp"
+#include "../../src/physics_textbook.hpp"
+#include "../../src/grid_tw.hpp"
+#include "../../src/grid_xkx.hpp"
 #include "../../Eigen/Dense"
 #include "mkl.h"
 
