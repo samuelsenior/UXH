@@ -14,5 +14,6 @@ var searchData=
   ['t_5fmin_5fdescription_5f',['t_min_description_',['../class_x_n_l_o_1_1_config___settings.html#ace2d3f5a20c13a7fe434cecf0376d3df',1,'XNLO::Config_Settings']]],
   ['t_5fmin_5fdescription_5fset',['t_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a3d148c83adb488185057b4ecc40ecc6b',1,'XNLO::Config_Settings']]],
   ['t_5fmin_5fset',['t_min_set',['../class_x_n_l_o_1_1_config___settings.html#ab5457db4a33b70770f4df64e66bc5efb',1,'XNLO::Config_Settings']]],
-  ['trapz',['trapz',['../classmaths__textbook.html#a158ce9c89ee1db5495810c25ee2aed57',1,'maths_textbook']]]
+  ['trapz',['trapz',['../classmaths__textbook.html#a158ce9c89ee1db5495810c25ee2aed57',1,'maths_textbook']]],
+  ['tw',['tw',['../class_schrodinger__atom__1_d.html#a51af361088c07783c1be1a4f592427eb',1,'Schrodinger_atom_1D']]]
 ];

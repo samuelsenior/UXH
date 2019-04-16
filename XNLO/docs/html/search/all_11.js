@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['r',['../classgrid__rkr.html#a0c68f261e53153368d0edab4c9a8ef88',1,'grid_rkr::r()'],['../classgrid__rkr.html#a2da8ae00c520a66c9cac2784a2149dcb',1,'grid_rkr::R()']]],
+  ['r',['R',['../classgrid__rkr.html#a2da8ae00c520a66c9cac2784a2149dcb',1,'grid_rkr::R()'],['../classgrid__rkr.html#a0c68f261e53153368d0edab4c9a8ef88',1,'grid_rkr::r()']]],
   ['r_5f0',['r_0',['../classphysics__textbook.html#ac429976f0dc885d846d8b31c24f45bd6',1,'physics_textbook']]],
   ['read_5fascii_5fdouble',['read_ascii_double',['../class_i_o.html#a3ddd4b5d95a8a5cfffb56cfcf7c186e1',1,'IO']]],
   ['read_5fdouble',['read_double',['../class_i_o.html#aa2d53b758b98c564688d00ca5236744e',1,'IO::read_double(const std::string path, int N_row_, int N_col_, bool print=true)'],['../class_i_o.html#a34ed8843269915cb0b4eb8719da3535d',1,'IO::read_double(const std::string path, bool skip_header=true, bool print=true)']]],

@@ -7,5 +7,5 @@ var searchData=
   ['x_5fmin',['x_min',['../classgrid__xkx.html#a21d7062d5473a901eb1c5c687955dcac',1,'grid_xkx']]],
   ['x_5fmin_5f',['x_min_',['../class_x_n_l_o_1_1_config___settings.html#a0840f18d60b05402448d7806d5181f6c',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fdescription_5f',['x_min_description_',['../class_x_n_l_o_1_1_config___settings.html#ac1f974f487f2e08c74a769a2a75d836b',1,'XNLO::Config_Settings']]],
-  ['xkx',['xkx',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a5d6391df6597e0a0e14f012d463a08b5',1,'XNLO::Schrodinger_atom_1D']]]
+  ['xkx',['xkx',['../class_schrodinger__atom__1_d.html#add2762038510414449a7e6f022babcb2',1,'Schrodinger_atom_1D']]]
 ];

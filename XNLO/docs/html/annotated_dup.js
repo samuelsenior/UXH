@@ -9,5 +9,6 @@ var annotated_dup =
     [ "grid_xkx", "classgrid__xkx.html", "classgrid__xkx" ],
     [ "IO", "class_i_o.html", "class_i_o" ],
     [ "maths_textbook", "classmaths__textbook.html", "classmaths__textbook" ],
-    [ "physics_textbook", "classphysics__textbook.html", "classphysics__textbook" ]
+    [ "physics_textbook", "classphysics__textbook.html", "classphysics__textbook" ],
+    [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html", "class_schrodinger__atom__1_d" ]
 ];
