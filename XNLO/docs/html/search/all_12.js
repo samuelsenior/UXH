@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html',1,'XNLO::Schrodinger_atom_1D'],['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#af8f0f753d8a7e3afc6bafc5199679251',1,'XNLO::Schrodinger_atom_1D::Schrodinger_atom_1D()']]],
+  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html',1,'XNLO::Schrodinger_atom_1D'],['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#ad68fd28ec1749afba2e4077c67df25a6',1,'XNLO::Schrodinger_atom_1D::Schrodinger_atom_1D()']]],
   ['set_5fgs',['set_GS',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#aa998ffb03f235e0453606e8dcda22191',1,'XNLO::Schrodinger_atom_1D']]],
   ['set_5fpath',['set_path',['../class_x_n_l_o_1_1_config___settings.html#a948a434d4dc61324965087af806bb2b5',1,'XNLO::Config_Settings']]],
   ['set_5fpost_5fpath',['set_post_path',['../class_x_n_l_o_1_1_config___settings.html#afbe10f0c17384924389fddd7b6261447',1,'XNLO::Config_Settings']]],

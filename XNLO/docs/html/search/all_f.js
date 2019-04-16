@@ -68,5 +68,6 @@ var searchData=
   ['pend_5fpath_5fset',['pend_path_set',['../class_x_n_l_o_1_1_config___settings.html#a1e3cb523dca64ea6542b3669857d0d54',1,'XNLO::Config_Settings']]],
   ['physics_5ftextbook',['physics_textbook',['../class_x_n_l_o_1_1physics__textbook.html',1,'XNLO::physics_textbook'],['../class_x_n_l_o_1_1physics__textbook.html#ab3261f1a91d0c54aa33ebebacc04dd5a',1,'XNLO::physics_textbook::physics_textbook()']]],
   ['pi',['pi',['../class_x_n_l_o_1_1maths__textbook.html#aa8506848e319f99a4b40fe4a99af1af9',1,'XNLO::maths_textbook']]],
-  ['print',['print',['../class_x_n_l_o_1_1_config___settings.html#ad3188c9db045f508f96faf77545841a7',1,'XNLO::Config_Settings::print()'],['../class_x_n_l_o_1_1_config___settings.html#a24a7af20ea47814fb1c7a5cdc6c18bbb',1,'XNLO::Config_Settings::print(std::string)']]]
+  ['print',['print',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a744b1502564e9580c3e9bef8306fd336',1,'XNLO::Schrodinger_atom_1D::print()'],['../class_x_n_l_o_1_1_config___settings.html#ad3188c9db045f508f96faf77545841a7',1,'XNLO::Config_Settings::print()'],['../class_x_n_l_o_1_1_config___settings.html#a24a7af20ea47814fb1c7a5cdc6c18bbb',1,'XNLO::Config_Settings::print(std::string)']]],
+  ['print_5fto_5fscreen',['print_to_screen',['../class_x_n_l_o_1_1_config___settings.html#a71aa4cf3491851bd61a923272933c5ce',1,'XNLO::Config_Settings']]]
 ];
