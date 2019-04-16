@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "-- Loading cmake/3.10.2..."
+module load cmake/3.10.2
+
+echo "-- Loading openmpi/3.0.0/intel..."
+module load openmpi/3.0.0/intel
+
+# echo "-- Loading gcc/6.4.0..."
+module load gcc/6.4.0
+
+echo "-- Loading intel-compilers/2018.1.163..."
+module load intel-compilers/2018.1.163
+
+echo "-- Loading intel-mkl/2018.1.163..."
+module load intel-mkl/2018.1.163
+
+./comp
+
