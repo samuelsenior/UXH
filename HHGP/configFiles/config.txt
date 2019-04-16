@@ -27,7 +27,7 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {pend_path}     {prepend} {(std::string) Pending switch}
 
-{path_input_j0} {../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
+{path_input_j0} {../../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
 
 {path_A_w_R}    {../../../Results/UPPE-XNLO/01-02-19/data2/012_1_HHG_R.bin}    {(std::string) Output path of A_w_R}
 {path_A_w_I}    {../../../Results/UPPE-XNLO/01-02-19/data2/012_1_HHG_R.bin}    {(std::string) Output path of A_w_I}
