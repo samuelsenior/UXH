@@ -28,7 +28,6 @@
 #include "../../HHGP/lib/HHGP.hpp"
 
 #include "../../XNLO/src/config_settings.hpp"
-#include "../../XNLO/src/grid_tw.hpp"
 
 #include "../../HHGP/src/propagation.hpp"
 //#include "../../HHGP/src/config_settings.hpp"
