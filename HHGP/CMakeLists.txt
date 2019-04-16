@@ -20,7 +20,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
    ##Make sure I'm using GCC and not Clang #Should avoid this way really #Also Needs to be for MPI
    # export CC=/usr/local/bin/gcc-6
    # export CXX=/usr/local/bin/g++-6
-
+   
    # Set the optimisation level flag
    #set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -fopenmp -mavx")
    set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -mavx")
@@ -33,7 +33,8 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
    # export CXX=/usr/local/bin/g++-6
 
    # Set the optimisation level flag
-   set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -Ofast -mavx -inline-forceinline")
+   set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -mavx -inline-forceinline")
+
    # set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -O3")#-O3 -fopenmp")
    ## This is the equivalent C flag setting:
    # set(CMAKE_C_FLAGS "-O3 -fopenmp")
