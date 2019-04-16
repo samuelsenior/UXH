@@ -29,8 +29,8 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {path_input_j0} {../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
 
-{path_A_w_R}    {../../UPPE/output/009_1_HHG_R.bin} {../../../Results/UPPE-XNLO/15-04-19/data/009_1_HHG_R.bin}    {(std::string) Output path of A_w_R}
-{path_A_w_I}    {../../UPPE/output/009_1_HHG_I.bin} {../../../Results/UPPE-XNLO/15-04-19/data/009_1_HHG_I.bin}    {(std::string) Output path of A_w_I}
-{path_w_active} {../../UPPE/output/009_HHG_w.bin} {../../../Results/UPPE-XNLO/15-04-19/data/009_HHG_w.bin}    {(std::string) Output path of w_active}
+{path_A_w_R}    {../../../Results/UPPE-XNLO/15-04-19/data/009_1_HHG_R.bin}    {(std::string) Output path of A_w_R}
+{path_A_w_I}    {../../../Results/UPPE-XNLO/15-04-19/data/009_1_HHG_I.bin}    {(std::string) Output path of A_w_I}
+{path_w_active} {../../../Results/UPPE-XNLO/15-04-19/data/009_HHG_w.bin}    {(std::string) Output path of w_active}
 
 {path_config_log} {../output/config_log.txt} {(std::string) Output path to config_log.txt}
