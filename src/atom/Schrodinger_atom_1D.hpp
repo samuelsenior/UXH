@@ -15,8 +15,6 @@
 
 using namespace Eigen;
 
-namespace XNLO {
-
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 /*!
@@ -29,7 +27,7 @@ class Schrodinger_atom_1D {
 public:
     
     // Data
-    grid_tw tw;      /*!< The linear temporal grid.*/
+    XNLO::grid_tw tw;      /*!< The linear temporal grid.*/
     grid_xkx xkx;    /*!< The linear spatial grid.*/
     double alpha;    /*!< The parameter \f$\alpha\f$ is used to scale the Coulomb potential to match the ground state energy of the atom. */
     ArrayXd V_model; /*!< The soft Coulomb potential, \f[V_{Coulomb} = \frac{-1}{\sqrt{\alpha + x^2}}.\f] */
@@ -43,13 +41,11 @@ public:
     ArrayXXcd wfn_output;    /*!< The electron wavefunction at every position and time step. */
     
     // Functions
-    Schrodinger_atom_1D(grid_tw& tw_, double alpha_, int output_wavefunction_, bool print=true);
+    Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int output_wavefunction_, bool print=true);
     void set_GS(int N_it_);
     ArrayXd get_acceleration(int N_it_, double dt_, ArrayXd E_);
     ArrayXd solve_TDSE_PS(int N_it_, std::complex<double> dt_, ArrayXd E_, int e_);
     
 };
-
-}
 
 #endif

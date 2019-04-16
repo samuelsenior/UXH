@@ -7,28 +7,28 @@
 //
 
 #include <mpi.h>
-#include "../maths/maths_textbook.hpp"
-#include "../physics/physics_textbook.hpp"
 #include <mkl.h>
-#include "../DHT/DHT.hpp"
-#include "../grid/grid_rkr.hpp"
-#include "../grid/grid_tw.hpp"
-#include "laser_pulse.hpp"
-#include "capillary_fibre.hpp"
-#include "../gas/keldysh_gas.hpp"
-#include "../../Eigen/Dense"
-#include "../IO/IO.hpp"
-
-#include "config_settings.hpp"
-
 #include <iostream>
 #include <string>
 
-#include "../XNLO/XNLO.hpp"
-#include "../HHGP/HHGP.hpp"
+#include "../../Eigen/Dense"
 
+#include "config_settings.hpp"
+#include "laser_pulse.hpp"
+
+#include "../capillary/capillary_fibre.hpp"
+#include "../DHT/DHT.hpp"
+#include "../gas/keldysh_gas.hpp"
+#include "../grid/grid_rkr.hpp"
+#include "../grid/grid_tw.hpp"
+#include "../IO/IO.hpp"
+#include "../maths/maths_textbook.hpp"
+#include "../physics/physics_textbook.hpp"
+
+#include "../XNLO/XNLO.hpp"
 #include "../XNLO/config_settings.hpp"
 
+#include "../HHGP/HHGP.hpp"
 #include "../HHGP/propagation.hpp"
 //#include "../../HHGP/src/config_settings.hpp"
 

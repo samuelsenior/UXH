@@ -14,7 +14,7 @@
 #include "../grid/grid_tw.hpp"
 #include "laser_pulse.hpp"
 #include <limits>
-#include "Schrodinger_atom_1D.hpp"
+#include "../atom/Schrodinger_atom_1D.hpp"
 
 #include "config_settings.hpp"
 #include <string>

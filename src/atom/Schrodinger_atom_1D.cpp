@@ -19,13 +19,11 @@
 
 using namespace Eigen;
 
-namespace XNLO {
-
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
 /*! Class constructor. */
-Schrodinger_atom_1D::Schrodinger_atom_1D(grid_tw& tw_, double alpha_, int output_wavefunction_, bool print_) : tw(tw_), print(print_) {
+Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int output_wavefunction_, bool print_) : tw(tw_), print(print_) {
     
     maths_textbook maths;
     physics_textbook physics;
@@ -285,7 +283,6 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
     return(output);
 }
 
-}
 
 
 

@@ -15,7 +15,7 @@
 #include "laser_pulse.hpp"
 #include <limits>
 #include "../IO/IO.hpp"
-#include "Schrodinger_atom_1D.hpp"
+#include "../atom/Schrodinger_atom_1D.hpp"
 
 #include "config_settings.hpp"
 #include <string>
@@ -193,7 +193,7 @@ int main(int argc, char** argv){
             wavefunction = ArrayXXcd::Zero(0, 0);
         }
 
-        XNLO::Schrodinger_atom_1D atom(tw, config.alpha(), config.output_wavefunction());
+        Schrodinger_atom_1D atom(tw, config.alpha(), config.output_wavefunction());
         for (int ii = 0; ii < atoms_per_worker; ii++) {
 
             dipole.col(ii) = atom.get_acceleration(tw.N_t, tw.dt, E.col(ii));

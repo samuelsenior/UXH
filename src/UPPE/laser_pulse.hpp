@@ -17,7 +17,7 @@
 #include <mkl.h>
 #include "../DHT/DHT.hpp"
 #include "../../Eigen/Dense"
-#include "capillary_fibre.hpp"
+#include "../capillary/capillary_fibre.hpp"
 #include "../gas/keldysh_gas.hpp"
 
 #include "config_settings.hpp"

@@ -15,7 +15,7 @@
 #include "../physics/physics_textbook.hpp"
 #include "../maths/maths_textbook.hpp"
 #include "../../Eigen/Dense"
-#include "capillary_fibre.hpp"
+#include "../capillary/capillary_fibre.hpp"
 #include "../gas/keldysh_gas.hpp"
 
 #include "../IO/IO.hpp"
