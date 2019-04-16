@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['main',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
-  ['maths_5ftextbook',['maths_textbook',['../classmaths__textbook.html#acca32bf0f3860cbb8e76687435f0fa24',1,'maths_textbook']]]
+  ['t',['T',['../class_config___settings.html#a1ed40710ec225b2f91d275b4fc8f64ef',1,'Config_Settings']]],
+  ['t_5fdescription',['T_description',['../class_config___settings.html#a0a851a218a87393dfe8710fae9a21115',1,'Config_Settings']]],
+  ['t_5fdescription_5fset',['T_description_set',['../class_config___settings.html#aab5604b25a35978883a804e6a628c6b3',1,'Config_Settings']]],
+  ['t_5fset',['T_set',['../class_config___settings.html#ae5124cda8f87a2abb733912ad49264b3',1,'Config_Settings']]]
 ];

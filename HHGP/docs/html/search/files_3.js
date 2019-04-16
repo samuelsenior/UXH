@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]]
+  ['propagation_2ecpp',['propagation.cpp',['../propagation_8cpp.html',1,'']]],
+  ['propagation_2ehpp',['propagation.hpp',['../propagation_8hpp.html',1,'']]]
 ];

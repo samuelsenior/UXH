@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['main',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
-  ['maths_5ftextbook',['maths_textbook',['../classmaths__textbook.html#a7be915ec6de7f305b96325ff5d821607',1,'maths_textbook::maths_textbook()'],['../classmaths__textbook.html#acca32bf0f3860cbb8e76687435f0fa24',1,'maths_textbook::maths_textbook(std::string path_input_j0_)']]]
+  ['segment',['segment',['../classpropagation.html#a39126bbbd4977c140c0077b849e78bc1',1,'propagation']]],
+  ['set_5fpath',['set_path',['../class_h_h_1_1_config___settings.html#a69966d9c2ca97f38203d7b780ac913a4',1,'HH::Config_Settings']]],
+  ['set_5fpost_5fpath',['set_post_path',['../class_h_h_1_1_config___settings.html#af63b1cb45651c29250a88865e890b115',1,'HH::Config_Settings']]],
+  ['set_5fpre_5fpath',['set_pre_path',['../class_h_h_1_1_config___settings.html#acece71d89298a3dae65760a98a3c49f2',1,'HH::Config_Settings']]],
+  ['set_5fvariable',['set_variable',['../class_h_h_1_1_config___settings.html#a4e37ddfcd3bc174672c4f3dd410f898c',1,'HH::Config_Settings']]],
+  ['step_5fpath',['step_path',['../class_h_h_1_1_config___settings.html#a04648077f4ae54ea5ef2c02423feed01',1,'HH::Config_Settings']]]
 ];

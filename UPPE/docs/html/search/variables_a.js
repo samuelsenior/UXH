@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['m_5fat',['m_at',['../classphysics__textbook.html#a6bb18bb140fbce54e2c73a7f2a72509f',1,'physics_textbook']]],
-  ['maths',['maths',['../classkeldysh__gas.html#a501614b541b9056bb05b378a39962524',1,'keldysh_gas::maths()'],['../classlaser__pulse.html#ab4e4e001f1d52e2db66c875d386bf6ce',1,'laser_pulse::maths()']]],
-  ['mu_5f0',['mu_0',['../classphysics__textbook.html#a300762c199172d9f76183b49db5f0f33',1,'physics_textbook']]]
+  ['original_5fn_5fz_5f',['original_n_z_',['../class_config___settings.html#aa5d9cadb0a2396d9cd32ae479879c102',1,'Config_Settings']]],
+  ['original_5fn_5fz_5fdescription_5f',['original_n_z_description_',['../class_config___settings.html#a8b0a048a13c52e9689ed88fd70e0e0a0',1,'Config_Settings']]],
+  ['output_5fsampling_5frate_5f',['output_sampling_rate_',['../class_config___settings.html#a83b05fd98edf9a7854887df86dd709df',1,'Config_Settings']]],
+  ['output_5fsampling_5frate_5fdescription_5f',['output_sampling_rate_description_',['../class_config___settings.html#a3f1a03176c4e0aed237037b5ea644256',1,'Config_Settings']]]
 ];

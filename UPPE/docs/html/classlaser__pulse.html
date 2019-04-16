@@ -77,20 +77,15 @@ Collaboration diagram for laser_pulse:</div>
 <div class="dyncontent">
 <div class="center"><img src="classlaser__pulse__coll__graph.png" border="0" usemap="#laser__pulse_coll__map" alt="Collaboration graph"/></div>
 <map name="laser__pulse_coll__map" id="laser__pulse_coll__map">
-<area shape="rect" id="node2" href="classphysics__textbook.html" title="physics_textbook" alt="" coords="5,5,129,32"/>
-<area shape="rect" id="node3" href="classgrid__rkr.html" title="grid_rkr" alt="" coords="153,5,219,32"/>
-<area shape="rect" id="node4" href="classmaths__textbook.html" title="maths_textbook" alt="" coords="243,5,358,32"/>
-<area shape="rect" id="node5" href="classgrid__tw.html" title="grid_tw" alt="" coords="382,5,446,32"/>
-<area shape="rect" id="node6" href="class_config___settings.html" title="Config_Settings" alt="" coords="470,5,585,32"/>
-<area shape="rect" id="node7" href="class_d_h_t.html" title="DHT" alt="" coords="609,5,659,32"/>
+<area shape="rect" id="node2" href="class_config___settings.html" title="Config_Settings" alt="" coords="5,5,120,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3fc3771b0e32c7ad11511d8502114175"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a3fc3771b0e32c7ad11511d8502114175">laser_pulse</a> (double p_av_, double rep_, double fwhm_, double l_0_, double ceo_, double waist_, <a class="el" href="classgrid__tw.html">grid_tw</a> &amp;tw_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> &amp;rkr_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, <a class="el" href="class_d_h_t.html">DHT</a> &amp;ht_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="class_config___settings.html">Config_Settings</a> <a class="el" href="classlaser__pulse.html#a44890431f11f1d883dffd7fe581f2ce8">config</a>, int <a class="el" href="classlaser__pulse.html#a8a8dc5280d1ae28ebca74bd738110aac">read_in_laser_pulse</a>, double <a class="el" href="classlaser__pulse.html#a4550517f9323dc27c72c63ec155760d8">initial_position</a>)</td></tr>
+<tr class="memitem:a3fc3771b0e32c7ad11511d8502114175"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a3fc3771b0e32c7ad11511d8502114175">laser_pulse</a> (double p_av_, double rep_, double fwhm_, double l_0_, double ceo_, double waist_, grid_tw &amp;tw_, grid_rkr &amp;rkr_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, DHT &amp;ht_, maths_textbook &amp;maths_, <a class="el" href="class_config___settings.html">Config_Settings</a> <a class="el" href="classlaser__pulse.html#a44890431f11f1d883dffd7fe581f2ce8">config</a>, int <a class="el" href="classlaser__pulse.html#a8a8dc5280d1ae28ebca74bd738110aac">read_in_laser_pulse</a>, double <a class="el" href="classlaser__pulse.html#a4550517f9323dc27c72c63ec155760d8">initial_position</a>)</td></tr>
 <tr class="separator:a3fc3771b0e32c7ad11511d8502114175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbf5712236ffdfa30027afd262300710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#afbf5712236ffdfa30027afd262300710">propagate</a> (double dz_, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
+<tr class="memitem:afbf5712236ffdfa30027afd262300710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#afbf5712236ffdfa30027afd262300710">propagate</a> (double dz_, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, keldysh_gas &amp;gas_)</td></tr>
 <tr class="separator:afbf5712236ffdfa30027afd262300710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -114,9 +109,9 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a204908b9056b97bbb5bd093b7a8816e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a204908b9056b97bbb5bd093b7a8816e5">RK_F_45</a> (double dz_, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
+<tr class="memitem:a204908b9056b97bbb5bd093b7a8816e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a204908b9056b97bbb5bd093b7a8816e5">RK_F_45</a> (double dz_, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, keldysh_gas &amp;gas_)</td></tr>
 <tr class="separator:a204908b9056b97bbb5bd093b7a8816e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bdca944386a5cdbb67ea0c344e65a69"><td class="memItemLeft" align="right" valign="top">ArrayXXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a7bdca944386a5cdbb67ea0c344e65a69">RHS_UPPE</a> (double dz_, ArrayXXcd <a class="el" href="classlaser__pulse.html#a1de4076f0eb2e5c4bd2e9ce644509eb6">A_w_active</a>, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
+<tr class="memitem:a7bdca944386a5cdbb67ea0c344e65a69"><td class="memItemLeft" align="right" valign="top">ArrayXXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a7bdca944386a5cdbb67ea0c344e65a69">RHS_UPPE</a> (double dz_, ArrayXXcd <a class="el" href="classlaser__pulse.html#a1de4076f0eb2e5c4bd2e9ce644509eb6">A_w_active</a>, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, keldysh_gas &amp;gas_)</td></tr>
 <tr class="separator:a7bdca944386a5cdbb67ea0c344e65a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -139,17 +134,17 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a4550517f9323dc27c72c63ec155760d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44890431f11f1d883dffd7fe581f2ce8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_config___settings.html">Config_Settings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a44890431f11f1d883dffd7fe581f2ce8">config</a></td></tr>
 <tr class="separator:a44890431f11f1d883dffd7fe581f2ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4d3c841315b4f532eb7218f0b65257b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classphysics__textbook.html">physics_textbook</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#af4d3c841315b4f532eb7218f0b65257b">physics</a></td></tr>
+<tr class="memitem:af4d3c841315b4f532eb7218f0b65257b"><td class="memItemLeft" align="right" valign="top">physics_textbook&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#af4d3c841315b4f532eb7218f0b65257b">physics</a></td></tr>
 <tr class="separator:af4d3c841315b4f532eb7218f0b65257b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4e4e001f1d52e2db66c875d386bf6ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmaths__textbook.html">maths_textbook</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#ab4e4e001f1d52e2db66c875d386bf6ce">maths</a></td></tr>
+<tr class="memitem:ab4e4e001f1d52e2db66c875d386bf6ce"><td class="memItemLeft" align="right" valign="top">maths_textbook&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#ab4e4e001f1d52e2db66c875d386bf6ce">maths</a></td></tr>
 <tr class="separator:ab4e4e001f1d52e2db66c875d386bf6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9141fb2b6ca5f8402ba7dbe0c77c98d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgrid__tw.html">grid_tw</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#ab9141fb2b6ca5f8402ba7dbe0c77c98d">tw</a></td></tr>
+<tr class="memitem:ab9141fb2b6ca5f8402ba7dbe0c77c98d"><td class="memItemLeft" align="right" valign="top">grid_tw&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#ab9141fb2b6ca5f8402ba7dbe0c77c98d">tw</a></td></tr>
 <tr class="separator:ab9141fb2b6ca5f8402ba7dbe0c77c98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48cf0a3c337cb92d5da6b91c5296109c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgrid__rkr.html">grid_rkr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a48cf0a3c337cb92d5da6b91c5296109c">rkr</a></td></tr>
+<tr class="memitem:a48cf0a3c337cb92d5da6b91c5296109c"><td class="memItemLeft" align="right" valign="top">grid_rkr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a48cf0a3c337cb92d5da6b91c5296109c">rkr</a></td></tr>
 <tr class="separator:a48cf0a3c337cb92d5da6b91c5296109c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb3cf51151c7f69c34afa09b793956a7"><td class="memItemLeft" align="right" valign="top">DFTI_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#adb3cf51151c7f69c34afa09b793956a7">ft</a></td></tr>
 <tr class="separator:adb3cf51151c7f69c34afa09b793956a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f72b977b109bdd975dbd4331ddcb8a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_d_h_t.html">DHT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a0f72b977b109bdd975dbd4331ddcb8a5">ht</a></td></tr>
+<tr class="memitem:a0f72b977b109bdd975dbd4331ddcb8a5"><td class="memItemLeft" align="right" valign="top">DHT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a0f72b977b109bdd975dbd4331ddcb8a5">ht</a></td></tr>
 <tr class="separator:a0f72b977b109bdd975dbd4331ddcb8a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14cb833e7d8abf8c5d529879abc38ab5"><td class="memItemLeft" align="right" valign="top">ArrayXXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlaser__pulse.html#a14cb833e7d8abf8c5d529879abc38ab5">Y_4</a></td></tr>
 <tr class="separator:a14cb833e7d8abf8c5d529879abc38ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,13 +203,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classgrid__tw.html">grid_tw</a> &amp;&#160;</td>
+          <td class="paramtype">grid_tw &amp;&#160;</td>
           <td class="paramname"><em>tw_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classgrid__rkr.html">grid_rkr</a> &amp;&#160;</td>
+          <td class="paramtype">grid_rkr &amp;&#160;</td>
           <td class="paramname"><em>rkr_</em>, </td>
         </tr>
         <tr>
@@ -226,13 +221,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_d_h_t.html">DHT</a> &amp;&#160;</td>
+          <td class="paramtype">DHT &amp;&#160;</td>
           <td class="paramname"><em>ht_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;&#160;</td>
+          <td class="paramtype">maths_textbook &amp;&#160;</td>
           <td class="paramname"><em>maths_</em>, </td>
         </tr>
         <tr>
@@ -286,7 +281,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;&#160;</td>
+          <td class="paramtype">keldysh_gas &amp;&#160;</td>
           <td class="paramname"><em>gas_</em>&#160;</td>
         </tr>
         <tr>
@@ -330,7 +325,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;&#160;</td>
+          <td class="paramtype">keldysh_gas &amp;&#160;</td>
           <td class="paramname"><em>gas_</em>&#160;</td>
         </tr>
         <tr>
@@ -373,7 +368,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;&#160;</td>
+          <td class="paramtype">keldysh_gas &amp;&#160;</td>
           <td class="paramname"><em>gas_</em>&#160;</td>
         </tr>
         <tr>
@@ -572,7 +567,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_d_h_t.html">DHT</a> laser_pulse::ht</td>
+          <td class="memname">DHT laser_pulse::ht</td>
         </tr>
       </table>
   </td>
@@ -639,7 +634,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmaths__textbook.html">maths_textbook</a> laser_pulse::maths</td>
+          <td class="memname">maths_textbook laser_pulse::maths</td>
         </tr>
       </table>
   </td>
@@ -740,7 +735,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classphysics__textbook.html">physics_textbook</a> laser_pulse::physics</td>
+          <td class="memname">physics_textbook laser_pulse::physics</td>
         </tr>
       </table>
   </td>
@@ -807,7 +802,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classgrid__rkr.html">grid_rkr</a> laser_pulse::rkr</td>
+          <td class="memname">grid_rkr laser_pulse::rkr</td>
         </tr>
       </table>
   </td>
@@ -830,7 +825,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classgrid__tw.html">grid_tw</a> laser_pulse::tw</td>
+          <td class="memname">grid_tw laser_pulse::tw</td>
         </tr>
       </table>
   </td>

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['inital_5fpropagation_5fstep_5f',['inital_propagation_step_',['../class_h_h_1_1_config___settings.html#aafb70c3a95fa2e6b336a75d8bc3c3309',1,'HH::Config_Settings']]],
-  ['inital_5fpropagation_5fstep_5fdescription_5f',['inital_propagation_step_description_',['../class_h_h_1_1_config___settings.html#ac5c4bcd6ad237180fac1897380f4791f',1,'HH::Config_Settings']]],
-  ['inlet_5f1',['inlet_1',['../classkeldysh__gas.html#ab0dee35b9ad45af3fca4a2079389e632',1,'keldysh_gas']]],
-  ['inlet_5f2',['inlet_2',['../classkeldysh__gas.html#a685d93a796afba55c6fcd6d61c7e2bf8',1,'keldysh_gas']]]
+  ['l_5f0_5f',['l_0_',['../class_h_h_1_1_config___settings.html#ab03e992321f6443150f028013ab07193',1,'HH::Config_Settings']]],
+  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_h_h_1_1_config___settings.html#aed09920a62029b3d605af38bfce7334a',1,'HH::Config_Settings']]],
+  ['lamda',['lamda',['../classpropagation.html#a5ae0154dc8db04188ba92e10ba981000',1,'propagation']]]
 ];

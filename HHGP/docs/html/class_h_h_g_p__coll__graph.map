@@ -1,8 +1,4 @@
 <map id="HHGP" name="HHGP">
-<area shape="rect" id="node2" href="$classkeldysh__gas.html" title="keldysh_gas" alt="" coords="135,92,231,117"/>
-<area shape="rect" id="node7" href="$classpropagation.html" title="propagation" alt="" coords="295,179,386,204"/>
-<area shape="rect" id="node3" href="$classphysics__textbook.html" title="physics_textbook" alt="" coords="245,5,369,31"/>
-<area shape="rect" id="node4" href="$classmaths__textbook.html" title="maths_textbook" alt="" coords="5,5,121,31"/>
-<area shape="rect" id="node5" href="$classgrid__tw.html" title="grid_tw" alt="" coords="151,5,215,31"/>
-<area shape="rect" id="node6" href="$class_h_h_1_1_config___settings.html" title="HH::Config_Settings" alt="" coords="128,179,270,204"/>
+<area shape="rect" id="node2" href="$class_h_h_1_1_config___settings.html" title="HH::Config_Settings" alt="" coords="5,5,148,32"/>
+<area shape="rect" id="node3" href="$classpropagation.html" title="propagation" alt="" coords="172,5,261,32"/>
 </map>

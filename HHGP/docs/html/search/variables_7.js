@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['h',['h',['../classphysics__textbook.html#a416573e2d9fa6793711a69cdb291d824',1,'physics_textbook::h()'],['../class_h_h_g_p_1_1_d_h_t.html#a90cd5cb36992ddfc4d54883236b06c5a',1,'HHGP::DHT::H()']]],
-  ['h_5fbar',['h_bar',['../classphysics__textbook.html#a5ec9850f0fa1b25180d8f6d1ed734848',1,'physics_textbook']]],
-  ['header_5fsize',['header_size',['../class_i_o.html#aee540c40b18d5f9990bf8d7e12cb0827',1,'IO']]],
-  ['ht',['ht',['../class_h_h_g_p.html#a95a55418c47407dfcb0925e8e5cd86e6',1,'HHGP::ht()'],['../classpropagation.html#a044544975e7fc2ec3df9a55d92f8cc90',1,'propagation::ht()']]]
+  ['k',['k',['../classpropagation.html#a49a30e941421cd5e3f0b62bd1335a767',1,'propagation']]],
+  ['k_5fexcluded',['k_excluded',['../classpropagation.html#a76f3651eac23a69c1259dc0406fbe0d9',1,'propagation']]],
+  ['k_5fr',['k_r',['../classpropagation.html#a9e437271e452fa1732f50e006347b501',1,'propagation']]]
 ];

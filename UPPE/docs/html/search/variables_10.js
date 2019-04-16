@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['setting_5fname',['setting_name',['../class_config___settings.html#a05f6108c286f7e7bbbbb1063a77b9a71',1,'Config_Settings']]]
+  ['y_5f4',['Y_4',['../classlaser__pulse.html#a14cb833e7d8abf8c5d529879abc38ab5',1,'laser_pulse']]],
+  ['y_5f5',['Y_5',['../classlaser__pulse.html#a0887b8a3f33e2cde8359e6dd61210615',1,'laser_pulse']]]
 ];

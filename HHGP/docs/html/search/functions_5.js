@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['farfieldpropagation',['farFieldPropagation',['../classpropagation.html#a9c2e1cb4e314c173b26de08ffcfe071d',1,'propagation']]],
-  ['forward',['forward',['../class_h_h_g_p_1_1_d_h_t.html#a8c7e3bef64d6c29bd7bdc4d25942c568',1,'HHGP::DHT']]],
-  ['fwhm',['fwhm',['../class_h_h_1_1_config___settings.html#ab3e07bbfb98df29f278b350f8ff7b0c0',1,'HH::Config_Settings']]],
-  ['fwhm_5fdescription',['fwhm_description',['../class_h_h_1_1_config___settings.html#a594e75f1ee87d0e3eeb74e874339e2cb',1,'HH::Config_Settings']]],
-  ['fwhm_5fdescription_5fset',['fwhm_description_set',['../class_h_h_1_1_config___settings.html#a47bbd8dcbcba0d0cd4a2e07587c07068',1,'HH::Config_Settings']]],
-  ['fwhm_5fset',['fwhm_set',['../class_h_h_1_1_config___settings.html#a88ddaad7d732b17eb980f914fd776051',1,'HH::Config_Settings']]]
+  ['inital_5fpropagation_5fstep',['inital_propagation_step',['../class_h_h_1_1_config___settings.html#a35fa0eb8e6bbb2e6f58c09213f99cfd0',1,'HH::Config_Settings']]],
+  ['inital_5fpropagation_5fstep_5fdescription',['inital_propagation_step_description',['../class_h_h_1_1_config___settings.html#a12d639ef181d8b0a3752530c3a9c9672',1,'HH::Config_Settings']]],
+  ['inital_5fpropagation_5fstep_5fdescription_5fset',['inital_propagation_step_description_set',['../class_h_h_1_1_config___settings.html#aa63ad23fb4afeb2cdcebb860e77626c5',1,'HH::Config_Settings']]],
+  ['inital_5fpropagation_5fstep_5fset',['inital_propagation_step_set',['../class_h_h_1_1_config___settings.html#a13737e03d967b9ffa612f9a87439b02c',1,'HH::Config_Settings']]]
 ];
