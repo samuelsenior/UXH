@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['setting_5fname',['setting_name',['../class_x_n_l_o_1_1_config___settings.html#a1ba7937226684569f0b037fe533668bd',1,'XNLO::Config_Settings']]],
-  ['spot_5fradius_5f',['spot_radius_',['../class_x_n_l_o_1_1_config___settings.html#ad54faa311592ad072b25f5ddf674695c',1,'XNLO::Config_Settings']]],
-  ['spot_5fradius_5fdescription_5f',['spot_radius_description_',['../class_x_n_l_o_1_1_config___settings.html#ace2883e95e284e705e66962c708e0bf0',1,'XNLO::Config_Settings']]]
+  ['l_5f0_5f',['l_0_',['../class_x_n_l_o_1_1_config___settings.html#a7bc8ad6836b5bc5390e3f5d976fbb4fd',1,'XNLO::Config_Settings']]],
+  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_x_n_l_o_1_1_config___settings.html#a73ca8a6697b1604b84723752ab404a53',1,'XNLO::Config_Settings']]],
+  ['l_5fat',['l_at',['../classphysics__textbook.html#a4479790cea56c47a7db44d2d331c4cef',1,'physics_textbook']]]
 ];

@@ -1,10 +1,10 @@
-<map id="/home/sam/Project/XNLO/HHGP/src/physics_textbook.hpp" name="/home/sam/Project/XNLO/HHGP/src/physics_textbook.hpp">
-<area shape="rect" id="node2" href="$_h_h_g_p_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.hpp" alt="" coords="273,273,445,315"/>
-<area shape="rect" id="node3" href="$_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.cpp" alt="" coords="210,363,382,404"/>
-<area shape="rect" id="node4" href="$keldysh__gas_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/keldysh_gas.hpp" alt="" coords="340,95,530,136"/>
-<area shape="rect" id="node5" href="$propagation_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.hpp" alt="" coords="212,184,394,225"/>
-<area shape="rect" id="node6" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="25,273,197,315"/>
-<area shape="rect" id="node7" href="$propagation_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.cpp" alt="" coords="521,273,704,315"/>
-<area shape="rect" id="node8" href="$keldysh__gas_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/keldysh_gas.cpp" alt="" coords="571,184,760,225"/>
-<area shape="rect" id="node9" href="$physics__textbook_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/physics_textbook.cpp" alt="" coords="835,95,1054,136"/>
+<map id="/home/sam/Project/XNLO/src/physics/physics_textbook.hpp" name="/home/sam/Project/XNLO/src/physics/physics_textbook.hpp">
+<area shape="rect" id="node2" href="$keldysh__gas_8hpp.html" title="/home/sam/Project/XNLO\l/src/gas/keldysh_gas.hpp" alt="" coords="267,95,439,136"/>
+<area shape="rect" id="node3" href="$keldysh__gas_8cpp.html" title="/home/sam/Project/XNLO\l/src/gas/keldysh_gas.cpp" alt="" coords="26,184,198,225"/>
+<area shape="rect" id="node4" href="$_h_h_g_p_8hpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/HHGP.hpp" alt="" coords="653,273,825,315"/>
+<area shape="rect" id="node6" href="$propagation_8hpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/propagation.hpp" alt="" coords="325,184,507,225"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/main.cpp" alt="" coords="457,273,629,315"/>
+<area shape="rect" id="node8" href="$propagation_8cpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/propagation.cpp" alt="" coords="198,273,381,315"/>
+<area shape="rect" id="node9" href="$physics__textbook_8cpp.html" title="/home/sam/Project/XNLO\l/src/physics/physics_textbook.cpp" alt="" coords="735,95,959,136"/>
+<area shape="rect" id="node5" href="$_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/HHGP.cpp" alt="" coords="333,363,505,404"/>
 </map>

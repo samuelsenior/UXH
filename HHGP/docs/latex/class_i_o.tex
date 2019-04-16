@@ -2,7 +2,7 @@
 \label{class_i_o}\index{IO@{IO}}
 
 
-{\ttfamily \#include $<$\+\_\+\+I\+O.\+hpp$>$}
+{\ttfamily \#include $<$I\+O.\+hpp$>$}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -28,6 +28,8 @@ void \hyperlink{class_i_o_a0db950886bb1e6d5571330f771974c4e}{write\+\_\+header} 
 void \hyperlink{class_i_o_a0fd7211866348cd3acc26d1ed17c100c}{overwrite} (const std\+::string path, bool print=true)
 \item 
 void \hyperlink{class_i_o_a20602422f0a6615b265c96fc02523e6f}{write\+\_\+ascii\+\_\+double} (Array\+Xd data, std\+::string path, bool print=true)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{class_i_o_ac84ca0cd185f0df4ea871710120577d6}{write} (T output, std\+::string path, bool print=true)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -128,7 +130,14 @@ int\mbox{\Hypertarget{class_i_o_a0ba1550dc3c2b6fd4675bc03408b8d95}\label{class_i
 \subsubsection{\texorpdfstring{read\+\_\+uint16()}{read\_uint16()}}
 {\footnotesize\ttfamily Array$<$ unsigned short, Dynamic, Dynamic $>$ I\+O\+::read\+\_\+uint16 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path\+\_\+,  }\item[{int}]{N\+\_\+row\+\_\+,  }\item[{int}]{N\+\_\+col\+\_\+ }\end{DoxyParamCaption})}
 
-Read from binary file to N\+\_\+col\+\_\+ by N\+\_\+row\+\_\+ Eigen array uint16\mbox{\Hypertarget{class_i_o_a20602422f0a6615b265c96fc02523e6f}\label{class_i_o_a20602422f0a6615b265c96fc02523e6f}} 
+Read from binary file to N\+\_\+col\+\_\+ by N\+\_\+row\+\_\+ Eigen array uint16\mbox{\Hypertarget{class_i_o_ac84ca0cd185f0df4ea871710120577d6}\label{class_i_o_ac84ca0cd185f0df4ea871710120577d6}} 
+\index{IO@{IO}!write@{write}}
+\index{write@{write}!IO@{IO}}
+\subsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void I\+O\+::write (\begin{DoxyParamCaption}\item[{T}]{output,  }\item[{std\+::string}]{path,  }\item[{bool}]{print = {\ttfamily true} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_o_a20602422f0a6615b265c96fc02523e6f}\label{class_i_o_a20602422f0a6615b265c96fc02523e6f}} 
 \index{IO@{IO}!write\+\_\+ascii\+\_\+double@{write\+\_\+ascii\+\_\+double}}
 \index{write\+\_\+ascii\+\_\+double@{write\+\_\+ascii\+\_\+double}!IO@{IO}}
 \subsubsection{\texorpdfstring{write\+\_\+ascii\+\_\+double()}{write\_ascii\_double()}}
@@ -207,5 +216,5 @@ The number of rows to the two dimensional Eigen array.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/sam/\+Project/\+X\+N\+L\+O/\+H\+H\+G\+P/src/\hyperlink{___i_o_8hpp}{\+\_\+\+I\+O.\+hpp}\item 
-/home/sam/\+Project/\+X\+N\+L\+O/\+H\+H\+G\+P/src/\hyperlink{___i_o_8cpp}{\+\_\+\+I\+O.\+cpp}\end{DoxyCompactItemize}
+/home/sam/\+Project/\+X\+N\+L\+O/src/\+I\+O/\hyperlink{_i_o_8hpp}{I\+O.\+hpp}\item 
+/home/sam/\+Project/\+X\+N\+L\+O/src/\+I\+O/\hyperlink{_i_o_8cpp}{I\+O.\+cpp}\end{DoxyCompactItemize}

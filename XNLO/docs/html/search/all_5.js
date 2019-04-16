@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['l_5f0',['l_0',['../class_x_n_l_o_1_1_config___settings.html#a754885f1ba90603027f2d6bcb0d0f323',1,'XNLO::Config_Settings::l_0()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdaa5feddd336f95a73db3d846da3a050ea',1,'XNLO::Config_Settings::l_0()']]],
-  ['l_5f0_5f',['l_0_',['../class_x_n_l_o_1_1_config___settings.html#a7bc8ad6836b5bc5390e3f5d976fbb4fd',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fdescription',['l_0_description',['../class_x_n_l_o_1_1_config___settings.html#ace8cfdf8b474cef0c5873b17a582d2c6',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fdescription_5f',['l_0_description_',['../class_x_n_l_o_1_1_config___settings.html#a73ca8a6697b1604b84723752ab404a53',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fdescription_5fset',['l_0_description_set',['../class_x_n_l_o_1_1_config___settings.html#a3928d7e7e6980a691cd823b62272b2f3',1,'XNLO::Config_Settings']]],
-  ['l_5f0_5fset',['l_0_set',['../class_x_n_l_o_1_1_config___settings.html#a58dc900c90f436b8084e10b38327db6a',1,'XNLO::Config_Settings']]],
-  ['laser_5fpulse',['laser_pulse',['../class_x_n_l_o_1_1laser__pulse.html',1,'XNLO::laser_pulse'],['../class_x_n_l_o_1_1laser__pulse.html#a1bb62e4650be18aa5e8020bc03ea6207',1,'XNLO::laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, double CEO_, double spot_radius_, double ROC_, grid_rkr rkr_, grid_tw tw_, std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int read_in_laser_pulse)'],['../class_x_n_l_o_1_1laser__pulse.html#a563cc02eedaef2b666aadc7df93a0a68',1,'XNLO::laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE)']]],
-  ['last_5fsn_5fentry',['LAST_SN_ENTRY',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda3c1a917b21de40f1eec670b1425c2e45',1,'XNLO::Config_Settings']]]
+  ['forward',['forward',['../class_d_h_t.html#a916089f65c6ad05eace5e1f9854f50f4',1,'DHT']]],
+  ['fwhm',['FWHM',['../class_x_n_l_o_1_1_config___settings.html#a173c05f96e134d5fa6f7c0155639185f',1,'XNLO::Config_Settings::FWHM()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdad7d74f524f054fe5e0b1d048beb88165',1,'XNLO::Config_Settings::FWHM()']]],
+  ['fwhm_5f',['FWHM_',['../class_x_n_l_o_1_1_config___settings.html#a6f28edcaac5167c36cb0df9d7ce99929',1,'XNLO::Config_Settings']]],
+  ['fwhm_5fdescription',['FWHM_description',['../class_x_n_l_o_1_1_config___settings.html#a574148dafccd629bca2243542dee725e',1,'XNLO::Config_Settings']]],
+  ['fwhm_5fdescription_5f',['FWHM_description_',['../class_x_n_l_o_1_1_config___settings.html#a1269907175ed3edf2fb9acdcabd0a2ba',1,'XNLO::Config_Settings']]],
+  ['fwhm_5fdescription_5fset',['FWHM_description_set',['../class_x_n_l_o_1_1_config___settings.html#a319899b87878f77f560be19308b65003',1,'XNLO::Config_Settings']]],
+  ['fwhm_5fset',['FWHM_set',['../class_x_n_l_o_1_1_config___settings.html#a5be05276d853b825c8a6a3761ecc641d',1,'XNLO::Config_Settings']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5facceleration',['get_acceleration',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#af0f1e686a5429fca431e87ff9012b1ce',1,'XNLO::Schrodinger_atom_1D']]]
+  ['dht',['DHT',['../class_d_h_t.html#addc81efbe31ac923b054636f675a2d8b',1,'DHT::DHT()'],['../class_d_h_t.html#a9f6e442f2bc6f1e2f5d2dd2a3f9a557d',1,'DHT::DHT(int n_r_, maths_textbook &amp;maths_)']]]
 ];

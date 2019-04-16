@@ -2,7 +2,7 @@
 \label{classkeldysh__gas}\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}}
 
 
-{\ttfamily \#include $<$\+\_\+keldysh\+\_\+gas.\+hpp$>$}
+{\ttfamily \#include $<$keldysh\+\_\+gas.\+hpp$>$}
 
 
 
@@ -18,7 +18,9 @@ Collaboration diagram for keldysh\+\_\+gas\+:\nopagebreak
 \item 
 \hyperlink{classkeldysh__gas_a25e559700c04e93efb560db511adbe72}{keldysh\+\_\+gas} ()
 \item 
-\hyperlink{classkeldysh__gas_a8175a1520a2a7cd90b81d9af3ac64c91}{keldysh\+\_\+gas} (double press\+\_\+, \hyperlink{classgrid__tw}{grid\+\_\+tw} \&tw\+\_\+, D\+F\+T\+I\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE \&ft\+\_\+, \hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&maths\+\_\+)
+\hyperlink{classkeldysh__gas_a7889120c043b13492fa58878c5459099}{keldysh\+\_\+gas} (double press\+\_\+, std\+::string gas\+\_\+pressure\+\_\+profile\+\_\+)
+\item 
+\hyperlink{classkeldysh__gas_ae5510e8e448e96280f71b410907debf6}{keldysh\+\_\+gas} (double press\+\_\+, \hyperlink{classgrid__tw}{grid\+\_\+tw} \&tw\+\_\+, D\+F\+T\+I\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE \&ft\+\_\+, \hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&maths\+\_\+, std\+::string gas\+\_\+pressure\+\_\+profile\+\_\+)
 \item 
 double \hyperlink{classkeldysh__gas_acfa0604a6f00bce28b72b9a07fb79314}{atom\+\_\+density} (double z)
 \item 
@@ -51,6 +53,20 @@ double \hyperlink{classkeldysh__gas_a22ba35c494b37c8a8e78db09d6d8748c}{n\+\_\+st
 \item 
 double \hyperlink{classkeldysh__gas_a836c6a6c2f1bec80ea15344822a07ea5}{kappa}
 \end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef double(keldysh\+\_\+gas\+::$\ast$ \hyperlink{classkeldysh__gas_ab47ad59b466eee349a7500555869b988}{atom\+\_\+density\+\_\+func\+\_\+ptr}) (double)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classkeldysh__gas_a051c59204ad55298d5632ac2eb4dd626}{set\+\_\+atom\+\_\+density\+\_\+ptr} (\hyperlink{classkeldysh__gas_ab47ad59b466eee349a7500555869b988}{atom\+\_\+density\+\_\+func\+\_\+ptr} ptr)
+\item 
+double \hyperlink{classkeldysh__gas_a9eac2e3d9a39a2358e9b6eb7f4a868c6}{capillary\+\_\+pressure\+\_\+profile} (double)
+\item 
+double \hyperlink{classkeldysh__gas_ad70cb5ac156d96492a164774b80e7cdc}{constant\+\_\+pressure\+\_\+profile} (double)
+\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -61,26 +77,45 @@ double \hyperlink{classkeldysh__gas_a836c6a6c2f1bec80ea15344822a07ea5}{kappa}
 \hyperlink{classgrid__tw}{grid\+\_\+tw} \hyperlink{classkeldysh__gas_a1cd7129f9ba9d62f4084049e529cab49}{tw}
 \item 
 D\+F\+T\+I\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE \hyperlink{classkeldysh__gas_ac635d55dcbdfcde7c34d77de5cd75af6}{ft}
+\item 
+std\+::string \hyperlink{classkeldysh__gas_a8e25aa7daf8df877e12db565294c3c72}{gas\+\_\+pressure\+\_\+profile}
+\item 
+\hyperlink{classkeldysh__gas_ab47ad59b466eee349a7500555869b988}{atom\+\_\+density\+\_\+func\+\_\+ptr} \hyperlink{classkeldysh__gas_aeb540c2cc32a862ab074638d53f172f7}{atom\+\_\+density\+\_\+func}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Originally created by Patrick Anderson. Modified by Samuel Senior on 10/03/2017. \char`\"{}keldysh\+\_\+gas\char`\"{} contains the medium response model. 
 
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classkeldysh__gas_ab47ad59b466eee349a7500555869b988}\label{classkeldysh__gas_ab47ad59b466eee349a7500555869b988}} 
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!atom\+\_\+density\+\_\+func\+\_\+ptr@{atom\+\_\+density\+\_\+func\+\_\+ptr}}
+\index{atom\+\_\+density\+\_\+func\+\_\+ptr@{atom\+\_\+density\+\_\+func\+\_\+ptr}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\subsubsection{\texorpdfstring{atom\+\_\+density\+\_\+func\+\_\+ptr}{atom\_density\_func\_ptr}}
+{\footnotesize\ttfamily typedef double(keldysh\+\_\+gas\+::$\ast$ keldysh\+\_\+gas\+::atom\+\_\+density\+\_\+func\+\_\+ptr) (double)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classkeldysh__gas_a25e559700c04e93efb560db511adbe72}\label{classkeldysh__gas_a25e559700c04e93efb560db511adbe72}} 
 \index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
 \index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
-\subsubsection{\texorpdfstring{keldysh\+\_\+gas()}{keldysh\_gas()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\subsubsection{\texorpdfstring{keldysh\+\_\+gas()}{keldysh\_gas()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily keldysh\+\_\+gas\+::keldysh\+\_\+gas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classkeldysh__gas_a8175a1520a2a7cd90b81d9af3ac64c91}\label{classkeldysh__gas_a8175a1520a2a7cd90b81d9af3ac64c91}} 
+Constructor \mbox{\Hypertarget{classkeldysh__gas_a7889120c043b13492fa58878c5459099}\label{classkeldysh__gas_a7889120c043b13492fa58878c5459099}} 
 \index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
 \index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
-\subsubsection{\texorpdfstring{keldysh\+\_\+gas()}{keldysh\_gas()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily keldysh\+\_\+gas\+::keldysh\+\_\+gas (\begin{DoxyParamCaption}\item[{double}]{press\+\_\+,  }\item[{\hyperlink{classgrid__tw}{grid\+\_\+tw} \&}]{tw\+\_\+,  }\item[{D\+F\+T\+I\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE \&}]{ft\+\_\+,  }\item[{\hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&}]{maths\+\_\+ }\end{DoxyParamCaption})}
+\subsubsection{\texorpdfstring{keldysh\+\_\+gas()}{keldysh\_gas()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily keldysh\+\_\+gas\+::keldysh\+\_\+gas (\begin{DoxyParamCaption}\item[{double}]{press\+\_\+,  }\item[{std\+::string}]{gas\+\_\+pressure\+\_\+profile\+\_\+ }\end{DoxyParamCaption})}
 
-Constructor 
+\mbox{\Hypertarget{classkeldysh__gas_ae5510e8e448e96280f71b410907debf6}\label{classkeldysh__gas_ae5510e8e448e96280f71b410907debf6}} 
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\subsubsection{\texorpdfstring{keldysh\+\_\+gas()}{keldysh\_gas()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily keldysh\+\_\+gas\+::keldysh\+\_\+gas (\begin{DoxyParamCaption}\item[{double}]{press\+\_\+,  }\item[{\hyperlink{classgrid__tw}{grid\+\_\+tw} \&}]{tw\+\_\+,  }\item[{D\+F\+T\+I\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE \&}]{ft\+\_\+,  }\item[{\hyperlink{classmaths__textbook}{maths\+\_\+textbook} \&}]{maths\+\_\+,  }\item[{std\+::string}]{gas\+\_\+pressure\+\_\+profile\+\_\+ }\end{DoxyParamCaption})}
+
+
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classkeldysh__gas_acfa0604a6f00bce28b72b9a07fb79314}\label{classkeldysh__gas_acfa0604a6f00bce28b72b9a07fb79314}} 
@@ -88,6 +123,18 @@ Constructor
 \index{atom\+\_\+density@{atom\+\_\+density}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
 \subsubsection{\texorpdfstring{atom\+\_\+density()}{atom\_density()}}
 {\footnotesize\ttfamily double keldysh\+\_\+gas\+::atom\+\_\+density (\begin{DoxyParamCaption}\item[{double}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classkeldysh__gas_a9eac2e3d9a39a2358e9b6eb7f4a868c6}\label{classkeldysh__gas_a9eac2e3d9a39a2358e9b6eb7f4a868c6}} 
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!capillary\+\_\+pressure\+\_\+profile@{capillary\+\_\+pressure\+\_\+profile}}
+\index{capillary\+\_\+pressure\+\_\+profile@{capillary\+\_\+pressure\+\_\+profile}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\subsubsection{\texorpdfstring{capillary\+\_\+pressure\+\_\+profile()}{capillary\_pressure\_profile()}}
+{\footnotesize\ttfamily double keldysh\+\_\+gas\+::capillary\+\_\+pressure\+\_\+profile (\begin{DoxyParamCaption}\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classkeldysh__gas_ad70cb5ac156d96492a164774b80e7cdc}\label{classkeldysh__gas_ad70cb5ac156d96492a164774b80e7cdc}} 
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!constant\+\_\+pressure\+\_\+profile@{constant\+\_\+pressure\+\_\+profile}}
+\index{constant\+\_\+pressure\+\_\+profile@{constant\+\_\+pressure\+\_\+profile}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\subsubsection{\texorpdfstring{constant\+\_\+pressure\+\_\+profile()}{constant\_pressure\_profile()}}
+{\footnotesize\ttfamily double keldysh\+\_\+gas\+::constant\+\_\+pressure\+\_\+profile (\begin{DoxyParamCaption}\item[{double}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classkeldysh__gas_a7d5f16951d622544d814518a37768411}\label{classkeldysh__gas_a7d5f16951d622544d814518a37768411}} 
 \index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!current\+\_\+density@{current\+\_\+density}}
@@ -113,9 +160,21 @@ Calulate ionization rate (Popov, 2004) \mbox{\Hypertarget{classkeldysh__gas_a1cd
 \subsubsection{\texorpdfstring{nl\+\_\+polarization()}{nl\_polarization()}}
 {\footnotesize\ttfamily Array\+Xcd keldysh\+\_\+gas\+::nl\+\_\+polarization (\begin{DoxyParamCaption}\item[{Array\+Xd}]{E\+\_\+t\+\_\+ }\end{DoxyParamCaption})}
 
-Evaluate nonlinear polarization for active frequencies 
+Evaluate nonlinear polarization for active frequencies \mbox{\Hypertarget{classkeldysh__gas_a051c59204ad55298d5632ac2eb4dd626}\label{classkeldysh__gas_a051c59204ad55298d5632ac2eb4dd626}} 
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!set\+\_\+atom\+\_\+density\+\_\+ptr@{set\+\_\+atom\+\_\+density\+\_\+ptr}}
+\index{set\+\_\+atom\+\_\+density\+\_\+ptr@{set\+\_\+atom\+\_\+density\+\_\+ptr}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\subsubsection{\texorpdfstring{set\+\_\+atom\+\_\+density\+\_\+ptr()}{set\_atom\_density\_ptr()}}
+{\footnotesize\ttfamily void keldysh\+\_\+gas\+::set\+\_\+atom\+\_\+density\+\_\+ptr (\begin{DoxyParamCaption}\item[{\hyperlink{classkeldysh__gas_ab47ad59b466eee349a7500555869b988}{atom\+\_\+density\+\_\+func\+\_\+ptr}}]{ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
 
 \subsection{Member Data Documentation}
+\mbox{\Hypertarget{classkeldysh__gas_aeb540c2cc32a862ab074638d53f172f7}\label{classkeldysh__gas_aeb540c2cc32a862ab074638d53f172f7}} 
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!atom\+\_\+density\+\_\+func@{atom\+\_\+density\+\_\+func}}
+\index{atom\+\_\+density\+\_\+func@{atom\+\_\+density\+\_\+func}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\subsubsection{\texorpdfstring{atom\+\_\+density\+\_\+func}{atom\_density\_func}}
+{\footnotesize\ttfamily \hyperlink{classkeldysh__gas_ab47ad59b466eee349a7500555869b988}{atom\+\_\+density\+\_\+func\+\_\+ptr} keldysh\+\_\+gas\+::atom\+\_\+density\+\_\+func\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classkeldysh__gas_a287e2c7a3081d8b65ba126288a3174bd}\label{classkeldysh__gas_a287e2c7a3081d8b65ba126288a3174bd}} 
 \index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!atom\+\_\+density\+\_\+max@{atom\+\_\+density\+\_\+max}}
 \index{atom\+\_\+density\+\_\+max@{atom\+\_\+density\+\_\+max}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
@@ -133,6 +192,12 @@ Evaluate nonlinear polarization for active frequencies
 \index{ft@{ft}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
 \subsubsection{\texorpdfstring{ft}{ft}}
 {\footnotesize\ttfamily D\+F\+T\+I\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE keldysh\+\_\+gas\+::ft\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classkeldysh__gas_a8e25aa7daf8df877e12db565294c3c72}\label{classkeldysh__gas_a8e25aa7daf8df877e12db565294c3c72}} 
+\index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!gas\+\_\+pressure\+\_\+profile@{gas\+\_\+pressure\+\_\+profile}}
+\index{gas\+\_\+pressure\+\_\+profile@{gas\+\_\+pressure\+\_\+profile}!keldysh\+\_\+gas@{keldysh\+\_\+gas}}
+\subsubsection{\texorpdfstring{gas\+\_\+pressure\+\_\+profile}{gas\_pressure\_profile}}
+{\footnotesize\ttfamily std\+::string keldysh\+\_\+gas\+::gas\+\_\+pressure\+\_\+profile\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classkeldysh__gas_ab0dee35b9ad45af3fca4a2079389e632}\label{classkeldysh__gas_ab0dee35b9ad45af3fca4a2079389e632}} 
 \index{keldysh\+\_\+gas@{keldysh\+\_\+gas}!inlet\+\_\+1@{inlet\+\_\+1}}
@@ -198,5 +263,5 @@ Evaluate nonlinear polarization for active frequencies
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/sam/\+Project/\+X\+N\+L\+O/\+H\+H\+G\+P/src/\hyperlink{__keldysh__gas_8hpp}{\+\_\+keldysh\+\_\+gas.\+hpp}\item 
-/home/sam/\+Project/\+X\+N\+L\+O/\+H\+H\+G\+P/src/\hyperlink{__keldysh__gas_8cpp}{\+\_\+keldysh\+\_\+gas.\+cpp}\end{DoxyCompactItemize}
+/home/sam/\+Project/\+X\+N\+L\+O/src/gas/\hyperlink{keldysh__gas_8hpp}{keldysh\+\_\+gas.\+hpp}\item 
+/home/sam/\+Project/\+X\+N\+L\+O/src/gas/\hyperlink{keldysh__gas_8cpp}{keldysh\+\_\+gas.\+cpp}\end{DoxyCompactItemize}

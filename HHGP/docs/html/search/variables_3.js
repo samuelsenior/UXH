@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['f1',['f1',['../classpropagation.html#a14d6e72396c1c354c6d9986f2d79f85f',1,'propagation']]],
-  ['f2',['f2',['../classpropagation.html#a747dcaf8f7405a17af992bae39b7fab5',1,'propagation']]],
-  ['filenumber',['fileNumber',['../class_h_h__source.html#a6631481cc1bea05ab564cb1841644a12',1,'HH_source']]],
-  ['fwhm_5f',['fwhm_',['../class_h_h_1_1_config___settings.html#a7361e62d64bb7b6572f0b57b8bfcb808',1,'HH::Config_Settings']]],
-  ['fwhm_5fdescription_5f',['fwhm_description_',['../class_h_h_1_1_config___settings.html#a44ace53db0dbb7d49f187475fd4761ab',1,'HH::Config_Settings']]]
+  ['data_5fsize',['data_size',['../class_i_o.html#a39a8a0474a288522d847f6be0fb2403f',1,'IO']]],
+  ['double_5fsize',['double_size',['../class_i_o.html#a3af3bf77eacd18c1c50cbf78b46c4228',1,'IO']]],
+  ['dt',['dt',['../class_x_n_l_o_1_1grid__tw.html#a894654319f613bec7cd0af4f938e3757',1,'XNLO::grid_tw']]],
+  ['dx',['dx',['../classgrid__xkx.html#aca0942ecb8707b51c4023cff310d6be3',1,'grid_xkx']]]
 ];

@@ -30,7 +30,7 @@ var searchData=
   ['path_5fe_5fdescription_5f',['path_E_description_',['../class_x_n_l_o_1_1_config___settings.html#a4596951dca3fb35d867e2f11a9f398d5',1,'XNLO::Config_Settings']]],
   ['path_5fe_5fdescription_5fset',['path_E_description_set',['../class_x_n_l_o_1_1_config___settings.html#a5685b274d9e60ecb26840ed7975ef25a',1,'XNLO::Config_Settings']]],
   ['path_5fe_5fset',['path_E_set',['../class_x_n_l_o_1_1_config___settings.html#a1fba15538a10af57f50059270920caaf',1,'XNLO::Config_Settings']]],
-  ['path_5finput_5fj0',['path_input_j0',['../class_x_n_l_o_1_1maths__textbook.html#adcff34ca6555b48649b0548cfb173f72',1,'XNLO::maths_textbook::path_input_j0()'],['../class_x_n_l_o_1_1_config___settings.html#ade2a61004262f0d2835402235112e658',1,'XNLO::Config_Settings::path_input_j0()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda07356c2c6e499a7440eda391e17e3ddf',1,'XNLO::Config_Settings::path_input_j0()']]],
+  ['path_5finput_5fj0',['path_input_j0',['../classmaths__textbook.html#a5c8a254bd117beaba43916c38f8f6a66',1,'maths_textbook::path_input_j0()'],['../class_x_n_l_o_1_1_config___settings.html#ade2a61004262f0d2835402235112e658',1,'XNLO::Config_Settings::path_input_j0()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda07356c2c6e499a7440eda391e17e3ddf',1,'XNLO::Config_Settings::path_input_j0()']]],
   ['path_5finput_5fj0_5f',['path_input_j0_',['../class_x_n_l_o_1_1_config___settings.html#a9b8a8a75249e29bf3abfae6272f001de',1,'XNLO::Config_Settings']]],
   ['path_5finput_5fj0_5fdescription',['path_input_j0_description',['../class_x_n_l_o_1_1_config___settings.html#ad50749d0ea02026d076d326e497a6326',1,'XNLO::Config_Settings']]],
   ['path_5finput_5fj0_5fdescription_5f',['path_input_j0_description_',['../class_x_n_l_o_1_1_config___settings.html#a79113c1159b7aeba23e107fb112d278a',1,'XNLO::Config_Settings']]],
@@ -66,8 +66,8 @@ var searchData=
   ['pend_5fpath_5fdescription_5f',['pend_path_description_',['../class_x_n_l_o_1_1_config___settings.html#a15fcc90681f14abcf8be1d2c3e79ea7a',1,'XNLO::Config_Settings']]],
   ['pend_5fpath_5fdescription_5fset',['pend_path_description_set',['../class_x_n_l_o_1_1_config___settings.html#a92df2289f0fa1878010eb6a06330ba0b',1,'XNLO::Config_Settings']]],
   ['pend_5fpath_5fset',['pend_path_set',['../class_x_n_l_o_1_1_config___settings.html#a1e3cb523dca64ea6542b3669857d0d54',1,'XNLO::Config_Settings']]],
-  ['physics_5ftextbook',['physics_textbook',['../class_x_n_l_o_1_1physics__textbook.html',1,'XNLO::physics_textbook'],['../class_x_n_l_o_1_1physics__textbook.html#ab3261f1a91d0c54aa33ebebacc04dd5a',1,'XNLO::physics_textbook::physics_textbook()']]],
-  ['pi',['pi',['../class_x_n_l_o_1_1maths__textbook.html#aa8506848e319f99a4b40fe4a99af1af9',1,'XNLO::maths_textbook']]],
+  ['physics_5ftextbook',['physics_textbook',['../classphysics__textbook.html',1,'physics_textbook'],['../classphysics__textbook.html#a89b6993c2aecf444cd2fa540c73a110b',1,'physics_textbook::physics_textbook()']]],
+  ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['print',['print',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#a744b1502564e9580c3e9bef8306fd336',1,'XNLO::Schrodinger_atom_1D::print()'],['../class_x_n_l_o_1_1_config___settings.html#ad3188c9db045f508f96faf77545841a7',1,'XNLO::Config_Settings::print()'],['../class_x_n_l_o_1_1_config___settings.html#a24a7af20ea47814fb1c7a5cdc6c18bbb',1,'XNLO::Config_Settings::print(std::string)']]],
   ['print_5fto_5fscreen',['print_to_screen',['../class_x_n_l_o_1_1_config___settings.html#a71aa4cf3491851bd61a923272933c5ce',1,'XNLO::Config_Settings']]]
 ];

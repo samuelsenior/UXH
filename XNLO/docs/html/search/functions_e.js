@@ -8,5 +8,5 @@ var searchData=
   ['t_5fmin_5fdescription',['t_min_description',['../class_x_n_l_o_1_1_config___settings.html#ac0b077e299d7f5f096624c5005c156f9',1,'XNLO::Config_Settings']]],
   ['t_5fmin_5fdescription_5fset',['t_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a3d148c83adb488185057b4ecc40ecc6b',1,'XNLO::Config_Settings']]],
   ['t_5fmin_5fset',['t_min_set',['../class_x_n_l_o_1_1_config___settings.html#ab5457db4a33b70770f4df64e66bc5efb',1,'XNLO::Config_Settings']]],
-  ['trapz',['trapz',['../class_x_n_l_o_1_1maths__textbook.html#a98c8e89cafc0d73fdeaacb71f76df80c',1,'XNLO::maths_textbook']]]
+  ['trapz',['trapz',['../classmaths__textbook.html#a158ce9c89ee1db5495810c25ee2aed57',1,'maths_textbook']]]
 ];

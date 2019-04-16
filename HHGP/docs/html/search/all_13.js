@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['z',['Z',['../class_h_h_1_1_config___settings.html#a665f15e4dcf9177a0e0239198149ca9a',1,'HH::Config_Settings::Z()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a21c2e59531c8710156d34a3c30ac81d5',1,'HH::Config_Settings::Z()'],['../classpropagation.html#aeacfc091fafd1fdb1af4536f6f587e55',1,'propagation::z()']]],
-  ['z_5f',['Z_',['../class_h_h_1_1_config___settings.html#a635b2bb3da36daadf2f472a27598d36b',1,'HH::Config_Settings']]],
-  ['z_5fdescription',['Z_description',['../class_h_h_1_1_config___settings.html#aa26c57b1a9b100ace7ac11a652c4dbea',1,'HH::Config_Settings']]],
-  ['z_5fdescription_5f',['Z_description_',['../class_h_h_1_1_config___settings.html#a64ea11a9d0ed340f9e6aec23c3f181a4',1,'HH::Config_Settings']]],
-  ['z_5fdescription_5fset',['Z_description_set',['../class_h_h_1_1_config___settings.html#afd9051b27f06f5c2e756093f227d0454',1,'HH::Config_Settings']]],
-  ['z_5fmax',['Z_max',['../classpropagation.html#ae0b2d1a8fa0e59d37e124a0ba1f12dd2',1,'propagation']]],
-  ['z_5fset',['Z_set',['../class_h_h_1_1_config___settings.html#a07cfc292bc55e970e62f34853b47760c',1,'HH::Config_Settings']]]
+  ['segment',['segment',['../classpropagation.html#a39126bbbd4977c140c0077b849e78bc1',1,'propagation']]],
+  ['set_5fatom_5fdensity_5fptr',['set_atom_density_ptr',['../classkeldysh__gas.html#a051c59204ad55298d5632ac2eb4dd626',1,'keldysh_gas']]],
+  ['set_5fpath',['set_path',['../class_h_h_1_1_config___settings.html#a69966d9c2ca97f38203d7b780ac913a4',1,'HH::Config_Settings']]],
+  ['set_5fpost_5fpath',['set_post_path',['../class_h_h_1_1_config___settings.html#af63b1cb45651c29250a88865e890b115',1,'HH::Config_Settings']]],
+  ['set_5fpre_5fpath',['set_pre_path',['../class_h_h_1_1_config___settings.html#acece71d89298a3dae65760a98a3c49f2',1,'HH::Config_Settings']]],
+  ['set_5fvariable',['set_variable',['../class_h_h_1_1_config___settings.html#a4e37ddfcd3bc174672c4f3dd410f898c',1,'HH::Config_Settings']]],
+  ['setting_5fname',['setting_name',['../class_h_h_1_1_config___settings.html#a2c2d5f90684c3cfbcbf8f45013a1c521',1,'HH::Config_Settings']]],
+  ['sn',['SN',['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3',1,'HH::Config_Settings']]],
+  ['step_5fpath',['step_path',['../class_h_h_1_1_config___settings.html#a04648077f4ae54ea5ef2c02423feed01',1,'HH::Config_Settings']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y_5f4',['Y_4',['../classlaser__pulse.html#a14cb833e7d8abf8c5d529879abc38ab5',1,'laser_pulse']]],
-  ['y_5f5',['Y_5',['../classlaser__pulse.html#a0887b8a3f33e2cde8359e6dd61210615',1,'laser_pulse']]]
+  ['u',['U',['../classkeldysh__gas.html#a752b70afe289a798cc0ab7b688b9ed3d',1,'keldysh_gas']]]
 ];

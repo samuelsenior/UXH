@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>XNLO - UPPE: keldysh_gas Class Reference</title>
+<title>UXH - HHGP: keldysh_gas Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,10 +21,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">XNLO - UPPE
-   &#160;<span id="projectnumber">1.3.0</span>
+   <div id="projectname">UXH - HHGP
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
-   <div id="projectbrief">Unidirectional Pulse Propagation Equation</div>
+   <div id="projectbrief">High Harmonic Generation &amp; Propagation</div>
   </td>
  </tr>
  </tbody>
@@ -63,6 +63,8 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classkeldysh__gas-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -70,7 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="__keldysh__gas_8hpp_source.html">_keldysh_gas.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="keldysh__gas_8hpp_source.html">keldysh_gas.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for keldysh_gas:</div>
 <div class="dyncontent">
@@ -86,8 +88,10 @@ Collaboration diagram for keldysh_gas:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a25e559700c04e93efb560db511adbe72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a25e559700c04e93efb560db511adbe72">keldysh_gas</a> ()</td></tr>
 <tr class="separator:a25e559700c04e93efb560db511adbe72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8175a1520a2a7cd90b81d9af3ac64c91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a8175a1520a2a7cd90b81d9af3ac64c91">keldysh_gas</a> (double press_, <a class="el" href="classgrid__tw.html">grid_tw</a> &amp;tw_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_)</td></tr>
-<tr class="separator:a8175a1520a2a7cd90b81d9af3ac64c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7889120c043b13492fa58878c5459099"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a7889120c043b13492fa58878c5459099">keldysh_gas</a> (double press_, std::string gas_pressure_profile_)</td></tr>
+<tr class="separator:a7889120c043b13492fa58878c5459099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5510e8e448e96280f71b410907debf6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#ae5510e8e448e96280f71b410907debf6">keldysh_gas</a> (double press_, <a class="el" href="classgrid__tw.html">grid_tw</a> &amp;tw_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, std::string gas_pressure_profile_)</td></tr>
+<tr class="separator:ae5510e8e448e96280f71b410907debf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfa0604a6f00bce28b72b9a07fb79314"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#acfa0604a6f00bce28b72b9a07fb79314">atom_density</a> (double z)</td></tr>
 <tr class="separator:acfa0604a6f00bce28b72b9a07fb79314"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cd65d1983cb6c5ff9d04eeb29e94dd5"><td class="memItemLeft" align="right" valign="top">ArrayXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a1cd65d1983cb6c5ff9d04eeb29e94dd5">nl_polarization</a> (ArrayXd E_t_)</td></tr>
@@ -120,6 +124,20 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a836c6a6c2f1bec80ea15344822a07ea5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a836c6a6c2f1bec80ea15344822a07ea5">kappa</a></td></tr>
 <tr class="separator:a836c6a6c2f1bec80ea15344822a07ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:ab47ad59b466eee349a7500555869b988"><td class="memItemLeft" align="right" valign="top">typedef double(keldysh_gas::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#ab47ad59b466eee349a7500555869b988">atom_density_func_ptr</a>) (double)</td></tr>
+<tr class="separator:ab47ad59b466eee349a7500555869b988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a051c59204ad55298d5632ac2eb4dd626"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a051c59204ad55298d5632ac2eb4dd626">set_atom_density_ptr</a> (<a class="el" href="classkeldysh__gas.html#ab47ad59b466eee349a7500555869b988">atom_density_func_ptr</a> ptr)</td></tr>
+<tr class="separator:a051c59204ad55298d5632ac2eb4dd626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eac2e3d9a39a2358e9b6eb7f4a868c6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a9eac2e3d9a39a2358e9b6eb7f4a868c6">capillary_pressure_profile</a> (double)</td></tr>
+<tr class="separator:a9eac2e3d9a39a2358e9b6eb7f4a868c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70cb5ac156d96492a164774b80e7cdc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#ad70cb5ac156d96492a164774b80e7cdc">constant_pressure_profile</a> (double)</td></tr>
+<tr class="separator:ad70cb5ac156d96492a164774b80e7cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a3b26e27ccf042ae2f89aa23e4252acf4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classphysics__textbook.html">physics_textbook</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4">physics</a></td></tr>
@@ -130,12 +148,39 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1cd7129f9ba9d62f4084049e529cab49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac635d55dcbdfcde7c34d77de5cd75af6"><td class="memItemLeft" align="right" valign="top">DFTI_DESCRIPTOR_HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#ac635d55dcbdfcde7c34d77de5cd75af6">ft</a></td></tr>
 <tr class="separator:ac635d55dcbdfcde7c34d77de5cd75af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e25aa7daf8df877e12db565294c3c72"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#a8e25aa7daf8df877e12db565294c3c72">gas_pressure_profile</a></td></tr>
+<tr class="separator:a8e25aa7daf8df877e12db565294c3c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb540c2cc32a862ab074638d53f172f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkeldysh__gas.html#ab47ad59b466eee349a7500555869b988">atom_density_func_ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkeldysh__gas.html#aeb540c2cc32a862ab074638d53f172f7">atom_density_func</a></td></tr>
+<tr class="separator:aeb540c2cc32a862ab074638d53f172f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Originally created by Patrick Anderson. Modified by Samuel Senior on 10/03/2017. "keldysh_gas" contains the medium response model. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="ab47ad59b466eee349a7500555869b988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab47ad59b466eee349a7500555869b988">&#9670;&nbsp;</a></span>atom_density_func_ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef double(keldysh_gas::* keldysh_gas::atom_density_func_ptr) (double)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a25e559700c04e93efb560db511adbe72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25e559700c04e93efb560db511adbe72">&#9670;&nbsp;</a></span>keldysh_gas() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e559700c04e93efb560db511adbe72">&#9670;&nbsp;</a></span>keldysh_gas() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -148,11 +193,40 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constructor </p>
 
 </div>
 </div>
-<a id="a8175a1520a2a7cd90b81d9af3ac64c91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8175a1520a2a7cd90b81d9af3ac64c91">&#9670;&nbsp;</a></span>keldysh_gas() <span class="overload">[2/2]</span></h2>
+<a id="a7889120c043b13492fa58878c5459099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7889120c043b13492fa58878c5459099">&#9670;&nbsp;</a></span>keldysh_gas() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">keldysh_gas::keldysh_gas </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>press_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>gas_pressure_profile_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5510e8e448e96280f71b410907debf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5510e8e448e96280f71b410907debf6">&#9670;&nbsp;</a></span>keldysh_gas() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +253,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;&#160;</td>
-          <td class="paramname"><em>maths_</em>&#160;</td>
+          <td class="paramname"><em>maths_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>gas_pressure_profile_</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -188,7 +268,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor </p>
 
 </div>
 </div>
@@ -207,6 +286,58 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9eac2e3d9a39a2358e9b6eb7f4a868c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eac2e3d9a39a2358e9b6eb7f4a868c6">&#9670;&nbsp;</a></span>capillary_pressure_profile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double keldysh_gas::capillary_pressure_profile </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad70cb5ac156d96492a164774b80e7cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70cb5ac156d96492a164774b80e7cdc">&#9670;&nbsp;</a></span>constant_pressure_profile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double keldysh_gas::constant_pressure_profile </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -307,7 +438,55 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a051c59204ad55298d5632ac2eb4dd626"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a051c59204ad55298d5632ac2eb4dd626">&#9670;&nbsp;</a></span>set_atom_density_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void keldysh_gas::set_atom_density_ptr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkeldysh__gas.html#ab47ad59b466eee349a7500555869b988">atom_density_func_ptr</a>&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aeb540c2cc32a862ab074638d53f172f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb540c2cc32a862ab074638d53f172f7">&#9670;&nbsp;</a></span>atom_density_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classkeldysh__gas.html#ab47ad59b466eee349a7500555869b988">atom_density_func_ptr</a> keldysh_gas::atom_density_func</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a287e2c7a3081d8b65ba126288a3174bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a287e2c7a3081d8b65ba126288a3174bd">&#9670;&nbsp;</a></span>atom_density_max</h2>
 
@@ -347,6 +526,28 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">DFTI_DESCRIPTOR_HANDLE keldysh_gas::ft</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e25aa7daf8df877e12db565294c3c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e25aa7daf8df877e12db565294c3c72">&#9670;&nbsp;</a></span>gas_pressure_profile</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string keldysh_gas::gas_pressure_profile</td>
         </tr>
       </table>
   </td>
@@ -523,8 +724,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sam/Project/XNLO/HHGP/src/<a class="el" href="__keldysh__gas_8hpp_source.html">_keldysh_gas.hpp</a></li>
-<li>/home/sam/Project/XNLO/HHGP/src/<a class="el" href="__keldysh__gas_8cpp.html">_keldysh_gas.cpp</a></li>
+<li>/home/sam/Project/XNLO/src/gas/<a class="el" href="keldysh__gas_8hpp_source.html">keldysh_gas.hpp</a></li>
+<li>/home/sam/Project/XNLO/src/gas/<a class="el" href="keldysh__gas_8cpp.html">keldysh_gas.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

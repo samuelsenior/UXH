@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>XNLO - UPPE: /home/sam/Project/XNLO/HHGP/src/IO.hpp File Reference</title>
+<title>UXH - HHGP: /home/sam/Project/XNLO/src/IO/IO.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,10 +21,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">XNLO - UPPE
-   &#160;<span id="projectnumber">1.3.0</span>
+   <div id="projectname">UXH - HHGP
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
-   <div id="projectbrief">Unidirectional Pulse Propagation Equation</div>
+   <div id="projectbrief">High Harmonic Generation &amp; Propagation</div>
   </td>
  </tr>
  </tbody>
@@ -60,36 +60,38 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fae119eb913a40fe8ed97cde8b98911e.html">IO</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">IO.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;Eigen/Dense&quot;</code><br />
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &quot;../../Eigen/Dense&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for IO.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="_i_o_8hpp__incl.png" border="0" usemap="#_2home_2sam_2_project_2_x_n_l_o_2_h_h_g_p_2src_2_i_o_8hpp" alt=""/></div>
+<div class="center"><img src="_i_o_8hpp__incl.png" border="0" usemap="#_2home_2sam_2_project_2_x_n_l_o_2src_2_i_o_2_i_o_8hpp" alt=""/></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="_i_o_8hpp__dep__incl.png" border="0" usemap="#_2home_2sam_2_project_2_x_n_l_o_2_h_h_g_p_2src_2_i_o_8hppdep" alt=""/></div>
-<map name="_2home_2sam_2_project_2_x_n_l_o_2_h_h_g_p_2src_2_i_o_8hppdep" id="_2home_2sam_2_project_2_x_n_l_o_2_h_h_g_p_2src_2_i_o_8hppdep">
-<area shape="rect" id="node2" href="_h_h__source_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HH_source.hpp" alt="" coords="107,95,289,136"/>
-<area shape="rect" id="node3" href="_h_h__source_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HH_source.cpp" alt="" coords="5,184,188,225"/>
-<area shape="rect" id="node4" href="main_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/main.cpp" alt="" coords="227,184,399,225"/>
-<area shape="rect" id="node5" href="_h_h_g_p_8hpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.hpp" alt="" coords="365,95,537,136"/>
-<area shape="rect" id="node6" href="_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/HHGP.cpp" alt="" coords="456,184,628,225"/>
-<area shape="rect" id="node7" href="_i_o_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/IO.cpp" alt="" coords="613,95,785,136"/>
-<area shape="rect" id="node8" href="maths__textbook_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/maths_textbook.cpp" alt="" coords="809,95,1019,136"/>
-<area shape="rect" id="node9" href="propagation_8cpp.html" title="/home/sam/Project/XNLO\l/HHGP/src/propagation.cpp" alt="" coords="1043,95,1225,136"/>
+<div class="center"><img src="_i_o_8hpp__dep__incl.png" border="0" usemap="#_2home_2sam_2_project_2_x_n_l_o_2src_2_i_o_2_i_o_8hppdep" alt=""/></div>
+<map name="_2home_2sam_2_project_2_x_n_l_o_2src_2_i_o_2_i_o_8hppdep" id="_2home_2sam_2_project_2_x_n_l_o_2src_2_i_o_2_i_o_8hppdep">
+<area shape="rect" id="node2" href="_h_h__source_8hpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/HH_source.hpp" alt="" coords="107,95,289,136"/>
+<area shape="rect" id="node3" href="_h_h__source_8cpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/HH_source.cpp" alt="" coords="5,184,188,225"/>
+<area shape="rect" id="node4" href="main_8cpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/main.cpp" alt="" coords="227,184,399,225"/>
+<area shape="rect" id="node5" href="_h_h_g_p_8hpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/HHGP.hpp" alt="" coords="365,95,537,136"/>
+<area shape="rect" id="node6" href="_h_h_g_p_8cpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/HHGP.cpp" alt="" coords="456,184,628,225"/>
+<area shape="rect" id="node7" href="propagation_8cpp.html" title="/home/sam/Project/XNLO\l/src/HHGP/propagation.cpp" alt="" coords="613,95,796,136"/>
+<area shape="rect" id="node8" href="_i_o_8cpp.html" title="/home/sam/Project/XNLO\l/src/IO/IO.cpp" alt="" coords="820,95,992,136"/>
+<area shape="rect" id="node9" href="maths__textbook_8cpp.html" title="/home/sam/Project/XNLO\l/src/maths/maths_textbook.cpp" alt="" coords="1016,95,1223,136"/>
 </map>
 </div>
 </div>
@@ -99,7 +101,110 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_o.html">IO</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdetect.html">detect&lt; typename, class, typename &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdetect_3_01_t_00_01_op_00_01void__t_3_01_op_3_01_t_01_4_01_4_01_4.html">detect&lt; T, Op, void_t&lt; Op&lt; T &gt; &gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ab8ddf9531fc4ac7ce28574db20c8f20e"><td class="memTemplParams" colspan="2">template&lt;typename... &gt; </td></tr>
+<tr class="memitem:ab8ddf9531fc4ac7ce28574db20c8f20e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_i_o_8hpp.html#ab8ddf9531fc4ac7ce28574db20c8f20e">void_t</a> = void</td></tr>
+<tr class="separator:ab8ddf9531fc4ac7ce28574db20c8f20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6285c5ecc0c43d864045d7654b3f2953"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6285c5ecc0c43d864045d7654b3f2953"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_i_o_8hpp.html#a6285c5ecc0c43d864045d7654b3f2953">rows_t</a> = decltype(std::declval&lt; T &gt;().rows())</td></tr>
+<tr class="separator:a6285c5ecc0c43d864045d7654b3f2953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7cdbf26450213e8d47701a58c2c11ff"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab7cdbf26450213e8d47701a58c2c11ff"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_i_o_8hpp.html#ab7cdbf26450213e8d47701a58c2c11ff">has_rows</a> = <a class="el" href="structdetect.html">detect</a>&lt; T, <a class="el" href="_i_o_8hpp.html#a6285c5ecc0c43d864045d7654b3f2953">rows_t</a> &gt;</td></tr>
+<tr class="separator:ab7cdbf26450213e8d47701a58c2c11ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822dcce0f28c2d8fd194091525c36483"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a822dcce0f28c2d8fd194091525c36483"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_i_o_8hpp.html#a822dcce0f28c2d8fd194091525c36483">cols_t</a> = decltype(std::declval&lt; T &gt;().cols())</td></tr>
+<tr class="separator:a822dcce0f28c2d8fd194091525c36483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed10a3a50ad32113eab2f5502bf0b74f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aed10a3a50ad32113eab2f5502bf0b74f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_i_o_8hpp.html#aed10a3a50ad32113eab2f5502bf0b74f">has_cols</a> = <a class="el" href="structdetect.html">detect</a>&lt; T, <a class="el" href="_i_o_8hpp.html#a822dcce0f28c2d8fd194091525c36483">cols_t</a> &gt;</td></tr>
+<tr class="separator:aed10a3a50ad32113eab2f5502bf0b74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a822dcce0f28c2d8fd194091525c36483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a822dcce0f28c2d8fd194091525c36483">&#9670;&nbsp;</a></span>cols_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_i_o_8hpp.html#a822dcce0f28c2d8fd194091525c36483">cols_t</a> =  decltype(std::declval&lt;T&gt;().cols())</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed10a3a50ad32113eab2f5502bf0b74f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed10a3a50ad32113eab2f5502bf0b74f">&#9670;&nbsp;</a></span>has_cols</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_i_o_8hpp.html#aed10a3a50ad32113eab2f5502bf0b74f">has_cols</a> =  <a class="el" href="structdetect.html">detect</a>&lt;T, <a class="el" href="_i_o_8hpp.html#a822dcce0f28c2d8fd194091525c36483">cols_t</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7cdbf26450213e8d47701a58c2c11ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7cdbf26450213e8d47701a58c2c11ff">&#9670;&nbsp;</a></span>has_rows</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_i_o_8hpp.html#ab7cdbf26450213e8d47701a58c2c11ff">has_rows</a> =  <a class="el" href="structdetect.html">detect</a>&lt;T, <a class="el" href="_i_o_8hpp.html#a6285c5ecc0c43d864045d7654b3f2953">rows_t</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6285c5ecc0c43d864045d7654b3f2953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6285c5ecc0c43d864045d7654b3f2953">&#9670;&nbsp;</a></span>rows_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_i_o_8hpp.html#a6285c5ecc0c43d864045d7654b3f2953">rows_t</a> =  decltype(std::declval&lt;T&gt;().rows())</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8ddf9531fc4ac7ce28574db20c8f20e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8ddf9531fc4ac7ce28574db20c8f20e">&#9670;&nbsp;</a></span>void_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_i_o_8hpp.html#ab8ddf9531fc4ac7ce28574db20c8f20e">void_t</a> =  void</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

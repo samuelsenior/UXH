@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['w',['w',['../class_x_n_l_o_1_1grid__tw.html#a099ffb42c45f511c9f2ab8a584d897cc',1,'XNLO::grid_tw']]],
   ['w_5factive',['w_active',['../classgrid__tw.html#a66922766c9dfe5c4667e55e678b134b9',1,'grid_tw::w_active()'],['../classpropagation.html#a4c24f42d4148eded469c6479d6bf1661',1,'propagation::w_active()']]],
   ['w_5factive_5fmax_5f',['w_active_max_',['../class_h_h_1_1_config___settings.html#aba63d1bddf1ae6fe89217c84993c38ee',1,'HH::Config_Settings']]],
   ['w_5factive_5fmax_5fdescription_5f',['w_active_max_description_',['../class_h_h_1_1_config___settings.html#a2d73105c91c88239ad0469a747150707',1,'HH::Config_Settings']]],

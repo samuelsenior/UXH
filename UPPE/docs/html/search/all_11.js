@@ -1,21 +1,4 @@
 var searchData=
 [
-  ['w_5factive_5fmax',['w_active_max',['../class_config___settings.html#a17165addafe947c32457035b1a920d18',1,'Config_Settings::w_active_max()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa0bd4db7105c25a96d1f38aa7910e37a8',1,'Config_Settings::w_active_max()']]],
-  ['w_5factive_5fmax_5f',['w_active_max_',['../class_config___settings.html#a8e1cad65153d6383ed84637ecd794bf0',1,'Config_Settings']]],
-  ['w_5factive_5fmax_5fdescription',['w_active_max_description',['../class_config___settings.html#a99acf11a5682e9cee68cae24028eefbc',1,'Config_Settings']]],
-  ['w_5factive_5fmax_5fdescription_5f',['w_active_max_description_',['../class_config___settings.html#aec4b2d04c20b6d345a0cd31df2e896fa',1,'Config_Settings']]],
-  ['w_5factive_5fmax_5fdescription_5fset',['w_active_max_description_set',['../class_config___settings.html#a1d93425d204d595db140648c2b582103',1,'Config_Settings']]],
-  ['w_5factive_5fmax_5fset',['w_active_max_set',['../class_config___settings.html#a746e7376dacda6358184087a0c902486',1,'Config_Settings']]],
-  ['w_5factive_5fmin',['w_active_min',['../class_config___settings.html#a2f8932f4f74b63a988918ac3904a690a',1,'Config_Settings::w_active_min()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faaaf0e5291fcf608b6ecdf4b2e9b88b22',1,'Config_Settings::w_active_min()']]],
-  ['w_5factive_5fmin_5f',['w_active_min_',['../class_config___settings.html#a5c77d47f7fc2d699b8cc5589fca7de5e',1,'Config_Settings']]],
-  ['w_5factive_5fmin_5fdescription',['w_active_min_description',['../class_config___settings.html#ab297a08dc48a30516eab5e6effe096e2',1,'Config_Settings']]],
-  ['w_5factive_5fmin_5fdescription_5f',['w_active_min_description_',['../class_config___settings.html#a5465c1fbd2dc5e60c0c7e81c89291fe0',1,'Config_Settings']]],
-  ['w_5factive_5fmin_5fdescription_5fset',['w_active_min_description_set',['../class_config___settings.html#a1c553737658161f4addc22ad8fb4796c',1,'Config_Settings']]],
-  ['w_5factive_5fmin_5fset',['w_active_min_set',['../class_config___settings.html#a773c6dbd4fe5abbc8e3c09ebf895ba6f',1,'Config_Settings']]],
-  ['waist',['waist',['../classlaser__pulse.html#a42d24a25890ebb04c483fbb4e4811e03',1,'laser_pulse::waist()'],['../class_config___settings.html#a9bec079708e647e77006394d68ea3ad3',1,'Config_Settings::waist()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa54680ce9dccba6570053db39038a9d7a',1,'Config_Settings::waist()']]],
-  ['waist_5f',['waist_',['../class_config___settings.html#a769316096d7aa4e2939ed7fbf7db21e2',1,'Config_Settings']]],
-  ['waist_5fdescription',['waist_description',['../class_config___settings.html#a849ae9f7a6ef85215c04a79004ac129b',1,'Config_Settings']]],
-  ['waist_5fdescription_5f',['waist_description_',['../class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30',1,'Config_Settings']]],
-  ['waist_5fdescription_5fset',['waist_description_set',['../class_config___settings.html#a54a52d9c629a4675067bd60878482b53',1,'Config_Settings']]],
-  ['waist_5fset',['waist_set',['../class_config___settings.html#aebe0df8b04a71ab41e8335a967ae10c4',1,'Config_Settings']]]
+  ['q_5fat',['q_at',['../classphysics__textbook.html#aba33444d21762e4cbcfec165e6fd3ece',1,'physics_textbook']]]
 ];

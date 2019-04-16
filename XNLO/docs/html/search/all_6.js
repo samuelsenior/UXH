@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['n_5ft',['N_t',['../class_x_n_l_o_1_1_config___settings.html#acbfb4631f7ef7467fd49b518e450e752',1,'XNLO::Config_Settings::N_t()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdaaed62d69309a42f8b66d7469127296b7',1,'XNLO::Config_Settings::N_t()']]],
-  ['n_5ft_5f',['N_t_',['../class_x_n_l_o_1_1_config___settings.html#ae1a889240208051a638a09bf47e3fc6e',1,'XNLO::Config_Settings']]],
-  ['n_5ft_5fdescription',['N_t_description',['../class_x_n_l_o_1_1_config___settings.html#a0034ef1b4689a59b81439aafc1c41929',1,'XNLO::Config_Settings']]],
-  ['n_5ft_5fdescription_5f',['N_t_description_',['../class_x_n_l_o_1_1_config___settings.html#ae35a412c07d31e2bc2097a38a25431de',1,'XNLO::Config_Settings']]],
-  ['n_5ft_5fdescription_5fset',['N_t_description_set',['../class_x_n_l_o_1_1_config___settings.html#a5889f3eb6012483991df18d55791bd46',1,'XNLO::Config_Settings']]],
-  ['n_5ft_5fset',['N_t_set',['../class_x_n_l_o_1_1_config___settings.html#a0181d80011215e52d8178648b7751062',1,'XNLO::Config_Settings']]]
+  ['get_5facceleration',['get_acceleration',['../class_x_n_l_o_1_1_schrodinger__atom__1_d.html#af0f1e686a5429fca431e87ff9012b1ce',1,'XNLO::Schrodinger_atom_1D']]],
+  ['grid_5frkr',['grid_rkr',['../classgrid__rkr.html',1,'grid_rkr'],['../classgrid__rkr.html#a8c3f61553704783780b89fb19aeb400c',1,'grid_rkr::grid_rkr()'],['../classgrid__rkr.html#adc3dbfbeb1dcc1ac948b58d26a83ffd1',1,'grid_rkr::grid_rkr(int n_r_, double R_, int n_m_, maths_textbook &amp;maths_)']]],
+  ['grid_5ftw',['grid_tw',['../class_x_n_l_o_1_1grid__tw.html',1,'XNLO::grid_tw'],['../classgrid__tw.html',1,'grid_tw'],['../classgrid__tw.html#af1e2316561c84a2262e374600895010d',1,'grid_tw::grid_tw()'],['../classgrid__tw.html#a583d4c2b423305ef3806d6221ed3f543',1,'grid_tw::grid_tw(int N_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook &amp;maths_)'],['../class_x_n_l_o_1_1grid__tw.html#a54b8e8126ff23b9b3e6803c4cb223cfc',1,'XNLO::grid_tw::grid_tw()']]],
+  ['grid_5fxkx',['grid_xkx',['../classgrid__xkx.html',1,'grid_xkx'],['../classgrid__xkx.html#af0662ee6b6dbd498dd0d273a6a35cc68',1,'grid_xkx::grid_xkx()'],['../classgrid__xkx.html#a79005084997c1ce569572389bf9bebde',1,'grid_xkx::grid_xkx(int N_x_, double x_min_, double x_max_)']]]
 ];

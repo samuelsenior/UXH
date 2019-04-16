@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['u',['U',['../classkeldysh__gas.html#a752b70afe289a798cc0ab7b688b9ed3d',1,'keldysh_gas']]]
+  ['setting_5fname',['setting_name',['../class_config___settings.html#a05f6108c286f7e7bbbbb1063a77b9a71',1,'Config_Settings']]]
 ];

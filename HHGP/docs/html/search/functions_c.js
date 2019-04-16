@@ -1,7 +1,23 @@
 var searchData=
 [
-  ['t',['T',['../class_h_h_1_1_config___settings.html#a3ffb81e56264ddd33acb9e6e8533c575',1,'HH::Config_Settings']]],
-  ['t_5fdescription',['T_description',['../class_h_h_1_1_config___settings.html#aebe52270820dfe4a825e0cd11f49fbb8',1,'HH::Config_Settings']]],
-  ['t_5fdescription_5fset',['T_description_set',['../class_h_h_1_1_config___settings.html#a3c04d3d857fb80d95df2fd97bd51af14',1,'HH::Config_Settings']]],
-  ['t_5fset',['T_set',['../class_h_h_1_1_config___settings.html#aad7bc83f3b2f4a798df135fef90ac56a',1,'HH::Config_Settings']]]
+  ['n',['n',['../classpropagation.html#a7c696d9e54e5f0a7735047e28aee4866',1,'propagation']]],
+  ['n_5fm',['n_m',['../class_h_h_1_1_config___settings.html#ac73782a678deffe86161d68b88676f7c',1,'HH::Config_Settings']]],
+  ['n_5fm_5fdescription',['n_m_description',['../class_h_h_1_1_config___settings.html#a66709ee3586add5ea629d582e0bbaffc',1,'HH::Config_Settings']]],
+  ['n_5fm_5fdescription_5fset',['n_m_description_set',['../class_h_h_1_1_config___settings.html#a24b59107f9e341ac21177b76e7b8941a',1,'HH::Config_Settings']]],
+  ['n_5fm_5fset',['n_m_set',['../class_h_h_1_1_config___settings.html#ab6f031e71a3a66f7ea5d8aa634ed640b',1,'HH::Config_Settings']]],
+  ['n_5fr',['n_r',['../class_h_h_1_1_config___settings.html#ad463b0ed9afb91b1b29d2a7effb2255e',1,'HH::Config_Settings']]],
+  ['n_5fr_5fdescription',['n_r_description',['../class_h_h_1_1_config___settings.html#a5985c267bdd9d1beca99ca17e6d65472',1,'HH::Config_Settings']]],
+  ['n_5fr_5fdescription_5fset',['n_r_description_set',['../class_h_h_1_1_config___settings.html#abe96b09440f2794304087ed73d46e5a9',1,'HH::Config_Settings']]],
+  ['n_5fr_5fset',['n_r_set',['../class_h_h_1_1_config___settings.html#a2f26f2be6db9d69e3bbbb96987a231e0',1,'HH::Config_Settings']]],
+  ['n_5ft',['n_t',['../class_h_h_1_1_config___settings.html#ac77b4ee5e6d2885ecab83c9e0128f329',1,'HH::Config_Settings']]],
+  ['n_5ft_5fdescription',['n_t_description',['../class_h_h_1_1_config___settings.html#a2188335343f2f22674fe83b66b0371c7',1,'HH::Config_Settings']]],
+  ['n_5ft_5fdescription_5fset',['n_t_description_set',['../class_h_h_1_1_config___settings.html#a95309c7bd2c6faccfeefe9ef4a407205',1,'HH::Config_Settings']]],
+  ['n_5ft_5fset',['n_t_set',['../class_h_h_1_1_config___settings.html#a79c5697f2680de1974ba30366487f0fc',1,'HH::Config_Settings']]],
+  ['n_5fz',['n_z',['../class_h_h_1_1_config___settings.html#a88383050e7e4b52c8fc026ee3479c74d',1,'HH::Config_Settings']]],
+  ['n_5fz_5fdescription',['n_z_description',['../class_h_h_1_1_config___settings.html#afe0faa8626f1d217bbe286e048e83a20',1,'HH::Config_Settings']]],
+  ['n_5fz_5fdescription_5fset',['n_z_description_set',['../class_h_h_1_1_config___settings.html#ad2e96cf383086297a5a53818b9f4f1f1',1,'HH::Config_Settings']]],
+  ['n_5fz_5fset',['n_z_set',['../class_h_h_1_1_config___settings.html#a94507305a335437e50a055f4aa474fa7',1,'HH::Config_Settings']]],
+  ['nearfieldpropagationstep',['nearFieldPropagationStep',['../classpropagation.html#a65e272beb6b5b73f433456361bcde914',1,'propagation']]],
+  ['nearfieldstep',['nearFieldStep',['../class_h_h_g_p.html#af9dfaf85a3893354288e1a59dcb2611a',1,'HHGP']]],
+  ['nl_5fpolarization',['nl_polarization',['../classkeldysh__gas.html#a1cd65d1983cb6c5ff9d04eeb29e94dd5',1,'keldysh_gas']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['original_5fn_5fz_5f',['original_n_z_',['../class_config___settings.html#aa5d9cadb0a2396d9cd32ae479879c102',1,'Config_Settings']]],
-  ['original_5fn_5fz_5fdescription_5f',['original_n_z_description_',['../class_config___settings.html#a8b0a048a13c52e9689ed88fd70e0e0a0',1,'Config_Settings']]],
-  ['output_5fsampling_5frate_5f',['output_sampling_rate_',['../class_config___settings.html#a83b05fd98edf9a7854887df86dd709df',1,'Config_Settings']]],
-  ['output_5fsampling_5frate_5fdescription_5f',['output_sampling_rate_description_',['../class_config___settings.html#a3f1a03176c4e0aed237037b5ea644256',1,'Config_Settings']]]
+  ['k_5fb',['k_B',['../classphysics__textbook.html#a666f84f0f7f65910169ed6b82129e5c8',1,'physics_textbook']]],
+  ['kappa',['kappa',['../classkeldysh__gas.html#a836c6a6c2f1bec80ea15344822a07ea5',1,'keldysh_gas']]],
+  ['kr',['kr',['../classgrid__rkr.html#aa09a97ce2aa9975fb4d2c1ee5da98b26',1,'grid_rkr']]],
+  ['kx',['kx',['../classgrid__xkx.html#a5095a800b9e5947262cddaa227a50af7',1,'grid_xkx']]]
 ];

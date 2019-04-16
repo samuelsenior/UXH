@@ -1,19 +1,10 @@
 var searchData=
 [
-  ['n_5fm',['n_m',['../class_config___settings.html#aa0de2ef7676aee694198ede5e96f7dca',1,'Config_Settings']]],
-  ['n_5fm_5fdescription',['n_m_description',['../class_config___settings.html#a06222062da21105d4fc7a517fd8d09f3',1,'Config_Settings']]],
-  ['n_5fm_5fdescription_5fset',['n_m_description_set',['../class_config___settings.html#a7359dcac6b107a8ed1d3ebafc38b4329',1,'Config_Settings']]],
-  ['n_5fm_5fset',['n_m_set',['../class_config___settings.html#a3ed0c682ef8ee538075b4b61937819a7',1,'Config_Settings']]],
-  ['n_5fr',['n_r',['../class_config___settings.html#ae71c4b873c05bfba67d92929adf817b1',1,'Config_Settings']]],
-  ['n_5fr_5fdescription',['n_r_description',['../class_config___settings.html#a8c3ebb61d80cb5badc1850eb13bfd771',1,'Config_Settings']]],
-  ['n_5fr_5fdescription_5fset',['n_r_description_set',['../class_config___settings.html#a82dbddc1dbdcef1113533e7f8c0f28ca',1,'Config_Settings']]],
-  ['n_5fr_5fset',['n_r_set',['../class_config___settings.html#a5af852f7b2e6b4bd5b76efa408906e58',1,'Config_Settings']]],
-  ['n_5ft',['n_t',['../class_config___settings.html#a77ad5b80da352bc85785e25232e80f1c',1,'Config_Settings']]],
-  ['n_5ft_5fdescription',['n_t_description',['../class_config___settings.html#a097aa83ca9de02a23cef594673421dd9',1,'Config_Settings']]],
-  ['n_5ft_5fdescription_5fset',['n_t_description_set',['../class_config___settings.html#aaa3ee5ab1141691390e26887fd6c2c72',1,'Config_Settings']]],
-  ['n_5ft_5fset',['n_t_set',['../class_config___settings.html#a9d3bda378eb9b3af6868c3aa231fda72',1,'Config_Settings']]],
-  ['n_5fz',['n_z',['../class_config___settings.html#a52cbe7c286ed9f09296e68524448ff08',1,'Config_Settings']]],
-  ['n_5fz_5fdescription',['n_z_description',['../class_config___settings.html#a6c7f32979e0adf05130e86f70fc1d168',1,'Config_Settings']]],
-  ['n_5fz_5fdescription_5fset',['n_z_description_set',['../class_config___settings.html#ab4c3fe0409ce136e3b19ff6898e6e1e8',1,'Config_Settings']]],
-  ['n_5fz_5fset',['n_z_set',['../class_config___settings.html#ad66bf0d9dcee30cc0b970bf4402c4c00',1,'Config_Settings']]]
+  ['gas_5fpressure_5fprofile',['gas_pressure_profile',['../class_config___settings.html#a63980a67cd0ead8a2094a81c6f580a98',1,'Config_Settings']]],
+  ['gas_5fpressure_5fprofile_5fdescription',['gas_pressure_profile_description',['../class_config___settings.html#a61f7ec25e064f8aa108f95cacef58aaa',1,'Config_Settings']]],
+  ['gas_5fpressure_5fprofile_5fdescription_5fset',['gas_pressure_profile_description_set',['../class_config___settings.html#a007088f008ed62a5778f09096913cf89',1,'Config_Settings']]],
+  ['gas_5fpressure_5fprofile_5fset',['gas_pressure_profile_set',['../class_config___settings.html#a167daa947c16bc735d496fa944773721',1,'Config_Settings']]],
+  ['grid_5frkr',['grid_rkr',['../classgrid__rkr.html#a8c3f61553704783780b89fb19aeb400c',1,'grid_rkr::grid_rkr()'],['../classgrid__rkr.html#adc3dbfbeb1dcc1ac948b58d26a83ffd1',1,'grid_rkr::grid_rkr(int n_r_, double R_, int n_m_, maths_textbook &amp;maths_)']]],
+  ['grid_5ftw',['grid_tw',['../classgrid__tw.html#af1e2316561c84a2262e374600895010d',1,'grid_tw::grid_tw()'],['../classgrid__tw.html#a583d4c2b423305ef3806d6221ed3f543',1,'grid_tw::grid_tw(int N_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook &amp;maths_)'],['../class_x_n_l_o_1_1grid__tw.html#a54b8e8126ff23b9b3e6803c4cb223cfc',1,'XNLO::grid_tw::grid_tw()']]],
+  ['grid_5fxkx',['grid_xkx',['../classgrid__xkx.html#af0662ee6b6dbd498dd0d273a6a35cc68',1,'grid_xkx::grid_xkx()'],['../classgrid__xkx.html#a79005084997c1ce569572389bf9bebde',1,'grid_xkx::grid_xkx(int N_x_, double x_min_, double x_max_)']]]
 ];
