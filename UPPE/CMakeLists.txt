@@ -162,7 +162,7 @@ include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 set(SOURCES
    ${SOURCES}
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/UPPE/main.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/UPPE/capillary_fibre.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/capillary/capillary_fibre.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/UPPE/config_settings.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT/DHT.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_rkr.cpp

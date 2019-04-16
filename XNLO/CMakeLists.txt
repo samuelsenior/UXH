@@ -153,7 +153,7 @@ set(SOURCES
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/laser_pulse.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths/maths_textbook.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics/physics_textbook.cpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/Schrodinger_atom_1D.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/atom/Schrodinger_atom_1D.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/XNLO.cpp
    #PARENT_SCOPE
 )
@@ -168,7 +168,7 @@ set(HEADERS
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/laser_pulse.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/maths/maths_textbook.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/physics/physics_textbook.hpp
-   ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/Schrodinger_atom_1D.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/atom/Schrodinger_atom_1D.hpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/XNLO/XNLO.hpp
    #PARENT_SCOPE
 )
