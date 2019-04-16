@@ -80,7 +80,7 @@ std::cout << "count: " << count << std::endl;
       // Also, how to know how much to read in?
       int E_length = 506;  // Length of Ar.nff file
       int ASF_file_cols = 3;  // Number of cols in ASF file
-      E_f1_f2_data_path = "../../AtomicScatteringFactors/ar.nff";
+      E_f1_f2_data_path = "../../input/AtomicScatteringFactors/ar.nff";
       IO ASF_file;
       E_f1_f2_data = ASF_file.read_ascii_double(E_f1_f2_data_path, E_length, ASF_file_cols);
       E = E_f1_f2_data.col(0);
