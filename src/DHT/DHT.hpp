@@ -10,8 +10,8 @@
 #ifndef __DHT_HPP_INCLUDED__
 #define __DHT_HPP_INCLUDED__
 
-#include "../Eigen/Dense"
-#include "maths_textbook.hpp"
+#include "../../Eigen/Dense"
+#include "../maths/maths_textbook.hpp"
 
 //using namespace Eigen;
 

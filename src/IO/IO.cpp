@@ -7,7 +7,7 @@
 //
 
 #include "IO.hpp"
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 #include <fstream>
 
 #include <iostream>

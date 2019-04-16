@@ -8,8 +8,8 @@
 //
 
 #include "grid_tw.hpp"
-#include "maths_textbook.hpp"
-#include "../Eigen/Dense"
+#include "../maths/maths_textbook.hpp"
+#include "../../Eigen/Dense"
 
 #include <iostream>
 

@@ -7,11 +7,11 @@
 //
 
 #include "keldysh_gas.hpp"
-#include "physics_textbook.hpp"
-#include "grid_tw.hpp"
+#include "../physics/physics_textbook.hpp"
+#include "../grid/grid_tw.hpp"
 #include <mkl.h>
-#include "../Eigen/Dense"
-#include "maths_textbook.hpp"
+#include "../../Eigen/Dense"
+#include "../maths/maths_textbook.hpp"
 #include <cmath>
 
 #include <iostream>

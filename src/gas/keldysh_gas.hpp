@@ -9,11 +9,11 @@
 #ifndef __KELDYSH_GAS_HPP_INCLUDED__
 #define __KELDYSH_GAS_HPP_INCLUDED__
 
-#include "physics_textbook.hpp"
-#include "maths_textbook.hpp"
-#include "grid_tw.hpp"
+#include "../physics/physics_textbook.hpp"
+#include "../maths/maths_textbook.hpp"
+#include "../grid/grid_tw.hpp"
 #include <mkl.h>
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include <string>
 

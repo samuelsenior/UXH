@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-#include "../Eigen/Dense"
+#include "../../Eigen/Dense"
 
 #include <string>
 
