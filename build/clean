@@ -1,0 +1,27 @@
+#! /bin/bash
+
+echo "Cleaning build dirs..."
+
+cd ../XNLO/build &&
+rm -r CMake* &&
+rm Make* &&
+rm cmake* &&
+rm Doxyfile.out &&
+cd ../../build
+
+cd ../HHGP/build &&
+rm -r CMake* &&
+rm Make* &&
+rm cmake* &&
+rm Doxyfile.out &&
+cd ../../build
+
+cd ../UPPE/build &&
+rm -r CMake* &&
+rm Make* &&
+rm cmake* &&
+rm Doxyfile.out &&
+cd ../../build
+
+echo "Build dirs cleaned!"
+
