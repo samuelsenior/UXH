@@ -31,7 +31,7 @@ laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, do
                          double spot_radius_, double ROC_, grid_rkr rkr_, grid_tw tw_,
                          std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int read_in_laser_pulse) {
 
-    maths_textbook maths("../input/J0_zeros.bin");
+    maths_textbook maths("../../input/J0_zeros.bin");
     physics_textbook physics;
 
     if (read_in_laser_pulse == 0) {
@@ -154,7 +154,7 @@ laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, do
 /*! Constructor */
 laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE) {
 
-    maths_textbook maths("../input/J0_zeros.bin");
+    maths_textbook maths("../../input/J0_zeros.bin");
     physics_textbook physics;
 
     int N_cols = A_w_active.cols();
