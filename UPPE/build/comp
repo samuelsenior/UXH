@@ -18,7 +18,7 @@ fi
 #export TBBROOT=fdsljkfds
 source /local/software/intel/2017/mkl/bin/mklvars.sh intel64 ilp64
 # cmake -D CMAKE_C_COMPILER=gcc-6 -D CMAKE_CXX_COMPILER=g++-6 ..
-cmake -D CMAKE_C_COMPILER=mpicc -D CMAKE_CXX_COMPILER=mpicxx ..
+cmake -D CMAKE_C_COMPILER=mpicc -D CMAKE_CXX_COMPILER=mpic++ ..
 DOXYGEN_QUIET=YES make
 
 cp ../../src/UPPE/UPPE.hpp ../lib/UPPE.hpp
