@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inital_5fpropagation_5fstep',['inital_propagation_step',['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a125931e118e962505fe936bb5685b292',1,'HH::Config_Settings']]]
+  ['hhgp_5fstarting_5fz',['HHGP_starting_z',['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa82b77ec43ada904a728b1e44e440fd2f',1,'Config_Settings']]]
 ];

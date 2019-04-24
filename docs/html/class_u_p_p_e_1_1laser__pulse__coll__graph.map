@@ -1,8 +1,9 @@
 <map id="UPPE::laser_pulse" name="UPPE::laser_pulse">
-<area shape="rect" id="node2" href="$classphysics__textbook.html" title="physics_textbook" alt="" coords="5,95,129,121"/>
-<area shape="rect" id="node3" href="$classgrid__rkr.html" title="grid_rkr" alt="" coords="244,95,309,121"/>
-<area shape="rect" id="node4" href="$classmaths__textbook.html" title="maths_textbook" alt="" coords="142,5,257,32"/>
-<area shape="rect" id="node5" href="$classgrid__tw.html" title="grid_tw" alt="" coords="334,95,398,121"/>
-<area shape="rect" id="node6" href="$class_config___settings.html" title="Config_Settings" alt="" coords="422,95,537,121"/>
-<area shape="rect" id="node7" href="$class_d_h_t.html" title="DHT" alt="" coords="561,95,611,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="271,179,404,204"/>
+<area shape="rect" id="node2" href="$classphysics__textbook.html" title=" " alt="" coords="5,92,129,117"/>
+<area shape="rect" id="node3" href="$classgrid__rkr.html" title=" " alt="" coords="241,92,307,117"/>
+<area shape="rect" id="node4" href="$classmaths__textbook.html" title=" " alt="" coords="140,5,256,31"/>
+<area shape="rect" id="node5" href="$classgrid__tw.html" title=" " alt="" coords="331,92,395,117"/>
+<area shape="rect" id="node6" href="$class_config___settings.html" title=" " alt="" coords="419,92,534,117"/>
+<area shape="rect" id="node7" href="$class_d_h_t.html" title=" " alt="" coords="559,92,608,117"/>
 </map>

@@ -9,6 +9,8 @@ var searchData=
   ['e_5fmin',['E_min',['../class_h_h_g_p.html#a5631e41d7b84f27a4fdb33a25309d3a0',1,'HHGP::E_min()'],['../classpropagation.html#ab5a753d760a135806a93b9082e8019fb',1,'propagation::E_min()']]],
   ['e_5fpk',['E_pk',['../class_u_p_p_e_1_1laser__pulse.html#aac6929225aa2ab97998b0859730cc304',1,'UPPE::laser_pulse']]],
   ['electron_5fdensity',['electron_density',['../class_u_p_p_e_1_1laser__pulse.html#a6b285e8a7036feb58362a702c1686ec3',1,'UPPE::laser_pulse']]],
+  ['ending_5fn_5fz_5f',['ending_n_z_',['../class_config___settings.html#ae74c4c1570f82c10005bc255dcde98b4',1,'Config_Settings']]],
+  ['ending_5fn_5fz_5fdescription_5f',['ending_n_z_description_',['../class_config___settings.html#a8d0b640995d23896ebda07c537c5e8fc',1,'Config_Settings']]],
   ['energy',['energy',['../class_schrodinger__atom__1_d.html#a056f3198b9f973ae64c5db22aecfa603',1,'Schrodinger_atom_1D']]],
   ['eps_5f0',['eps_0',['../classphysics__textbook.html#a8ea9a65f207ec6ad3388e605f385454c',1,'physics_textbook']]]
 ];

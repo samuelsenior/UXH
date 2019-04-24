@@ -1,8 +1,9 @@
-<map id="/home/sam/Project/XNLO/src/grid/grid_tw.hpp" name="/home/sam/Project/XNLO/src/grid/grid_tw.hpp">
-<area shape="rect" id="node2" href="$capillary__fibre_8hpp.html" title="/home/sam/Project/XNLO\l/src/capillary/capillary\l_fibre.hpp" alt="" coords="103,95,275,151"/>
-<area shape="rect" id="node3" href="$capillary__fibre_8cpp.html" title="/home/sam/Project/XNLO\l/src/capillary/capillary\l_fibre.cpp" alt="" coords="5,199,177,255"/>
-<area shape="rect" id="node4" href="$main_8cpp.html" title="/home/sam/Project/XNLO\l/src/UPPE/main.cpp" alt="" coords="227,206,399,247"/>
-<area shape="rect" id="node5" href="$keldysh__gas_8hpp.html" title="/home/sam/Project/XNLO\l/src/gas/keldysh_gas.hpp" alt="" coords="351,102,523,143"/>
-<area shape="rect" id="node6" href="$keldysh__gas_8cpp.html" title="/home/sam/Project/XNLO\l/src/gas/keldysh_gas.cpp" alt="" coords="448,206,620,247"/>
-<area shape="rect" id="node7" href="$grid__tw_8cpp.html" title="/home/sam/Project/XNLO\l/src/grid/grid_tw.cpp" alt="" coords="599,102,771,143"/>
+<map id="/Users/sms1n16/Project/XNLO/src/grid/grid_tw.hpp" name="/Users/sms1n16/Project/XNLO/src/grid/grid_tw.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="304,5,484,44"/>
+<area shape="rect" id="node2" href="$capillary__fibre_8hpp.html" title=" " alt="" coords="109,92,297,144"/>
+<area shape="rect" id="node3" href="$capillary__fibre_8cpp.html" title=" " alt="" coords="5,192,193,244"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="245,199,426,237"/>
+<area shape="rect" id="node5" href="$keldysh__gas_8hpp.html" title=" " alt="" coords="373,92,535,144"/>
+<area shape="rect" id="node6" href="$keldysh__gas_8cpp.html" title=" " alt="" coords="470,192,633,244"/>
+<area shape="rect" id="node7" href="$grid__tw_8cpp.html" title=" " alt="" coords="609,99,789,137"/>
 </map>
