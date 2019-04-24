@@ -404,7 +404,15 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 // Need to rethink if z += dz comes here or after propagation, have a feeling it should be after if
 // propagating to end of capillary only...
                 prop.z += dz;
-                HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
+// dz normalisation is wrong if doing intep
+// if not interping, then just using start and end, i.e. internal points = 0, total points = 2
+// so can do dz / (interp points total - 1) or dz / (interp points + 1)
+// But if interping on one middle site then dz/2,
+// so, dz / (interp points total - 1) = dz / (3 - 1), or dz / (interp points + 1) = dz / (1 + 1)
+// so that would fix this dz normalisation here, and can be used later for the interped points
+// default value of interp_points needs to be 0
+                //HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
+                HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                 // If at the last step then we're at teh end of the capillary and so aren't looking
                 // to propagate the last HH source any further, but rather just use it's source as it's
                 // already at the desired position
@@ -447,6 +455,24 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                     config.step_path(ii, "HHG_electric_field");
                     file_prop_step.write(E, config.path_HHG_E_step(), true);
                 }
+
+                // Interpolation bit
+// dz normalisation is now wrong!!!
+                if (ii == 1) {
+                    hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                } else {
+                    hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                    dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
+                    for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
+                        hhg_i = hhg_old + interp_i * dS_i;
+// VERY IMPORTANT
+// need to change prop to actually use dz!!!
+                        prop.nearFieldPropagationStep((config.Z() - dz*ii)+(dz*interp_i)/(config.interp_points()+2), hhg_i);
+                        HHP += prop.A_w_r;
+                    }
+                    hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                }
+
             }
         }
         if (this_process == 0) {
