@@ -35,6 +35,7 @@ const char * Config_Settings::setting_name[] = {
   "path_A_w_R_initial", "path_A_w_I_initial", "path_w_active_initial",
   "original_n_z",
   "HHGP_starting_z",
+  "ending_n_z",
   "gas_pressure_profile",
   "pend_path",
   "path_input_j0",
@@ -235,6 +236,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::HHGP_starting_z :
         HHGP_starting_z_set(std::stod(variable_value_str));
         HHGP_starting_z_description_set(input_description_char);
+        break;
+
+      case SN::ending_n_z :
+        ending_n_z_set(std::stoi(variable_value_str));
+        ending_n_z_description_set(input_description_char);
         break;
 
       case SN::gas_pressure_profile:
@@ -565,6 +571,7 @@ void Config_Settings::print() {
     std::cout << "   read_in_laser_pulse:  " << read_in_laser_pulse() << "   " << read_in_laser_pulse_description() << std::endl;
     std::cout << "   original_n_z:         " << original_n_z() << "   " << original_n_z_description() << std::endl;
     std::cout << "   HHGP_starting_z:      " << HHGP_starting_z() << "   " << HHGP_starting_z_description() << std::endl;
+    std::cout << "   ending_n_z:       " << ending_n_z() << "   " << ending_n_z_description() << std::endl;
     std::cout << "   gas_pressure_profile: " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
     std::cout << "   pend_path         " << pend_path() << "                      " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:    " << path_input_j0() << "        " << path_input_j0_description() << std::endl;
@@ -614,6 +621,8 @@ void Config_Settings::print(std::string path_) {
       config_log << "{original_n_z} {" << original_n_z() << "} {" << original_n_z_description() << "}\n";
 
       config_log << "{HHGP_starting_z} {" << HHGP_starting_z() << "} {" << HHGP_starting_z_description() << "}\n";
+
+      config_log << "{ending_n_z} {" << ending_n_z() << "} {" << ending_n_z_description() << "}\n";
 
       config_log << "{gas_pressure_profile} {" << gas_pressure_profile() << "} {" << gas_pressure_profile_description() << "}\n";
 
@@ -761,6 +770,12 @@ double Config_Settings::HHGP_starting_z() { return HHGP_starting_z_; }
 void Config_Settings::HHGP_starting_z_set(double value) { HHGP_starting_z_ = value; }
 std::string Config_Settings::HHGP_starting_z_description() { return HHGP_starting_z_description_; }
 void Config_Settings::HHGP_starting_z_description_set(std::string description) { HHGP_starting_z_description_ = description; }
+
+
+int Config_Settings::ending_n_z() { return ending_n_z_; }
+void Config_Settings::ending_n_z_set(int value) { ending_n_z_ = value; }
+std::string Config_Settings::ending_n_z_description() { return ending_n_z_description_; }
+void Config_Settings::ending_n_z_description_set(std::string description) { ending_n_z_description_ = description; }
 
 
 std::string Config_Settings::gas_pressure_profile() { return gas_pressure_profile_; }

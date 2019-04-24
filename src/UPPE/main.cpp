@@ -30,7 +30,6 @@
 
 #include "../HHGP/HHGP.hpp"
 #include "../HHGP/propagation.hpp"
-//#include "../../HHGP/src/config_settings.hpp"
 
 using namespace Eigen;
 
@@ -225,8 +224,8 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
         std::cout << "Main Program:\n";
         std::cout << "-------------------------------------------------------------------------------\n";
 
-        //std::cout << "Laser p_pk: " << laser_driving.p_pk << std::endl;
-        //std::cout << "Laser E_pk: " << laser_driving.E_pk << std::endl;
+        std::cout << "Laser p_pk: " << laser_driving.p_pk << std::endl;
+        std::cout << "Laser E_pk: " << laser_driving.E_pk << std::endl;
     }
     
     IO file_prop_step;
@@ -300,9 +299,16 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
     ArrayXXcd HHG_tmp = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
+    if (this_process == 0) {
+            // Output already known variables, in case crashes etc, so they are already saved early on
+            IO file;
+            file.write(tw.w_active, config.path_w_active());
+            file.write(w_active_HHG, config.path_HHG_w());
+    }
+
     MPI_Barrier(MPI_COMM_WORLD);
 
-        for (int ii = propagation_step; ii < config.n_z() + 1; ii++) {
+        for (int ii = propagation_step; ii < config.ending_n_z() + 1; ii++) {//config.n_z() + 1; ii++) {
             if (this_process == 0) {
                 std::cout << "Propagation step: " << ii << std::endl;
                 laser_driving.propagate(dz, capillary_driving, gas);
@@ -448,18 +454,31 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
         }
 
         if (this_process == 0) {
-            // Output
+            // Output, as final block step, so don't overwrite and loose info from other blocks
             IO file;
-            file.write(laser_driving.A_w_active.real(), config.path_A_w_R());
-            file.write(laser_driving.A_w_active.imag(), config.path_A_w_I());
+            file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
+            file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
             file.write(tw.w_active, config.path_w_active());
 
-            file.write(hhg.real(), config.path_HHG_R());
-            file.write(hhg.imag(), config.path_HHG_I());
+            file.write(hhg.real(), config.path_HHG_R_step());
+            file.write(hhg.imag(), config.path_HHG_I_step());
             file.write(w_active_HHG, config.path_HHG_w());
 
-            file.write(HHP.real(), config.path_HHP_R());
-            file.write(HHP.imag(), config.path_HHP_I());
+            file.write(HHP.real(), config.path_HHP_R_step());
+            file.write(HHP.imag(), config.path_HHP_I_step());
+
+        //    // Output
+        //    IO file;
+        //    file.write(laser_driving.A_w_active.real(), config.path_A_w_R());
+        //    file.write(laser_driving.A_w_active.imag(), config.path_A_w_I());
+        //    file.write(tw.w_active, config.path_w_active());
+        //
+        //    file.write(hhg.real(), config.path_HHG_R());
+        //    file.write(hhg.imag(), config.path_HHG_I());
+        //    file.write(w_active_HHG, config.path_HHG_w());
+        //
+        //    file.write(HHP.real(), config.path_HHP_R());
+        //    file.write(HHP.imag(), config.path_HHP_I());
         }
 
         // Clean up

@@ -34,6 +34,7 @@ private:
     read_in_laser_pulse, path_A_w_R_initial, path_A_w_I_initial, path_w_active_initial,
     original_n_z,
     HHGP_starting_z,
+    ending_n_z,
     gas_pressure_profile,
     pend_path,
     path_input_j0,
@@ -76,6 +77,8 @@ private:
     int original_n_z_ = n_z_;
 
     double HHGP_starting_z_ = 0.0;
+
+    int ending_n_z_ = n_z_;
 
     std::string gas_pressure_profile_ = "capillary";
 
@@ -143,6 +146,8 @@ private:
     std::string original_n_z_description_ = "(default) (int) Original n_z from read in file";
 
     std::string HHGP_starting_z_description_ = "(default) (double) Starting distance for HHGP in capillary";
+
+    std::string ending_n_z_description_ = "(default) (int) Ending step for UPPE block";
 
     std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
 
@@ -312,6 +317,11 @@ public:
     void HHGP_starting_z_set(double);
     std::string HHGP_starting_z_description();
     void HHGP_starting_z_description_set(std::string);
+
+    int ending_n_z();
+    void ending_n_z_set(int);
+    std::string ending_n_z_description();
+    void ending_n_z_description_set(std::string);
 
     std::string gas_pressure_profile();
     void gas_pressure_profile_set(std::string);
