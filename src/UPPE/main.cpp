@@ -461,6 +461,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 if (ii == 1) {
                     hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                 } else {
+std::cout << "Starting interpolation!" << std::endl;
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                     double interp_dz = dz / double(config.interp_points() + 2)
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
@@ -472,6 +473,12 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                         HHP += prop.A_w_r;
                     }
                     hhg_old = hhg_new;
+std::cout << "Interpolation complete!" << std::endl;
+                    if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                        config.step_path(ii, "HHP_A_w");
+                        file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+                        file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
+                    }
                 }
 
             }
