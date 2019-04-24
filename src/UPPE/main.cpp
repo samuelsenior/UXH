@@ -462,15 +462,16 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                     hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                 } else {
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                    double interp_dz = dz / double(config.interp_points() + 2)
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
                     for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
                         hhg_i = hhg_old + interp_i * dS_i;
 // VERY IMPORTANT
 // need to change prop to actually use dz!!!
-                        prop.nearFieldPropagationStep((config.Z() - dz*ii)+(dz*interp_i)/(config.interp_points()+2), hhg_i);
+                        prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
                         HHP += prop.A_w_r;
                     }
-                    hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                    hhg_old = hhg_new;
                 }
 
             }
