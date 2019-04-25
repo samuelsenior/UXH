@@ -68,7 +68,7 @@ private:
 
     std::string pend_path_ = "prepend";
 
-    std::string path_input_j0_ = "../input/J0_zeros.bin";
+    std::string path_input_j0_ = "../../input/J0_zeros.bin";
 
     std::string path_laser_A_w_R_ = "../../UPPE/output/000_1_A_w_R.bin";
     std::string path_laser_A_w_I_ = "../../UPPE/output/000_1_A_w_I.bin";

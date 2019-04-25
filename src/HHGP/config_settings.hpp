@@ -66,7 +66,7 @@ private:
 
     std::string gas_pressure_profile_ = "capillary";
 
-    std::string path_input_j0_ = "../input/J0_zeros.bin";
+    std::string path_input_j0_ = "../../input/J0_zeros.bin";
 
     std::string path_A_w_R_ = "../output/A_w_R.bin";
     std::string path_A_w_I_ = "../output/A_w_I.bin";
