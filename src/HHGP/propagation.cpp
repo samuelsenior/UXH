@@ -219,7 +219,7 @@ std::complex<double> propagation::n(int i) {
         E(z, r) = \mathcal{H}^{-1}\left(\mathcal{H}(E(0, r)) \times \exp(iz\sqrt{k^2 - k_r^2})\right).
       \f]
 */
-void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
+void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_r_) {
       // k is from w_active, in terms of t this would be linearly spaced
 
       // Need to discount the k's that fall below the minimum energy
@@ -248,14 +248,14 @@ void propagation::nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_) {
 //std::cout << "dz: " << dz << ", z: " << z << std::endl;
 
       if (to_end_only == true) {
-std::cout << "z: " << z << ", delta_z: " << Z_max - z << std::endl;
+std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
         for(int i = 0; i < n_k; i++) {
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it
             for(int j = 0; j < rkr.n_r; j++) {
 //std::cout << "A_w_kr(j): " << A_w_kr(j) << " -> ";
-                A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (Z_max - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+                A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
 //std::cout << std::exp(std::complex<double>(0, -1) * (Z_max - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)) << std::endl;
 
 //std::cout << "A_w_kr(j): " << A_w_kr(j) << std::endl;
@@ -264,7 +264,7 @@ std::cout << "z: " << z << ", delta_z: " << Z_max - z << std::endl;
             A_w_r.row(i) = ht.backward(A_w_kr);
         }
       } else {
-std::cout << "dz: " << dz << ", z: " << z << std::endl;
+std::cout << "delta_z: " << delta_z << ", z: " << z << std::endl;
       for(int i = 0; i < n_k; i++) {
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
@@ -272,7 +272,7 @@ std::cout << "dz: " << dz << ", z: " << z << std::endl;
             for(int j = 0; j < rkr.n_r; j++) {
 //std::cout << "k.rows(): " << k.rows() << ", k.cols(): " << k.cols() << std::endl;
                   //
-                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * (Z_max - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
 //                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
                   //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(n(i)*n(i)*k(i)*k(i) - k_r(j)*k_r(j), 0.5));
 //                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(k(i)*k(i) - k_r(j)*k_r(j), 0.5));

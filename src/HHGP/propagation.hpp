@@ -73,7 +73,7 @@ public:
 
     std::complex<double> n(int i);
 
-    void nearFieldPropagationStep(double dz, Eigen::ArrayXXcd A_w_r_);
+    void nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_r_);
     void farFieldPropagation();
 };
 
