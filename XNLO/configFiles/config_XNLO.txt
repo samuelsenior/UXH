@@ -3,13 +3,13 @@
 {x_min} {2.1027018070766638e-06} {(double) The x_min value}  // No longer used
 {x_max} {75.0e-6}                {(double) the x_max value}
 
-{N_t}   {30000}    {(int) The N_t value} // Was 26214, but originally 262144
+{N_t}   {20000}    {(int) The N_t value} // Was 26214, but originally 262144
 {t_min} {-75.0e-15} {(double) The t_min value}  // To match Peter's code: -1.04e-14
 {t_max} {100.0e-15}  {(double) The t_max value}  // To match Peter's code: 1.55948e-14
 
-{P_av}        {0.8} {(double) The P_av value}  // Was 0.115 last
+{P_av}        {1.0} {(double) The P_av value}  // Was 0.115 last
 {RR}          {1000}     {(double) The RR value}
-{FWHM}        {40.0e-15}  {(double) The FWHM value}
+{FWHM}        {70.71e-15}  {(double) The FWHM value}
 {l_0}         {800e-9}   {(double) The l_0 value}
 {CEO}         {0.0}      {(double) The CEO value}  // Was -1.570796 before Xmas
 {spot_radius} {48.0e-6}  {(double) The spot_radius value}  // Was 48e-6 originally - i.e. 0.64*75e-6
@@ -23,7 +23,7 @@
 
 {path_laser_A_w_R}    {../../UPPE/output/000_1_A_w_R.bin}    {(std::string) Path to A_w_R of laser pulse input}
 {path_laser_A_w_I}    {../../UPPE/output/000_1_A_w_I.bin}    {(std::string) Path to A_w_I of laser pulse input}
-{path_laser_w_active} {../../UPPE/output/000_1_w_active.bin} {(std::string) Path to w_active of laser pulse input}
+{path_laser_w_active} {../../UPPE/output/000_w_active.bin} {(std::string) Path to w_active of laser pulse input}
 
 {path_dipole} {../output/dipole.bin} {(std::string) Output path of dipole.txt}
 {path_w}      {../output/w.bin}      {(std::string) Output path of w.txt}
