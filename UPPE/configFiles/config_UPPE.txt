@@ -1,10 +1,10 @@
 The structure of this config file is fairly simple. Each row has three values to be read in, the first is the variable/input parameter name, the second is it's value, and the third is a brief description of it. Each of these values is incased in curly braces. Anything outside of a pair of curly braces is not read in and can therefore be used as comments in this file etc. If there are less than three pairs of curly braces on a line then an error message is thrown and that lines value isn't read in. If there are more than three pairs of curly braces then only the first three are considered and the rest are ignored.
 
-{n_z} {50} {(int) Number of steps in Z}
-{n_r} {20} {(int) The z_r value}
-{n_m} {20} {(int) Number of modes}
+{n_z} {150} {(int) Number of steps in Z}
+{n_r} {119} {(int) The z_r value}
+{n_m} {119} {(int) Number of modes}
 
-{output_sampling_rate} {2} {(int) Output sampling rate in Z}
+{output_sampling_rate} {5} {(int) Output sampling rate in Z}
 
 {n_t}          {16384}      {(int) The n_t value}
 {T}            {1000.0e-15} {(double) The T value}
@@ -16,16 +16,18 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {press} {50.0e-3} {(double) Pressure of the gas}
 
-{p_av}  {0.8}     {(double) The p_av value}
+{p_av}  {1.0}     {(double) The p_av value}
 {rep}   {1.0e3}   {(double) The rep value}
-{fwhm}  {50e-15}  {(double) Full width at half maximum}
+{fwhm}  {70.71e-15}  {(double) Full width at half maximum}
 {l_0}   {800.0e-9}  {(double) Laser central wavelength}
 {ceo}   {0.0}     {(double) The ceo value}  // Carrier Envelope Phase
 {waist} {48.0e-6} {(double) The beam waist} // 48.0e-6 orignally
 
+{laser_rel_tol} {1e-08} {(double) Laser propagation relative tolerance/error}
+
 {read_in_laser_pulse} {0} {(int) Switch to read in an initial laser pulse}
 
-{ending_n_z}    {50} {(int) Ending step for UPPE block}
+{ending_n_z}    {15000} {(int) Ending step for UPPE block}
 {interp_points} {0} {(int) Number of interpolation points between each step}
 
 {gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
