@@ -125,15 +125,15 @@ int main(int argc, char** argv){
                 std::cout << "Using config file path " << config_HHGP.path_config_file() << std::endl;
             }
         }
-    }
-    config_HHGP.read_in(config_HHGP.path_config_file(), false);
-    config_HHGP.check_paths(false);
-    if (total_processes > 1) {
-        config_HHGP.n_m_set(total_processes-1);
-        config_HHGP.n_r_set(total_processes-1);
-    }
-    if (this_process == 0) {
-        config_HHGP.print();
+        config_HHGP.read_in(config_HHGP.path_config_file(), false);
+        config_HHGP.check_paths(false);
+        if (total_processes > 1) {
+            config_HHGP.n_m_set(total_processes-1);
+            config_HHGP.n_r_set(total_processes-1);
+        }
+        if (this_process == 0) {
+            config_HHGP.print();
+        }
     }
 
     //--------------------------------------------------------------------------------------------//
@@ -299,6 +299,10 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
     ArrayXXcd HHG_tmp = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
+    ArrayXXcd hhg_old = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd dS_i = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd hhg_i = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+
     if (this_process == 0) {
             // Output already known variables, in case crashes etc, so they are already saved early on
             IO file;
@@ -463,9 +467,10 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 } else {
 std::cout << "Starting interpolation!" << std::endl;
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
-                    double interp_dz = dz / double(config.interp_points() + 2)
+                    double interp_dz = dz / double(config.interp_points() + 2);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
                     for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
+                        prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
 // VERY IMPORTANT
 // need to change prop to actually use dz!!!

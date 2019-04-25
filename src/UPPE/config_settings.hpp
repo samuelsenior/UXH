@@ -35,6 +35,7 @@ private:
     original_n_z,
     HHGP_starting_z,
     ending_n_z,
+    interp_points,
     gas_pressure_profile,
     pend_path,
     path_input_j0,
@@ -80,9 +81,11 @@ private:
 
     int ending_n_z_ = n_z_;
 
+    int interp_points_ = 0;
+
     std::string gas_pressure_profile_ = "capillary";
 
-    std::string path_input_j0_ = "../input/J0_zeros.bin";
+    std::string path_input_j0_ = "../../input/J0_zeros.bin";
 
     std::string path_A_w_R_ = "../output/A_w_R.bin";
     std::string path_A_w_I_ = "../output/A_w_I.bin";
@@ -148,6 +151,8 @@ private:
     std::string HHGP_starting_z_description_ = "(default) (double) Starting distance for HHGP in capillary";
 
     std::string ending_n_z_description_ = "(default) (int) Ending step for UPPE block";
+
+    std::string interp_points_description_ = "(default) (int) Number of interpolation points between each step";
 
     std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
 
@@ -322,6 +327,11 @@ public:
     void ending_n_z_set(int);
     std::string ending_n_z_description();
     void ending_n_z_description_set(std::string);
+
+    int interp_points();
+    void interp_points_set(int);
+    std::string interp_points_description();
+    void interp_points_description_set(std::string);
 
     std::string gas_pressure_profile();
     void gas_pressure_profile_set(std::string);

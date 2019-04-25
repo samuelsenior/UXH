@@ -36,6 +36,7 @@ const char * Config_Settings::setting_name[] = {
   "original_n_z",
   "HHGP_starting_z",
   "ending_n_z",
+  "interp_points",
   "gas_pressure_profile",
   "pend_path",
   "path_input_j0",
@@ -241,6 +242,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::ending_n_z :
         ending_n_z_set(std::stoi(variable_value_str));
         ending_n_z_description_set(input_description_char);
+        break;
+
+      case SN::interp_points :
+        interp_points_set(std::stoi(variable_value_str));
+        interp_points_description_set(input_description_char);
         break;
 
       case SN::gas_pressure_profile:
@@ -551,42 +557,43 @@ void Config_Settings::print() {
     std::cout << "-------------------------------------------------------------------------------\n";
     std::cout << "Input Parameters and Settings:\n";
     std::cout << "-------------------------------------------------------------------------------\n";
-    std::cout << "   n_z:                  " << n_z() << "                       " << n_z_description() << std::endl;
-    std::cout << "   n_r:                  " << n_r() << "                       " << n_r_description() << std::endl;
-    std::cout << "   n_m:                  " << n_m() << "                       " << n_m_description() << std::endl;
-    std::cout << "   output_sampling_rate: " << output_sampling_rate() << "                       " << output_sampling_rate_description() << std::endl;
-    std::cout << "   n_t:              " << n_t() << "                         " << n_t_description() << std::endl;
-    std::cout << "   T:                " << T() << "                        " << T_description() << std::endl;
-    std::cout << "   w_active_min:     " << w_active_min() << "                        " << w_active_min_description() << std::endl;
-    std::cout << "   w_active_max:     " << w_active_max() << "                        " << w_active_max_description() << std::endl;
-    std::cout << "   Z:                " << Z() << "                        " << Z_description() << std::endl;
-    std::cout << "   R:                " << R() << "                      " << R_description() << std::endl;
-    std::cout << "   press:            " << press() << "                          " << press_description() << std::endl;
-    std::cout << "   p_av:             " << p_av() << "                            " << p_av_description() << std::endl;
-    std::cout << "   rep:              " << rep() << "                         " << rep_description() << std::endl;
-    std::cout << "   fwhm:             " << fwhm() << "                        " << fwhm_description() << std::endl;
-    std::cout << "   l_0:              " << l_0() << "                        " << l_0_description() << std::endl;
-    std::cout << "   ceo:              " << ceo() << "                            " << ceo_description() << std::endl;
-    std::cout << "   waist:            " << waist() << "                      " << waist_description() << std::endl;
-    std::cout << "   read_in_laser_pulse:  " << read_in_laser_pulse() << "   " << read_in_laser_pulse_description() << std::endl;
-    std::cout << "   original_n_z:         " << original_n_z() << "   " << original_n_z_description() << std::endl;
-    std::cout << "   HHGP_starting_z:      " << HHGP_starting_z() << "   " << HHGP_starting_z_description() << std::endl;
-    std::cout << "   ending_n_z:       " << ending_n_z() << "   " << ending_n_z_description() << std::endl;
-    std::cout << "   gas_pressure_profile: " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
-    std::cout << "   pend_path         " << pend_path() << "                      " << pend_path_description() << std::endl;
-    std::cout << "   path_input_j0:    " << path_input_j0() << "        " << path_input_j0_description() << std::endl;
-    std::cout << "   path_A_w_R:       " << path_A_w_R() << "      " << path_A_w_R_description() << std::endl;
-    std::cout << "   path_A_w_I:       " << path_A_w_I() << "      " << path_A_w_I_description() << std::endl;
-    std::cout << "   path_w_active:    " << path_w_active() << "   " << path_w_active_description() << std::endl;
+    std::cout << "   n_z:                   " << n_z() << "          " << n_z_description() << std::endl;
+    std::cout << "   n_r:                   " << n_r() << "          " << n_r_description() << std::endl;
+    std::cout << "   n_m:                   " << n_m() << "          " << n_m_description() << std::endl;
+    std::cout << "   output_sampling_rate:  " << output_sampling_rate() << "          " << output_sampling_rate_description() << std::endl;
+    std::cout << "   n_t:                   " << n_t() << "       " << n_t_description() << std::endl;
+    std::cout << "   T:                     " << T() << "       " << T_description() << std::endl;
+    std::cout << "   w_active_min:          " << w_active_min() << "       " << w_active_min_description() << std::endl;
+    std::cout << "   w_active_max:          " << w_active_max() << "       " << w_active_max_description() << std::endl;
+    std::cout << "   Z:                     " << Z() << "        " << Z_description() << std::endl;
+    std::cout << "   R:                     " << R() << "     " << R_description() << std::endl;
+    std::cout << "   press:                 " << press() << "        " << press_description() << std::endl;
+    std::cout << "   p_av:                  " << p_av() << "         " << p_av_description() << std::endl;
+    std::cout << "   rep:                   " << rep() << "        " << rep_description() << std::endl;
+    std::cout << "   fwhm:                  " << fwhm() << "       " << fwhm_description() << std::endl;
+    std::cout << "   l_0:                   " << l_0() << "       " << l_0_description() << std::endl;
+    std::cout << "   ceo:                   " << ceo() << "           " << ceo_description() << std::endl;
+    std::cout << "   waist:                 " << waist() << "     " << waist_description() << std::endl;
+    std::cout << "   read_in_laser_pulse:   " << read_in_laser_pulse() << "           " << read_in_laser_pulse_description() << std::endl;
+    std::cout << "   original_n_z:          " << original_n_z() << "          " << original_n_z_description() << std::endl;
+    std::cout << "   HHGP_starting_z:       " << HHGP_starting_z() << "           " << HHGP_starting_z_description() << std::endl;
+    std::cout << "   ending_n_z:            " << ending_n_z() << "          " << ending_n_z_description() << std::endl;
+    std::cout << "   interp_points:         " << interp_points() << "           " << interp_points_description() << std::endl;
+    std::cout << "   gas_pressure_profile:  " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
+    std::cout << "   pend_path              " << pend_path() << "     " << pend_path_description() << std::endl;
+    std::cout << "   path_input_j0:         " << path_input_j0() << "     " << path_input_j0_description() << std::endl;
+    std::cout << "   path_A_w_R:            " << path_A_w_R() << "      " << path_A_w_R_description() << std::endl;
+    std::cout << "   path_A_w_I:            " << path_A_w_I() << "      " << path_A_w_I_description() << std::endl;
+    std::cout << "   path_w_active:         " << path_w_active() << "   " << path_w_active_description() << std::endl;
     std::cout << "   path_electron_density: " << path_electron_density() << "   " << path_electron_density_description() << std::endl;
-    std::cout << "   path_HHG_R:       " << path_HHG_R() << "   " << path_HHG_R_description() << std::endl;
-    std::cout << "   path_HHG_I:       " << path_HHG_I() << "   " << path_HHG_I_description() << std::endl;
-    std::cout << "   path_HHG_w:       " << path_HHG_w() << "   " << path_HHG_w_description() << std::endl;
-    std::cout << "   path_HHG_E:       " << path_HHG_E() << "   " << path_HHG_E_description() << std::endl;
-    std::cout << "   path_HHP_R:       " << path_HHP_R() << "   " << path_HHP_R_description() << std::endl;
-    std::cout << "   path_HHP_I:       " << path_HHP_I() << "   " << path_HHP_I_description() << std::endl;
-    std::cout << "   path_config_file: " << path_config_file() << "                 " << path_config_file_description() << std::endl;
-    std::cout << "   path_config_log:  " << path_config_log() << " " << path_config_log_description() << std::endl;
+    std::cout << "   path_HHG_R:       " << path_HHG_R() << "          " << path_HHG_R_description() << std::endl;
+    std::cout << "   path_HHG_I:       " << path_HHG_I() << "          " << path_HHG_I_description() << std::endl;
+    std::cout << "   path_HHG_w:       " << path_HHG_w() << "          " << path_HHG_w_description() << std::endl;
+    std::cout << "   path_HHG_E:       " << path_HHG_E() << "          " << path_HHG_E_description() << std::endl;
+    std::cout << "   path_HHP_R:       " << path_HHP_R() << "          " << path_HHP_R_description() << std::endl;
+    std::cout << "   path_HHP_I:       " << path_HHP_I() << "          " << path_HHP_I_description() << std::endl;
+    std::cout << "   path_config_file: " << path_config_file() << "   " << path_config_file_description() << std::endl;
+    std::cout << "   path_config_log:  " << path_config_log() << "     " << path_config_log_description() << std::endl;
     std::cout << "-------------------------------------------------------------------------------\n";
 }
 
@@ -619,10 +626,9 @@ void Config_Settings::print(std::string path_) {
 
       config_log << "{read_in_laser_pulse} {" << read_in_laser_pulse() << "} {" << read_in_laser_pulse_description() << "}\n";
       config_log << "{original_n_z} {" << original_n_z() << "} {" << original_n_z_description() << "}\n";
-
       config_log << "{HHGP_starting_z} {" << HHGP_starting_z() << "} {" << HHGP_starting_z_description() << "}\n";
-
       config_log << "{ending_n_z} {" << ending_n_z() << "} {" << ending_n_z_description() << "}\n";
+      config_log << "{interp_points} {" << interp_points() << "} {" << interp_points_description() << "}\n";
 
       config_log << "{gas_pressure_profile} {" << gas_pressure_profile() << "} {" << gas_pressure_profile_description() << "}\n";
 
@@ -740,6 +746,7 @@ void Config_Settings::waist_set(double value) { waist_ = value; }
 std::string Config_Settings::waist_description() { return waist_description_; }
 void Config_Settings::waist_description_set(std::string description) { waist_description_ = description; }
 
+
 int Config_Settings::read_in_laser_pulse() { return read_in_laser_pulse_; }
 void Config_Settings::read_in_laser_pulse_set(int value) { read_in_laser_pulse_ = value; }
 std::string Config_Settings::read_in_laser_pulse_description() { return read_in_laser_pulse_description_; }
@@ -765,17 +772,20 @@ void Config_Settings::original_n_z_set(int value) { original_n_z_ = value; }
 std::string Config_Settings::original_n_z_description() { return original_n_z_description_; }
 void Config_Settings::original_n_z_description_set(std::string description) { original_n_z_description_ = description; }
 
-
 double Config_Settings::HHGP_starting_z() { return HHGP_starting_z_; }
 void Config_Settings::HHGP_starting_z_set(double value) { HHGP_starting_z_ = value; }
 std::string Config_Settings::HHGP_starting_z_description() { return HHGP_starting_z_description_; }
 void Config_Settings::HHGP_starting_z_description_set(std::string description) { HHGP_starting_z_description_ = description; }
 
-
 int Config_Settings::ending_n_z() { return ending_n_z_; }
 void Config_Settings::ending_n_z_set(int value) { ending_n_z_ = value; }
 std::string Config_Settings::ending_n_z_description() { return ending_n_z_description_; }
 void Config_Settings::ending_n_z_description_set(std::string description) { ending_n_z_description_ = description; }
+
+int Config_Settings::interp_points() { return interp_points_; }
+void Config_Settings::interp_points_set(int value) { interp_points_ = value; }
+std::string Config_Settings::interp_points_description() { return interp_points_description_; }
+void Config_Settings::interp_points_description_set(std::string description) { interp_points_description_ = description; }
 
 
 std::string Config_Settings::gas_pressure_profile() { return gas_pressure_profile_; }
