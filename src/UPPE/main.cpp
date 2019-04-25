@@ -152,7 +152,7 @@ int main(int argc, char** argv){
     grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
 
     double dz = config.Z() / double(config.n_z());
-    int initial_step;
+    int initial_step = 0;
     int propagation_step;
     double initial_position;
     if (config.read_in_laser_pulse() == 1) {
@@ -168,7 +168,7 @@ int main(int argc, char** argv){
         initial_step = stoi(tmp_2);
         initial_step = int(double(config.n_z()) * double(stoi(tmp_2)) / double(config.original_n_z()));
 
-        propagation_step = initial_step + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
+        propagation_step = initial_step;// + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
                                               // initial step being read in is step i-1
         initial_position = dz * initial_step;
         if (this_process == 0) {
@@ -265,6 +265,7 @@ int main(int argc, char** argv){
     bool HH_prop_to_end_only = true;
     //double dz = config.Z() / config.n_z();
     //prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z());;
+    prop.z = double(initial_step) / double(config.n_z()) * double(config.Z());
     ////prop.z -= dz;
     //int inital_propagation_step = config.inital_propagation_step();
     double HHGP_starting_z = config.HHGP_starting_z();
