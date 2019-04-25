@@ -8,7 +8,7 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {n_t}          {16384}      {(int) The n_t value}
 {T}            {1000.0e-15} {(double) The T value}
-{w_active_min} {2.0e14}    {(double) Minimum positive angular frequency - was 2.0e-14 originally}
+{w_active_min} {2.0e14}    {(double) Minimum positive angular frequency}
 {w_active_max} {8.0e15}    {(double) Maximum positive angular frequency}
 
 {Z} {70.0e-3}  {(double) Length of capillary}
@@ -36,6 +36,8 @@ The structure of this config file is fairly simple. Each row has three values to
 {path_A_w_R}    {../output/A_w_R.bin}    {(std::string) Output path of A_w_R}
 {path_A_w_I}    {../output/A_w_I.bin}    {(std::string) Output path of A_w_I}
 {path_w_active} {../output/w_active.bin} {(std::string) Output path of w_active}
+
+{path_electron_density} {../output/electron_density.bin} {(std::string) Path of electron_density}
 
 {path_config_log}  {../output/config_log.txt}  {(std::string) Output path to config_log.txt}
 
