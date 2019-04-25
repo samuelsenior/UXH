@@ -211,17 +211,21 @@ int main(int argc, char** argv){
     IO file_prop_step;
 
     ArrayXXd acceleration_HHG = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
-    ArrayXXd w = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
-    ArrayXXd E = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+    ArrayXXd E;
+    if (config_XNLO.output_electric_field() == 1) {
+        ArrayXXd E = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+    } else {
+        ArrayXXd E = ArrayXXd::Zero(0, 0);
+    }
     XNLO::Result atomResponse;
-    //ArrayXd neutral_atoms = ArrayXd::Zero(config.n_r());
-    ArrayXXd neutral_atoms = ArrayXXd::Zero(config.n_t(), config.n_r());
+    ArrayXd neutral_atoms = ArrayXd::Zero(config.n_r());
+    //ArrayXXd neutral_atoms = ArrayXXd::Zero(config.n_t(), config.n_r());
     ArrayXd temp_linSpace_HHG_acceleration = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);  // I think this is wring and should be using T_min/T_max of XNLO???
     ArrayXd window_HHG_acceleration = (1 - ((0.5 * maths.pi * temp_linSpace_HHG_acceleration / 500e-15).sin()).pow(50));
+    temp_linSpace_HHG_acceleration = 0;
 
     ArrayXXcd A_w_active;
 
-    ArrayXd w_tmp = ArrayXd::Zero(config_XNLO.N_t());
     XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
 
     double lamda_min_HHG = 6.0e-9;
@@ -233,20 +237,21 @@ int main(int argc, char** argv){
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
 
-    w_tmp = tw_XNLO.w;
+    ArrayXd w_tmp = tw_XNLO.w;
     if (this_process == 0) {
         std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
     }
-        int w_active_min_index_HHG = 0;
-        while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
-            w_active_min_index_HHG++;
-        int count = 0;
-        while (w_tmp(count) < w_active_max_HHG) {
-            count++;
-        }
+    int w_active_min_index_HHG = 0;
+    while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
+        w_active_min_index_HHG++;
+    int count = 0;
+    while (w_tmp(count) < w_active_max_HHG) {
+        count++;
+    }
+    n_active_HHG = count - w_active_min_index_HHG;
+    w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
+    w_tmp = 0;
 
-        n_active_HHG = count - w_active_min_index_HHG;
-        w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
     if (this_process == 0) {
     std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
     std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
@@ -276,7 +281,7 @@ int main(int argc, char** argv){
     ArrayXXcd hhg_previous;
 
     ArrayXXcd HHG_tmp;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
-    ArrayXXcd HHP;// = ArrayXXcd::Zero(prop.n_k, config.n_r());
+    ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
     ArrayXXcd hhg_old;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd dS_i;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
@@ -318,6 +323,7 @@ int main(int argc, char** argv){
             if ((total_processes > 1) && HHGP_starting_z_bool) {
                 // Send
                 for (int j = 1; j < total_processes; j++) {
+std::cout << "---laser_driving.A_w_active.cols(): " << laser_driving.A_w_active.cols() << ", laser_driving.A_w_active.rows(): " << laser_driving.A_w_active.rows() << std::endl;
                     MPI_Send(laser_driving.A_w_active.real().data(),
                              laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                              MPI_DOUBLE, j, j, MPI_COMM_WORLD);
@@ -326,6 +332,7 @@ int main(int argc, char** argv){
         } else if (HHGP_starting_z_bool) {
             // Receive
             A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
+std::cout << "laser_driving.A_w_active.cols(): " << laser_driving.A_w_active.cols() << ", laser_driving.A_w_active.rows(): " << laser_driving.A_w_active.rows() << std::endl;
             MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                      MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
         }
@@ -337,9 +344,10 @@ int main(int argc, char** argv){
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
             // Do we just take the electron density at the last time step or at all of them?
             for (int j = 0; j < rkr.n_r; j++) {
-                for (int i = 0; i < config.n_t(); i++) {
-                    neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
-                }
+                //for (int i = 0; i < config.n_t(); i++) {
+                //    //neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
+                    neutral_atoms(j) = gas.atom_density(double(ii)*dz) - laser_driving.electron_density(laser_driving.electron_density.rows() - 1, j);;//.row(laser_driving.electron_density.rows() - 1).col(j);
+                //}
             }
             if (config_XNLO.output_electric_field() == 1) {
                 E = atomResponse.E;
@@ -368,7 +376,8 @@ int main(int argc, char** argv){
                     //acceleration_HHG.row(i).col(j) *= dz;  // Should be done in the HHG prop program rather than here
                                                              // to keep the sources terms as unmodified source terms
                                                              // for now.
-                    acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j);// * dz;
+                    //acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j);// * dz;
+                    acceleration_HHG.row(i).col(j) *= neutral_atoms(j);
                     acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
 
                     // How to do volume normalisation? Step increases to integrate over, or trapezoidal rule
@@ -392,8 +401,9 @@ int main(int argc, char** argv){
             // If at the last step then we're at teh end of the capillary and so aren't looking
             // to propagate the last HH source any further, but rather just use it's source as it's
             // already at the desired position
+std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG_tmp.cols() << std::endl;
             if (ii < config.n_z()) {
-                prop.nearFieldPropagationStep(dz, HHG_tmp);
+                prop.nearFieldPropagationStep((config.Z() - dz*ii), HHG_tmp);
                 HHP += prop.A_w_r;
             } else {
                 HHP += HHG_tmp;
@@ -415,28 +425,28 @@ int main(int argc, char** argv){
                 file_prop_step.write(E, config.path_HHG_E_step(), true);
             }
 
-            if (ii == 1) {
+            //if (ii == 1) {
                 hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
-            } else {
-                std::cout << "Starting interpolation!" << std::endl;
-                hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
-                double interp_dz = dz / double(config.interp_points() + 2);
-                dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
-                for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
-                    prop.z += interp_dz;
-                    hhg_i = hhg_old + interp_i * dS_i;
-
-                    prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
-                    HHP += prop.A_w_r;
-                }
-                hhg_old = hhg_new;
-                std::cout << "Interpolation complete!" << std::endl;
-                if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
-                    config.step_path(ii, "HHP_A_w");
-                    file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
-                    file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
-                }
-            }
+            //} else {
+            //    std::cout << "Starting interpolation!" << std::endl;
+            //    hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+            //    double interp_dz = dz / double(config.interp_points() + 2);
+            //    dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
+            //    for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
+            //        prop.z += interp_dz;
+            //        hhg_i = hhg_old + interp_i * dS_i;
+            //
+            //        prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
+            //        HHP += prop.A_w_r;
+            //   }
+            //    hhg_old = hhg_new;
+            //    std::cout << "Interpolation complete!" << std::endl;
+            //    if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+            //        config.step_path(ii, "HHP_A_w");
+            //        file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+            //        file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
+            //    }
+            //}
         }
         propagation_step++;
 
@@ -483,9 +493,10 @@ int main(int argc, char** argv){
             if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
-                    for (int i = 0; i < config.n_t(); i++) {
-                        neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
-                    }
+                //for (int i = 0; i < config.n_t(); i++) {
+                //    //neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
+                    neutral_atoms(j) = gas.atom_density(double(ii)*dz) - laser_driving.electron_density(laser_driving.electron_density.rows() - 1, j);;//.row(laser_driving.electron_density.rows() - 1).col(j);
+                //}
                 }
                 if (config_XNLO.output_electric_field() == 1) {
                     E = atomResponse.E;
@@ -514,7 +525,8 @@ int main(int argc, char** argv){
                         //acceleration_HHG.row(i).col(j) *= dz;  // Should be done in the HHG prop program rather than here
                                                                  // to keep the sources terms as unmodified source terms
                                                                  // for now.
-                        acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j);// * dz;
+                        //acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j);// * dz;
+                        acceleration_HHG.row(i).col(j) *= neutral_atoms(j);
                         acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
 
                         // How to do volume normalisation? Step increases to integrate over, or trapezoidal rule
@@ -543,7 +555,7 @@ int main(int argc, char** argv){
                 // to propagate the last HH source any further, but rather just use it's source as it's
                 // already at the desired position
                 if (ii < config.n_z()) {
-                    prop.nearFieldPropagationStep(dz, HHG_tmp);
+                    prop.nearFieldPropagationStep((config.Z() - dz*ii), HHG_tmp);
                     HHP += prop.A_w_r;
                 } else {
                     HHP += HHG_tmp;
@@ -579,14 +591,15 @@ int main(int argc, char** argv){
                     file_prop_step.write(E, config.path_HHG_E_step(), true);
                 }
 
-                if (ii == 1) {
-                    hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
-                } else {
+                //if (ii == 1) {
+                //    hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                //} else {
                     std::cout << "Starting interpolation!" << std::endl;
+                    std::cout << "Interpolating on to " << config.interp_points() << " internal sites..." << std::endl;
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                     double interp_dz = dz / double(config.interp_points() + 2);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
-                    for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
+                    for (int interp_i = 1; interp_i < config.interp_points() + 1; interp_i++) {
                         prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
 
@@ -600,7 +613,7 @@ int main(int argc, char** argv){
                         file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                         file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
                     }
-                }
+                //}
             }
         }
         if (this_process == 0) {
