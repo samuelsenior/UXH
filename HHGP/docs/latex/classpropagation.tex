@@ -26,7 +26,7 @@ Eigen\+::\+Array\+X\+Xcd \hyperlink{classpropagation_af12b15d9b91f98516c0ff25efc
 \item 
 std\+::complex$<$ double $>$ \hyperlink{classpropagation_a7c696d9e54e5f0a7735047e28aee4866}{n} (int i)
 \item 
-void \hyperlink{classpropagation_a65e272beb6b5b73f433456361bcde914}{near\+Field\+Propagation\+Step} (double dz, Eigen\+::\+Array\+X\+Xcd A\+\_\+w\+\_\+r\+\_\+)
+void \hyperlink{classpropagation_aedba6e1b78d23ae9f5f3f8b8cfd28c19}{near\+Field\+Propagation\+Step} (double delta\+\_\+z, Eigen\+::\+Array\+X\+Xcd A\+\_\+w\+\_\+r\+\_\+)
 \item 
 void \hyperlink{classpropagation_a9c2e1cb4e314c173b26de08ffcfe071d}{far\+Field\+Propagation} ()
 \end{DoxyCompactItemize}
@@ -122,11 +122,11 @@ Fraunhofer diffraction for propagating into the far-\/field. \mbox{\Hypertarget{
 \subsubsection{\texorpdfstring{n()}{n()}}
 {\footnotesize\ttfamily std\+::complex$<$ double $>$ propagation\+::n (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classpropagation_a65e272beb6b5b73f433456361bcde914}\label{classpropagation_a65e272beb6b5b73f433456361bcde914}} 
+\mbox{\Hypertarget{classpropagation_aedba6e1b78d23ae9f5f3f8b8cfd28c19}\label{classpropagation_aedba6e1b78d23ae9f5f3f8b8cfd28c19}} 
 \index{propagation@{propagation}!near\+Field\+Propagation\+Step@{near\+Field\+Propagation\+Step}}
 \index{near\+Field\+Propagation\+Step@{near\+Field\+Propagation\+Step}!propagation@{propagation}}
 \subsubsection{\texorpdfstring{near\+Field\+Propagation\+Step()}{nearFieldPropagationStep()}}
-{\footnotesize\ttfamily void propagation\+::near\+Field\+Propagation\+Step (\begin{DoxyParamCaption}\item[{double}]{dz,  }\item[{Eigen\+::\+Array\+X\+Xcd}]{A\+\_\+w\+\_\+r\+\_\+ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void propagation\+::near\+Field\+Propagation\+Step (\begin{DoxyParamCaption}\item[{double}]{delta\+\_\+z,  }\item[{Eigen\+::\+Array\+X\+Xcd}]{A\+\_\+w\+\_\+r\+\_\+ }\end{DoxyParamCaption})}
 
 Angular Spectrum Method (A\+SM) for propagating in the near-\/field, in the gas-\/filled capillary. \mbox{[}Need to add citation!\mbox{]} For circularly-\/symmetric geometry\+: \[ E(z, r) = \mathcal{H}^{-1}\left(\mathcal{H}(E(0, r)) \times \exp(iz\sqrt{k^2 - k_r^2})\right). \] \mbox{\Hypertarget{classpropagation_a39126bbbd4977c140c0077b849e78bc1}\label{classpropagation_a39126bbbd4977c140c0077b849e78bc1}} 
 \index{propagation@{propagation}!segment@{segment}}

@@ -109,8 +109,8 @@ Collaboration diagram for UPPE::laser_pulse:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:affc882e6ee1c61c2a4ec400cf97f41bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_p_p_e_1_1laser__pulse.html#affc882e6ee1c61c2a4ec400cf97f41bc">laser_pulse</a> (double p_av_, double rep_, double fwhm_, double l_0_, double ceo_, double waist_, <a class="el" href="classgrid__tw.html">grid_tw</a> &amp;tw_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> &amp;rkr_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, <a class="el" href="class_d_h_t.html">DHT</a> &amp;ht_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="class_config___settings.html">Config_Settings</a> <a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a15e61a95c79faf98f32e42f44dc5bbda">config</a>, int <a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a5f1ceaed09d29ffdda73900fbfd259ea">read_in_laser_pulse</a>, double <a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a572ca525e112438e92db494bbaf6e2a7">initial_position</a>)</td></tr>
-<tr class="separator:affc882e6ee1c61c2a4ec400cf97f41bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960d8fae9a15299251ba66e2121f4b91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a960d8fae9a15299251ba66e2121f4b91">laser_pulse</a> (double p_av_, double rep_, double fwhm_, double l_0_, double ceo_, double waist_, <a class="el" href="classgrid__tw.html">grid_tw</a> &amp;tw_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> &amp;rkr_, DFTI_DESCRIPTOR_HANDLE &amp;ft_, <a class="el" href="class_d_h_t.html">DHT</a> &amp;ht_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="class_config___settings.html">Config_Settings</a> <a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a15e61a95c79faf98f32e42f44dc5bbda">config</a>, int <a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a5f1ceaed09d29ffdda73900fbfd259ea">read_in_laser_pulse</a>, double <a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a572ca525e112438e92db494bbaf6e2a7">initial_position</a>, double rel_tol_)</td></tr>
+<tr class="separator:a960d8fae9a15299251ba66e2121f4b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c616574d13fca4cbb483e18c6bf6faf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a9c616574d13fca4cbb483e18c6bf6faf">propagate</a> (double dz_, <a class="el" href="classcapillary__fibre.html">capillary_fibre</a> &amp;capillary_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_)</td></tr>
 <tr class="separator:a9c616574d13fca4cbb483e18c6bf6faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -132,6 +132,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a92d40420abfdec8e1ae99ffda0afab28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac6929225aa2ab97998b0859730cc304"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_p_p_e_1_1laser__pulse.html#aac6929225aa2ab97998b0859730cc304">E_pk</a></td></tr>
 <tr class="separator:aac6929225aa2ab97998b0859730cc304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87a3983d3af860750b66129b0e3cf2c3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_p_p_e_1_1laser__pulse.html#a87a3983d3af860750b66129b0e3cf2c3">rel_tol</a></td></tr>
+<tr class="separator:a87a3983d3af860750b66129b0e3cf2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -184,8 +186,8 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Originally created by Patrick Anderson. Modified by Samuel Senior on 10/03/2017. "laser_pulse" contains the active spectral amplitudes and governs their propagation over longitudinal step dz. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="affc882e6ee1c61c2a4ec400cf97f41bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affc882e6ee1c61c2a4ec400cf97f41bc">&#9670;&nbsp;</a></span>laser_pulse()</h2>
+<a id="a960d8fae9a15299251ba66e2121f4b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960d8fae9a15299251ba66e2121f4b91">&#9670;&nbsp;</a></span>laser_pulse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -272,7 +274,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>initial_position</em>&#160;</td>
+          <td class="paramname"><em>initial_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rel_tol_</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -792,6 +800,20 @@ Private Attributes</h2></td></tr>
 <span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87a3983d3af860750b66129b0e3cf2c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87a3983d3af860750b66129b0e3cf2c3">&#9670;&nbsp;</a></span>rel_tol</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double UPPE::laser_pulse::rel_tol</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

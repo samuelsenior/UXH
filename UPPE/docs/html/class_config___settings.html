@@ -233,6 +233,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a849ae9f7a6ef85215c04a79004ac129b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54a52d9c629a4675067bd60878482b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a54a52d9c629a4675067bd60878482b53">waist_description_set</a> (std::string)</td></tr>
 <tr class="separator:a54a52d9c629a4675067bd60878482b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad833de7c13ae11e1377e075ac49d36dc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ad833de7c13ae11e1377e075ac49d36dc">laser_rel_tol</a> ()</td></tr>
+<tr class="separator:ad833de7c13ae11e1377e075ac49d36dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc1a6bc578ca70808a368a7a799930a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#abc1a6bc578ca70808a368a7a799930a1">laser_rel_tol_set</a> (double)</td></tr>
+<tr class="separator:abc1a6bc578ca70808a368a7a799930a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec0702e3c2affaff7d2a7cc6b6513f35"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#aec0702e3c2affaff7d2a7cc6b6513f35">laser_rel_tol_description</a> ()</td></tr>
+<tr class="separator:aec0702e3c2affaff7d2a7cc6b6513f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a890862154afdc68198bab32ba8580e22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a890862154afdc68198bab32ba8580e22">laser_rel_tol_description_set</a> (std::string)</td></tr>
+<tr class="separator:a890862154afdc68198bab32ba8580e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6080e88779098f8537a622dac6fbe70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ac6080e88779098f8537a622dac6fbe70">read_in_laser_pulse</a> ()</td></tr>
 <tr class="separator:ac6080e88779098f8537a622dac6fbe70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f9f2d7b9526a734620d0e165ff8ce7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a1f9f2d7b9526a734620d0e165ff8ce7d">read_in_laser_pulse_set</a> (int)</td></tr>
@@ -522,36 +530,37 @@ Private Types</h2></td></tr>
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55161575f3e05dfb61145c5d63d67d29">SN::ceo</a>, 
 <br />
 &#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa54680ce9dccba6570053db39038a9d7a">SN::waist</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa4af54a9b82748a70f6a139d5c1e9b73a">SN::laser_rel_tol</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa077dddf74f82da8ff2cf059ab37f93a1">SN::read_in_laser_pulse</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa79e0c3e959238ccf53e10b35928315bb">SN::path_A_w_R_initial</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa1c09969bb9dcfffdac26065a157f4676">SN::path_A_w_I_initial</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fab02da209090b72fe5eff0a2ffd54d6c3">SN::path_w_active_initial</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa1c09969bb9dcfffdac26065a157f4676">SN::path_A_w_I_initial</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fab02da209090b72fe5eff0a2ffd54d6c3">SN::path_w_active_initial</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa0184be60932f6ca02da54427eee0b879">SN::original_n_z</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa82b77ec43ada904a728b1e44e440fd2f">SN::HHGP_starting_z</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa4c36da7ad7cafb58d2e1a49250c94cb8">SN::ending_n_z</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faf0374cafca9dbea37149f2ad4f0d8675">SN::interp_points</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa4c36da7ad7cafb58d2e1a49250c94cb8">SN::ending_n_z</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faf0374cafca9dbea37149f2ad4f0d8675">SN::interp_points</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa5fe684b755e79d4c8fba92b02baf5e7c">SN::gas_pressure_profile</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13">SN::pend_path</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf">SN::path_input_j0</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9">SN::path_A_w_R</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf">SN::path_input_j0</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9">SN::path_A_w_R</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa723f16bd44b5c519243c37ac165df732">SN::path_A_w_I</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa64b9d0f9f55fb6ad349ff704f3d710bb">SN::path_w_active</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9b3bab21c25c20785bbda176ecc8b40c">SN::path_electron_density</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55ae11324ef03ba27814d1175e8d12f0">SN::path_HHG_R</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9b3bab21c25c20785bbda176ecc8b40c">SN::path_electron_density</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55ae11324ef03ba27814d1175e8d12f0">SN::path_HHG_R</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa656218c9143eb88ee385dfe7ea618d6c">SN::path_HHG_I</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faaf71223a57febdc55d591cfec7acdff5">SN::path_HHG_w</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3e723a56c4eccaf90be08c4f0b8a4dc8">SN::path_HHG_E</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fac5646092be3b9bd67310f0fc4f7169ee">SN::path_HHP_R</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3e723a56c4eccaf90be08c4f0b8a4dc8">SN::path_HHG_E</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fac5646092be3b9bd67310f0fc4f7169ee">SN::path_HHP_R</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9f7fd3b63d1a046a101e37cdfa22fac9">SN::path_HHP_I</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faea30eaeccb42cf92fa55ea6f3518b2e6">SN::path_config_file</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9bd8b67c10b9b673ee424a957d1a953a">SN::path_config_log</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45">SN::LAST_SN_ENTRY</a>
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9bd8b67c10b9b673ee424a957d1a953a">SN::path_config_log</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45">SN::LAST_SN_ENTRY</a>
 <br />
  }</td></tr>
 <tr class="separator:af7668729f6d56b25d126b0a9ce06474f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -603,6 +612,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a55a73ac8703ae56cb81bbf601dec24d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a769316096d7aa4e2939ed7fbf7db21e2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a769316096d7aa4e2939ed7fbf7db21e2">waist_</a> = 48.0e-6</td></tr>
 <tr class="separator:a769316096d7aa4e2939ed7fbf7db21e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2a74c350b6ddc4f6506ba3baba83741"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#aa2a74c350b6ddc4f6506ba3baba83741">laser_rel_tol_</a> = 1e-6</td></tr>
+<tr class="separator:aa2a74c350b6ddc4f6506ba3baba83741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9e24a9e2075db1510e0cb285edb7fe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ab9e24a9e2075db1510e0cb285edb7fe6">read_in_laser_pulse_</a> = 0</td></tr>
 <tr class="separator:ab9e24a9e2075db1510e0cb285edb7fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a040021a9f745a3ccdf81b23f8268ffd6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a040021a9f745a3ccdf81b23f8268ffd6">path_A_w_R_initial_</a> = &quot;../output/A_w_R.bin&quot;</td></tr>
@@ -703,6 +714,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a3e00769ffcd7bef60f9b5cb4c17d3c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa23531b1d4459fa9a2f2ae8132e32e30"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30">waist_description_</a> = &quot;(default) (double) The <a class="el" href="class_config___settings.html#a9bec079708e647e77006394d68ea3ad3">waist</a> value&quot;</td></tr>
 <tr class="separator:aa23531b1d4459fa9a2f2ae8132e32e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a6045e6c39302ab071ec8d8391180cd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a0a6045e6c39302ab071ec8d8391180cd">laser_rel_tol_description_</a> = &quot;(default) (double) Laser propagation relative tolerance/error&quot;</td></tr>
+<tr class="separator:a0a6045e6c39302ab071ec8d8391180cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2a97598432a48d95259ab73b2905db9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ad2a97598432a48d95259ab73b2905db9">read_in_laser_pulse_description_</a> = &quot;(default) (int) Switch to read in an initial laser pulse&quot;</td></tr>
 <tr class="separator:ad2a97598432a48d95259ab73b2905db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14e2c655a1e46f558cc94c5ea34220fb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a14e2c655a1e46f558cc94c5ea34220fb">path_A_w_R_initial_description_</a> = &quot;(default) (std::string) Initial path of A_w_R&quot;</td></tr>
@@ -845,6 +858,7 @@ Static Private Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474faa5feddd336f95a73db3d846da3a050ea"></a>l_0&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa55161575f3e05dfb61145c5d63d67d29"></a>ceo&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa54680ce9dccba6570053db39038a9d7a"></a>waist&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa4af54a9b82748a70f6a139d5c1e9b73a"></a>laser_rel_tol&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa077dddf74f82da8ff2cf059ab37f93a1"></a>read_in_laser_pulse&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa79e0c3e959238ccf53e10b35928315bb"></a>path_A_w_R_initial&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa1c09969bb9dcfffdac26065a157f4676"></a>path_A_w_I_initial&#160;</td><td class="fielddoc"></td></tr>
@@ -1391,6 +1405,76 @@ Static Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void Config_Settings::l_0_set </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad833de7c13ae11e1377e075ac49d36dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad833de7c13ae11e1377e075ac49d36dc">&#9670;&nbsp;</a></span>laser_rel_tol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Config_Settings::laser_rel_tol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec0702e3c2affaff7d2a7cc6b6513f35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec0702e3c2affaff7d2a7cc6b6513f35">&#9670;&nbsp;</a></span>laser_rel_tol_description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::laser_rel_tol_description </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a890862154afdc68198bab32ba8580e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890862154afdc68198bab32ba8580e22">&#9670;&nbsp;</a></span>laser_rel_tol_description_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::laser_rel_tol_description_set </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc1a6bc578ca70808a368a7a799930a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc1a6bc578ca70808a368a7a799930a1">&#9670;&nbsp;</a></span>laser_rel_tol_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::laser_rel_tol_set </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -5017,6 +5101,50 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aa2a74c350b6ddc4f6506ba3baba83741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2a74c350b6ddc4f6506ba3baba83741">&#9670;&nbsp;</a></span>laser_rel_tol_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Config_Settings::laser_rel_tol_ = 1e-6</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a6045e6c39302ab071ec8d8391180cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a6045e6c39302ab071ec8d8391180cd">&#9670;&nbsp;</a></span>laser_rel_tol_description_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::laser_rel_tol_description_ = &quot;(default) (double) Laser propagation relative tolerance/error&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab4037be8b9ee15482c8e48880ca5d452"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4037be8b9ee15482c8e48880ca5d452">&#9670;&nbsp;</a></span>n_m_</h2>
 
@@ -6972,7 +7100,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;output_sampling_rate&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;read_in_laser_pulse&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R_initial&quot;</span>, <span class="stringliteral">&quot;path_A_w_I_initial&quot;</span>, <span class="stringliteral">&quot;path_w_active_initial&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;original_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHGP_starting_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;ending_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;interp_points&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;gas_pressure_profile&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHP_R&quot;</span>, <span class="stringliteral">&quot;path_HHP_I&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;output_sampling_rate&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;laser_rel_tol&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;read_in_laser_pulse&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R_initial&quot;</span>, <span class="stringliteral">&quot;path_A_w_I_initial&quot;</span>, <span class="stringliteral">&quot;path_w_active_initial&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;original_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHGP_starting_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;ending_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;interp_points&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;gas_pressure_profile&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHP_R&quot;</span>, <span class="stringliteral">&quot;path_HHP_I&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a4f774e23910af488b9006a9c2a0aa1d3"></a>

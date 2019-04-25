@@ -1,6 +1,6 @@
 var class_u_p_p_e_1_1laser__pulse =
 [
-    [ "laser_pulse", "class_u_p_p_e_1_1laser__pulse.html#affc882e6ee1c61c2a4ec400cf97f41bc", null ],
+    [ "laser_pulse", "class_u_p_p_e_1_1laser__pulse.html#a960d8fae9a15299251ba66e2121f4b91", null ],
     [ "propagate", "class_u_p_p_e_1_1laser__pulse.html#a9c616574d13fca4cbb483e18c6bf6faf", null ],
     [ "RHS_UPPE", "class_u_p_p_e_1_1laser__pulse.html#ab6f300644e236c09aedcffae043fcd44", null ],
     [ "RK_F_45", "class_u_p_p_e_1_1laser__pulse.html#a53d4f083151d2e2b522b29ccb1f79831", null ],
@@ -24,6 +24,7 @@ var class_u_p_p_e_1_1laser__pulse =
     [ "p_pk", "class_u_p_p_e_1_1laser__pulse.html#a92d40420abfdec8e1ae99ffda0afab28", null ],
     [ "physics", "class_u_p_p_e_1_1laser__pulse.html#abe77106f213ea32a1771aa702d543d05", null ],
     [ "read_in_laser_pulse", "class_u_p_p_e_1_1laser__pulse.html#a5f1ceaed09d29ffdda73900fbfd259ea", null ],
+    [ "rel_tol", "class_u_p_p_e_1_1laser__pulse.html#a87a3983d3af860750b66129b0e3cf2c3", null ],
     [ "rep", "class_u_p_p_e_1_1laser__pulse.html#a2060159fc6bb506c51205a2e14c6e0e6", null ],
     [ "rkr", "class_u_p_p_e_1_1laser__pulse.html#a9667b8334c650c3df673e4b44ea46827", null ],
     [ "tw", "class_u_p_p_e_1_1laser__pulse.html#a547a82482516990781cd0407680cde27", null ],
