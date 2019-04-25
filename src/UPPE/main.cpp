@@ -80,21 +80,15 @@ int main(int argc, char** argv){
     } else {
         config.path_config_file_set(config_file_path);
         config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-        if (this_process == 0) {
-            std::cout << "Using config file path " << config.path_config_file() << std::endl;
-        }
+        if (this_process == 0) { std::cout << "Using config file path " << config.path_config_file() << std::endl; }
     }
     config.read_in(config.path_config_file(), false);
-    if (config.read_in_laser_pulse() == 0) {
-        config.check_paths(false);
-    }
+    if (config.read_in_laser_pulse() == 0) { config.check_paths(false); }
     if (total_processes > 1) {
         config.n_m_set(total_processes-1);
         config.n_r_set(total_processes-1);
     }
-    if (this_process == 0) {
-        config.print();
-    }
+    if (this_process == 0) { config.print(); }
 
     XNLO::Config_Settings config_XNLO;
     if (total_processes > 1) {
@@ -103,15 +97,11 @@ int main(int argc, char** argv){
         } else {
             config_XNLO.path_config_file_set(config_XNLO_file_path);
             config_XNLO.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-            if (this_process == 0) {
-                std::cout << "Using config file path " << config_XNLO.path_config_file() << std::endl;
-            }
+            if (this_process == 0) { std::cout << "Using config file path " << config_XNLO.path_config_file() << std::endl; }
         }
         config_XNLO.read_in(config_XNLO.path_config_file(), false);
         config_XNLO.check_paths(false);
-        if (this_process == 0) {
-            config_XNLO.print();
-        }
+        if (this_process == 0) { config_XNLO.print(); }
     }
 
     HH::Config_Settings config_HHGP;
@@ -121,9 +111,7 @@ int main(int argc, char** argv){
         } else {
             config_HHGP.path_config_file_set(config_HHGP_file_path);
             config_HHGP.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-            if (this_process == 0) {
-                std::cout << "Using config file path " << config_HHGP.path_config_file() << std::endl;
-            }
+            if (this_process == 0) { std::cout << "Using config file path " << config_HHGP.path_config_file() << std::endl; }
         }
         config_HHGP.read_in(config_HHGP.path_config_file(), false);
         config_HHGP.check_paths(false);
@@ -131,9 +119,7 @@ int main(int argc, char** argv){
             config_HHGP.n_m_set(total_processes-1);
             config_HHGP.n_r_set(total_processes-1);
         }
-        if (this_process == 0) {
-            config_HHGP.print();
-        }
+        if (this_process == 0) { config_HHGP.print(); }
     }
 
     //--------------------------------------------------------------------------------------------//
@@ -173,12 +159,9 @@ int main(int argc, char** argv){
         std::size_t found = config.path_A_w_R_initial().find_last_of("/");
         std::string tmp = config.path_A_w_R_initial().substr(found+1);
         found = tmp.find_first_of("_");
-
         std::string sim_no_str = tmp.substr(0, found);
         
-
         std::size_t found_2 = tmp.find_first_of("_", found+1);
-
         std::string tmp_2 = tmp.substr(found+1, found_2-found-1);
         int sim_no = std::stoi(sim_no_str);
 
@@ -206,10 +189,6 @@ int main(int argc, char** argv){
                               config,
                               config.read_in_laser_pulse(), initial_position,
                               config.laser_rel_tol());
-
-if (this_process == 0) {
-std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_active.real().rows() << ", laser_driving.A_w_active.real().cols():" << laser_driving.A_w_active.real().cols() << std::endl;
-}
     capillary_fibre capillary_driving(config.Z(), rkr, tw, physics, maths);
     keldysh_gas gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
@@ -255,31 +234,29 @@ std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_act
     ArrayXd w_active_HHG;
 
     w_tmp = tw_XNLO.w;
-if (this_process == 0) {
-    std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
-}
-    int w_active_min_index_HHG = 0;
-    while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
-        w_active_min_index_HHG++;
-    int count = 0;
-    while (w_tmp(count) < w_active_max_HHG) {
-        count++;
+    if (this_process == 0) {
+        std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
     }
+        int w_active_min_index_HHG = 0;
+        while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
+            w_active_min_index_HHG++;
+        int count = 0;
+        while (w_tmp(count) < w_active_max_HHG) {
+            count++;
+        }
 
-    n_active_HHG = count - w_active_min_index_HHG;
-    w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
-if (this_process == 0) {
-std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
-std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
-}
+        n_active_HHG = count - w_active_min_index_HHG;
+        w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
+    if (this_process == 0) {
+    std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
+    std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
+    }
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
         prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
-// Uncomment when known if this is correct or not - 15-02-19
-        //w_active_HHG = prop.segment(w_active_HHG);
         hhgp = HHGP(prop,
                     config_HHGP,
                     rkr, gas,
@@ -315,14 +292,164 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 
     bool HHGP_starting_z_bool = false;
 
+        int ii;
+        if (config.read_in_laser_pulse() == true) {
+            ii = propagation_step;
+        } else {
+            ii = 0;
+            propagation_step = 0;
+        }
+        if (dz*ii >= HHGP_starting_z) HHGP_starting_z_bool = true;
+        if (this_process == 0) {
+            std::cout << "Propagation step: " << ii << std::endl;
+            // Driving pulse:
+            // Always start at 1, so first step is always outputted, even when reading in
+            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                config.step_path(ii, "UPPE_A_w");
+                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
+                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
+            }
+            // Only needed once!
+            //file_prop_step.write(tw.w_active, config.path_w_active_step(), true);
+            // Change to an if statement so can be outputted if needed
+            //file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+            A_w_active = laser_driving.A_w_active;
+            if ((total_processes > 1) && HHGP_starting_z_bool) {
+                // Send
+                for (int j = 1; j < total_processes; j++) {
+                    MPI_Send(laser_driving.A_w_active.real().data(),
+                             laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+                             MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                }
+            }
+        } else if (HHGP_starting_z_bool) {
+            // Receive
+            A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
+            MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+        }
+
+        if ((total_processes > 1) && HHGP_starting_z_bool) {
+            atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index, "minimum");
+        }
+
+        if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
+            // Do we just take the electron density at the last time step or at all of them?
+            for (int j = 0; j < rkr.n_r; j++) {
+                for (int i = 0; i < config.n_t(); i++) {
+                    neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
+                }
+            }
+            if (config_XNLO.output_electric_field() == 1) {
+                E = atomResponse.E;
+            }
+            // Delete atomResponse after use to save ram
+            acceleration_HHG = atomResponse.acceleration;
+            for (int j = 0; j < rkr.n_r; j++) {
+                for (int i = 0; i < config_XNLO.N_t(); i++) {
+                    // Or is it (0, 0)?
+                    // So, physically, what is going on?
+                    // The laser pulse at each propagation step interacts with the gas.
+                    // Some atoms become ionised by the laser, these atoms do not add to the
+                    // HHG response
+                    // The neutral atoms do add to the response
+                    // The acceleration at this point is as a function of time, as is the neutral atoms
+                    // these are both on different, independent time grid though, as...?
+                    // So, we only want the number of neutral atoms at one point in time, but which point?
+                    // At the start time there are a maximum number of neutral atoms
+                    // At the end time there are a minimum
+                    // So, laser comes through, ionises gas, causes HHG response
+                    // if gas is ionised it can't add to HHG response
+                    // as the atom has no electron to it
+                    // So it needs to be the final number of neutral atoms?
+                    // If so then can save a load of ram by only storing this value and not for all time steps
+// --- TAKE NOTE --- // Change back once testing done!
+                    //acceleration_HHG.row(i).col(j) *= dz;  // Should be done in the HHG prop program rather than here
+                                                             // to keep the sources terms as unmodified source terms
+                                                             // for now.
+                    acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j);// * dz;
+                    acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
+
+                    // How to do volume normalisation? Step increases to integrate over, or trapezoidal rule
+                    // First is easier to implement, second is more accurate
+                }
+            }
+            // Apply forward spectral transform
+            ArrayXXcd accelerationToHHSource = acceleration_HHG.cast<std::complex<double> >();
+            for (int i = 0; i < rkr.n_r; i++)
+                DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
+            hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
+            for (int j = 0; j < rkr.n_r; j++) {
+                for (int i = 0; i < n_active_HHG; i++) {
+                    hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
+                }
+            }
+            // Propagate high harmonics from current step to end of capillary
+            //if (HH_prop_to_end_only == true){
+            //HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
+            HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+            // If at the last step then we're at teh end of the capillary and so aren't looking
+            // to propagate the last HH source any further, but rather just use it's source as it's
+            // already at the desired position
+            if (ii < config.n_z()) {
+                prop.nearFieldPropagationStep(dz, HHG_tmp);
+                HHP += prop.A_w_r;
+            } else {
+                HHP += HHG_tmp;
+            }
+
+            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                config.step_path(ii, "HHG_A_w");
+                file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
+                file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
+
+                config.step_path(ii, "HHP_A_w");
+                file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+                file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
+            }
+            // Only needed once!
+            //file_prop_step.write(w_active_HHG, config.path_HHG_w_step(), true);
+            if (config_XNLO.output_electric_field() == 1) {
+                config.step_path(ii, "HHG_electric_field");
+                file_prop_step.write(E, config.path_HHG_E_step(), true);
+            }
+
+            if (ii == 1) {
+                hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+            } else {
+                std::cout << "Starting interpolation!" << std::endl;
+                hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                double interp_dz = dz / double(config.interp_points() + 2);
+                dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
+                for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
+                    prop.z += interp_dz;
+                    hhg_i = hhg_old + interp_i * dS_i;
+
+                    prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
+                    HHP += prop.A_w_r;
+                }
+                hhg_old = hhg_new;
+                std::cout << "Interpolation complete!" << std::endl;
+                if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                    config.step_path(ii, "HHP_A_w");
+                    file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+                    file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
+                }
+            }
+        }
+        propagation_step++;
+
+    HHGP_starting_z_bool = false;
+
         for (int ii = propagation_step; ii < config.ending_n_z() + 1; ii++) {//config.n_z() + 1; ii++) {
             if (dz*ii >= HHGP_starting_z) HHGP_starting_z_bool = true;
             if (this_process == 0) {
                 std::cout << "Propagation step: " << ii << std::endl;
                 laser_driving.propagate(dz, capillary_driving, gas);
+                prop.z += dz;
                 // Driving pulse:
                 // Always start at 1, so first step is always outputted, even when reading in
-                if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                if ((ii) % config.output_sampling_rate() == 0) {
                     config.step_path(ii, "UPPE_A_w");
                     file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
                     file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
@@ -409,20 +536,16 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 }
                 // Propagate high harmonics from current step to end of capillary
                 //if (HH_prop_to_end_only == true){
-// Need to rethink if z += dz comes here or after propagation, have a feeling it should be after if
-// propagating to end of capillary only...
-                prop.z += dz;
                 //HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
                 HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
-                // If at the last step then we're at teh end of the capillary and so aren't looking
+                // If at the last step then we're at the end of the capillary and so aren't looking
                 // to propagate the last HH source any further, but rather just use it's source as it's
                 // already at the desired position
                 if (ii < config.n_z()) {
                     prop.nearFieldPropagationStep(dz, HHG_tmp);
                     HHP += prop.A_w_r;
                 } else {
-                    //prop.nearFieldPropagationStep(dz, HHG_tmp);
-                    HHP += HHG_tmp;//prop.A_w_r;
+                    HHP += HHG_tmp;
                 }
                 //} else {
                 //    if (ii == inital_propagation_step) {
@@ -441,7 +564,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 //        HHP += A_w_r;//prop.A_w_r;
                 //    }
                 //}
-                if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                if ((ii) % config.output_sampling_rate() == 0) {
                     config.step_path(ii, "HHG_A_w");
                     file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
                     file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
@@ -450,8 +573,6 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                     file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                     file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
                 }
-                // Only needed once!
-                //file_prop_step.write(w_active_HHG, config.path_HHG_w_step(), true);
                 if (config_XNLO.output_electric_field() == 1) {
                     config.step_path(ii, "HHG_electric_field");
                     file_prop_step.write(E, config.path_HHG_E_step(), true);
@@ -473,13 +594,12 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                     }
                     hhg_old = hhg_new;
                     std::cout << "Interpolation complete!" << std::endl;
-                    if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                    if ((ii) % config.output_sampling_rate() == 0) {
                         config.step_path(ii, "HHP_A_w");
                         file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                         file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
                     }
                 }
-
             }
         }
         if (this_process == 0) {
