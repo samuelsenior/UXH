@@ -1,5 +1,4 @@
 <map id="HH_source" name="HH_source">
-<area shape="rect" id="node1" title=" " alt="" coords="95,92,183,117"/>
-<area shape="rect" id="node2" href="$classmaths__textbook.html" title=" " alt="" coords="5,5,121,31"/>
-<area shape="rect" id="node3" href="$class_h_h_1_1_config___settings.html" title=" " alt="" coords="145,5,287,31"/>
+<area shape="rect" id="node2" href="$classmaths__textbook.html" title="maths_textbook" alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node3" href="$class_h_h_1_1_config___settings.html" title="HH::Config_Settings" alt="" coords="145,5,287,32"/>
 </map>
