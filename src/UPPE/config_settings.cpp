@@ -31,6 +31,7 @@ const char * Config_Settings::setting_name[] = {
   "Z", "R",
   "press",
   "p_av", "rep", "fwhm", "l_0", "ceo", "waist",
+  "laser_rel_tol",
   "read_in_laser_pulse",
   "path_A_w_R_initial", "path_A_w_I_initial", "path_w_active_initial",
   "original_n_z",
@@ -211,6 +212,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::waist :
         waist_set(std::stod(variable_value_str));
         waist_description_set(input_description_char);
+        break;
+
+      case SN::laser_rel_tol :
+        laser_rel_tol_set(std::stod(variable_value_str));
+        laser_rel_tol_description_set(input_description_char);
         break;
 
       case SN::read_in_laser_pulse :
@@ -574,6 +580,7 @@ void Config_Settings::print() {
     std::cout << "   l_0:                   " << l_0() << "       " << l_0_description() << std::endl;
     std::cout << "   ceo:                   " << ceo() << "           " << ceo_description() << std::endl;
     std::cout << "   waist:                 " << waist() << "     " << waist_description() << std::endl;
+    std::cout << "   laser_rel_tol:         " << laser_rel_tol() << "      " << laser_rel_tol_description() << std::endl;
     std::cout << "   read_in_laser_pulse:   " << read_in_laser_pulse() << "           " << read_in_laser_pulse_description() << std::endl;
     std::cout << "   original_n_z:          " << original_n_z() << "          " << original_n_z_description() << std::endl;
     std::cout << "   HHGP_starting_z:       " << HHGP_starting_z() << "           " << HHGP_starting_z_description() << std::endl;
@@ -623,6 +630,8 @@ void Config_Settings::print(std::string path_) {
       config_log << "{l_0} {" << l_0() << "} {" << l_0_description() << "}\n";
       config_log << "{ceo} {" << ceo() << "} {" << ceo_description() << "}\n";
       config_log << "{waist} {" << waist() << "} {" << waist_description() << "}\n";
+
+      config_log << "{laser_rel_tol} {" << laser_rel_tol() << "} {" << laser_rel_tol_description() << "}\n";
 
       config_log << "{read_in_laser_pulse} {" << read_in_laser_pulse() << "} {" << read_in_laser_pulse_description() << "}\n";
       config_log << "{original_n_z} {" << original_n_z() << "} {" << original_n_z_description() << "}\n";
@@ -745,6 +754,12 @@ double Config_Settings::waist() { return waist_; }
 void Config_Settings::waist_set(double value) { waist_ = value; }
 std::string Config_Settings::waist_description() { return waist_description_; }
 void Config_Settings::waist_description_set(std::string description) { waist_description_ = description; }
+
+
+double Config_Settings::laser_rel_tol() { return laser_rel_tol_; }
+void Config_Settings::laser_rel_tol_set(double value) { laser_rel_tol_ = value; }
+std::string Config_Settings::laser_rel_tol_description() { return laser_rel_tol_description_; }
+void Config_Settings::laser_rel_tol_description_set(std::string description) { laser_rel_tol_description_ = description; }
 
 
 int Config_Settings::read_in_laser_pulse() { return read_in_laser_pulse_; }

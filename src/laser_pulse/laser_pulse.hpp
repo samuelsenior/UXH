@@ -107,11 +107,14 @@ public:
     double p_pk;
     double E_pk;
 
+    double rel_tol;
+
     // Functions
     laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, double ceo_, double waist_,
                 grid_tw& tw_, grid_rkr& rkr_, DFTI_DESCRIPTOR_HANDLE& ft_, DHT& ht_, maths_textbook& maths_,
                 Config_Settings config,
-                int read_in_laser_pulse, double initial_position);
+                int read_in_laser_pulse, double initial_position,
+                double rel_tol_);
     void propagate(double dz_, capillary_fibre& capillary_, keldysh_gas& gas_);
 };
 } // UPPE namespace

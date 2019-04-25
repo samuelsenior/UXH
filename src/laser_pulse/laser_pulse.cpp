@@ -262,7 +262,8 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
                          double waist_, grid_tw& tw_, grid_rkr& rkr_, DFTI_DESCRIPTOR_HANDLE& ft_,
                          DHT& ht_, maths_textbook& maths_,
                          Config_Settings config,
-                         int read_in_laser_pulse, double initial_position)
+                         int read_in_laser_pulse, double initial_position,
+                         double rel_tol_)
                         :
                          p_av(p_av_),
                          rep(rep_),
@@ -277,7 +278,8 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
                          maths(maths_),
                          config(config),
                          read_in_laser_pulse(read_in_laser_pulse),
-                         initial_position(initial_position) {
+                         initial_position(initial_position),
+                         rel_tol(rel_tol_) {
 
     if (read_in_laser_pulse == 0) {
 
@@ -340,7 +342,7 @@ void laser_pulse::propagate(double dz_, capillary_fibre& capillary_, keldysh_gas
     //static
     double h = dz_ / 5;    // Initial guess
     //static
-    double tol = 1e-5;     // Relative error tolerance
+    double tol = rel_tol;//1e-10;     // Relative error tolerance
 
     //static
     int i = 0;

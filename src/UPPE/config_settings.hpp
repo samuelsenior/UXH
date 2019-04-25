@@ -31,6 +31,7 @@ private:
     Z, R,
     press,
     p_av, rep, fwhm, l_0, ceo, waist,
+    laser_rel_tol,
     read_in_laser_pulse, path_A_w_R_initial, path_A_w_I_initial, path_w_active_initial,
     original_n_z,
     HHGP_starting_z,
@@ -70,6 +71,8 @@ private:
     double l_0_ = 800.0e-9;
     double ceo_ = 0.0;
     double waist_ = 48.0e-6;
+
+    double laser_rel_tol_ = 1e-6;
 
     int read_in_laser_pulse_ = 0;
     std::string path_A_w_R_initial_ = "../output/A_w_R.bin";
@@ -141,6 +144,8 @@ private:
     std::string l_0_description_ = "(default) (double) Laser central wavelength";
     std::string ceo_description_ = "(default) (double) The ceo value";
     std::string waist_description_= "(default) (double) The waist value";
+
+    std::string laser_rel_tol_description_ = "(default) (double) Laser propagation relative tolerance/error";
 
     std::string read_in_laser_pulse_description_= "(default) (int) Switch to read in an initial laser pulse";
     std::string path_A_w_R_initial_description_ = "(default) (std::string) Initial path of A_w_R";
@@ -296,6 +301,11 @@ public:
     void waist_set(double);
     std::string waist_description();
     void waist_description_set(std::string);
+
+    double laser_rel_tol();
+    void laser_rel_tol_set(double);
+    std::string laser_rel_tol_description();
+    void laser_rel_tol_description_set(std::string);
 
     int read_in_laser_pulse();
     void read_in_laser_pulse_set(int);

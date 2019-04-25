@@ -204,7 +204,8 @@ int main(int argc, char** argv){
     UPPE::laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
                               tw, rkr, ft, ht, maths,
                               config,
-                              config.read_in_laser_pulse(), initial_position);
+                              config.read_in_laser_pulse(), initial_position,
+                              config.laser_rel_tol());
 
 if (this_process == 0) {
 std::cout << "laser_driving.A_w_active.real().rows(): " << laser_driving.A_w_active.real().rows() << ", laser_driving.A_w_active.real().cols():" << laser_driving.A_w_active.real().cols() << std::endl;
@@ -296,12 +297,12 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
 
-    ArrayXXcd HHG_tmp = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
-    ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
+    ArrayXXcd HHG_tmp;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd HHP;// = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
-    ArrayXXcd hhg_old = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
-    ArrayXXcd dS_i = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
-    ArrayXXcd hhg_i = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd hhg_old;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd dS_i;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd hhg_i;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
 
     if (this_process == 0) {
             // Output already known variables, in case crashes etc, so they are already saved early on
@@ -312,7 +313,10 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    bool HHGP_starting_z_bool = false;
+
         for (int ii = propagation_step; ii < config.ending_n_z() + 1; ii++) {//config.n_z() + 1; ii++) {
+            if (dz*ii >= HHGP_starting_z) HHGP_starting_z_bool = true;
             if (this_process == 0) {
                 std::cout << "Propagation step: " << ii << std::endl;
                 laser_driving.propagate(dz, capillary_driving, gas);
@@ -328,7 +332,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                 // Change to an if statement so can be outputted if needed
                 //file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
                 A_w_active = laser_driving.A_w_active;
-                if ((total_processes > 1) && (dz*ii >= HHGP_starting_z)) {
+                if ((total_processes > 1) && HHGP_starting_z_bool) {
                     // Send
                     for (int j = 1; j < total_processes; j++) {
                         MPI_Send(laser_driving.A_w_active.real().data(),
@@ -336,7 +340,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                     }
                 }
-            } else if (dz*ii >= HHGP_starting_z) {
+            } else if (HHGP_starting_z_bool) {
                 // Receive
                 A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
                 MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
@@ -344,11 +348,11 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
             }
 
             //int response_rate = 1;//config.n_z() / 10;
-            if ((total_processes > 1) && (dz*ii >= HHGP_starting_z)) {// && ((ii % response_rate == 0) || ii == 1)) {
+            if ((total_processes > 1) && HHGP_starting_z_bool) {// && ((ii % response_rate == 0) || ii == 1)) {
                 atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index, "minimum");
             }
 
-            if (this_process == 0 && total_processes > 1 && (dz*ii >= HHGP_starting_z)) {
+            if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
                 // Do we just take the electron density at the last time step or at all of them?
                 for (int j = 0; j < rkr.n_r; j++) {
                     for (int i = 0; i < config.n_t(); i++) {
@@ -382,7 +386,7 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                         //acceleration_HHG.row(i).col(j) *= dz;  // Should be done in the HHG prop program rather than here
                                                                  // to keep the sources terms as unmodified source terms
                                                                  // for now.
-                        acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j) * dz;
+                        acceleration_HHG.row(i).col(j) *= neutral_atoms.row(neutral_atoms.rows() - 1).col(j);// * dz;
                         acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
 
                         // How to do volume normalisation? Step increases to integrate over, or trapezoidal rule
@@ -408,13 +412,6 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
 // Need to rethink if z += dz comes here or after propagation, have a feeling it should be after if
 // propagating to end of capillary only...
                 prop.z += dz;
-// dz normalisation is wrong if doing intep
-// if not interping, then just using start and end, i.e. internal points = 0, total points = 2
-// so can do dz / (interp points total - 1) or dz / (interp points + 1)
-// But if interping on one middle site then dz/2,
-// so, dz / (interp points total - 1) = dz / (3 - 1), or dz / (interp points + 1) = dz / (1 + 1)
-// so that would fix this dz normalisation here, and can be used later for the interped points
-// default value of interp_points needs to be 0
                 //HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
                 HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                 // If at the last step then we're at teh end of the capillary and so aren't looking
@@ -460,25 +457,22 @@ std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG("
                     file_prop_step.write(E, config.path_HHG_E_step(), true);
                 }
 
-                // Interpolation bit
-// dz normalisation is now wrong!!!
                 if (ii == 1) {
                     hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                 } else {
-std::cout << "Starting interpolation!" << std::endl;
+                    std::cout << "Starting interpolation!" << std::endl;
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                     double interp_dz = dz / double(config.interp_points() + 2);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
                     for (int interp_i = 1; interp_i < config.interp_points() + 2; interp_i++) {
                         prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
-// VERY IMPORTANT
-// need to change prop to actually use dz!!!
+
                         prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
                         HHP += prop.A_w_r;
                     }
                     hhg_old = hhg_new;
-std::cout << "Interpolation complete!" << std::endl;
+                    std::cout << "Interpolation complete!" << std::endl;
                     if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
                         config.step_path(ii, "HHP_A_w");
                         file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
@@ -505,19 +499,6 @@ std::cout << "Interpolation complete!" << std::endl;
 
             file.write(HHP.real(), config.path_HHP_R_step());
             file.write(HHP.imag(), config.path_HHP_I_step());
-
-        //    // Output
-        //    IO file;
-        //    file.write(laser_driving.A_w_active.real(), config.path_A_w_R());
-        //    file.write(laser_driving.A_w_active.imag(), config.path_A_w_I());
-        //    file.write(tw.w_active, config.path_w_active());
-        //
-        //    file.write(hhg.real(), config.path_HHG_R());
-        //    file.write(hhg.imag(), config.path_HHG_I());
-        //    file.write(w_active_HHG, config.path_HHG_w());
-        //
-        //    file.write(HHP.real(), config.path_HHP_R());
-        //    file.write(HHP.imag(), config.path_HHP_I());
         }
 
         // Clean up
