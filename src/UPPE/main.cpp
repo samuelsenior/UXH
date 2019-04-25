@@ -460,7 +460,7 @@ std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG
                 prop.z += dz;
                 // Driving pulse:
                 // Always start at 1, so first step is always outputted, even when reading in
-                if ((ii) % config.output_sampling_rate() == 0) {
+                if ((ii - initial_step) % config.output_sampling_rate() == 0) {
                     config.step_path(ii, "UPPE_A_w");
                     file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
                     file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
@@ -577,7 +577,7 @@ std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG
                 //        HHP += A_w_r;//prop.A_w_r;
                 //    }
                 //}
-                if ((ii) % config.output_sampling_rate() == 0) {
+                if ((ii - initial_step) % config.output_sampling_rate() == 0) {
                     config.step_path(ii, "HHG_A_w");
                     file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
                     file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
@@ -608,7 +608,7 @@ std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG
                     }
                     hhg_old = hhg_new;
                     std::cout << "Interpolation complete!" << std::endl;
-                    if ((ii) % config.output_sampling_rate() == 0) {
+                    if ((ii - initial_step) % config.output_sampling_rate() == 0) {
                         config.step_path(ii, "HHP_A_w");
                         file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                         file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
