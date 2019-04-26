@@ -276,16 +276,38 @@ int main(int argc, char** argv){
     double HHGP_starting_z = config.HHGP_starting_z();
 
     ArrayXXcd hhg;
-    ArrayXXcd hhg_new;
+    ArrayXXcd hhg_new = ArrayXXcd::Zero(prop.n_k, config.n_r());
     ArrayXXcd hhg_source;
     ArrayXXcd hhg_previous;
 
     ArrayXXcd HHG_tmp;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
-    ArrayXXcd hhg_old;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd hhg_old = ArrayXXcd::Zero(prop.n_k, config.n_r());//;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd hhg_old_old = ArrayXXcd::Zero(prop.n_k, config.n_r());
+    ArrayXXcd hhg_old_interp = ArrayXXcd::Zero(prop.n_k, config.n_r());
     ArrayXXcd dS_i;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd hhg_i;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+
+
+
+    int wavelength_index_min;
+    int wavelength_index_max;
+    if (this_process == 0) {
+        wavelength_index_min = 0;
+        while(2.0 * maths.pi / prop.k(wavelength_index_min).real() *1e9 > 33.0) {
+            wavelength_index_min++;
+        }
+        std::cout << "Found this: " << 2.0 * maths.pi / prop.k(wavelength_index_min - 1) *1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_min)*1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_min + 1)*1e9 << std::endl;
+        wavelength_index_max = 0;
+        while(2.0 * maths.pi / prop.k(wavelength_index_max).real() *1e9 > 26.0) {
+            wavelength_index_max++;
+        }
+        std::cout << "Found this: " << 2.0 * maths.pi / prop.k(wavelength_index_max - 1) *1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_max)*1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_max + 1)*1e9 << std::endl;
+        std::cout << "wavelength_index_min: " << wavelength_index_min << ", wavelength_index_max: " << wavelength_index_max << std::endl;
+    }
+
+
 
     if (this_process == 0) {
             // Output already known variables, in case crashes etc, so they are already saved early on
@@ -305,7 +327,9 @@ int main(int argc, char** argv){
             ii = 0;
             propagation_step = 0;
         }
+std::cout << "--- (dz*ii >= HHGP_starting_z)?: " << (dz*ii >= HHGP_starting_z) << std::endl;
         if (dz*ii >= HHGP_starting_z) HHGP_starting_z_bool = true;
+std::cout << "HHGP_starting_z_bool: " << HHGP_starting_z_bool << std::endl;
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             // Driving pulse:
@@ -595,17 +619,32 @@ std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG
                 //    hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                 //} else {
                     std::cout << "Starting interpolation!" << std::endl;
+
+                    std::cout << "As a rough estimate," << std::endl;
+                    std::cout << "   for n_z/2-n_z, there is a relative HHG source difference/tolerance of: ";
+                    hhg_old_interp = hhg_old_old + 0.5*(hhg_new - hhg_old_old);
+                    double hhg_tol_check = (hhg_old - hhg_old_interp).matrix().norm() / hhg_old.matrix().norm();
+                    std::cout << hhg_tol_check << std::endl;
+
+                    std::cout << "   And for wavelengths " << int(2.0*maths.pi/prop.k(wavelength_index_min).real()*1e9) << "-"<< int(2.0*maths.pi/prop.k(wavelength_index_max).real()*1e9) << "nm: " << std::endl;
+                    std::cout << "   the nz/2-nz relattive HHG source difference/tolerance is: ";
+                    hhg_tol_check = (hhg_old.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r()) - hhg_old_interp.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r())).matrix().norm() / hhg_old.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r()).matrix().norm();
+                    std::cout << hhg_tol_check << std::endl;
+
                     std::cout << "Interpolating on to " << config.interp_points() << " internal sites..." << std::endl;
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
-                    double interp_dz = dz / double(config.interp_points() + 2);
-                    dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 2);
+                    
+std::cout << "(hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " << (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm() << std::endl;
+
+                    double interp_dz = dz / double(config.interp_points() + 1);
+                    dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
                     for (int interp_i = 1; interp_i < config.interp_points() + 1; interp_i++) {
                         prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
-
                         prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
                         HHP += prop.A_w_r;
                     }
+                    hhg_old_old = hhg_old;
                     hhg_old = hhg_new;
                     std::cout << "Interpolation complete!" << std::endl;
                     if ((ii - initial_step) % config.output_sampling_rate() == 0) {

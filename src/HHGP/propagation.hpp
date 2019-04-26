@@ -36,7 +36,6 @@ class propagation{
     Eigen::ArrayXd w_active_tmp;
     int k_excluded;
 //
-    Eigen::ArrayXcd k;
     Eigen::ArrayXcd refractiveIndex;
 //
     Eigen::ArrayXcd lamda;
@@ -57,6 +56,7 @@ public:
     double z;
     int n_k;
     Eigen::ArrayXd w_active;
+    Eigen::ArrayXcd k;
     Eigen::ArrayXcd k_r;
     Eigen::ArrayXXcd A_w_r;
 
