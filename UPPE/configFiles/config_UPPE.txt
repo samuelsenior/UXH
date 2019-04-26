@@ -1,6 +1,6 @@
 The structure of this config file is fairly simple. Each row has three values to be read in, the first is the variable/input parameter name, the second is it's value, and the third is a brief description of it. Each of these values is incased in curly braces. Anything outside of a pair of curly braces is not read in and can therefore be used as comments in this file etc. If there are less than three pairs of curly braces on a line then an error message is thrown and that lines value isn't read in. If there are more than three pairs of curly braces then only the first three are considered and the rest are ignored.
 
-{n_z} {150} {(int) Number of steps in Z}
+{n_z} {15000} {(int) Number of steps in Z}
 {n_r} {119} {(int) The z_r value}
 {n_m} {119} {(int) Number of modes}
 
@@ -27,8 +27,8 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {read_in_laser_pulse} {0} {(int) Switch to read in an initial laser pulse}
 
-{ending_n_z}    {150} {(int) Ending step for UPPE block}
-{interp_points} {0} {(int) Number of interpolation points between each step}
+{ending_n_z}    {15000} {(int) Ending step for UPPE block}
+{interp_points} {3} {(int) Number of interpolation points between each step}
 
 {gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
 
