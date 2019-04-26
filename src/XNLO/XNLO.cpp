@@ -16,6 +16,9 @@
 #include <limits>
 #include "../atom/Schrodinger_atom_1D.hpp"
 
+#include "../maths/maths_textbook.hpp"
+#include "../physics/physics_textbook.hpp"
+
 #include "config_settings.hpp"
 #include <string>
 
@@ -37,7 +40,8 @@ using namespace Eigen;
 */
 namespace XNLO {
 
-    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE, std::string print){
+    Result XNLO(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE,
+                maths_textbook& maths, physics_textbook& physics, std::string print) {
 
       std::string config_file_path;
       config_file_path = "../configFiles/config_XNLO.txt";
@@ -75,21 +79,21 @@ namespace XNLO {
         } else {
             config.path_config_file_set(config_file_path);
             config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-            if (this_node == 0) {
-                std::cout << "Using config file path " << config.path_config_file() << std::endl;
-            }
+            //if (this_node == 0) {
+            //    std::cout << "Using config file path " << config.path_config_file() << std::endl;
+            //}
         }
         config.read_in(config.path_config_file(), config.print_to_screen);
         config.check_paths(config.print_to_screen);
-        if (this_node == 0) {
-            config.print();
-        }
+        //if (this_node == 0) {
+        //    config.print();
+        //}
 
         int total_atoms = config.atoms_per_worker() * (total_nodes - 1);
         int N_x = total_atoms;
 
-        // Maths
-        maths_textbook maths(config.path_input_j0());
+        //// Maths
+        //maths_textbook maths(config.path_input_j0());
 
         // Grids
         grid_xkx xkx(N_x, config.x_min(), config.x_max());
@@ -100,18 +104,15 @@ namespace XNLO {
         // Control
         if (this_node == 0) {
 
-            std::cout << "--- N_x: " << N_x << std::endl;
-std::cout << "Foooooo 1" << std::endl;
+            //std::cout << "--- N_x: " << N_x << std::endl;
             // Field
             double ROC = std::numeric_limits<double>::max();
-            laser_pulse pulse(rkr, tw, A_w_active, w_active, w_active_min_index_UPPE);
-std::cout << "Foooooo 2" << std::endl;
+            laser_pulse pulse(rkr, tw, A_w_active, w_active, w_active_min_index_UPPE, maths, physics);
             // Send
             for (int ii = 1; ii < total_nodes; ii++) {
                 MPI_Send(pulse.E.block(0, atoms_per_worker * (ii - 1), tw.N_t, atoms_per_worker).data(),
                          tw.N_t * atoms_per_worker, MPI_DOUBLE, ii, 1, MPI_COMM_WORLD);
             }
-std::cout << "Foooooo 3" << std::endl;
             // Receive
             ArrayXXd dipole = ArrayXXd::Zero(tw.N_t, total_atoms);
 
@@ -121,7 +122,6 @@ std::cout << "Foooooo 3" << std::endl;
             } else {
                 wavefunction = ArrayXXcd::Zero(0, 0);
             }
-std::cout << "Foooooo 4" << std::endl;
             for (int jj = 1; jj < total_nodes; jj++) {
                 // Request
                 bool send = true;
@@ -130,7 +130,6 @@ std::cout << "Foooooo 4" << std::endl;
                 MPI_Recv(dipole.block(0, atoms_per_worker * (jj - 1), tw.N_t, atoms_per_worker).data(),
                          tw.N_t * atoms_per_worker, MPI_DOUBLE, jj, 1, MPI_COMM_WORLD, &status);
             }
-std::cout << "Foooooo 5" << std::endl;
             if (config.output_wavefunction() == 1) {
                 MPI_Recv(wavefunction.block(0, 0, tw.N_t, 4096).data(),
                              4096 * tw.N_t, MPI_DOUBLE_COMPLEX, 1, 1, MPI_COMM_WORLD, &status);
@@ -138,9 +137,9 @@ std::cout << "Foooooo 5" << std::endl;
 
             if (this_node == 0) {
               //config.print(config.path_config_log());
-              std::cout << "\n-------------------------------------------------------------------------------\n";
+              //std::cout << "-------------------------------------------------------------------------------\n";
               std::cout << "XNLO successfully ran!\n";
-              std::cout << "-------------------------------------------------------------------------------\n";
+              //std::cout << "-------------------------------------------------------------------------------\n";
             }
 
             Result result;
@@ -173,17 +172,21 @@ std::cout << "Foooooo 5" << std::endl;
                 wavefunction = ArrayXXcd::Zero(0, 0);
             }
 
-            Schrodinger_atom_1D atom(tw, config.alpha(), config.output_wavefunction(), true);
+            Schrodinger_atom_1D atom;
             if (print == "minimum") {
                 if (this_node == 1) {
-                    atom.print = true;
+                    atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), true);
+                    //atom.print = true;
                 } else {
-                    atom.print = false;
+                    atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), false);
+                    //atom.print = false;
                 }
             } else if (print == "false") {
-                atom.print = false;
+                atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), false);
+                //atom.print = false;
             } else {
-                atom.print = true;
+                //atom.print = true;
+                atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), true);
             }
             for (int ii = 0; ii < atoms_per_worker; ii++) {
 
@@ -208,9 +211,9 @@ std::cout << "Foooooo 5" << std::endl;
 
         if (this_node == 0) {
           //config.print(config.path_config_log());
-          std::cout << "\n-------------------------------------------------------------------------------\n";
+          //std::cout << "-------------------------------------------------------------------------------\n";
           std::cout << "XNLO successfully ran!\n";
-          std::cout << "-------------------------------------------------------------------------------\n";
+          //std::cout << "-------------------------------------------------------------------------------\n";
         }
 
         ArrayXXd zeros = ArrayXXd::Zero(1, 1);

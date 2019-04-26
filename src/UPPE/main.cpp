@@ -206,8 +206,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
         std::cout << "Main Program:\n";
         std::cout << "-------------------------------------------------------------------------------\n";
 
-        std::cout << "Laser p_pk: " << laser_driving.p_pk << std::endl;
-        std::cout << "Laser E_pk: " << laser_driving.E_pk << std::endl;
+        std::cout << "Laser p_pk: " << laser_driving.p_pk << ", laser E_pk: " << laser_driving.E_pk << std::endl;
     }
     
     IO file_prop_step;
@@ -301,13 +300,11 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
         while(2.0 * maths.pi / prop.k(wavelength_index_min).real() *1e9 > 33.0) {
             wavelength_index_min++;
         }
-        std::cout << "Found this: " << 2.0 * maths.pi / prop.k(wavelength_index_min - 1) *1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_min)*1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_min + 1)*1e9 << std::endl;
         wavelength_index_max = 0;
         while(2.0 * maths.pi / prop.k(wavelength_index_max).real() *1e9 > 26.0) {
             wavelength_index_max++;
         }
-        std::cout << "Found this: " << 2.0 * maths.pi / prop.k(wavelength_index_max - 1) *1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_max)*1e9 << ", " << 2.0 * maths.pi / prop.k(wavelength_index_max + 1)*1e9 << std::endl;
-        std::cout << "wavelength_index_min: " << wavelength_index_min << ", wavelength_index_max: " << wavelength_index_max << std::endl;
+        //std::cout << "Hwavelength_index_min: " << wavelength_index_min << ", wavelength_index_max: " << wavelength_index_max << std::endl;
     }
 
 
@@ -330,9 +327,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
             ii = 0;
             propagation_step = 0;
         }
-std::cout << "--- (dz*ii >= HHGP_starting_z)?: " << (dz*ii >= HHGP_starting_z) << std::endl;
         if (dz*ii >= HHGP_starting_z) HHGP_starting_z_bool = true;
-std::cout << "HHGP_starting_z_bool: " << HHGP_starting_z_bool << std::endl;
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             // Driving pulse:
@@ -350,7 +345,6 @@ std::cout << "HHGP_starting_z_bool: " << HHGP_starting_z_bool << std::endl;
             if ((total_processes > 1) && HHGP_starting_z_bool) {
                 // Send
                 for (int j = 1; j < total_processes; j++) {
-std::cout << "---laser_driving.A_w_active.cols(): " << laser_driving.A_w_active.cols() << ", laser_driving.A_w_active.rows(): " << laser_driving.A_w_active.rows() << std::endl;
                     MPI_Send(laser_driving.A_w_active.real().data(),
                              laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                              MPI_DOUBLE, j, j, MPI_COMM_WORLD);
@@ -359,13 +353,13 @@ std::cout << "---laser_driving.A_w_active.cols(): " << laser_driving.A_w_active.
         } else if (HHGP_starting_z_bool) {
             // Receive
             A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
-std::cout << "laser_driving.A_w_active.cols(): " << laser_driving.A_w_active.cols() << ", laser_driving.A_w_active.rows(): " << laser_driving.A_w_active.rows() << std::endl;
             MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                      MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
         }
 
         if ((total_processes > 1) && HHGP_starting_z_bool) {
-            atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index, "minimum");
+            atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index,
+                                      maths, physics, "minimum");
         }
 
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
@@ -428,7 +422,6 @@ std::cout << "laser_driving.A_w_active.cols(): " << laser_driving.A_w_active.col
             // If at the last step then we're at teh end of the capillary and so aren't looking
             // to propagate the last HH source any further, but rather just use it's source as it's
             // already at the desired position
-std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG_tmp.cols() << std::endl;
             if (ii < config.n_z()) {
                 prop.nearFieldPropagationStep((config.Z() - dz*ii), HHG_tmp);
                 HHP += prop.A_w_r;
@@ -514,7 +507,8 @@ std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG
 
             //int response_rate = 1;//config.n_z() / 10;
             if ((total_processes > 1) && HHGP_starting_z_bool) {// && ((ii % response_rate == 0) || ii == 1)) {
-                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index, "minimum");
+                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index,
+                                          maths, physics, "minimum");
             }
 
             if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
@@ -634,11 +628,11 @@ std::cout << "HHG_tmp.rows(): " << HHG_tmp.rows() << ", HHG_tmp.cols(): " << HHG
                     hhg_tol_check = (hhg_old.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r()) - hhg_old_interp.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r())).matrix().norm() / hhg_old.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r()).matrix().norm();
                     std::cout << hhg_tol_check << std::endl;
 
-                    std::cout << "Interpolating on to " << config.interp_points() << " internal sites..." << std::endl;
+                    std::cout << "   (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " << (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm() << std::endl;
+
+                    std::cout << "Interpolating on to " << config.interp_points() << " internal sites... ";
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                     
-std::cout << "(hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " << (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm() << std::endl;
-
                     double interp_dz = dz / double(config.interp_points() + 1);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
                     prop.print = false;

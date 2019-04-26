@@ -89,8 +89,8 @@ void IO::write(T output, std::string path, bool print) {
         cols = output.cols();
     }
 
-    IO::overwrite(path, print);
-    IO::write_header(path, rows, cols, print);
+    IO::overwrite(path, false);
+    IO::write_header(path, rows, cols, false);
     IO::write_double(path, output, rows, cols, print);
 }
 

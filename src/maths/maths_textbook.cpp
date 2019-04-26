@@ -82,7 +82,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
     /* output_length == NSITE ==Number of interpolation sites */
     /* spline_order == SPLINE_ORDER == A cubic spline to construct */ 
 
-    std::cout << "Interpolating Array:" << std::endl;
+    std::cout << "Interpolating Array: ";
 
     int status;          /* Status of a Data Fitting operation */
     int Nerrs = 0;       /* Numer of errors or warnings */
@@ -139,7 +139,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
 
     /* Create a Data Fitting task */
     status = dfdNewTask1D( &task, nx, x, xhint, ny, input_array.data(), yhint );
-    if (print) std::cout << "   dfdNewTask1D status: " << status << std::endl;
+    if (print) std::cout << "\n   dfdNewTask1D status: " << status << std::endl;
     Nerrs += status;
 
     /* Initialize spline parameters */
@@ -220,7 +220,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
     /* output_length == NSITE ==Number of interpolation sites */
     /* spline_order == SPLINE_ORDER == A cubic spline to construct */ 
 
-    std::cout << "Interpolating Array:" << std::endl;
+    std::cout << "Interpolating Array: ";
 
     int status;          /* Status of a Data Fitting operation */
     int Nerrs = 0;       /* Numer of errors or warnings */
@@ -270,7 +270,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
 
     /* Create a Data Fitting task */
     status = dfdNewTask1D( &task, nx, x.data(), xhint, ny, y.data(), yhint );
-    if (print) std::cout << "   dfdNewTask1D status: " << status << std::endl;
+    if (print) std::cout << "\n   dfdNewTask1D status: " << status << std::endl;
     Nerrs += status;
 
     /* Initialize spline parameters */

@@ -52,6 +52,8 @@ namespace XNLO {
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
 /*! Constructor */
+grid_tw::grid_tw() {}
+/*! Constructor */
 grid_tw::grid_tw(int N_t_, double t_min_, double t_max_) {
     
     maths_textbook maths;

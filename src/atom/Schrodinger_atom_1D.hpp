@@ -41,6 +41,7 @@ public:
     ArrayXXcd wfn_output;    /*!< The electron wavefunction at every position and time step. */
     
     // Functions
+    Schrodinger_atom_1D();
     Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int output_wavefunction_, bool print=true);
     void set_GS(int N_it_);
     ArrayXd get_acceleration(int N_it_, double dt_, ArrayXd E_);

@@ -157,25 +157,18 @@ laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, do
 }
 
 /*! Constructor */
-laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE) {
-
-    maths_textbook maths("../../input/J0_zeros.bin");
-    physics_textbook physics;
+laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active,
+                         ArrayXd w_active, int w_active_min_index_UPPE,
+                         maths_textbook& maths_, physics_textbook& physics_)
+                         :
+                         maths(maths_),
+                         physics(physics_) {
 
     int N_cols = A_w_active.cols();
     int N_rows = A_w_active.rows();
 
-    //laser_pulse_file.read_header(path_w_active, false);
-    //ArrayXd w_active = laser_pulse_file.read_double(path_w_active, true, false);
-    //int N_cols_w = laser_pulse_file.N_col_;
-    //int N_rows_w = laser_pulse_file.N_row_;
-
     ArrayXd temp_linSpace = ArrayXd::LinSpaced(N_rows, -500.0e-15, 500.0e-15);
     ArrayXd boundary = (1 - ((0.5 * maths.pi * temp_linSpace / 500e-15).sin()).pow(50));
-    //for (int i = 0; i < N_cols; i++) {
-    //    A_w_R.col(i) *= boundary;
-    //    A_w_I.col(i) *= boundary;
-    //}
 
     // Combine the two real array that represent the real and complex parts and make a complex array from them
     ArrayXXcd A_w_m = A_w_active;
@@ -184,7 +177,6 @@ laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, Array
     DHT ht(N_cols, maths);
 
     int n_active = N_rows;
-    //int w_active_min_index = 32;//0;//32;
 
     double dw_U = std::abs(w_active(0) - w_active(1));
     double dt_X = std::abs(tw_.t(0) - tw_.t(1));
@@ -192,27 +184,15 @@ laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, Array
 
     int N_t = int(T_u / dt_X);
 
-std::cout << "XNLO FOO 1" << std::endl;
-
     // Backward spectral transform
     ArrayXXcd temp_2 = ArrayXXcd::Zero(n_active, N_cols);
-std::cout << "XNLO FOO 2" << std::endl;
     temp_2.block(0, 0, n_active, N_cols) = A_w_m;
-std::cout << "XNLO FOO 3" << std::endl;
     for (int ii = 0; ii < n_active; ii++)
         temp_2.row(ii) = ht.backward(A_w_m.row(ii));
-std::cout << "XNLO FOO 4" << std::endl;
     ArrayXXcd temp_3 = ArrayXXcd::Zero(N_t, N_cols);
-std::cout << "XNLO FOO 5" << std::endl;
     temp_3.block(w_active_min_index_UPPE , 0, n_active, N_cols) = temp_2;
-std::cout << "XNLO FOO 6" << std::endl;
-std::cout << "tempt_3.rows(): " << temp_3.rows() << ", temp_3.cols(): " << temp_3.cols() << std::endl;
-std::cout << "N_t: " << N_t << ", n_active: " << n_active << ", w_active_min_index_UPPE: " << w_active_min_index_UPPE << std::endl;
-std::cout << "temp_2.rows(): " << temp_2.rows() << ", " << "temp_2.cols(): " << temp_2.cols() << std::endl;
     temp_3.block(N_t - n_active - w_active_min_index_UPPE + 1, 0,
                  n_active, N_cols) = temp_2.conjugate().colwise().reverse();
-std::cout << "XNLO FOO 7" << std::endl;
-std::cout << "temp_3.row(N_t).col(0): " << temp_3.row(N_t-1).col(0) << "temp_2.conjugate().row(0).col(0): " << temp_2.conjugate().row(0).col(0) << std::endl;
 
     // Set up transform, MKL
     MKL_LONG dimension = 1;
@@ -236,9 +216,8 @@ std::cout << "temp_3.row(N_t).col(0): " << temp_3.row(N_t-1).col(0) << "temp_2.c
     int N_t_before = int(std::abs(T_U_min - tw_.t_min) / dt_X);
     int N_t_after = int(std::abs(T_U_max - tw_.t_max) / dt_X);
 
-    //std::cout << "T_U_min: " << T_U_min << ", T_U_max: " << T_U_max << ", N_t_before: " << N_t_before << ", N_t_after: " << N_t_after << std::endl;
-    std::cout << "dw_U: " << dw_U << ", dt_X" << dt_X << std::endl;
-    std::cout << "N_T_calc: " << N_t - (N_t_after + N_t_before) << std::endl;
+    //std::cout << "dw_U: " << dw_U << ", dt_X" << dt_X << std::endl;
+    //std::cout << "N_T_calc: " << N_t - (N_t_after + N_t_before) << std::endl;
 
     ArrayXXd E_ = ArrayXXd::Zero(tw_.N_t, N_cols);
     E_ = temp_3.real().block(N_t_before, 0, tw_.N_t, N_cols);

@@ -23,7 +23,12 @@ using namespace Eigen;
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
 /*! Class constructor. */
-Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int output_wavefunction_, bool print_) : tw(tw_), print(print_) {
+Schrodinger_atom_1D::Schrodinger_atom_1D() {}
+
+/*! Class constructor. */
+Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int output_wavefunction_, bool print_)
+                                         :
+                                         tw(tw_), print(print_) {
     
     maths_textbook maths;
     physics_textbook physics;

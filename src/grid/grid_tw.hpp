@@ -60,6 +60,7 @@ public:
     double dt;
     
     //Functions
+    grid_tw();
     grid_tw(int N_t_, double t_min_, double t_max_);
     
 };
