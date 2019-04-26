@@ -24,8 +24,9 @@ using namespace Eigen;
 /*! Constructor */
 keldysh_gas::keldysh_gas() {}
 keldysh_gas::keldysh_gas(double press_,
-                         std::string gas_pressure_profile_) :
-                         gas_pressure_profile(gas_pressure_profile_) {
+                         std::string gas_pressure_profile_, bool print_) :
+                         gas_pressure_profile(gas_pressure_profile_),
+                         print(print_) {
 
     atom_density_max = press_ * 1.0e5 / (physics.k_B * 300.0);  // [atoms/m^3]
     z_max = 0.07;
@@ -42,17 +43,18 @@ keldysh_gas::keldysh_gas(double press_,
     // Witchcraft to switch around which pressure profile function atom_density
     // points to.
     if (gas_pressure_profile == "capillary") {
-        std::cout << "keldysh_gas: capillary gas pressure profile chosen!" << std::endl;
+        if (print) std::cout << "keldysh_gas: capillary gas pressure profile chosen!" << std::endl;
         set_atom_density_ptr(&keldysh_gas::capillary_pressure_profile);
     } else if (gas_pressure_profile == "constant") {
-        std::cout << "keldysh_gas: constant gas pressure profile chosen!" << std::endl;
+        if (print) std::cout << "keldysh_gas: constant gas pressure profile chosen!" << std::endl;
         set_atom_density_ptr(&keldysh_gas::constant_pressure_profile);
     }
 }
 keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_,
-                         std::string gas_pressure_profile_) :
+                         std::string gas_pressure_profile_, bool print_) :
     maths(maths_), tw(tw_), ft(ft_),
-    gas_pressure_profile(gas_pressure_profile_) {
+    gas_pressure_profile(gas_pressure_profile_),
+    print(print_) {
 
     atom_density_max = press_ * 1.0e5 / (physics.k_B * 300.0);  // [atoms/m^3]
     z_max = 0.07;
@@ -69,10 +71,10 @@ keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft
     // Witchcraft to switch around which pressure profile function atom_density
     // points to.
     if (gas_pressure_profile == "capillary") {
-        std::cout << "keldysh_gas: capillary gas pressure profile chosen!" << std::endl;
+        if (print) std::cout << "keldysh_gas: capillary gas pressure profile chosen!" << std::endl;
         set_atom_density_ptr(&keldysh_gas::capillary_pressure_profile);
     } else if (gas_pressure_profile == "constant") {
-        std::cout << "keldysh_gas: constant gas pressure profile chosen!" << std::endl;
+        if (print) std::cout << "keldysh_gas: constant gas pressure profile chosen!" << std::endl;
         set_atom_density_ptr(&keldysh_gas::constant_pressure_profile);
     }
 }

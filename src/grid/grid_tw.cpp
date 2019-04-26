@@ -43,7 +43,7 @@ grid_tw::grid_tw(int n_t_, double T_, double w_active_min_, double w_active_max_
     w_active = w.segment(w_active_min_index, n_active);
 
 
-    std::cout << "w_active_min_index: " << w_active_min_index << std::endl;
+    //std::cout << "w_active_min_index: " << w_active_min_index << std::endl;
 }
 
 namespace XNLO {

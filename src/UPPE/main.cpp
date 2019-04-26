@@ -91,6 +91,7 @@ int main(int argc, char** argv){
     if (this_process == 0) { config.print(); }
 
     XNLO::Config_Settings config_XNLO;
+    config_XNLO.print_to_screen = false;
     if (total_processes > 1) {
         if(this_process == 0 && config_XNLO_file_path.empty()) {
           std::cout << "Using default config file path " << config_XNLO.path_config_file() << std::endl;
@@ -150,6 +151,7 @@ int main(int argc, char** argv){
     // Grids
     grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
     grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
+if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_index << std::endl;
 
     double dz = config.Z() / double(config.n_z());
     int initial_step = 0;
@@ -238,9 +240,9 @@ int main(int argc, char** argv){
     ArrayXd w_active_HHG;
 
     ArrayXd w_tmp = tw_XNLO.w;
-    if (this_process == 0) {
-        std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
-    }
+    //if (this_process == 0) {
+    //    std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
+    //}
     int w_active_min_index_HHG = 0;
     while (w_tmp(w_active_min_index_HHG) < w_active_min_HHG)
         w_active_min_index_HHG++;
@@ -252,16 +254,17 @@ int main(int argc, char** argv){
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
     w_tmp = 0;
 
-    if (this_process == 0) {
-    std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
-    std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
-    }
+    //if (this_process == 0) {
+    //    std::cout << "n_active_HHG: " << n_active_HHG << std::endl;
+    //    std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
+    //}
     propagation prop;
     HHGP hhgp;
     if (this_process == 0) {
         prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
+        prop.print = true;
         hhgp = HHGP(prop,
                     config_HHGP,
                     rkr, gas,

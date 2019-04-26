@@ -79,8 +79,8 @@ namespace XNLO {
                 std::cout << "Using config file path " << config.path_config_file() << std::endl;
             }
         }
-        config.read_in(config.path_config_file(), this_node==0);
-        config.check_paths(this_node==0);
+        config.read_in(config.path_config_file(), config.print_to_screen);
+        config.check_paths(config.print_to_screen);
         if (this_node == 0) {
             config.print();
         }
@@ -101,17 +101,17 @@ namespace XNLO {
         if (this_node == 0) {
 
             std::cout << "--- N_x: " << N_x << std::endl;
-
+std::cout << "Foooooo 1" << std::endl;
             // Field
             double ROC = std::numeric_limits<double>::max();
             laser_pulse pulse(rkr, tw, A_w_active, w_active, w_active_min_index_UPPE);
-
+std::cout << "Foooooo 2" << std::endl;
             // Send
             for (int ii = 1; ii < total_nodes; ii++) {
                 MPI_Send(pulse.E.block(0, atoms_per_worker * (ii - 1), tw.N_t, atoms_per_worker).data(),
                          tw.N_t * atoms_per_worker, MPI_DOUBLE, ii, 1, MPI_COMM_WORLD);
             }
-
+std::cout << "Foooooo 3" << std::endl;
             // Receive
             ArrayXXd dipole = ArrayXXd::Zero(tw.N_t, total_atoms);
 
@@ -121,7 +121,7 @@ namespace XNLO {
             } else {
                 wavefunction = ArrayXXcd::Zero(0, 0);
             }
-
+std::cout << "Foooooo 4" << std::endl;
             for (int jj = 1; jj < total_nodes; jj++) {
                 // Request
                 bool send = true;
@@ -130,7 +130,7 @@ namespace XNLO {
                 MPI_Recv(dipole.block(0, atoms_per_worker * (jj - 1), tw.N_t, atoms_per_worker).data(),
                          tw.N_t * atoms_per_worker, MPI_DOUBLE, jj, 1, MPI_COMM_WORLD, &status);
             }
-
+std::cout << "Foooooo 5" << std::endl;
             if (config.output_wavefunction() == 1) {
                 MPI_Recv(wavefunction.block(0, 0, tw.N_t, 4096).data(),
                              4096 * tw.N_t, MPI_DOUBLE_COMPLEX, 1, 1, MPI_COMM_WORLD, &status);

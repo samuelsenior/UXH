@@ -19,21 +19,26 @@ using namespace Eigen;
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
 /*! Constructor */
-maths_textbook::maths_textbook() {
+maths_textbook::maths_textbook(bool print_)
+                               :
+                               print(print_) {
     
     // Geometry
     pi = std::acos(-1.0);
     
 }
 /*! Constructor */
-maths_textbook::maths_textbook(std::string path_input_j0_) : path_input_j0(path_input_j0_) {
+maths_textbook::maths_textbook(std::string path_input_j0_, bool print_)
+                               :
+                               path_input_j0(path_input_j0_),
+                               print(print_) {
     
     // Geometry
     pi = std::acos(-1.0);
 
     // Special functions
     IO file;
-    J0_zeros = file.read_double(path_input_j0, 1000, 1);   // From Mathematica
+    J0_zeros = file.read_double(path_input_j0, 1000, 1, false);   // From Mathematica
     
 }
 
@@ -134,7 +139,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
 
     /* Create a Data Fitting task */
     status = dfdNewTask1D( &task, nx, x, xhint, ny, input_array.data(), yhint );
-    std::cout << "   dfdNewTask1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdNewTask1D status: " << status << std::endl;
     Nerrs += status;
 
     /* Initialize spline parameters */
@@ -154,7 +159,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
     /* Set spline parameters  in the Data Fitting task */
     status = dfdEditPPSpline1D( task, s_order, s_type, bc_type, bc, ic_type,
         ic, scoeff, scoeffhint );
-    std::cout << "   dfdEditPPSpline1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdEditPPSpline1D status: " << status << std::endl;
     Nerrs += status;
 
     /* Use a standard method to construct a cubic Bessel spline: */
@@ -164,7 +169,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
     /* scoeff[4*i+2] = ci,2, scoef[4*i+1] = ci,3,         */   
     /* i=0,...,N-2  */
     status = dfdConstruct1D( task, DF_PP_SPLINE, DF_METHOD_STD );
-    std::cout << "   dfdConstruct1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdConstruct1D status: " << status << std::endl;
     Nerrs += status;
 
     /* Set site values */
@@ -188,12 +193,12 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
     at the points site(i), i=0,..., nsite-1 and place the results to array r */ 
     status = dfdInterpolate1D( task, DF_INTERP, DF_METHOD_PP, nsite, site,
         sitehint, ndorder, &dorder, datahint, r.data(), rhint, cell );
-    std::cout << "   dfdInterpolate1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdInterpolate1D status: " << status << std::endl;
     Nerrs += status;
 
     /* De-allocate Data Fitting task resources */
     status = dfDeleteTask( &task );
-    std::cout << "   dfDeleteTask status: " << status << std::endl;
+    if (print) std::cout << "   dfDeleteTask status: " << status << std::endl;
     Nerrs += status;
     if (Nerrs == 0) {
     	std::cout << "Interpolation successful!" <<std::endl;
@@ -265,7 +270,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
 
     /* Create a Data Fitting task */
     status = dfdNewTask1D( &task, nx, x.data(), xhint, ny, y.data(), yhint );
-    std::cout << "   dfdNewTask1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdNewTask1D status: " << status << std::endl;
     Nerrs += status;
 
     /* Initialize spline parameters */
@@ -285,7 +290,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
     /* Set spline parameters  in the Data Fitting task */
     status = dfdEditPPSpline1D( task, s_order, s_type, bc_type, bc, ic_type,
         ic, scoeff, scoeffhint );
-    std::cout << "   dfdEditPPSpline1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdEditPPSpline1D status: " << status << std::endl;
     Nerrs += status;
 
     /* Use a standard method to construct a cubic Bessel spline: */
@@ -295,7 +300,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
     /* scoeff[4*i+2] = ci,2, scoef[4*i+1] = ci,3,         */   
     /* i=0,...,N-2  */
     status = dfdConstruct1D( task, DF_PP_SPLINE, DF_METHOD_STD );
-    std::cout << "   dfdConstruct1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdConstruct1D status: " << status << std::endl;
     Nerrs += status;
 
     sitehint = DF_NON_UNIFORM_PARTITION;  /* Partition of sites is non-uniform */
@@ -313,15 +318,15 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
     at the points site(i), i=0,..., nsite-1 and place the results to array r */ 
     status = dfdInterpolate1D( task, DF_INTERP, DF_METHOD_PP, nsite, site.data(),
         sitehint, ndorder, &dorder, datahint, r.data(), rhint, cell );
-    std::cout << "   dfdInterpolate1D status: " << status << std::endl;
+    if (print) std::cout << "   dfdInterpolate1D status: " << status << std::endl;
     Nerrs += status;
 
-std::cout << "nsite: " << nsite << std::endl;
-std::cout << "site max: " << site.maxCoeff() << ", r max: " << r.maxCoeff() << std::endl;
+    if (print) std::cout << "nsite: " << nsite << std::endl;
+    if (print) std::cout << "site max: " << site.maxCoeff() << ", r max: " << r.maxCoeff() << std::endl;
 
     /* De-allocate Data Fitting task resources */
     status = dfDeleteTask( &task );
-    std::cout << "   dfDeleteTask status: " << status << std::endl;
+    if (print) std::cout << "   dfDeleteTask status: " << status << std::endl;
     Nerrs += status;
     if (Nerrs == 0) {
         std::cout << "Interpolation successful!" <<std::endl;

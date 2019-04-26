@@ -59,11 +59,13 @@ public:
     double n_star;
     double kappa;
 
+    bool print;
+
     // Functions
     keldysh_gas();
-    keldysh_gas(double press_, std::string gas_pressure_profile_);
+    keldysh_gas(double press_, std::string gas_pressure_profile_, bool print_=false);
     keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_,
-                std::string gas_pressure_profile_);
+                std::string gas_pressure_profile_, bool print=false);
     //std::function<double(double)> atom_density;
     double atom_density(double z);
     ArrayXcd nl_polarization(ArrayXd E_t_);

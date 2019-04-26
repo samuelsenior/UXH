@@ -67,14 +67,14 @@ laser_pulse::laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, do
 
         IO laser_pulse_file;
         laser_pulse_file.read_header(path_A_w_R, false);
-        ArrayXXd A_w_R = laser_pulse_file.read_double(path_A_w_R);
+        ArrayXXd A_w_R = laser_pulse_file.read_double(path_A_w_R, true, false);
         laser_pulse_file.read_header(path_A_w_I, false);
-        ArrayXXd A_w_I = laser_pulse_file.read_double(path_A_w_I);
+        ArrayXXd A_w_I = laser_pulse_file.read_double(path_A_w_I, true, false);
         int N_cols = laser_pulse_file.N_col_;
         int N_rows = laser_pulse_file.N_row_;
 
         laser_pulse_file.read_header(path_w_active, false);
-        ArrayXd w_active = laser_pulse_file.read_double(path_w_active);
+        ArrayXd w_active = laser_pulse_file.read_double(path_w_active, true, false);
         int N_cols_w = laser_pulse_file.N_col_;
         int N_rows_w = laser_pulse_file.N_row_;
 
@@ -166,7 +166,7 @@ laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, Array
     int N_rows = A_w_active.rows();
 
     //laser_pulse_file.read_header(path_w_active, false);
-    //ArrayXd w_active = laser_pulse_file.read_double(path_w_active);
+    //ArrayXd w_active = laser_pulse_file.read_double(path_w_active, true, false);
     //int N_cols_w = laser_pulse_file.N_col_;
     //int N_rows_w = laser_pulse_file.N_row_;
 
@@ -314,9 +314,9 @@ std::cout << "Reading in initial laser pulse from file..." << std::endl;
         // Read in spectral amplitudes from file
         IO laser_pulse_file;
         laser_pulse_file.read_header(config.path_A_w_R_initial(), false);
-        ArrayXXd A_w_R = laser_pulse_file.read_double(config.path_A_w_R_initial());
+        ArrayXXd A_w_R = laser_pulse_file.read_double(config.path_A_w_R_initial(), true, false);
         laser_pulse_file.read_header(config.path_A_w_I_initial(), false);
-        ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I_initial());
+        ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I_initial(), true, false);
         int N_cols = laser_pulse_file.N_col_;
         int N_rows = laser_pulse_file.N_row_;
 std::cout << "N_cols: " << N_cols << ", N_rows: " << N_rows << std::endl;

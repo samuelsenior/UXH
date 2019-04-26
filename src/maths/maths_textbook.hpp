@@ -27,10 +27,12 @@ public:
     // Data
     double pi;
     ArrayXd J0_zeros;
+
+    bool print;
     
     // Functions
-    maths_textbook();
-    maths_textbook(std::string path_input_j0_);
+    maths_textbook(bool print_=false);
+    maths_textbook(std::string path_input_j0_, bool print_=false);
     double trapz(ArrayXd x_, ArrayXd y_);
     ArrayXd cumtrapz(ArrayXd x_, ArrayXd y_);
     ArrayXd interp1D(ArrayXd input_array, int input_length, int output_length, int spline_order);

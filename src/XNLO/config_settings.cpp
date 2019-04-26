@@ -248,7 +248,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
         path_config_log_description_set(input_description_char);
         break;
 
-      default: std::cout << "Config_Settings::set_variable: Error, SettingName (number value) " << static_cast<std::underlying_type<SN>::type>(SettingName) << " does not correspond to set values!" << std::endl;
+      default:
+        if (print_to_screen == true) {
+          std::cout << "Config_Settings::set_variable: Error, SettingName (number value) " << static_cast<std::underlying_type<SN>::type>(SettingName) << " does not correspond to set values!" << std::endl;
+        }
+        break;
     };
   } else {
     if (print_to_screen == true) {
