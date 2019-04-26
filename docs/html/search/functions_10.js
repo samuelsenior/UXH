@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88',1,'Schrodinger_atom_1D']]],
+  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_schrodinger__atom__1_d.html#a48b10b930ac6da37946ba6265b1f1384',1,'Schrodinger_atom_1D::Schrodinger_atom_1D()'],['../class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88',1,'Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw &amp;tw_, double alpha_, int output_wavefunction_, bool print=true)']]],
   ['segment',['segment',['../classpropagation.html#a39126bbbd4977c140c0077b849e78bc1',1,'propagation']]],
   ['set_5fatom_5fdensity_5fptr',['set_atom_density_ptr',['../classkeldysh__gas.html#a051c59204ad55298d5632ac2eb4dd626',1,'keldysh_gas']]],
   ['set_5fgs',['set_GS',['../class_schrodinger__atom__1_d.html#ac1ed38eae8a6287fff9201cf6acdd436',1,'Schrodinger_atom_1D']]],

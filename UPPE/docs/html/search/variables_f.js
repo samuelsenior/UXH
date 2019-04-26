@@ -72,5 +72,6 @@ var searchData=
   ['physics',['physics',['../classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4',1,'keldysh_gas']]],
   ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['press_5f',['press_',['../class_config___settings.html#afc35b2b38b6e991d38a1a8b7cfae8df4',1,'Config_Settings']]],
-  ['press_5fdescription_5f',['press_description_',['../class_config___settings.html#a6c0508d29779a253834967377df98934',1,'Config_Settings']]]
+  ['press_5fdescription_5f',['press_description_',['../class_config___settings.html#a6c0508d29779a253834967377df98934',1,'Config_Settings']]],
+  ['print',['print',['../classkeldysh__gas.html#a6c8f0e275da16bbf21f51a8c2a444bf7',1,'keldysh_gas::print()'],['../classmaths__textbook.html#ae2a8fbebf9b44587f2d21df219c10812',1,'maths_textbook::print()']]]
 ];

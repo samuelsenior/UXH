@@ -1,5 +1,5 @@
 \hypertarget{classmaths__textbook}{}\section{maths\+\_\+textbook Class Reference}
-\label{classmaths__textbook}\index{maths\+\_\+textbook@{maths\+\_\+textbook}}
+\label{classmaths__textbook}\index{maths\_textbook@{maths\_textbook}}
 
 
 {\ttfamily \#include $<$maths\+\_\+textbook.\+hpp$>$}
@@ -7,29 +7,31 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classmaths__textbook_a7be915ec6de7f305b96325ff5d821607}{maths\+\_\+textbook} ()
+\mbox{\hyperlink{classmaths__textbook_a5a7c7fedbd125f32ce35deb6664a19d9}{maths\+\_\+textbook}} (bool print\+\_\+=false)
 \item 
-\hyperlink{classmaths__textbook_acca32bf0f3860cbb8e76687435f0fa24}{maths\+\_\+textbook} (std\+::string path\+\_\+input\+\_\+j0\+\_\+)
+\mbox{\hyperlink{classmaths__textbook_a56743163bbb37c83a95d8cb1ca1cc35b}{maths\+\_\+textbook}} (std\+::string path\+\_\+input\+\_\+j0\+\_\+, bool print\+\_\+=false)
 \item 
-double \hyperlink{classmaths__textbook_a158ce9c89ee1db5495810c25ee2aed57}{trapz} (Array\+Xd x\+\_\+, Array\+Xd y\+\_\+)
+double \mbox{\hyperlink{classmaths__textbook_a158ce9c89ee1db5495810c25ee2aed57}{trapz}} (Array\+Xd x\+\_\+, Array\+Xd y\+\_\+)
 \item 
-Array\+Xd \hyperlink{classmaths__textbook_ae893700d202ab9a84e33974f9ca42da3}{cumtrapz} (Array\+Xd x\+\_\+, Array\+Xd y\+\_\+)
+Array\+Xd \mbox{\hyperlink{classmaths__textbook_ae893700d202ab9a84e33974f9ca42da3}{cumtrapz}} (Array\+Xd x\+\_\+, Array\+Xd y\+\_\+)
 \item 
-Array\+Xd \hyperlink{classmaths__textbook_a803caea252953788b96a898a3bab9bd0}{interp1D} (Array\+Xd input\+\_\+array, int input\+\_\+length, int output\+\_\+length, int spline\+\_\+order)
+Array\+Xd \mbox{\hyperlink{classmaths__textbook_a803caea252953788b96a898a3bab9bd0}{interp1D}} (Array\+Xd input\+\_\+array, int input\+\_\+length, int output\+\_\+length, int spline\+\_\+order)
 \item 
-Array\+Xd \hyperlink{classmaths__textbook_ac4789e1e67a597303faab6cc5fa889ec}{interp1D} (Array\+Xd x, int nx, Array\+Xd y, Array\+Xd site, int output\+\_\+length, int spline\+\_\+order)
+Array\+Xd \mbox{\hyperlink{classmaths__textbook_ac4789e1e67a597303faab6cc5fa889ec}{interp1D}} (Array\+Xd x, int nx, Array\+Xd y, Array\+Xd site, int output\+\_\+length, int spline\+\_\+order)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-double \hyperlink{classmaths__textbook_a96b811ef2a81ca51b98cf2a10c8ac5bc}{pi}
+double \mbox{\hyperlink{classmaths__textbook_a96b811ef2a81ca51b98cf2a10c8ac5bc}{pi}}
 \item 
-Array\+Xd \hyperlink{classmaths__textbook_a41398eada5e3eb88fb64d044c14aed26}{J0\+\_\+zeros}
+Array\+Xd \mbox{\hyperlink{classmaths__textbook_a41398eada5e3eb88fb64d044c14aed26}{J0\+\_\+zeros}}
+\item 
+bool \mbox{\hyperlink{classmaths__textbook_ae2a8fbebf9b44587f2d21df219c10812}{print}}
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::string \hyperlink{classmaths__textbook_a5c8a254bd117beaba43916c38f8f6a66}{path\+\_\+input\+\_\+j0}
+std\+::string \mbox{\hyperlink{classmaths__textbook_a5c8a254bd117beaba43916c38f8f6a66}{path\+\_\+input\+\_\+j0}}
 \end{DoxyCompactItemize}
 
 
@@ -37,42 +39,42 @@ std\+::string \hyperlink{classmaths__textbook_a5c8a254bd117beaba43916c38f8f6a66}
 Modified by Patrick Anderson on 07/05/2015. \char`\"{}maths\+\_\+textbook\char`\"{} is a container for mathematical constants and common functions. 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classmaths__textbook_a7be915ec6de7f305b96325ff5d821607}\label{classmaths__textbook_a7be915ec6de7f305b96325ff5d821607}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\subsubsection{\texorpdfstring{maths\+\_\+textbook()}{maths\_textbook()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily maths\+\_\+textbook\+::maths\+\_\+textbook (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classmaths__textbook_a5a7c7fedbd125f32ce35deb6664a19d9}\label{classmaths__textbook_a5a7c7fedbd125f32ce35deb6664a19d9}} 
+\index{maths\_textbook@{maths\_textbook}!maths\_textbook@{maths\_textbook}}
+\index{maths\_textbook@{maths\_textbook}!maths\_textbook@{maths\_textbook}}
+\subsubsection{\texorpdfstring{maths\_textbook()}{maths\_textbook()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily maths\+\_\+textbook\+::maths\+\_\+textbook (\begin{DoxyParamCaption}\item[{bool}]{print\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})}
 
-Constructor \mbox{\Hypertarget{classmaths__textbook_acca32bf0f3860cbb8e76687435f0fa24}\label{classmaths__textbook_acca32bf0f3860cbb8e76687435f0fa24}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\subsubsection{\texorpdfstring{maths\+\_\+textbook()}{maths\_textbook()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily maths\+\_\+textbook\+::maths\+\_\+textbook (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+\_\+input\+\_\+j0\+\_\+ }\end{DoxyParamCaption})}
+Constructor \mbox{\Hypertarget{classmaths__textbook_a56743163bbb37c83a95d8cb1ca1cc35b}\label{classmaths__textbook_a56743163bbb37c83a95d8cb1ca1cc35b}} 
+\index{maths\_textbook@{maths\_textbook}!maths\_textbook@{maths\_textbook}}
+\index{maths\_textbook@{maths\_textbook}!maths\_textbook@{maths\_textbook}}
+\subsubsection{\texorpdfstring{maths\_textbook()}{maths\_textbook()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily maths\+\_\+textbook\+::maths\+\_\+textbook (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+\_\+input\+\_\+j0\+\_\+,  }\item[{bool}]{print\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})}
 
 Constructor 
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classmaths__textbook_ae893700d202ab9a84e33974f9ca42da3}\label{classmaths__textbook_ae893700d202ab9a84e33974f9ca42da3}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!cumtrapz@{cumtrapz}}
-\index{cumtrapz@{cumtrapz}!maths\+\_\+textbook@{maths\+\_\+textbook}}
+\index{maths\_textbook@{maths\_textbook}!cumtrapz@{cumtrapz}}
+\index{cumtrapz@{cumtrapz}!maths\_textbook@{maths\_textbook}}
 \subsubsection{\texorpdfstring{cumtrapz()}{cumtrapz()}}
 {\footnotesize\ttfamily Array\+Xd maths\+\_\+textbook\+::cumtrapz (\begin{DoxyParamCaption}\item[{Array\+Xd}]{x\+\_\+,  }\item[{Array\+Xd}]{y\+\_\+ }\end{DoxyParamCaption})}
 
 Cumulative trapezoidal integration \mbox{\Hypertarget{classmaths__textbook_a803caea252953788b96a898a3bab9bd0}\label{classmaths__textbook_a803caea252953788b96a898a3bab9bd0}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!interp1D@{interp1D}}
-\index{interp1D@{interp1D}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\subsubsection{\texorpdfstring{interp1\+D()}{interp1D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\index{maths\_textbook@{maths\_textbook}!interp1D@{interp1D}}
+\index{interp1D@{interp1D}!maths\_textbook@{maths\_textbook}}
+\subsubsection{\texorpdfstring{interp1D()}{interp1D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Array\+Xd maths\+\_\+textbook\+::interp1D (\begin{DoxyParamCaption}\item[{Array\+Xd}]{input\+\_\+array,  }\item[{int}]{input\+\_\+length,  }\item[{int}]{output\+\_\+length,  }\item[{int}]{spline\+\_\+order }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classmaths__textbook_ac4789e1e67a597303faab6cc5fa889ec}\label{classmaths__textbook_ac4789e1e67a597303faab6cc5fa889ec}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!interp1D@{interp1D}}
-\index{interp1D@{interp1D}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\subsubsection{\texorpdfstring{interp1\+D()}{interp1D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\index{maths\_textbook@{maths\_textbook}!interp1D@{interp1D}}
+\index{interp1D@{interp1D}!maths\_textbook@{maths\_textbook}}
+\subsubsection{\texorpdfstring{interp1D()}{interp1D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Array\+Xd maths\+\_\+textbook\+::interp1D (\begin{DoxyParamCaption}\item[{Array\+Xd}]{x,  }\item[{int}]{nx,  }\item[{Array\+Xd}]{y,  }\item[{Array\+Xd}]{site,  }\item[{int}]{output\+\_\+length,  }\item[{int}]{spline\+\_\+order }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classmaths__textbook_a158ce9c89ee1db5495810c25ee2aed57}\label{classmaths__textbook_a158ce9c89ee1db5495810c25ee2aed57}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!trapz@{trapz}}
-\index{trapz@{trapz}!maths\+\_\+textbook@{maths\+\_\+textbook}}
+\index{maths\_textbook@{maths\_textbook}!trapz@{trapz}}
+\index{trapz@{trapz}!maths\_textbook@{maths\_textbook}}
 \subsubsection{\texorpdfstring{trapz()}{trapz()}}
 {\footnotesize\ttfamily double maths\+\_\+textbook\+::trapz (\begin{DoxyParamCaption}\item[{Array\+Xd}]{x\+\_\+,  }\item[{Array\+Xd}]{y\+\_\+ }\end{DoxyParamCaption})}
 
@@ -80,26 +82,32 @@ Trapezoidal integration, vectorized
 
 \subsection{Member Data Documentation}
 \mbox{\Hypertarget{classmaths__textbook_a41398eada5e3eb88fb64d044c14aed26}\label{classmaths__textbook_a41398eada5e3eb88fb64d044c14aed26}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!J0\+\_\+zeros@{J0\+\_\+zeros}}
-\index{J0\+\_\+zeros@{J0\+\_\+zeros}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\subsubsection{\texorpdfstring{J0\+\_\+zeros}{J0\_zeros}}
+\index{maths\_textbook@{maths\_textbook}!J0\_zeros@{J0\_zeros}}
+\index{J0\_zeros@{J0\_zeros}!maths\_textbook@{maths\_textbook}}
+\subsubsection{\texorpdfstring{J0\_zeros}{J0\_zeros}}
 {\footnotesize\ttfamily Array\+Xd maths\+\_\+textbook\+::\+J0\+\_\+zeros}
 
 \mbox{\Hypertarget{classmaths__textbook_a5c8a254bd117beaba43916c38f8f6a66}\label{classmaths__textbook_a5c8a254bd117beaba43916c38f8f6a66}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!path\+\_\+input\+\_\+j0@{path\+\_\+input\+\_\+j0}}
-\index{path\+\_\+input\+\_\+j0@{path\+\_\+input\+\_\+j0}!maths\+\_\+textbook@{maths\+\_\+textbook}}
-\subsubsection{\texorpdfstring{path\+\_\+input\+\_\+j0}{path\_input\_j0}}
+\index{maths\_textbook@{maths\_textbook}!path\_input\_j0@{path\_input\_j0}}
+\index{path\_input\_j0@{path\_input\_j0}!maths\_textbook@{maths\_textbook}}
+\subsubsection{\texorpdfstring{path\_input\_j0}{path\_input\_j0}}
 {\footnotesize\ttfamily std\+::string maths\+\_\+textbook\+::path\+\_\+input\+\_\+j0\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classmaths__textbook_a96b811ef2a81ca51b98cf2a10c8ac5bc}\label{classmaths__textbook_a96b811ef2a81ca51b98cf2a10c8ac5bc}} 
-\index{maths\+\_\+textbook@{maths\+\_\+textbook}!pi@{pi}}
-\index{pi@{pi}!maths\+\_\+textbook@{maths\+\_\+textbook}}
+\index{maths\_textbook@{maths\_textbook}!pi@{pi}}
+\index{pi@{pi}!maths\_textbook@{maths\_textbook}}
 \subsubsection{\texorpdfstring{pi}{pi}}
 {\footnotesize\ttfamily double maths\+\_\+textbook\+::pi}
+
+\mbox{\Hypertarget{classmaths__textbook_ae2a8fbebf9b44587f2d21df219c10812}\label{classmaths__textbook_ae2a8fbebf9b44587f2d21df219c10812}} 
+\index{maths\_textbook@{maths\_textbook}!print@{print}}
+\index{print@{print}!maths\_textbook@{maths\_textbook}}
+\subsubsection{\texorpdfstring{print}{print}}
+{\footnotesize\ttfamily bool maths\+\_\+textbook\+::print}
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/sam/\+Project/\+X\+N\+L\+O/src/maths/\hyperlink{maths__textbook_8hpp}{maths\+\_\+textbook.\+hpp}\item 
-/home/sam/\+Project/\+X\+N\+L\+O/src/maths/\hyperlink{maths__textbook_8cpp}{maths\+\_\+textbook.\+cpp}\end{DoxyCompactItemize}
+/\+Users/sms1n16/\+Project/\+X\+N\+L\+O/src/maths/\mbox{\hyperlink{maths__textbook_8hpp}{maths\+\_\+textbook.\+hpp}}\item 
+/\+Users/sms1n16/\+Project/\+X\+N\+L\+O/src/maths/\mbox{\hyperlink{maths__textbook_8cpp}{maths\+\_\+textbook.\+cpp}}\end{DoxyCompactItemize}

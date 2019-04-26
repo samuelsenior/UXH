@@ -2,8 +2,8 @@ var classkeldysh__gas =
 [
     [ "atom_density_func_ptr", "classkeldysh__gas.html#ab47ad59b466eee349a7500555869b988", null ],
     [ "keldysh_gas", "classkeldysh__gas.html#a25e559700c04e93efb560db511adbe72", null ],
-    [ "keldysh_gas", "classkeldysh__gas.html#a7889120c043b13492fa58878c5459099", null ],
-    [ "keldysh_gas", "classkeldysh__gas.html#ae5510e8e448e96280f71b410907debf6", null ],
+    [ "keldysh_gas", "classkeldysh__gas.html#a457eec01f8cb23665d6a24c343b29571", null ],
+    [ "keldysh_gas", "classkeldysh__gas.html#ac986b9e64f1ce288ad0dfb7bdb00e844", null ],
     [ "atom_density", "classkeldysh__gas.html#acfa0604a6f00bce28b72b9a07fb79314", null ],
     [ "capillary_pressure_profile", "classkeldysh__gas.html#a9eac2e3d9a39a2358e9b6eb7f4a868c6", null ],
     [ "constant_pressure_profile", "classkeldysh__gas.html#ad70cb5ac156d96492a164774b80e7cdc", null ],
@@ -23,6 +23,7 @@ var classkeldysh__gas =
     [ "maths", "classkeldysh__gas.html#a501614b541b9056bb05b378a39962524", null ],
     [ "n_star", "classkeldysh__gas.html#a22ba35c494b37c8a8e78db09d6d8748c", null ],
     [ "physics", "classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4", null ],
+    [ "print", "classkeldysh__gas.html#a6c8f0e275da16bbf21f51a8c2a444bf7", null ],
     [ "transitionLength", "classkeldysh__gas.html#a88f63ff18217c60729a67b10ee838ee4", null ],
     [ "tw", "classkeldysh__gas.html#a1cd7129f9ba9d62f4084049e529cab49", null ],
     [ "U", "classkeldysh__gas.html#a752b70afe289a798cc0ab7b688b9ed3d", null ],

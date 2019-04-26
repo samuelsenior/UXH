@@ -8,5 +8,5 @@ var searchData=
   ['x_5fmin_5fdescription',['x_min_description',['../class_x_n_l_o_1_1_config___settings.html#a3eb56744d1fd0a2c36a7454341ad60ff',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a02baddcf2450c55332289e2f49a58fd6',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#ad776200ee998ac3bbfaf90e9edb4d525',1,'XNLO::Config_Settings']]],
-  ['xnlo',['XNLO',['../namespace_x_n_l_o.html#aa99cf6f3aa87e58ea5b490d85cafec99',1,'XNLO']]]
+  ['xnlo',['XNLO',['../namespace_x_n_l_o.html#ad1fe958133f16c4e43a9755b9f14e57e',1,'XNLO']]]
 ];

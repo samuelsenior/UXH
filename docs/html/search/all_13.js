@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_schrodinger__atom__1_d.html',1,'Schrodinger_atom_1D'],['../class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88',1,'Schrodinger_atom_1D::Schrodinger_atom_1D()']]],
+  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_schrodinger__atom__1_d.html',1,'Schrodinger_atom_1D'],['../class_schrodinger__atom__1_d.html#a48b10b930ac6da37946ba6265b1f1384',1,'Schrodinger_atom_1D::Schrodinger_atom_1D()'],['../class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88',1,'Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw &amp;tw_, double alpha_, int output_wavefunction_, bool print=true)']]],
   ['schrodinger_5fatom_5f1d_2ecpp',['Schrodinger_atom_1D.cpp',['../_schrodinger__atom__1_d_8cpp.html',1,'']]],
   ['schrodinger_5fatom_5f1d_2ehpp',['Schrodinger_atom_1D.hpp',['../_schrodinger__atom__1_d_8hpp.html',1,'']]],
   ['segment',['segment',['../classpropagation.html#a39126bbbd4977c140c0077b849e78bc1',1,'propagation']]],

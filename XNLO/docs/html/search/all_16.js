@@ -14,5 +14,5 @@ var searchData=
   ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a677b1c781d836348c274afc894c2c146',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#a7628afa38bf54e0cac3b462022e02e50',1,'XNLO::Config_Settings']]],
   ['xkx',['xkx',['../class_schrodinger__atom__1_d.html#add2762038510414449a7e6f022babcb2',1,'Schrodinger_atom_1D']]],
-  ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#aa99cf6f3aa87e58ea5b490d85cafec99',1,'XNLO::XNLO()']]]
+  ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#ad1fe958133f16c4e43a9755b9f14e57e',1,'XNLO::XNLO()']]]
 ];

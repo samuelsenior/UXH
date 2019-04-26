@@ -14,7 +14,7 @@ var searchData=
   ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a02baddcf2450c55332289e2f49a58fd6',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#ad776200ee998ac3bbfaf90e9edb4d525',1,'XNLO::Config_Settings']]],
   ['xkx',['xkx',['../class_schrodinger__atom__1_d.html#add2762038510414449a7e6f022babcb2',1,'Schrodinger_atom_1D']]],
-  ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#aa99cf6f3aa87e58ea5b490d85cafec99',1,'XNLO::XNLO()']]],
+  ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#ad1fe958133f16c4e43a9755b9f14e57e',1,'XNLO::XNLO()']]],
   ['xnlo_2ecpp',['XNLO.cpp',['../_x_n_l_o_8cpp.html',1,'']]],
   ['xnlo_2ehpp',['XNLO.hpp',['../_x_n_l_o_8hpp.html',1,'']]]
 ];

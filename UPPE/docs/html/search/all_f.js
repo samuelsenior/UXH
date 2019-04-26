@@ -191,5 +191,5 @@ var searchData=
   ['press_5fdescription_5f',['press_description_',['../class_config___settings.html#a6c0508d29779a253834967377df98934',1,'Config_Settings']]],
   ['press_5fdescription_5fset',['press_description_set',['../class_config___settings.html#a21e1e3dad8bff784a753ec82ff528464',1,'Config_Settings']]],
   ['press_5fset',['press_set',['../class_config___settings.html#a6995d1f5f91fbc5229f9634b0daba17b',1,'Config_Settings']]],
-  ['print',['print',['../class_config___settings.html#adf2afd6d78d715587922166b19cfe82f',1,'Config_Settings::print()'],['../class_config___settings.html#a6224a7b0a59a3735a873b77ed53282cf',1,'Config_Settings::print(std::string)']]]
+  ['print',['print',['../classkeldysh__gas.html#a6c8f0e275da16bbf21f51a8c2a444bf7',1,'keldysh_gas::print()'],['../classmaths__textbook.html#ae2a8fbebf9b44587f2d21df219c10812',1,'maths_textbook::print()'],['../class_config___settings.html#adf2afd6d78d715587922166b19cfe82f',1,'Config_Settings::print()'],['../class_config___settings.html#a6224a7b0a59a3735a873b77ed53282cf',1,'Config_Settings::print(std::string)']]]
 ];

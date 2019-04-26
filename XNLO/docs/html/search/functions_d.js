@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88',1,'Schrodinger_atom_1D']]],
+  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_schrodinger__atom__1_d.html#a48b10b930ac6da37946ba6265b1f1384',1,'Schrodinger_atom_1D::Schrodinger_atom_1D()'],['../class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88',1,'Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw &amp;tw_, double alpha_, int output_wavefunction_, bool print=true)']]],
   ['set_5fgs',['set_GS',['../class_schrodinger__atom__1_d.html#ac1ed38eae8a6287fff9201cf6acdd436',1,'Schrodinger_atom_1D']]],
   ['set_5fpath',['set_path',['../class_x_n_l_o_1_1_config___settings.html#a948a434d4dc61324965087af806bb2b5',1,'XNLO::Config_Settings']]],
   ['set_5fpost_5fpath',['set_post_path',['../class_x_n_l_o_1_1_config___settings.html#afbe10f0c17384924389fddd7b6261447',1,'XNLO::Config_Settings']]],

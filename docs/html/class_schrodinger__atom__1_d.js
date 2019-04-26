@@ -1,5 +1,6 @@
 var class_schrodinger__atom__1_d =
 [
+    [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html#a48b10b930ac6da37946ba6265b1f1384", null ],
     [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88", null ],
     [ "get_acceleration", "class_schrodinger__atom__1_d.html#a44ed03b206ac99feb2555974d6cd698b", null ],
     [ "set_GS", "class_schrodinger__atom__1_d.html#ac1ed38eae8a6287fff9201cf6acdd436", null ],

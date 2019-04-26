@@ -1,7 +1,7 @@
 var classpropagation =
 [
     [ "propagation", "classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7", null ],
-    [ "propagation", "classpropagation.html#a562f6967086bc17e79030e6846067650", null ],
+    [ "propagation", "classpropagation.html#a83d9af4c672b33155f87756647cd9ada", null ],
     [ "block", "classpropagation.html#af12b15d9b91f98516c0ff25efc1233d1", null ],
     [ "farFieldPropagation", "classpropagation.html#a9c2e1cb4e314c173b26de08ffcfe071d", null ],
     [ "n", "classpropagation.html#a7c696d9e54e5f0a7735047e28aee4866", null ],
