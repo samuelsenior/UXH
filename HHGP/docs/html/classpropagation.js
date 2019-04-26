@@ -1,7 +1,7 @@
 var classpropagation =
 [
     [ "propagation", "classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7", null ],
-    [ "propagation", "classpropagation.html#a082efa11767639ade0eaf0f8856cc410", null ],
+    [ "propagation", "classpropagation.html#a562f6967086bc17e79030e6846067650", null ],
     [ "block", "classpropagation.html#af12b15d9b91f98516c0ff25efc1233d1", null ],
     [ "farFieldPropagation", "classpropagation.html#a9c2e1cb4e314c173b26de08ffcfe071d", null ],
     [ "n", "classpropagation.html#a7c696d9e54e5f0a7735047e28aee4866", null ],
@@ -25,6 +25,7 @@ var classpropagation =
     [ "maths", "classpropagation.html#ab5a5024c2d06c0dad06c745af7c6416c", null ],
     [ "n_k", "classpropagation.html#a93033ee98c04a6fe007eae5c856e76b3", null ],
     [ "physics", "classpropagation.html#a42a6e725e3dd53cf94192bf93c31c8de", null ],
+    [ "print", "classpropagation.html#a817c9adeb6635ae4c4f548976f5fb84e", null ],
     [ "refractiveIndex", "classpropagation.html#aba601a0df3c63b13215c55d8ade2bcd7", null ],
     [ "rkr", "classpropagation.html#a3d37531bb5918f972544d242aec7e72b", null ],
     [ "to_end_only", "classpropagation.html#a939b7a85171b3e5ce06560a3885ef0ca", null ],

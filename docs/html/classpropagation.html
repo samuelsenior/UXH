@@ -110,8 +110,8 @@ Collaboration diagram for propagation:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d7b9f42ce1c0bc741d3016a07ba13f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7">propagation</a> ()</td></tr>
 <tr class="separator:a9d7b9f42ce1c0bc741d3016a07ba13f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a082efa11767639ade0eaf0f8856cc410"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#a082efa11767639ade0eaf0f8856cc410">propagation</a> (double E_min_, double E_max_, double Z_max_, Eigen::ArrayXd w_active_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> &amp;rkr_, <a class="el" href="classphysics__textbook.html">physics_textbook</a> &amp;physics_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="class_d_h_t.html">DHT</a> &amp;ht_)</td></tr>
-<tr class="separator:a082efa11767639ade0eaf0f8856cc410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a562f6967086bc17e79030e6846067650"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#a562f6967086bc17e79030e6846067650">propagation</a> (double E_min_, double E_max_, double Z_max_, Eigen::ArrayXd w_active_, <a class="el" href="classkeldysh__gas.html">keldysh_gas</a> &amp;gas_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> &amp;rkr_, <a class="el" href="classphysics__textbook.html">physics_textbook</a> &amp;physics_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="class_d_h_t.html">DHT</a> &amp;ht_, bool print_=true)</td></tr>
+<tr class="separator:a562f6967086bc17e79030e6846067650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39126bbbd4977c140c0077b849e78bc1"><td class="memItemLeft" align="right" valign="top">Eigen::ArrayXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#a39126bbbd4977c140c0077b849e78bc1">segment</a> (Eigen::ArrayXd <a class="el" href="classpropagation.html#a49a30e941421cd5e3f0b62bd1335a767">k</a>)</td></tr>
 <tr class="separator:a39126bbbd4977c140c0077b849e78bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af12b15d9b91f98516c0ff25efc1233d1"><td class="memItemLeft" align="right" valign="top">Eigen::ArrayXXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#af12b15d9b91f98516c0ff25efc1233d1">block</a> (Eigen::ArrayXXcd A_w_e_)</td></tr>
@@ -137,6 +137,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9e437271e452fa1732f50e006347b501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3a84addde67e43bbb606408193f78ee"><td class="memItemLeft" align="right" valign="top">Eigen::ArrayXXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#ad3a84addde67e43bbb606408193f78ee">A_w_r</a></td></tr>
 <tr class="separator:ad3a84addde67e43bbb606408193f78ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a817c9adeb6635ae4c4f548976f5fb84e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#a817c9adeb6635ae4c4f548976f5fb84e">print</a></td></tr>
+<tr class="separator:a817c9adeb6635ae4c4f548976f5fb84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -198,8 +200,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a082efa11767639ade0eaf0f8856cc410"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a082efa11767639ade0eaf0f8856cc410">&#9670;&nbsp;</a></span>propagation() <span class="overload">[2/2]</span></h2>
+<a id="a562f6967086bc17e79030e6846067650"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a562f6967086bc17e79030e6846067650">&#9670;&nbsp;</a></span>propagation() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,7 +258,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_d_h_t.html">DHT</a> &amp;&#160;</td>
-          <td class="paramname"><em>ht_</em>&#160;</td>
+          <td class="paramname"><em>ht_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>print_</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -737,6 +745,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Physical constants </p>
+
+</div>
+</div>
+<a id="a817c9adeb6635ae4c4f548976f5fb84e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a817c9adeb6635ae4c4f548976f5fb84e">&#9670;&nbsp;</a></span>print</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool propagation::print</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

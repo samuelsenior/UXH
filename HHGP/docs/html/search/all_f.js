@@ -89,9 +89,9 @@ var searchData=
   ['press_5fdescription_5f',['press_description_',['../class_h_h_1_1_config___settings.html#a978bdeb4769d0f70d3fea9c6ad073a02',1,'HH::Config_Settings']]],
   ['press_5fdescription_5fset',['press_description_set',['../class_h_h_1_1_config___settings.html#a3878bc5b0692789609893f9826fc48b0',1,'HH::Config_Settings']]],
   ['press_5fset',['press_set',['../class_h_h_1_1_config___settings.html#ad0a0c92c491c24449c167014f6fb27f3',1,'HH::Config_Settings']]],
-  ['print',['print',['../class_h_h_1_1_config___settings.html#a3b6de62e6ca1a5019451e2ce25bfdc10',1,'HH::Config_Settings::print()'],['../class_h_h_1_1_config___settings.html#a8071daf184f094b569c4025f1362eb00',1,'HH::Config_Settings::print(std::string)']]],
+  ['print',['print',['../classpropagation.html#a817c9adeb6635ae4c4f548976f5fb84e',1,'propagation::print()'],['../class_h_h_1_1_config___settings.html#a3b6de62e6ca1a5019451e2ce25bfdc10',1,'HH::Config_Settings::print()'],['../class_h_h_1_1_config___settings.html#a8071daf184f094b569c4025f1362eb00',1,'HH::Config_Settings::print(std::string)']]],
   ['prop',['prop',['../class_h_h_g_p.html#a407ef8595cb78c57d259a4c8b091c250',1,'HHGP']]],
-  ['propagation',['propagation',['../classpropagation.html',1,'propagation'],['../classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7',1,'propagation::propagation()'],['../classpropagation.html#a082efa11767639ade0eaf0f8856cc410',1,'propagation::propagation(double E_min_, double E_max_, double Z_max_, Eigen::ArrayXd w_active_, keldysh_gas &amp;gas_, grid_rkr &amp;rkr_, physics_textbook &amp;physics_, maths_textbook &amp;maths_, DHT &amp;ht_)']]],
+  ['propagation',['propagation',['../classpropagation.html',1,'propagation'],['../classpropagation.html#a9d7b9f42ce1c0bc741d3016a07ba13f7',1,'propagation::propagation()'],['../classpropagation.html#a562f6967086bc17e79030e6846067650',1,'propagation::propagation(double E_min_, double E_max_, double Z_max_, Eigen::ArrayXd w_active_, keldysh_gas &amp;gas_, grid_rkr &amp;rkr_, physics_textbook &amp;physics_, maths_textbook &amp;maths_, DHT &amp;ht_, bool print_=true)']]],
   ['propagation_2ecpp',['propagation.cpp',['../propagation_8cpp.html',1,'']]],
   ['propagation_2ehpp',['propagation.hpp',['../propagation_8hpp.html',1,'']]]
 ];

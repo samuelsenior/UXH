@@ -90,7 +90,7 @@ var searchData=
   ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['press_5f',['press_',['../class_h_h_1_1_config___settings.html#a4fc5fa3714a17d3f178957b3d8ee01f0',1,'HH::Config_Settings::press_()'],['../class_config___settings.html#afc35b2b38b6e991d38a1a8b7cfae8df4',1,'Config_Settings::press_()']]],
   ['press_5fdescription_5f',['press_description_',['../class_h_h_1_1_config___settings.html#a978bdeb4769d0f70d3fea9c6ad073a02',1,'HH::Config_Settings::press_description_()'],['../class_config___settings.html#a6c0508d29779a253834967377df98934',1,'Config_Settings::press_description_()']]],
-  ['print',['print',['../class_schrodinger__atom__1_d.html#a535e75205a93f4f050e53bbeda24f75f',1,'Schrodinger_atom_1D']]],
+  ['print',['print',['../class_schrodinger__atom__1_d.html#a535e75205a93f4f050e53bbeda24f75f',1,'Schrodinger_atom_1D::print()'],['../classpropagation.html#a817c9adeb6635ae4c4f548976f5fb84e',1,'propagation::print()']]],
   ['print_5fto_5fscreen',['print_to_screen',['../class_x_n_l_o_1_1_config___settings.html#a71aa4cf3491851bd61a923272933c5ce',1,'XNLO::Config_Settings']]],
   ['prop',['prop',['../class_h_h_g_p.html#a407ef8595cb78c57d259a4c8b091c250',1,'HHGP']]]
 ];
