@@ -638,12 +638,14 @@ std::cout << "(hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " <
 
                     double interp_dz = dz / double(config.interp_points() + 1);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
+                    prop.print = false;
                     for (int interp_i = 1; interp_i < config.interp_points() + 1; interp_i++) {
                         prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
                         prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
                         HHP += prop.A_w_r;
                     }
+                    prop.print = true;
                     hhg_old_old = hhg_old;
                     hhg_old = hhg_new;
                     std::cout << "Interpolation complete!" << std::endl;

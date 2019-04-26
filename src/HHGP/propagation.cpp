@@ -34,7 +34,8 @@ propagation::propagation(double E_min_,
                          grid_rkr& rkr_,
                          physics_textbook& physics_,
                          maths_textbook& maths_,
-                         DHT& ht_)//,
+                         DHT& ht_,
+                         bool print_)//,
                          //HH::Config_Settings config_)
                         :
                          E_min(E_min_),
@@ -45,7 +46,8 @@ propagation::propagation(double E_min_,
                          rkr(rkr_),
                          physics(physics_),
                          maths(maths_),
-                         ht(ht_) {//,
+                         ht(ht_),
+                         print(print_) {//,
                          //config(config_) {
 
       z = 0.0;
@@ -60,13 +62,13 @@ propagation::propagation(double E_min_,
       //    while () {...}
       while ((physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) < (E_min)) {
             k_excluded++;
-std::cout << "k_excluded: " << k_excluded << ", w_active_tmp(k_excluded): " << w_active_tmp(k_excluded) << ", E: " << (physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) << std::endl;
+if (print) std::cout << "k_excluded: " << k_excluded << ", w_active_tmp(k_excluded): " << w_active_tmp(k_excluded) << ", E: " << (physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) << std::endl;
       }
       int count = 0;
       while ((physics.h / (2.0*maths.pi) * w_active_tmp(count) * physics.E_eV) < (E_max)) {
             count++;
       }
-std::cout << "count: " << count << std::endl;
+if (print) std::cout << "count: " << count << std::endl;
 
       n_k = count-k_excluded;//w_active_tmp.rows() - k_excluded;
       w_active = w_active_tmp.segment(k_excluded, n_k);
@@ -248,7 +250,7 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
 //std::cout << "dz: " << dz << ", z: " << z << std::endl;
 
       if (to_end_only == true) {
-std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
+        if (print) std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
         for(int i = 0; i < n_k; i++) {
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
@@ -264,8 +266,8 @@ std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max 
             A_w_r.row(i) = ht.backward(A_w_kr);
         }
       } else {
-std::cout << "delta_z: " << delta_z << ", z: " << z << std::endl;
-      for(int i = 0; i < n_k; i++) {
+        if (print) std::cout << "delta_z: " << delta_z << ", z: " << z << std::endl;
+        for(int i = 0; i < n_k; i++) {
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it

@@ -60,13 +60,15 @@ public:
     Eigen::ArrayXcd k_r;
     Eigen::ArrayXXcd A_w_r;
 
+    bool print;
+
     // Functions
     // E_min should really come from config or a data_config
     propagation();
     propagation(double E_min_, double E_max_, double Z_max_, Eigen::ArrayXd w_active_,
                 keldysh_gas& gas_, grid_rkr& rkr_,
                 physics_textbook& physics_, maths_textbook& maths_,
-                DHT& ht_);//, HH::Config_Settings config_);
+                DHT& ht_, bool print_=true);//, HH::Config_Settings config_);
 
     Eigen::ArrayXd segment(Eigen::ArrayXd k);
     Eigen::ArrayXXcd block(Eigen::ArrayXXcd A_w_e_);
