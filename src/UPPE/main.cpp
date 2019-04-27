@@ -456,7 +456,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
             //        prop.z += interp_dz;
             //        hhg_i = hhg_old + interp_i * dS_i;
             //
-            //        prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
+            //        prop.nearFieldPropagationStep((config.Z() - dz*ii)-(interp_i * interp_dz), hhg_i);
             //        HHP += prop.A_w_r;
             //   }
             //    hhg_old = hhg_new;
@@ -639,7 +639,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
                     for (int interp_i = 1; interp_i < config.interp_points() + 1; interp_i++) {
                         prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
-                        prop.nearFieldPropagationStep((config.Z() - dz*ii)+(interp_i * interp_dz), hhg_i);
+                        prop.nearFieldPropagationStep((config.Z() - dz*ii)-(interp_i * interp_dz), hhg_i);
                         HHP += prop.A_w_r;
                     }
                     prop.print = true;
