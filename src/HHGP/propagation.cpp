@@ -251,37 +251,31 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
 
       if (to_end_only == true) {
         if (print) std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
+        Eigen::ArrayXcd n_k_squared_tmp = Eigen::ArrayXcd::Ones(rkr.n_r);
         for(int i = 0; i < n_k; i++) {
+            n_k_squared_tmp *= std::pow(n(i)*k(i), 2.0);
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it
-            for(int j = 0; j < rkr.n_r; j++) {
-//std::cout << "A_w_kr(j): " << A_w_kr(j) << " -> ";
-                A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-//std::cout << std::exp(std::complex<double>(0, -1) * (Z_max - z) * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)) << std::endl;
-
-//std::cout << "A_w_kr(j): " << A_w_kr(j) << std::endl;
-            }
+            A_w_kr *= (std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp();
+            //for(int j = 0; j < rkr.n_r; j++) {
+            //    A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+            //}
             // Backtransform to put back into radial representation
             A_w_r.row(i) = ht.backward(A_w_kr);
         }
       } else {
         if (print) std::cout << "delta_z: " << delta_z << ", z: " << z << std::endl;
+        Eigen::ArrayXcd n_k_squared_tmp = Eigen::ArrayXcd::Ones(rkr.n_r);
         for(int i = 0; i < n_k; i++) {
+            n_k_squared_tmp *= std::pow(n(i)*k(i), 2.0);
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it
-            for(int j = 0; j < rkr.n_r; j++) {
-//std::cout << "k.rows(): " << k.rows() << ", k.cols(): " << k.cols() << std::endl;
-                  //
-                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-//                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-                  //A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(n(i)*n(i)*k(i)*k(i) - k_r(j)*k_r(j), 0.5));
-//                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(k(i)*k(i) - k_r(j)*k_r(j), 0.5));
-//                  A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * dz * std::pow(std::pow(k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-
-//std::cout << "std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5)): " << std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5) << std::endl;
-            }
+            A_w_kr *= (std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp();
+            //for(int j = 0; j < rkr.n_r; j++) {
+            //      A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+            //}
             // Backtransform to put back into radial representation
             A_w_r.row(i) = ht.backward(A_w_kr);
       }
