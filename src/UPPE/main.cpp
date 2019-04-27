@@ -262,12 +262,12 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
 prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
-prop.print = true;
+prop.print = false;
     if (this_process == 0) {
 //        prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
 //                           gas, rkr,
 //                           physics, maths, ht);
-//        prop.print = true;
+        prop.print = true;
         hhgp = HHGP(prop,
                     config_HHGP,
                     rkr, gas,
@@ -288,12 +288,13 @@ prop.print = true;
 
     ArrayXXcd HHG_tmp;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
+    ArrayXXcd HHP_multiThread_tmp = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
     ArrayXXcd hhg_old = ArrayXXcd::Zero(prop.n_k, config.n_r());//;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd hhg_old_old = ArrayXXcd::Zero(prop.n_k, config.n_r());
     ArrayXXcd hhg_old_interp = ArrayXXcd::Zero(prop.n_k, config.n_r());
-    ArrayXXcd dS_i;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
-    ArrayXXcd hhg_i;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+    ArrayXXcd dS_i = ArrayXXcd::Zero(prop.n_k, config.n_r());
+    ArrayXXcd hhg_i = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
 
 
@@ -641,16 +642,68 @@ prop.print = true;
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
                     prop.print = false;
                     prop.z -= dz;
-                    for (int interp_i = 1; interp_i < config.interp_points() + 1; interp_i++) {
-                        prop.z += interp_dz;
+
+        int HH_prop_start_end_step[2] = {-1, -1};
+        if (HHGP_starting_z_bool) {
+            // Send
+            double HH_z_data_tmp[2] = {prop.z, interp_dz};
+
+            int HH_prop_steps_per_thread;
+            int HH_prop_remainder_steps
+            if (total_processes > 1) {
+                HH_prop_steps_per_thread = config.interp_points() / (total_processes - 1);
+                HH_prop_remainder_steps = config.interp_points() % (total_processes - 1);
+            } else {
+                HH_prop_steps_per_thread = 0;
+                HH_prop_remainder_steps = config.interp_points();
+            }
+            for (int j = 1; j < total_processes; j++) {
+                HH_prop_start_end_step[0] = 1 + (j - 1)*HH_prop_steps_per_thread;
+                HH_prop_start_end_step[1] = HH_prop_start_end_step[0] + HH_prop_steps_per_thread;
+                MPI_Send(&HH_z_data_tmp, 2,
+                         MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                MPI_Send(&HH_prop_start_end_step, 2,
+                         MPI_INT, j, j, MPI_COMM_WORLD);
+
+                MPI_Send(hhg_old.real().data(),
+                         hhg_old.cols() * hhg_old.rows(),
+                         MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                MPI_Send(hhg_old.imag().data(),
+                         hhg_old.cols() * hhg_old.rows(),
+                         MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+
+                MPI_Send(dS_i.real().data(),
+                         dS_i.cols() * dS_i.rows(),
+                         MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                MPI_Send(dS_i.imag().data(),
+                         dS_i.cols() * dS_i.rows(),
+                         MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+            }
+            HH_prop_start_end_step[0] = 1 + (total_processes-1)*HH_prop_steps_per_thread;
+            HH_prop_start_end_step[1] = HH_prop_start_end_step[0] + HH_prop_remainder_steps;
+        }
+
+                    prop.z += interp_dz*HH_prop_start_end_step[0];
+                    for (int interp_i = HH_prop_start_end_step[0]; interp_i < HH_prop_start_end_step[1]; interp_i++) {
+                        //prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
                         prop.nearFieldPropagationStep((config.Z() - prop.z), hhg_i);
                         HHP += prop.A_w_r;
+                        prop.z += interp_dz;
                     }
-                    prop.z += interp_dz;
                     prop.print = true;
                     hhg_old_old = hhg_old;
                     hhg_old = hhg_new;
+
+                    for (int j = 1; j < total_processes; j++) {
+                        MPI_Recv(HHP_multiThread_tmp.real().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
+                                 MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
+                        MPI_Recv(HHP_multiThread_tmp.imag().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
+                                 MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
+                        HHP += HHP_multiThread_tmp;
+                    }
+
+
                     std::cout << "Interpolation complete!" << std::endl;
                     if ((ii - initial_step) % config.output_sampling_rate() == 0) {
                         config.step_path(ii, "HHP_A_w");
@@ -658,7 +711,49 @@ prop.print = true;
                         file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
                     }
                 //}
+            }// Recieve
+        else if (total_processes > 1 && HHGP_starting_z_bool) {
+            // Receive
+            // For receiving prop.z and interp_dz
+            double HH_z_data_tmp[2];
+            MPI_Recv(&HH_z_data_tmp, 2, MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+// This one can be done before the main loop even starts as it's a const value
+            double interp_dz = HH_z_data_tmp[1];
+
+            int HH_prop_start_end_step[2];
+            MPI_Recv(&HH_prop_start_end_step, 2, MPI_INT, 0, this_process, MPI_COMM_WORLD, &status);
+
+            MPI_Recv(hhg_old.real().data(), hhg_old.cols() * hhg_old.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+            MPI_Recv(hhg_old.imag().data(), hhg_old.cols() * hhg_old.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+
+            MPI_Recv(dS_i.real().data(), dS_i.cols() * dS_i.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+            MPI_Recv(dS_i.imag().data(), dS_i.cols() * dS_i.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+
+            prop.z = HH_z_data_tmp[0] + interp_dz*(HH_prop_start_end_step[0]);
+
+            HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
+
+            for (int interp_i = HH_prop_start_end_step[0]; interp_i < HH_prop_start_end_step[1]; interp_i++) {
+                hhg_i = hhg_old + interp_i * dS_i;
+                prop.nearFieldPropagationStep((config.Z() - prop.z), hhg_i);
+                HHP += prop.A_w_r;
+                prop.z += interp_dz;
             }
+
+            MPI_Send(HHP.real().data(),
+                     HHP.cols() * HHP.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD);
+            MPI_Send(HHP.imag().data(),
+                     HHP.cols() * HHP.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD);
+        }
+
+
+
         }
         if (this_process == 0) {
             std::cout << "-------------------------------------------------------------------------------\n";
