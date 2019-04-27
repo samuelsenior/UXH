@@ -635,7 +635,7 @@ prop.print = false;
 
                     std::cout << "   (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " << (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm() << std::endl;
 
-                    std::cout << "Interpolating on to " << config.interp_points() << " internal sites... ";
+                    std::cout << "Interpolating on to " << config.interp_points() << " internal sites... " << std::endl;
                     hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                     
                     double interp_dz = dz / double(config.interp_points() + 1);
@@ -649,7 +649,7 @@ prop.print = false;
             double HH_z_data_tmp[2] = {prop.z, interp_dz};
 
             int HH_prop_steps_per_thread;
-            int HH_prop_remainder_steps
+            int HH_prop_remainder_steps;
             if (total_processes > 1) {
                 HH_prop_steps_per_thread = config.interp_points() / (total_processes - 1);
                 HH_prop_remainder_steps = config.interp_points() % (total_processes - 1);
@@ -657,6 +657,8 @@ prop.print = false;
                 HH_prop_steps_per_thread = 0;
                 HH_prop_remainder_steps = config.interp_points();
             }
+            std::cout << "Performing HH interpolation and propagation on " << total_processes << " threads" << std::endl;
+            std::cout << "   with " << HH_prop_steps_per_thread << " step(s) per worker thread and " << HH_prop_remainder_steps << " step(s) on the maser thread!" << std::endl;
             for (int j = 1; j < total_processes; j++) {
                 HH_prop_start_end_step[0] = 1 + (j - 1)*HH_prop_steps_per_thread;
                 HH_prop_start_end_step[1] = HH_prop_start_end_step[0] + HH_prop_steps_per_thread;
