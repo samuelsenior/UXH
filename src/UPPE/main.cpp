@@ -636,12 +636,14 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
                     double interp_dz = dz / double(config.interp_points() + 1);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
                     prop.print = false;
+                    prop.z -= dz;
                     for (int interp_i = 1; interp_i < config.interp_points() + 1; interp_i++) {
                         prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
-                        prop.nearFieldPropagationStep((config.Z() - dz*ii)-(interp_i * interp_dz), hhg_i);
+                        prop.nearFieldPropagationStep((config.Z() - prop.z), hhg_i);//- dz*ii)-(interp_i * interp_dz), hhg_i);
                         HHP += prop.A_w_r;
                     }
+                    prop.z += interp_dz;
                     prop.print = true;
                     hhg_old_old = hhg_old;
                     hhg_old = hhg_new;
