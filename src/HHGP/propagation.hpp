@@ -51,6 +51,9 @@ class propagation{
     Eigen::ArrayXd f2;
     Eigen::ArrayXd f1;
 
+    Eigen::ArrayXcd n_k_squared_tmp;
+    Eigen::ArrayXcd ones;
+
 public:
     // Data
     double z;
