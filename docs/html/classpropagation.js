@@ -24,6 +24,8 @@ var classpropagation =
     [ "lamda", "classpropagation.html#a5ae0154dc8db04188ba92e10ba981000", null ],
     [ "maths", "classpropagation.html#ab5a5024c2d06c0dad06c745af7c6416c", null ],
     [ "n_k", "classpropagation.html#a93033ee98c04a6fe007eae5c856e76b3", null ],
+    [ "n_k_squared_tmp", "classpropagation.html#a0dd11d293dfb8060a3716610650d5aac", null ],
+    [ "ones", "classpropagation.html#ac45df99836353b45ff1ddb3c22f7f9f8", null ],
     [ "physics", "classpropagation.html#a42a6e725e3dd53cf94192bf93c31c8de", null ],
     [ "print", "classpropagation.html#a817c9adeb6635ae4c4f548976f5fb84e", null ],
     [ "refractiveIndex", "classpropagation.html#aba601a0df3c63b13215c55d8ade2bcd7", null ],

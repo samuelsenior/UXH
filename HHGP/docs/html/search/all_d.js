@@ -5,6 +5,7 @@ var searchData=
   ['n_5fcol_5f',['N_col_',['../class_i_o.html#a64aae2d2be35348233f8ddac4d6791f2',1,'IO']]],
   ['n_5fcols',['N_cols',['../class_h_h_g_p.html#aa9099163fbab46f03255ecfa65d34d7d',1,'HHGP']]],
   ['n_5fk',['n_k',['../classpropagation.html#a93033ee98c04a6fe007eae5c856e76b3',1,'propagation']]],
+  ['n_5fk_5fsquared_5ftmp',['n_k_squared_tmp',['../classpropagation.html#a0dd11d293dfb8060a3716610650d5aac',1,'propagation']]],
   ['n_5fm',['n_m',['../classgrid__rkr.html#ae580ce329d0cc89097775a6f4297b2ea',1,'grid_rkr::n_m()'],['../class_h_h_1_1_config___settings.html#ac73782a678deffe86161d68b88676f7c',1,'HH::Config_Settings::n_m()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a9593f0d35505947f38a4cd3d5bc1e881',1,'HH::Config_Settings::n_m()']]],
   ['n_5fm_5f',['n_m_',['../class_h_h_1_1_config___settings.html#a529227d1486b3c0cb464c37684023f4b',1,'HH::Config_Settings']]],
   ['n_5fm_5fdescription',['n_m_description',['../class_h_h_1_1_config___settings.html#a66709ee3586add5ea629d582e0bbaffc',1,'HH::Config_Settings']]],

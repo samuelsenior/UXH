@@ -103,13 +103,13 @@ Collaboration diagram for propagation:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpropagation__coll__graph.png" border="0" usemap="#propagation_coll__map" alt="Collaboration graph"/></div>
 <map name="propagation_coll__map" id="propagation_coll__map">
-<area shape="rect"  title=" " alt="" coords="249,179,341,204"/>
-<area shape="rect"  href="classphysics__textbook.html" title=" " alt="" coords="5,5,129,31"/>
-<area shape="rect"  href="classkeldysh__gas.html" title=" " alt="" coords="145,92,240,117"/>
-<area shape="rect"  href="classgrid__rkr.html" title=" " alt="" coords="359,92,426,117"/>
-<area shape="rect"  href="classmaths__textbook.html" title=" " alt="" coords="243,5,358,31"/>
-<area shape="rect"  href="classgrid__tw.html" title=" " alt="" coords="155,5,219,31"/>
-<area shape="rect"  href="class_d_h_t.html" title=" " alt="" coords="449,92,498,117"/>
+<area shape="rect"  title=" " alt="" coords="255,184,344,211"/>
+<area shape="rect"  href="classphysics__textbook.html" title=" " alt="" coords="5,5,129,32"/>
+<area shape="rect"  href="classkeldysh__gas.html" title=" " alt="" coords="148,95,243,121"/>
+<area shape="rect"  href="classgrid__rkr.html" title=" " alt="" coords="365,95,431,121"/>
+<area shape="rect"  href="classmaths__textbook.html" title=" " alt="" coords="245,5,359,32"/>
+<area shape="rect"  href="classgrid__tw.html" title=" " alt="" coords="157,5,221,32"/>
+<area shape="rect"  href="class_d_h_t.html" title=" " alt="" coords="455,95,506,121"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -187,6 +187,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a747dcaf8f7405a17af992bae39b7fab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14d6e72396c1c354c6d9986f2d79f85f"><td class="memItemLeft" align="right" valign="top">Eigen::ArrayXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#a14d6e72396c1c354c6d9986f2d79f85f">f1</a></td></tr>
 <tr class="separator:a14d6e72396c1c354c6d9986f2d79f85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd11d293dfb8060a3716610650d5aac"><td class="memItemLeft" align="right" valign="top">Eigen::ArrayXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#a0dd11d293dfb8060a3716610650d5aac">n_k_squared_tmp</a></td></tr>
+<tr class="separator:a0dd11d293dfb8060a3716610650d5aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45df99836353b45ff1ddb3c22f7f9f8"><td class="memItemLeft" align="right" valign="top">Eigen::ArrayXcd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpropagation.html#ac45df99836353b45ff1ddb3c22f7f9f8">ones</a></td></tr>
+<tr class="separator:ac45df99836353b45ff1ddb3c22f7f9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9d7b9f42ce1c0bc741d3016a07ba13f7"></a>
@@ -732,6 +736,50 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a0dd11d293dfb8060a3716610650d5aac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dd11d293dfb8060a3716610650d5aac">&#9670;&nbsp;</a></span>n_k_squared_tmp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::ArrayXcd propagation::n_k_squared_tmp</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac45df99836353b45ff1ddb3c22f7f9f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45df99836353b45ff1ddb3c22f7f9f8">&#9670;&nbsp;</a></span>ones</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::ArrayXcd propagation::ones</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a42a6e725e3dd53cf94192bf93c31c8de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42a6e725e3dd53cf94192bf93c31c8de">&#9670;&nbsp;</a></span>physics</h2>
 
@@ -909,8 +957,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/sms1n16/Project/XNLO/src/HHGP/<a class="el" href="propagation_8hpp_source.html">propagation.hpp</a></li>
-<li>/Users/sms1n16/Project/XNLO/src/HHGP/<a class="el" href="propagation_8cpp.html">propagation.cpp</a></li>
+<li>/home/sam/Project/XNLO/src/HHGP/<a class="el" href="propagation_8hpp_source.html">propagation.hpp</a></li>
+<li>/home/sam/Project/XNLO/src/HHGP/<a class="el" href="propagation_8cpp.html">propagation.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

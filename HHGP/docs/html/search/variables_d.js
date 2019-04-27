@@ -4,6 +4,7 @@ var searchData=
   ['n_5fcol_5f',['N_col_',['../class_i_o.html#a64aae2d2be35348233f8ddac4d6791f2',1,'IO']]],
   ['n_5fcols',['N_cols',['../class_h_h_g_p.html#aa9099163fbab46f03255ecfa65d34d7d',1,'HHGP']]],
   ['n_5fk',['n_k',['../classpropagation.html#a93033ee98c04a6fe007eae5c856e76b3',1,'propagation']]],
+  ['n_5fk_5fsquared_5ftmp',['n_k_squared_tmp',['../classpropagation.html#a0dd11d293dfb8060a3716610650d5aac',1,'propagation']]],
   ['n_5fm',['n_m',['../classgrid__rkr.html#ae580ce329d0cc89097775a6f4297b2ea',1,'grid_rkr']]],
   ['n_5fm_5f',['n_m_',['../class_h_h_1_1_config___settings.html#a529227d1486b3c0cb464c37684023f4b',1,'HH::Config_Settings']]],
   ['n_5fm_5fdescription_5f',['n_m_description_',['../class_h_h_1_1_config___settings.html#a6f09e9388f463ff6d305e62f86ea78ab',1,'HH::Config_Settings']]],
