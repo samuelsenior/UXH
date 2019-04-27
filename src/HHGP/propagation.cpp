@@ -224,62 +224,46 @@ std::complex<double> propagation::n(int i) {
       \f]
 */
 void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_r_) {
-      // k is from w_active, in terms of t this would be linearly spaced
+  // k is from w_active, in terms of t this would be linearly spaced
 
-      // Need to discount the k's that fall below the minimum energy
-      // read in from the E_ev, f1, f2, data file for Ar.
-      // I.e. similar count method to that for n_active
-      // and take block of k's from count to end
-      //    while h*w_active[count] / (2 * pi) * E_ev < 10.0eV
-      //       count++;
-      //    k = w_active.block(count, end) / c;
-      // Need to do this also for the field, as E[i<count] have energies
-      // below the lower limit from the data file and therefore can't be
-      // propagated in the gas. So (e.g.):
-      //    E = E.block(count, end);
-      // Also need a new n_active, not the one passed in from the prop sim
-      // to account for discounted lower energy frequencies.
+  // Need to discount the k's that fall below the minimum energy
+  // read in from the E_ev, f1, f2, data file for Ar.
+  // I.e. similar count method to that for n_active
+  // and take block of k's from count to end
+  //    while h*w_active[count] / (2 * pi) * E_ev < 10.0eV
+  //       count++;
+  //    k = w_active.block(count, end) / c;
+  // Need to do this also for the field, as E[i<count] have energies
+  // below the lower limit from the data file and therefore can't be
+  // propagated in the gas. So (e.g.):
+  //    E = E.block(count, end);
+  // Also need a new n_active, not the one passed in from the prop sim
+  // to account for discounted lower energy frequencies.
 
-      // Can an Eigen array be reesized like this?
-      // Or can main (etc) call a propagation class function to resize
-      // it's A array to make it valid for k_r's etc?
-      //    But it would have to do this at each propagation step anyway...
-      // Do a sanatise or block function from the calling loop rather than this here
-      // as source needs to be added to this afterwards and there would be different
-      // numbers of k
+  // Can an Eigen array be reesized like this?
+  // Or can main (etc) call a propagation class function to resize
+  // it's A array to make it valid for k_r's etc?
+  //    But it would have to do this at each propagation step anyway...
+  // Do a sanatise or block function from the calling loop rather than this here
+  // as source needs to be added to this afterwards and there would be different
+  // numbers of k
 
-      // For each active frequency, propagate that frequency a step in z
+  // For each active frequency, propagate that frequency a step in z
 //std::cout << "dz: " << dz << ", z: " << z << std::endl;
 
-      if (to_end_only == true) {
-        if (print) std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
-        for(int i = 0; i < n_k; i++) {
-            n_k_squared_tmp = ones * std::pow(n(i)*k(i), 2.0);
-            // Transform from radial representation to frequency representation
-            A_w_kr = ht.forward(A_w_r_.row(i));
-            // For each radial point (/radial frequency), apply the propagator to it
-            A_w_kr *= (std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp();
-            //for(int j = 0; j < rkr.n_r; j++) {
-            //    A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-            //}
-            // Backtransform to put back into radial representation
-            A_w_r.row(i) = ht.backward(A_w_kr);
-        }
-      } else {
-        if (print) std::cout << "delta_z: " << delta_z << ", z: " << z << std::endl;
-        for(int i = 0; i < n_k; i++) {
-            n_k_squared_tmp = ones * std::pow(n(i)*k(i), 2.0);
-            // Transform from radial representation to frequency representation
-            A_w_kr = ht.forward(A_w_r_.row(i));
-            // For each radial point (/radial frequency), apply the propagator to it
-            A_w_kr *= (std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp();
-            //for(int j = 0; j < rkr.n_r; j++) {
-            //      A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-            //}
-            // Backtransform to put back into radial representation
-            A_w_r.row(i) = ht.backward(A_w_kr);
-      }
-    }
+  if (print) std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
+  for(int i = 0; i < n_k; i++) {
+      n_k_squared_tmp = ones * std::pow(n(i)*k(i), 2.0);
+      // Transform from radial representation to frequency representation
+      A_w_kr = ht.forward(A_w_r_.row(i));
+      // For each radial point (/radial frequency), apply the propagator to it
+      A_w_kr *= (std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp();
+      //for(int j = 0; j < rkr.n_r; j++) {
+      //    A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+      //}
+      // Backtransform to put back into radial representation
+      A_w_r.row(i) = ht.backward(A_w_kr);
+  }
 }
 
 /*!
