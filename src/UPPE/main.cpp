@@ -259,11 +259,15 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     //}
     propagation prop;
     HHGP hhgp;
-    if (this_process == 0) {
-        prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
+prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
-        prop.print = true;
+prop.print = true;
+    if (this_process == 0) {
+//        prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
+//                           gas, rkr,
+//                           physics, maths, ht);
+//        prop.print = true;
         hhgp = HHGP(prop,
                     config_HHGP,
                     rkr, gas,
@@ -640,7 +644,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
                     for (int interp_i = 1; interp_i < config.interp_points() + 1; interp_i++) {
                         prop.z += interp_dz;
                         hhg_i = hhg_old + interp_i * dS_i;
-                        prop.nearFieldPropagationStep((config.Z() - prop.z), hhg_i);//- dz*ii)-(interp_i * interp_dz), hhg_i);
+                        prop.nearFieldPropagationStep((config.Z() - prop.z), hhg_i);
                         HHP += prop.A_w_r;
                     }
                     prop.z += interp_dz;
