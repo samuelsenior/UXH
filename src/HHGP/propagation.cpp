@@ -253,7 +253,7 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
         if (print) std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
         Eigen::ArrayXcd n_k_squared_tmp = Eigen::ArrayXcd::Ones(rkr.n_r);
         for(int i = 0; i < n_k; i++) {
-            n_k_squared_tmp *= std::pow(n(i)*k(i), 2.0);
+            n_k_squared_tmp = Eigen::ArrayXcd::Ones(rkr.n_r) * std::pow(n(i)*k(i), 2.0);
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it
@@ -268,7 +268,7 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
         if (print) std::cout << "delta_z: " << delta_z << ", z: " << z << std::endl;
         Eigen::ArrayXcd n_k_squared_tmp = Eigen::ArrayXcd::Ones(rkr.n_r);
         for(int i = 0; i < n_k; i++) {
-            n_k_squared_tmp *= std::pow(n(i)*k(i), 2.0);
+            n_k_squared_tmp = Eigen::ArrayXcd::Ones(rkr.n_r) * std::pow(n(i)*k(i), 2.0);
             // Transform from radial representation to frequency representation
             A_w_kr = ht.forward(A_w_r_.row(i));
             // For each radial point (/radial frequency), apply the propagator to it
