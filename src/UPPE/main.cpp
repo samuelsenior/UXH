@@ -218,7 +218,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     } else {
         ArrayXXd E = ArrayXXd::Zero(0, 0);
     }
-    XNLO::Result atomResponse;
+    //XNLO::Result atomResponse;
     ArrayXd neutral_atoms = ArrayXd::Zero(config.n_r());
     //ArrayXXd neutral_atoms = ArrayXXd::Zero(config.n_t(), config.n_r());
     ArrayXd temp_linSpace_HHG_acceleration = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);  // I think this is wring and should be using T_min/T_max of XNLO???
@@ -228,6 +228,11 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     ArrayXXcd A_w_active;
 
     XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
+
+    XNLO_AtomResponse atomResponse(rkr, tw_XNLO, maths, physics, "minimum");
+
+
+MPI_Barrier(MPI_COMM_WORLD);
 
     double lamda_min_HHG = 6.0e-9;
     double lamda_max_HHG = 130e-9;
@@ -363,8 +368,10 @@ prop.print = false;
         }
 
         if ((total_processes > 1) && HHGP_starting_z_bool) {
-            atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index,
-                                      maths, physics, "minimum");
+            //atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index,
+            //                          rkr, tw_XNLO,
+            //                          maths, physics, "minimum");
+            atomResponse.run(A_w_active, tw.w_active, tw.w_active_min_index);
         }
 
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
@@ -512,8 +519,10 @@ prop.print = false;
 
             //int response_rate = 1;//config.n_z() / 10;
             if ((total_processes > 1) && HHGP_starting_z_bool) {// && ((ii % response_rate == 0) || ii == 1)) {
-                atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index,
-                                          maths, physics, "minimum");
+                //atomResponse = XNLO::XNLO(A_w_active, tw.w_active, tw.w_active_min_index,
+                //                          rkr, tw_XNLO,
+                //                          maths, physics, "minimum");
+                atomResponse.run(A_w_active, tw.w_active, tw.w_active_min_index);
             }
 
             if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {

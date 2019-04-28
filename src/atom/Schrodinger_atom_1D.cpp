@@ -41,11 +41,8 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int 
 
     output_wavefunction = output_wavefunction_;
 
-    if (output_wavefunction == 1) {
-        wfn_output = ArrayXXcd::Zero(tw.N_t, 4096);
-    } else {
-        wfn_output = ArrayXXcd::Zero(0, 0);
-    }
+    if (output_wavefunction == 1) { wfn_output = ArrayXXcd::Zero(tw.N_t, 4096); }
+    else { wfn_output = ArrayXXcd::Zero(0, 0); }
 
     // Ground state wavefunction
     Schrodinger_atom_1D::set_GS(20000);
@@ -180,7 +177,6 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
         
         // Calculate expectation values
         if (e_ == 0) {
-            
             // Energy
             ArrayXcd temp = wfn;
             DftiComputeForward(transform, temp.data());
@@ -194,7 +190,6 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
             wfn *= std::pow(maths.trapz(xkx.x, wfn.abs2()), -0.5);
             
         } else if (e_ == 1) {
-            
             // Acceleration (from a(t) = -<[H, [H, x]]>)
             ArrayXcd x_psi = xkx.x * wfn;
 
@@ -269,17 +264,12 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
             // Displacement
             //output(ii) = maths.trapz(xkx.x, (wfn.conjugate() * xkx.x * wfn).real());
 
-            if (output_wavefunction == 1) {
-                wfn_output.row(ii) = wfn;
-            }
+            if (output_wavefunction == 1) { wfn_output.row(ii) = wfn; }
 
         } else {
-            
             // Spare
-            std::cout << "Invalid expectation value!" << std::endl;
-            
+            std::cout << "Invalid expectation value!" << std::endl;   
         }
-        
     }
     
     // Clean up
