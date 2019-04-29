@@ -14,5 +14,6 @@ var searchData=
   ['spot_5fradius_5fdescription',['spot_radius_description',['../class_x_n_l_o_1_1_config___settings.html#ab26284dfb7d190ca8e9440140bf36fa0',1,'XNLO::Config_Settings']]],
   ['spot_5fradius_5fdescription_5f',['spot_radius_description_',['../class_x_n_l_o_1_1_config___settings.html#ace2883e95e284e705e66962c708e0bf0',1,'XNLO::Config_Settings']]],
   ['spot_5fradius_5fdescription_5fset',['spot_radius_description_set',['../class_x_n_l_o_1_1_config___settings.html#ad613ee43958f724699532fa65d4152c8',1,'XNLO::Config_Settings']]],
-  ['spot_5fradius_5fset',['spot_radius_set',['../class_x_n_l_o_1_1_config___settings.html#adf7ede5501b65968c3567091f74431bb',1,'XNLO::Config_Settings']]]
+  ['spot_5fradius_5fset',['spot_radius_set',['../class_x_n_l_o_1_1_config___settings.html#adf7ede5501b65968c3567091f74431bb',1,'XNLO::Config_Settings']]],
+  ['status',['status',['../class_x_n_l_o___atom_response.html#a110eefdd419b48435f30f384f7a8692c',1,'XNLO_AtomResponse']]]
 ];

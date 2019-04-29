@@ -12,7 +12,7 @@ var searchData=
   ['rep',['rep',['../class_u_p_p_e_1_1laser__pulse.html#a2060159fc6bb506c51205a2e14c6e0e6',1,'UPPE::laser_pulse']]],
   ['rep_5f',['rep_',['../class_h_h_1_1_config___settings.html#a05c908d4dd4f744dbdd6573c650f9f68',1,'HH::Config_Settings::rep_()'],['../class_config___settings.html#a23a02326925c4c726a5047593435bd72',1,'Config_Settings::rep_()']]],
   ['rep_5fdescription_5f',['rep_description_',['../class_h_h_1_1_config___settings.html#a0aa4bf3b59a5de2ad47dda83dfe02a02',1,'HH::Config_Settings::rep_description_()'],['../class_config___settings.html#ac885ade71abffd480f1324d67438daff',1,'Config_Settings::rep_description_()']]],
-  ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()'],['../class_u_p_p_e_1_1laser__pulse.html#a9667b8334c650c3df673e4b44ea46827',1,'UPPE::laser_pulse::rkr()']]],
+  ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()'],['../class_u_p_p_e_1_1laser__pulse.html#a9667b8334c650c3df673e4b44ea46827',1,'UPPE::laser_pulse::rkr()'],['../class_x_n_l_o___atom_response.html#a7e1446cbe05f4e70403994f098c0fcfc',1,'XNLO_AtomResponse::rkr()']]],
   ['rr_5f',['RR_',['../class_x_n_l_o_1_1_config___settings.html#a1ef5c8025df6540682d14f5cd15c5c2c',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription_5f',['RR_description_',['../class_x_n_l_o_1_1_config___settings.html#acfa42c50c97b71898b0e1c114099c9fa',1,'XNLO::Config_Settings']]]
 ];

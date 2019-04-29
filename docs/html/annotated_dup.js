@@ -18,5 +18,6 @@ var annotated_dup =
     [ "maths_textbook", "classmaths__textbook.html", "classmaths__textbook" ],
     [ "physics_textbook", "classphysics__textbook.html", "classphysics__textbook" ],
     [ "propagation", "classpropagation.html", "classpropagation" ],
-    [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html", "class_schrodinger__atom__1_d" ]
+    [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html", "class_schrodinger__atom__1_d" ],
+    [ "XNLO_AtomResponse", "class_x_n_l_o___atom_response.html", "class_x_n_l_o___atom_response" ]
 ];

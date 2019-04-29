@@ -30,12 +30,13 @@ var searchData=
   ['result',['Result',['../struct_x_n_l_o_1_1_result.html',1,'XNLO']]],
   ['rhs_5fuppe',['RHS_UPPE',['../class_u_p_p_e_1_1laser__pulse.html#ab6f300644e236c09aedcffae043fcd44',1,'UPPE::laser_pulse']]],
   ['rk_5ff_5f45',['RK_F_45',['../class_u_p_p_e_1_1laser__pulse.html#a53d4f083151d2e2b522b29ccb1f79831',1,'UPPE::laser_pulse']]],
-  ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()'],['../class_u_p_p_e_1_1laser__pulse.html#a9667b8334c650c3df673e4b44ea46827',1,'UPPE::laser_pulse::rkr()']]],
+  ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()'],['../class_u_p_p_e_1_1laser__pulse.html#a9667b8334c650c3df673e4b44ea46827',1,'UPPE::laser_pulse::rkr()'],['../class_x_n_l_o___atom_response.html#a7e1446cbe05f4e70403994f098c0fcfc',1,'XNLO_AtomResponse::rkr()']]],
   ['rows_5ft',['rows_t',['../_i_o_8hpp.html#a6285c5ecc0c43d864045d7654b3f2953',1,'IO.hpp']]],
   ['rr',['RR',['../class_x_n_l_o_1_1_config___settings.html#add6cc9a0c9c288fcb72cfe8f7825796a',1,'XNLO::Config_Settings::RR()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdacb95449a94688af33f6e9bb090cf2936',1,'XNLO::Config_Settings::RR()']]],
   ['rr_5f',['RR_',['../class_x_n_l_o_1_1_config___settings.html#a1ef5c8025df6540682d14f5cd15c5c2c',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription',['RR_description',['../class_x_n_l_o_1_1_config___settings.html#a2e9c5f743d33a2ea8ee2a081e8dcc975',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription_5f',['RR_description_',['../class_x_n_l_o_1_1_config___settings.html#acfa42c50c97b71898b0e1c114099c9fa',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription_5fset',['RR_description_set',['../class_x_n_l_o_1_1_config___settings.html#a121b459883cbae9dcf9131954bf75ad6',1,'XNLO::Config_Settings']]],
-  ['rr_5fset',['RR_set',['../class_x_n_l_o_1_1_config___settings.html#a0217f0772f3acf0fef40b679f9e9ce07',1,'XNLO::Config_Settings']]]
+  ['rr_5fset',['RR_set',['../class_x_n_l_o_1_1_config___settings.html#a0217f0772f3acf0fef40b679f9e9ce07',1,'XNLO::Config_Settings']]],
+  ['run',['run',['../class_x_n_l_o___atom_response.html#a365d34ada918c6272481bda96723a3f2',1,'XNLO_AtomResponse']]]
 ];

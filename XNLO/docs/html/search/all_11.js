@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['R',['../classgrid__rkr.html#a2da8ae00c520a66c9cac2784a2149dcb',1,'grid_rkr::R()'],['../classgrid__rkr.html#a0c68f261e53153368d0edab4c9a8ef88',1,'grid_rkr::r()']]],
+  ['r',['r',['../classgrid__rkr.html#a0c68f261e53153368d0edab4c9a8ef88',1,'grid_rkr::r()'],['../classgrid__rkr.html#a2da8ae00c520a66c9cac2784a2149dcb',1,'grid_rkr::R()']]],
   ['r_5f0',['r_0',['../classphysics__textbook.html#ac429976f0dc885d846d8b31c24f45bd6',1,'physics_textbook']]],
   ['read_5fascii_5fdouble',['read_ascii_double',['../class_i_o.html#a3ddd4b5d95a8a5cfffb56cfcf7c186e1',1,'IO']]],
   ['read_5fdouble',['read_double',['../class_i_o.html#aa2d53b758b98c564688d00ca5236744e',1,'IO::read_double(const std::string path, int N_row_, int N_col_, bool print=true)'],['../class_i_o.html#a34ed8843269915cb0b4eb8719da3535d',1,'IO::read_double(const std::string path, bool skip_header=true, bool print=true)']]],
@@ -15,10 +15,12 @@ var searchData=
   ['read_5fint',['read_int',['../class_i_o.html#a7b78b5f726c5299423e72b2b44bce0c9',1,'IO']]],
   ['read_5fuint16',['read_uint16',['../class_i_o.html#a0ba1550dc3c2b6fd4675bc03408b8d95',1,'IO']]],
   ['result',['Result',['../struct_x_n_l_o_1_1_result.html',1,'XNLO']]],
+  ['rkr',['rkr',['../class_x_n_l_o___atom_response.html#a7e1446cbe05f4e70403994f098c0fcfc',1,'XNLO_AtomResponse']]],
   ['rr',['RR',['../class_x_n_l_o_1_1_config___settings.html#afada47a187ae520fb4711cf34b557bfb',1,'XNLO::Config_Settings::RR()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdacb95449a94688af33f6e9bb090cf2936',1,'XNLO::Config_Settings::RR()']]],
   ['rr_5f',['RR_',['../class_x_n_l_o_1_1_config___settings.html#a1ef5c8025df6540682d14f5cd15c5c2c',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription',['RR_description',['../class_x_n_l_o_1_1_config___settings.html#a39c5f208d24ed3737814a6ffd546274e',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription_5f',['RR_description_',['../class_x_n_l_o_1_1_config___settings.html#acfa42c50c97b71898b0e1c114099c9fa',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription_5fset',['RR_description_set',['../class_x_n_l_o_1_1_config___settings.html#a24dcf1dda0b3afc5cd67a6985a89b594',1,'XNLO::Config_Settings']]],
-  ['rr_5fset',['RR_set',['../class_x_n_l_o_1_1_config___settings.html#ac7c2e4d17bb8f607418b5f0c1dea1634',1,'XNLO::Config_Settings']]]
+  ['rr_5fset',['RR_set',['../class_x_n_l_o_1_1_config___settings.html#ac7c2e4d17bb8f607418b5f0c1dea1634',1,'XNLO::Config_Settings']]],
+  ['run',['run',['../class_x_n_l_o___atom_response.html#a365d34ada918c6272481bda96723a3f2',1,'XNLO_AtomResponse']]]
 ];

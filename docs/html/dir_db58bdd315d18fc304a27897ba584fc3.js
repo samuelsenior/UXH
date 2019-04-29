@@ -5,6 +5,10 @@ var dir_db58bdd315d18fc304a27897ba584fc3 =
       [ "Config_Settings", "class_x_n_l_o_1_1_config___settings.html", "class_x_n_l_o_1_1_config___settings" ]
     ] ],
     [ "main.cpp", "_x_n_l_o_2main_8cpp.html", "_x_n_l_o_2main_8cpp" ],
-    [ "XNLO.cpp", "_x_n_l_o_8cpp.html", "_x_n_l_o_8cpp" ],
-    [ "XNLO.hpp", "_x_n_l_o_8hpp.html", "_x_n_l_o_8hpp" ]
+    [ "XNLO copy.cpp", "_x_n_l_o_01copy_8cpp.html", "_x_n_l_o_01copy_8cpp" ],
+    [ "XNLO copy.hpp", "_x_n_l_o_01copy_8hpp.html", "_x_n_l_o_01copy_8hpp" ],
+    [ "XNLO.cpp", "_x_n_l_o_8cpp.html", null ],
+    [ "XNLO.hpp", "_x_n_l_o_8hpp.html", [
+      [ "XNLO_AtomResponse", "class_x_n_l_o___atom_response.html", "class_x_n_l_o___atom_response" ]
+    ] ]
 ];

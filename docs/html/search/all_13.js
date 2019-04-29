@@ -19,5 +19,6 @@ var searchData=
   ['spot_5fradius_5fdescription_5f',['spot_radius_description_',['../class_x_n_l_o_1_1_config___settings.html#ace2883e95e284e705e66962c708e0bf0',1,'XNLO::Config_Settings']]],
   ['spot_5fradius_5fdescription_5fset',['spot_radius_description_set',['../class_x_n_l_o_1_1_config___settings.html#a4ff4d49a0da0d5c556043daa691d1b37',1,'XNLO::Config_Settings']]],
   ['spot_5fradius_5fset',['spot_radius_set',['../class_x_n_l_o_1_1_config___settings.html#a39003c8e495c2422a4eb22a095647c1a',1,'XNLO::Config_Settings']]],
+  ['status',['status',['../class_x_n_l_o___atom_response.html#a110eefdd419b48435f30f384f7a8692c',1,'XNLO_AtomResponse']]],
   ['step_5fpath',['step_path',['../class_h_h_1_1_config___settings.html#a3cf126c084e23db42100780e17651716',1,'HH::Config_Settings::step_path()'],['../class_config___settings.html#ae92f4af9699ad471f096f6a17fef35da',1,'Config_Settings::step_path()']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['w',['w',['../class_x_n_l_o_1_1grid__tw.html#a099ffb42c45f511c9f2ab8a584d897cc',1,'XNLO::grid_tw::w()'],['../struct_x_n_l_o_1_1_result.html#a1e1ad223123ee7a6424737d713f014fe',1,'XNLO::Result::w()']]],
+  ['w',['w',['../class_x_n_l_o_1_1grid__tw.html#a099ffb42c45f511c9f2ab8a584d897cc',1,'XNLO::grid_tw::w()'],['../struct_x_n_l_o_1_1_result.html#a1e1ad223123ee7a6424737d713f014fe',1,'XNLO::Result::w()'],['../class_x_n_l_o___atom_response.html#ab32b6735d09d90e2488a075ea6fe7a83',1,'XNLO_AtomResponse::w()']]],
   ['w_5factive',['w_active',['../classgrid__tw.html#a66922766c9dfe5c4667e55e678b134b9',1,'grid_tw::w_active()'],['../classpropagation.html#a4c24f42d4148eded469c6479d6bf1661',1,'propagation::w_active()']]],
   ['w_5factive_5fmax',['w_active_max',['../class_h_h_1_1_config___settings.html#a17165addafe947c32457035b1a920d18',1,'HH::Config_Settings::w_active_max()'],['../class_config___settings.html#a17165addafe947c32457035b1a920d18',1,'Config_Settings::w_active_max()'],['../class_h_h_1_1_config___settings.html#a9f315ce762fefb7462bb17048790aac3a0bd4db7105c25a96d1f38aa7910e37a8',1,'HH::Config_Settings::w_active_max()'],['../class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa0bd4db7105c25a96d1f38aa7910e37a8',1,'Config_Settings::w_active_max()']]],
   ['w_5factive_5fmax_5f',['w_active_max_',['../class_h_h_1_1_config___settings.html#aba63d1bddf1ae6fe89217c84993c38ee',1,'HH::Config_Settings::w_active_max_()'],['../class_config___settings.html#a8e1cad65153d6383ed84637ecd794bf0',1,'Config_Settings::w_active_max_()']]],
@@ -23,10 +23,14 @@ var searchData=
   ['waist_5fdescription_5f',['waist_description_',['../class_h_h_1_1_config___settings.html#a123223e81433f6092d3a69d805043b8b',1,'HH::Config_Settings::waist_description_()'],['../class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30',1,'Config_Settings::waist_description_()']]],
   ['waist_5fdescription_5fset',['waist_description_set',['../class_h_h_1_1_config___settings.html#a54a52d9c629a4675067bd60878482b53',1,'HH::Config_Settings::waist_description_set()'],['../class_config___settings.html#a54a52d9c629a4675067bd60878482b53',1,'Config_Settings::waist_description_set()']]],
   ['waist_5fset',['waist_set',['../class_h_h_1_1_config___settings.html#aebe0df8b04a71ab41e8335a967ae10c4',1,'HH::Config_Settings::waist_set()'],['../class_config___settings.html#aebe0df8b04a71ab41e8335a967ae10c4',1,'Config_Settings::waist_set()']]],
-  ['wavefunction',['wavefunction',['../struct_x_n_l_o_1_1_result.html#a3cc2dcbdbfecec769a89f37b15b4bab2',1,'XNLO::Result']]],
+  ['wavefunction',['wavefunction',['../struct_x_n_l_o_1_1_result.html#a3cc2dcbdbfecec769a89f37b15b4bab2',1,'XNLO::Result::wavefunction()'],['../class_x_n_l_o___atom_response.html#a20acaa46f338d7ebc8abede0aa60dc5b',1,'XNLO_AtomResponse::wavefunction()']]],
   ['wfn',['wfn',['../class_schrodinger__atom__1_d.html#a00de5d2d5a686de4b95ca698390dc511',1,'Schrodinger_atom_1D']]],
+  ['wfn_5fboundary',['wfn_boundary',['../class_schrodinger__atom__1_d.html#aa10dca5fb10cd9ac2329d28b8cb8de3b',1,'Schrodinger_atom_1D']]],
   ['wfn_5fgs',['wfn_GS',['../class_schrodinger__atom__1_d.html#a8ffbb068cd87127ceff5953c5a810d85',1,'Schrodinger_atom_1D']]],
   ['wfn_5foutput',['wfn_output',['../class_schrodinger__atom__1_d.html#aea3a265d9bb0260a349b22eaa44f1792',1,'Schrodinger_atom_1D']]],
+  ['wfn_5ftemp',['wfn_temp',['../class_schrodinger__atom__1_d.html#a147664616175d701469660eeb0dadd2e',1,'Schrodinger_atom_1D']]],
+  ['world_5frank',['world_rank',['../class_x_n_l_o___atom_response.html#af23ac598e5e838f7391a97fcd91b16f7',1,'XNLO_AtomResponse']]],
+  ['world_5fsize',['world_size',['../class_x_n_l_o___atom_response.html#a46832a3abc2f2ddf20575688e25c8746',1,'XNLO_AtomResponse']]],
   ['write',['write',['../class_i_o.html#ac84ca0cd185f0df4ea871710120577d6',1,'IO']]],
   ['write_5fascii_5fdouble',['write_ascii_double',['../class_i_o.html#a20602422f0a6615b265c96fc02523e6f',1,'IO']]],
   ['write_5fdouble',['write_double',['../class_i_o.html#a9a648215dc5e33abe2c5a8916fff06d4',1,'IO']]],

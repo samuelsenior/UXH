@@ -13,5 +13,6 @@ var searchData=
   ['rr',['RR',['../class_x_n_l_o_1_1_config___settings.html#afada47a187ae520fb4711cf34b557bfb',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription',['RR_description',['../class_x_n_l_o_1_1_config___settings.html#a39c5f208d24ed3737814a6ffd546274e',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription_5fset',['RR_description_set',['../class_x_n_l_o_1_1_config___settings.html#a24dcf1dda0b3afc5cd67a6985a89b594',1,'XNLO::Config_Settings']]],
-  ['rr_5fset',['RR_set',['../class_x_n_l_o_1_1_config___settings.html#ac7c2e4d17bb8f607418b5f0c1dea1634',1,'XNLO::Config_Settings']]]
+  ['rr_5fset',['RR_set',['../class_x_n_l_o_1_1_config___settings.html#ac7c2e4d17bb8f607418b5f0c1dea1634',1,'XNLO::Config_Settings']]],
+  ['run',['run',['../class_x_n_l_o___atom_response.html#a365d34ada918c6272481bda96723a3f2',1,'XNLO_AtomResponse']]]
 ];

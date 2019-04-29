@@ -13,8 +13,16 @@ var searchData=
   ['x_5fmin_5fdescription_5f',['x_min_description_',['../class_x_n_l_o_1_1_config___settings.html#ac1f974f487f2e08c74a769a2a75d836b',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a02baddcf2450c55332289e2f49a58fd6',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#ad776200ee998ac3bbfaf90e9edb4d525',1,'XNLO::Config_Settings']]],
+  ['x_5fpsi',['x_psi',['../class_schrodinger__atom__1_d.html#ac68b45cdd45eff7f57bf1805bc2ee018',1,'Schrodinger_atom_1D']]],
+  ['x_5ft2_5fpsi',['x_T2_psi',['../class_schrodinger__atom__1_d.html#aa0df4d7cd4b82c7195d511bd23c44393',1,'Schrodinger_atom_1D']]],
+  ['x_5ft_5fv_5fpsi',['x_T_V_psi',['../class_schrodinger__atom__1_d.html#abd174d1c0b4546b6cca462ac78b76825',1,'Schrodinger_atom_1D']]],
+  ['x_5fv2_5fpsi',['x_V2_psi',['../class_schrodinger__atom__1_d.html#addcc887557d5986292b00b9ca00da044',1,'Schrodinger_atom_1D']]],
+  ['x_5fv_5ft_5fpsi',['x_V_T_psi',['../class_schrodinger__atom__1_d.html#a7f51c587cf862f96fe40f85a83929784',1,'Schrodinger_atom_1D']]],
   ['xkx',['xkx',['../class_schrodinger__atom__1_d.html#add2762038510414449a7e6f022babcb2',1,'Schrodinger_atom_1D']]],
-  ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#ad1fe958133f16c4e43a9755b9f14e57e',1,'XNLO::XNLO()']]],
+  ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'XNLO'],['../namespace_x_n_l_o.html#a5717de865562b73e0fe0cb000910638b',1,'XNLO::XNLO()']]],
+  ['xnlo_20copy_2ecpp',['XNLO copy.cpp',['../_x_n_l_o_01copy_8cpp.html',1,'']]],
+  ['xnlo_20copy_2ehpp',['XNLO copy.hpp',['../_x_n_l_o_01copy_8hpp.html',1,'']]],
   ['xnlo_2ecpp',['XNLO.cpp',['../_x_n_l_o_8cpp.html',1,'']]],
-  ['xnlo_2ehpp',['XNLO.hpp',['../_x_n_l_o_8hpp.html',1,'']]]
+  ['xnlo_2ehpp',['XNLO.hpp',['../_x_n_l_o_8hpp.html',1,'']]],
+  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html',1,'XNLO_AtomResponse'],['../class_x_n_l_o___atom_response.html#aa7e0894f460b211641b5b269ed3e9cde',1,'XNLO_AtomResponse::XNLO_AtomResponse()']]]
 ];
