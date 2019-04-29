@@ -44,7 +44,10 @@ public:
 	ArrayXXcd wavefunction;
 
 	XNLO_AtomResponse(grid_rkr& rkr_, XNLO::grid_tw& tw_,
-		              maths_textbook& maths_, physics_textbook& physics_, std::string print_="minimum");
+		              maths_textbook& maths_, physics_textbook& physics_,
+                      int this_node, int total_nodes,
+                      XNLO::Config_Settings config_,
+                      std::string print_="minimum");
 
 	void run(ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE);
 

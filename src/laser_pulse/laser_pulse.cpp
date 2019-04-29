@@ -163,7 +163,6 @@ laser_pulse::laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active,
                          :
                          maths(maths_),
                          physics(physics_) {
-
     int N_cols = A_w_active.cols();
     int N_rows = A_w_active.rows();
 

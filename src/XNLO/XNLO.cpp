@@ -40,22 +40,28 @@ using namespace Eigen;
 //namespace XNLO {
 
 XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr& rkr_, XNLO::grid_tw& tw_,
-           maths_textbook& maths_, physics_textbook& physics_, std::string print_)
+           maths_textbook& maths_, physics_textbook& physics_,
+           int this_node_, int total_nodes_,
+           XNLO::Config_Settings config_,
+           std::string print_)
            :
            rkr(rkr_),
            tw(tw_),
            maths(maths_),
            physics(physics_),
+           this_node(this_node_),
+           total_nodes(total_nodes_),
+           config(config_),
            print(print_) {
 
-    std::string config_file_path;
-    config_file_path = "../configFiles/config_XNLO.txt";
+    //std::string config_file_path;
+    //config_file_path = "../configFiles/config_XNLO.txt";
 
     // MPI
-    MPI_Comm_size(MPI_COMM_WORLD, &total_nodes);
-    MPI_Comm_rank(MPI_COMM_WORLD, &this_node);
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+    //MPI_Comm_size(MPI_COMM_WORLD, &total_nodes);
+    //MPI_Comm_rank(MPI_COMM_WORLD, &this_node);
+    //MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+    //MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
     if (this_node == 0) { std::cout << "Initialising XNLO..." << std::endl; }
     if (total_nodes <= 1) {
@@ -66,12 +72,12 @@ XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr& rkr_, XNLO::grid_tw& tw_,
     //XNLO::Config_Settings config;
     if (print == "minimum" || print == "false") { config.print_to_screen = false;}
     else { config.print_to_screen = true; }
-    if(config_file_path.empty() && this_node == 0) {
-        std::cout << "Using default config file path " << config.path_config_file() << std::endl;
-    } else {
-        config.path_config_file_set(config_file_path);
-        config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
-    }
+    //if(config_file_path.empty() && this_node == 0) {
+    //    std::cout << "Using default config file path " << config.path_config_file() << std::endl;
+    //} else {
+    //    config.path_config_file_set(config_file_path);
+    //    config.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+    //}
     config.read_in(config.path_config_file(), config.print_to_screen);
     config.check_paths(config.print_to_screen);
 
@@ -101,6 +107,7 @@ XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr& rkr_, XNLO::grid_tw& tw_,
         dipole = ArrayXXd::Zero(tw.N_t, atoms_per_worker);
     }
 
+
     if (this_node == 0) { std::cout << "XNLO initialised." << std::endl; }
 
 }
@@ -111,12 +118,16 @@ void XNLO_AtomResponse::run(ArrayXXcd A_w_active, ArrayXd w_active, int w_active
         std::cout << "Single atom response calculations started..." << std::endl;
         // Field
         double ROC = std::numeric_limits<double>::max();
+
         XNLO::laser_pulse pulse(rkr, tw, A_w_active, w_active, w_active_min_index_UPPE, maths, physics);
+
         // Send
         for (int ii = 1; ii < total_nodes; ii++) {
+
             MPI_Send(pulse.E.block(0, atoms_per_worker * (ii - 1), tw.N_t, atoms_per_worker).data(),
                      tw.N_t * atoms_per_worker, MPI_DOUBLE, ii, 1, MPI_COMM_WORLD);
         }
+
         // Receive
         //ArrayXXd dipole = ArrayXXd::Zero(tw.N_t, total_atoms);
         if (config.output_wavefunction() == 1) { wavefunction = ArrayXXcd::Zero(tw.N_t, 4096); }

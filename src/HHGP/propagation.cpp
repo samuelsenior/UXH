@@ -257,10 +257,13 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
       // Transform from radial representation to frequency representation
       A_w_kr = ht.forward(A_w_r_.row(i));
       // For each radial point (/radial frequency), apply the propagator to it
+      //ArrayXcd testing = A_w_kr;
       A_w_kr *= (std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp();
       //for(int j = 0; j < rkr.n_r; j++) {
       //    A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-      //}
+//          testing(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
+     // }
+//std::cout << "---Testing: " << (A_w_kr - testing) << std::endl;
       // Backtransform to put back into radial representation
       A_w_r.row(i) = ht.backward(A_w_kr);
   }
