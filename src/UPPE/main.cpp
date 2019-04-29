@@ -673,7 +673,7 @@ prop.print = false;
                             HH_prop_remainder_steps = config.interp_points();
                         }
                         std::cout << "Performing HH interpolation and propagation on " << total_processes << " threads" << std::endl;
-                        std::cout << "   with " << HH_prop_steps_per_thread << " step(s) per worker thread and " << HH_prop_remainder_steps << " step(s) on the maser thread!" << std::endl;
+                        std::cout << "   with " << HH_prop_steps_per_thread << " step(s) per worker thread and " << HH_prop_remainder_steps << " step(s) on the master thread!" << std::endl;
                         for (int j = 1; j < total_processes; j++) {
                             HH_prop_start_end_step[0] = 1 + (j - 1)*HH_prop_steps_per_thread;
                             HH_prop_start_end_step[1] = HH_prop_start_end_step[0] + HH_prop_steps_per_thread;

@@ -208,7 +208,8 @@ std::complex<double> propagation::n(int i) {
         }
         // Return the average value
         // Maybe make this an if statement so can return total if needed as well???
-        return N_tot / (Z_max - z);
+        //return N_tot / (Z_max - z);
+        return (1.0 - (N_tot / (Z_max - z)) * refractiveIndex(i));
         //return (1.0 - ((0.8*gas.atom_density_max)/(Z_max - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) * refractiveIndex(i));
       } else {
         return (1.0 - gas.atom_density(z) * refractiveIndex(i));
