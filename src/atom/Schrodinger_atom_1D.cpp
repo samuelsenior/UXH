@@ -12,6 +12,7 @@
 #include "../physics/physics_textbook.hpp"
 #include "../grid/grid_tw.hpp"
 #include "../grid/grid_xkx.hpp"
+
 #include "../../Eigen/Dense"
 #include "mkl.h"
 
@@ -32,8 +33,21 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int 
     
     maths_textbook maths;
     physics_textbook physics;
-    grid_xkx temp(std::pow(2.0, 12), -300, 300);
-    xkx = temp;
+
+    energy = 9999.9;
+
+    //grid_xkx temp(std::pow(2.0, 12), -300, 300);
+    //xkx = temp;
+    xkx = grid_xkx(std::pow(2.0, 12), -300, 300);
+
+    // Set up transform, MKL
+    mkl_dimension = 1;
+    mkl_length = xkx.N_x;
+    mkl_scale_factor = 1.0 / xkx.N_x;
+    //DFTI_DESCRIPTOR_HANDLE transform;
+    DftiCreateDescriptor(&transform, DFTI_DOUBLE, DFTI_COMPLEX, mkl_dimension, mkl_length);
+    DftiSetValue(transform, DFTI_BACKWARD_SCALE, mkl_scale_factor);
+    DftiCommitDescriptor(transform);
     
     // Model potential (Soft Coulomb)
     alpha = alpha_;
@@ -44,8 +58,31 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int 
     if (output_wavefunction == 1) { wfn_output = ArrayXXcd::Zero(tw.N_t, 4096); }
     else { wfn_output = ArrayXXcd::Zero(0, 0); }
 
+    T = (0.5 * xkx.kx.pow(2)).cast<std::complex<double> >();
+    V = ArrayXcd::Zero(xkx.N_x);
+
+    x_psi = ArrayXcd::Zero(xkx.N_x);
+    T2_x_psi = ArrayXcd::Zero(xkx.N_x);
+    T_V_x_psi = ArrayXcd::Zero(xkx.N_x);
+    V_T_x_psi = ArrayXcd::Zero(xkx.N_x);
+    V2_x_psi = ArrayXcd::Zero(xkx.N_x);
+    x_T2_psi = ArrayXcd::Zero(xkx.N_x);
+    x_T_V_psi = ArrayXcd::Zero(xkx.N_x);
+    x_V_T_psi = ArrayXcd::Zero(xkx.N_x);
+    x_V2_psi = ArrayXcd::Zero(xkx.N_x);
+    T_x_T_psi = ArrayXcd::Zero(xkx.N_x);
+    T_x_V_psi = ArrayXcd::Zero(xkx.N_x);
+    V_x_T_psi = ArrayXcd::Zero(xkx.N_x);
+    V_x_V_psi = ArrayXcd::Zero(xkx.N_x);
+
     // Ground state wavefunction
-    Schrodinger_atom_1D::set_GS(20000);
+    wfn_GS = ArrayXcd::Zero(xkx.N_x);
+    wfn = ArrayXcd::Zero(xkx.N_x);
+    wfn_temp = ArrayXcd::Zero(xkx.N_x);
+    // Initiallise wavefunction boundary
+    wfn_boundary = (1 - ((0.5 * maths.pi * xkx.x /
+                    xkx.x_max).sin()).pow(50)).cast<std::complex<double> >();
+    set_GS(20000);
 
 }
 
@@ -74,12 +111,12 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int 
 */
 void Schrodinger_atom_1D::set_GS(int N_it_) {
 
-    maths_textbook maths;
+    //maths_textbook maths;
     
     // Create an imaginary time step and zero field
     std::complex<double> dt(0.0, -0.01);  // Having dt any smaller than this and there are oscillations in the groundstate wavefunction
                                           // Suggesting the groundstate hasn't been reached yet
-    ArrayXd E = ArrayXd::Zero(N_it_);
+    ArrayXd E_field_zeros = ArrayXd::Zero(N_it_);
     
     // Seed
     double FWHM = 30.0;
@@ -88,12 +125,12 @@ void Schrodinger_atom_1D::set_GS(int N_it_) {
     wfn_GS *= std::pow(maths.trapz(xkx.x, wfn_GS.abs2()), -0.5);
 
     // Solve TDSE
-    ArrayXd temp = Schrodinger_atom_1D::solve_TDSE_PS(N_it_, dt, E, 0);
+    ArrayXd acceleration_temp = solve_TDSE_PS(N_it_, dt, E_field_zeros, 0);
     wfn_GS = wfn;
     if (print == true) {
         std::cout << "Energy: "<< energy * 27.211 << " eV" << std::endl;
+//std::cout << "Energy per step: " << acceleration_temp*27.11 << std::endl;
     }
-
 }
 
 //------------------------------------------------------------------------------------------------//
@@ -106,13 +143,13 @@ void Schrodinger_atom_1D::set_GS(int N_it_) {
 */
 ArrayXd Schrodinger_atom_1D::get_acceleration(int N_it_, double dt_, ArrayXd E_) {
     
-    physics_textbook physics;
+    //physics_textbook physics;
     
     // Solve TDSE
-    ArrayXd dipole = Schrodinger_atom_1D::solve_TDSE_PS(N_it_,
+    acceleration = solve_TDSE_PS(N_it_,
                         std::complex<double> (dt_ / physics.t_at, 0.0), E_ / physics.E_at, 1);
     
-    return(dipole);
+    return(acceleration);
 }
 
 
@@ -125,115 +162,124 @@ ArrayXd Schrodinger_atom_1D::get_acceleration(int N_it_, double dt_, ArrayXd E_)
 */
 ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
                                            ArrayXd E_, int e_) {
-    
-    maths_textbook maths;
-    
-    // Operators
-    ArrayXcd T = (0.5 * xkx.kx.pow(2)).cast<std::complex<double> >();
-    ArrayXcd V = ArrayXcd::Zero(xkx.N_x);
 
-    // Initialise wavefunction, output and boundary
+    // Initialise wavefunction, output
     wfn = wfn_GS;
     ArrayXd output = ArrayXd::Zero(N_it_);
-    ArrayXcd boundary = (1 - ((0.5 * maths.pi * xkx.x /
-                              xkx.x_max).sin()).pow(50)).cast<std::complex<double> >();
 
-    // Set up transform, MKL
-    MKL_LONG dimension = 1;
-    MKL_LONG length = xkx.N_x;
-    double scale_factor = 1.0 / xkx.N_x;
-    
-    DFTI_DESCRIPTOR_HANDLE transform;
-    DftiCreateDescriptor(&transform, DFTI_DOUBLE, DFTI_COMPLEX, dimension, length);
-    DftiSetValue(transform, DFTI_BACKWARD_SCALE, scale_factor);
-    
-    DftiCommitDescriptor(transform);
-    
     // Main loop
     int j = 0;
     int step_print = 10000;
+
     for (int ii = 0; ii < N_it_; ii++) {
-        
         if (j*step_print == ii && print == true) {
             std::cout << "step: " << ii << std::endl;
             j++;
         }
-        
+
         // Update operator
+        //T = (0.5 * xkx.kx.pow(2)).cast<std::complex<double> >();
+        //V = ArrayXcd::Zero(xkx.N_x);
+        V_model = -1 / (alpha + xkx.x.pow(2)).sqrt();
         V = (V_model + (xkx.x * E_(ii))).cast<std::complex<double> >();
-        
+
+        // Set up transform, MKL
+        //mkl_dimension = 1;
+        //mkl_length = xkx.N_x;
+        //mkl_scale_factor = 1.0 / xkx.N_x;
+        //DFTI_DESCRIPTOR_HANDLE transform;
+        //DftiCreateDescriptor(&transform, DFTI_DOUBLE, DFTI_COMPLEX, mkl_dimension, mkl_length);
+        //DftiSetValue(transform, DFTI_BACKWARD_SCALE, mkl_scale_factor);
+        //DftiCommitDescriptor(transform);
+
         // Propagate
         DftiComputeForward(transform, wfn.data());
         wfn *= (std::complex<double>(0, -0.5) * T * dt_).exp();
         DftiComputeBackward(transform, wfn.data());
-        
+
         wfn *= (std::complex<double>(0, -1) * V * dt_).exp();
-        
+
         DftiComputeForward(transform, wfn.data());
         wfn *= (std::complex<double>(0, -0.5) * T * dt_).exp();
         DftiComputeBackward(transform, wfn.data());
-        
-        wfn *= boundary;
-        
+
+        wfn *= wfn_boundary;
+
         // Calculate expectation values
         if (e_ == 0) {
+
             // Energy
-            ArrayXcd temp = wfn;
-            DftiComputeForward(transform, temp.data());
-            temp *= T;
-            DftiComputeBackward(transform, temp.data());
-            energy = maths.trapz(xkx.x, (wfn.conjugate() * temp).real()) +
+            wfn_temp = wfn;
+            DftiComputeForward(transform, wfn_temp.data());
+            wfn_temp *= T;
+            DftiComputeBackward(transform, wfn_temp.data());
+            energy = maths.trapz(xkx.x, (wfn.conjugate() * wfn_temp).real()) +
                      maths.trapz(xkx.x, (wfn.conjugate() * V * wfn).real());
             output(ii) = energy;
             
             // Re-normalize
             wfn *= std::pow(maths.trapz(xkx.x, wfn.abs2()), -0.5);
-            
-        } else if (e_ == 1) {
-            // Acceleration (from a(t) = -<[H, [H, x]]>)
-            ArrayXcd x_psi = xkx.x * wfn;
 
-            ArrayXcd T2_x_psi = x_psi;
+        } else if (e_ == 1) {
+
+            // Acceleration (from a(t) = -<[H, [H, x]]>)
+            //x_psi = ArrayXcd::Zero(xkx.N_x);
+            //T2_x_psi = ArrayXcd::Zero(xkx.N_x);
+            //T_V_x_psi = ArrayXcd::Zero(xkx.N_x);
+            //V_T_x_psi = ArrayXcd::Zero(xkx.N_x);
+            //V2_x_psi = ArrayXcd::Zero(xkx.N_x);
+            //x_T2_psi = ArrayXcd::Zero(xkx.N_x);
+            //x_T_V_psi = ArrayXcd::Zero(xkx.N_x);
+            //x_V_T_psi = ArrayXcd::Zero(xkx.N_x);
+            //x_V2_psi = ArrayXcd::Zero(xkx.N_x);
+            //T_x_T_psi = ArrayXcd::Zero(xkx.N_x);
+            //T_x_V_psi = ArrayXcd::Zero(xkx.N_x);
+            //V_x_T_psi = ArrayXcd::Zero(xkx.N_x);
+            //V_x_V_psi = ArrayXcd::Zero(xkx.N_x);
+
+            x_psi = xkx.x * wfn;
+
+            T2_x_psi = x_psi;
             DftiComputeForward(transform, T2_x_psi.data());
             T2_x_psi *= T;
             T2_x_psi *= T;
             DftiComputeBackward(transform, T2_x_psi.data());
 
-            ArrayXcd T_V_x_psi = V * x_psi;
+            T_V_x_psi = V * x_psi;
             DftiComputeForward(transform, T_V_x_psi.data());
             T_V_x_psi *= T;
             DftiComputeBackward(transform, T_V_x_psi.data());
 
-            ArrayXcd V_T_x_psi = x_psi;
+            V_T_x_psi = x_psi;
             DftiComputeForward(transform, V_T_x_psi.data());
             V_T_x_psi *= T;
             DftiComputeBackward(transform, V_T_x_psi.data());
             V_T_x_psi *= V;
 
-            ArrayXcd V2_x_psi = V * V * x_psi;
+            V2_x_psi = V * V * x_psi;
 
-            ArrayXcd x_T2_psi = wfn;
+            x_T2_psi = wfn;
             DftiComputeForward(transform, x_T2_psi.data());
             x_T2_psi *= T;
             x_T2_psi *= T;
             DftiComputeBackward(transform, x_T2_psi.data());
             x_T2_psi *= xkx.x;
 
-            ArrayXcd x_T_V_psi = V * wfn;
+            x_T_V_psi = V * wfn;
             DftiComputeForward(transform, x_T_V_psi.data());
             x_T_V_psi *= T;
             DftiComputeBackward(transform, x_T_V_psi.data());
             x_T_V_psi *= xkx.x;
 
-            ArrayXcd x_V_T_psi = wfn;
+            x_V_T_psi = wfn;
             DftiComputeForward(transform, x_V_T_psi.data());
             x_V_T_psi *= T;
             DftiComputeBackward(transform, x_V_T_psi.data());
             x_V_T_psi *= xkx.x * V;
 
-            ArrayXcd x_V2_psi = xkx.x * V * V *wfn;
+            x_V2_psi = xkx.x * V * V *wfn;
 
-            ArrayXcd T_x_T_psi = wfn;
+            T_x_T_psi = wfn;
             DftiComputeForward(transform, T_x_T_psi.data());
             T_x_T_psi *= T;
             DftiComputeBackward(transform, T_x_T_psi.data());
@@ -242,24 +288,24 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
             T_x_T_psi *= T;
             DftiComputeBackward(transform, T_x_T_psi.data());
 
-            ArrayXcd T_x_V_psi = xkx.x * V * wfn;
+            T_x_V_psi = xkx.x * V * wfn;
             DftiComputeForward(transform, T_x_V_psi.data());
             T_x_V_psi *= T;
             DftiComputeBackward(transform, T_x_V_psi.data());
 
-            ArrayXcd V_x_T_psi = wfn;
+            V_x_T_psi = wfn;
             DftiComputeForward(transform, V_x_T_psi.data());
             V_x_T_psi *= T;
             DftiComputeBackward(transform, V_x_T_psi.data());
             V_x_T_psi *= V * xkx.x;
 
-            ArrayXcd V_x_V_psi = V * xkx.x * V * wfn;
+            V_x_V_psi = V * xkx.x * V * wfn;
 
+            wfn_temp = T2_x_psi + T_V_x_psi + V_T_x_psi + V2_x_psi + x_T2_psi + x_T_V_psi
+                       + x_V_T_psi + x_V2_psi
+                       -2.0*T_x_T_psi - 2.0*T_x_V_psi - 2.0*V_x_T_psi - 2.0*V_x_V_psi;
 
-            ArrayXcd temp = T2_x_psi + T_V_x_psi + V_T_x_psi + V2_x_psi + x_T2_psi + x_T_V_psi
-                          + x_V_T_psi + x_V2_psi
-                          -2.0*T_x_T_psi - 2.0*T_x_V_psi - 2.0*V_x_T_psi - 2.0*V_x_V_psi;
-            output(ii) = -1.0*maths.trapz(xkx.x, (wfn.conjugate() * temp).real());
+            output(ii) = -1.0*maths.trapz(xkx.x, (wfn.conjugate() * wfn_temp).real());
 
             // Displacement
             //output(ii) = maths.trapz(xkx.x, (wfn.conjugate() * xkx.x * wfn).real());
@@ -270,11 +316,7 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
             // Spare
             std::cout << "Invalid expectation value!" << std::endl;   
         }
-    }
-    
-    // Clean up
-    DftiFreeDescriptor(&transform);
-    
+    }    
     return(output);
 }
 

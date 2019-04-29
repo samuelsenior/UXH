@@ -230,9 +230,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
 
     XNLO_AtomResponse atomResponse(rkr, tw_XNLO, maths, physics, "minimum");
-
-
-MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD); 
 
     double lamda_min_HHG = 6.0e-9;
     double lamda_max_HHG = 130e-9;
@@ -242,7 +240,7 @@ MPI_Barrier(MPI_COMM_WORLD);
     double E_max = 206.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
-
+ 
     ArrayXd w_tmp = tw_XNLO.w;
     //if (this_process == 0) {
     //    std::cout << "HHG w_tmp(0): " << w_tmp(0) << ", HHG w_tmp(" << w_tmp.rows() - 1 << "): " << w_tmp(w_tmp.rows() - 1) << std::endl;
@@ -470,7 +468,7 @@ prop.print = false;
             //
             //        prop.nearFieldPropagationStep((config.Z() - dz*ii)-(interp_i * interp_dz), hhg_i);
             //        HHP += prop.A_w_r;
-            //   }
+            //   } 
             //    hhg_old = hhg_new;
             //    std::cout << "Interpolation complete!" << std::endl;
             //    if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
