@@ -88,12 +88,9 @@ int main(int argc, char** argv){
         config.n_m_set(total_processes-1);
         config.n_r_set(total_processes-1);
     }
-    if (this_process == 0) { config.print(); }
 
-MPI_Barrier(MPI_COMM_WORLD);
-if (this_process == 1) { config.print(); }
-MPI_Barrier(MPI_COMM_WORLD);
-if (this_process == 2) { config.print(); }
+
+    //if (this_process == 0) { config.print(); }
 
     XNLO::Config_Settings config_XNLO;
     config_XNLO.print_to_screen = false;
@@ -107,7 +104,7 @@ if (this_process == 2) { config.print(); }
         }
         config_XNLO.read_in(config_XNLO.path_config_file(), false);
         config_XNLO.check_paths(false);
-        if (this_process == 0) { config_XNLO.print(); }
+        //if (this_process == 0) { config_XNLO.print(); }
     }
 
     HH::Config_Settings config_HHGP;
@@ -121,12 +118,44 @@ if (this_process == 2) { config.print(); }
         }
         config_HHGP.read_in(config_HHGP.path_config_file(), false);
         config_HHGP.check_paths(false);
-        if (total_processes > 1) {
-            config_HHGP.n_m_set(total_processes-1);
-            config_HHGP.n_r_set(total_processes-1);
-        }
-        if (this_process == 0) { config_HHGP.print(); }
+        //if (total_processes > 1) {
+        //    config_HHGP.n_m_set(total_processes-1);
+        //    config_HHGP.n_r_set(total_processes-1);
+        //}
+        //if (this_process == 0) { config_HHGP.print(); }
     }
+
+if (total_processes > 1) {
+    config.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+
+    config_HHGP.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config_HHGP.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+}
+
+if (this_process == 0) { config.print(); }
+if (total_processes > 1) {
+    if (this_process == 0) { config_XNLO.print(); }
+    if (this_process == 0) { config_HHGP.print(); }
+}
+
+    //HH::Config_Settings config_HHGP;
+    //if (total_processes > 1) {
+    //    if(config_HHGP_file_path.empty()) {
+    //      if(this_process == 0) { std::cout << "Using default config file path " << config_HHGP.path_config_file() << std::endl; }
+    //    } else {
+    //        config_HHGP.path_config_file_set(config_HHGP_file_path);
+    //        config_HHGP.path_config_file_description_set("(std::string) Passed in by '-cf' argument");
+    //        if (this_process == 0) { std::cout << "Using config file path " << config_HHGP.path_config_file() << std::endl; }
+    //    }
+    //    config_HHGP.read_in(config_HHGP.path_config_file(), false);
+    //    config_HHGP.check_paths(false);
+    //    //if (total_processes > 1) {
+    //    //    config_HHGP.n_m_set(total_processes-1);
+    //    //    config_HHGP.n_r_set(total_processes-1);
+    //    //}
+    //    if (this_process == 0) { config_HHGP.print(); }
+    //}
 
     //--------------------------------------------------------------------------------------------//
     // 2. Constructors
