@@ -1,5 +1,8 @@
 #! /bin/bash
 
+CURRENT_PATH=$PWD
+echo "Current path: $CURRENT_PATH"
+
 export BUILD_DOCS=false
 while test $# -gt 0; do
         case "$1" in
@@ -40,42 +43,30 @@ source /local/software/intel/2017/mkl/bin/mklvars.sh intel64 ilp64
 
 if [ "$BUILD_DOCS" = true ] ; then
         echo "XNLO:"
-        cd ../XNLO/build &&
-        ./comp -d &&
-        cd ../../build
+        cd "$CURRENT_PATH"/../XNLO/build &&
+        ./comp -d
+
+        echo "HHGP:"
+        cd "$CURRENT_PATH"/../HHGP/build &&
+        ./comp -d
+
+        echo "UPPE:"
+        cd "$CURRENT_PATH"/../UPPE/build &&
+        ./comp -d
+
+        echo "UXH:"
+        echo "Generating combined Docs..."
+        DOXYGEN_QUIET=YES doxygen Doxyfile
 else
         echo "XNLO:"
-        cd ../XNLO/build &&
-        ./comp &&
-        cd ../../build
-fi
+        cd "$CURRENT_PATH"/../XNLO/build &&
+        ./comp 
 
-if [ "$BUILD_DOCS" = true ] ; then
         echo "HHGP:"
-        cd ../HHGP/build &&
-        ./comp -d &&
-        cd ../../build
-else
-        echo "HHGP:"
-        cd ../HHGP/build &&
-        ./comp &&
-        cd ../../build
-fi
+        cd "$CURRENT_PATH"/../HHGP/build &&
+        ./comp 
 
-if [ "$BUILD_DOCS" = true ] ; then
         echo "UPPE:"
-        cd ../UPPE/build &&
-        ./comp -d &&
-        cd ../../build
-else
-        echo "UPPE:"
-        cd ../UPPE/build &&
-        ./comp &&
-        cd ../../build
-fi
-
-if [ "$BUILD_DOCS" = true ] ; then
-        echo "UXH:"
-	echo "Generating combined Docs..."
-	DOXYGEN_QUIET=YES doxygen Doxyfile
+        cd "$CURRENT_PATH"/../UPPE/build &&
+        ./comp 
 fi
