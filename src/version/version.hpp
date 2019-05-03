@@ -3,6 +3,6 @@
 
 #define _VERSION_MAJOR 2
 #define _VERSION_MINOR 1
-#define _VERSION_SUBMINOR 3
+#define _VERSION_SUBMINOR 4
 
 #endif
