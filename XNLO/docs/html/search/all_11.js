@@ -14,7 +14,6 @@ var searchData=
   ['read_5fin_5flaser_5fpulse_5fset',['read_in_laser_pulse_set',['../class_x_n_l_o_1_1_config___settings.html#a4f580ef34d457b8f507bfeee67cd86e7',1,'XNLO::Config_Settings']]],
   ['read_5fint',['read_int',['../class_i_o.html#a7b78b5f726c5299423e72b2b44bce0c9',1,'IO']]],
   ['read_5fuint16',['read_uint16',['../class_i_o.html#a0ba1550dc3c2b6fd4675bc03408b8d95',1,'IO']]],
-  ['result',['Result',['../struct_x_n_l_o_1_1_result.html',1,'XNLO']]],
   ['rkr',['rkr',['../class_x_n_l_o___atom_response.html#a7e1446cbe05f4e70403994f098c0fcfc',1,'XNLO_AtomResponse']]],
   ['rr',['RR',['../class_x_n_l_o_1_1_config___settings.html#afada47a187ae520fb4711cf34b557bfb',1,'XNLO::Config_Settings::RR()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdacb95449a94688af33f6e9bb090cf2936',1,'XNLO::Config_Settings::RR()']]],
   ['rr_5f',['RR_',['../class_x_n_l_o_1_1_config___settings.html#a1ef5c8025df6540682d14f5cd15c5c2c',1,'XNLO::Config_Settings']]],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['e',['E',['../classpropagation.html#aff3713e9170542e31c952a2d1b760eec',1,'propagation::E()'],['../class_x_n_l_o_1_1laser__pulse.html#aa38478fa9b1dfa8b3b01b950b4e22343',1,'XNLO::laser_pulse::E()'],['../struct_x_n_l_o_1_1_result.html#aab8ac2d18dfcecb196e57cbc816499bf',1,'XNLO::Result::E()'],['../class_x_n_l_o___atom_response.html#a21f30c16799ddbb2917233d57aacceb3',1,'XNLO_AtomResponse::E()'],['../class_u_p_p_e_1_1laser__pulse.html#ae5fb511ff70694fa68750945a8005d8f',1,'UPPE::laser_pulse::e()']]],
+  ['e',['E',['../classpropagation.html#aff3713e9170542e31c952a2d1b760eec',1,'propagation::E()'],['../class_x_n_l_o_1_1laser__pulse.html#aa38478fa9b1dfa8b3b01b950b4e22343',1,'XNLO::laser_pulse::E()'],['../class_x_n_l_o___atom_response.html#a21f30c16799ddbb2917233d57aacceb3',1,'XNLO_AtomResponse::E()'],['../class_u_p_p_e_1_1laser__pulse.html#ae5fb511ff70694fa68750945a8005d8f',1,'UPPE::laser_pulse::e()']]],
   ['e_5fat',['E_at',['../classphysics__textbook.html#aed1451ff3400dce39969e5ac319f033a',1,'physics_textbook']]],
   ['e_5fev',['E_eV',['../classphysics__textbook.html#a73e078553f4f440e99aacad83f7df6d6',1,'physics_textbook']]],
   ['e_5ff1_5ff2_5fdata',['E_f1_f2_data',['../classpropagation.html#a53ab4838e0e66b55c2ab1398389a22f5',1,'propagation']]],

@@ -25,11 +25,7 @@ var NAVTREE =
 [
   [ "UXH", "index.html", [
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ]
-      ] ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -58,11 +54,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_d_h_t_8cpp.html",
-"class_config___settings.html#a961df4887c642c66a76e97159c259ffe",
-"class_h_h_1_1_config___settings.html#a52cbe7c286ed9f09296e68524448ff08",
-"class_u_p_p_e_1_1laser__pulse.html#a76761ebe9dbe99560d2cecea3b3ac1e9",
-"class_x_n_l_o___atom_response.html#afe2c74de8b5f49c7e71c98a951c33a10",
-"namespacemembers_func.html"
+"class_config___settings.html#a9b063dcebe6fac41f923e99225a3c27b",
+"class_h_h_1_1_config___settings.html#a55bd8ab1e25d6b487243906ef9798c24",
+"class_u_p_p_e_1_1laser__pulse.html#a9667b8334c650c3df673e4b44ea46827",
+"classcapillary__fibre.html#aac529850339a53f1262a497dd7a19931",
+"propagation_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

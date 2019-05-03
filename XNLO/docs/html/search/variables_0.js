@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['acceleration',['acceleration',['../class_schrodinger__atom__1_d.html#a33ed1c27016bceaaf517f247a5092d2f',1,'Schrodinger_atom_1D::acceleration()'],['../struct_x_n_l_o_1_1_result.html#aa627039efab8be98d4313f4e16f069fe',1,'XNLO::Result::acceleration()'],['../class_x_n_l_o___atom_response.html#a2ee560b24e44d05ad1d46cf33ef4d665',1,'XNLO_AtomResponse::acceleration()']]],
+  ['acceleration',['acceleration',['../class_schrodinger__atom__1_d.html#a33ed1c27016bceaaf517f247a5092d2f',1,'Schrodinger_atom_1D::acceleration()'],['../class_x_n_l_o___atom_response.html#a2ee560b24e44d05ad1d46cf33ef4d665',1,'XNLO_AtomResponse::acceleration()']]],
   ['alpha',['alpha',['../class_schrodinger__atom__1_d.html#abbf52497be11ff8e417e857b3e42c944',1,'Schrodinger_atom_1D']]],
   ['alpha_5f',['alpha_',['../class_x_n_l_o_1_1_config___settings.html#af7ebc20f8e6a7d8c33de6d1da956cab4',1,'XNLO::Config_Settings']]],
   ['alpha_5fdescription_5f',['alpha_description_',['../class_x_n_l_o_1_1_config___settings.html#aced75efb11b901604ef03a05b23d5ab5',1,'XNLO::Config_Settings']]],

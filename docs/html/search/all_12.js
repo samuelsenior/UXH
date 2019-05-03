@@ -27,7 +27,6 @@ var searchData=
   ['rep_5fdescription_5f',['rep_description_',['../class_h_h_1_1_config___settings.html#a0aa4bf3b59a5de2ad47dda83dfe02a02',1,'HH::Config_Settings::rep_description_()'],['../class_config___settings.html#ac885ade71abffd480f1324d67438daff',1,'Config_Settings::rep_description_()']]],
   ['rep_5fdescription_5fset',['rep_description_set',['../class_h_h_1_1_config___settings.html#af0b5006b967b95f83ff5f793d8b5b949',1,'HH::Config_Settings::rep_description_set()'],['../class_config___settings.html#af0b5006b967b95f83ff5f793d8b5b949',1,'Config_Settings::rep_description_set()']]],
   ['rep_5fset',['rep_set',['../class_h_h_1_1_config___settings.html#a190867ecfbe068e79f3cfe95947423d1',1,'HH::Config_Settings::rep_set()'],['../class_config___settings.html#a190867ecfbe068e79f3cfe95947423d1',1,'Config_Settings::rep_set()']]],
-  ['result',['Result',['../struct_x_n_l_o_1_1_result.html',1,'XNLO']]],
   ['rhs_5fuppe',['RHS_UPPE',['../class_u_p_p_e_1_1laser__pulse.html#ab6f300644e236c09aedcffae043fcd44',1,'UPPE::laser_pulse']]],
   ['rk_5ff_5f45',['RK_F_45',['../class_u_p_p_e_1_1laser__pulse.html#a53d4f083151d2e2b522b29ccb1f79831',1,'UPPE::laser_pulse']]],
   ['rkr',['rkr',['../class_h_h_g_p.html#a838fc7a857ae0c87f2d2fe61f10d4372',1,'HHGP::rkr()'],['../classpropagation.html#a3d37531bb5918f972544d242aec7e72b',1,'propagation::rkr()'],['../class_u_p_p_e_1_1laser__pulse.html#a9667b8334c650c3df673e4b44ea46827',1,'UPPE::laser_pulse::rkr()'],['../class_x_n_l_o___atom_response.html#a7e1446cbe05f4e70403994f098c0fcfc',1,'XNLO_AtomResponse::rkr()']]],

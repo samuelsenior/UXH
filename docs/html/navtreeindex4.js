@@ -1,10 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"class_x_n_l_o___atom_response.html#afe2c74de8b5f49c7e71c98a951c33a10":[1,0,19,17],
-"classcapillary__fibre.html":[1,0,3],
-"classcapillary__fibre.html#a2eb4489d19e3ec8f1b1e2f7c75f12550":[1,0,3,3],
-"classcapillary__fibre.html#a671951793318487999e331c659056a3e":[1,0,3,0],
-"classcapillary__fibre.html#a8a34fc09c32497d1272052610aa00ba3":[1,0,3,4],
 "classcapillary__fibre.html#aac529850339a53f1262a497dd7a19931":[1,0,3,1],
 "classcapillary__fibre.html#aafb62b49ef2b72a1c0656281951db0b1":[1,0,3,2],
 "classes.html":[1,1],
@@ -149,8 +144,8 @@ var NAVTREEINDEX4 =
 "functions_e.html":[1,3,0,4],
 "functions_enum.html":[1,3,4],
 "functions_f.html":[1,3,0,5],
-"functions_func.html":[1,3,1,0],
 "functions_func.html":[1,3,1],
+"functions_func.html":[1,3,1,0],
 "functions_func_b.html":[1,3,1,1],
 "functions_func_c.html":[1,3,1,2],
 "functions_func_d.html":[1,3,1,3],
@@ -188,8 +183,8 @@ var NAVTREEINDEX4 =
 "functions_type.html":[1,3,3],
 "functions_u.html":[1,3,0,20],
 "functions_v.html":[1,3,0,21],
-"functions_vars.html":[1,3,2],
 "functions_vars.html":[1,3,2,0],
+"functions_vars.html":[1,3,2],
 "functions_vars_b.html":[1,3,2,1],
 "functions_vars_c.html":[1,3,2,2],
 "functions_vars_d.html":[1,3,2,3],
@@ -245,9 +240,14 @@ var NAVTREEINDEX4 =
 "maths__textbook_8hpp_source.html":[2,0,0,8,1],
 "namespace_h_h.html":[0,0,0],
 "namespace_h_h.html":[1,0,0],
-"namespace_u_p_p_e.html":[1,0,1],
 "namespace_u_p_p_e.html":[0,0,1],
-"namespace_x_n_l_o.html":[1,0,2],
+"namespace_u_p_p_e.html":[1,0,1],
 "namespace_x_n_l_o.html":[0,0,2],
-"namespacemembers.html":[0,1,0]
+"namespace_x_n_l_o.html":[1,0,2],
+"namespaces.html":[0,0],
+"pages.html":[],
+"physics__textbook_8cpp.html":[2,0,0,9,0],
+"physics__textbook_8hpp.html":[2,0,0,9,1],
+"physics__textbook_8hpp_source.html":[2,0,0,9,1],
+"propagation_8cpp.html":[2,0,0,5,7]
 };

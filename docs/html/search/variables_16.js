@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['w',['w',['../class_x_n_l_o_1_1grid__tw.html#a099ffb42c45f511c9f2ab8a584d897cc',1,'XNLO::grid_tw::w()'],['../struct_x_n_l_o_1_1_result.html#a1e1ad223123ee7a6424737d713f014fe',1,'XNLO::Result::w()'],['../class_x_n_l_o___atom_response.html#ab32b6735d09d90e2488a075ea6fe7a83',1,'XNLO_AtomResponse::w()']]],
+  ['w',['w',['../class_x_n_l_o_1_1grid__tw.html#a099ffb42c45f511c9f2ab8a584d897cc',1,'XNLO::grid_tw::w()'],['../class_x_n_l_o___atom_response.html#ab32b6735d09d90e2488a075ea6fe7a83',1,'XNLO_AtomResponse::w()']]],
   ['w_5factive',['w_active',['../classgrid__tw.html#a66922766c9dfe5c4667e55e678b134b9',1,'grid_tw::w_active()'],['../classpropagation.html#a4c24f42d4148eded469c6479d6bf1661',1,'propagation::w_active()']]],
   ['w_5factive_5fmax_5f',['w_active_max_',['../class_h_h_1_1_config___settings.html#aba63d1bddf1ae6fe89217c84993c38ee',1,'HH::Config_Settings::w_active_max_()'],['../class_config___settings.html#a8e1cad65153d6383ed84637ecd794bf0',1,'Config_Settings::w_active_max_()']]],
   ['w_5factive_5fmax_5fdescription_5f',['w_active_max_description_',['../class_h_h_1_1_config___settings.html#a2d73105c91c88239ad0469a747150707',1,'HH::Config_Settings::w_active_max_description_()'],['../class_config___settings.html#aec4b2d04c20b6d345a0cd31df2e896fa',1,'Config_Settings::w_active_max_description_()']]],
@@ -12,7 +12,7 @@ var searchData=
   ['waist',['waist',['../class_u_p_p_e_1_1laser__pulse.html#a73557ffb2803330e28cfd987da5c3e05',1,'UPPE::laser_pulse']]],
   ['waist_5f',['waist_',['../class_h_h_1_1_config___settings.html#af9f294ea092eedf7ba428ad45a37cbd6',1,'HH::Config_Settings::waist_()'],['../class_config___settings.html#a769316096d7aa4e2939ed7fbf7db21e2',1,'Config_Settings::waist_()']]],
   ['waist_5fdescription_5f',['waist_description_',['../class_h_h_1_1_config___settings.html#a123223e81433f6092d3a69d805043b8b',1,'HH::Config_Settings::waist_description_()'],['../class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30',1,'Config_Settings::waist_description_()']]],
-  ['wavefunction',['wavefunction',['../struct_x_n_l_o_1_1_result.html#a3cc2dcbdbfecec769a89f37b15b4bab2',1,'XNLO::Result::wavefunction()'],['../class_x_n_l_o___atom_response.html#a20acaa46f338d7ebc8abede0aa60dc5b',1,'XNLO_AtomResponse::wavefunction()']]],
+  ['wavefunction',['wavefunction',['../class_x_n_l_o___atom_response.html#a20acaa46f338d7ebc8abede0aa60dc5b',1,'XNLO_AtomResponse']]],
   ['wfn',['wfn',['../class_schrodinger__atom__1_d.html#a00de5d2d5a686de4b95ca698390dc511',1,'Schrodinger_atom_1D']]],
   ['wfn_5fboundary',['wfn_boundary',['../class_schrodinger__atom__1_d.html#aa10dca5fb10cd9ac2329d28b8cb8de3b',1,'Schrodinger_atom_1D']]],
   ['wfn_5fgs',['wfn_GS',['../class_schrodinger__atom__1_d.html#a8ffbb068cd87127ceff5953c5a810d85',1,'Schrodinger_atom_1D']]],
