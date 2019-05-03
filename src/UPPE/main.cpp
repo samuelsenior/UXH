@@ -125,12 +125,86 @@ int main(int argc, char** argv){
         //if (this_process == 0) { config_HHGP.print(); }
     }
 
+maths_textbook maths(config.path_input_j0());
+grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+
 if (total_processes > 1) {
+    config_XNLO.x_min_set(rkr.r(0));
+    config_XNLO.x_min_description_set("(double) Minimum radial posiiton, set through UPPE");
+
+    config_XNLO.x_max_set(config.R());
+    config_XNLO.x_max_description_set("(double) Maximum radial posiiton, set through UPPE");
+
+    config_XNLO.P_av_set(config.p_av());
+    config_XNLO.P_av_description_set("(double) Average laser power, set through UPPE");
+
+    config_XNLO.RR_set(config.rep());
+    config_XNLO.RR_description_set("(double) Laser repetition, set through UPPE");
+
+    config_XNLO.FWHM_set(config.fwhm());
+    config_XNLO.FWHM_description_set("(double) Laser full width half maximum, set through UPPE");
+
+    config_XNLO.l_0_set(config.l_0());
+    config_XNLO.l_0_description_set("(double) Laser wavelength, set through UPPE");
+
+    config_XNLO.CEO_set(config.ceo());
+    config_XNLO.CEO_description_set("(double) Ceo value, set through UPPE");
+
+    config_XNLO.spot_radius_set(config.waist());
+    config_XNLO.spot_radius_description_set("(double) Laser spot radius, set through UPPE");
+
+
     config.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config.n_m_description_set("(int) Number of modes, set through UPPE");
     config.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config.n_r_description_set("(int) Number of radial points, set through UPPE");
 
     config_HHGP.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config_HHGP.n_m_description_set("(int) Number of modes, set through UPPE");
     config_HHGP.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config_HHGP.n_r_description_set("(int) Number of radial points, set through UPPE");
+
+    config_HHGP.n_z_set(config.n_z());
+    config_HHGP.n_z_description_set("(int) Number of steps in Z, set through UPPE");
+
+    config_HHGP.T_set(config.T());
+    config_HHGP.T_description_set("(double) The T value, set through UPPE");
+
+    config_HHGP.w_active_min_set(config.w_active_min());
+    config_HHGP.w_active_min_description_set("(double) Minimum angular frequency, set through UPPE");
+
+    config_HHGP.w_active_max_set(config.w_active_max());
+    config_HHGP.w_active_max_description_set("(double) Maximum angular frequency, set through UPPE");
+
+    config_HHGP.Z_set(config.Z());
+    config_HHGP.Z_description_set("(double) Length of capillary, set through UPPE");
+
+    config_HHGP.R_set(config.R());
+    config_HHGP.R_description_set("(double) Radius of capillary, set through UPPE");
+
+    config_HHGP.press_set(config.press());
+    config_HHGP.press_description_set("(double) Pressure fo the gas, set through UPPE");
+
+    config_HHGP.p_av_set(config.p_av());
+    config_HHGP.p_av_description_set("(double) Average laser power, set through UPPE");
+
+    config_HHGP.rep_set(config.rep());
+    config_HHGP.rep_description_set("(double) Laser repetition, set through UPPE");
+
+    config_HHGP.fwhm_set(config.fwhm());
+    config_HHGP.fwhm_description_set("(double) Laser full width half maximum, set through UPPE");
+
+    config_HHGP.l_0_set(config.l_0());
+    config_HHGP.l_0_description_set("(double) Laser wavelength, set through UPPE");
+
+    config_HHGP.ceo_set(config.ceo());
+    config_HHGP.ceo_description_set("(double) Ceo value, set through UPPE");
+
+    config_HHGP.waist_set(config.waist());
+    config_HHGP.waist_description_set("(double) Laser spot radius, set through UPPE");
+    
+    config_HHGP.gas_pressure_profile_set(config.gas_pressure_profile());
+    config_HHGP.gas_pressure_profile_description_set("(std::string) LSwitch for gas pressure profile, set through UPPE");
 }
 
 if (this_process == 0) { config.print(); }
@@ -162,7 +236,7 @@ if (total_processes > 1) {
     //--------------------------------------------------------------------------------------------//
 
     // General
-    maths_textbook maths(config.path_input_j0());
+    //maths_textbook maths(config.path_input_j0());
     physics_textbook physics;
 
     MKL_LONG dimensions = 1;
@@ -183,7 +257,7 @@ if (total_processes > 1) {
 
     DHT ht(config.n_r(), maths);
     // Grids
-    grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+    //grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
     grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
 if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_index << std::endl;
 
@@ -265,10 +339,10 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
 
     XNLO_AtomResponse atomResponse;
     if (total_processes > 1) {
-        XNLO_AtomResponse atomResponse(&rkr, &tw_XNLO, &maths, &physics,
-                                       this_process, total_processes,
-                                       config_XNLO,
-                                       "minimum");
+        atomResponse = XNLO_AtomResponse(&rkr, &tw_XNLO, &maths, &physics,
+                                         this_process, total_processes,
+                                         config_XNLO,
+                                         "minimum");
     }
     MPI_Barrier(MPI_COMM_WORLD); 
 
