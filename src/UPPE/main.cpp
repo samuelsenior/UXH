@@ -263,10 +263,13 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
 
     XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
 
-    XNLO_AtomResponse atomResponse(rkr, tw_XNLO, maths, physics,
-                                   this_process, total_processes,
-                                   config_XNLO,
-                                   "minimum");
+    XNLO_AtomResponse atomResponse;
+    if (total_processes > 1) {
+        XNLO_AtomResponse atomResponse(&rkr, &tw_XNLO, &maths, &physics,
+                                       this_process, total_processes,
+                                       config_XNLO,
+                                       "minimum");
+    }
     MPI_Barrier(MPI_COMM_WORLD); 
 
     double lamda_min_HHG = 6.0e-9;
