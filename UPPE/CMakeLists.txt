@@ -3,6 +3,11 @@ project(UPPE)
 cmake_minimum_required(VERSION 3.1)
 
 #----------------------------------------------------------#
+#                    Set Doc Building                      #
+#----------------------------------------------------------#
+option(BUILD_DOCS "Build documentation" OFF)
+
+#----------------------------------------------------------#
 #                    Set C++ Standard                      #
 #----------------------------------------------------------#
 
@@ -189,27 +194,32 @@ set(HEADERS
 #----------------------------------------------------------#
 
 # first we can indicate the documentation build as an option and set it to ON by default
-option(BUILD_DOC "Build documentation" ON)
+#option(BUILD_DOC "Build documentation" ON)
 
-# check if Doxygen is installed
-find_package(Doxygen)
-if (DOXYGEN_FOUND)
-    # set input and output files
-    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/build/Doxyfile)
-    set(DOXYGEN_OUT ${CMAKE_CURRENT_SOURCE_DIR}/build/Doxyfile.out)
-    # request to configure the file
-    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT}  @ONLY)
-    message("-- Doxygen build started")
+if (BUILD_DOCS)
 
-    # note the option ALL which allows to build the docs together with the application
-    add_custom_target( doc_doxygen ALL
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Generating API documentation with Doxygen"
-        VERBATIM )
-else (DOXYGEN_FOUND)
-  message("-- Doxygen needs to be installed to generate the doxygen documentation")
-endif (DOXYGEN_FOUND)
+    # check if Doxygen is installed
+    find_package(Doxygen)
+    if (DOXYGEN_FOUND)
+        # set input and output files
+        set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/build/Doxyfile)
+        set(DOXYGEN_OUT ${CMAKE_CURRENT_SOURCE_DIR}/build/Doxyfile.out)
+        # request to configure the file
+        configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT}  @ONLY)
+        message("-- Doxygen build started")
+
+        # note the option ALL which allows to build the docs together with the application
+        add_custom_target( doc_doxygen ALL
+            COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+            COMMENT "Generating API documentation with Doxygen"
+            VERBATIM )
+    else (DOXYGEN_FOUND)
+      message("-- Doxygen needs to be installed to generate the doxygen documentation")
+    endif (DOXYGEN_FOUND)
+else (BUILD_DOCS)
+   message("-- Not building documentation")
+endif (BUILD_DOCS)
 
 #----------------------------------------------------------#
 #                    Put it all Together                   #

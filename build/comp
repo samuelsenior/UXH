@@ -1,24 +1,81 @@
 #! /bin/bash
 
+export BUILD_DOCS=false
+while test $# -gt 0; do
+        case "$1" in
+                -h|--help)
+                        echo "Comp - compilation script to build all of UXH"
+                        echo " "
+                        echo "options:"
+                        echo "   -h, --help       show brief help"
+                        echo "   -d, --docs       build documentation"
+                        exit 0
+                        ;;
+                -d)
+						echo "Building docs specified"
+						export BUILD_DOCS=true
+                        shift
+                        #if test $# -gt 0; then
+                        #        export PROCESS=$1
+                        #else
+                        #        echo "no process specified"
+                        #        exit 1
+                        #fi
+                        #shift
+                        ;;
+                --docs)
+                        echo "Building docs specified"
+						export BUILD_DOCS=true
+                        shift
+                        ;;
+                *)
+                        break
+                        ;;
+        esac
+done
+
 #export TBBROOT=fdsljkfds
 source /local/software/intel/2017/mkl/bin/mklvars.sh intel64 ilp64
 # cmake -D CMAKE_C_COMPILER=gcc-6 -D CMAKE_CXX_COMPILER=g++-6 ..
 
+if [ "$BUILD_DOCS" = true ] ; then
+        echo "XNLO:"
+        cd ../XNLO/build &&
+        ./comp -d &&
+        cd ../../build
+else
+        echo "XNLO:"
+        cd ../XNLO/build &&
+        ./comp &&
+        cd ../../build
+fi
 
-cd ../XNLO/build &&
-#cmake -D CMAKE_C_COMPILER=mpicc -D CMAKE_CXX_COMPILER=mpicxx .. &&
-./comp &&
-cd ../../build
+if [ "$BUILD_DOCS" = true ] ; then
+        echo "HHGP:"
+        cd ../HHGP/build &&
+        ./comp -d &&
+        cd ../../build
+else
+        echo "HHGP:"
+        cd ../HHGP/build &&
+        ./comp &&
+        cd ../../build
+fi
 
-cd ../HHGP/build &&
-#cmake -D CMAKE_C_COMPILER=mpicc -D CMAKE_CXX_COMPILER=mpicxx .. &&
-./comp &&
-cd ../../build
+if [ "$BUILD_DOCS" = true ] ; then
+        echo "UPPE:"
+        cd ../UPPE/build &&
+        ./comp -d &&
+        cd ../../build
+else
+        echo "UPPE:"
+        cd ../UPPE/build &&
+        ./comp &&
+        cd ../../build
+fi
 
-cd ../UPPE/build &&
-#cmake -D CMAKE_C_COMPILER=mpicc -D CMAKE_CXX_COMPILER=mpicxx .. &&
-./comp &&
-cd ../../build
-
-echo "Generating combined Docs..."
-DOXYGEN_QUIET=YES doxygen Doxyfile
+if [ "$BUILD_DOCS" = true ] ; then
+        echo "UXH:"
+	echo "Generating combined Docs..."
+	DOXYGEN_QUIET=YES doxygen Doxyfile
+fi
