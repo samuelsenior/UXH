@@ -17,24 +17,24 @@ then
         if [ "${ver_part}" == "b" ]
         then
             echo "Incrementing major version number"
-            awk '$0 !~ /#define _VERSION_MAJOR/ { print $0 } $0  ~ /#define _VERSION_MAJOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version.hpp > ../src/version_temp.hpp
-            touch -r ../src/version.hpp ../src/version_temp.hpp
-            cp -p ../src/version_temp.hpp ../src/version.hpp
-            rm -f ../src/version_temp.hpp
+            awk '$0 !~ /#define _VERSION_MAJOR/ { print $0 } $0  ~ /#define _VERSION_MAJOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version/version.hpp > ../src/version/version_temp.hpp
+            touch -r ../src/version/version.hpp ../src/version/version_temp.hpp
+            cp -p ../src/version/version_temp.hpp ../src/version/version.hpp
+            rm -f ../src/version/version_temp.hpp
         elif [ "${ver_part}" == "s" ]
         then
             echo "Incrementing minor version number"
-            awk '$0 !~ /#define _VERSION_MINOR/ { print $0 } $0  ~ /#define _VERSION_MINOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version.hpp > ../src/version_temp.hpp
-            touch -r ../src/version.hpp ../src/version_temp.hpp
-            cp -p ../src/version_temp.hpp ../src/version.hpp
-            rm -f ../src/version_temp.hpp
+            awk '$0 !~ /#define _VERSION_MINOR/ { print $0 } $0  ~ /#define _VERSION_MINOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version/version.hpp > ../src/version/version_temp.hpp
+            touch -r ../src/version/version.hpp ../src/version/version_temp.hpp
+            cp -p ../src/version/version_temp.hpp ../src/version/version.hpp
+            rm -f ../src/version/version_temp.hpp
         elif [ "${ver_part}" == "t" ]
         then
             echo "Incrementing subminor version number"
-            awk '$0 !~ /#define _VERSION_SUBMINOR/ { print $0 } $0  ~ /#define _VERSION_SUBMINOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version.hpp > ../src/version_temp.hpp
-            touch -r ../src/version.hpp ../src/version_temp.hpp
-            cp -p ../src/version_temp.hpp ../src/version.hpp
-            rm -f ../src/version_temp.hpp
+            awk '$0 !~ /#define _VERSION_SUBMINOR/ { print $0 } $0  ~ /#define _VERSION_SUBMINOR/ { n = $3 + 1; print $1 " " $2 " " n }' ../src/version/version.hpp > ../src/version/version_temp.hpp
+            touch -r ../src/version/version.hpp ../src/version/version_temp.hpp
+            cp -p ../src/version/version_temp.hpp ../src/version/version.hpp
+            rm -f ../src/version/version_temp.hpp
         else
             echo "Error: incorrect argument ($1) passed to version_increment, skipping incrementation..."
         fi
