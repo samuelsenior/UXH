@@ -1,11 +1,11 @@
 #! /bin/bash
 
-echo "Cleaning build dirs..."
+echo "Cleaning UPPE build dir ($PWD)..."
+[ -d CMakeFiles ] && echo "-- Found and removing CMakeFiles/" && rm -r CMakeFiles || echo "-- CMakeFiles/ not found"
+[ -e CMake* ] && echo "-- Found and removing CMake*" && rm CMake* || echo "-- CMake* not found"
+[ -e Make* ] && echo "-- Found and removing Make*" && rm Make* || echo "-- Make* not found"
+[ -e cmake* ] && echo "-- Found and removing cmake*" && rm cmake* || echo "-- cmake* not found"
+[ -e Doxyfile.out ] && echo "-- Found and removing Doxyfile.out" && rm Doxyfile.out || echo "-- Doxyfile.out not found"
 
-rm -r CMake* &&
-rm Make* &&
-rm cmake* &&
-rm Doxyfile.out &&
-
-echo "Build dirs cleaned!"
+echo "Build dir cleaned!"
 
