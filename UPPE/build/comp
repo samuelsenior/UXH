@@ -1,17 +1,19 @@
 #! /bin/bash
 
 export BUILD_DOCS=false
+export CLEAN_DIR=false
 while test $# -gt 0; do
         case "$1" in
                 -h|--help)
-                        echo "Comp - compilation script to build all of UXH"
+                        echo "Comp - Compilation script to build UPPE"
                         echo " "
-                        echo "options:"
-                        echo "   -h, --help       show brief help"
-                        echo "   -d, --docs       build documentation"
+                        echo "Options:"
+                        echo "   -h, --help       Show brief help"
+                        echo "   -d, --docs       Build documentation"
+                        echo "   -c, --clean      Clean the build directories"
                         exit 0
                         ;;
-                -d)
+                -d|docs)
                         echo "-- UPPE building docs specified"
                         export BUILD_DOCS=true
                         shift
@@ -23,9 +25,9 @@ while test $# -gt 0; do
                         #fi
                         #shift
                         ;;
-                --docs)
-                        echo "-- UPPE building docs specified"
-                        export BUILD_DOCS=true
+                -c|--clean)
+                        echo "Cleaning build dir..."
+                        export CLEAN_DIR=true
                         shift
                         ;;
                 *)
@@ -33,6 +35,10 @@ while test $# -gt 0; do
                         ;;
         esac
 done
+
+if [ "$CLEAN_DIR" = true ] ; then
+    ./clean
+fi
 
 #export TBBROOT=fdsljkfds
 source /local/software/intel/2017/mkl/bin/mklvars.sh intel64 ilp64
