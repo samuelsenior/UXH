@@ -43,6 +43,7 @@ if [ "$BUILD_DOCS" = true ] ; then
     DOXYGEN_QUIET=YES make
 else
     cmake -D CMAKE_C_COMPILER=mpicc -D CMAKE_CXX_COMPILER=mpic++ ..
+    DOXYGEN_QUIET=YES make
 fi
 
 cp ../../src/XNLO/XNLO.hpp ../lib/XNLO.hpp
