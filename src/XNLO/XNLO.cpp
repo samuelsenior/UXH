@@ -38,9 +38,9 @@ using namespace Eigen;
     of it are self contained and so that it is harder to confuse with other namespaces etc.
 */
 //namespace XNLO {
-
-XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr& rkr_, XNLO::grid_tw& tw_,
-           maths_textbook& maths_, physics_textbook& physics_,
+XNLO_AtomResponse::XNLO_AtomResponse() {}
+XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr* rkr_, XNLO::grid_tw* tw_,
+           maths_textbook* maths_, physics_textbook* physics_,
            int this_node_, int total_nodes_,
            XNLO::Config_Settings config_,
            std::string print_)
@@ -88,23 +88,23 @@ XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr& rkr_, XNLO::grid_tw& tw_,
     //Schrodinger_atom_1D atom;
     if (print == "minimum") {
         if (this_node == 1) {
-            atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), true);
+            atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), true);
         } else {
-            atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), false);
+            atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), false);
         }
     }
     else if (print == "false") {
-        atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), false);
+        atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), false);
     } else {
-        atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), true);
+        atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), true);
     }
     if (this_node == 0) { std::cout << "Schrodinger_atom_1D initialised!" << std::endl; }
 
     if (this_node == 0) {
-        dipole = ArrayXXd::Zero(tw.N_t, total_atoms);
+        dipole = ArrayXXd::Zero(tw->N_t, total_atoms);
     } else {
-        E_field = ArrayXXd::Zero(tw.N_t, atoms_per_worker);
-        dipole = ArrayXXd::Zero(tw.N_t, atoms_per_worker);
+        E_field = ArrayXXd::Zero(tw->N_t, atoms_per_worker);
+        dipole = ArrayXXd::Zero(tw->N_t, atoms_per_worker);
     }
 
 
@@ -119,33 +119,33 @@ void XNLO_AtomResponse::run(ArrayXXcd A_w_active, ArrayXd w_active, int w_active
         // Field
         double ROC = std::numeric_limits<double>::max();
 
-        XNLO::laser_pulse pulse(rkr, tw, A_w_active, w_active, w_active_min_index_UPPE, maths, physics);
+        XNLO::laser_pulse pulse(*rkr, *tw, A_w_active, w_active, w_active_min_index_UPPE, *maths, *physics);
 
         // Send
         for (int ii = 1; ii < total_nodes; ii++) {
 
-            MPI_Send(pulse.E.block(0, atoms_per_worker * (ii - 1), tw.N_t, atoms_per_worker).data(),
-                     tw.N_t * atoms_per_worker, MPI_DOUBLE, ii, 1, MPI_COMM_WORLD);
+            MPI_Send(pulse.E.block(0, atoms_per_worker * (ii - 1), tw->N_t, atoms_per_worker).data(),
+                     tw->N_t * atoms_per_worker, MPI_DOUBLE, ii, 1, MPI_COMM_WORLD);
         }
 
         // Receive
         //ArrayXXd dipole = ArrayXXd::Zero(tw.N_t, total_atoms);
-        if (config.output_wavefunction() == 1) { wavefunction = ArrayXXcd::Zero(tw.N_t, 4096); }
+        if (config.output_wavefunction() == 1) { wavefunction = ArrayXXcd::Zero(tw->N_t, 4096); }
         else { wavefunction = ArrayXXcd::Zero(0, 0); }
         for (int jj = 1; jj < total_nodes; jj++) {
             // Request
-            MPI_Recv(dipole.block(0, atoms_per_worker * (jj - 1), tw.N_t, atoms_per_worker).data(),
-                     tw.N_t * atoms_per_worker, MPI_DOUBLE, jj, 1, MPI_COMM_WORLD, &status);
+            MPI_Recv(dipole.block(0, atoms_per_worker * (jj - 1), tw->N_t, atoms_per_worker).data(),
+                     tw->N_t * atoms_per_worker, MPI_DOUBLE, jj, 1, MPI_COMM_WORLD, &status);
         }
         if (config.output_wavefunction() == 1) {
-            MPI_Recv(wavefunction.block(0, 0, tw.N_t, 4096).data(),
-                     4096 * tw.N_t, MPI_DOUBLE_COMPLEX, 1, 1, MPI_COMM_WORLD, &status);
+            MPI_Recv(wavefunction.block(0, 0, tw->N_t, 4096).data(),
+                     4096 * tw->N_t, MPI_DOUBLE_COMPLEX, 1, 1, MPI_COMM_WORLD, &status);
         }
 
         //if (this_node == 0) { std::cout << "XNLO successfully ran!\n"; }
 
         acceleration = dipole;
-        w = tw.w;
+        w = tw->w;
         if (config.output_electric_field() == 1) { E = pulse.E; }
         else { E = ArrayXXd::Zero(0, 0); }
         wavefunction = wavefunction;
@@ -154,11 +154,11 @@ void XNLO_AtomResponse::run(ArrayXXcd A_w_active, ArrayXd w_active, int w_active
     // Worker
         // Receive
         //ArrayXXd E_field = ArrayXXd::Zero(tw.N_t, atoms_per_worker);
-        MPI_Recv(E_field.data(), tw.N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD, &status);
+        MPI_Recv(E_field.data(), tw->N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD, &status);
         // Single atom calculations
         //ArrayXXd dipole = ArrayXXd::Zero(tw.N_t, atoms_per_worker);
 
-        if (config.output_wavefunction() == 1) { wavefunction = ArrayXXcd::Zero(tw.N_t, 4096); }
+        if (config.output_wavefunction() == 1) { wavefunction = ArrayXXcd::Zero(tw->N_t, 4096); }
         else { wavefunction = ArrayXXcd::Zero(0, 0); }
         //Schrodinger_atom_1D atom;
         //if (print == "minimum") {
@@ -167,14 +167,14 @@ void XNLO_AtomResponse::run(ArrayXXcd A_w_active, ArrayXd w_active, int w_active
         //else if (print == "false") { atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), false); }
         //else { atom = Schrodinger_atom_1D(tw, config.alpha(), config.output_wavefunction(), true); }
 
-        for (int ii = 0; ii < atoms_per_worker; ii++) { dipole.col(ii) = atom.get_acceleration(tw.N_t, tw.dt, E_field.col(ii)); }
+        for (int ii = 0; ii < atoms_per_worker; ii++) { dipole.col(ii) = atom.get_acceleration(tw->N_t, tw->dt, E_field.col(ii)); }
 
         if (config.output_wavefunction() == 1) { wavefunction = atom.wfn_output; }
 
         // Send
-        MPI_Send(dipole.data(), tw.N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
+        MPI_Send(dipole.data(), tw->N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
         if (config.output_wavefunction() == 1 && this_node == 1) {
-            MPI_Send(wavefunction.data(), 4096 * tw.N_t, MPI_DOUBLE_COMPLEX, 0, 1, MPI_COMM_WORLD);
+            MPI_Send(wavefunction.data(), 4096 * tw->N_t, MPI_DOUBLE_COMPLEX, 0, 1, MPI_COMM_WORLD);
         }
     }
     //if (this_node == 0) { std::cout << "XNLO successfully ran!\n"; }

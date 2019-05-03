@@ -21,10 +21,10 @@ class XNLO_AtomResponse {
     MPI_Status status;
     int world_rank, world_size;
 
-    grid_rkr& rkr;
-    XNLO::grid_tw& tw;
-    maths_textbook& maths;
-    physics_textbook& physics;
+    grid_rkr* rkr;
+    XNLO::grid_tw* tw;
+    maths_textbook* maths;
+    physics_textbook* physics;
     std::string print;
 
     int total_atoms;
@@ -43,8 +43,9 @@ public:
 	ArrayXXd E;
 	ArrayXXcd wavefunction;
 
-	XNLO_AtomResponse(grid_rkr& rkr_, XNLO::grid_tw& tw_,
-		              maths_textbook& maths_, physics_textbook& physics_,
+    XNLO_AtomResponse();
+	XNLO_AtomResponse(grid_rkr* rkr_, XNLO::grid_tw* tw_,
+		              maths_textbook* maths_, physics_textbook* physics_,
                       int this_node, int total_nodes,
                       XNLO::Config_Settings config_,
                       std::string print_="minimum");
