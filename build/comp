@@ -20,13 +20,6 @@ while test $# -gt 0; do
                         echo "-- UPPE building docs specified"
                         export BUILD_DOCS=true
                         shift
-                        #if test $# -gt 0; then
-                        #        export PROCESS=$1
-                        #else
-                        #        echo "no process specified"
-                        #        exit 1
-                        #fi
-                        #shift
                         ;;
                 -c|--clean)
                         echo "Cleaning build dir..."
