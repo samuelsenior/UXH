@@ -901,8 +901,8 @@ prop.print = false;
                 file.write(hhg.imag()* (dz / double(config.interp_points() + 1)), config.path_HHG_I_step());
                 file.write(w_active_HHG, config.path_HHG_w());
 
-                file.write(HHP.real()* (dz / double(config.interp_points() + 1)), config.path_HHP_R_step());
-                file.write(HHP.imag()* (dz / double(config.interp_points() + 1)), config.path_HHP_I_step());
+                file.write(HHP.real(), config.path_HHP_R_step());
+                file.write(HHP.imag(), config.path_HHP_I_step());
             }
         }
 
