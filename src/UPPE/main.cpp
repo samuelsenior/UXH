@@ -886,19 +886,42 @@ prop.print = false;
         if (this_process == 0) {
             // Output, as final block step, so don't overwrite and loose info from other blocks
             IO file;
-            file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
-            file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
-            file.write(tw.w_active, config.path_w_active());
+            //file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
+            //file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
+            //file.write(tw.w_active, config.path_w_active());
 
-            file.write(hhg.real(), config.path_HHG_R_step());
-            file.write(hhg.imag(), config.path_HHG_I_step());
-            file.write(w_active_HHG, config.path_HHG_w());
+            //file.write(hhg.real(), config.path_HHG_R_step());
+            //file.write(hhg.imag(), config.path_HHG_I_step());
+            //file.write(w_active_HHG, config.path_HHG_w());
 
             //file.write(HHP.real(), config.path_HHP_R_step());
             //file.write(HHP.imag(), config.path_HHP_I_step());
-            config.step_path(ii, "HHP_A_w");
-            file.write(HHP.real(), config.path_HHP_R_step());
-            file.write(HHP.imag(), config.path_HHP_I_step());
+            if (config.n_z() != config.ending_n_z()) {
+                config.step_path(config.ending_n_z(), "UPPE_A_w");
+                file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
+                file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
+                file.write(tw.w_active, config.path_w_active());
+
+                config.step_path(config.ending_n_z(), "HHG_A_w");
+                file.write(hhg.real(), config.path_HHG_R_step());
+                file.write(hhg.imag(), config.path_HHG_I_step());
+                file.write(w_active_HHG, config.path_HHG_w());
+
+                config.step_path(config.ending_n_z(), "HHP_A_w");
+                file.write(HHP.real(), config.path_HHP_R_step());
+                file.write(HHP.imag(), config.path_HHP_I_step());
+            } else {
+                file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
+                file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
+                file.write(tw.w_active, config.path_w_active());
+
+                file.write(hhg.real(), config.path_HHG_R_step());
+                file.write(hhg.imag(), config.path_HHG_I_step());
+                file.write(w_active_HHG, config.path_HHG_w());
+
+                file.write(HHP.real(), config.path_HHP_R_step());
+                file.write(HHP.imag(), config.path_HHP_I_step());
+            }
         }
 
         // Clean up
