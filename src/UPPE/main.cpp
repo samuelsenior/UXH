@@ -125,6 +125,18 @@ int main(int argc, char** argv){
         //if (this_process == 0) { config_HHGP.print(); }
     }
 
+if (total_processes > 1) {
+    config.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config.n_m_description_set("(int) Number of modes, set through UPPE");
+    config.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config.n_r_description_set("(int) Number of radial points, set through UPPE");
+
+    config_HHGP.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config_HHGP.n_m_description_set("(int) Number of modes, set through UPPE");
+    config_HHGP.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
+    config_HHGP.n_r_description_set("(int) Number of radial points, set through UPPE");
+}
+
 maths_textbook maths(config.path_input_j0());
 grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 
@@ -152,17 +164,6 @@ if (total_processes > 1) {
 
     config_XNLO.spot_radius_set(config.waist());
     config_XNLO.spot_radius_description_set("(double) Laser spot radius, set through UPPE");
-
-
-    config.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
-    config.n_m_description_set("(int) Number of modes, set through UPPE");
-    config.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
-    config.n_r_description_set("(int) Number of radial points, set through UPPE");
-
-    config_HHGP.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
-    config_HHGP.n_m_description_set("(int) Number of modes, set through UPPE");
-    config_HHGP.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
-    config_HHGP.n_r_description_set("(int) Number of radial points, set through UPPE");
 
     config_HHGP.n_z_set(config.n_z());
     config_HHGP.n_z_description_set("(int) Number of steps in Z, set through UPPE");
