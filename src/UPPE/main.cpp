@@ -775,6 +775,8 @@ std::cout << "2 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5
                             MPI_Send(&HH_prop_start_end_step, 2,
                                      MPI_INT, j, j, MPI_COMM_WORLD);
 
+std::cout << "1 hhg_old.row(5000):" << hhg_old.row(5000) << std::endl;
+std::cout << "1 hhg_old.rows():" << hhg_old.rows() << "hhg_old.cols():" << hhg_old.cols() << std::endl;
                             MPI_Send(hhg_old.real().data(),
                                      hhg_old.cols() * hhg_old.rows(),
                                      MPI_DOUBLE, j, j, MPI_COMM_WORLD);
@@ -782,6 +784,8 @@ std::cout << "2 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5
                                      hhg_old.cols() * hhg_old.rows(),
                                      MPI_DOUBLE, j, j, MPI_COMM_WORLD);
 
+std::cout << "1 dS_i.row(5000):" << dS_i.row(5000) << std::endl;
+std::cout << "1 dS_i.rows():" << dS_i.rows() << "dS_i.cols():" << dS_i.cols() << std::endl;
                             MPI_Send(dS_i.real().data(),
                                      dS_i.cols() * dS_i.rows(),
                                      MPI_DOUBLE, j, j, MPI_COMM_WORLD);
