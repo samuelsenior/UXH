@@ -777,12 +777,12 @@ std::cout << "2 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5
 
 std::cout << "1 hhg_old.row(5000):" << hhg_old.row(5000) << std::endl;
 std::cout << "1 hhg_old.rows():" << hhg_old.rows() << "hhg_old.cols():" << hhg_old.cols() << std::endl;
-                            MPI_Send(hhg_old.real().data(),
+                            MPI_Send(hhg_old.data(),
                                      hhg_old.cols() * hhg_old.rows(),
-                                     MPI_DOUBLE, j, j, MPI_COMM_WORLD);
-                            MPI_Send(hhg_old.imag().data(),
-                                     hhg_old.cols() * hhg_old.rows(),
-                                     MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                                     MPI_DOUBLE_COMPLEX, j, j, MPI_COMM_WORLD);
+                            //MPI_Send(hhg_old.imag().data(),
+                            //         hhg_old.cols() * hhg_old.rows(),
+                            //         MPI_DOUBLE, j, j, MPI_COMM_WORLD);
 
 std::cout << "1 dS_i.row(5000):" << dS_i.row(5000) << std::endl;
 std::cout << "1 dS_i.rows():" << dS_i.rows() << "dS_i.cols():" << dS_i.cols() << std::endl;
@@ -813,10 +813,10 @@ std::cout << "4 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5
                     HHP_multiThread_tmp_2 = ArrayXXcd::Zero(prop.n_k, config.n_r());
                     for (int j = 1; j < total_processes; j++) {
 std::cout << "Thread: " << this_process << ", HHP_multiThread_tmp.cols(): " << HHP_multiThread_tmp.cols() << ", HHP_multiThread_tmp.rows(): " << HHP_multiThread_tmp.rows() << std::endl;
-                        MPI_Recv(HHP_multiThread_tmp.real().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
-                                 MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
-                        MPI_Recv(HHP_multiThread_tmp.imag().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
-                                 MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
+                        MPI_Recv(HHP_multiThread_tmp.data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
+                                 MPI_DOUBLE_COMPLEX, j, j, MPI_COMM_WORLD, &status);
+                        //MPI_Recv(HHP_multiThread_tmp.imag().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
+                        //         MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
 std::cout << "HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
                         HHP_multiThread_tmp_2 += HHP_multiThread_tmp;
                     }
@@ -847,10 +847,10 @@ std::cout << "HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(500
 
 //std::cout << "Thread: " << this_process << ", hhg_old.cols(): " << hhg_old.cols() << ", rows(): " << hhg_old.rows() << std::endl;
 
-                MPI_Recv(hhg_old.real().data(), hhg_old.cols() * hhg_old.rows(),
-                         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
-                MPI_Recv(hhg_old.imag().data(), hhg_old.cols() * hhg_old.rows(),
-                         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+                MPI_Recv(hhg_old.data(), hhg_old.cols() * hhg_old.rows(),
+                         MPI_DOUBLE_COMPLEX, 0, this_process, MPI_COMM_WORLD, &status);
+                //MPI_Recv(hhg_old.imag().data(), hhg_old.cols() * hhg_old.rows(),
+                //         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
 std::cout << "Thread: " << this_process << ", hhg_old.row(5000):" << hhg_old.row(5000) << std::endl;
 //std::cout << "Thread: " << this_process << ", dS_i.cols(): " << dS_i.cols() << ", rows(): " << dS_i.rows() << std::endl;
 
@@ -871,12 +871,12 @@ std::cout << "Thread: " << this_process << ", dS_i.row(5000):" << dS_i.row(5000)
                     prop.z += interp_dz;
                 }
 
-                MPI_Send(HHP.real().data(),
+                MPI_Send(HHP.data(),
                          HHP.cols() * HHP.rows(),
-                         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD);
-                MPI_Send(HHP.imag().data(),
-                         HHP.cols() * HHP.rows(),
-                         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD);
+                         MPI_DOUBLE_COMPLEX, 0, this_process, MPI_COMM_WORLD);
+                //MPI_Send(HHP.imag().data(),
+                //         HHP.cols() * HHP.rows(),
+                //         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD);
             }
 
 
