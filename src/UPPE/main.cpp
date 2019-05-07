@@ -479,6 +479,7 @@ prop.print = false;
             A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
             MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                      MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+std::cout << "TESTING: Thread: " << this_process << ", A_w_active.row(1000): " << A_w_active.row(1000) << std::endl;
         }
 
         if ((total_processes > 1) && HHGP_starting_z_bool) {
