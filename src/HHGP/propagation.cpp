@@ -182,9 +182,9 @@ std::complex<double> propagation::n(int i) {
         double z_4 = gas.inlet_2;
         if (z <= z_4) {
            if (z > gas.inlet_1) {
-              z_4 = z;
+              z_3 = z;
            } else {
-              z_4 = gas.inlet_1 - gas.transitionLength;
+              z_3 = gas.inlet_1;
            }
           N_tot += gas.atom_density_max * (z_4 - z_3);
         }
