@@ -407,6 +407,7 @@ prop.print = false;
     ArrayXXcd HHG_tmp;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
     ArrayXXcd HHP_multiThread_tmp = ArrayXXcd::Zero(prop.n_k, config.n_r());
+    ArrayXXcd HHP_multiThread_tmp_2 = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
     ArrayXXcd hhg_old = ArrayXXcd::Zero(prop.n_k, config.n_r());//;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
     ArrayXXcd hhg_old_old = ArrayXXcd::Zero(prop.n_k, config.n_r());
@@ -742,6 +743,10 @@ prop.print = false;
                     
                     double interp_dz = dz / double(config.interp_points() + 1);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
+std::cout << "1 dS_i.row(5000):" << dS_i.row(5000) << std::endl;
+std::cout << "1 hhg_new.row(5000):" << hhg_new.row(5000) << std::endl;
+std::cout << "1 hhg_old.row(5000):" << hhg_old.row(5000) << std::endl;
+std::cout << "1 hhg_new.row(5000) - hhg_old.row(5000):" << hhg_new.row(5000) - hhg_old.row(5000) << std::endl;
                     prop.print = false;
                     prop.z -= dz;
 std::cout << "1 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
@@ -801,6 +806,7 @@ std::cout << "3 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5
                     hhg_old = hhg_new;
 std::cout << "4 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
 
+                    HHP_multiThread_tmp_2 = ArrayXXcd::Zero(prop.n_k, config.n_r());
                     for (int j = 1; j < total_processes; j++) {
 std::cout << "Thread: " << this_process << ", HHP_multiThread_tmp.cols(): " << HHP_multiThread_tmp.cols() << ", HHP_multiThread_tmp.rows(): " << HHP_multiThread_tmp.rows() << std::endl;
                         MPI_Recv(HHP_multiThread_tmp.real().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
@@ -808,9 +814,10 @@ std::cout << "Thread: " << this_process << ", HHP_multiThread_tmp.cols(): " << H
                         MPI_Recv(HHP_multiThread_tmp.imag().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
 std::cout << "HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
-                        HHP += HHP_multiThread_tmp;
+                        HHP_multiThread_tmp_2 += HHP_multiThread_tmp;
                     }
 
+                    HHP += HHP_multiThread_tmp_2;
                     HHP *=  (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
 
 
