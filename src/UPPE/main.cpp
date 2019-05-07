@@ -744,7 +744,7 @@ prop.print = false;
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
                     prop.print = false;
                     prop.z -= dz;
-
+std::cout << "1 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
                     int HH_prop_start_end_step[2] = {-1, -1};
                     if (HHGP_starting_z_bool) {
                         // Send
@@ -759,6 +759,7 @@ prop.print = false;
                             HH_prop_steps_per_thread = 0;
                             HH_prop_remainder_steps = config.interp_points();
                         }
+std::cout << "2 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
                         std::cout << "Performing HH interpolation and propagation on " << total_processes << " threads" << std::endl;
                         std::cout << "   with " << HH_prop_steps_per_thread << " step(s) per worker thread and " << HH_prop_remainder_steps << " step(s) on the master thread!" << std::endl;
                         for (int j = 1; j < total_processes; j++) {
@@ -786,7 +787,7 @@ prop.print = false;
                         HH_prop_start_end_step[0] = 1 + (total_processes-1)*HH_prop_steps_per_thread;
                         HH_prop_start_end_step[1] = HH_prop_start_end_step[0] + HH_prop_remainder_steps;
                     }
-
+std::cout << "3 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
                     prop.z += interp_dz*HH_prop_start_end_step[0];
                     for (int interp_i = HH_prop_start_end_step[0]; interp_i < HH_prop_start_end_step[1]; interp_i++) {
                         //prop.z += interp_dz;
@@ -798,12 +799,15 @@ prop.print = false;
                     prop.print = true;
                     hhg_old_old = hhg_old;
                     hhg_old = hhg_new;
+std::cout << "4 HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
 
                     for (int j = 1; j < total_processes; j++) {
+std::cout << "Thread: " << this_process << ", HHP_multiThread_tmp.cols(): " << HHP_multiThread_tmp.cols() << ", HHP_multiThread_tmp.rows(): " << HHP_multiThread_tmp.rows() << std::endl;
                         MPI_Recv(HHP_multiThread_tmp.real().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
                         MPI_Recv(HHP_multiThread_tmp.imag().data(), HHP_multiThread_tmp.cols() * HHP_multiThread_tmp.rows(),
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD, &status);
+std::cout << "HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
                         HHP += HHP_multiThread_tmp;
                     }
 
@@ -829,16 +833,22 @@ prop.print = false;
                 int HH_prop_start_end_step[2];
                 MPI_Recv(&HH_prop_start_end_step, 2, MPI_INT, 0, this_process, MPI_COMM_WORLD, &status);
 
+
+//std::cout << "Thread: " << this_process << ", hhg_old.cols(): " << hhg_old.cols() << ", rows(): " << hhg_old.rows() << std::endl;
+
                 MPI_Recv(hhg_old.real().data(), hhg_old.cols() * hhg_old.rows(),
                          MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
                 MPI_Recv(hhg_old.imag().data(), hhg_old.cols() * hhg_old.rows(),
                          MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+std::cout << "Thread: " << this_process << ", hhg_old.row(5000):" << hhg_old.row(5000) << std::endl;
+//std::cout << "Thread: " << this_process << ", dS_i.cols(): " << dS_i.cols() << ", rows(): " << dS_i.rows() << std::endl;
 
                 MPI_Recv(dS_i.real().data(), dS_i.cols() * dS_i.rows(),
                          MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
                 MPI_Recv(dS_i.imag().data(), dS_i.cols() * dS_i.rows(),
                          MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
-
+std::cout << "Thread: " << this_process << ", dS_i.row(5000):" << dS_i.row(5000) << std::endl;
+//std::cout << "HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
                 prop.z = HH_z_data_tmp[0] + interp_dz*(HH_prop_start_end_step[0]);
 
                 HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
