@@ -266,8 +266,8 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
      // }
 //std::cout << "---Testing: " << (A_w_kr - testing) << std::endl;
       // Backtransform to put back into radial representation
-std::cout << "prop min propagator: " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).real().minCoeff() << ", " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).imag().minCoeff() << std::endl;
-std::cout << "prop max propagator: " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).real().maxCoeff() << ", " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).imag().maxCoeff() << std::endl;
+//std::cout << "prop min propagator: " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).real().minCoeff() << ", " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).imag().minCoeff() << std::endl;
+//std::cout << "prop max propagator: " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).real().maxCoeff() << ", " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).imag().maxCoeff() << std::endl;
       A_w_r.row(i) = ht.backward(A_w_kr);
   }
 }
