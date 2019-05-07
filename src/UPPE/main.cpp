@@ -786,12 +786,12 @@ std::cout << "1 hhg_old.rows():" << hhg_old.rows() << "hhg_old.cols():" << hhg_o
 
 std::cout << "1 dS_i.row(5000):" << dS_i.row(5000) << std::endl;
 std::cout << "1 dS_i.rows():" << dS_i.rows() << "dS_i.cols():" << dS_i.cols() << std::endl;
-                            MPI_Send(dS_i.real().data(),
+                            MPI_Send(dS_i.data(),
                                      dS_i.cols() * dS_i.rows(),
-                                     MPI_DOUBLE, j, j, MPI_COMM_WORLD);
-                            MPI_Send(dS_i.imag().data(),
-                                     dS_i.cols() * dS_i.rows(),
-                                     MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                                     MPI_DOUBLE_COMPLEX, j, j, MPI_COMM_WORLD);
+                            //MPI_Send(dS_i.imag().data(),
+                            //         dS_i.cols() * dS_i.rows(),
+                            //         MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                         }
                         HH_prop_start_end_step[0] = 1 + (total_processes-1)*HH_prop_steps_per_thread;
                         HH_prop_start_end_step[1] = HH_prop_start_end_step[0] + HH_prop_remainder_steps;
@@ -854,10 +854,10 @@ std::cout << "HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(500
 std::cout << "Thread: " << this_process << ", hhg_old.row(5000):" << hhg_old.row(5000) << std::endl;
 //std::cout << "Thread: " << this_process << ", dS_i.cols(): " << dS_i.cols() << ", rows(): " << dS_i.rows() << std::endl;
 
-                MPI_Recv(dS_i.real().data(), dS_i.cols() * dS_i.rows(),
-                         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
-                MPI_Recv(dS_i.imag().data(), dS_i.cols() * dS_i.rows(),
-                         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+                MPI_Recv(dS_i.data(), dS_i.cols() * dS_i.rows(),
+                         MPI_DOUBLE_COMPLEX, 0, this_process, MPI_COMM_WORLD, &status);
+                //MPI_Recv(dS_i.imag().data(), dS_i.cols() * dS_i.rows(),
+                //         MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
 std::cout << "Thread: " << this_process << ", dS_i.row(5000):" << dS_i.row(5000) << std::endl;
 //std::cout << "HHP.row(5000):" << HHP.row(5000) << ", HHP_multiThread_tmp.row(5000):" << HHP_multiThread_tmp.row(5000) << std::endl;
                 prop.z = HH_z_data_tmp[0] + interp_dz*(HH_prop_start_end_step[0]);
