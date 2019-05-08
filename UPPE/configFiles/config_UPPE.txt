@@ -1,10 +1,10 @@
 The structure of this config file is fairly simple. Each row has three values to be read in, the first is the variable/input parameter name, the second is it's value, and the third is a brief description of it. Each of these values is incased in curly braces. Anything outside of a pair of curly braces is not read in and can therefore be used as comments in this file etc. If there are less than three pairs of curly braces on a line then an error message is thrown and that lines value isn't read in. If there are more than three pairs of curly braces then only the first three are considered and the rest are ignored.
 
-{n_z} {15000} {(int) Number of steps in Z}
-{n_r} {119} {(int) The z_r value}
-{n_m} {119} {(int) Number of modes}
+{n_z} {300000} {(int) Number of steps in Z}
+{n_r} {158} {(int) The z_r value}
+{n_m} {158} {(int) Number of modes}
 
-{output_sampling_rate} {5} {(int) Output sampling rate in Z}
+{output_sampling_rate} {1} {(int) Output sampling rate in Z}
 
 {n_t}          {16384}      {(int) The n_t value}
 {T}            {1000.0e-15} {(double) The T value}
@@ -26,10 +26,10 @@ The structure of this config file is fairly simple. Each row has three values to
 {laser_rel_tol}       {1e-08} {(double) Laser propagation relative tolerance/error}
 
 {read_in_laser_pulse} {0}     {(int) Switch to read in an initial laser pulse}
-{original_n_z}        {15000} {(int) Original n_z from read in file}
+{original_n_z}        {300000} {(int) Original n_z from read in file}
 {HHGP_starting_z}     {0}     {(double) Starting distance for HHGP in capillary}
-{ending_n_z}          {15000} {(int) Ending step for UPPE block}
-{interp_points}       {1000}  {(int) Number of interpolation points between each step}
+{ending_n_z}          {300000} {(int) Ending step for UPPE block}
+{interp_points}       {0}  {(int) Number of interpolation points between each step}
 
 {gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
 

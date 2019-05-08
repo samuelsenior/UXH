@@ -1,4 +1,4 @@
-{atoms_per_worker} {2} {(int) The number of atoms per worker}
+{atoms_per_worker} {1} {(int) The number of atoms per worker}
 
 {x_min} {2.1027018070766638e-06} {(double) The x_min value}  // No longer used
 {x_max} {75.0e-6}                {(double) the x_max value}
