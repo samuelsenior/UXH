@@ -468,17 +468,19 @@ prop.print = false;
             A_w_active = laser_driving.A_w_active;
             if ((total_processes > 1) && HHGP_starting_z_bool) {
                 // Send
+                ArrayXXd A_w_active_send = laser_driving.A_w_active.real();//ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
                 for (int j = 1; j < total_processes; j++) {
-                    MPI_Send(laser_driving.A_w_active.real().data(),
+                    MPI_Send(A_w_active_send.data(),
                              laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                              MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                 }
             }
         } else if (HHGP_starting_z_bool) {
             // Receive
-            A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
-            MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+            ArrayXXd A_w_active_recv = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
+            MPI_Recv(A_w_active_recv.data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                      MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+            A_w_active = A_w_active_recv;
 std::cout << "TESTING: Thread: " << this_process << ", A_w_active.rows(): " << A_w_active.rows() << std::endl;
 std::cout << "TESTING: Thread: " << this_process << ", A_w_active.cols(): " << A_w_active.cols() << std::endl;
 std::cout << "TESTING: Thread: " << this_process << ", A_w_active.col(1000): " << A_w_active.col(1000) << std::endl;
@@ -600,17 +602,19 @@ std::cout << "TESTING: Thread: " << this_process << ", A_w_active.col(1000): " <
                 A_w_active = laser_driving.A_w_active;
                 if ((total_processes > 1) && HHGP_starting_z_bool) {
                     // Send
+                    ArrayXXd A_w_active_send = laser_driving.A_w_active.real();
                     for (int j = 1; j < total_processes; j++) {
-                        MPI_Send(laser_driving.A_w_active.real().data(),
+                        MPI_Send(A_w_active_send.data(),
                                  laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                                  MPI_DOUBLE, j, j, MPI_COMM_WORLD);
                     }
                 }
             } else if (HHGP_starting_z_bool) {
                 // Receive
-                A_w_active = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
-                MPI_Recv(A_w_active.real().data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+                ArrayXXd A_w_active_recv = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
+                MPI_Recv(A_w_active_recv.data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
                          MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+                A_w_active = A_w_active_recv;
             }
 
             //int response_rate = 1;//config.n_z() / 10;
