@@ -23,7 +23,7 @@ var searchData=
   ['path_5fw_5fdescription_5f',['path_w_description_',['../class_x_n_l_o_1_1_config___settings.html#a33575dae46229ed3e55d246bd81a2f48',1,'XNLO::Config_Settings']]],
   ['pend_5fpath_5f',['pend_path_',['../class_x_n_l_o_1_1_config___settings.html#acb780d9c105c5ef94a25e53071a081e0',1,'XNLO::Config_Settings']]],
   ['pend_5fpath_5fdescription_5f',['pend_path_description_',['../class_x_n_l_o_1_1_config___settings.html#a15fcc90681f14abcf8be1d2c3e79ea7a',1,'XNLO::Config_Settings']]],
-  ['physics',['physics',['../class_schrodinger__atom__1_d.html#af291d12c810b3cf86dcfe5162e56ae75',1,'Schrodinger_atom_1D::physics()'],['../class_x_n_l_o___atom_response.html#a9a808d279c8dab0065033a3884f06350',1,'XNLO_AtomResponse::physics()']]],
+  ['physics',['physics',['../class_schrodinger__atom__1_d.html#af291d12c810b3cf86dcfe5162e56ae75',1,'Schrodinger_atom_1D::physics()'],['../class_x_n_l_o___atom_response.html#aef121946cd765dd6e50cb28b09a7ef9a',1,'XNLO_AtomResponse::physics()']]],
   ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['print',['print',['../class_schrodinger__atom__1_d.html#a535e75205a93f4f050e53bbeda24f75f',1,'Schrodinger_atom_1D::print()'],['../classmaths__textbook.html#ae2a8fbebf9b44587f2d21df219c10812',1,'maths_textbook::print()'],['../class_x_n_l_o___atom_response.html#a45b505709c11a5ed91d4f6ab3185a52c',1,'XNLO_AtomResponse::print()']]],
   ['print_5fto_5fscreen',['print_to_screen',['../class_x_n_l_o_1_1_config___settings.html#a71aa4cf3491851bd61a923272933c5ce',1,'XNLO::Config_Settings']]]

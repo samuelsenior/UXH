@@ -23,5 +23,5 @@ var searchData=
   ['total_5fnodes',['total_nodes',['../class_x_n_l_o___atom_response.html#ac5133c126cb63ee5cbccfa3136fefebe',1,'XNLO_AtomResponse']]],
   ['transform',['transform',['../class_schrodinger__atom__1_d.html#ab66f206f3d8f496369f35cc5923f2357',1,'Schrodinger_atom_1D']]],
   ['trapz',['trapz',['../classmaths__textbook.html#a158ce9c89ee1db5495810c25ee2aed57',1,'maths_textbook']]],
-  ['tw',['tw',['../class_schrodinger__atom__1_d.html#a51af361088c07783c1be1a4f592427eb',1,'Schrodinger_atom_1D::tw()'],['../class_x_n_l_o___atom_response.html#afe2c74de8b5f49c7e71c98a951c33a10',1,'XNLO_AtomResponse::tw()']]]
+  ['tw',['tw',['../class_schrodinger__atom__1_d.html#a51af361088c07783c1be1a4f592427eb',1,'Schrodinger_atom_1D::tw()'],['../class_x_n_l_o___atom_response.html#ad0557096f8e25806a814e9a03eb09340',1,'XNLO_AtomResponse::tw()']]]
 ];

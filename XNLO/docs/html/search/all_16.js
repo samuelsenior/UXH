@@ -20,5 +20,5 @@ var searchData=
   ['x_5fv_5ft_5fpsi',['x_V_T_psi',['../class_schrodinger__atom__1_d.html#a7f51c587cf862f96fe40f85a83929784',1,'Schrodinger_atom_1D']]],
   ['xkx',['xkx',['../class_schrodinger__atom__1_d.html#add2762038510414449a7e6f022babcb2',1,'Schrodinger_atom_1D']]],
   ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'']]],
-  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html',1,'XNLO_AtomResponse'],['../class_x_n_l_o___atom_response.html#a7263d0836185a9005b3251ee17e2c717',1,'XNLO_AtomResponse::XNLO_AtomResponse()']]]
+  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html',1,'XNLO_AtomResponse'],['../class_x_n_l_o___atom_response.html#a3d8fa733b33b1d3abc76b12cfd724cf7',1,'XNLO_AtomResponse::XNLO_AtomResponse()'],['../class_x_n_l_o___atom_response.html#a845fcc102851f47c275e84299597b33b',1,'XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr *rkr_, XNLO::grid_tw *tw_, maths_textbook *maths_, physics_textbook *physics_, int this_node, int total_nodes, XNLO::Config_Settings config_, std::string print_=&quot;minimum&quot;)']]]
 ];
