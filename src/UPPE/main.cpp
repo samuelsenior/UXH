@@ -573,7 +573,7 @@ prop.print = false;
                 file_prop_step.write(E, config.path_HHG_E_step(), true);
             }
 
-                hhg_old = prop.block(hhg);// * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
         }
         propagation_step++;
 
@@ -682,7 +682,7 @@ prop.print = false;
                 // Propagate high harmonics from current step to end of capillary
                 //if (HH_prop_to_end_only == true){
                 //HHG_tmp = prop.block(hhg) * dz;  // Normalisation to a dz volume
-                HHG_tmp = prop.block(hhg);// * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
 
                 // If at the last step then we're at the end of the capillary and so aren't looking
                 // to propagate the last HH source any further, but rather just use it's source as it's
@@ -716,8 +716,8 @@ prop.print = false;
                     file_prop_step.write(hhg.imag()* (dz / double(config.interp_points() + 1)), config.path_HHG_I_step(), false);
 
                     config.step_path(ii, "HHP_A_w");
-                    file_prop_step.write(HHP.real()* (dz / double(config.interp_points() + 1)), config.path_HHP_R_step(), true);
-                    file_prop_step.write(HHP.imag()* (dz / double(config.interp_points() + 1)), config.path_HHP_I_step(), false);
+                    file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+                    file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
                 }
                 if (config_XNLO.output_electric_field() == 1) {
                     config.step_path(ii, "HHG_electric_field");
@@ -743,7 +743,7 @@ prop.print = false;
                     std::cout << "   (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " << (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm() << std::endl;
 
                     std::cout << "Interpolating on to " << config.interp_points() << " internal sites... " << std::endl;
-                    hhg_new = prop.block(hhg);// * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                    hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
                     
                     double interp_dz = dz / double(config.interp_points() + 1);
                     dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
@@ -805,7 +805,7 @@ prop.print = false;
                     }
 
                     HHP += HHP_multiThread_tmp_2;
-                    HHP *=  (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+                    //HHP *=  (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
 
 
                     std::cout << "Interpolation complete!" << std::endl;
@@ -881,8 +881,8 @@ prop.print = false;
                 file.write(w_active_HHG, config.path_HHG_w());
 
                 config.step_path(config.ending_n_z(), "HHP_A_w");
-                file.write(HHP.real()* (dz / double(config.interp_points() + 1)), config.path_HHP_R_step());
-                file.write(HHP.imag()* (dz / double(config.interp_points() + 1)), config.path_HHP_I_step());
+                file.write(HHP.real(), config.path_HHP_R_step());
+                file.write(HHP.imag(), config.path_HHP_I_step());
             } else {
                 file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
                 file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
