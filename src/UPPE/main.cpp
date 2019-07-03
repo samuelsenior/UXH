@@ -460,6 +460,9 @@ prop.print = false;
                 config.step_path(ii, "UPPE_A_w");
                 file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
                 file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
+                // Change to an if statement so can be outputted if needed
+                config.step_path(ii, "UPPE_electron_density");
+                file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
             }
             // Only needed once!
             //file_prop_step.write(tw.w_active, config.path_w_active_step(), true);
@@ -591,6 +594,9 @@ prop.print = false;
                     config.step_path(ii, "UPPE_A_w");
                     file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
                     file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
+                    // Change to an if statement so can be outputted if needed
+                    config.step_path(ii, "UPPE_electron_density");
+                    file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
                 }
                 // Only needed once!
                 //file_prop_step.write(tw.w_active, config.path_w_active_step(), true);
@@ -627,7 +633,7 @@ prop.print = false;
                 for (int j = 0; j < rkr.n_r; j++) {
                 //for (int i = 0; i < config.n_t(); i++) {
                 //    //neutral_atoms.row(i).col(j) = (gas.atom_density(double(ii)*dz) - laser_driving.electron_density.row(i).col(j));
-                    neutral_atoms(j) = gas.atom_density(double(ii)*dz) - laser_driving.electron_density(laser_driving.electron_density.rows() - 1, j);;//.row(laser_driving.electron_density.rows() - 1).col(j);
+                    neutral_atoms(j) = gas.atom_density(double(ii)*dz) - laser_driving.electron_density(laser_driving.electron_density.rows() - 1, j);//.row(laser_driving.electron_density.rows() - 1).col(j);
                 //}
                 }
                 if (config_XNLO.output_electric_field() == 1) {
