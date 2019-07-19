@@ -1,6 +1,6 @@
 The structure of this config file is fairly simple. Each row has three values to be read in, the first is the variable/input parameter name, the second is it's value, and the third is a brief description of it. Each of these values is incased in curly braces. Anything outside of a pair of curly braces is not read in and can therefore be used as comments in this file etc. If there are less than three pairs of curly braces on a line then an error message is thrown and that lines value isn't read in. If there are more than three pairs of curly braces then only the first three are considered and the rest are ignored.
 
-{n_z} {300000} {(int) Number of steps in Z}
+{n_z} {300} {(int) Number of steps in Z}
 {n_r} {158} {(int) The z_r value}
 {n_m} {158} {(int) Number of modes}
 
@@ -14,24 +14,30 @@ The structure of this config file is fairly simple. Each row has three values to
 {Z}     {70.0e-3} {(double) Length of capillary}
 {R}     {75.0e-6} {(double) Radius of capillary}
 
-{press} {50.0e-3} {(double) Pressure of the gas}
+{press} {150.0e-3} {(double) Pressure of the gas}
 
 {p_av}  {1.0}       {(double) The p_av value}
 {rep}   {1.0e3}     {(double) The rep value}
-{fwhm}  {70.71e-15} {(double) Full width at half maximum}
-{l_0}   {800.0e-9}  {(double) Laser central wavelength}
+{fwhm}  {70.71e-15} {(double) Full width at half maximum} //70.71 for 50fs, 49.497 for 35fs, 42.43 for 30
+{l_0}   {1700.0e-9}  {(double) Laser central wavelength}
 {ceo}   {0.0}       {(double) The ceo value}  // Carrier Envelope Phase
 {waist} {48.0e-6}   {(double) The beam waist} // 48.0e-6 orignally
 
 {laser_rel_tol}       {1e-08} {(double) Laser propagation relative tolerance/error}
 
 {read_in_laser_pulse} {0}     {(int) Switch to read in an initial laser pulse}
-{original_n_z}        {300000} {(int) Original n_z from read in file}
+{path_A_w_R_initial}    {../output/050_172000_A_w_R.bin}    {(std::string) Initial path of A_w_R}
+{path_A_w_I_initial}    {../output/050_172000_A_w_I.bin}    {(std::string) Initial path of A_w_I}
+{path_w_active_initial} {../output/050_w_active.bin} {(std::string) Initial path of w_active}
+
 {HHGP_starting_z}     {0}     {(double) Starting distance for HHGP in capillary}
-{ending_n_z}          {300000} {(int) Ending step for UPPE block}
+{original_n_z}        {300} {(int) Original n_z from read in file}
+{ending_n_z}          {300} {(int) Ending step for UPPE block}
 {interp_points}       {0}  {(int) Number of interpolation points between each step}
 
 {gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
+
+{output_electron_density} {1} {(int) Switch for outputting electron density}
 
 {pend_path}     {prepend}                  {(std::string) Pending switch}
 {path_input_j0} {../../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
@@ -41,5 +47,13 @@ The structure of this config file is fairly simple. Each row has three values to
 {path_w_active} {../output/w_active.bin}   {(std::string) Output path of w_active}
 
 {path_electron_density} {../output/electron_density.bin} {(std::string) Path of electron_density}
+{path_HHG_R} {../output/HHG_R.bin} {(std::string) Path of HHG_R}
+{path_HHG_I} {../output/HHG_I.bin} {(default) (std::string) Path of HHG_I}
+{path_HHG_w} {../output/HHG_w.bin} {(default) (std::string) Path of HHG w}
+{path_HHG_E} {../output/HHG_E.bin} {(default) (std::string) Path of HHG E}
+{path_HHP_R} {../output/HHP_R.bin} {(std::string) Path of HHP_R}
+{path_HHP_I} {../output/HHP_I.bin} {(std::string) Path of HHP_I}
+{path_HHP_w} {../output/HHP_w.bin} {(std::string) Path of HHP w}
+
 {path_config_log}       {../output/config_log.txt}       {(std::string) Output path to config_log.txt}
 
