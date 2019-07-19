@@ -436,11 +436,20 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
 
 
     if (this_process == 0) {
-            // Output already known variables, in case crashes etc, so they are already saved early on
-            IO file;
-            file.write(tw.w_active, config.path_w_active());
-            file.write(w_active_HHG, config.path_HHG_w());
-            file.write(prop.w_active, config.path_HHP_w());
+        // Output already known variables, in case crashes etc, so they are already saved early on
+        IO file;
+        file.write(tw.w_active, config.path_w_active());
+        file.write(w_active_HHG, config.path_HHG_w());
+        file.write(prop.w_active, config.path_HHP_w());
+
+        // Diagnostic stats that may be useful one day:
+        std::cout << "Basic diagnostic values from XNLO frequency grid:" << std::endl;
+        std::cout << "   Min XNLO frequency: " << tw_XNLO.w(1) - tw_XNLO.w(0) << std::endl;
+        std::cout << "   Max XNLO frequency: " << tw_XNLO.w.maxCoeff() << std::endl;
+        std::cout << "   Min allowed HHG wavelength: " << 1.0e9 * physics.c / tw_XNLO.w.maxCoeff() << "nm" << std::endl;
+        std::cout << "   Max allowed HHG wavelength: " << 1.0e9 * physics.c / (tw_XNLO.w(1) - tw_XNLO.w(0)) << "nm" << std::endl;
+        std::cout << "   Min allowed HHG energy: " << 1.2398 / (1.0e6 * physics.c / (tw_XNLO.w(1) - tw_XNLO.w(0))) << "eV" << std::endl;
+        std::cout << "   Max allowed HHG energy: " << 1.2398 / (1.0e6 * physics.c / tw_XNLO.w.maxCoeff()) << "eV" << std::endl;
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
