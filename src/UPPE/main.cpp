@@ -347,12 +347,12 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     }
     MPI_Barrier(MPI_COMM_WORLD); 
 
-    double lamda_min_HHG = 6.0e-9;
-    double lamda_max_HHG = 130e-9;
-    double w_active_min_HHG = 2.0 * maths.pi * physics.c / lamda_max_HHG;
-    double w_active_max_HHG = 2.0 * maths.pi * physics.c / lamda_min_HHG;
-    double E_min = 10.0;
-    double E_max = 206.0;
+    //double HHG_lambda_min = 6.0e-9;
+    //double HHG_lambda_max = 130.0e-9;
+    double w_active_min_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_max();
+    double w_active_max_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_min();
+    //double HHP_E_min = 10.0;
+    //double HHP_E_max = 206.0;
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
  
@@ -378,10 +378,10 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     propagation prop;
     // hhgp not used!
     HHGP hhgp;
-prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
-                           gas, rkr,
-                           physics, maths, ht);
-prop.print = false;
+    prop = propagation(config.HHP_E_min(), config.HHP_E_max(), config.Z(), w_active_HHG,
+                       gas, rkr,
+                       physics, maths, ht);
+    prop.print = false;
     if (this_process == 0) {
 //        prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
 //                           gas, rkr,

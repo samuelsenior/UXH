@@ -39,6 +39,10 @@ const char * Config_Settings::setting_name[] = {
   "ending_n_z",
   "interp_points",
   "gas_pressure_profile",
+  "HHG_lambda_min", // default behaviour to have lambda_min from w.max?
+  "HHG_lambda_max",
+  "HHP_E_min", // do default behaviour of setting at 10eV or energy corresponding to HHG_lambda_max, whichever is the larger
+  "HHP_E_max", // set this to the energy corresponding to HHG_lambda_min eventually (for now selecting the range manually could be useful)
   "output_electron_density",
   "pend_path",
   "path_input_j0",
@@ -259,6 +263,23 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::gas_pressure_profile:
         gas_pressure_profile_set(variable_value_str);
         gas_pressure_profile_description_set(input_description_char);
+        break;
+
+      case SN::HHG_lambda_min :
+        HHG_lambda_min_set(std::stod(variable_value_str));
+        HHG_lambda_min_description_set(input_description_char);
+        break;
+      case SN::HHG_lambda_max :
+        HHG_lambda_max_set(std::stod(variable_value_str));
+        HHG_lambda_max_description_set(input_description_char);
+        break;
+      case SN::HHP_E_min :
+        HHP_E_min_set(std::stod(variable_value_str));
+        HHP_E_min_description_set(input_description_char);
+        break; 
+      case SN::HHP_E_max :
+        HHP_E_max_set(std::stod(variable_value_str));
+        HHP_E_max_description_set(input_description_char);
         break;
 
       case SN:: output_electron_density:
@@ -601,6 +622,10 @@ void Config_Settings::print() {
     std::cout << "   ending_n_z:              " << ending_n_z() << "          " << ending_n_z_description() << std::endl;
     std::cout << "   interp_points:           " << interp_points() << "           " << interp_points_description() << std::endl;
     std::cout << "   gas_pressure_profile:    " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
+    std::cout << "   HHG_lambda_min:          " << HHG_lambda_min() << "   " << HHG_lambda_min_description() << std::endl;
+    std::cout << "   HHG_lambda_max:          " << HHG_lambda_max() << "   " << HHG_lambda_max_description() << std::endl;
+    std::cout << "   HHP_E_min:               " << HHP_E_min() << "   " << HHP_E_min_description() << std::endl;
+    std::cout << "   HHP_E_max:               " << HHP_E_max() << "   " << HHP_E_max_description() << std::endl;
     std::cout << "   output_electron_density: " << output_electron_density() << "   " << output_electron_density_description() << std::endl;
     std::cout << "   pend_path                " << pend_path() << "     " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:         " << path_input_j0() << "     " << path_input_j0_description() << std::endl;
@@ -656,6 +681,11 @@ void Config_Settings::print(std::string path_) {
       config_log << "{interp_points} {" << interp_points() << "} {" << interp_points_description() << "}\n";
 
       config_log << "{gas_pressure_profile} {" << gas_pressure_profile() << "} {" << gas_pressure_profile_description() << "}\n";
+
+      config_log << "{HHG_lambda_min} {" << HHG_lambda_min() << "} {" << HHG_lambda_min_description() << "}\n";
+      config_log << "{HHG_lambda_max} {" << HHG_lambda_max() << "} {" << HHG_lambda_max_description() << "}\n";
+      config_log << "{HHP_E_min} {" << HHP_E_min() << "} {" << HHP_E_min_description() << "}\n";
+      config_log << "{HHP_E_max} {" << HHP_E_max() << "} {" << HHP_E_max_description() << "}\n";
 
       config_log << "{output_electron_density} {" << output_electron_density() << "} {" << output_electron_density_description() << "}\n";
 
@@ -826,6 +856,27 @@ std::string Config_Settings::gas_pressure_profile() { return gas_pressure_profil
 void Config_Settings::gas_pressure_profile_set(std::string value) { gas_pressure_profile_ = value; }
 std::string Config_Settings::gas_pressure_profile_description() { return gas_pressure_profile_description_; }
 void Config_Settings::gas_pressure_profile_description_set(std::string description) { gas_pressure_profile_description_ = description; }
+
+
+double Config_Settings::HHG_lambda_min() { return HHG_lambda_min_; }
+void Config_Settings::HHG_lambda_min_set(double value) { HHG_lambda_min_ = value; }
+std::string Config_Settings::HHG_lambda_min_description() { return HHG_lambda_min_description_; }
+void Config_Settings::HHG_lambda_min_description_set(std::string description) { HHG_lambda_min_description_ = description; }
+
+double Config_Settings::HHG_lambda_max() { return HHG_lambda_max_; }
+void Config_Settings::HHG_lambda_max_set(double value) { HHG_lambda_max_ = value; }
+std::string Config_Settings::HHG_lambda_max_description() { return HHG_lambda_max_description_; }
+void Config_Settings::HHG_lambda_max_description_set(std::string description) { HHG_lambda_max_description_ = description; }
+
+double Config_Settings::HHP_E_min() { return HHP_E_min_; }
+void Config_Settings::HHP_E_min_set(double value) { HHP_E_min_ = value; }
+std::string Config_Settings::HHP_E_min_description() { return HHP_E_min_description_; }
+void Config_Settings::HHP_E_min_description_set(std::string description) { HHP_E_min_description_ = description; }
+
+double Config_Settings::HHP_E_max() { return HHP_E_max_; }
+void Config_Settings::HHP_E_max_set(double value) { HHP_E_max_ = value; }
+std::string Config_Settings::HHP_E_max_description() { return HHP_E_max_description_; }
+void Config_Settings::HHP_E_max_description_set(std::string description) { HHP_E_max_description_ = description; }
 
 
 int Config_Settings::output_electron_density() { return output_electron_density_; }

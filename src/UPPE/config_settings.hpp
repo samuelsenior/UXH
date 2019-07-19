@@ -38,6 +38,10 @@ private:
     ending_n_z,
     interp_points,
     gas_pressure_profile,
+    HHG_lambda_min,
+    HHG_lambda_max,
+    HHP_E_min, 
+    HHP_E_max,
     output_electron_density,
     pend_path,
     path_input_j0,
@@ -88,6 +92,11 @@ private:
     int interp_points_ = 0;
 
     std::string gas_pressure_profile_ = "capillary";
+
+    double HHG_lambda_min_ = 6.0e-9;
+    double HHG_lambda_max_ = 130.0e-9;
+    double HHP_E_min_ = 10.0;
+    double HHP_E_max_ = 206.0;
 
     int output_electron_density_ = 0;
 
@@ -165,6 +174,11 @@ private:
     std::string interp_points_description_ = "(default) (int) Number of interpolation points between each step";
 
     std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
+
+    std::string HHG_lambda_min_description_ = "(default) (double) Minimum generated high harmonic wavelength outputted";
+    std::string HHG_lambda_max_description_ = "(default) (double) Maximum generated high harmonic wavelength outputted";
+    std::string HHP_E_min_description_ = "(default) (double) Minimum propagated high harmonic energy outputted";
+    std::string HHP_E_max_description_ = "(default) (double) Maximum propagated high harmonic energy outputted";
 
     std::string output_electron_density_description_ = "(default) (int) Switch for outputting electron density";
 
@@ -357,6 +371,28 @@ public:
     void gas_pressure_profile_set(std::string);
     std::string gas_pressure_profile_description();
     void gas_pressure_profile_description_set(std::string);
+
+
+    double HHG_lambda_min();
+    void HHG_lambda_min_set(double);
+    std::string HHG_lambda_min_description();
+    void HHG_lambda_min_description_set(std::string);
+
+    double HHG_lambda_max();
+    void HHG_lambda_max_set(double);
+    std::string HHG_lambda_max_description();
+    void HHG_lambda_max_description_set(std::string);
+
+    double HHP_E_min();
+    void HHP_E_min_set(double);
+    std::string HHP_E_min_description();
+    void HHP_E_min_description_set(std::string);
+
+    double HHP_E_max();
+    void HHP_E_max_set(double);
+    std::string HHP_E_max_description();
+    void HHP_E_max_description_set(std::string);
+
 
     int output_electron_density();
     void output_electron_density_set(int);
