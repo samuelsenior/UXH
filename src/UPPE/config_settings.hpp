@@ -38,12 +38,13 @@ private:
     ending_n_z,
     interp_points,
     gas_pressure_profile,
+    output_electron_density,
     pend_path,
     path_input_j0,
     path_A_w_R, path_A_w_I, path_w_active,
     path_electron_density,
     path_HHG_R, path_HHG_I, path_HHG_w, path_HHG_E,
-    path_HHP_R, path_HHP_I,
+    path_HHP_R, path_HHP_I, path_HHP_w,
     path_config_file, path_config_log,
     LAST_SN_ENTRY
   };
@@ -88,6 +89,8 @@ private:
 
     std::string gas_pressure_profile_ = "capillary";
 
+    int output_electron_density_ = 0;
+
     std::string path_input_j0_ = "../../input/J0_zeros.bin";
 
     std::string path_A_w_R_ = "../output/A_w_R.bin";
@@ -107,6 +110,7 @@ private:
 
     std::string path_HHP_R_ = "../output/HHP_R.bin";
     std::string path_HHP_I_ = "../output/HHP_I.bin";
+    std::string path_HHP_w_ = "../output/HHP_w.bin";
 
     std::string path_HHG_R_step_ = "../output/HHG_R.bin";
     std::string path_HHG_I_step_ = "../output/HHG_I.bin";
@@ -115,6 +119,7 @@ private:
 
     std::string path_HHP_R_step_ = "../output/HHP_R.bin";
     std::string path_HHP_I_step_ = "../output/HHP_I.bin";
+    std::string path_HHP_w_step_ = "../output/HHP_w.bin";
 
     std::string path_config_file_ = "../configFiles/config_UPPE.txt";
     std::string path_config_log_ = "../output/config_log_UPPE.txt";
@@ -161,6 +166,8 @@ private:
 
     std::string gas_pressure_profile_description_ = "(default) (string) Switch for gas pressure profile";
 
+    std::string output_electron_density_description_ = "(default) (int) Switch for outputting electron density";
+
     std::string pend_path_description_ = "(default) (std::string) Pending switch";
 
     std::string path_input_j0_description_ = "(default) (std::string) Path to J0_zeros.bin";
@@ -182,6 +189,7 @@ private:
 
     std::string path_HHP_R_description_ = "(default) (std::string) Path of HHP_R";
     std::string path_HHP_I_description_ = "(default) (std::string) Path of HHP_I";
+    std::string path_HHP_w_description_ = "(default) (std::string) Path of HHP w";
 
     std::string path_HHG_R_description_step_ = "(default) (std::string) Path of HHG_R step";
     std::string path_HHG_I_description_step_ = "(default) (std::string) Path of HHG_I step";
@@ -190,6 +198,7 @@ private:
 
     std::string path_HHP_R_description_step_ = "(default) (std::string) Path of HHP_R step";
     std::string path_HHP_I_description_step_ = "(default) (std::string) Path of HHP_I step";
+    std::string path_HHP_w_description_step_ = "(default) (std::string) Path of HHP w step";
 
     std::string path_config_file_description_ = "(default) (std::string) config.txt path";
     std::string path_config_log_description_ = "(default) (std::string) config_log.txt path";
@@ -209,6 +218,7 @@ private:
     std::string path_hhg_E_stepWorkings;// = path_HHG_E();
     std::string path_hhp_r_stepWorkings;
     std::string path_hhp_i_stepWorkings;
+    std::string path_hhp_w_stepWorkings;
     std::size_t found_stepWorkings;// = path_A_R.find_last_of("/");
     std::string tmp_stepWorkings;// = path_A_R.substr(found+1);
     size_t count_underscore_stepWorkings;// = std::count(tmp.begin(), tmp.end(), '_');
@@ -348,6 +358,11 @@ public:
     std::string gas_pressure_profile_description();
     void gas_pressure_profile_description_set(std::string);
 
+    int output_electron_density();
+    void output_electron_density_set(int);
+    std::string output_electron_density_description();
+    void output_electron_density_description_set(std::string);
+
     std::string pend_path();
     void pend_path_set(std::string);
     std::string pend_path_description();
@@ -417,6 +432,10 @@ public:
     void path_HHP_I_set(std::string);
     std::string path_HHP_I_description();
     void path_HHP_I_description_set(std::string);
+    std::string path_HHP_w();
+    void path_HHP_w_set(std::string);
+    std::string path_HHP_w_description();
+    void path_HHP_w_description_set(std::string);
 
     std::string path_HHG_R_step();
     void path_HHG_R_step_set(std::string);
@@ -443,6 +462,10 @@ public:
     void path_HHP_I_step_set(std::string);
     std::string path_HHP_I_description_step();
     void path_HHP_I_description_step_set(std::string);
+    std::string path_HHP_w_step();
+    void path_HHP_w_step_set(std::string);
+    std::string path_HHP_w_description_step();
+    void path_HHP_w_description_step_set(std::string);
 
     std::string path_config_file();
     void path_config_file_set(std::string);

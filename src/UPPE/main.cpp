@@ -376,6 +376,7 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     //    std::cout << "HHG w_active_HHG(0): " << w_active_HHG(0) << ", HHG w_active_HHG(" << w_active_HHG.rows() - 1 << "): " << w_active_HHG(w_active_HHG.rows() - 1) << std::endl;
     //}
     propagation prop;
+    // hhgp not used!
     HHGP hhgp;
 prop = propagation(E_min, E_max, config.Z(), w_active_HHG,
                            gas, rkr,
@@ -386,6 +387,7 @@ prop.print = false;
 //                           gas, rkr,
 //                           physics, maths, ht);
         prop.print = true;
+        // hhgp not used!
         hhgp = HHGP(prop,
                     config_HHGP,
                     rkr, gas,
@@ -438,6 +440,7 @@ prop.print = false;
             IO file;
             file.write(tw.w_active, config.path_w_active());
             file.write(w_active_HHG, config.path_HHG_w());
+            file.write(prop.w_active, config.path_HHP_w());
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
@@ -460,9 +463,12 @@ prop.print = false;
                 config.step_path(ii, "UPPE_A_w");
                 file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
                 file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
-                // Change to an if statement so can be outputted if needed
-                config.step_path(ii, "UPPE_electron_density");
-                file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+                
+                // If config set to output electron density then output it, if not then skip
+                if (config.output_electron_density() == 1) {
+                    config.step_path(ii, "UPPE_electron_density");
+                    file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+                }
             }
             // Only needed once!
             //file_prop_step.write(tw.w_active, config.path_w_active_step(), true);
@@ -594,9 +600,12 @@ prop.print = false;
                     config.step_path(ii, "UPPE_A_w");
                     file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
                     file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
-                    // Change to an if statement so can be outputted if needed
-                    config.step_path(ii, "UPPE_electron_density");
-                    file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+
+                    // If config set to output electron density then output it, if not then skip
+                    if (config.output_electron_density() == 1) {
+                        config.step_path(ii, "UPPE_electron_density");
+                        file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+                    }
                 }
                 // Only needed once!
                 //file_prop_step.write(tw.w_active, config.path_w_active_step(), true);
@@ -889,6 +898,7 @@ prop.print = false;
                 config.step_path(config.ending_n_z(), "HHP_A_w");
                 file.write(HHP.real(), config.path_HHP_R_step());
                 file.write(HHP.imag(), config.path_HHP_I_step());
+                file.write(prop.w_active, config.path_HHP_w());
             } else {
                 file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
                 file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
@@ -900,6 +910,7 @@ prop.print = false;
 
                 file.write(HHP.real(), config.path_HHP_R_step());
                 file.write(HHP.imag(), config.path_HHP_I_step());
+                file.write(prop.w_active, config.path_HHP_w());
             }
         }
 

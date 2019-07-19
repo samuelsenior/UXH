@@ -39,12 +39,13 @@ const char * Config_Settings::setting_name[] = {
   "ending_n_z",
   "interp_points",
   "gas_pressure_profile",
+  "output_electron_density",
   "pend_path",
   "path_input_j0",
   "path_A_w_R", "path_A_w_I", "path_w_active",
   "path_electron_density",
   "path_HHG_R", "path_HHG_I", "path_HHG_w", "path_HHG_E",
-  "path_HHP_R", "path_HHP_I",
+  "path_HHP_R", "path_HHP_I", "path_HHP_w",
   "path_config_file", "path_config_log"
 };
 
@@ -260,6 +261,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
         gas_pressure_profile_description_set(input_description_char);
         break;
 
+      case SN:: output_electron_density:
+        output_electron_density_set(std::stoi(variable_value_str));
+        output_electron_density_description_set(input_description_char);
+        break;
+
       case SN::pend_path :
         pend_path_set(variable_value_str);
         pend_path_description_set(input_description_char);
@@ -311,6 +317,10 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::path_HHP_I :
         path_HHP_I_set(variable_value_str);
         path_HHP_I_description_set(input_description_char);
+        break;
+      case SN::path_HHP_w :
+        path_HHP_w_set(variable_value_str);
+        path_HHP_w_description_set(input_description_char);
         break;
 
       case SN::path_config_file :
@@ -379,14 +389,17 @@ void Config_Settings::check_paths(bool print_to_screen) {
   path_HHG_R_set(path);
   path = set_path(path_HHG_I(), pending_string);
   path_HHG_I_set(path);
-  path = set_path(path_HHP_R(), pending_string);
-  path_HHP_R_set(path);
-  path = set_path(path_HHP_I(), pending_string);
-  path_HHP_I_set(path);
   path = set_path(path_HHG_w(), pending_string);
   path_HHG_w_set(path);
   path = set_path(path_HHG_E(), pending_string);
   path_HHG_E_set(path);
+
+  path = set_path(path_HHP_R(), pending_string);
+  path_HHP_R_set(path);
+  path = set_path(path_HHP_I(), pending_string);
+  path_HHP_I_set(path);
+  path = set_path(path_HHP_w(), pending_string);
+  path_HHP_w_set(path);
 
   //path = set_path(path_config_log(), pending_string);
   //path_config_log_set(path);
@@ -409,6 +422,7 @@ void Config_Settings::step_path(int step, std::string variable) {
 
   path_hhp_r_stepWorkings = path_HHP_R();
   path_hhp_i_stepWorkings = path_HHP_I();
+  path_hhp_w_stepWorkings = path_HHP_w();
 
 
   found_stepWorkings = path_A_R_stepWorkings.find_last_of("/");
@@ -581,13 +595,14 @@ void Config_Settings::print() {
     std::cout << "   ceo:                   " << ceo() << "           " << ceo_description() << std::endl;
     std::cout << "   waist:                 " << waist() << "     " << waist_description() << std::endl;
     std::cout << "   laser_rel_tol:         " << laser_rel_tol() << "      " << laser_rel_tol_description() << std::endl;
-    std::cout << "   read_in_laser_pulse:   " << read_in_laser_pulse() << "           " << read_in_laser_pulse_description() << std::endl;
-    std::cout << "   original_n_z:          " << original_n_z() << "          " << original_n_z_description() << std::endl;
-    std::cout << "   HHGP_starting_z:       " << HHGP_starting_z() << "           " << HHGP_starting_z_description() << std::endl;
-    std::cout << "   ending_n_z:            " << ending_n_z() << "          " << ending_n_z_description() << std::endl;
-    std::cout << "   interp_points:         " << interp_points() << "           " << interp_points_description() << std::endl;
-    std::cout << "   gas_pressure_profile:  " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
-    std::cout << "   pend_path              " << pend_path() << "     " << pend_path_description() << std::endl;
+    std::cout << "   read_in_laser_pulse:     " << read_in_laser_pulse() << "           " << read_in_laser_pulse_description() << std::endl;
+    std::cout << "   original_n_z:            " << original_n_z() << "          " << original_n_z_description() << std::endl;
+    std::cout << "   HHGP_starting_z:         " << HHGP_starting_z() << "           " << HHGP_starting_z_description() << std::endl;
+    std::cout << "   ending_n_z:              " << ending_n_z() << "          " << ending_n_z_description() << std::endl;
+    std::cout << "   interp_points:           " << interp_points() << "           " << interp_points_description() << std::endl;
+    std::cout << "   gas_pressure_profile:    " << gas_pressure_profile() << "   " << gas_pressure_profile_description() << std::endl;
+    std::cout << "   output_electron_density: " << output_electron_density() << "   " << output_electron_density_description() << std::endl;
+    std::cout << "   pend_path                " << pend_path() << "     " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:         " << path_input_j0() << "     " << path_input_j0_description() << std::endl;
     std::cout << "   path_A_w_R:            " << path_A_w_R() << "      " << path_A_w_R_description() << std::endl;
     std::cout << "   path_A_w_I:            " << path_A_w_I() << "      " << path_A_w_I_description() << std::endl;
@@ -599,6 +614,7 @@ void Config_Settings::print() {
     std::cout << "   path_HHG_E:       " << path_HHG_E() << "          " << path_HHG_E_description() << std::endl;
     std::cout << "   path_HHP_R:       " << path_HHP_R() << "          " << path_HHP_R_description() << std::endl;
     std::cout << "   path_HHP_I:       " << path_HHP_I() << "          " << path_HHP_I_description() << std::endl;
+    std::cout << "   path_HHP_w:       " << path_HHP_w() << "          " << path_HHP_w_description() << std::endl;
     std::cout << "   path_config_file: " << path_config_file() << "   " << path_config_file_description() << std::endl;
     std::cout << "   path_config_log:  " << path_config_log() << "     " << path_config_log_description() << std::endl;
     std::cout << "-------------------------------------------------------------------------------\n";
@@ -641,6 +657,8 @@ void Config_Settings::print(std::string path_) {
 
       config_log << "{gas_pressure_profile} {" << gas_pressure_profile() << "} {" << gas_pressure_profile_description() << "}\n";
 
+      config_log << "{output_electron_density} {" << output_electron_density() << "} {" << output_electron_density_description() << "}\n";
+
       config_log << "{pend_path} {" << pend_path() << "} {" << pend_path_description() << "}\n";
 
       config_log << "{path_input_j0} {" << path_input_j0() << "} {" << path_input_j0_description() << "}\n";
@@ -655,6 +673,7 @@ void Config_Settings::print(std::string path_) {
       config_log << "{path_HHG_E} {" << path_HHG_E() << "} {" << path_HHG_E_description() << "}\n";
       config_log << "{path_HHP_R} {" << path_HHP_R() << "} {" << path_HHP_R_description() << "}\n";
       config_log << "{path_HHP_I} {" << path_HHP_I() << "} {" << path_HHP_I_description() << "}\n";
+      config_log << "{path_HHP_w} {" << path_HHP_w() << "} {" << path_HHP_w_description() << "}\n";
 
       config_log << "{path_config_file} {" << path_config_file() << "} {" << path_config_file_description() << "}\n";
       config_log << "{path_config_log} {" << path_config_log() << "} {" << path_config_log_description() << "}\n";
@@ -808,6 +827,13 @@ void Config_Settings::gas_pressure_profile_set(std::string value) { gas_pressure
 std::string Config_Settings::gas_pressure_profile_description() { return gas_pressure_profile_description_; }
 void Config_Settings::gas_pressure_profile_description_set(std::string description) { gas_pressure_profile_description_ = description; }
 
+
+int Config_Settings::output_electron_density() { return output_electron_density_; }
+void Config_Settings::output_electron_density_set(int value) { output_electron_density_ = value; }
+std::string Config_Settings::output_electron_density_description() { return output_electron_density_description_; }
+void Config_Settings::output_electron_density_description_set(std::string description) { output_electron_density_description_ = description; }
+
+
 std::string Config_Settings::pend_path() { return pend_path_; }
 void Config_Settings::pend_path_set(std::string value) { pend_path_ = value; }
 std::string Config_Settings::pend_path_description() { return pend_path_description_; }
@@ -891,6 +917,11 @@ std::string Config_Settings::path_HHP_I() { return path_HHP_I_; }
 void Config_Settings::path_HHP_I_set(std::string value) { path_HHP_I_ = value; }
 std::string Config_Settings::path_HHP_I_description() { return path_HHP_I_description_; }
 void Config_Settings::path_HHP_I_description_set(std::string description) { path_HHP_I_description_ = description; }
+
+std::string Config_Settings::path_HHP_w() { return path_HHP_w_; }
+void Config_Settings::path_HHP_w_set(std::string value) { path_HHP_w_ = value; }
+std::string Config_Settings::path_HHP_w_description() { return path_HHP_w_description_; }
+void Config_Settings::path_HHP_w_description_set(std::string description) { path_HHP_w_description_ = description; }
 
 
 std::string Config_Settings::path_HHG_R_step() { return path_HHG_R_step_; }
