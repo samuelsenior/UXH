@@ -19,7 +19,7 @@ The structure of this config file is fairly simple. Each row has three values to
 {p_av}  {1.0}       {(double) The p_av value}
 {rep}   {1.0e3}     {(double) The rep value}
 {fwhm}  {70.71e-15} {(double) Full width at half maximum} //70.71 for 50fs, 49.497 for 35fs, 42.43 for 30
-{l_0}   {1700.0e-9}  {(double) Laser central wavelength}
+{l_0}   {1600.0e-9}  {(double) Laser central wavelength}
 {ceo}   {0.0}       {(double) The ceo value}  // Carrier Envelope Phase
 {waist} {48.0e-6}   {(double) The beam waist} // 48.0e-6 orignally
 
@@ -37,10 +37,10 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
 
-{HHG_lambda_min}        {2.0e-09}   {(double) Minimum generated high harmonic wavelength outputted}
-{HHG_lambda_max}        {130.0e-09} {(double) Maximum generated high harmonic wavelength outputted}
+{HHG_lambda_min}        {12.0e-09}   {(double) Minimum generated high harmonic wavelength outputted}
+{HHG_lambda_max}        {124.0e-09} {(double) Maximum generated high harmonic wavelength outputted}
 {HHP_E_min}             {10.0}      {(double) Minimum propagated high harmonic energy outputted}
-{HHP_E_max}             {620.0}     {(double) Maximum propagated high harmonic energy outputted}
+{HHP_E_max}             {103.0}     {(double) Maximum propagated high harmonic energy outputted} // 
 
 {output_electron_density} {1} {(int) Switch for outputting electron density}
 
