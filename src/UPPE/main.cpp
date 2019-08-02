@@ -137,6 +137,8 @@ if (total_processes > 1) {
     config_HHGP.n_r_description_set("(int) Number of radial points, set through UPPE");
 }
 
+if (this_process == 0) { config.print(config.path_config_log()); }
+
 maths_textbook maths(config.path_input_j0());
 grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 
@@ -309,7 +311,9 @@ if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_in
     // Main loop
 
     if (this_process == 0) {
-        config.print(config.path_config_log());
+        // Moved this to higher up so it happens faster and hopefully there's less chance of having
+        // multiple programs write to the same output files
+        //config.print(config.path_config_log());
 
         std::cout << "-------------------------------------------------------------------------------\n";
         std::cout << "Main Program:\n";

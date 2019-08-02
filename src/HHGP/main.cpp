@@ -53,6 +53,7 @@ int main(int argc, char** argv){
     //config.check_paths(false);
 
     config.print();
+    config.print(config.path_config_log());
 
     //--------------------------------------------------------------------------------------------//
     // Read in spectral amplitudes
@@ -105,8 +106,9 @@ int main(int argc, char** argv){
 double dz = config.Z() / config.n_z();
    prop.z = double(config.inital_propagation_step()) / double(config.n_z()) * double(config.Z()) - dz;
 //prop.z -= dz;
-
-    config.print(config.path_config_log());
+    // Moved this to higher up so it happens faster and hopefully there's less chance of having
+    // multiple programs write to the same output files
+    //config.print(config.path_config_log());
 
     std::cout << "-------------------------------------------------------------------------------\n";
     std::cout << "Main Program:\n";

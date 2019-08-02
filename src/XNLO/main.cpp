@@ -74,6 +74,7 @@ int main(int argc, char** argv){
     config.read_in(config.path_config_file(), this_node==0);
     config.check_paths(this_node==0);
     if (this_node == 0) {
+        config.print(config.path_config_log());
         config.print();
     }
 
@@ -219,10 +220,12 @@ int main(int argc, char** argv){
     MPI_Finalize();
 
     if (this_node == 0) {
-      config.print(config.path_config_log());
-      std::cout << "\n-------------------------------------------------------------------------------\n";
-      std::cout << "XNLO successfully ran!\n";
-      std::cout << "-------------------------------------------------------------------------------\n";
+        // Moved this to higher up so it happens faster and hopefully there's less chance of having
+        // multiple programs write to the same output files
+        //config.print(config.path_config_log());
+        std::cout << "\n-------------------------------------------------------------------------------\n";
+        std::cout << "XNLO successfully ran!\n";
+        std::cout << "-------------------------------------------------------------------------------\n";
     }
 
 }

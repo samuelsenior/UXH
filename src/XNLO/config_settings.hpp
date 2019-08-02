@@ -63,7 +63,7 @@ private:
     double alpha_ = 1.45;
 
     int output_wavefunction_ = 0;
-    int output_electric_field_ = 0;
+    int output_electric_field_ = 1;
     int read_in_laser_pulse_ = 0;
 
     std::string pend_path_ = "prepend";
