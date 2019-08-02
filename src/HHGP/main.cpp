@@ -50,10 +50,9 @@ int main(int argc, char** argv){
     config.read_in(config.path_config_file(), false);
     // Will need to add this back in eventaully, but currently it adds '000_' to
     // the HHG paths, which  we don't want
-    //config.check_paths(false);
-
-    config.print();
+    config.check_paths(false);
     config.print(config.path_config_log());
+    config.print();
 
     //--------------------------------------------------------------------------------------------//
     // Read in spectral amplitudes
