@@ -479,10 +479,11 @@ int main(int argc, char** argv){
                 config.step_path(ii, "HHP_A_w");
                 file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                 file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
-            }
-            if (config_XNLO.output_electric_field() == 1) {
-                config.step_path(ii, "HHG_electric_field");
-                file_prop_step.write(E, config.path_HHG_E_step(), true);
+
+                if (config_XNLO.output_electric_field() == 1) {
+                    config.step_path(ii, "HHG_electric_field");
+                    file_prop_step.write(E, config.path_HHG_E_step(), true);
+                }
             }
 
                 hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
@@ -578,10 +579,11 @@ int main(int argc, char** argv){
                     config.step_path(ii, "HHP_A_w");
                     file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                     file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
-                }
-                if (config_XNLO.output_electric_field() == 1) {
-                    config.step_path(ii, "HHG_electric_field");
-                    file_prop_step.write(E, config.path_HHG_E_step(), true);
+
+                    if (config_XNLO.output_electric_field() == 1) {
+                        config.step_path(ii, "HHG_electric_field");
+                        file_prop_step.write(E, config.path_HHG_E_step(), true);
+                    }
                 }
 
                 std::cout << "Starting interpolation!" << std::endl;
