@@ -113,9 +113,6 @@ HHGO/__pycache__/*
 #------------------------------#
 #- Exclude output directories -#
 #------------------------------#
-XNLO/output
-UPPE/output
-HHGP/output
 XNLO/output/*
 UPPE/output/*
 HHGP/output/*
