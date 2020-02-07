@@ -55,7 +55,8 @@ if [ "$BUILD_DOCS" = true ] ; then
         ./comp -d
 
         echo "UXH:"
-        echo "Generating combined Docs..."
+        echo "-- Generating combined Docs..."
+        cd "$CURRENT_PATH" &&
         DOXYGEN_QUIET=YES doxygen Doxyfile
 else
         echo "XNLO:"
