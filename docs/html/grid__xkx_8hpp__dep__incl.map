@@ -1,10 +1,10 @@
-<map id="/Users/sms1n16/Project/XNLO/src/grid/grid_xkx.hpp" name="/Users/sms1n16/Project/XNLO/src/grid/grid_xkx.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="351,5,539,44"/>
-<area shape="rect" id="node2" href="$_schrodinger__atom__1_d_8hpp.html" title=" " alt="" coords="283,92,474,144"/>
-<area shape="rect" id="node3" href="$_schrodinger__atom__1_d_8cpp.html" title=" " alt="" coords="5,192,197,244"/>
-<area shape="rect" id="node7" href="$_x_n_l_o_2main_8cpp.html" title=" " alt="" coords="486,199,666,237"/>
-<area shape="rect" id="node8" href="$grid__xkx_8cpp.html" title=" " alt="" coords="549,99,736,137"/>
-<area shape="rect" id="node4" href="$_x_n_l_o_8hpp.html" title=" " alt="" coords="221,199,410,237"/>
-<area shape="rect" id="node6" href="$_x_n_l_o_8cpp.html" title=" " alt="" coords="354,292,542,331"/>
-<area shape="rect" id="node5" href="$_u_p_p_e_2main_8cpp.html" title=" " alt="" coords="150,292,330,331"/>
+<map id="/home/sam/Project/XNLO/src/grid/grid_xkx.hpp" name="/home/sam/Project/XNLO/src/grid/grid_xkx.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="324,5,496,47"/>
+<area shape="rect" id="node2" href="$_schrodinger__atom__1_d_8hpp.html" title=" " alt="" coords="263,95,435,151"/>
+<area shape="rect" id="node3" href="$_schrodinger__atom__1_d_8cpp.html" title=" " alt="" coords="5,199,177,255"/>
+<area shape="rect" id="node7" href="$_x_n_l_o_2main_8cpp.html" title=" " alt="" coords="449,206,621,247"/>
+<area shape="rect" id="node8" href="$grid__xkx_8cpp.html" title=" " alt="" coords="511,102,683,143"/>
+<area shape="rect" id="node4" href="$_x_n_l_o_8hpp.html" title=" " alt="" coords="201,206,373,247"/>
+<area shape="rect" id="node6" href="$_x_n_l_o_8cpp.html" title=" " alt="" coords="325,303,497,344"/>
+<area shape="rect" id="node5" href="$_u_p_p_e_2main_8cpp.html" title=" " alt="" coords="129,303,301,344"/>
 </map>
