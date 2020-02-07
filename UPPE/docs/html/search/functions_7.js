@@ -1,7 +1,23 @@
 var searchData=
 [
+  ['hhg_5flambda_5fmax',['HHG_lambda_max',['../class_config___settings.html#a454400e908c2945641b8af244b25007a',1,'Config_Settings']]],
+  ['hhg_5flambda_5fmax_5fdescription',['HHG_lambda_max_description',['../class_config___settings.html#ae80bd398c90f60c1585349716e7158f4',1,'Config_Settings']]],
+  ['hhg_5flambda_5fmax_5fdescription_5fset',['HHG_lambda_max_description_set',['../class_config___settings.html#acb0e31efc504d4259f0c17f19843431e',1,'Config_Settings']]],
+  ['hhg_5flambda_5fmax_5fset',['HHG_lambda_max_set',['../class_config___settings.html#a354c5903c2540d26b997e9560d66ef6c',1,'Config_Settings']]],
+  ['hhg_5flambda_5fmin',['HHG_lambda_min',['../class_config___settings.html#af7e80e7360ec59c100c69552bba8c626',1,'Config_Settings']]],
+  ['hhg_5flambda_5fmin_5fdescription',['HHG_lambda_min_description',['../class_config___settings.html#a8bd568c0d0737b40ce10900bc428dc61',1,'Config_Settings']]],
+  ['hhg_5flambda_5fmin_5fdescription_5fset',['HHG_lambda_min_description_set',['../class_config___settings.html#a5cbca3e26af02ef789d11e1623508773',1,'Config_Settings']]],
+  ['hhg_5flambda_5fmin_5fset',['HHG_lambda_min_set',['../class_config___settings.html#a09bb5507546ac2c7f1c654ceb8472e31',1,'Config_Settings']]],
   ['hhgp_5fstarting_5fz',['HHGP_starting_z',['../class_config___settings.html#a5bb6c460299ee53a93d6f5ca96f3c96f',1,'Config_Settings']]],
   ['hhgp_5fstarting_5fz_5fdescription',['HHGP_starting_z_description',['../class_config___settings.html#a701bfd6e556e2bba2c3e6603bd7849d7',1,'Config_Settings']]],
   ['hhgp_5fstarting_5fz_5fdescription_5fset',['HHGP_starting_z_description_set',['../class_config___settings.html#ad913ead7a8a0de56794482f5a022c423',1,'Config_Settings']]],
-  ['hhgp_5fstarting_5fz_5fset',['HHGP_starting_z_set',['../class_config___settings.html#abb62bca87baadb105be78703655f9eee',1,'Config_Settings']]]
+  ['hhgp_5fstarting_5fz_5fset',['HHGP_starting_z_set',['../class_config___settings.html#abb62bca87baadb105be78703655f9eee',1,'Config_Settings']]],
+  ['hhp_5fe_5fmax',['HHP_E_max',['../class_config___settings.html#a275f4bc414c96c97c778e3e596b7c179',1,'Config_Settings']]],
+  ['hhp_5fe_5fmax_5fdescription',['HHP_E_max_description',['../class_config___settings.html#acae2b5fce581f4ea9c6aa0a30de79bbc',1,'Config_Settings']]],
+  ['hhp_5fe_5fmax_5fdescription_5fset',['HHP_E_max_description_set',['../class_config___settings.html#ad87d8d2565c21a7fb166d99a9b059f46',1,'Config_Settings']]],
+  ['hhp_5fe_5fmax_5fset',['HHP_E_max_set',['../class_config___settings.html#a1be9376ece649899a755a098e656c4bf',1,'Config_Settings']]],
+  ['hhp_5fe_5fmin',['HHP_E_min',['../class_config___settings.html#ad62352c685acab405a3754cc3eadcb39',1,'Config_Settings']]],
+  ['hhp_5fe_5fmin_5fdescription',['HHP_E_min_description',['../class_config___settings.html#a5e07dc29cb0b6a3f480765706a97d725',1,'Config_Settings']]],
+  ['hhp_5fe_5fmin_5fdescription_5fset',['HHP_E_min_description_set',['../class_config___settings.html#ab678831404996eb538064d808739e7b0',1,'Config_Settings']]],
+  ['hhp_5fe_5fmin_5fset',['HHP_E_min_set',['../class_config___settings.html#a2aae82af977470ef483808936f9f7385',1,'Config_Settings']]]
 ];
