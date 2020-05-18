@@ -7,9 +7,9 @@
 {t_min} {-75.0e-15} {(double) The t_min value}  // To match Peter's code: -1.04e-14
 {t_max} {100.0e-15}  {(double) The t_max value}  // To match Peter's code: 1.55948e-14
 
-{P_av}        {1.0} {(double) The P_av value}  // Was 0.115 last
+{P_av}        {3.0} {(double) The P_av value}  // Was 0.115 last
 {RR}          {1000}     {(double) The RR value}
-{FWHM}        {70.71e-15}  {(double) The FWHM value}
+{FWHM}        {14.142e-15}  {(double) The FWHM value}
 {l_0}         {800e-9}   {(double) The l_0 value}
 {CEO}         {0.0}      {(double) The CEO value}  // Was -1.570796 before Xmas
 {spot_radius} {48.0e-6}  {(double) The spot_radius value}  // Was 48e-6 originally - i.e. 0.64*75e-6
