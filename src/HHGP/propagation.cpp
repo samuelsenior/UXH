@@ -176,7 +176,7 @@ std::complex<double> propagation::n(int i) {
           } else {
              z_2 = gas.inlet_1 - gas.transitionLength;
           }
-          N_tot += (gas.atom_density_max / gas.transitionLength) * 0.1*(std::pow(z_3, 2.0) - (0.2*gas.inlet_1 - gas.transitionLength)*z_3 - 0.1*std::pow(z_2, 2.0) + (2.0*gas.inlet_1 - gas.transitionLength)*z_2);
+          N_tot += (gas.atom_density_max / gas.transitionLength) * (0.1*std::pow(z_3, 2.0) - (0.2*gas.inlet_1 - gas.transitionLength)*z_3 - 0.1*std::pow(z_2, 2.0) + (0.2*gas.inlet_1 - gas.transitionLength)*z_2);
         }
         // Section 3
         double z_4 = gas.inlet_2;

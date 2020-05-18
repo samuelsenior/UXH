@@ -22,5 +22,5 @@ var searchData=
   ['xnlo',['XNLO',['../namespace_x_n_l_o.html',1,'']]],
   ['xnlo_2ecpp',['XNLO.cpp',['../_x_n_l_o_8cpp.html',1,'']]],
   ['xnlo_2ehpp',['XNLO.hpp',['../_x_n_l_o_8hpp.html',1,'']]],
-  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html',1,'XNLO_AtomResponse'],['../class_x_n_l_o___atom_response.html#a7263d0836185a9005b3251ee17e2c717',1,'XNLO_AtomResponse::XNLO_AtomResponse()']]]
+  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html',1,'XNLO_AtomResponse'],['../class_x_n_l_o___atom_response.html#a3d8fa733b33b1d3abc76b12cfd724cf7',1,'XNLO_AtomResponse::XNLO_AtomResponse()'],['../class_x_n_l_o___atom_response.html#a845fcc102851f47c275e84299597b33b',1,'XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr *rkr_, XNLO::grid_tw *tw_, maths_textbook *maths_, physics_textbook *physics_, int this_node, int total_nodes, XNLO::Config_Settings config_, std::string print_=&quot;minimum&quot;)']]]
 ];

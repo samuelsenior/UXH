@@ -113,12 +113,24 @@ HHGO/__pycache__/*
 #------------------------------#
 #- Exclude output directories -#
 #------------------------------#
-XNLO/output
-UPPE/output
-HHGP/output
 XNLO/output/*
 UPPE/output/*
 HHGP/output/*
+
+#--------------------------------------------#
+#- Exclude config files except example ones -#
+#--------------------------------------------#
+XNLO/configFiles/*
+!XNLO/configFiles/config_XNLO.txt
+UPPE/configFiles/*
+!UPPE/configFiles/config.txt
+!UPPE/configFiles/config_HHGP.txt
+!UPPE/configFiles/config_UPPE.txt
+!UPPE/configFiles/config_XNLO.txt
+HHGP/configFiles/*
+!UPPE/configFiles/config.txt
+!UPPE/configFiles/config_HHGP.txt
+!HHGP/configFiles/config_XNLO.txt
 
 #---------#
 #- Misc. -#

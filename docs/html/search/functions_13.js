@@ -8,5 +8,5 @@ var searchData=
   ['x_5fmin_5fdescription',['x_min_description',['../class_x_n_l_o_1_1_config___settings.html#a3eb56744d1fd0a2c36a7454341ad60ff',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a02baddcf2450c55332289e2f49a58fd6',1,'XNLO::Config_Settings']]],
   ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#ad776200ee998ac3bbfaf90e9edb4d525',1,'XNLO::Config_Settings']]],
-  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html#a7263d0836185a9005b3251ee17e2c717',1,'XNLO_AtomResponse']]]
+  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html#a3d8fa733b33b1d3abc76b12cfd724cf7',1,'XNLO_AtomResponse::XNLO_AtomResponse()'],['../class_x_n_l_o___atom_response.html#a845fcc102851f47c275e84299597b33b',1,'XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr *rkr_, XNLO::grid_tw *tw_, maths_textbook *maths_, physics_textbook *physics_, int this_node, int total_nodes, XNLO::Config_Settings config_, std::string print_=&quot;minimum&quot;)']]]
 ];
