@@ -125,6 +125,32 @@ int main(int argc, char** argv){
     maths_textbook maths(config.path_input_j0());
     grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 
+    grid_tw tw;
+    if (this_process == 0) {
+    	tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths, true, true);
+    } else {
+    	tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths, true, false);
+    }
+    if (config.n_t() != tw.n_t) {
+	    config.n_t_set(tw.n_t);
+	    config.n_t_description_set("(double) Number of points on t and w grids, set through UPPE n_t expansion");
+	}
+
+    physics_textbook physics;
+
+    double w_active_min_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_max();
+    double w_active_max_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_min();
+    XNLO::grid_tw tw_XNLO;
+    if (this_process == 0) {
+    	tw_XNLO = XNLO::grid_tw(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max(), w_active_max_HHG, true);
+    } else {
+    	tw_XNLO = XNLO::grid_tw(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max(), w_active_max_HHG, false);
+    }
+    if (config_XNLO.N_t() != tw_XNLO.N_t) {
+	    config_XNLO.N_t_set(tw_XNLO.N_t);
+	    config_XNLO.N_t_description_set("(double) Number of points on t and w grids, set through UPPE n_t expansion");
+	}
+
     if (total_processes > 1) {
         config_XNLO.x_min_set(rkr.r(0));
         config_XNLO.x_min_description_set("(double) Minimum radial posiiton, set through UPPE");
@@ -204,8 +230,6 @@ int main(int argc, char** argv){
     //--------------------------------------------------------------------------------------------//
 
     // General
-    physics_textbook physics;
-
     MKL_LONG dimensions = 1;
     MKL_LONG length = config.n_t();
     double scale = 1.0 / config.n_t();
@@ -223,8 +247,6 @@ int main(int argc, char** argv){
     DftiCommitDescriptor(ft_HHG);
 
     DHT ht(config.n_r(), maths);
-    // Grids
-    grid_tw tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths);
     
     if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_index << std::endl;
 
@@ -261,11 +283,15 @@ int main(int argc, char** argv){
     initial_position = dz * propagation_step;
 
     // Physical
-    UPPE::laser_pulse laser_driving(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
-                              tw, rkr, ft, ht, maths,
-                              config,
-                              config.read_in_laser_pulse(), initial_position,
-                              config.laser_rel_tol());
+    UPPE::laser_pulse laser_driving;
+    laser_driving = UPPE::laser_pulse(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
+		                              tw, rkr, ft, ht, maths,
+		                              config,
+		                              config.read_in_laser_pulse(), initial_position,
+		                              config.laser_rel_tol(),
+		                              false);
+    if (this_process == 0) laser_driving.print = true;
+    
     capillary_fibre capillary_driving(config.Z(), rkr, tw, physics, maths);
     keldysh_gas gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
@@ -298,8 +324,6 @@ int main(int argc, char** argv){
 
     ArrayXXcd A_w_active;
 
-    XNLO::grid_tw tw_XNLO(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max());
-
     XNLO_AtomResponse atomResponse;
     if (total_processes > 1) {
         atomResponse = XNLO_AtomResponse(&rkr, &tw_XNLO, &maths, &physics,
@@ -307,10 +331,9 @@ int main(int argc, char** argv){
                                          config_XNLO,
                                          "minimum");
     }
-    MPI_Barrier(MPI_COMM_WORLD); 
 
-    double w_active_min_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_max();
-    double w_active_max_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_min();
+    MPI_Barrier(MPI_COMM_WORLD);
+
     int n_active_HHG = 0;
     ArrayXd w_active_HHG;
  
@@ -323,6 +346,7 @@ int main(int argc, char** argv){
         count++;
     }
     n_active_HHG = count - w_active_min_index_HHG;
+    if (this_process == 0) std::cout << "w_active_min_index_HHG: " << w_active_min_index_HHG << ", n_active_HHG: " << n_active_HHG << std::endl;
     w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
     w_tmp = 0;
 

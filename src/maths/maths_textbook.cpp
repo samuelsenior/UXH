@@ -82,7 +82,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
     /* output_length == NSITE ==Number of interpolation sites */
     /* spline_order == SPLINE_ORDER == A cubic spline to construct */ 
 
-    std::cout << "Interpolating Array: ";
+    if (print) std::cout << "Interpolating Array: ";
 
     int status;          /* Status of a Data Fitting operation */
     int Nerrs = 0;       /* Numer of errors or warnings */
@@ -200,9 +200,9 @@ ArrayXd maths_textbook::interp1D(ArrayXd input_array, int input_length, int outp
     status = dfDeleteTask( &task );
     if (print) std::cout << "   dfDeleteTask status: " << status << std::endl;
     Nerrs += status;
-    if (Nerrs == 0) {
+    if (print && Nerrs == 0) {
     	std::cout << "Interpolation successful!" <<std::endl;
-    } else {
+    } else if (print) {
     	std::cout << "Interpolation completed with errors!" << std::endl;
     }
 
@@ -220,7 +220,7 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
     /* output_length == NSITE ==Number of interpolation sites */
     /* spline_order == SPLINE_ORDER == A cubic spline to construct */ 
 
-    std::cout << "Interpolating Array: ";
+    if (print) std::cout << "Interpolating Array: ";
 
     int status;          /* Status of a Data Fitting operation */
     int Nerrs = 0;       /* Numer of errors or warnings */
@@ -328,9 +328,9 @@ ArrayXd maths_textbook::interp1D(ArrayXd x, int input_length, ArrayXd y, ArrayXd
     status = dfDeleteTask( &task );
     if (print) std::cout << "   dfDeleteTask status: " << status << std::endl;
     Nerrs += status;
-    if (Nerrs == 0) {
+    if (print && Nerrs == 0) {
         std::cout << "Interpolation successful!" <<std::endl;
-    } else {
+    } else if (print) {
         std::cout << "Interpolation completed with errors!" << std::endl;
     }
 

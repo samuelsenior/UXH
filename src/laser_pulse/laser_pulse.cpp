@@ -236,12 +236,14 @@ namespace UPPE {
 /*!
     Constructor
 */
+laser_pulse::laser_pulse(){}
 laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, double ceo_,
                          double waist_, grid_tw& tw_, grid_rkr& rkr_, DFTI_DESCRIPTOR_HANDLE& ft_,
                          DHT& ht_, maths_textbook& maths_,
                          Config_Settings config,
                          int read_in_laser_pulse, double initial_position,
-                         double rel_tol_)
+                         double rel_tol_,
+                         bool print_)
                         :
                          p_av(p_av_),
                          rep(rep_),
@@ -257,7 +259,8 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
                          config(config),
                          read_in_laser_pulse(read_in_laser_pulse),
                          initial_position(initial_position),
-                         rel_tol(rel_tol_) {
+                         rel_tol(rel_tol_),
+                         print(print_) {
 
     if (read_in_laser_pulse == 0) {
 
@@ -288,7 +291,7 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
         z_position = 0.0;
     } else if (read_in_laser_pulse == 1) {
 
-std::cout << "Reading in initial laser pulse from file..." << std::endl;
+        if (print == true) std::cout << "Reading in initial laser pulse from file..." << std::endl;
         // Read in spectral amplitudes from file
         IO laser_pulse_file;
         laser_pulse_file.read_header(config.path_A_w_R_initial(), false);
@@ -297,13 +300,13 @@ std::cout << "Reading in initial laser pulse from file..." << std::endl;
         ArrayXXd A_w_I = laser_pulse_file.read_double(config.path_A_w_I_initial(), true, false);
         int N_cols = laser_pulse_file.N_col_;
         int N_rows = laser_pulse_file.N_row_;
-std::cout << "N_cols: " << N_cols << ", N_rows: " << N_rows << std::endl;
+        if (print == true)  std::cout << "N_cols: " << N_cols << ", N_rows: " << N_rows << std::endl;
         // Combine the two real array that represent the real and complex parts and make a complex array from them
         A_w_active = (A_w_R.cast<std::complex<double> >() + (std::complex<double>(0.0, 1.0) * A_w_I));
 
         electron_density = ArrayXXd::Zero(tw.n_t, rkr.n_r);//tw.n_active, rkr.n_r);
         z_position = initial_position;
-std::cout << "A_w_active.rows(): " << A_w_active.rows() << ", A_w_active.cols(): " << A_w_active.cols() << std::endl;
+        if (print == true) std::cout << "A_w_active.rows(): " << A_w_active.rows() << ", A_w_active.cols(): " << A_w_active.cols() << std::endl;
     }
  }
 

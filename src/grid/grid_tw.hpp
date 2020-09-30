@@ -36,6 +36,7 @@ public:
     // Functions
     grid_tw();
     grid_tw(int N_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook& maths_);
+    grid_tw(int n_t_, double T_, double w_active_min_, double w_active_max_, maths_textbook& maths_, bool expandable_n_t_=true, bool print_=true);
 };
 
 namespace XNLO {
@@ -58,10 +59,13 @@ public:
     double t_min;
     double t_max;
     double dt;
+    double w_max_;
+    bool print_;
     
     //Functions
     grid_tw();
     grid_tw(int N_t_, double t_min_, double t_max_);
+    grid_tw(int N_t_, double t_min_, double t_max_, double w_max_, bool print_=true);
     
 };
 
