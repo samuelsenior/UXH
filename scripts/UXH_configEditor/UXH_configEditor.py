@@ -25,13 +25,13 @@ class UXH_configEditor(QDialog):
     def __init__(self, parent=None):
         super(UXH_configEditor, self).__init__(parent)
         
-        self.UPPEConfig = ConfigIO("UPPE", "../UPPE/configFiles/config_UPPE.txt")
+        self.UPPEConfig = ConfigIO("UPPE", "../../UPPE/configFiles/config_UPPE.txt")
         self.UPPEConfig.readConfig()
         
-        self.XNLOConfig = ConfigIO("XNLO", "../UPPE/configFiles/config_XNLO.txt")
+        self.XNLOConfig = ConfigIO("XNLO", "../../UPPE/configFiles/config_XNLO.txt")
         self.XNLOConfig.readConfig()
         
-        self.HHGPConfig = ConfigIO("HHGP", "../UPPE/configFiles/config_HHGP.txt")
+        self.HHGPConfig = ConfigIO("HHGP", "../../UPPE/configFiles/config_HHGP.txt")
         self.HHGPConfig.readConfig()
         
         QApplication.setStyle(QStyleFactory.create("Fusion"))
@@ -86,7 +86,7 @@ class UXH_configEditor(QDialog):
         pass
     
     def createUPPEConfigValuesTab(self):
-                
+                        
         self.UPPEConfigValuesTab = QWidget()
         
         self.UPPEConfigFileLocation = QLineEdit(self.UPPEConfig.fileName)
@@ -94,17 +94,18 @@ class UXH_configEditor(QDialog):
         self.UPPEConfigFileLocationLabel.setBuddy(self.UPPEConfigFileLocation)
         self.UPPEConfigFileLocationButton = QPushButton("Select File")
         #self.UPPEConfigFileLocationButton.clicked.connect(self.pickNewWorkingDir)
-
+        
         self.UPPEConfigValuesTabTopLayout = QHBoxLayout()
         self.UPPEConfigValuesTabTopLayout.addWidget(self.UPPEConfigFileLocationLabel)
         self.UPPEConfigValuesTabTopLayout.addWidget(self.UPPEConfigFileLocation)
         self.UPPEConfigValuesTabTopLayout.addWidget(self.UPPEConfigFileLocationButton)
-        
+                
         self.UPPEConfigEntries = []
         for key, value in self.UPPEConfig.config.items():
             self.UPPEConfigEntries.append(ConfigEntry(QLabel(key, self),
                                           QLineEdit(value['value_str']),
                                           QLabel(value['description'], self)))
+            
         
         self.UPPEConfigValuesTabLayout = QVBoxLayout(self.UPPEConfigValuesTab)
         self.UPPEConfigValuesTabScrollArea = QScrollArea(self.UPPEConfigValuesTab)
@@ -114,7 +115,6 @@ class UXH_configEditor(QDialog):
         self.UPPEConfigValuesTabScrollArea.setWidget(self.UPPEConfigValuesTabScrollAreaWidgetContents)
         self.UPPEConfigValuesTabLayout.addLayout(self.UPPEConfigValuesTabTopLayout)
         self.UPPEConfigValuesTabLayout.addWidget(self.UPPEConfigValuesTabScrollArea)
-    
 
         self.UPPEConfigValuesTabGrid.setHorizontalSpacing(10)
                 
@@ -124,7 +124,7 @@ class UXH_configEditor(QDialog):
                                                alignment=Qt.AlignTop)
         self.UPPEConfigValuesTabGrid.addWidget(QLabel("Description:"), 0, 2,
                                                alignment=Qt.AlignTop)
-        
+                
         for i, config in enumerate(self.UPPEConfigEntries):
             self.UPPEConfigValuesTabGrid.addWidget(self.UPPEConfigEntries[i].nameWidget,
                                                    i+1, 0)
@@ -132,13 +132,13 @@ class UXH_configEditor(QDialog):
                                                    i+1, 1)
             self.UPPEConfigValuesTabGrid.addWidget(self.UPPEConfigEntries[i].descWidget,
                                                    i+1, 2)
-            
+                        
         self.UPPEConfigValuesTabGrid.setRowStretch(len(self.UPPEConfigEntries),
                                                    len(self.UPPEConfigEntries))
         self.UPPEConfigValuesTabGrid.setColumnStretch(1, 1)
-        
-        self.UPPEConfigValuesTab.setLayout(self.UPPEConfigValuesTabGrid)
-        
+                
+        #self.UPPEConfigValuesTab.setLayout(self.UPPEConfigValuesTabGrid)
+                
     def createXNLOConfigValuesTab(self):
                 
         self.XNLOConfigValuesTab = QWidget()
@@ -191,7 +191,7 @@ class UXH_configEditor(QDialog):
                                                    len(self.XNLOConfigEntries))
         self.XNLOConfigValuesTabGrid.setColumnStretch(1, 1)
         
-        self.XNLOConfigValuesTab.setLayout(self.XNLOConfigValuesTabGrid)
+        #self.XNLOConfigValuesTab.setLayout(self.XNLOConfigValuesTabGrid)
         
     def createHHGPConfigValuesTab(self):
                 
@@ -245,7 +245,7 @@ class UXH_configEditor(QDialog):
                                                    len(self.HHGPConfigEntries))
         self.HHGPConfigValuesTabGrid.setColumnStretch(1, 1)
         
-        self.HHGPConfigValuesTab.setLayout(self.HHGPConfigValuesTabGrid)
+        #self.HHGPConfigValuesTab.setLayout(self.HHGPConfigValuesTabGrid)
         
     def createUXHTabWidget(self):
         self.UXHTabWidget = QTabWidget()
