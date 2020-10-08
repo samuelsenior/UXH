@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox,
 
 import sys, os
 
-from IO import ConfigIO
+from Config import Config
 
 class ConfigEntry:
     def __init__(self, name, value, desc):
@@ -25,14 +25,19 @@ class UXH_configEditor(QDialog):
     def __init__(self, parent=None):
         super(UXH_configEditor, self).__init__(parent)
         
-        self.UPPEConfig = ConfigIO("UPPE", "../../UPPE/configFiles/config_UPPE.txt")
-        self.UPPEConfig.readConfig()
+        #self.UPPEConfig = ConfigIO("UPPE", "../../UPPE/configFiles/config_UPPE.txt")
+        #self.UPPEConfig.readConfig()
+        #
+        #self.XNLOConfig = ConfigIO("XNLO", "../../UPPE/configFiles/config_XNLO.txt")
+        #self.XNLOConfig.readConfig()
+        #
+        #self.HHGPConfig = ConfigIO("HHGP", "../../UPPE/configFiles/config_HHGP.txt")
+        #self.HHGPConfig.readConfig()
         
-        self.XNLOConfig = ConfigIO("XNLO", "../../UPPE/configFiles/config_XNLO.txt")
-        self.XNLOConfig.readConfig()
-        
-        self.HHGPConfig = ConfigIO("HHGP", "../../UPPE/configFiles/config_HHGP.txt")
-        self.HHGPConfig.readConfig()
+        self.UXHConfig = Config("UXH")
+        self.UXHConfig.loadConfig("../../UPPE/configFiles/config_UPPE.txt", "UPPE")
+        self.UXHConfig.loadConfig("../../UPPE/configFiles/config_XNLO.txt", "XNLO")
+        self.UXHConfig.loadConfig("../../UPPE/configFiles/config_HHGP.txt", "HHGP")
         
         QApplication.setStyle(QStyleFactory.create("Fusion"))
         QApplication.setPalette(QApplication.style().standardPalette())
@@ -89,7 +94,7 @@ class UXH_configEditor(QDialog):
                         
         self.UPPEConfigValuesTab = QWidget()
         
-        self.UPPEConfigFileLocation = QLineEdit(self.UPPEConfig.fileName)
+        self.UPPEConfigFileLocation = QLineEdit(self.UXHConfig.UPPEFilename)
         self.UPPEConfigFileLocationLabel = QLabel("UPPE config file:")
         self.UPPEConfigFileLocationLabel.setBuddy(self.UPPEConfigFileLocation)
         self.UPPEConfigFileLocationButton = QPushButton("Select File")
@@ -101,10 +106,10 @@ class UXH_configEditor(QDialog):
         self.UPPEConfigValuesTabTopLayout.addWidget(self.UPPEConfigFileLocationButton)
                 
         self.UPPEConfigEntries = []
-        for key, value in self.UPPEConfig.config.items():
+        for key, value in self.UXHConfig.UPPE.items():
             self.UPPEConfigEntries.append(ConfigEntry(QLabel(key, self),
-                                          QLineEdit(value['value_str']),
-                                          QLabel(value['description'], self)))
+                                          QLineEdit(value.value_str),
+                                          QLabel(value.description, self)))
             
         
         self.UPPEConfigValuesTabLayout = QVBoxLayout(self.UPPEConfigValuesTab)
@@ -143,7 +148,7 @@ class UXH_configEditor(QDialog):
                 
         self.XNLOConfigValuesTab = QWidget()
         
-        self.XNLOConfigFileLocation = QLineEdit(self.XNLOConfig.fileName)
+        self.XNLOConfigFileLocation = QLineEdit(self.UXHConfig.XNLOFilename)
         self.XNLOConfigFileLocationLabel = QLabel("XNLO config file:")
         self.XNLOConfigFileLocationLabel.setBuddy(self.XNLOConfigFileLocation)
         self.XNLOConfigFileLocationButton = QPushButton("Select File")
@@ -155,10 +160,10 @@ class UXH_configEditor(QDialog):
         self.XNLOConfigValuesTabTopLayout.addWidget(self.XNLOConfigFileLocationButton)
         
         self.XNLOConfigEntries = []
-        for key, value in self.XNLOConfig.config.items():
+        for key, value in self.UXHConfig.XNLO.items():
             self.XNLOConfigEntries.append(ConfigEntry(QLabel(key, self),
-                                          QLineEdit(value['value_str']),
-                                          QLabel(value['description'], self)))
+                                          QLineEdit(value.value_str),
+                                          QLabel(value.description, self)))
         
         self.XNLOConfigValuesTabLayout = QVBoxLayout(self.XNLOConfigValuesTab)
         self.XNLOConfigValuesTabScrollArea = QScrollArea(self.XNLOConfigValuesTab)
@@ -197,7 +202,7 @@ class UXH_configEditor(QDialog):
                 
         self.HHGPConfigValuesTab = QWidget()
         
-        self.HHGPConfigFileLocation = QLineEdit(self.HHGPConfig.fileName)
+        self.HHGPConfigFileLocation = QLineEdit(self.UXHConfig.HHGPFilename)
         self.HHGPConfigFileLocationLabel = QLabel("HHGP config file:")
         self.HHGPConfigFileLocationLabel.setBuddy(self.HHGPConfigFileLocation)
         self.HHGPConfigFileLocationButton = QPushButton("Select File")
@@ -209,10 +214,10 @@ class UXH_configEditor(QDialog):
         self.HHGPConfigValuesTabTopLayout.addWidget(self.HHGPConfigFileLocationButton)
         
         self.HHGPConfigEntries = []
-        for key, value in self.HHGPConfig.config.items():
+        for key, value in self.UXHConfig.HHGP.items():
             self.HHGPConfigEntries.append(ConfigEntry(QLabel(key, self),
-                                          QLineEdit(value['value_str']),
-                                          QLabel(value['description'], self)))
+                                          QLineEdit(value.value_str),
+                                          QLabel(value.description, self)))
         
         self.HHGPConfigValuesTabLayout = QVBoxLayout(self.HHGPConfigValuesTab)
         self.HHGPConfigValuesTabScrollArea = QScrollArea(self.HHGPConfigValuesTab)
