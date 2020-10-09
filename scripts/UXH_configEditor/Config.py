@@ -46,8 +46,10 @@ class Config(ConfigIO):
         self.UPPE = OrderedDict([])
         
         self.UPPE["n_z"] = ConfigEntry("n_z", "(int) Number of steps along the capillary", 300)
-        self.UPPE["n_r"] = ConfigEntry("n_r", "(int) Number of radial positions in the capillary", 20)
-        self.UPPE["n_m"] = ConfigEntry("n_m", "(int) Number of modes", 20)
+        self.UPPE["n_r"] = ConfigEntry("n_r", "(int) Number of radial positions in the capillary", None, active=False,
+                                       inactiveMessage="Set by XNLO.atoms_per_worker*(Number of threads - 1)")
+        self.UPPE["n_m"] = ConfigEntry("n_m", "(int) Number of modes", None, active=False,
+                                       inactiveMessage="Set by XNLO.atoms_per_worker*(Number of threads - 1)")
         
         self.UPPE["output_sampling_rate"] = ConfigEntry("output_sampling_rate", "(int) Output sampling rate in Z", 1)
         
@@ -118,19 +120,19 @@ class Config(ConfigIO):
         
         self.XNLO["atoms_per_worker"] = ConfigEntry("atoms_per_worker", "(int) The number of atoms per worker thread", 2)
         
-        self.XNLO["x_min"] = ConfigEntry("x_min", "(double) The x_min value, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.XNLO["x_max"] = ConfigEntry("x_max", "(double) The x_max value, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
+        self.XNLO["x_min"] = ConfigEntry("x_min", "(double) The x_min value, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.XNLO["x_max"] = ConfigEntry("x_max", "(double) The x_max value, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
         
         self.XNLO["N_t"] = ConfigEntry("N_t", "(int) The N_t value", 20000)
         self.XNLO["t_min"] = ConfigEntry("t_min", "(double) The t_min value", -75.0e-15)
         self.XNLO["t_max"] = ConfigEntry("t_max", "(double) The t_max value", 100.0e-15)
         
-        self.XNLO["P_av"] = ConfigEntry("P_av", "(double) Average laser power, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.XNLO["RR"] = ConfigEntry("RR", "(double) Repetition rate, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.XNLO["FWHM"] = ConfigEntry("FWHM", "(double) Laser full width at half maximum, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.XNLO["l_0"] = ConfigEntry("l_0", "(double) Laser central wavelength, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.XNLO["CEO"] = ConfigEntry("CEO", "(double) Laser carrier envelope phase, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.XNLO["spot_radius"] = ConfigEntry("spot_radius", "(double) Laser spot radius, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
+        self.XNLO["P_av"] = ConfigEntry("P_av", "(double) Average laser power, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.XNLO["RR"] = ConfigEntry("RR", "(double) Repetition rate, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.XNLO["FWHM"] = ConfigEntry("FWHM", "(double) Laser full width at half maximum, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.XNLO["l_0"] = ConfigEntry("l_0", "(double) Laser central wavelength, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.XNLO["CEO"] = ConfigEntry("CEO", "(double) Laser carrier envelope phase, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.XNLO["spot_radius"] = ConfigEntry("spot_radius", "(double) Laser spot radius, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
         
         self.XNLO["alpha"] = ConfigEntry("alpha", "(double) Value to scale atomic potential with", 1.45)
         
@@ -155,26 +157,26 @@ class Config(ConfigIO):
         
         self.HHGP = OrderedDict([])
         
-        self.HHGP["n_z"] = ConfigEntry("n_z", "(int) Number of steps in Z, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["n_r"] = ConfigEntry("n_r", "(int) Number of radial points, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["n_m"] = ConfigEntry("n_m", "(int) Number of modes, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
+        self.HHGP["n_z"] = ConfigEntry("n_z", "(int) Number of steps in Z, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["n_r"] = ConfigEntry("n_r", "(int) Number of radial points, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["n_m"] = ConfigEntry("n_m", "(int) Number of modes, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
         
-        self.HHGP["n_t"] = ConfigEntry("n_t", "(int) Number of time steps, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["T"] = ConfigEntry("T", "(double) Total time simulated / s, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["w_active_min"] = ConfigEntry("w_active_min", "(double) Minimum positive angular frequency / rad/s, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["w_active_max"] = ConfigEntry("w_active_max", "(double) Maximum positive angular frequency / rad/s, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
+        self.HHGP["n_t"] = ConfigEntry("n_t", "(int) Number of time steps, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["T"] = ConfigEntry("T", "(double) Total time simulated / s, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["w_active_min"] = ConfigEntry("w_active_min", "(double) Minimum positive angular frequency / rad/s, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["w_active_max"] = ConfigEntry("w_active_max", "(double) Maximum positive angular frequency / rad/s, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
         
-        self.HHGP["Z"] = ConfigEntry("Z", "(double) Length of capillary / m, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["R"] = ConfigEntry("R", "(double) Radius of capillary / m, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
+        self.HHGP["Z"] = ConfigEntry("Z", "(double) Length of capillary / m, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["R"] = ConfigEntry("R", "(double) Radius of capillary / m, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
         
-        self.HHGP["press"] = ConfigEntry("press", "(double) Pressure of the gas in the capillary / bar, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
+        self.HHGP["press"] = ConfigEntry("press", "(double) Pressure of the gas in the capillary / bar, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
         
-        self.HHGP["p_av"] = ConfigEntry("p_av", "(double) Average laser power / W, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["rep"] = ConfigEntry("rep", "(double) Laser repetition rate, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["fwhm"] = ConfigEntry("fwhm", "(double) Laser full width at half maximum / s, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["l_0"] = ConfigEntry("l_0", "(double) Laser central wavelength / m, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["ceo"] = ConfigEntry("ceo", "(double) Laser carrier envelope phase, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
-        self.HHGP["waist"] = ConfigEntry("waist", "(double) Laser waist / m, set through UPPE", None, active=False, inactiveMessage="(Set through UPPE)")
+        self.HHGP["p_av"] = ConfigEntry("p_av", "(double) Average laser power / W, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["rep"] = ConfigEntry("rep", "(double) Laser repetition rate, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["fwhm"] = ConfigEntry("fwhm", "(double) Laser full width at half maximum / s, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["l_0"] = ConfigEntry("l_0", "(double) Laser central wavelength / m, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["ceo"] = ConfigEntry("ceo", "(double) Laser carrier envelope phase, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
+        self.HHGP["waist"] = ConfigEntry("waist", "(double) Laser waist / m, set through UPPE", None, active=False, inactiveMessage="Set through UPPE")
         
         self.HHGP["inital_propagation_step"] = ConfigEntry("inital_propagation_step", "Initial propagation step", 1)
         

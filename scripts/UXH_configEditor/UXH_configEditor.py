@@ -77,7 +77,7 @@ class UXH_configEditor(QDialog):
 
         self.setWindowTitle("UXH configEditor")
         
-        self.setGeometry(500, 500, 750, 500)
+        self.setGeometry(500, 500, 900, 500)
     
     def pickNewWorkingDir(self):
         self.workingDir = self.workingDirLineEdit.text()
@@ -110,6 +110,8 @@ class UXH_configEditor(QDialog):
             self.UPPEConfigEntries.append(ConfigEntry(QLabel(key, self),
                                           QLineEdit(value.value_str),
                                           QLabel(value.description, self)))
+            if self.UXHConfig.UPPE[key].active == False:
+                self.UPPEConfigEntries[-1].valueTextBox.setEnabled(False)
             
         
         self.UPPEConfigValuesTabLayout = QVBoxLayout(self.UPPEConfigValuesTab)
@@ -164,6 +166,8 @@ class UXH_configEditor(QDialog):
             self.XNLOConfigEntries.append(ConfigEntry(QLabel(key, self),
                                           QLineEdit(value.value_str),
                                           QLabel(value.description, self)))
+            if self.UXHConfig.XNLO[key].active == False:
+                self.XNLOConfigEntries[-1].valueTextBox.setEnabled(False)
         
         self.XNLOConfigValuesTabLayout = QVBoxLayout(self.XNLOConfigValuesTab)
         self.XNLOConfigValuesTabScrollArea = QScrollArea(self.XNLOConfigValuesTab)
@@ -218,6 +222,8 @@ class UXH_configEditor(QDialog):
             self.HHGPConfigEntries.append(ConfigEntry(QLabel(key, self),
                                           QLineEdit(value.value_str),
                                           QLabel(value.description, self)))
+            if self.UXHConfig.HHGP[key].active == False:
+                self.HHGPConfigEntries[-1].valueTextBox.setEnabled(False)
         
         self.HHGPConfigValuesTabLayout = QVBoxLayout(self.HHGPConfigValuesTab)
         self.HHGPConfigValuesTabScrollArea = QScrollArea(self.HHGPConfigValuesTab)
