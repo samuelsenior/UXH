@@ -23,7 +23,7 @@ The structure of this config file is fairly simple. Each row has three values to
 
 {inital_propagation_step} {1} {(int) The initial propagation step} // was 77601
 
-{gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
+{gas_pressure_profile} {capillary} {(std::string) Switch for gas pressure profile}
 
 {pend_path}     {prepend} {(std::string) Pending switch}
 {path_input_j0} {../../input/J0_zeros.bin} {(std::string) Input path to J0_zeros.bin}
