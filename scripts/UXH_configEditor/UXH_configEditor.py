@@ -9,21 +9,7 @@ from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox,
 import sys, os
 
 from Config import Config
-
-class ConfigEntry:
-    def __init__(self, name, value, desc):
-        self.nameWidget = name
-        self.descWidget = desc
-        self.valueTextBox = value
         
-        self.update()
-        
-    def update(self):
-        self.name = self.nameWidget.text()
-        self.desc = self.descWidget.text()
-        self.value = self.valueTextBox.text()
-        
-
 class UXH_configEditor(QDialog):
     def __init__(self, parent=None):
         super(UXH_configEditor, self).__init__(parent)
@@ -88,29 +74,20 @@ class UXH_configEditor(QDialog):
     def selectUPPEFile(self):
         newFile = self.selectFile(self.UPPEConfigFileLocation.text())[0]
         self.UPPEConfigFileLocation.setText(newFile)
-        
         self.UXHConfig.loadConfig(newFile, "UPPE")
-        self.updateUPPEConfigEntries()
         
     def selectXNLOFile(self):
         newFile = self.selectFile(self.XNLOConfigFileLocation.text())[0]
         self.XNLOConfigFileLocation.setText(newFile)
+        self.UXHConfig.loadConfig(newFile, "XNLO")
         
     def selectHHGPFile(self):
         newFile = self.selectFile(self.HHGPConfigFileLocation.text())[0]
         self.HHGPConfigFileLocation.setText(newFile)
+        self.UXHConfig.loadConfig(newFile, "HHGP")
         
     def simulationType(self):
         pass
-    
-    def updateUPPEConfigEntries(self):
-        for key, value in self.UXHConfig.UPPE.items():
-            for i, entry in enumerate(self.UPPEConfigEntries):
-                if entry.nameWidget.text() == key and self.UXHConfig.UPPE[key].active == True:
-                    entry.valueTextBox.setText(str(value.value))
-                    entry.descWidget.setText(value.description)
-                    
-                    entry.update()
     
     def createUPPEConfigValuesTab(self):
                         
@@ -126,14 +103,13 @@ class UXH_configEditor(QDialog):
         self.UPPEConfigValuesTabTopLayout.addWidget(self.UPPEConfigFileLocationLabel)
         self.UPPEConfigValuesTabTopLayout.addWidget(self.UPPEConfigFileLocation)
         self.UPPEConfigValuesTabTopLayout.addWidget(self.UPPEConfigFileLocationButton)
-                
-        self.UPPEConfigEntries = []
+
         for key, value in self.UXHConfig.UPPE.items():
-            self.UPPEConfigEntries.append(ConfigEntry(QLabel(key, self),
-                                          QLineEdit(value.value_str),
-                                          QLabel(value.description, self)))
+            self.UXHConfig.UPPE[key].addWidgets(QLabel(key),
+                                           QLineEdit(value.value_str),
+                                           QLabel(value.description))
             if self.UXHConfig.UPPE[key].active == False:
-                self.UPPEConfigEntries[-1].valueTextBox.setEnabled(False)
+                self.UXHConfig.UPPE[key].valueWidget.setEnabled(False)
             
         
         self.UPPEConfigValuesTabLayout = QVBoxLayout(self.UPPEConfigValuesTab)
@@ -153,17 +129,20 @@ class UXH_configEditor(QDialog):
                                                alignment=Qt.AlignTop)
         self.UPPEConfigValuesTabGrid.addWidget(QLabel("Description:"), 0, 2,
                                                alignment=Qt.AlignTop)
-                
-        for i, config in enumerate(self.UPPEConfigEntries):
-            self.UPPEConfigValuesTabGrid.addWidget(self.UPPEConfigEntries[i].nameWidget,
+        
+        i = 0
+        for key, value in self.UXHConfig.UPPE.items():
+            self.UPPEConfigValuesTabGrid.addWidget(self.UXHConfig.UPPE[key].nameWidget,
                                                    i+1, 0)
-            self.UPPEConfigValuesTabGrid.addWidget(self.UPPEConfigEntries[i].valueTextBox,
+            self.UPPEConfigValuesTabGrid.addWidget(self.UXHConfig.UPPE[key].valueWidget,
                                                    i+1, 1)
-            self.UPPEConfigValuesTabGrid.addWidget(self.UPPEConfigEntries[i].descWidget,
+            self.UPPEConfigValuesTabGrid.addWidget(self.UXHConfig.UPPE[key].descriptionWidget,
                                                    i+1, 2)
+            i += 1
+        del i
                         
-        self.UPPEConfigValuesTabGrid.setRowStretch(len(self.UPPEConfigEntries),
-                                                   len(self.UPPEConfigEntries))
+        self.UPPEConfigValuesTabGrid.setRowStretch(len(self.UXHConfig.UPPE),
+                                                   len(self.UXHConfig.UPPE))
         self.UPPEConfigValuesTabGrid.setColumnStretch(1, 1)
                                 
     def createXNLOConfigValuesTab(self):
@@ -180,14 +159,13 @@ class UXH_configEditor(QDialog):
         self.XNLOConfigValuesTabTopLayout.addWidget(self.XNLOConfigFileLocationLabel)
         self.XNLOConfigValuesTabTopLayout.addWidget(self.XNLOConfigFileLocation)
         self.XNLOConfigValuesTabTopLayout.addWidget(self.XNLOConfigFileLocationButton)
-        
-        self.XNLOConfigEntries = []
+                
         for key, value in self.UXHConfig.XNLO.items():
-            self.XNLOConfigEntries.append(ConfigEntry(QLabel(key, self),
-                                          QLineEdit(value.value_str),
-                                          QLabel(value.description, self)))
+            self.UXHConfig.XNLO[key].addWidgets(QLabel(key),
+                                           QLineEdit(value.value_str),
+                                           QLabel(value.description))
             if self.UXHConfig.XNLO[key].active == False:
-                self.XNLOConfigEntries[-1].valueTextBox.setEnabled(False)
+                self.UXHConfig.XNLO[key].valueWidget.setEnabled(False)
         
         self.XNLOConfigValuesTabLayout = QVBoxLayout(self.XNLOConfigValuesTab)
         self.XNLOConfigValuesTabScrollArea = QScrollArea(self.XNLOConfigValuesTab)
@@ -207,17 +185,20 @@ class UXH_configEditor(QDialog):
                                                alignment=Qt.AlignTop)
         self.XNLOConfigValuesTabGrid.addWidget(QLabel("Description:"), 0, 2,
                                                alignment=Qt.AlignTop)
-        
-        for i, config in enumerate(self.XNLOConfigEntries):
-            self.XNLOConfigValuesTabGrid.addWidget(self.XNLOConfigEntries[i].nameWidget,
-                                                   i+1, 0)
-            self.XNLOConfigValuesTabGrid.addWidget(self.XNLOConfigEntries[i].valueTextBox,
-                                                   i+1, 1)
-            self.XNLOConfigValuesTabGrid.addWidget(self.XNLOConfigEntries[i].descWidget,
-                                                   i+1, 2)
             
-        self.XNLOConfigValuesTabGrid.setRowStretch(len(self.XNLOConfigEntries),
-                                                   len(self.XNLOConfigEntries))
+        i = 0
+        for key, value in self.UXHConfig.XNLO.items():
+            self.XNLOConfigValuesTabGrid.addWidget(self.UXHConfig.XNLO[key].nameWidget,
+                                                   i+1, 0)
+            self.XNLOConfigValuesTabGrid.addWidget(self.UXHConfig.XNLO[key].valueWidget,
+                                                   i+1, 1)
+            self.XNLOConfigValuesTabGrid.addWidget(self.UXHConfig.XNLO[key].descriptionWidget,
+                                                   i+1, 2)
+            i += 1
+        del i
+            
+        self.XNLOConfigValuesTabGrid.setRowStretch(len(self.UXHConfig.XNLO),
+                                                   len(self.UXHConfig.XNLO))
         self.XNLOConfigValuesTabGrid.setColumnStretch(1, 1)
                 
     def createHHGPConfigValuesTab(self):
@@ -235,13 +216,12 @@ class UXH_configEditor(QDialog):
         self.HHGPConfigValuesTabTopLayout.addWidget(self.HHGPConfigFileLocation)
         self.HHGPConfigValuesTabTopLayout.addWidget(self.HHGPConfigFileLocationButton)
         
-        self.HHGPConfigEntries = []
         for key, value in self.UXHConfig.HHGP.items():
-            self.HHGPConfigEntries.append(ConfigEntry(QLabel(key, self),
-                                          QLineEdit(value.value_str),
-                                          QLabel(value.description, self)))
+            self.UXHConfig.HHGP[key].addWidgets(QLabel(key),
+                                           QLineEdit(value.value_str),
+                                           QLabel(value.description))
             if self.UXHConfig.HHGP[key].active == False:
-                self.HHGPConfigEntries[-1].valueTextBox.setEnabled(False)
+                self.UXHConfig.HHGP[key].valueWidget.setEnabled(False)
         
         self.HHGPConfigValuesTabLayout = QVBoxLayout(self.HHGPConfigValuesTab)
         self.HHGPConfigValuesTabScrollArea = QScrollArea(self.HHGPConfigValuesTab)
@@ -262,16 +242,19 @@ class UXH_configEditor(QDialog):
         self.HHGPConfigValuesTabGrid.addWidget(QLabel("Description:"), 0, 2,
                                                alignment=Qt.AlignTop)
         
-        for i, config in enumerate(self.HHGPConfigEntries):
-            self.HHGPConfigValuesTabGrid.addWidget(self.HHGPConfigEntries[i].nameWidget,
+        i = 0
+        for key, value in self.UXHConfig.HHGP.items():
+            self.HHGPConfigValuesTabGrid.addWidget(self.UXHConfig.HHGP[key].nameWidget,
                                                    i+1, 0)
-            self.HHGPConfigValuesTabGrid.addWidget(self.HHGPConfigEntries[i].valueTextBox,
+            self.HHGPConfigValuesTabGrid.addWidget(self.UXHConfig.HHGP[key].valueWidget,
                                                    i+1, 1)
-            self.HHGPConfigValuesTabGrid.addWidget(self.HHGPConfigEntries[i].descWidget,
+            self.HHGPConfigValuesTabGrid.addWidget(self.UXHConfig.HHGP[key].descriptionWidget,
                                                    i+1, 2)
+            i += 1
+        del i
             
-        self.HHGPConfigValuesTabGrid.setRowStretch(len(self.HHGPConfigEntries),
-                                                   len(self.HHGPConfigEntries))
+        self.HHGPConfigValuesTabGrid.setRowStretch(len(self.UXHConfig.HHGP),
+                                                   len(self.UXHConfig.HHGP))
         self.HHGPConfigValuesTabGrid.setColumnStretch(1, 1)
         
     def createUXHTabWidget(self):

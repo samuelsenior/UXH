@@ -17,11 +17,6 @@ class ConfigEntry:
         self.active = active
         self.inactiveMessage = inactiveMessage
         
-        #if self.value == None:
-        #    self.value_str = ""
-        #else:
-        #    self.value_str = str(self.value)
-        
         if self.value == None:
             if self.active == True:
                 self.value = self.defaultValue
@@ -30,6 +25,70 @@ class ConfigEntry:
             else:
                 self.description = "(inactive) " + self.description
                 self.value_str = self.inactiveMessage
+        else:
+            self.value_str = str(self.value)
+                
+        self.nameWidget = None
+        self.valueWidget = None
+        self.descriptionWidget = None
+                
+    def addWidgets(self, nameWidget, valueWidget, descriptionWidget):
+        self.nameWidget = nameWidget
+        self.valueWidget = valueWidget
+        self.descriptionWidget = descriptionWidget
+        
+    def updateValue(self, newValue=None):
+        if newValue == None:
+            self.value = self.valueWidget.text()
+        else:
+            self.value = newValue
+            self.valueWidget.setText(newValue)
+            
+    def updateDescription(self, newDescription):
+        self.description = newDescription
+        self.descriptionWidget.setText(newDescription)
+        
+    def getName(self):
+        return self.name
+        
+    def getValue(self):
+        self.value = self.valueWidget.text()
+        return self.value
+    
+    def getDescription(self):
+        return self.description
+                
+#class ConfigEntryWidget:
+#    def __init__(self, name, value, description):
+#        
+#        self.name = name
+#        self.value = value
+#        self.description = description
+#        
+#        self.nameWidget = QLabel(name)
+#        self.valueWidget = QLineEdit(value)
+#        self.descriptionWidget = QLabel(description)
+#        
+#    def updateValue(self, newValue=None):
+#        if newValue == None:
+#            self.value = self.valueWidget.text()
+#        else:
+#            self.value = newValue
+#            self.valueWidget.setText(newValue)
+#            
+#    def updateDescription(self, newDescription):
+#        self.description = newDescription
+#        self.descriptionWidget.setText(newDescription)
+#        
+#    def getName(self):
+#        return self.name
+#        
+#    def getValue(self):
+#        self.value = self.valueWidget.text()
+#        return self.value
+#    
+#    def getDescription(self):
+#        return self.description
 
 class Config(ConfigIO):
     def __init__(self, configType):
@@ -275,6 +334,7 @@ class Config(ConfigIO):
             self.setHHGPBaseConfig()
             
     def loadConfig(self, filename, configType):
+        print("{}.loadConfig(): Loading {} config file from '{}'".format(type(self).__name__, configType, filename))
         config_tmp = self.readConfig(filename)
         
         if configType == "UPPE":
@@ -294,6 +354,10 @@ class Config(ConfigIO):
                         config[key].value = value['value']
                         config[key].value_str = value['value_str']
                         config[key].description = value['description']
+                        
+                        if config[key].valueWidget != None:
+                            config[key].valueWidget.setText(value['value_str'])
+                            config[key].descriptionWidget.setText(value['description'])
                     except:
                         print("{}.loadConfig(): Warning, could not set config entry '{}' with value {}".format(type(self).__name__, key, value['value']))
             except:
