@@ -136,6 +136,7 @@ namespace UPPE {
 
             void set_and_segment_HH_frequency_grid();
 
+            void first_simulation_step(int ii);
             void simulation_step(int ii);
             void interpolation_step(int ii);
     };

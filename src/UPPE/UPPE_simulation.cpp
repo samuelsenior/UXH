@@ -97,14 +97,14 @@ namespace UPPE {
     void UPPE_simulation::set_initial_constructors(){
         if (this_process == 0) { std::cout << "Setting initial constructor" << std::endl; }
 
-        if (this_process == 0) { std::cout << " - Setting maths_textbook constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting maths_textbook" << std::endl; }
         maths = maths_textbook(config.path_input_j0());
 
-        if (this_process == 0) { std::cout << " - Setting grid_rkr constructor" << std::endl; }
-        grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
+        if (this_process == 0) { std::cout << " - Setting grid_rkr" << std::endl; }
+        rkr = grid_rkr(config.n_r(), config.R(), config.n_m(), maths);
 
         //grid_tw tw;
-        if (this_process == 0) { std::cout << " - Setting grid_tw constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting grid_tw" << std::endl; }
         if (this_process == 0) {
             tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths, true, true);
         } else {
@@ -113,7 +113,7 @@ namespace UPPE {
 
         //physics_textbook physics;
 
-        if (this_process == 0) { std::cout << " - Setting XNLO::grid_tw constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting XNLO::grid_tw" << std::endl; }
         w_active_min_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_max();
         w_active_max_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_min();
         //XNLO::grid_tw tw_XNLO;
@@ -290,10 +290,10 @@ namespace UPPE {
     void UPPE_simulation::set_remaining_constructors(){
         if (this_process == 0) { std::cout << "Setting remaining constructors" << std::endl; }
 
-        if (this_process == 0) { std::cout << " - Setting DHT constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting DHT" << std::endl; }
         ht = DHT(config.n_r(), maths);
 
-        if (this_process == 0) { std::cout << " - Setting UPPE::laser_pulse constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting UPPE::laser_pulse" << std::endl; }
         laser_driving = UPPE::laser_pulse(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
                                           tw, rkr, ft, ht, maths,
                                           config,
@@ -302,21 +302,21 @@ namespace UPPE {
                                           false);
         if (this_process == 0) laser_driving.print = true;
         
-        if (this_process == 0) { std::cout << " - Setting capillary_fibre constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting capillary_fibre" << std::endl; }
         capillary_driving = capillary_fibre(config.Z(), rkr, tw, physics, maths);
 
-        if (this_process == 0) { std::cout << " - Setting keldysh_gas constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting keldysh_gas" << std::endl; }
         gas = keldysh_gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
         if (total_processes > 1) {
-            if (this_process == 0) { std::cout << " - Setting XNLO_AtomResponse constructor" << std::endl; }
+            if (this_process == 0) { std::cout << " - Setting XNLO_AtomResponse" << std::endl; }
             atomResponse = XNLO_AtomResponse(&rkr, &tw_XNLO, &maths, &physics,
                                              this_process, total_processes,
                                              config_XNLO,
                                              "minimum");
         }
 
-        if (this_process == 0) { std::cout << " - Setting HH propagation constructor" << std::endl; }
+        if (this_process == 0) { std::cout << " - Setting HH propagation" << std::endl; }
         prop = propagation(config.HHP_E_min(), config.HHP_E_max(), config.Z(), w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
@@ -388,9 +388,107 @@ namespace UPPE {
         set_remaining_variables();
     }
 
+    void UPPE_simulation::first_simulation_step(int ii){
+        if (this_process == 0) {
+            std::cout << "Propagation step: " << ii << std::endl;
+            // Driving pulse:
+            // Always start at 1, so first step is always outputted, even when reading in
+            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                config.step_path(ii, "UPPE_A_w");
+                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
+                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
+                
+                // If config set to output electron density then output it, if not then skip
+                if (config.output_electron_density() == 1) {
+                    config.step_path(ii, "UPPE_electron_density");
+                    file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+                }
+            }
+            A_w_active = laser_driving.A_w_active;
+            if ((total_processes > 1) && HHGP_starting_z_bool) {
+                // Send
+                ArrayXXd A_w_active_send = laser_driving.A_w_active.real();
+                for (int j = 1; j < total_processes; j++) {
+                    MPI_Send(A_w_active_send.data(),
+                             laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+                             MPI_DOUBLE, j, j, MPI_COMM_WORLD);
+                }
+            }
+        } else if (HHGP_starting_z_bool) {
+            // Receive
+            ArrayXXd A_w_active_recv = ArrayXXd::Zero(laser_driving.A_w_active.cols(), laser_driving.A_w_active.rows());
+            MPI_Recv(A_w_active_recv.data(), laser_driving.A_w_active.cols() * laser_driving.A_w_active.rows(),
+                     MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
+            A_w_active = A_w_active_recv;
+        }
+
+        if ((total_processes > 1) && HHGP_starting_z_bool) {
+            atomResponse.run(A_w_active, tw.w_active, tw.w_active_min_index);
+        }
+
+        if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
+            // Use the electron density at the last time step to calculate the number of neutral atoms
+            for (int j = 0; j < rkr.n_r; j++) {
+                neutral_atoms(j) = gas.atom_density(double(ii)*dz) - laser_driving.electron_density(laser_driving.electron_density.rows() - 1, j);
+            }
+            if (config_XNLO.output_electric_field() == 1) {
+                E = atomResponse.E;
+            }
+            // Delete atomResponse after use to save ram
+            acceleration_HHG = atomResponse.acceleration;
+            for (int j = 0; j < rkr.n_r; j++) {
+                for (int i = 0; i < config_XNLO.N_t(); i++) {
+                    acceleration_HHG.row(i).col(j) *= neutral_atoms(j);
+                    acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
+                }
+            }
+            // Apply forward spectral transform
+            ArrayXXcd accelerationToHHSource = acceleration_HHG.cast<std::complex<double> >();
+            for (int i = 0; i < rkr.n_r; i++) {
+                DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
+            }
+            hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
+            //for (int j = 0; j < rkr.n_r; j++) {
+                //for (int i = 0; i < n_active_HHG; i++) {
+                //    hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
+                //}
+            //}
+            // Propagate high harmonics from current step to end of capillary
+            HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
+            // If at the last step then we're at teh end of the capillary and so aren't looking
+            // to propagate the last HH source any further, but rather just use it's source as it's
+            // already at the desired position
+            if (ii < config.n_z()) {
+                prop.nearFieldPropagationStep((config.Z() - dz*ii), HHG_tmp);
+                HHP += prop.A_w_r;
+            } else {
+                HHP += HHG_tmp;
+            }
+
+            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
+                config.step_path(ii, "HHG_A_w");
+                file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
+                file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
+
+                // Need to have a check to see if I want tooutput HHP at first step or not
+                // ()
+                config.step_path(ii, "HHP_A_w");
+                file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+                file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
+
+                if (config_XNLO.output_electric_field() == 1) {
+                    config.step_path(ii, "HHG_electric_field");
+                    file_prop_step.write(E, config.path_HHG_E_step(), true);
+                }
+            }
+        }
+    }
+
     void UPPE_simulation::simulation_step(int ii){
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
+            laser_driving.propagate(dz, capillary_driving, gas);
+            prop.z += dz;
             // Driving pulse:
             // Always start at 1, so first step is always outputted, even when reading in
             if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
@@ -648,7 +746,7 @@ namespace UPPE {
 
         // Doing first step outside main loop as the interpolation stage can't be done in it since there's only one step
         // and no previous step
-        simulation_step(ii);
+        first_simulation_step(ii);
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
             hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
         }
