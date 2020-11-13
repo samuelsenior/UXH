@@ -37,6 +37,7 @@ public:
     double n_glass;
 
     // Functions
+    capillary_fibre();
     capillary_fibre(double Z_, grid_rkr& rkr_, grid_tw& tw_, physics_textbook& physics_,
                     maths_textbook& maths_);
 };
