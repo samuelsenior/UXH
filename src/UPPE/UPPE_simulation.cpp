@@ -315,12 +315,12 @@ namespace UPPE {
     void UPPE_simulation::set_remaining_variables(){
         if (this_process == 0) { std::cout << "Setting remaining variables" << std::endl; }
 
-        ArrayXXd acceleration_HHG = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+        acceleration_HHG = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
         ArrayXXd E;
         if (config_XNLO.output_electric_field() == 1) {
-            ArrayXXd E = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
+            E = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
         } else {
-            ArrayXXd E = ArrayXXd::Zero(0, 0);
+            E = ArrayXXd::Zero(0, 0);
         }
 
         neutral_atoms = ArrayXd::Zero(config.n_r());
@@ -619,7 +619,14 @@ namespace UPPE {
         }
 
         MPI_Barrier(MPI_COMM_WORLD);
-
+        
+        int ii;
+        if (config.read_in_laser_pulse() == true) {
+            ii = propagation_step;
+        } else {
+            ii = 0;
+            propagation_step = 0;
+        }
         if (dz*ii >= config.HHGP_starting_z()) {
             HHGP_starting_z_bool = true;
         } else {
@@ -628,13 +635,6 @@ namespace UPPE {
 
         // Doing first step outside main loop as the interpolation stage can't be done in it since there's only one step
         // and no previous step
-        int ii;
-        if (config.read_in_laser_pulse() == true) {
-            ii = propagation_step;
-        } else {
-            ii = 0;
-            propagation_step = 0;
-        }
         simulation_step(ii);
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
             hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume

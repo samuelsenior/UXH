@@ -86,6 +86,8 @@ namespace UPPE {
 
             XNLO_AtomResponse atomResponse;
 
+            ArrayXXd acceleration_HHG
+            ArrayXXd E;
             ArrayXd neutral_atoms;
             ArrayXd temp_linSpace_HHG_acceleration;
             ArrayXd window_HHG_acceleration;
