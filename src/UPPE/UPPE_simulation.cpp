@@ -373,12 +373,7 @@ namespace UPPE {
         set_remaining_variables();
     }
 
-    void propagation_loop() {
-        propagation_step();
-
-    }
-
-    void propagation_step(int ii){
+    void simulation_step(int ii){
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             // Driving pulse:
@@ -637,14 +632,14 @@ namespace UPPE {
             ii = 0;
             propagation_step = 0;
         }
-        propagation_step(ii);
+        simulation_step(ii);
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
             hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
         }
         propagation_step++;
 
         for (int ii = propagation_step; ii < config.ending_n_z() + 1; ii++) {
-            propagation_step(ii);
+            simulation_step(ii);
             interpolation_step(ii);
         }
 

@@ -55,9 +55,9 @@ int main(int argc, char** argv){
       }
     }
 
-    UPPE::UPPE_sim = UPPE_simulation(argc, argv)
-    UPPE::UPPE_sim.initialise_UPPE_simulation(config_UPPE_file_path_, config_XNLO_file_path_, config_HHGP_file_path_);
-    UPPE::UPPE_sim.run_UPPE_simulation();
+    UPPE_sim = UPPE::UPPE_simulation(argc, argv)
+    UPPE_sim.initialise_UPPE_simulation(config_UPPE_file_path_, config_XNLO_file_path_, config_HHGP_file_path_);
+    UPPE_sim.run_UPPE_simulation();
 
 
 /*

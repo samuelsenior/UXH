@@ -62,7 +62,7 @@ namespace UPPE {
             double initial_position;
 
             double w_active_min_HHG;
-            double w_active_max_HHG
+            double w_active_max_HHG;
             XNLO::grid_tw tw_XNLO;
 
             DHT ht;
@@ -133,7 +133,7 @@ namespace UPPE {
 
             void set_and_segment_HH_frequency_grid();
 
-            void propagation_step(int ii);
+            void simulation_step(int ii);
             void interpolation_step(int ii);
     };
 } // UPPE namespace
