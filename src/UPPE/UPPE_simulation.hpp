@@ -31,10 +31,10 @@ using namespace Eigen;
 
 namespace UPPE {
 
-    class UPPE_Simulation {
+    class UPPE_simulation {
         public:
             // Functions
-            UPPE_Simulation(int argc, char** argv);
+            UPPE_simulation(int argc, char** argv);
             void initialise_UPPE_simulation(std::string config_file_path, std::string config_XNLO_file_path, std::string config_HHGP_file_path);
             void run_UPPE_simulation();
 
