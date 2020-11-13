@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+#include "UPPE_simulation.hpp"
+
 #include "../../Eigen/Dense"
 
 #include "config_settings.hpp"
@@ -429,14 +431,15 @@ namespace UPPE {
             }
             // Apply forward spectral transform
             ArrayXXcd accelerationToHHSource = acceleration_HHG.cast<std::complex<double> >();
-            for (int i = 0; i < rkr.n_r; i++)
+            for (int i = 0; i < rkr.n_r; i++) {
                 DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
+            }
             hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
-            for (int j = 0; j < rkr.n_r; j++) {
+            //for (int j = 0; j < rkr.n_r; j++) {
                 //for (int i = 0; i < n_active_HHG; i++) {
                 //    hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
                 //}
-            }
+            //}
             // Propagate high harmonics from current step to end of capillary
             HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
             // If at the last step then we're at teh end of the capillary and so aren't looking

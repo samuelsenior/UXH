@@ -6,9 +6,9 @@
 //  Test enviroment for UPPE codes.
 //
 
-#include <mpi.h>
-#include <mkl.h>
-#include <iostream>
+//#include <mpi.h>
+//#include <mkl.h>
+//#include <iostream>
 #include <string>
 
 //#include "../../Eigen/Dense"
@@ -47,17 +47,18 @@ int main(int argc, char** argv){
     std::string config_XNLO_file_path = "../configFiles/config_XNLO.txt";
     std::string config_HHGP_file_path = "../configFiles/config_HHGP.txt";
     for (int i = 0; i < argc; i++) {
-      args[i] = argv[i];
+        args[i] = argv[i];
     }
     for (int i = 0; i < argc; i++) {
-      if (args[i] == "-cf") {
-        config_UPPE_file_path = argv[i+1];
-      }
+        if (args[i] == "-cf") {
+            config_UPPE_file_path = argv[i+1];
+        }
     }
 
     UPPE::UPPE_simulation UPPE_sim(argc, argv);
     UPPE_sim.initialise_UPPE_simulation(config_UPPE_file_path, config_XNLO_file_path, config_HHGP_file_path);
     UPPE_sim.run_UPPE_simulation();
+}
 
 
 /*
@@ -790,5 +791,4 @@ int main(int argc, char** argv){
             std::cout << "UPPE successfully ran!\n";
             std::cout << "-------------------------------------------------------------------------------\n";
         }
-        */
-}
+}*/
