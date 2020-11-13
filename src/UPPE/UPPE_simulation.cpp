@@ -40,7 +40,7 @@ namespace UPPE {
         MPI_Comm_rank(MPI_COMM_WORLD, &this_process);
     }
 
-    void UPPE_simulation::set_initial_configs(std::string config_file_path_, std::string config_XNLO_file_path_, std::string config_HHGP_file_path_){
+    void UPPE_simulation::set_initial_configs(std::string config_UPPE_file_path_, std::string config_XNLO_file_path_, std::string config_HHGP_file_path_){
         config_UPPE_file_path = config_UPPE_file_path_;
         config_XNLO_file_path = config_XNLO_file_path_;
         config_HHGP_file_path = config_HHGP_file_path_;
@@ -133,7 +133,7 @@ namespace UPPE {
             
             std::size_t found_2 = tmp.find_first_of("_", found+1);
             std::string tmp_2 = tmp.substr(found+1, found_2-found-1);
-            int sim_no = std::stoi(sim_no_str);
+            sim_no = std::stoi(sim_no_str);
 
             initial_step = stoi(tmp_2);
             initial_step = int(double(config.n_z()) * double(stoi(tmp_2)) / double(config.original_n_z()));
@@ -154,7 +154,7 @@ namespace UPPE {
             std::cout << "Simulation run (read in): " << sim_no << std::endl;
             std::cout << "Initial step: " << initial_step << std::endl;
             std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
-            std::cout << "Original position: " << (double(stoi(tmp_2)) / double(config.original_n_z())) * config.Z() << std::endl;
+            std::cout << "Original position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
             std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
         }
     }

@@ -43,7 +43,7 @@ namespace UPPE {
             int total_processes;
             MPI_Status status;
 
-            std::string onfig_UPPE_file_path;
+            std::string config_UPPE_file_path;
             std::string config_XNLO_file_path;
             std::string config_HHGP_file_path;
 
@@ -60,6 +60,7 @@ namespace UPPE {
             int initial_step;
             int propagation_step;
             double initial_position;
+            int sim_no;
 
             double w_active_min_HHG;
             double w_active_max_HHG;
