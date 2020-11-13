@@ -95,12 +95,16 @@ namespace UPPE {
     }
 
     void UPPE_simulation::set_initial_constructors(){
-        if (this_process == 0) { std::cout << "Setting initial constrcutors" << std::endl; }
+        if (this_process == 0) { std::cout << "Setting initial constructor" << std::endl; }
 
+        if (this_process == 0) { std::cout << " - Setting maths_textbook constructor" << std::endl; }
         maths_textbook maths(config.path_input_j0());
+
+        if (this_process == 0) { std::cout << " - Setting grid_rkr constructor" << std::endl; }
         grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
 
         //grid_tw tw;
+        if (this_process == 0) { std::cout << " - Setting grid_tw constructor" << std::endl; }
         if (this_process == 0) {
             tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths, true, true);
         } else {
@@ -109,6 +113,7 @@ namespace UPPE {
 
         //physics_textbook physics;
 
+        if (this_process == 0) { std::cout << " - Setting XNLO::grid_tw constructor" << std::endl; }
         w_active_min_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_max();
         w_active_max_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_min();
         //XNLO::grid_tw tw_XNLO;
@@ -285,7 +290,10 @@ namespace UPPE {
     void UPPE_simulation::set_remaining_constructors(){
         if (this_process == 0) { std::cout << "Setting remaining constructors" << std::endl; }
 
+        if (this_process == 0) { std::cout << " - Setting DHT constructor" << std::endl; }
         ht = DHT(config.n_r(), maths);
+
+        if (this_process == 0) { std::cout << " - Setting UPPE::laser_pulse constructor" << std::endl; }
         laser_driving = UPPE::laser_pulse(config.p_av(), config.rep(), config.fwhm(), config.l_0(), config.ceo(), config.waist(),
                                           tw, rkr, ft, ht, maths,
                                           config,
@@ -294,16 +302,21 @@ namespace UPPE {
                                           false);
         if (this_process == 0) laser_driving.print = true;
         
+        if (this_process == 0) { std::cout << " - Setting capillary_fibre constructor" << std::endl; }
         capillary_driving = capillary_fibre(config.Z(), rkr, tw, physics, maths);
+
+        if (this_process == 0) { std::cout << " - Setting keldysh_gas constructor" << std::endl; }
         gas = keldysh_gas(config.press(), tw, ft, maths, config.gas_pressure_profile());
 
         if (total_processes > 1) {
+            if (this_process == 0) { std::cout << " - Setting XNLO_AtomResponse constructor" << std::endl; }
             atomResponse = XNLO_AtomResponse(&rkr, &tw_XNLO, &maths, &physics,
                                              this_process, total_processes,
                                              config_XNLO,
                                              "minimum");
         }
 
+        if (this_process == 0) { std::cout << " - Setting HH propagation constructor" << std::endl; }
         prop = propagation(config.HHP_E_min(), config.HHP_E_max(), config.Z(), w_active_HHG,
                            gas, rkr,
                            physics, maths, ht);
@@ -619,7 +632,7 @@ namespace UPPE {
         }
 
         MPI_Barrier(MPI_COMM_WORLD);
-        
+
         int ii;
         if (config.read_in_laser_pulse() == true) {
             ii = propagation_step;
