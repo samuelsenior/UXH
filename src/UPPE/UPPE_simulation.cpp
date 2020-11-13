@@ -27,7 +27,7 @@ using namespace Eigen;
 
 namespace UPPE {
 
-    UPPE_Simulation::UPPE_Simulation(int argc, char** argv){
+    UPPE_simulation::UPPE_simulation(int argc, char** argv){
         // MPI
         //int this_process;
         //int total_processes;
@@ -38,7 +38,7 @@ namespace UPPE {
         MPI_Comm_rank(MPI_COMM_WORLD, &this_process);
     }
 
-    void UPPE_Simulation::set_initial_configs(std::string config_file_path_, std::string config_XNLO_file_path_, std::string config_HHGP_file_path_){
+    void UPPE_simulation::set_initial_configs(std::string config_file_path_, std::string config_XNLO_file_path_, std::string config_HHGP_file_path_){
         config_UPPE_file_path = config_UPPE_file_path_;
         config_XNLO_file_path = config_XNLO_file_path_;
         config_HHGP_file_path = config_HHGP_file_path_;
@@ -92,7 +92,7 @@ namespace UPPE {
         }
     }
 
-    void set_initial_constructors(){
+    void UPPE_simulation::set_initial_constructors(){
         if (this_process == 0) { std::cout << "Setting initial constrcutors" << std::endl; }
 
         maths_textbook maths(config.path_input_j0());
@@ -117,7 +117,7 @@ namespace UPPE {
         }
     }
 
-    void set_initial_variables(){
+    void UPPE_simulation::set_initial_variables(){
         if (this_process == 0) { std::cout << "Setting initial variables" << std::endl; }
 
         dz = config.Z() / double(config.n_z());
@@ -145,7 +145,7 @@ namespace UPPE {
         initial_position = dz * propagation_step;
     }
 
-    void print_initial_variable_debug(){
+    void UPPE_simulation::print_initial_variable_debug(){
         if (this_process == 0) std::cout << "w_active_min_index: " << tw.w_active_min_index << std::endl;
 
         if (config.read_in_laser_pulse() == 1 && this_process == 0) {
@@ -157,7 +157,7 @@ namespace UPPE {
         }
     }
 
-    void update_configs(){
+    void UPPE_simulation::update_configs(){
         if (this_process == 0) { std::cout << "Updating config settings" << std::endl; }
 
         if (config.n_t() != tw.n_t) {
@@ -245,7 +245,7 @@ namespace UPPE {
         }
     }
 
-    void set_Fourier_transforms(){
+    void UPPE_simulation::set_Fourier_transforms(){
         if (this_process == 0) { std::cout << "Setting Fourier transforms" << std::endl; }
 
         dimensions = 1;
@@ -263,7 +263,7 @@ namespace UPPE {
         DftiCommitDescriptor(ft_HHG);
     }
 
-    void set_and_segment_HH_frequency_grid(){
+    void UPPE_simulation::set_and_segment_HH_frequency_grid(){
         if (this_process == 0) { std::cout << "Setting and segmenting HH frequency grid" << std::endl; }
 
         n_active_HHG = 0;
@@ -280,7 +280,7 @@ namespace UPPE {
         w_active_HHG = w_tmp.segment(w_active_min_index_HHG, n_active_HHG);
     }
 
-    void set_remaining_constructors(){
+    void UPPE_simulation::set_remaining_constructors(){
         if (this_process == 0) { std::cout << "Setting remaining constructors" << std::endl; }
 
         ht = DHT(config.n_r(), maths);
@@ -310,7 +310,7 @@ namespace UPPE {
         prop.z = double(initial_step) / double(config.n_z()) * double(config.Z());
     }
 
-    void set_remaining_variables(){
+    void UPPE_simulation::set_remaining_variables(){
         if (this_process == 0) { std::cout << "Setting remaining variables" << std::endl; }
 
         ArrayXXd acceleration_HHG = ArrayXXd::Zero(config_XNLO.N_t(), config.n_r());
@@ -354,7 +354,7 @@ namespace UPPE {
         }
     }
 
-    void initialise_UPPE_simulation(std::string config_file_path, std::string config_XNLO_file_path, std::string config_HHGP_file_path){
+    void UPPE_simulation::initialise_UPPE_simulation(std::string config_file_path, std::string config_XNLO_file_path, std::string config_HHGP_file_path){
         if (this_process == 0) {
             std::cout << "-------------------------------------------------------------------------------\n";
             std::cout << "                                  UPPE\n";
@@ -373,7 +373,7 @@ namespace UPPE {
         set_remaining_variables();
     }
 
-    void simulation_step(int ii){
+    void UPPE_simulation::simulation_step(int ii){
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             // Driving pulse:
@@ -468,7 +468,7 @@ namespace UPPE {
         }
     }
 
-    void interpolation_step(int ii){
+    void UPPE_simulation::interpolation_step(int ii){
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
             std::cout << "Starting interpolation!" << std::endl;
 
@@ -588,7 +588,7 @@ namespace UPPE {
         }
     }
 
-    void run_UPPE_simulation(){
+    void UPPE_simulation::run_UPPE_simulation(){
         if (this_process == 0) { std::cout << "Running UPPE simulation" << std::endl; }
 
         if (this_process == 0) {
