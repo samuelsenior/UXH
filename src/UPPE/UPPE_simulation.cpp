@@ -98,7 +98,7 @@ namespace UPPE {
         if (this_process == 0) { std::cout << "Setting initial constructor" << std::endl; }
 
         if (this_process == 0) { std::cout << " - Setting maths_textbook constructor" << std::endl; }
-        maths_textbook maths(config.path_input_j0());
+        maths = maths_textbook(config.path_input_j0());
 
         if (this_process == 0) { std::cout << " - Setting grid_rkr constructor" << std::endl; }
         grid_rkr rkr(config.n_r(), config.R(), config.n_m(), maths);
