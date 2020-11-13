@@ -11,26 +11,28 @@
 #include <iostream>
 #include <string>
 
-#include "../../Eigen/Dense"
+//#include "../../Eigen/Dense"
 
-#include "config_settings.hpp"
+//#include "config_settings.hpp"
 
-#include "../capillary/capillary_fibre.hpp"
-#include "../DHT/DHT.hpp"
-#include "../gas/keldysh_gas.hpp"
-#include "../grid/grid_rkr.hpp"
-#include "../grid/grid_tw.hpp"
-#include "../IO/IO.hpp"
-#include "../laser_pulse/laser_pulse.hpp"
-#include "../maths/maths_textbook.hpp"
-#include "../physics/physics_textbook.hpp"
+//#include "../capillary/capillary_fibre.hpp"
+//#include "../DHT/DHT.hpp"
+//#include "../gas/keldysh_gas.hpp"
+//#include "../grid/grid_rkr.hpp"
+//#include "../grid/grid_tw.hpp"
+//#include "../IO/IO.hpp"
+//#include "../laser_pulse/laser_pulse.hpp"
+//#include "../maths/maths_textbook.hpp"
+//#include "../physics/physics_textbook.hpp"
 
-#include "../XNLO/XNLO.hpp"
-#include "../XNLO/config_settings.hpp"
+//#include "../XNLO/XNLO.hpp"
+//#include "../XNLO/config_settings.hpp"
 
-#include "../HHGP/propagation.hpp"
+//#include "../HHGP/propagation.hpp"
 
-using namespace Eigen;
+#include "UPPE_simulation.hpp"
+
+//using namespace Eigen;
 
 /*!
 Originally created by Patrick Anderson.
@@ -52,6 +54,13 @@ int main(int argc, char** argv){
         config_file_path = argv[i+1];
       }
     }
+
+    UPPE::UPPE_sim = UPPE_simulation(argc, argv)
+    UPPE::UPPE_sim.initialise_UPPE_simulation(config_UPPE_file_path_, config_XNLO_file_path_, config_HHGP_file_path_);
+    UPPE::UPPE_sim.run_UPPE_simulation();
+
+
+/*
 
     // MPI
     int this_process;
@@ -410,6 +419,8 @@ int main(int argc, char** argv){
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    // Doing first step outside main loop as the interpolation stage can't be done in it since there's only one step
+    // and no previous step
     bool HHGP_starting_z_bool = false;
 
         int ii;
@@ -500,6 +511,8 @@ int main(int argc, char** argv){
                 file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
                 file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
 
+                // Need to have a check to see if I want tooutput HHP at first step or not
+                // ()
                 config.step_path(ii, "HHP_A_w");
                 file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                 file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
@@ -517,6 +530,7 @@ int main(int argc, char** argv){
     HHGP_starting_z_bool = false;
 
         for (int ii = propagation_step; ii < config.ending_n_z() + 1; ii++) {//config.n_z() + 1; ii++) {
+            HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
             if (dz*ii >= HHGP_starting_z) HHGP_starting_z_bool = true;
             if (this_process == 0) {
                 std::cout << "Propagation step: " << ii << std::endl;
@@ -776,4 +790,5 @@ int main(int argc, char** argv){
             std::cout << "UPPE successfully ran!\n";
             std::cout << "-------------------------------------------------------------------------------\n";
         }
+        */
 }
