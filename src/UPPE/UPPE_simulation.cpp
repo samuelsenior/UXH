@@ -389,6 +389,7 @@ namespace UPPE {
     }
 
     void UPPE_simulation::first_simulation_step(int ii){
+        HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             // Driving pulse:
@@ -485,6 +486,7 @@ namespace UPPE {
     }
 
     void UPPE_simulation::simulation_step(int ii){
+        HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             laser_driving.propagate(dz, capillary_driving, gas);
