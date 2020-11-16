@@ -55,6 +55,12 @@ int main(int argc, char** argv){
         }
     }
 
+    std::cout << "Args passed in: ";
+    for (int i = 0; i < argc, i++) {
+        std::cout << argv[i] << ", ";
+    }
+    std::endl;
+
     UPPE::UPPE_simulation UPPE_sim(argc, argv);
     UPPE_sim.initialise_UPPE_simulation(config_UPPE_file_path, config_XNLO_file_path, config_HHGP_file_path);
     UPPE_sim.run_UPPE_simulation();
