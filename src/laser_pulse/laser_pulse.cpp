@@ -282,6 +282,7 @@ laser_pulse::laser_pulse(double p_av_, double rep_, double fwhm_, double l_0_, d
         for (int ii = 0; ii < rkr.n_r; ii++)
             DftiComputeForward(ft, temp_1.col(ii).data());
         ArrayXXcd temp_2 = temp_1.block(tw.w_active_min_index, 0, tw.n_active, rkr.n_r);
+        
         for (int ii = 0; ii < tw.n_active; ii++)
             temp_2.row(ii) = ht.forward(temp_2.row(ii));
         A_w_active = temp_2.block(0, 0, tw.n_active, rkr.n_m);

@@ -20,6 +20,7 @@ using namespace Eigen;
 //  Class implementation
 //------------------------------------------------------------------------------------------------//
 /*! Constructor */
+capillary_fibre::capillary_fibre() {}
 capillary_fibre::capillary_fibre(double Z_, grid_rkr& rkr_, grid_tw& tw_, physics_textbook& physics_,
                                  maths_textbook& maths_) :
                                  Z(Z_){

@@ -35,7 +35,7 @@ The structure of this config file is fairly simple. Each row has three values to
 {ending_n_z}          {300} {(int) Ending step for UPPE block}
 {interp_points}       {0}  {(int) Number of interpolation points between each step}
 
-{gas_pressure_profile} {capillary} {(string) Switch for gas pressure profile}
+{gas_pressure_profile} {capillary} {(std::string) Switch for gas pressure profile}
 
 {H\\HG_lambda_min}        {12.0e-09}   {(double) Minimum generated high harmonic wavelength outputted}
 {H\\HG_lambda_max}        {124.0e-09} {(double) Maximum generated high harmonic wavelength outputted}
