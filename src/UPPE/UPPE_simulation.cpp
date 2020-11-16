@@ -40,6 +40,25 @@ namespace UPPE {
         MPI_Comm_rank(MPI_COMM_WORLD, &this_process);
     }
 
+    void UPPE_simulation::initialise_UPPE_simulation(std::string config_UPPE_file_path, std::string config_XNLO_file_path, std::string config_HHGP_file_path){
+        if (this_process == 0) {
+            std::cout << "-------------------------------------------------------------------------------\n";
+            std::cout << "                                  UPPE\n";
+            std::cout << "-------------------------------------------------------------------------------\n";
+        }
+        if (this_process == 0) { std::cout << "Initialising UPPE simulation" << std::endl; }
+
+        set_initial_configs(config_UPPE_file_path, config_XNLO_file_path, config_HHGP_file_path);
+        set_initial_constructors();
+        set_initial_variables();
+        print_initial_variable_debug();
+        update_configs();
+        set_Fourier_transforms();
+        set_and_segment_HH_frequency_grid();
+        set_remaining_constructors();
+        set_remaining_variables();
+    }
+
     void UPPE_simulation::set_initial_configs(std::string config_UPPE_file_path_, std::string config_XNLO_file_path_, std::string config_HHGP_file_path_){
         config_UPPE_file_path = config_UPPE_file_path_;
         config_XNLO_file_path = config_XNLO_file_path_;
@@ -367,25 +386,6 @@ namespace UPPE {
                 wavelength_index_max++;
             }
         }
-    }
-
-    void UPPE_simulation::initialise_UPPE_simulation(std::string config_file_path, std::string config_XNLO_file_path, std::string config_HHGP_file_path){
-        if (this_process == 0) {
-            std::cout << "-------------------------------------------------------------------------------\n";
-            std::cout << "                                  UPPE\n";
-            std::cout << "-------------------------------------------------------------------------------\n";
-        }
-        if (this_process == 0) { std::cout << "Initialising UPPE simulation" << std::endl; }
-
-        set_initial_configs(config_UPPE_file_path, config_XNLO_file_path, config_HHGP_file_path);
-        set_initial_constructors();
-        set_initial_variables();
-        print_initial_variable_debug();
-        update_configs();
-        set_Fourier_transforms();
-        set_and_segment_HH_frequency_grid();
-        set_remaining_constructors();
-        set_remaining_variables();
     }
 
     void UPPE_simulation::first_simulation_step(int ii){
