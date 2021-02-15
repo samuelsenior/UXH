@@ -365,12 +365,17 @@ namespace UPPE {
         //ArrayXXcd hhg_source;
         //ArrayXXcd hhg_previous;
 
-        //ArrayXXcd HHG_tmp;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+        // Initialise HHP to zeros only once per simulation as it nneds to contain the
+        // HHG buildup throughout the capillary to model it correctly. 
         HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
+        // Initialise HHP_multiThread_tmp to the correct shape so that in the sim intepr
+        // stage it can correctly recieve data from the other threads through the MPI Recvs
         HHP_multiThread_tmp = ArrayXXcd::Zero(prop.n_k, config.n_r());
+        // HHP_multiThread_tmp_2 doesn't actually need to be initialised here as it is set
+        // to zeros in all the worker threads in the interp stage at each sim step
         HHP_multiThread_tmp_2 = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
-        hhg_old = ArrayXXcd::Zero(prop.n_k, config.n_r());//;// = ArrayXXcd::Zero(w_active_HHG.rows(), config.n_r());
+        hhg_old = ArrayXXcd::Zero(prop.n_k, config.n_r());
         hhg_old_old = ArrayXXcd::Zero(prop.n_k, config.n_r());
         hhg_old_interp = ArrayXXcd::Zero(prop.n_k, config.n_r());
         dS_i = ArrayXXcd::Zero(prop.n_k, config.n_r());
@@ -389,7 +394,6 @@ namespace UPPE {
     }
 
     void UPPE_simulation::first_simulation_step(int ii){
-        HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             // Driving pulse:
@@ -486,7 +490,6 @@ namespace UPPE {
     }
 
     void UPPE_simulation::simulation_step(int ii){
-        HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
             laser_driving.propagate(dz, capillary_driving, gas);
