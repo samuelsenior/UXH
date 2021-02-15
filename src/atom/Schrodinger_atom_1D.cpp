@@ -27,9 +27,13 @@ using namespace Eigen;
 Schrodinger_atom_1D::Schrodinger_atom_1D() {}
 
 /*! Class constructor. */
-Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int output_wavefunction_, bool print_)
+Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_,
+                                         int SAR_N_x_, double SAR_x_min_, double SAR_x_max_,
+                                         int output_wavefunction_, bool print_)
                                          :
-                                         tw(tw_), print(print_) {
+                                         tw(tw_), 
+                                         SAR_N_x(SAR_N_x_), SAR_x_min(SAR_x_min_), SAR_x_max(SAR_x_max_),
+                                         print(print_) {
     
     maths_textbook maths;
     physics_textbook physics;
@@ -38,7 +42,7 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int 
 
     //grid_xkx temp(std::pow(2.0, 12), -300, 300);
     //xkx = temp;
-    xkx = grid_xkx(std::pow(2.0, 12), -300, 300);
+    xkx = grid_xkx(SAR_N_x, SAR_x_min, SAR_x_max);
 
     // Set up transform, MKL
     mkl_dimension = 1;
@@ -55,7 +59,7 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int 
 
     output_wavefunction = output_wavefunction_;
 
-    if (output_wavefunction == 1) { wfn_output = ArrayXXcd::Zero(tw.N_t, 4096); }
+    if (output_wavefunction == 1) { wfn_output = ArrayXXcd::Zero(tw.N_t, SAR_N_x); }
     else { wfn_output = ArrayXXcd::Zero(0, 0); }
 
     T = (0.5 * xkx.kx.pow(2)).cast<std::complex<double> >();

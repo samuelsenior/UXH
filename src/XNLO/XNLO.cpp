@@ -88,15 +88,15 @@ XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr* rkr_, XNLO::grid_tw* tw_,
     //Schrodinger_atom_1D atom;
     if (print == "minimum") {
         if (this_node == 1) {
-            atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), true);
+            atom = Schrodinger_atom_1D(*tw, config.alpha(), config.SAR_N_x(), config.SAR_x_min(), config.SAR_x_max(), config.output_wavefunction(), true);
         } else {
-            atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), false);
+            atom = Schrodinger_atom_1D(*tw, config.alpha(), config.SAR_N_x(), config.SAR_x_min(), config.SAR_x_max(), config.output_wavefunction(), false);
         }
     }
     else if (print == "false") {
-        atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), false);
+        atom = Schrodinger_atom_1D(*tw, config.alpha(), config.SAR_N_x(), config.SAR_x_min(), config.SAR_x_max(), config.output_wavefunction(), false);
     } else {
-        atom = Schrodinger_atom_1D(*tw, config.alpha(), config.output_wavefunction(), true);
+        atom = Schrodinger_atom_1D(*tw, config.alpha(), config.SAR_N_x(), config.SAR_x_min(), config.SAR_x_max(), config.output_wavefunction(), true);
     }
     if (this_node == 0) { std::cout << "Schrodinger_atom_1D initialised!" << std::endl; }
 

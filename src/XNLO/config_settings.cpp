@@ -24,6 +24,7 @@ const char * Config_Settings::setting_name[] = {
   "atoms_per_worker",
   "x_min", "x_max",
   "N_t", "t_min", "t_max",
+  "SAR_N_x", "SAR_x_min", "SAR_x_max",
   "P_av", "RR", "FWHM", "l_0", "CEO", "spot_radius",
   "alpha",
   "read_in_laser_pulse",
@@ -156,6 +157,19 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::t_max :
         t_max_set(std::stod(variable_value_str));
         t_max_description_set(input_description_char);
+        break;
+
+      case SN::SAR_N_x :
+        SAR_N_x_set(std::stoi(variable_value_str));
+        SAR_N_x_description_set(input_description_char);
+        break;
+      case SN::SAR_x_min :
+        SAR_x_min_set(std::stod(variable_value_str));
+        SAR_x_min_description_set(input_description_char);
+        break;
+      case SN::SAR_x_max :
+        SAR_x_max_set(std::stod(variable_value_str));
+        SAR_x_max_description_set(input_description_char);
         break;
 
       case SN::P_av :
@@ -349,6 +363,9 @@ void Config_Settings::print() {
     std::cout << "   N_t:                 " << N_t() << "                " << N_t_description() << std::endl;
     std::cout << "   t_min:               " << t_min() << "               " << t_min_description() << std::endl;
     std::cout << "   t_max:               " << t_max() << "              " << t_max_description() << std::endl;
+    std::cout << "   SAR_N_x:             " << SAR_N_x() << "               " << SAR_N_x_description() << std::endl;
+    std::cout << "   SAR_x_min:           " << SAR_x_min() << "               " << SAR_x_min_description() << std::endl;
+    std::cout << "   SAR_x_max:           " << SAR_x_max() << "              " << SAR_x_max_description() << std::endl;
     std::cout << "   P_av:                " << P_av() << "             " << P_av_description() << std::endl;
     std::cout << "   RR:                  " << RR() << "                 " << RR_description() << std::endl;
     std::cout << "   FWHM:                " << FWHM() << "                " << FWHM_description() << std::endl;
@@ -384,6 +401,10 @@ void Config_Settings::print(std::string path_) {
       config_log << "{N_t} {" << N_t() << "} {" << N_t_description() << "}\n";
       config_log << "{t_min} {" << t_min() << "} {" << t_min_description() << "}\n";
       config_log << "{t_max} {" << t_max() << "} {" << t_max_description() << "}\n";
+
+      config_log << "{SAR_N_x} {" << SAR_N_x() << "} {" << SAR_N_x_description() << "}\n";
+      config_log << "{SAR_x_min} {" << SAR_x_min() << "} {" << SAR_x_min_description() << "}\n";
+      config_log << "{SAR_x_max} {" << SAR_x_max() << "} {" << SAR_x_max_description() << "}\n";
 
       config_log << "{P_av} {" << P_av() << "} {" << P_av_description() << "}\n";
       config_log << "{RR} {" << RR() << "} {" << RR_description() << "}\n";
@@ -453,6 +474,21 @@ double Config_Settings::t_max() { return t_max_; }
 void Config_Settings::t_max_set(double val) { t_max_ = val; }
 std::string Config_Settings::t_max_description() { return t_max_description_; }
 void Config_Settings::t_max_description_set(std::string description) { t_max_description_ = description; }
+
+int Config_Settings::SAR_N_x() { return SAR_N_x_; }
+void Config_Settings::SAR_N_x_set(int val) { SAR_N_x_ = val; }
+std::string Config_Settings::SAR_N_x_description() { return SAR_N_x_description_; }
+void Config_Settings::SAR_N_x_description_set(std::string description) { SAR_N_x_description_ = description; }
+
+double Config_Settings::SAR_x_min() { return SAR_x_min_; }
+void Config_Settings::SAR_x_min_set(double val) { SAR_x_min_ = val; }
+std::string Config_Settings::SAR_x_min_description() { return SAR_x_min_description_; }
+void Config_Settings::SAR_x_min_description_set(std::string description) { SAR_x_min_description_ = description; }
+
+double Config_Settings::SAR_x_max() { return SAR_x_max_; }
+void Config_Settings::SAR_x_max_set(double val) { SAR_x_max_ = val; }
+std::string Config_Settings::SAR_x_max_description() { return SAR_x_max_description_; }
+void Config_Settings::SAR_x_max_description_set(std::string description) { SAR_x_max_description_ = description; }
 
 double Config_Settings::P_av() { return P_av_; }
 void Config_Settings::P_av_set(double val) { P_av_ = val; }

@@ -43,6 +43,9 @@ public:
     XNLO::grid_tw tw;      /*!< The linear temporal grid.*/
     grid_xkx xkx;    /*!< The linear spatial grid.*/
     double alpha;    /*!< The parameter \f$\alpha\f$ is used to scale the Coulomb potential to match the ground state energy of the atom. */
+    int SAR_N_x;
+    double SAR_x_min;
+    double SAR_x_max;
     ArrayXd V_model; /*!< The soft Coulomb potential, \f[V_{Coulomb} = \frac{-1}{\sqrt{\alpha + x^2}}.\f] */
     ArrayXcd wfn_GS; /*!< The ground state wavefunction of the electron at the initial time and as a function of position. */
     ArrayXcd wfn;    /*!< The wavefunction of the electron at a time \f$t\f$ and as a function of position. */
@@ -77,7 +80,7 @@ public:
 
     // Functions
     Schrodinger_atom_1D();
-    Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int output_wavefunction_, bool print=true);
+    Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_, int SAR_N_x_, double SAR_x_min_, double SAR_x_max_, int output_wavefunction_, bool print=true);
     void set_GS(int N_it_);
     ArrayXd get_acceleration(int N_it_, double dt_, ArrayXd E_);
     ArrayXd solve_TDSE_PS(int N_it_, std::complex<double> dt_, ArrayXd E_, int e_);

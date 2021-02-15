@@ -120,7 +120,7 @@ int main(int argc, char** argv){
 
         ArrayXXcd wavefunction;
         if (config.output_wavefunction() == 1) {
-            wavefunction = ArrayXXcd::Zero(tw.N_t, 4096);
+            wavefunction = ArrayXXcd::Zero(tw.N_t, config.SAR_N_x());
         } else {
             wavefunction = ArrayXXcd::Zero(0, 0);
         }
@@ -140,8 +140,8 @@ int main(int argc, char** argv){
         }
 
         if (config.output_wavefunction() == 1) {
-            MPI_Recv(wavefunction.block(0, 0, tw.N_t, 4096).data(),
-                         4096 * tw.N_t, MPI_DOUBLE_COMPLEX, 1, 1, MPI_COMM_WORLD, &status);
+            MPI_Recv(wavefunction.block(0, 0, tw.N_t, config.SAR_N_x()).data(),
+                         config.SAR_N_x() * tw.N_t, MPI_DOUBLE_COMPLEX, 1, 1, MPI_COMM_WORLD, &status);
         }
 
         // Output
@@ -160,13 +160,13 @@ int main(int argc, char** argv){
         if (config.output_wavefunction() == 1) {
             std::string wavefunction_R = "wavefunction_R.bin";
             file.overwrite(wavefunction_R);
-            file.write_header(wavefunction_R, config.N_t(), 4096);
-            file.write_double(wavefunction_R, wavefunction.real(), config.N_t(), 4096);
+            file.write_header(wavefunction_R, config.N_t(), config.SAR_N_x());
+            file.write_double(wavefunction_R, wavefunction.real(), config.N_t(), config.SAR_N_x());
 
             std::string wavefunction_I = "wavefunction_I.bin";
             file.overwrite(wavefunction_I);
-            file.write_header(wavefunction_I, config.N_t(), 4096);
-            file.write_double(wavefunction_I, wavefunction.imag(), config.N_t(), 4096);
+            file.write_header(wavefunction_I, config.N_t(), config.SAR_N_x());
+            file.write_double(wavefunction_I, wavefunction.imag(), config.N_t(), config.SAR_N_x());
         }
         if (config.output_electric_field() == 1) {
             file.overwrite(config.path_E());
@@ -189,12 +189,12 @@ int main(int argc, char** argv){
 
         ArrayXXcd wavefunction;
         if (config.output_wavefunction() == 1) {
-            wavefunction = ArrayXXcd::Zero(tw.N_t, 4096);
+            wavefunction = ArrayXXcd::Zero(tw.N_t, config.SAR_N_x());
         } else {
             wavefunction = ArrayXXcd::Zero(0, 0);
         }
 
-        Schrodinger_atom_1D atom(tw, config.alpha(), config.output_wavefunction());
+        Schrodinger_atom_1D atom(tw, config.alpha(), config.SAR_N_x(), config.SAR_x_min(), config.SAR_x_max(), config.output_wavefunction());
         for (int ii = 0; ii < atoms_per_worker; ii++) {
 
             dipole.col(ii) = atom.get_acceleration(tw.N_t, tw.dt, E.col(ii));
@@ -211,7 +211,7 @@ int main(int argc, char** argv){
         MPI_Send(dipole.data(), tw.N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
 
         if (config.output_wavefunction() == 1 && this_node == 1) {
-            MPI_Send(wavefunction.data(), 4096 * tw.N_t, MPI_DOUBLE_COMPLEX, 0, 1, MPI_COMM_WORLD);
+            MPI_Send(wavefunction.data(), config.SAR_N_x() * tw.N_t, MPI_DOUBLE_COMPLEX, 0, 1, MPI_COMM_WORLD);
         }
 
     }

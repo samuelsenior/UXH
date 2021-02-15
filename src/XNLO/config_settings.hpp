@@ -27,6 +27,7 @@ private:
     atoms_per_worker = 0,
     x_min, x_max,
     N_t, t_min, t_max,
+    SAR_N_x, SAR_x_min, SAR_x_max,
     P_av, RR, FWHM, l_0, CEO, spot_radius,
     alpha,
     read_in_laser_pulse,
@@ -52,6 +53,10 @@ private:
     int N_t_ = 262144;//std::pow(2.0, 18);
     double t_min_ = -100e-15;
     double t_max_ = 100e-15;
+
+    int SAR_N_x_ = 4096;
+    double SAR_x_min_ = -300.0;
+    double SAR_x_max_ = 300.0;
 
     double P_av_ = 0.18;
     double RR_ = 1000;
@@ -91,6 +96,10 @@ private:
     std::string N_t_description_ = "(default) (int) The N_t value";
     std::string t_min_description_ = "(default) (double) The t_min value";
     std::string t_max_description_ = "(default) (double) The t_max value";
+
+    std::string SAR_N_x_description_ = "(default) (int) Number of x points in single atom response grid";
+    std::string SAR_x_min_description_ = "(default) (double) Single atom response grid minimum (A.U.)";
+    std::string SAR_x_max_description_ = "(default) (double) Single atom response grid maximum (A.U.)";
 
     std::string P_av_description_ = "(default) (double) The P_av value";
     std::string RR_description_ = "(default) (double) The RR value";
@@ -166,6 +175,19 @@ public:
     void t_max_set(double);
     std::string t_max_description();
     void t_max_description_set(std::string);
+
+    int SAR_N_x();
+    void SAR_N_x_set(int);
+    std::string SAR_N_x_description();
+    void SAR_N_x_description_set(std::string);
+    double SAR_x_min();
+    void SAR_x_min_set(double);
+    std::string SAR_x_min_description();
+    void SAR_x_min_description_set(std::string);
+    double SAR_x_max();
+    void SAR_x_max_set(double);
+    std::string SAR_x_max_description();
+    void SAR_x_max_description_set(std::string);
 
     double P_av();
     void P_av_set(double);
