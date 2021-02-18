@@ -43,6 +43,7 @@ const char * Config_Settings::setting_name[] = {
   "HHG_lambda_max",
   "HHP_E_min", // do default behaviour of setting at 10eV or energy corresponding to HHG_lambda_max, whichever is the larger
   "HHP_E_max", // set this to the energy corresponding to HHG_lambda_min eventually (for now selecting the range manually could be useful)
+  "flush_HHP_at_output_step",
   "output_electron_density",
   "pend_path",
   "path_input_j0",
@@ -281,6 +282,10 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
         HHP_E_max_set(std::stod(variable_value_str));
         HHP_E_max_description_set(input_description_char);
         break;
+
+      case SN::flush_HHP_at_output_step :
+        flush_HHP_at_output_step_set(std::stoi(variable_value_str));
+        flush_HHP_at_output_step_description_set(input_description_char);
 
       case SN:: output_electron_density:
         output_electron_density_set(std::stoi(variable_value_str));
@@ -626,6 +631,7 @@ void Config_Settings::print() {
     std::cout << "   HHG_lambda_max:          " << HHG_lambda_max() << "   " << HHG_lambda_max_description() << std::endl;
     std::cout << "   HHP_E_min:               " << HHP_E_min() << "   " << HHP_E_min_description() << std::endl;
     std::cout << "   HHP_E_max:               " << HHP_E_max() << "   " << HHP_E_max_description() << std::endl;
+    std::cout << "   flush_HHP_at_output_step " << flush_HHP_at_output_step() << "   " << flush_HHP_at_output_step_description() << std::endl;
     std::cout << "   output_electron_density: " << output_electron_density() << "   " << output_electron_density_description() << std::endl;
     std::cout << "   pend_path                " << pend_path() << "     " << pend_path_description() << std::endl;
     std::cout << "   path_input_j0:         " << path_input_j0() << "     " << path_input_j0_description() << std::endl;
@@ -686,6 +692,8 @@ void Config_Settings::print(std::string path_) {
       config_log << "{HHG_lambda_max} {" << HHG_lambda_max() << "} {" << HHG_lambda_max_description() << "}\n";
       config_log << "{HHP_E_min} {" << HHP_E_min() << "} {" << HHP_E_min_description() << "}\n";
       config_log << "{HHP_E_max} {" << HHP_E_max() << "} {" << HHP_E_max_description() << "}\n";
+
+      config_log << "{flush_HHP_at_output_step} {" << flush_HHP_at_output_step() << "} {" << flush_HHP_at_output_step_description() << "}\n";
 
       config_log << "{output_electron_density} {" << output_electron_density() << "} {" << output_electron_density_description() << "}\n";
 
@@ -878,6 +886,10 @@ void Config_Settings::HHP_E_max_set(double value) { HHP_E_max_ = value; }
 std::string Config_Settings::HHP_E_max_description() { return HHP_E_max_description_; }
 void Config_Settings::HHP_E_max_description_set(std::string description) { HHP_E_max_description_ = description; }
 
+int Config_Settings::flush_HHP_at_output_step() { return flush_HHP_at_output_step_; }
+void Config_Settings::flush_HHP_at_output_step_set(int value) { flush_HHP_at_output_step_ = value; }
+std::string Config_Settings::flush_HHP_at_output_step_description() { return flush_HHP_at_output_step_description_; }
+void Config_Settings::flush_HHP_at_output_step_description_set(std::string description) { flush_HHP_at_output_step_description_ = description; }
 
 int Config_Settings::output_electron_density() { return output_electron_density_; }
 void Config_Settings::output_electron_density_set(int value) { output_electron_density_ = value; }

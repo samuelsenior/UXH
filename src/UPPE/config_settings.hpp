@@ -42,6 +42,7 @@ private:
     HHG_lambda_max,
     HHP_E_min, 
     HHP_E_max,
+    flush_HHP_at_output_step,
     output_electron_density,
     pend_path,
     path_input_j0,
@@ -97,6 +98,8 @@ private:
     double HHG_lambda_max_ = 130.0e-9;
     double HHP_E_min_ = 10.0;
     double HHP_E_max_ = 206.0;
+
+    int flush_HHP_at_output_step_ = 0;
 
     int output_electron_density_ = 0;
 
@@ -179,6 +182,8 @@ private:
     std::string HHG_lambda_max_description_ = "(default) (double) Maximum generated high harmonic wavelength outputted";
     std::string HHP_E_min_description_ = "(default) (double) Minimum propagated high harmonic energy outputted";
     std::string HHP_E_max_description_ = "(default) (double) Maximum propagated high harmonic energy outputted";
+
+    std::string flush_HHP_at_output_step_description_ = "(default) (int) Switch to flush HHP variable after every time it's outputted";
 
     std::string output_electron_density_description_ = "(default) (int) Switch for outputting electron density";
 
@@ -392,6 +397,11 @@ public:
     void HHP_E_max_set(double);
     std::string HHP_E_max_description();
     void HHP_E_max_description_set(std::string);
+
+    int flush_HHP_at_output_step();
+    void flush_HHP_at_output_step_set(int);
+    std::string flush_HHP_at_output_step_description();
+    void flush_HHP_at_output_step_description_set(std::string);
 
 
     int output_electron_density();
