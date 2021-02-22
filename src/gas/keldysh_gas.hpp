@@ -33,8 +33,6 @@ class keldysh_gas {
     grid_tw tw;
     DFTI_DESCRIPTOR_HANDLE ft;
 
-    std::string gas_pressure_profile;
-
     // Functions
     // Witchcraft to switch around which pressure profile function atom_density
     // points to.
@@ -53,6 +51,8 @@ public:
     double inlet_1;
     double inlet_2;
     double transitionLength;
+
+    std::string gas_pressure_profile;
 
     double U;
     double C_kl;

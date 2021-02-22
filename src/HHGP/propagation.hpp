@@ -76,6 +76,7 @@ public:
     Eigen::ArrayXd segment(Eigen::ArrayXd k);
     Eigen::ArrayXXcd block(Eigen::ArrayXXcd A_w_e_);
 
+    double totalNumberOfAtoms();
     std::complex<double> n(int i);
 
     void nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_r_);

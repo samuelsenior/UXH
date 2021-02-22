@@ -48,13 +48,16 @@ keldysh_gas::keldysh_gas(double press_,
     } else if (gas_pressure_profile == "constant") {
         if (print) std::cout << "keldysh_gas: constant gas pressure profile chosen!" << std::endl;
         set_atom_density_ptr(&keldysh_gas::constant_pressure_profile);
+    } else {
+        std::cout << "Error, gas pressure profile not set to recognised profile, defaulting to capillary!" << std::endl;
+        set_atom_density_ptr(&keldysh_gas::capillary_pressure_profile);
     }
 }
 keldysh_gas::keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_,
                          std::string gas_pressure_profile_, bool print_) :
-    maths(maths_), tw(tw_), ft(ft_),
-    gas_pressure_profile(gas_pressure_profile_),
-    print(print_) {
+                         maths(maths_), tw(tw_), ft(ft_),
+                         gas_pressure_profile(gas_pressure_profile_),
+                         print(print_) {
 
     atom_density_max = press_ * 1.0e5 / (physics.k_B * 300.0);  // [atoms/m^3]
     z_max = 0.07;

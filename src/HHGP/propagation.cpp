@@ -132,6 +132,71 @@ Eigen::ArrayXXcd propagation::block(Eigen::ArrayXXcd A_w_r_) {
       return A_w_r_.block(k_excluded, 0, n_k, rkr.n_r);
 }
 
+double propagation::totalNumberOfAtoms() {
+  double N_tot = 0.0;
+  if (gas.gas_pressure_profile == "capillary") {
+
+    // Section 1
+    if (z <= gas.inlet_1 - gas.transitionLength) {
+      if (z > 0.0) {
+         N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(z, 2.0));
+      } else {
+         N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(0.0, 2.0));
+      }
+    }
+    // Section 2
+    double z_2 = 0.0;
+    double z_3 = gas.inlet_1;
+    if (z <= z_3) {
+      if (z > gas.inlet_1 - gas.transitionLength) {
+         z_2 = z;
+      } else {
+         z_2 = gas.inlet_1 - gas.transitionLength;
+      }
+      N_tot += (gas.atom_density_max / gas.transitionLength) * (0.1*std::pow(z_3, 2.0) - (0.2*gas.inlet_1 - gas.transitionLength)*z_3 - 0.1*std::pow(z_2, 2.0) + (0.2*gas.inlet_1 - gas.transitionLength)*z_2);
+    }
+    // Section 3
+    double z_4 = gas.inlet_2;
+    if (z <= z_4) {
+       if (z > gas.inlet_1) {
+          z_3 = z;
+       } else {
+          z_3 = gas.inlet_1;
+       }
+      N_tot += gas.atom_density_max * (z_4 - z_3);
+    }
+    // Section 4
+    double z_5 = gas.inlet_2 + gas.transitionLength;
+    if (z <= z_5) {
+       if (z > gas.inlet_2) {
+          z_4 = z;
+       } else {
+          z_4 = gas.inlet_2;
+       }
+       N_tot += gas.atom_density_max / gas.transitionLength * (0.1*std::pow(z_4, 2.0) - z_4*(gas.transitionLength + 0.2*gas.inlet_2) - 0.1*std::pow(z_5, 2.0) + z_5*(gas.transitionLength + 0.2*gas.inlet_2));
+    }
+    // Section 5
+    if (z <= Z_max) {
+       if ( z > (gas.inlet_2 + gas.transitionLength)) {
+          N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - z) - std::pow(Z_max, 2.0) + std::pow(z, 2.0));
+       } else {
+          N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - (gas.inlet_2 + gas.transitionLength)) - std::pow(Z_max, 2.0) + std::pow((gas.inlet_2 + gas.transitionLength), 2.0));
+       }
+    }
+
+  } else if (gas.gas_pressure_profile == "constant") {
+
+    N_tot = (Z_max - z)*gas.atom_density_max;
+
+  } else {
+
+    std::cout << "Error, gas pressure profile not set to recognised profile, defaulting to capillary!" << std::endl;
+    N_tot = (Z_max - z)*gas.atom_density_max;
+  }
+
+  return N_tot;
+}
+
 std::complex<double> propagation::n(int i) {
       // Use 1DInterp to make a grid of n, for the grid of k.
       // k is not linearly spaced so will need to use a grid that is
@@ -141,76 +206,66 @@ std::complex<double> propagation::n(int i) {
       //
       // Rename to refractiveIndex or something similar
 
-// Don't know if atom_density should be complex or double...?
-      //bool to_end_only = true;
       double z_max_prime = Z_max - (gas.inlet_2 + gas.transitionLength);
       double z_prime = z - (gas.inlet_2 + gas.transitionLength);
+
       if (to_end_only == true) {
-//std::cout << "z: " << z << ", " << (1.0 - (0.8*gas.atom_density_max)/(Z_max - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) << std::endl;
-//std::cout << "z: " << z << ", " << (0.8*gas.atom_density_max)/(Z_max - z) * std::pow(z_max_prime - z_prime, 2.0) / (2.0*z_max_prime) << std::endl;
-//std::cout << "gas.atom_density_max: " << gas.atom_density_max << std::endl;
-//std::cout << "gas.inlet_2: " << gas.inlet_2 << std::endl;
-//std::cout << "gas.transitionLength: " << gas.transitionLength << std::endl;
-//std::cout << "Z_max: " << Z_max << std::endl;
-//std::cout << "z_max_prime: " << z_max_prime << std::endl;
-//std::cout << "z_prime: " << z_prime << std::endl;
-//std::cout << "N(z): " << gas.atom_density(z) << std::endl;
-//std::cout << "-----" << std::endl;
 
-        double N_tot = 0.0;
 
-        // Section 1
-        if (z <= gas.inlet_1 - gas.transitionLength) {
-          if (z > 0.0) {
-             N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(z, 2.0));
-          } else {
-             N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(0.0, 2.0));
-          }
-        }
-        // Section 2
-        double z_2 = 0.0;
-        double z_3 = gas.inlet_1;
-        if (z <= z_3) {
-          if (z > gas.inlet_1 - gas.transitionLength) {
-             z_2 = z;
-          } else {
-             z_2 = gas.inlet_1 - gas.transitionLength;
-          }
-          N_tot += (gas.atom_density_max / gas.transitionLength) * (0.1*std::pow(z_3, 2.0) - (0.2*gas.inlet_1 - gas.transitionLength)*z_3 - 0.1*std::pow(z_2, 2.0) + (0.2*gas.inlet_1 - gas.transitionLength)*z_2);
-        }
-        // Section 3
-        double z_4 = gas.inlet_2;
-        if (z <= z_4) {
-           if (z > gas.inlet_1) {
-              z_3 = z;
-           } else {
-              z_3 = gas.inlet_1;
-           }
-          N_tot += gas.atom_density_max * (z_4 - z_3);
-        }
-        // Section 4
-        double z_5 = gas.inlet_2 + gas.transitionLength;
-        if (z <= z_5) {
-           if (z > gas.inlet_2) {
-              z_4 = z;
-           } else {
-              z_4 = gas.inlet_2;
-           }
-           N_tot += gas.atom_density_max / gas.transitionLength * (0.1*std::pow(z_4, 2.0) - z_4*(gas.transitionLength + 0.2*gas.inlet_2) - 0.1*std::pow(z_5, 2.0) + z_5*(gas.transitionLength + 0.2*gas.inlet_2));
-        }
-        // Section 5
-        if (z <= Z_max) {
-           if ( z > (gas.inlet_2 + gas.transitionLength)) {
-              N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - z) - std::pow(Z_max, 2.0) + std::pow(z, 2.0));
-           } else {
-              N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - (gas.inlet_2 + gas.transitionLength)) - std::pow(Z_max, 2.0) + std::pow((gas.inlet_2 + gas.transitionLength), 2.0));
-           }
-        }
+        //double N_tot = 0.0;
+        //
+        //// Section 1
+        //if (z <= gas.inlet_1 - gas.transitionLength) {
+        //  if (z > 0.0) {
+        //     N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(z, 2.0));
+        //  } else {
+        //     N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(0.0, 2.0));
+        //  }
+        //}
+        //// Section 2
+        //double z_2 = 0.0;
+        //double z_3 = gas.inlet_1;
+        //if (z <= z_3) {
+        //  if (z > gas.inlet_1 - gas.transitionLength) {
+        //     z_2 = z;
+        //  } else {
+        //     z_2 = gas.inlet_1 - gas.transitionLength;
+        //  }
+        //  N_tot += (gas.atom_density_max / gas.transitionLength) * (0.1*std::pow(z_3, 2.0) - (0.2*gas.inlet_1 - gas.transitionLength)*z_3 - 0.1*std::pow(z_2, 2.0) + (0.2*gas.inlet_1 - gas.transitionLength)*z_2);
+        //}
+        //// Section 3
+        //double z_4 = gas.inlet_2;
+        //if (z <= z_4) {
+        //   if (z > gas.inlet_1) {
+        //      z_3 = z;
+        //   } else {
+        //      z_3 = gas.inlet_1;
+        //   }
+        //  N_tot += gas.atom_density_max * (z_4 - z_3);
+        //}
+        //// Section 4
+        //double z_5 = gas.inlet_2 + gas.transitionLength;
+        //if (z <= z_5) {
+        //   if (z > gas.inlet_2) {
+        //      z_4 = z;
+        //   } else {
+        //      z_4 = gas.inlet_2;
+        //   }
+        //   N_tot += gas.atom_density_max / gas.transitionLength * (0.1*std::pow(z_4, 2.0) - z_4*(gas.transitionLength + 0.2*gas.inlet_2) - 0.1*std::pow(z_5, 2.0) + z_5*(gas.transitionLength + 0.2*gas.inlet_2));
+        //}
+        //// Section 5
+        //if (z <= Z_max) {
+        //   if ( z > (gas.inlet_2 + gas.transitionLength)) {
+        //      N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - z) - std::pow(Z_max, 2.0) + std::pow(z, 2.0));
+        //   } else {
+        //      N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - (gas.inlet_2 + gas.transitionLength)) - std::pow(Z_max, 2.0) + std::pow((gas.inlet_2 + gas.transitionLength), 2.0));
+        //   }
+        //}
+
         // Return the average value
         // Maybe make this an if statement so can return total if needed as well???
         //return N_tot / (Z_max - z);
-        return (1.0 - (N_tot / (Z_max - z)) * refractiveIndex(i));
-        //return (1.0 - ((0.8*gas.atom_density_max)/(Z_max - z) * std::pow(z_max_prime - z_prime, 2.0) / (2*z_max_prime)) * refractiveIndex(i));
+        return (1.0 - (totalNumberOfAtoms() / (Z_max - z)) * refractiveIndex(i));
       } else {
         return (1.0 - gas.atom_density(z) * refractiveIndex(i));
       }
@@ -250,24 +305,16 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
   // numbers of k
 
   // For each active frequency, propagate that frequency a step in z
-//std::cout << "dz: " << dz << ", z: " << z << std::endl;
-
   if (print) std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
   for(int i = 0; i < n_k; i++) {
       n_k_squared_tmp = ones * std::pow(n(i)*k(i), 2.0);
       // Transform from radial representation to frequency representation
       A_w_kr = ht.forward(A_w_r_.row(i));
+
       // For each radial point (/radial frequency), apply the propagator to it
-      //ArrayXcd testing = A_w_kr;
       A_w_kr *= (std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp();
-      //for(int j = 0; j < rkr.n_r; j++) {
-      //    A_w_kr(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-//          testing(j) *= std::exp(std::complex<double>(0, -1) * delta_z * std::pow(std::pow(n(i)*k(i), 2.0) - std::pow(k_r(j), 2.0), 0.5));
-     // }
-//std::cout << "---Testing: " << (A_w_kr - testing) << std::endl;
+
       // Backtransform to put back into radial representation
-//std::cout << "prop min propagator: " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).real().minCoeff() << ", " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).imag().minCoeff() << std::endl;
-//std::cout << "prop max propagator: " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).real().maxCoeff() << ", " << ((std::complex<double>(0, -1) * delta_z * (n_k_squared_tmp - k_r.pow(2.0)).pow(0.5)).exp()).imag().maxCoeff() << std::endl;
       A_w_r.row(i) = ht.backward(A_w_kr);
   }
 }
