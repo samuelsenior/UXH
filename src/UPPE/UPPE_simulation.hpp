@@ -58,7 +58,7 @@ namespace UPPE {
 
             double dz;
             int initial_step;
-            int propagation_step;
+            //int propagation_step;
             double initial_position;
             int sim_no;
 

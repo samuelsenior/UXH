@@ -31,10 +31,6 @@ namespace UPPE {
 
     UPPE_simulation::UPPE_simulation(int argc, char** argv){
         // MPI
-        //int this_process;
-        //int total_processes;
-        //MPI_Status status;
-
         MPI_Init(&argc, &argv);
         MPI_Comm_size(MPI_COMM_WORLD, &total_processes);
         MPI_Comm_rank(MPI_COMM_WORLD, &this_process);
@@ -130,12 +126,10 @@ namespace UPPE {
             tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths, true, false);
         }
 
-        //physics_textbook physics;
-
         if (this_process == 0) { std::cout << " - Setting XNLO::grid_tw" << std::endl; }
         w_active_min_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_max();
         w_active_max_HHG = 2.0 * maths.pi * physics.c / config.HHG_lambda_min();
-        //XNLO::grid_tw tw_XNLO;
+
         if (this_process == 0) {
             tw_XNLO = XNLO::grid_tw(config_XNLO.N_t(), config_XNLO.t_min(), config_XNLO.t_max(), w_active_max_HHG, true);
         } else {
@@ -162,13 +156,14 @@ namespace UPPE {
             initial_step = stoi(tmp_2);
             initial_step = int(double(config.n_z()) * double(stoi(tmp_2)) / double(config.original_n_z()));
 
-            propagation_step = initial_step;// + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
-                                                     // initial step being read in is step i-1
-            initial_position = dz * initial_step;
-        } else {
-            propagation_step = 1;
-        }
-        initial_position = dz * propagation_step;
+            //propagation_step = initial_step;// + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
+            //                                         // initial step being read in is step i-1
+            //initial_position = dz * initial_step;
+        }// else {
+        //    propagation_step = 1;
+        //}
+        //initial_position = dz * propagation_step;
+        initial_position = dz * initial_step;
     }
 
     void UPPE_simulation::print_initial_variable_debug(){
@@ -177,7 +172,7 @@ namespace UPPE {
         if (config.read_in_laser_pulse() == 1 && this_process == 0) {
             std::cout << "Simulation run (read in): " << sim_no << std::endl;
             std::cout << "Initial step: " << initial_step << std::endl;
-            std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
+            //std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
             std::cout << "Original position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
             std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
         }
@@ -360,10 +355,7 @@ namespace UPPE {
         window_HHG_acceleration = (1 - ((0.5 * maths.pi * temp_linSpace_HHG_acceleration / 500e-15).sin()).pow(50));
         temp_linSpace_HHG_acceleration = 0;
 
-        //ArrayXXcd hhg;
         hhg_new = ArrayXXcd::Zero(prop.n_k, config.n_r());
-        //ArrayXXcd hhg_source;
-        //ArrayXXcd hhg_previous;
 
         // Initialise HHP to zeros only once per simulation as it nneds to contain the
         // HHG buildup throughout the capillary to model it correctly. 
@@ -396,19 +388,6 @@ namespace UPPE {
     void UPPE_simulation::first_simulation_step(int ii){
         if (this_process == 0) {
             std::cout << "Propagation step: " << ii << std::endl;
-            // Driving pulse:
-            // Always start at 1, so first step is always outputted, even when reading in
-            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
-                config.step_path(ii, "UPPE_A_w");
-                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
-                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
-                
-                // If config set to output electron density then output it, if not then skip
-                if (config.output_electron_density() == 1) {
-                    config.step_path(ii, "UPPE_electron_density");
-                    file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
-                }
-            }
             A_w_active = laser_driving.A_w_active;
             if ((total_processes > 1) && HHGP_starting_z_bool) {
                 // Send
@@ -436,10 +415,7 @@ namespace UPPE {
             for (int j = 0; j < rkr.n_r; j++) {
                 neutral_atoms(j) = gas.atom_density(double(ii)*dz) - laser_driving.electron_density(laser_driving.electron_density.rows() - 1, j);
             }
-            if (config_XNLO.output_electric_field() == 1) {
-                E = atomResponse.E;
-            }
-            // Delete atomResponse after use to save ram
+
             acceleration_HHG = atomResponse.acceleration;
             for (int j = 0; j < rkr.n_r; j++) {
                 for (int i = 0; i < config_XNLO.N_t(); i++) {
@@ -453,11 +429,7 @@ namespace UPPE {
                 DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
             }
             hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
-            //for (int j = 0; j < rkr.n_r; j++) {
-                //for (int i = 0; i < n_active_HHG; i++) {
-                //    hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
-                //}
-            //}
+
             // Propagate high harmonics from current step to end of capillary
             HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
             // If at the last step then we're at teh end of the capillary and so aren't looking
@@ -468,26 +440,6 @@ namespace UPPE {
                 HHP += prop.A_w_r;
             } else {
                 HHP += HHG_tmp;
-            }
-
-            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
-                config.step_path(ii, "HHG_A_w");
-                file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
-                file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
-
-                // Need to have a check to see if I want tooutput HHP at first step or not
-                // ()
-                config.step_path(ii, "HHP_A_w");
-                file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
-                file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
-                if (config.flush_HHP_at_output_step() == 1) {
-                    HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
-                }
-
-                if (config_XNLO.output_electric_field() == 1) {
-                    config.step_path(ii, "HHG_electric_field");
-                    file_prop_step.write(E, config.path_HHG_E_step(), true);
-                }
             }
         }
     }
@@ -497,19 +449,7 @@ namespace UPPE {
             std::cout << "Propagation step: " << ii << std::endl;
             laser_driving.propagate(dz, capillary_driving, gas);
             prop.z += dz;
-            // Driving pulse:
-            // Always start at 1, so first step is always outputted, even when reading in
-            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
-                config.step_path(ii, "UPPE_A_w");
-                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
-                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
-                
-                // If config set to output electron density then output it, if not then skip
-                if (config.output_electron_density() == 1) {
-                    config.step_path(ii, "UPPE_electron_density");
-                    file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
-                }
-            }
+
             A_w_active = laser_driving.A_w_active;
             if ((total_processes > 1) && HHGP_starting_z_bool) {
                 // Send
@@ -537,15 +477,12 @@ namespace UPPE {
             for (int j = 0; j < rkr.n_r; j++) {
                 neutral_atoms(j) = gas.atom_density(double(ii)*dz) - laser_driving.electron_density(laser_driving.electron_density.rows() - 1, j);
             }
-            if (config_XNLO.output_electric_field() == 1) {
-                E = atomResponse.E;
-            }
-            // Delete atomResponse after use to save ram
+
             acceleration_HHG = atomResponse.acceleration;
             for (int j = 0; j < rkr.n_r; j++) {
                 for (int i = 0; i < config_XNLO.N_t(); i++) {
                     acceleration_HHG.row(i).col(j) *= neutral_atoms(j);
-                    acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);// / (w.row(i)).pow(2);
+                    acceleration_HHG.row(i).col(j) *= window_HHG_acceleration.row(i);
                 }
             }
             // Apply forward spectral transform
@@ -554,11 +491,7 @@ namespace UPPE {
                 DftiComputeForward(ft_HHG, accelerationToHHSource.col(i).data());
             }
             hhg = accelerationToHHSource.block(w_active_min_index_HHG, 0, n_active_HHG, rkr.n_r);
-            //for (int j = 0; j < rkr.n_r; j++) {
-                //for (int i = 0; i < n_active_HHG; i++) {
-                //    hhg.row(i).col(j) /= (w_active_HHG.row(i)).pow(2);
-                //}
-            //}
+
             // Propagate high harmonics from current step to end of capillary
             HHG_tmp = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
             // If at the last step then we're at teh end of the capillary and so aren't looking
@@ -569,24 +502,6 @@ namespace UPPE {
                 HHP += prop.A_w_r;
             } else {
                 HHP += HHG_tmp;
-            }
-
-            if ((ii - propagation_step) % config.output_sampling_rate() == 0) {
-                config.step_path(ii, "HHG_A_w");
-                file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
-                file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
-
-                // Need to have a check to see if I want tooutput HHP at first step or not
-                // ()
-                config.step_path(ii, "HHP_A_w");
-                file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
-                file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
-                if (config.flush_HHP_at_output_step() == 1) { HHP = ArrayXXcd::Zero(prop.n_k, config.n_r()); }
-
-                if (config_XNLO.output_electric_field() == 1) {
-                    config.step_path(ii, "HHG_electric_field");
-                    file_prop_step.write(E, config.path_HHG_E_step(), true);
-                }
             }
         }
     }
@@ -672,12 +587,7 @@ namespace UPPE {
             HHP += HHP_multiThread_tmp_2;
 
             std::cout << "Interpolation complete!" << std::endl;
-            if ((ii - initial_step) % config.output_sampling_rate() == 0) {
-                config.step_path(ii, "HHP_A_w");
-                file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
-                file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
-                if (config.flush_HHP_at_output_step() == 1) { HHP = ArrayXXcd::Zero(prop.n_k, config.n_r()); }
-            }
+
         } else if (total_processes > 1 && HHGP_starting_z_bool) {
             // Receive
             // For receiving prop.z and interp_dz
@@ -743,10 +653,10 @@ namespace UPPE {
 
         int ii;
         if (config.read_in_laser_pulse() == true) {
-            ii = propagation_step;
+            ii = initial_step;
         } else {
             ii = 0;
-            propagation_step = 0;
+            //propagation_step = 0;
         }
         if (dz*ii >= config.HHGP_starting_z()) {
             HHGP_starting_z_bool = true;
@@ -757,14 +667,77 @@ namespace UPPE {
         // Doing first step outside main loop as the interpolation stage can't be done in it since there's only one step
         // and no previous step
         first_simulation_step(ii);
+
+        // Set initial hhg_old
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
             hhg_old = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
         }
-        propagation_step++;
 
-        for (int ii = propagation_step; ii < config.ending_n_z() + 1; ii++) {
+        // Output varaibles resulting from first initial step
+        if ((ii - initial_step) % config.output_sampling_rate() == 0) {
+            config.step_path(ii, "UPPE_A_w");
+            file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
+            file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
+            
+            // If config set to output electron density then output it, if not then skip
+            if (config.output_electron_density() == 1) {
+                config.step_path(ii, "UPPE_electron_density");
+                file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+            }
+
+            config.step_path(ii, "HHG_A_w");
+            file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
+            file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
+
+            // Need to have a check to see if I want tooutput HHP at first step or not
+            config.step_path(ii, "HHP_A_w");
+            file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+            file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
+            if (config.flush_HHP_at_output_step() == 1) {
+                HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
+            }
+
+            if (config_XNLO.output_electric_field() == 1) {
+                config.step_path(ii, "HHG_electric_field");
+                file_prop_step.write(atomResponse.E, config.path_HHG_E_step(), true);
+            }
+        }
+
+        // Now go on to main loop
+        for (int ii = initial_step+1; ii < config.ending_n_z() + 1; ii++) {
+
             simulation_step(ii);
+
+            // Output varaibles resulting from first initial step
+            if ((ii - initial_step) % config.output_sampling_rate() == 0) {
+                config.step_path(ii, "UPPE_A_w");
+                file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
+                file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
+                
+                // If config set to output electron density then output it, if not then skip
+                if (config.output_electron_density() == 1) {
+                    config.step_path(ii, "UPPE_electron_density");
+                    file_prop_step.write(laser_driving.electron_density, config.path_electron_density_step(), true);
+                }
+
+                config.step_path(ii, "HHG_A_w");
+                file_prop_step.write(hhg.real(), config.path_HHG_R_step(), true);
+                file_prop_step.write(hhg.imag(), config.path_HHG_I_step(), false);
+
+                if (config_XNLO.output_electric_field() == 1) {
+                    config.step_path(ii, "HHG_electric_field");
+                    file_prop_step.write(atomResponse.E, config.path_HHG_E_step(), true);
+                }
+            }
+
             interpolation_step(ii);
+
+            if ((ii - initial_step) % config.output_sampling_rate() == 0) {
+                config.step_path(ii, "HHP_A_w");
+                file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
+                file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
+                if (config.flush_HHP_at_output_step() == 1) { HHP = ArrayXXcd::Zero(prop.n_k, config.n_r()); }
+            }
         }
 
         if (this_process == 0) {
@@ -772,35 +745,28 @@ namespace UPPE {
         }
 
         if (this_process == 0) {
-            // Output, as final block step, so don't overwrite and loose info from other blocks
-            IO file;
+            // Output last varaibles at last step incase sampling rate and specified last step don't coincide.
             if (config.n_z() != config.ending_n_z()) {
                 config.step_path(config.ending_n_z(), "UPPE_A_w");
                 file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
                 file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
-                file.write(tw.w_active, config.path_w_active());
 
                 config.step_path(config.ending_n_z(), "HHG_A_w");
-                file.write(hhg.real()* (dz / double(config.interp_points() + 1)), config.path_HHG_R_step());
-                file.write(hhg.imag()* (dz / double(config.interp_points() + 1)), config.path_HHG_I_step());
-                file.write(w_active_HHG, config.path_HHG_w());
+                file.write(hhg.real(), config.path_HHG_R_step());
+                file.write(hhg.imag(), config.path_HHG_I_step());
 
                 config.step_path(config.ending_n_z(), "HHP_A_w");
                 file.write(HHP.real(), config.path_HHP_R_step());
                 file.write(HHP.imag(), config.path_HHP_I_step());
-                file.write(prop.w_active, config.path_HHP_w());
             } else {
                 file.write(laser_driving.A_w_active.real(), config.path_A_w_R_step());
                 file.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step());
-                file.write(tw.w_active, config.path_w_active());
 
-                file.write(hhg.real()* (dz / double(config.interp_points() + 1)), config.path_HHG_R_step());
-                file.write(hhg.imag()* (dz / double(config.interp_points() + 1)), config.path_HHG_I_step());
-                file.write(w_active_HHG, config.path_HHG_w());
+                file.write(hhg.real(), config.path_HHG_R_step());
+                file.write(hhg.imag(), config.path_HHG_I_step());
 
                 file.write(HHP.real(), config.path_HHP_R_step());
                 file.write(HHP.imag(), config.path_HHP_I_step());
-                file.write(prop.w_active, config.path_HHP_w());
             }
         }
 
