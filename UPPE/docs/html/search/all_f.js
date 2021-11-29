@@ -193,7 +193,7 @@ var searchData=
   ['pend_5fpath_5fset',['pend_path_set',['../class_config___settings.html#a304590e5ee1997f8ba77b8f5b8616a0a',1,'Config_Settings']]],
   ['pending_5fstring_5flen_5fstepworkings',['pending_string_len_stepWorkings',['../class_config___settings.html#a961df4887c642c66a76e97159c259ffe',1,'Config_Settings']]],
   ['pending_5fstring_5fstepworkings',['pending_string_stepWorkings',['../class_config___settings.html#a88bf9a4af9ab13c2b9fbfff05f8ef42c',1,'Config_Settings']]],
-  ['physics',['physics',['../classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4',1,'keldysh_gas']]],
+  ['physics',['physics',['../classkeldysh__gas.html#a3b26e27ccf042ae2f89aa23e4252acf4',1,'keldysh_gas::physics()'],['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#aa45ad87c2278ae12631802452f7cb0d0',1,'UPPE::UPPE_simulation::physics()']]],
   ['physics_5ftextbook',['physics_textbook',['../classphysics__textbook.html',1,'physics_textbook'],['../classphysics__textbook.html#a89b6993c2aecf444cd2fa540c73a110b',1,'physics_textbook::physics_textbook()']]],
   ['physics_5ftextbook_2ecpp',['physics_textbook.cpp',['../physics__textbook_8cpp.html',1,'']]],
   ['physics_5ftextbook_2ehpp',['physics_textbook.hpp',['../physics__textbook_8hpp.html',1,'']]],
@@ -204,5 +204,8 @@ var searchData=
   ['press_5fdescription_5f',['press_description_',['../class_config___settings.html#a6c0508d29779a253834967377df98934',1,'Config_Settings']]],
   ['press_5fdescription_5fset',['press_description_set',['../class_config___settings.html#a21e1e3dad8bff784a753ec82ff528464',1,'Config_Settings']]],
   ['press_5fset',['press_set',['../class_config___settings.html#a6995d1f5f91fbc5229f9634b0daba17b',1,'Config_Settings']]],
-  ['print',['print',['../classkeldysh__gas.html#a6c8f0e275da16bbf21f51a8c2a444bf7',1,'keldysh_gas::print()'],['../classmaths__textbook.html#ae2a8fbebf9b44587f2d21df219c10812',1,'maths_textbook::print()'],['../class_config___settings.html#adf2afd6d78d715587922166b19cfe82f',1,'Config_Settings::print()'],['../class_config___settings.html#a6224a7b0a59a3735a873b77ed53282cf',1,'Config_Settings::print(std::string)']]]
+  ['print',['print',['../classkeldysh__gas.html#a6c8f0e275da16bbf21f51a8c2a444bf7',1,'keldysh_gas::print()'],['../classmaths__textbook.html#ae2a8fbebf9b44587f2d21df219c10812',1,'maths_textbook::print()'],['../class_config___settings.html#adf2afd6d78d715587922166b19cfe82f',1,'Config_Settings::print()'],['../class_config___settings.html#a6224a7b0a59a3735a873b77ed53282cf',1,'Config_Settings::print(std::string)']]],
+  ['print_5f',['print_',['../class_x_n_l_o_1_1grid__tw.html#a7de702e6273639e9923f65d056f06492',1,'XNLO::grid_tw']]],
+  ['print_5finitial_5fvariable_5fdebug',['print_initial_variable_debug',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a399000e1fc09e115ea3714c409fc2169',1,'UPPE::UPPE_simulation']]],
+  ['prop',['prop',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a3eb40af9b65d9b031724f163dc1921dd',1,'UPPE::UPPE_simulation']]]
 ];

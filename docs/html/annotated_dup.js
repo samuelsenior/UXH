@@ -11,8 +11,6 @@ var annotated_dup =
     [ "grid_rkr", "classgrid__rkr.html", "classgrid__rkr" ],
     [ "grid_tw", "classgrid__tw.html", "classgrid__tw" ],
     [ "grid_xkx", "classgrid__xkx.html", "classgrid__xkx" ],
-    [ "HH_source", "class_h_h__source.html", "class_h_h__source" ],
-    [ "HHGP", "class_h_h_g_p.html", "class_h_h_g_p" ],
     [ "IO", "class_i_o.html", "class_i_o" ],
     [ "keldysh_gas", "classkeldysh__gas.html", "classkeldysh__gas" ],
     [ "maths_textbook", "classmaths__textbook.html", "classmaths__textbook" ],

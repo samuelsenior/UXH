@@ -1,6 +1,7 @@
 var searchData=
 [
   ['n_5factive',['n_active',['../classgrid__tw.html#a1fbf854a0f7bd025aa98671009602c5c',1,'grid_tw']]],
+  ['n_5factive_5fhhg',['n_active_HHG',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a7f749b1e5246d748b6f6127a26541bbe',1,'UPPE::UPPE_simulation']]],
   ['n_5fcol_5f',['N_col_',['../class_i_o.html#a64aae2d2be35348233f8ddac4d6791f2',1,'IO']]],
   ['n_5fglass',['n_glass',['../classcapillary__fibre.html#aafb62b49ef2b72a1c0656281951db0b1',1,'capillary_fibre']]],
   ['n_5fm',['n_m',['../classgrid__rkr.html#ae580ce329d0cc89097775a6f4297b2ea',1,'grid_rkr']]],
@@ -16,5 +17,6 @@ var searchData=
   ['n_5ft_5fdescription_5f',['n_t_description_',['../class_config___settings.html#a809c1dd8b250a20f60c4751cea818363',1,'Config_Settings']]],
   ['n_5fx',['N_x',['../classgrid__xkx.html#ab6598693957e06b60dabe1591a0d925d',1,'grid_xkx']]],
   ['n_5fz_5f',['n_z_',['../class_config___settings.html#a70f51da03f30615877ebfd9c90a2176f',1,'Config_Settings']]],
-  ['n_5fz_5fdescription_5f',['n_z_description_',['../class_config___settings.html#ab946186659a0945aa57b9f2040f371f2',1,'Config_Settings']]]
+  ['n_5fz_5fdescription_5f',['n_z_description_',['../class_config___settings.html#ab946186659a0945aa57b9f2040f371f2',1,'Config_Settings']]],
+  ['neutral_5fatoms',['neutral_atoms',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a2c7140553a22f096137920d4d5cfa65d',1,'UPPE::UPPE_simulation']]]
 ];

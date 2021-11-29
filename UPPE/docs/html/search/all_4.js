@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['e',['E',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a49e03ba8ffb2de8a8de2b4e09bd7e486',1,'UPPE::UPPE_simulation']]],
   ['e_5fat',['E_at',['../classphysics__textbook.html#aed1451ff3400dce39969e5ac319f033a',1,'physics_textbook']]],
   ['e_5fev',['E_eV',['../classphysics__textbook.html#a73e078553f4f440e99aacad83f7df6d6',1,'physics_textbook']]],
   ['electron_5fdensity',['electron_density',['../classkeldysh__gas.html#a8dddacdfabea4d6c3049088cc868715a',1,'keldysh_gas']]],

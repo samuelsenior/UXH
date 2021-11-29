@@ -363,6 +363,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acae2b5fce581f4ea9c6aa0a30de79bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad87d8d2565c21a7fb166d99a9b059f46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ad87d8d2565c21a7fb166d99a9b059f46">HHP_E_max_description_set</a> (std::string)</td></tr>
 <tr class="separator:ad87d8d2565c21a7fb166d99a9b059f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba41a468b61601addee32e6adb3baad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#adba41a468b61601addee32e6adb3baad">flush_HHP_at_output_step</a> ()</td></tr>
+<tr class="separator:adba41a468b61601addee32e6adb3baad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab064fc18b6d51997e7d8301e62cf94ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ab064fc18b6d51997e7d8301e62cf94ca">flush_HHP_at_output_step_set</a> (int)</td></tr>
+<tr class="separator:ab064fc18b6d51997e7d8301e62cf94ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade69edff03a24e6fdb1efdd13abc0067"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ade69edff03a24e6fdb1efdd13abc0067">flush_HHP_at_output_step_description</a> ()</td></tr>
+<tr class="separator:ade69edff03a24e6fdb1efdd13abc0067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54f04f35d13032e8b58d47db8e463e60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a54f04f35d13032e8b58d47db8e463e60">flush_HHP_at_output_step_description_set</a> (std::string)</td></tr>
+<tr class="separator:a54f04f35d13032e8b58d47db8e463e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25293fb44703659b730de946a90bb625"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a25293fb44703659b730de946a90bb625">output_electron_density</a> ()</td></tr>
 <tr class="separator:a25293fb44703659b730de946a90bb625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d678a099ab4d5083c440b8c93be8693"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a9d678a099ab4d5083c440b8c93be8693">output_electron_density_set</a> (int)</td></tr>
@@ -621,27 +629,29 @@ Private Types</h2></td></tr>
 &#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faca6ff9a1153ad46f5eab8251b8628ebf">SN::HHG_lambda_max</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa21ad5d7a9cf76c930fbb345a5b4c971a">SN::HHP_E_min</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa06b29cb9e75ce03d4b70f5a7866118ca">SN::HHP_E_max</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fab486ed1e20f59455b3db43b3e0dfab03">SN::output_electron_density</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3d19c0184ca185b069561cce8e11c7b0">SN::flush_HHP_at_output_step</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13">SN::pend_path</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fab486ed1e20f59455b3db43b3e0dfab03">SN::output_electron_density</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13">SN::pend_path</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf">SN::path_input_j0</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faa0190b405b0dca9aaf90b9eab31cddc9">SN::path_A_w_R</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa723f16bd44b5c519243c37ac165df732">SN::path_A_w_I</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa64b9d0f9f55fb6ad349ff704f3d710bb">SN::path_w_active</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa723f16bd44b5c519243c37ac165df732">SN::path_A_w_I</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa64b9d0f9f55fb6ad349ff704f3d710bb">SN::path_w_active</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9b3bab21c25c20785bbda176ecc8b40c">SN::path_electron_density</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa55ae11324ef03ba27814d1175e8d12f0">SN::path_HHG_R</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa656218c9143eb88ee385dfe7ea618d6c">SN::path_HHG_I</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faaf71223a57febdc55d591cfec7acdff5">SN::path_HHG_w</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa656218c9143eb88ee385dfe7ea618d6c">SN::path_HHG_I</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faaf71223a57febdc55d591cfec7acdff5">SN::path_HHG_w</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3e723a56c4eccaf90be08c4f0b8a4dc8">SN::path_HHG_E</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fac5646092be3b9bd67310f0fc4f7169ee">SN::path_HHP_R</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9f7fd3b63d1a046a101e37cdfa22fac9">SN::path_HHP_I</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fabe2c91273a6a7183cfa4618671a99aa6">SN::path_HHP_w</a>, 
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9f7fd3b63d1a046a101e37cdfa22fac9">SN::path_HHP_I</a>, 
+<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fabe2c91273a6a7183cfa4618671a99aa6">SN::path_HHP_w</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474faea30eaeccb42cf92fa55ea6f3518b2e6">SN::path_config_file</a>, 
 <a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa9bd8b67c10b9b673ee424a957d1a953a">SN::path_config_log</a>, 
-<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45">SN::LAST_SN_ENTRY</a>
+<br />
+&#160;&#160;<a class="el" href="class_config___settings.html#af7668729f6d56b25d126b0a9ce06474fa3c1a917b21de40f1eec670b1425c2e45">SN::LAST_SN_ENTRY</a>
 <br />
  }</td></tr>
 <tr class="separator:af7668729f6d56b25d126b0a9ce06474f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -721,6 +731,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a56469ed42f394f20fa46527dccd0b637"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11fe08d50637ad826f6e96a3ac1a782b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a11fe08d50637ad826f6e96a3ac1a782b">HHP_E_max_</a> = 206.0</td></tr>
 <tr class="separator:a11fe08d50637ad826f6e96a3ac1a782b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a835c6c248df024320b7cc4443114e91a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a835c6c248df024320b7cc4443114e91a">flush_HHP_at_output_step_</a> = 0</td></tr>
+<tr class="separator:a835c6c248df024320b7cc4443114e91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7988c25a55ea00e47f59a8ac56cf9d6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a7988c25a55ea00e47f59a8ac56cf9d6a">output_electron_density_</a> = 0</td></tr>
 <tr class="separator:a7988c25a55ea00e47f59a8ac56cf9d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ab5ee2270acc68dc4757bb4bbe4dc9a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a6ab5ee2270acc68dc4757bb4bbe4dc9a">path_input_j0_</a> = &quot;../../input/J0_zeros.bin&quot;</td></tr>
@@ -821,7 +833,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a56b5d37f25b846851936235d6ff5b81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b0a048a13c52e9689ed88fd70e0e0a0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a8b0a048a13c52e9689ed88fd70e0e0a0">original_n_z_description_</a> = &quot;(default) (int) Original <a class="el" href="class_config___settings.html#a52cbe7c286ed9f09296e68524448ff08">n_z</a> from read in file&quot;</td></tr>
 <tr class="separator:a8b0a048a13c52e9689ed88fd70e0e0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d8e81426a90f65624e7309d6d6e894b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a2d8e81426a90f65624e7309d6d6e894b">HHGP_starting_z_description_</a> = &quot;(default) (double) Starting distance for <a class="el" href="class_h_h_g_p.html">HHGP</a> in capillary&quot;</td></tr>
+<tr class="memitem:a2d8e81426a90f65624e7309d6d6e894b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a2d8e81426a90f65624e7309d6d6e894b">HHGP_starting_z_description_</a> = &quot;(default) (double) Starting distance for HHGP in capillary&quot;</td></tr>
 <tr class="separator:a2d8e81426a90f65624e7309d6d6e894b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d0b640995d23896ebda07c537c5e8fc"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a8d0b640995d23896ebda07c537c5e8fc">ending_n_z_description_</a> = &quot;(default) (int) Ending step for UPPE block&quot;</td></tr>
 <tr class="separator:a8d0b640995d23896ebda07c537c5e8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -837,6 +849,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1a3bccd0b23b3fbf97704b0278368a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a397cfceecb559af971ff2029430e487f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a397cfceecb559af971ff2029430e487f">HHP_E_max_description_</a> = &quot;(default) (double) Maximum propagated high harmonic energy outputted&quot;</td></tr>
 <tr class="separator:a397cfceecb559af971ff2029430e487f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4d5abbdd57209fd27d89be7e1e70a13"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#ab4d5abbdd57209fd27d89be7e1e70a13">flush_HHP_at_output_step_description_</a> = &quot;(default) (int) Switch to flush HHP variable after every time it's outputted&quot;</td></tr>
+<tr class="separator:ab4d5abbdd57209fd27d89be7e1e70a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26d00a4886684d642bf4165c1f56afac"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a26d00a4886684d642bf4165c1f56afac">output_electron_density_description_</a> = &quot;(default) (int) Switch for outputting electron density&quot;</td></tr>
 <tr class="separator:a26d00a4886684d642bf4165c1f56afac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f8f961fb92591750f397fbaeca57dfd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_config___settings.html#a6f8f961fb92591750f397fbaeca57dfd">pend_path_description_</a> = &quot;(default) (std::string) Pending switch&quot;</td></tr>
@@ -983,6 +997,7 @@ Static Private Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474faca6ff9a1153ad46f5eab8251b8628ebf"></a>HHG_lambda_max&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa21ad5d7a9cf76c930fbb345a5b4c971a"></a>HHP_E_min&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa06b29cb9e75ce03d4b70f5a7866118ca"></a>HHP_E_max&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa3d19c0184ca185b069561cce8e11c7b0"></a>flush_HHP_at_output_step&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fab486ed1e20f59455b3db43b3e0dfab03"></a>output_electron_density&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa905ab2d0ac356ebfcfb72f0648d97c13"></a>pend_path&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af7668729f6d56b25d126b0a9ce06474fa07356c2c6e499a7440eda391e17e3ddf"></a>path_input_j0&#160;</td><td class="fielddoc"></td></tr>
@@ -1172,6 +1187,76 @@ Static Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void Config_Settings::ending_n_z_set </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adba41a468b61601addee32e6adb3baad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adba41a468b61601addee32e6adb3baad">&#9670;&nbsp;</a></span>flush_HHP_at_output_step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Config_Settings::flush_HHP_at_output_step </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade69edff03a24e6fdb1efdd13abc0067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade69edff03a24e6fdb1efdd13abc0067">&#9670;&nbsp;</a></span>flush_HHP_at_output_step_description()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::flush_HHP_at_output_step_description </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54f04f35d13032e8b58d47db8e463e60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54f04f35d13032e8b58d47db8e463e60">&#9670;&nbsp;</a></span>flush_HHP_at_output_step_description_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::flush_HHP_at_output_step_description_set </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab064fc18b6d51997e7d8301e62cf94ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab064fc18b6d51997e7d8301e62cf94ca">&#9670;&nbsp;</a></span>flush_HHP_at_output_step_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Config_Settings::flush_HHP_at_output_step_set </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -5466,6 +5551,50 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a835c6c248df024320b7cc4443114e91a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a835c6c248df024320b7cc4443114e91a">&#9670;&nbsp;</a></span>flush_HHP_at_output_step_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Config_Settings::flush_HHP_at_output_step_ = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab4d5abbdd57209fd27d89be7e1e70a13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4d5abbdd57209fd27d89be7e1e70a13">&#9670;&nbsp;</a></span>flush_HHP_at_output_step_description_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Config_Settings::flush_HHP_at_output_step_description_ = &quot;(default) (int) Switch to flush HHP variable after every time it's outputted&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6a842d08b4c58f984d829300cd28d7c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a842d08b4c58f984d829300cd28d7c5">&#9670;&nbsp;</a></span>found_stepWorkings</h2>
 
@@ -5696,7 +5825,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string Config_Settings::HHGP_starting_z_description_ = &quot;(default) (double) Starting distance for <a class="el" href="class_h_h_g_p.html">HHGP</a> in capillary&quot;</td>
+          <td class="memname">std::string Config_Settings::HHGP_starting_z_description_ = &quot;(default) (double) Starting distance for HHGP in capillary&quot;</td>
         </tr>
       </table>
   </td>
@@ -8037,7 +8166,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;output_sampling_rate&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;laser_rel_tol&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;read_in_laser_pulse&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R_initial&quot;</span>, <span class="stringliteral">&quot;path_A_w_I_initial&quot;</span>, <span class="stringliteral">&quot;path_w_active_initial&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;original_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHGP_starting_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;ending_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;interp_points&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;gas_pressure_profile&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHG_lambda_min&quot;</span>, </div><div class="line">  <span class="stringliteral">&quot;HHG_lambda_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHP_E_min&quot;</span>, </div><div class="line">  <span class="stringliteral">&quot;HHP_E_max&quot;</span>, </div><div class="line">  <span class="stringliteral">&quot;output_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHP_R&quot;</span>, <span class="stringliteral">&quot;path_HHP_I&quot;</span>, <span class="stringliteral">&quot;path_HHP_w&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <span class="stringliteral">&quot;n_z&quot;</span>, <span class="stringliteral">&quot;n_r&quot;</span>, <span class="stringliteral">&quot;n_m&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;output_sampling_rate&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;n_t&quot;</span>, <span class="stringliteral">&quot;T&quot;</span>, <span class="stringliteral">&quot;w_active_min&quot;</span>, <span class="stringliteral">&quot;w_active_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;Z&quot;</span>, <span class="stringliteral">&quot;R&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;press&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;p_av&quot;</span>, <span class="stringliteral">&quot;rep&quot;</span>, <span class="stringliteral">&quot;fwhm&quot;</span>, <span class="stringliteral">&quot;l_0&quot;</span>, <span class="stringliteral">&quot;ceo&quot;</span>, <span class="stringliteral">&quot;waist&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;laser_rel_tol&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;read_in_laser_pulse&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R_initial&quot;</span>, <span class="stringliteral">&quot;path_A_w_I_initial&quot;</span>, <span class="stringliteral">&quot;path_w_active_initial&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;original_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHGP_starting_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;ending_n_z&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;interp_points&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;gas_pressure_profile&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHG_lambda_min&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHG_lambda_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHP_E_min&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;HHP_E_max&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;flush_HHP_at_output_step&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;output_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;pend_path&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_input_j0&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_A_w_R&quot;</span>, <span class="stringliteral">&quot;path_A_w_I&quot;</span>, <span class="stringliteral">&quot;path_w_active&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_electron_density&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHG_R&quot;</span>, <span class="stringliteral">&quot;path_HHG_I&quot;</span>, <span class="stringliteral">&quot;path_HHG_w&quot;</span>, <span class="stringliteral">&quot;path_HHG_E&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_HHP_R&quot;</span>, <span class="stringliteral">&quot;path_HHP_I&quot;</span>, <span class="stringliteral">&quot;path_HHP_w&quot;</span>,</div><div class="line">  <span class="stringliteral">&quot;path_config_file&quot;</span>, <span class="stringliteral">&quot;path_config_log&quot;</span></div><div class="line">}</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a4f774e23910af488b9006a9c2a0aa1d3"></a>
@@ -8283,8 +8412,8 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sam/Project/XNLO/src/UPPE/<a class="el" href="_u_p_p_e_2config__settings_8hpp_source.html">config_settings.hpp</a></li>
-<li>/home/sam/Project/XNLO/src/UPPE/<a class="el" href="_u_p_p_e_2config__settings_8cpp.html">config_settings.cpp</a></li>
+<li>/home/sam/Project/UXH/src/UPPE/<a class="el" href="_u_p_p_e_2config__settings_8hpp_source.html">config_settings.hpp</a></li>
+<li>/home/sam/Project/UXH/src/UPPE/<a class="el" href="_u_p_p_e_2config__settings_8cpp.html">config_settings.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

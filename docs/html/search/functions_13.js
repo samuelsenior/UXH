@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['x_5fmax',['x_max',['../class_x_n_l_o_1_1_config___settings.html#a3e239af887c4eac15f5a338f9ebb45a4',1,'XNLO::Config_Settings']]],
-  ['x_5fmax_5fdescription',['x_max_description',['../class_x_n_l_o_1_1_config___settings.html#aed06c437593ebbb2ea17c8705a043baf',1,'XNLO::Config_Settings']]],
-  ['x_5fmax_5fdescription_5fset',['x_max_description_set',['../class_x_n_l_o_1_1_config___settings.html#acc799b68d1739194398e8c38ed2114dd',1,'XNLO::Config_Settings']]],
-  ['x_5fmax_5fset',['x_max_set',['../class_x_n_l_o_1_1_config___settings.html#aa4e371bd59664043a8e903df20d26058',1,'XNLO::Config_Settings']]],
-  ['x_5fmin',['x_min',['../class_x_n_l_o_1_1_config___settings.html#a189efceae10aca967020851cc3c59b19',1,'XNLO::Config_Settings']]],
-  ['x_5fmin_5fdescription',['x_min_description',['../class_x_n_l_o_1_1_config___settings.html#a3eb56744d1fd0a2c36a7454341ad60ff',1,'XNLO::Config_Settings']]],
-  ['x_5fmin_5fdescription_5fset',['x_min_description_set',['../class_x_n_l_o_1_1_config___settings.html#a02baddcf2450c55332289e2f49a58fd6',1,'XNLO::Config_Settings']]],
-  ['x_5fmin_5fset',['x_min_set',['../class_x_n_l_o_1_1_config___settings.html#ad776200ee998ac3bbfaf90e9edb4d525',1,'XNLO::Config_Settings']]],
-  ['xnlo_5fatomresponse',['XNLO_AtomResponse',['../class_x_n_l_o___atom_response.html#a3d8fa733b33b1d3abc76b12cfd724cf7',1,'XNLO_AtomResponse::XNLO_AtomResponse()'],['../class_x_n_l_o___atom_response.html#a845fcc102851f47c275e84299597b33b',1,'XNLO_AtomResponse::XNLO_AtomResponse(grid_rkr *rkr_, XNLO::grid_tw *tw_, maths_textbook *maths_, physics_textbook *physics_, int this_node, int total_nodes, XNLO::Config_Settings config_, std::string print_=&quot;minimum&quot;)']]]
+  ['w_5factive_5fmax',['w_active_max',['../class_h_h_1_1_config___settings.html#a17165addafe947c32457035b1a920d18',1,'HH::Config_Settings::w_active_max()'],['../class_config___settings.html#a17165addafe947c32457035b1a920d18',1,'Config_Settings::w_active_max()']]],
+  ['w_5factive_5fmax_5fdescription',['w_active_max_description',['../class_h_h_1_1_config___settings.html#a99acf11a5682e9cee68cae24028eefbc',1,'HH::Config_Settings::w_active_max_description()'],['../class_config___settings.html#a99acf11a5682e9cee68cae24028eefbc',1,'Config_Settings::w_active_max_description()']]],
+  ['w_5factive_5fmax_5fdescription_5fset',['w_active_max_description_set',['../class_h_h_1_1_config___settings.html#a1d93425d204d595db140648c2b582103',1,'HH::Config_Settings::w_active_max_description_set()'],['../class_config___settings.html#a1d93425d204d595db140648c2b582103',1,'Config_Settings::w_active_max_description_set()']]],
+  ['w_5factive_5fmax_5fset',['w_active_max_set',['../class_h_h_1_1_config___settings.html#a746e7376dacda6358184087a0c902486',1,'HH::Config_Settings::w_active_max_set()'],['../class_config___settings.html#a746e7376dacda6358184087a0c902486',1,'Config_Settings::w_active_max_set()']]],
+  ['w_5factive_5fmin',['w_active_min',['../class_h_h_1_1_config___settings.html#a2f8932f4f74b63a988918ac3904a690a',1,'HH::Config_Settings::w_active_min()'],['../class_config___settings.html#a2f8932f4f74b63a988918ac3904a690a',1,'Config_Settings::w_active_min()']]],
+  ['w_5factive_5fmin_5fdescription',['w_active_min_description',['../class_h_h_1_1_config___settings.html#ab297a08dc48a30516eab5e6effe096e2',1,'HH::Config_Settings::w_active_min_description()'],['../class_config___settings.html#ab297a08dc48a30516eab5e6effe096e2',1,'Config_Settings::w_active_min_description()']]],
+  ['w_5factive_5fmin_5fdescription_5fset',['w_active_min_description_set',['../class_h_h_1_1_config___settings.html#a1c553737658161f4addc22ad8fb4796c',1,'HH::Config_Settings::w_active_min_description_set()'],['../class_config___settings.html#a1c553737658161f4addc22ad8fb4796c',1,'Config_Settings::w_active_min_description_set()']]],
+  ['w_5factive_5fmin_5fset',['w_active_min_set',['../class_h_h_1_1_config___settings.html#a773c6dbd4fe5abbc8e3c09ebf895ba6f',1,'HH::Config_Settings::w_active_min_set()'],['../class_config___settings.html#a773c6dbd4fe5abbc8e3c09ebf895ba6f',1,'Config_Settings::w_active_min_set()']]],
+  ['waist',['waist',['../class_h_h_1_1_config___settings.html#a9bec079708e647e77006394d68ea3ad3',1,'HH::Config_Settings::waist()'],['../class_config___settings.html#a9bec079708e647e77006394d68ea3ad3',1,'Config_Settings::waist()']]],
+  ['waist_5fdescription',['waist_description',['../class_h_h_1_1_config___settings.html#a849ae9f7a6ef85215c04a79004ac129b',1,'HH::Config_Settings::waist_description()'],['../class_config___settings.html#a849ae9f7a6ef85215c04a79004ac129b',1,'Config_Settings::waist_description()']]],
+  ['waist_5fdescription_5fset',['waist_description_set',['../class_h_h_1_1_config___settings.html#a54a52d9c629a4675067bd60878482b53',1,'HH::Config_Settings::waist_description_set()'],['../class_config___settings.html#a54a52d9c629a4675067bd60878482b53',1,'Config_Settings::waist_description_set()']]],
+  ['waist_5fset',['waist_set',['../class_h_h_1_1_config___settings.html#aebe0df8b04a71ab41e8335a967ae10c4',1,'HH::Config_Settings::waist_set()'],['../class_config___settings.html#aebe0df8b04a71ab41e8335a967ae10c4',1,'Config_Settings::waist_set()']]],
+  ['write',['write',['../class_i_o.html#ac84ca0cd185f0df4ea871710120577d6',1,'IO']]],
+  ['write_5fascii_5fdouble',['write_ascii_double',['../class_i_o.html#a20602422f0a6615b265c96fc02523e6f',1,'IO']]],
+  ['write_5fdouble',['write_double',['../class_i_o.html#a9a648215dc5e33abe2c5a8916fff06d4',1,'IO']]],
+  ['write_5fheader',['write_header',['../class_i_o.html#a0db950886bb1e6d5571330f771974c4e',1,'IO']]]
 ];

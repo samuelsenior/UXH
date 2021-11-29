@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['hh_5fsource',['HH_source',['../class_h_h__source.html#a0b3c052d274495b4f90fb09d15fff9fa',1,'HH_source']]],
   ['hhg_5flambda_5fmax',['HHG_lambda_max',['../class_config___settings.html#a454400e908c2945641b8af244b25007a',1,'Config_Settings']]],
   ['hhg_5flambda_5fmax_5fdescription',['HHG_lambda_max_description',['../class_config___settings.html#ae80bd398c90f60c1585349716e7158f4',1,'Config_Settings']]],
   ['hhg_5flambda_5fmax_5fdescription_5fset',['HHG_lambda_max_description_set',['../class_config___settings.html#acb0e31efc504d4259f0c17f19843431e',1,'Config_Settings']]],
@@ -9,7 +8,6 @@ var searchData=
   ['hhg_5flambda_5fmin_5fdescription',['HHG_lambda_min_description',['../class_config___settings.html#a8bd568c0d0737b40ce10900bc428dc61',1,'Config_Settings']]],
   ['hhg_5flambda_5fmin_5fdescription_5fset',['HHG_lambda_min_description_set',['../class_config___settings.html#a5cbca3e26af02ef789d11e1623508773',1,'Config_Settings']]],
   ['hhg_5flambda_5fmin_5fset',['HHG_lambda_min_set',['../class_config___settings.html#a09bb5507546ac2c7f1c654ceb8472e31',1,'Config_Settings']]],
-  ['hhgp',['HHGP',['../class_h_h_g_p.html#ac427b46994326abe397a3b712a15b259',1,'HHGP::HHGP()'],['../class_h_h_g_p.html#ad97d6b0e40224aee31c75d0b91d7485f',1,'HHGP::HHGP(propagation &amp;prop_, HH::Config_Settings &amp;config_, grid_rkr &amp;rkr_, keldysh_gas &amp;gas_, maths_textbook &amp;maths_, DHT &amp;ht_)']]],
   ['hhgp_5fstarting_5fz',['HHGP_starting_z',['../class_config___settings.html#a5bb6c460299ee53a93d6f5ca96f3c96f',1,'Config_Settings']]],
   ['hhgp_5fstarting_5fz_5fdescription',['HHGP_starting_z_description',['../class_config___settings.html#a701bfd6e556e2bba2c3e6603bd7849d7',1,'Config_Settings']]],
   ['hhgp_5fstarting_5fz_5fdescription_5fset',['HHGP_starting_z_description_set',['../class_config___settings.html#ad913ead7a8a0de56794482f5a022c423',1,'Config_Settings']]],

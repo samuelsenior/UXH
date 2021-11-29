@@ -2,12 +2,12 @@ var searchData=
 [
   ['p_5fav_5f',['P_av_',['../class_x_n_l_o_1_1_config___settings.html#a3fa6bcad675fbf782984b18b701b74c8',1,'XNLO::Config_Settings']]],
   ['p_5fav_5fdescription_5f',['P_av_description_',['../class_x_n_l_o_1_1_config___settings.html#a5d01324f8c2ed052b6e9c7df3072232e',1,'XNLO::Config_Settings']]],
+  ['path_5facceleration_5f',['path_acceleration_',['../class_x_n_l_o_1_1_config___settings.html#ad40b746bb7d609e7045a92c794168d5d',1,'XNLO::Config_Settings']]],
+  ['path_5facceleration_5fdescription_5f',['path_acceleration_description_',['../class_x_n_l_o_1_1_config___settings.html#a064d2c2c6e0e562f1b3918580d596598',1,'XNLO::Config_Settings']]],
   ['path_5fconfig_5ffile_5f',['path_config_file_',['../class_x_n_l_o_1_1_config___settings.html#adcf0e510a0e364fb28f400b7ee1fde94',1,'XNLO::Config_Settings']]],
   ['path_5fconfig_5ffile_5fdescription_5f',['path_config_file_description_',['../class_x_n_l_o_1_1_config___settings.html#ac57dffb0f3528b8a6c8d5f7e5bf25a71',1,'XNLO::Config_Settings']]],
   ['path_5fconfig_5flog_5f',['path_config_log_',['../class_x_n_l_o_1_1_config___settings.html#a07939e60b0aa964ba4cf94e59719b934',1,'XNLO::Config_Settings']]],
   ['path_5fconfig_5flog_5fdescription_5f',['path_config_log_description_',['../class_x_n_l_o_1_1_config___settings.html#a0df0e858a8f67cdeb2f3ed66d5982a72',1,'XNLO::Config_Settings']]],
-  ['path_5fdipole_5f',['path_dipole_',['../class_x_n_l_o_1_1_config___settings.html#a8677ba2de670ea21eb49755404983ef4',1,'XNLO::Config_Settings']]],
-  ['path_5fdipole_5fdescription_5f',['path_dipole_description_',['../class_x_n_l_o_1_1_config___settings.html#a675baa188eff48907341e4977f7f4ec5',1,'XNLO::Config_Settings']]],
   ['path_5fe_5f',['path_E_',['../class_x_n_l_o_1_1_config___settings.html#a3c2fb4d6cada7ec2b3ce3af49fd78550',1,'XNLO::Config_Settings']]],
   ['path_5fe_5fdescription_5f',['path_E_description_',['../class_x_n_l_o_1_1_config___settings.html#a4596951dca3fb35d867e2f11a9f398d5',1,'XNLO::Config_Settings']]],
   ['path_5finput_5fj0',['path_input_j0',['../classmaths__textbook.html#a5c8a254bd117beaba43916c38f8f6a66',1,'maths_textbook']]],
@@ -26,5 +26,6 @@ var searchData=
   ['physics',['physics',['../class_schrodinger__atom__1_d.html#af291d12c810b3cf86dcfe5162e56ae75',1,'Schrodinger_atom_1D::physics()'],['../class_x_n_l_o___atom_response.html#aef121946cd765dd6e50cb28b09a7ef9a',1,'XNLO_AtomResponse::physics()']]],
   ['pi',['pi',['../classmaths__textbook.html#a96b811ef2a81ca51b98cf2a10c8ac5bc',1,'maths_textbook']]],
   ['print',['print',['../class_schrodinger__atom__1_d.html#a535e75205a93f4f050e53bbeda24f75f',1,'Schrodinger_atom_1D::print()'],['../classmaths__textbook.html#ae2a8fbebf9b44587f2d21df219c10812',1,'maths_textbook::print()'],['../class_x_n_l_o___atom_response.html#a45b505709c11a5ed91d4f6ab3185a52c',1,'XNLO_AtomResponse::print()']]],
+  ['print_5f',['print_',['../class_x_n_l_o_1_1grid__tw.html#a7de702e6273639e9923f65d056f06492',1,'XNLO::grid_tw']]],
   ['print_5fto_5fscreen',['print_to_screen',['../class_x_n_l_o_1_1_config___settings.html#a71aa4cf3491851bd61a923272933c5ce',1,'XNLO::Config_Settings']]]
 ];

@@ -8,5 +8,7 @@ var searchData=
   ['n_5ft',['n_t',['../classgrid__tw.html#ac121ce740479f628bdaa54627540ad42',1,'grid_tw::n_t()'],['../class_x_n_l_o_1_1grid__tw.html#a27e20c63e851123e8ccd52d17ae50347',1,'XNLO::grid_tw::N_t()']]],
   ['n_5ft_5f',['N_t_',['../class_x_n_l_o_1_1_config___settings.html#ae1a889240208051a638a09bf47e3fc6e',1,'XNLO::Config_Settings']]],
   ['n_5ft_5fdescription_5f',['N_t_description_',['../class_x_n_l_o_1_1_config___settings.html#ae35a412c07d31e2bc2097a38a25431de',1,'XNLO::Config_Settings']]],
+  ['n_5ft_5fuppe_5f',['N_t_UPPE_',['../class_x_n_l_o_1_1_config___settings.html#a548a1c5c08c2f4291d2e77f09a3da568',1,'XNLO::Config_Settings']]],
+  ['n_5ft_5fuppe_5fdescription_5f',['N_t_UPPE_description_',['../class_x_n_l_o_1_1_config___settings.html#a08c902a79155ebb5f1f3e79c0c8bb58f',1,'XNLO::Config_Settings']]],
   ['n_5fx',['N_x',['../classgrid__xkx.html#ab6598693957e06b60dabe1591a0d925d',1,'grid_xkx']]]
 ];

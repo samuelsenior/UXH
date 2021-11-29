@@ -104,6 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af1e2316561c84a2262e374600895010d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a583d4c2b423305ef3806d6221ed3f543"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrid__tw.html#a583d4c2b423305ef3806d6221ed3f543">grid_tw</a> (int N_t_, double T_, double w_active_min_, double w_active_max_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_)</td></tr>
 <tr class="separator:a583d4c2b423305ef3806d6221ed3f543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66a38cbd86ec5ac95bf5f508ca2f2a50"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrid__tw.html#a66a38cbd86ec5ac95bf5f508ca2f2a50">grid_tw</a> (int n_t_, double T_, double w_active_min_, double w_active_max_, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, bool expandable_n_t_=true, bool print_=true)</td></tr>
+<tr class="separator:a66a38cbd86ec5ac95bf5f508ca2f2a50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -122,7 +124,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Originally created by Patrick Anderson. Modified by Samuel Senior on 10/03/2017. "grid_tw" is a linear temporal grid. The spectral counterpart of this grid is evaluated and made accessible. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af1e2316561c84a2262e374600895010d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1e2316561c84a2262e374600895010d">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e2316561c84a2262e374600895010d">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -139,7 +141,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a583d4c2b423305ef3806d6221ed3f543"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a583d4c2b423305ef3806d6221ed3f543">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a583d4c2b423305ef3806d6221ed3f543">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,6 +184,64 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Parameterized Constructor </p>
+
+</div>
+</div>
+<a id="a66a38cbd86ec5ac95bf5f508ca2f2a50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66a38cbd86ec5ac95bf5f508ca2f2a50">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">grid_tw::grid_tw </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_t_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>T_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w_active_min_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w_active_max_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;&#160;</td>
+          <td class="paramname"><em>maths_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>expandable_n_t_</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>print_</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -257,8 +317,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sam/Project/XNLO/src/grid/<a class="el" href="grid__tw_8hpp_source.html">grid_tw.hpp</a></li>
-<li>/home/sam/Project/XNLO/src/grid/grid_tw.cpp</li>
+<li>/home/sam/Project/UXH/src/grid/<a class="el" href="grid__tw_8hpp_source.html">grid_tw.hpp</a></li>
+<li>/home/sam/Project/UXH/src/grid/grid_tw.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

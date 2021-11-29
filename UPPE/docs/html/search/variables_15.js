@@ -2,12 +2,20 @@ var searchData=
 [
   ['w',['w',['../class_x_n_l_o_1_1grid__tw.html#a099ffb42c45f511c9f2ab8a584d897cc',1,'XNLO::grid_tw']]],
   ['w_5factive',['w_active',['../classgrid__tw.html#a66922766c9dfe5c4667e55e678b134b9',1,'grid_tw']]],
+  ['w_5factive_5fhhg',['w_active_HHG',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a569259e9d1f478835d2013ca7f4da9ac',1,'UPPE::UPPE_simulation']]],
   ['w_5factive_5fmax_5f',['w_active_max_',['../class_config___settings.html#a8e1cad65153d6383ed84637ecd794bf0',1,'Config_Settings']]],
   ['w_5factive_5fmax_5fdescription_5f',['w_active_max_description_',['../class_config___settings.html#aec4b2d04c20b6d345a0cd31df2e896fa',1,'Config_Settings']]],
+  ['w_5factive_5fmax_5fhhg',['w_active_max_HHG',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a096ba9eb67765e332c2127e2c255c0dc',1,'UPPE::UPPE_simulation']]],
   ['w_5factive_5fmin_5f',['w_active_min_',['../class_config___settings.html#a5c77d47f7fc2d699b8cc5589fca7de5e',1,'Config_Settings']]],
   ['w_5factive_5fmin_5fdescription_5f',['w_active_min_description_',['../class_config___settings.html#a5465c1fbd2dc5e60c0c7e81c89291fe0',1,'Config_Settings']]],
+  ['w_5factive_5fmin_5fhhg',['w_active_min_HHG',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#aa90f5d922440f69fb284a08f0edac988',1,'UPPE::UPPE_simulation']]],
   ['w_5factive_5fmin_5findex',['w_active_min_index',['../classgrid__tw.html#a27d987fb3c8cbacf9cd152b83477f0d9',1,'grid_tw']]],
+  ['w_5factive_5fmin_5findex_5fhhg',['w_active_min_index_HHG',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a2d6994f24689f9a3cc9af3497d697719',1,'UPPE::UPPE_simulation']]],
   ['w_5fat',['w_at',['../classphysics__textbook.html#a63250c79f053fa4aa1c8f3505971b4f1',1,'physics_textbook']]],
+  ['w_5fmax_5f',['w_max_',['../class_x_n_l_o_1_1grid__tw.html#a1c6d49478eb46341cde6f5eeda4258dc',1,'XNLO::grid_tw']]],
   ['waist_5f',['waist_',['../class_config___settings.html#a769316096d7aa4e2939ed7fbf7db21e2',1,'Config_Settings']]],
-  ['waist_5fdescription_5f',['waist_description_',['../class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30',1,'Config_Settings']]]
+  ['waist_5fdescription_5f',['waist_description_',['../class_config___settings.html#aa23531b1d4459fa9a2f2ae8132e32e30',1,'Config_Settings']]],
+  ['wavelength_5findex_5fmax',['wavelength_index_max',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#aee4fa248cab932bd32e00899760de11a',1,'UPPE::UPPE_simulation']]],
+  ['wavelength_5findex_5fmin',['wavelength_index_min',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a219d671e07b2c87b277df22779aa5dd0',1,'UPPE::UPPE_simulation']]],
+  ['window_5fhhg_5facceleration',['window_HHG_acceleration',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a215f003a7d7dff8aca8bf1d4910fdb49',1,'UPPE::UPPE_simulation']]]
 ];

@@ -1,7 +1,7 @@
 var class_schrodinger__atom__1_d =
 [
     [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html#a48b10b930ac6da37946ba6265b1f1384", null ],
-    [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html#a418851a8ad6703a48af8b97c4a164f88", null ],
+    [ "Schrodinger_atom_1D", "class_schrodinger__atom__1_d.html#addefe2628d46d45d6905fc856476598d", null ],
     [ "get_acceleration", "class_schrodinger__atom__1_d.html#a44ed03b206ac99feb2555974d6cd698b", null ],
     [ "set_GS", "class_schrodinger__atom__1_d.html#ac1ed38eae8a6287fff9201cf6acdd436", null ],
     [ "solve_TDSE_PS", "class_schrodinger__atom__1_d.html#a5f88ea7098b3ad2ee72c1d43d6f63af4", null ],
@@ -15,6 +15,9 @@ var class_schrodinger__atom__1_d =
     [ "output_wavefunction", "class_schrodinger__atom__1_d.html#af3fe810737f6971bb31a0bb43b3f3ea9", null ],
     [ "physics", "class_schrodinger__atom__1_d.html#af291d12c810b3cf86dcfe5162e56ae75", null ],
     [ "print", "class_schrodinger__atom__1_d.html#a535e75205a93f4f050e53bbeda24f75f", null ],
+    [ "SAR_N_x", "class_schrodinger__atom__1_d.html#aa5f90f86225e25aaf63478d892de4d58", null ],
+    [ "SAR_x_max", "class_schrodinger__atom__1_d.html#afdbf92509ccd562c9bc4373d3ff1432f", null ],
+    [ "SAR_x_min", "class_schrodinger__atom__1_d.html#ad700a7899b82f2564549eb62a640afe4", null ],
     [ "T", "class_schrodinger__atom__1_d.html#a8209e28fd1335ee6ac7711ef8d063fbf", null ],
     [ "T2_x_psi", "class_schrodinger__atom__1_d.html#ab4f0feb9cb6fce0e25a74dd51ac56df1", null ],
     [ "T_V_x_psi", "class_schrodinger__atom__1_d.html#a58f6914f7eafe8c6baedd7e9a8560130", null ],

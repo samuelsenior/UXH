@@ -1,5 +1,6 @@
 var classcapillary__fibre =
 [
+    [ "capillary_fibre", "classcapillary__fibre.html#ae4d9c77e2ec9d6b4303ae31174eb063e", null ],
     [ "capillary_fibre", "classcapillary__fibre.html#a671951793318487999e331c659056a3e", null ],
     [ "gamma", "classcapillary__fibre.html#aac529850339a53f1262a497dd7a19931", null ],
     [ "n_glass", "classcapillary__fibre.html#aafb62b49ef2b72a1c0656281951db0b1", null ],

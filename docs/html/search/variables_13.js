@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t',['T',['../class_schrodinger__atom__1_d.html#a8209e28fd1335ee6ac7711ef8d063fbf',1,'Schrodinger_atom_1D::T()'],['../classgrid__tw.html#a918f1e6d18056d0f6da08fe01089b9b0',1,'grid_tw::t()'],['../class_x_n_l_o_1_1grid__tw.html#a5e84e8e3f6776005a88659a9ee1c73e5',1,'XNLO::grid_tw::t()']]],
+  ['t',['t',['../classgrid__tw.html#a918f1e6d18056d0f6da08fe01089b9b0',1,'grid_tw::t()'],['../class_x_n_l_o_1_1grid__tw.html#a5e84e8e3f6776005a88659a9ee1c73e5',1,'XNLO::grid_tw::t()'],['../class_schrodinger__atom__1_d.html#a8209e28fd1335ee6ac7711ef8d063fbf',1,'Schrodinger_atom_1D::T()']]],
   ['t2_5fx_5fpsi',['T2_x_psi',['../class_schrodinger__atom__1_d.html#ab4f0feb9cb6fce0e25a74dd51ac56df1',1,'Schrodinger_atom_1D']]],
   ['t_5f',['T_',['../class_h_h_1_1_config___settings.html#af647a1f52aa8e2aba05dbbb4bffae070',1,'HH::Config_Settings::T_()'],['../class_config___settings.html#a4f774e23910af488b9006a9c2a0aa1d3',1,'Config_Settings::T_()']]],
   ['t_5fat',['t_at',['../classphysics__textbook.html#acdcf772ff70c544f8394b3a9fc57674c',1,'physics_textbook']]],
@@ -14,12 +14,16 @@ var searchData=
   ['t_5fv_5fx_5fpsi',['T_V_x_psi',['../class_schrodinger__atom__1_d.html#a58f6914f7eafe8c6baedd7e9a8560130',1,'Schrodinger_atom_1D']]],
   ['t_5fx_5ft_5fpsi',['T_x_T_psi',['../class_schrodinger__atom__1_d.html#af8d4edf562953484589d92c1e7d8f168',1,'Schrodinger_atom_1D']]],
   ['t_5fx_5fv_5fpsi',['T_x_V_psi',['../class_schrodinger__atom__1_d.html#ad6b8ba703f9774805bae4de3645e78fa',1,'Schrodinger_atom_1D']]],
+  ['temp_5flinspace_5fhhg_5facceleration',['temp_linSpace_HHG_acceleration',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#afbdc134a2474637d9c7c8255e94a024c',1,'UPPE::UPPE_simulation']]],
   ['this_5fnode',['this_node',['../class_x_n_l_o___atom_response.html#a9e75c55d3bff625dbb4ea91fb7b85d66',1,'XNLO_AtomResponse']]],
+  ['this_5fprocess',['this_process',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a9004611a0179a5cb3642eaacbeed7ae2',1,'UPPE::UPPE_simulation']]],
   ['tmp_5fstepworkings',['tmp_stepWorkings',['../class_config___settings.html#a2c94338c018f4cbd27dae50789c44f14',1,'Config_Settings']]],
   ['to_5fend_5fonly',['to_end_only',['../classpropagation.html#a939b7a85171b3e5ce06560a3885ef0ca',1,'propagation']]],
   ['total_5fatoms',['total_atoms',['../class_x_n_l_o___atom_response.html#a22abb95ecb427b4016949c9ce5e6cfd1',1,'XNLO_AtomResponse']]],
   ['total_5fnodes',['total_nodes',['../class_x_n_l_o___atom_response.html#ac5133c126cb63ee5cbccfa3136fefebe',1,'XNLO_AtomResponse']]],
+  ['total_5fprocesses',['total_processes',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#aa158164a8a366138b3c0974431318cf3',1,'UPPE::UPPE_simulation']]],
   ['transform',['transform',['../class_schrodinger__atom__1_d.html#ab66f206f3d8f496369f35cc5923f2357',1,'Schrodinger_atom_1D']]],
   ['transitionlength',['transitionLength',['../classkeldysh__gas.html#a88f63ff18217c60729a67b10ee838ee4',1,'keldysh_gas']]],
-  ['tw',['tw',['../class_schrodinger__atom__1_d.html#a51af361088c07783c1be1a4f592427eb',1,'Schrodinger_atom_1D::tw()'],['../classkeldysh__gas.html#a1cd7129f9ba9d62f4084049e529cab49',1,'keldysh_gas::tw()'],['../class_u_p_p_e_1_1laser__pulse.html#a547a82482516990781cd0407680cde27',1,'UPPE::laser_pulse::tw()'],['../class_x_n_l_o___atom_response.html#ad0557096f8e25806a814e9a03eb09340',1,'XNLO_AtomResponse::tw()']]]
+  ['tw',['tw',['../class_schrodinger__atom__1_d.html#a51af361088c07783c1be1a4f592427eb',1,'Schrodinger_atom_1D::tw()'],['../classkeldysh__gas.html#a1cd7129f9ba9d62f4084049e529cab49',1,'keldysh_gas::tw()'],['../class_u_p_p_e_1_1laser__pulse.html#a547a82482516990781cd0407680cde27',1,'UPPE::laser_pulse::tw()'],['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#adc8f127fd13eddb75b4b812432b4e2e9',1,'UPPE::UPPE_simulation::tw()'],['../class_x_n_l_o___atom_response.html#ad0557096f8e25806a814e9a03eb09340',1,'XNLO_AtomResponse::tw()']]],
+  ['tw_5fxnlo',['tw_XNLO',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a84dfccc3f5a7fd58f9b0c969c429e5d7',1,'UPPE::UPPE_simulation']]]
 ];

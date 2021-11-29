@@ -110,10 +110,10 @@ Collaboration diagram for XNLO::laser_pulse:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1bb62e4650be18aa5e8020bc03ea6207"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1laser__pulse.html#a1bb62e4650be18aa5e8020bc03ea6207">laser_pulse</a> (double P_av_, double RR_, double FWHM_, double l_0_, double CEO_, double spot_radius_, double ROC_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> rkr_, <a class="el" href="class_x_n_l_o_1_1grid__tw.html">grid_tw</a> tw_, std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int read_in_laser_pulse)</td></tr>
-<tr class="separator:a1bb62e4650be18aa5e8020bc03ea6207"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a303eaf4bdba9d4dfa1b4b3b800509051"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1laser__pulse.html#a303eaf4bdba9d4dfa1b4b3b800509051">laser_pulse</a> (<a class="el" href="classgrid__rkr.html">grid_rkr</a> rkr_, <a class="el" href="class_x_n_l_o_1_1grid__tw.html">grid_tw</a> tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="classphysics__textbook.html">physics_textbook</a> &amp;physics_)</td></tr>
-<tr class="separator:a303eaf4bdba9d4dfa1b4b3b800509051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b081bd74d39dcfd314b7565c2ce903d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1laser__pulse.html#a9b081bd74d39dcfd314b7565c2ce903d">laser_pulse</a> (double P_av_, double RR_, double FWHM_, double l_0_, double CEO_, double spot_radius_, double ROC_, <a class="el" href="classgrid__rkr.html">grid_rkr</a> rkr_, <a class="el" href="class_x_n_l_o_1_1grid__tw.html">grid_tw</a> tw_, std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int N_t_UPPE, int read_in_laser_pulse)</td></tr>
+<tr class="separator:a9b081bd74d39dcfd314b7565c2ce903d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef01cfc65e9e45afce4078cdfeee615"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1laser__pulse.html#a5ef01cfc65e9e45afce4078cdfeee615">laser_pulse</a> (<a class="el" href="classgrid__rkr.html">grid_rkr</a> rkr_, <a class="el" href="class_x_n_l_o_1_1grid__tw.html">grid_tw</a> tw_, ArrayXXcd A_w_active, ArrayXd w_active, int N_t_UPPE, int w_active_min_index_UPPE, <a class="el" href="classmaths__textbook.html">maths_textbook</a> &amp;maths_, <a class="el" href="classphysics__textbook.html">physics_textbook</a> &amp;physics_)</td></tr>
+<tr class="separator:a5ef01cfc65e9e45afce4078cdfeee615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -127,8 +127,8 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Modified by Patrick Anderson on 07/05/2015. "laser_pulse" contains a time varying electric field. The intital conditions are passed to the constructor and field can be updated as it propagates. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1bb62e4650be18aa5e8020bc03ea6207"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bb62e4650be18aa5e8020bc03ea6207">&#9670;&nbsp;</a></span>laser_pulse() <span class="overload">[1/2]</span></h2>
+<a id="a9b081bd74d39dcfd314b7565c2ce903d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b081bd74d39dcfd314b7565c2ce903d">&#9670;&nbsp;</a></span>laser_pulse() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,6 +209,12 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N_t_UPPE</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>read_in_laser_pulse</em>&#160;</td>
         </tr>
         <tr>
@@ -222,8 +228,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a303eaf4bdba9d4dfa1b4b3b800509051"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a303eaf4bdba9d4dfa1b4b3b800509051">&#9670;&nbsp;</a></span>laser_pulse() <span class="overload">[2/2]</span></h2>
+<a id="a5ef01cfc65e9e45afce4078cdfeee615"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef01cfc65e9e45afce4078cdfeee615">&#9670;&nbsp;</a></span>laser_pulse() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,6 +257,12 @@ Public Attributes</h2></td></tr>
           <td></td>
           <td class="paramtype">ArrayXd&#160;</td>
           <td class="paramname"><em>w_active</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N_t_UPPE</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -325,8 +337,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sam/Project/XNLO/src/laser_pulse/<a class="el" href="laser__pulse_8hpp_source.html">laser_pulse.hpp</a></li>
-<li>/home/sam/Project/XNLO/src/laser_pulse/<a class="el" href="laser__pulse_8cpp.html">laser_pulse.cpp</a></li>
+<li>/home/sam/Project/UXH/src/laser_pulse/<a class="el" href="laser__pulse_8hpp_source.html">laser_pulse.hpp</a></li>
+<li>/home/sam/Project/UXH/src/laser_pulse/<a class="el" href="laser__pulse_8cpp.html">laser_pulse.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

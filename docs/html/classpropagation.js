@@ -7,6 +7,7 @@ var classpropagation =
     [ "n", "classpropagation.html#a7c696d9e54e5f0a7735047e28aee4866", null ],
     [ "nearFieldPropagationStep", "classpropagation.html#aedba6e1b78d23ae9f5f3f8b8cfd28c19", null ],
     [ "segment", "classpropagation.html#a39126bbbd4977c140c0077b849e78bc1", null ],
+    [ "totalNumberOfAtoms", "classpropagation.html#adda64a1ae5b926fefd6f827249b1d3b0", null ],
     [ "A_w_kr", "classpropagation.html#a4df23dd19a8cca8a4cb032718dc2b258", null ],
     [ "A_w_r", "classpropagation.html#ad3a84addde67e43bbb606408193f78ee", null ],
     [ "E", "classpropagation.html#aff3713e9170542e31c952a2d1b760eec", null ],

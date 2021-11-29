@@ -1,9 +1,9 @@
 var searchData=
 [
   ['p_5fav',['P_av',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdac49a06aaf50ca7737edf15542c7a044a',1,'XNLO::Config_Settings']]],
+  ['path_5facceleration',['path_acceleration',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda44fb11312455d72ec24be977191c5bc3',1,'XNLO::Config_Settings']]],
   ['path_5fconfig_5ffile',['path_config_file',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdaea30eaeccb42cf92fa55ea6f3518b2e6',1,'XNLO::Config_Settings']]],
   ['path_5fconfig_5flog',['path_config_log',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda9bd8b67c10b9b673ee424a957d1a953a',1,'XNLO::Config_Settings']]],
-  ['path_5fdipole',['path_dipole',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdad1c2ed8a97d281f7ca8a39fbc1e0db25',1,'XNLO::Config_Settings']]],
   ['path_5fe',['path_E',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdacbf1006b9dbcbf326f7fc5450fd6e550',1,'XNLO::Config_Settings']]],
   ['path_5finput_5fj0',['path_input_j0',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda07356c2c6e499a7440eda391e17e3ddf',1,'XNLO::Config_Settings']]],
   ['path_5flaser_5fa_5fw_5fi',['path_laser_A_w_I',['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cda5b52e7acc76ca78c48b0da0fcdf45155',1,'XNLO::Config_Settings']]],

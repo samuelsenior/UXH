@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t',['t',['../classgrid__tw.html#a918f1e6d18056d0f6da08fe01089b9b0',1,'grid_tw::t()'],['../class_x_n_l_o_1_1grid__tw.html#a5e84e8e3f6776005a88659a9ee1c73e5',1,'XNLO::grid_tw::t()'],['../class_schrodinger__atom__1_d.html#a8209e28fd1335ee6ac7711ef8d063fbf',1,'Schrodinger_atom_1D::T()']]],
+  ['t',['T',['../class_schrodinger__atom__1_d.html#a8209e28fd1335ee6ac7711ef8d063fbf',1,'Schrodinger_atom_1D::T()'],['../classgrid__tw.html#a918f1e6d18056d0f6da08fe01089b9b0',1,'grid_tw::t()'],['../class_x_n_l_o_1_1grid__tw.html#a5e84e8e3f6776005a88659a9ee1c73e5',1,'XNLO::grid_tw::t()']]],
   ['t2_5fx_5fpsi',['T2_x_psi',['../class_schrodinger__atom__1_d.html#ab4f0feb9cb6fce0e25a74dd51ac56df1',1,'Schrodinger_atom_1D']]],
   ['t_5fat',['t_at',['../classphysics__textbook.html#acdcf772ff70c544f8394b3a9fc57674c',1,'physics_textbook']]],
   ['t_5fmax',['t_max',['../class_x_n_l_o_1_1grid__tw.html#ae545fbacececcb2b358561b5adf205cc',1,'XNLO::grid_tw::t_max()'],['../class_x_n_l_o_1_1_config___settings.html#a51858cad5562dc0c9c55f13be78aabc9',1,'XNLO::Config_Settings::t_max()'],['../class_x_n_l_o_1_1_config___settings.html#a7ca940bffb23dd5dbd367eb30c53f9cdac94f63d4aea827028db922581f2678d2',1,'XNLO::Config_Settings::t_max()']]],

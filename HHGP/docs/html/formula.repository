@@ -1,4 +1,0 @@
-\form#0:\[ E(z, r) = \mathcal{H}^{-1}\left(\mathcal{H}(E(0, r)) \times \exp{iz\sqrt{k^2 - k_r^2}}\right). \]
-\form#1:\[ E(z, r) = \mathcal{H}^{-1}\left(\mathcal{H}(E(0, r)) \times \exp(iz\sqrt{k^2 - k_r^2)}\right). \]
-\form#2:\[ E(z, r) = \mathcal{H}^{-1}\left(\mathcal{H}(E(0, r)) \times \exp(iz\sqrt{k^2 - k_r^2})\right). \]
-\form#3:\[ E(z, r) = \mathcal{H}^{-1}\left(\mathcal{H}(E(0, r))e^{iz\sqrt{k^2 - k_r^2}}\right). \]

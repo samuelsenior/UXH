@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['physics_5ftextbook',['physics_textbook',['../classphysics__textbook.html',1,'']]],
-  ['propagation',['propagation',['../classpropagation.html',1,'']]]
+  ['schrodinger_5fatom_5f1d',['Schrodinger_atom_1D',['../class_schrodinger__atom__1_d.html',1,'']]]
 ];

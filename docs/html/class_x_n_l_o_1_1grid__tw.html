@@ -104,6 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af1e2316561c84a2262e374600895010d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54b8e8126ff23b9b3e6803c4cb223cfc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1grid__tw.html#a54b8e8126ff23b9b3e6803c4cb223cfc">grid_tw</a> (int N_t_, double t_min_, double t_max_)</td></tr>
 <tr class="separator:a54b8e8126ff23b9b3e6803c4cb223cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0016c92da82becf0882180c6841142"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1grid__tw.html#a3d0016c92da82becf0882180c6841142">grid_tw</a> (int N_t_, double t_min_, double t_max_, double <a class="el" href="class_x_n_l_o_1_1grid__tw.html#a1c6d49478eb46341cde6f5eeda4258dc">w_max_</a>, bool <a class="el" href="class_x_n_l_o_1_1grid__tw.html#a7de702e6273639e9923f65d056f06492">print_</a>=true)</td></tr>
+<tr class="separator:a3d0016c92da82becf0882180c6841142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -119,12 +121,16 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae545fbacececcb2b358561b5adf205cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a894654319f613bec7cd0af4f938e3757"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1grid__tw.html#a894654319f613bec7cd0af4f938e3757">dt</a></td></tr>
 <tr class="separator:a894654319f613bec7cd0af4f938e3757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6d49478eb46341cde6f5eeda4258dc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1grid__tw.html#a1c6d49478eb46341cde6f5eeda4258dc">w_max_</a></td></tr>
+<tr class="separator:a1c6d49478eb46341cde6f5eeda4258dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7de702e6273639e9923f65d056f06492"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_x_n_l_o_1_1grid__tw.html#a7de702e6273639e9923f65d056f06492">print_</a></td></tr>
+<tr class="separator:a7de702e6273639e9923f65d056f06492"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Modified by Patrick Anderson on 07/05/2015. "grid_tw" is a linear temporal grid. The spectral counterpart of this grid is evaluated and made accessible. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af1e2316561c84a2262e374600895010d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1e2316561c84a2262e374600895010d">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e2316561c84a2262e374600895010d">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -142,7 +148,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a54b8e8126ff23b9b3e6803c4cb223cfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54b8e8126ff23b9b3e6803c4cb223cfc">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a54b8e8126ff23b9b3e6803c4cb223cfc">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -172,7 +178,52 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor </p>
+
+</div>
+</div>
+<a id="a3d0016c92da82becf0882180c6841142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d0016c92da82becf0882180c6841142">&#9670;&nbsp;</a></span>grid_tw() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">grid_tw::grid_tw </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N_t_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t_min_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t_max_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w_max_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>print_</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -199,6 +250,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int XNLO::grid_tw::N_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7de702e6273639e9923f65d056f06492"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7de702e6273639e9923f65d056f06492">&#9670;&nbsp;</a></span>print_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool XNLO::grid_tw::print_</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -261,9 +326,23 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1c6d49478eb46341cde6f5eeda4258dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c6d49478eb46341cde6f5eeda4258dc">&#9670;&nbsp;</a></span>w_max_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double XNLO::grid_tw::w_max_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/sam/Project/XNLO/src/grid/<a class="el" href="grid__tw_8hpp_source.html">grid_tw.hpp</a></li>
-<li>/home/sam/Project/XNLO/src/grid/<a class="el" href="grid__tw_8cpp.html">grid_tw.cpp</a></li>
+<li>/home/sam/Project/UXH/src/grid/<a class="el" href="grid__tw_8hpp_source.html">grid_tw.hpp</a></li>
+<li>/home/sam/Project/UXH/src/grid/<a class="el" href="grid__tw_8cpp.html">grid_tw.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

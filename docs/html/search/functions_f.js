@@ -24,5 +24,6 @@ var searchData=
   ['rr_5fdescription',['RR_description',['../class_x_n_l_o_1_1_config___settings.html#a2e9c5f743d33a2ea8ee2a081e8dcc975',1,'XNLO::Config_Settings']]],
   ['rr_5fdescription_5fset',['RR_description_set',['../class_x_n_l_o_1_1_config___settings.html#a121b459883cbae9dcf9131954bf75ad6',1,'XNLO::Config_Settings']]],
   ['rr_5fset',['RR_set',['../class_x_n_l_o_1_1_config___settings.html#a0217f0772f3acf0fef40b679f9e9ce07',1,'XNLO::Config_Settings']]],
-  ['run',['run',['../class_x_n_l_o___atom_response.html#a365d34ada918c6272481bda96723a3f2',1,'XNLO_AtomResponse']]]
+  ['run',['run',['../class_x_n_l_o___atom_response.html#a503679ffa9864179068dea0d5dc7e9b7',1,'XNLO_AtomResponse']]],
+  ['run_5fuppe_5fsimulation',['run_UPPE_simulation',['../class_u_p_p_e_1_1_u_p_p_e__simulation.html#a7362001a656ee5a5aa03a76a029a5034',1,'UPPE::UPPE_simulation']]]
 ];
