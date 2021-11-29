@@ -46,10 +46,6 @@ if [ "$BUILD_DOCS" = true ] ; then
         cd "$CURRENT_PATH"/../XNLO/build &&
         ./comp -d
 
-        echo "HHGP:"
-        cd "$CURRENT_PATH"/../HHGP/build &&
-        ./comp -d
-
         echo "UPPE:"
         cd "$CURRENT_PATH"/../UPPE/build &&
         ./comp -d
@@ -61,10 +57,6 @@ if [ "$BUILD_DOCS" = true ] ; then
 else
         echo "XNLO:"
         cd "$CURRENT_PATH"/../XNLO/build &&
-        ./comp 
-
-        echo "HHGP:"
-        cd "$CURRENT_PATH"/../HHGP/build &&
         ./comp 
 
         echo "UPPE:"

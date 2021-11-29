@@ -85,7 +85,7 @@ namespace UPPE {
             config_XNLO.check_paths(false);
 
             config_XNLO.N_t_UPPE_set(config.n_t());
-            config_XNLO.N_t_UPPE_description_set("(int) Number of time grid points in laser pulse, set through UPPE");
+            config_XNLO.N_t_UPPE_description_set("(int) Number of steps in time grid of read in UPPE laser pulse, set through UPPE");
 
             config.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
             config.n_m_description_set("(int) Number of modes, set through UPPE");

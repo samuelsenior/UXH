@@ -114,7 +114,7 @@ private:
     std::string alpha_description_ = "(default) (double) The alpha value";
 
     std::string read_in_laser_pulse_description_ = "(default) (int) Switch to read in laser pulse";
-    std::string N_t_UPPE_description_ = "(default) (int) Number of time grid points in read in laser pulse";
+    std::string N_t_UPPE_description_ = "(default) (int) Number of steps in time grid of read in UPPE laser pulse";
 
     std::string output_wavefunction_description_ = "(default) (int) Switch to output wavefunction";
     std::string output_electric_field_description_ = "(default) (int) Switch to output electric field";
