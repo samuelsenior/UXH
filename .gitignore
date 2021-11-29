@@ -1,6 +1,6 @@
-#----------------------------------#
-#- Excluding .DS_Store from MacOS -#
-#----------------------------------#
+#----------------------------------------#
+#- Excluding .DS_Store files from MacOS -#
+#----------------------------------------#
 .DS_Store
 XNLO/.DS_Store
 XNLO/Eigen/.DS_Store
@@ -23,18 +23,10 @@ HHGP/build/.DS_Store
 HHGP/include/.DS_Store
 HHGP/src/.DS_Store
 
-#------------------------------------------#
-#- Excluding Jupyter notebook checkpoints -#
-#------------------------------------------#
-.ipynb_checkpoints/*
-# XNLO/.ipynb_checkpoints/*
-# UPPE/.ipynb_checkpoints/*
-# HHGP/.ipynb_checkpoints/*
-
-#-----------------------------------------------------------#
-#- Excluding documentation files that aren't the final pdf -#
-#- or the webpages of the docs                             -#
-#-----------------------------------------------------------#
+#---------------------------------------------------------#
+#- Include webpage documentation files and also pdf file -#
+#- if that exists                                        -#
+#---------------------------------------------------------#
 !docs/
 docs/*
 !docs/XNLO_Documentation.pdf
@@ -88,17 +80,15 @@ HHGP/build/*
 !HHGP/build/Doxyfile
 !HHGP/build/iridisComp
 
-#--------------------------------------------------#
-#- Excluding library files that aren't the header -#
-#--------------------------------------------------#
+#-------------------------------#
+#- Include library header file -#
+#-------------------------------#
 XNLO/lib/*
 !XNLO/lib/XNLO.hpp
-HHGP/lib/*
-!HHGP/lib/HHGP.hpp
 
-#-------------------------------------------#
-#- Exclude executables from the bin folder -#
-#-------------------------------------------#
+#----------------------------------------#
+#- Exclude executables from bin folders -#
+#----------------------------------------#
 XNLO/bin/*
 UPPE/bin/*
 HHGP/bin/*
@@ -117,9 +107,9 @@ XNLO/output/*
 UPPE/output/*
 HHGP/output/*
 
-#--------------------------------------------#
-#- Exclude config files except example ones -#
-#--------------------------------------------#
+#--------------------------------#
+#- Include example config files -#
+#--------------------------------#
 XNLO/configFiles/*
 !XNLO/configFiles/config_XNLO.txt
 UPPE/configFiles/*
@@ -131,9 +121,4 @@ HHGP/configFiles/*
 !UPPE/configFiles/config.txt
 !UPPE/configFiles/config_HHGP.txt
 !HHGP/configFiles/config_XNLO.txt
-
-#---------#
-#- Misc. -#
-#---------#
-UPPE/BatchJobTest.py
 
