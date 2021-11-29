@@ -31,6 +31,7 @@ private:
     P_av, RR, FWHM, l_0, CEO, spot_radius,
     alpha,
     read_in_laser_pulse,
+    N_t_UPPE,
     output_wavefunction,
     output_electric_field,
     pend_path,
@@ -38,7 +39,7 @@ private:
     path_laser_A_w_R,
     path_laser_A_w_I,
     path_laser_w_active,
-    path_dipole, path_w,
+    path_acceleration, path_w,
     path_E,
     path_config_file, path_config_log,
     LAST_SN_ENTRY
@@ -50,7 +51,7 @@ private:
     double x_min_ = 0;
     double x_max_ = 100e-6;
 
-    int N_t_ = 262144;//std::pow(2.0, 18);
+    int N_t_ = 262144;
     double t_min_ = -100e-15;
     double t_max_ = 100e-15;
 
@@ -69,7 +70,9 @@ private:
 
     int output_wavefunction_ = 0;
     int output_electric_field_ = 1;
+
     int read_in_laser_pulse_ = 0;
+    int N_t_UPPE_ = 16384;
 
     std::string pend_path_ = "prepend";
 
@@ -79,7 +82,7 @@ private:
     std::string path_laser_A_w_I_ = "../../UPPE/output/000_1_A_w_I.bin";
     std::string path_laser_w_active_ = "../../UPPE/output/000_1_w_active.bin";
 
-    std::string path_dipole_ = "../output/dipole.bin";
+    std::string path_acceleration_ = "../output/acceleration.bin";
     std::string path_w_ = "../output/w.bin";
 
     std::string path_E_ = "../output/E.bin";
@@ -111,6 +114,7 @@ private:
     std::string alpha_description_ = "(default) (double) The alpha value";
 
     std::string read_in_laser_pulse_description_ = "(default) (int) Switch to read in laser pulse";
+    std::string N_t_UPPE_description_ = "(default) (int) Number of time grid points in read in laser pulse";
 
     std::string output_wavefunction_description_ = "(default) (int) Switch to output wavefunction";
     std::string output_electric_field_description_ = "(default) (int) Switch to output electric field";
@@ -123,7 +127,7 @@ private:
     std::string path_laser_A_w_I_description_ = "(default) (std::string) Path to A_w_I of laser pulse input";
     std::string path_laser_w_active_description_ = "(default) (std::string) Path to w_active of laser pulse input";
 
-    std::string path_dipole_description_ = "(default) (std::string) Output path of acceleration";
+    std::string path_acceleration_description_ = "(default) (std::string) Output path of acceleration";
     std::string path_w_description_ = "(default) (std::string) Output path of w";
 
     std::string path_E_description_ = "(default) (std::string) Ouput path of electric field";
@@ -233,6 +237,11 @@ public:
     std::string read_in_laser_pulse_description();
     void read_in_laser_pulse_description_set(std::string);
 
+    int N_t_UPPE();
+    void N_t_UPPE_set(int);
+    std::string N_t_UPPE_description();
+    void N_t_UPPE_description_set(std::string);
+
     std::string pend_path();
     void pend_path_set(std::string);
     std::string pend_path_description();
@@ -256,10 +265,10 @@ public:
     std::string path_laser_w_active_description();
     void path_laser_w_active_description_set(std::string);
 
-    std::string path_dipole();
-    void path_dipole_set(std::string);
-    std::string path_dipole_description();
-    void path_dipole_description_set(std::string);
+    std::string path_acceleration();
+    void path_acceleration_set(std::string);
+    std::string path_acceleration_description();
+    void path_acceleration_description_set(std::string);
     std::string path_w();
     void path_w_set(std::string);
     std::string path_w_description();

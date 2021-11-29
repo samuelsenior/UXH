@@ -34,25 +34,22 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_,
                                          tw(tw_), 
                                          SAR_N_x(SAR_N_x_), SAR_x_min(SAR_x_min_), SAR_x_max(SAR_x_max_),
                                          print(print_) {
-    
+
     maths_textbook maths;
     physics_textbook physics;
 
     energy = 9999.9;
 
-    //grid_xkx temp(std::pow(2.0, 12), -300, 300);
-    //xkx = temp;
     xkx = grid_xkx(SAR_N_x, SAR_x_min, SAR_x_max);
 
     // Set up transform, MKL
     mkl_dimension = 1;
     mkl_length = xkx.N_x;
     mkl_scale_factor = 1.0 / xkx.N_x;
-    //DFTI_DESCRIPTOR_HANDLE transform;
     DftiCreateDescriptor(&transform, DFTI_DOUBLE, DFTI_COMPLEX, mkl_dimension, mkl_length);
     DftiSetValue(transform, DFTI_BACKWARD_SCALE, mkl_scale_factor);
     DftiCommitDescriptor(transform);
-    
+
     // Model potential (Soft Coulomb)
     alpha = alpha_;
     V_model = -1 / (alpha + xkx.x.pow(2)).sqrt();
@@ -106,8 +103,8 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_,
     \f]
     P. Bader et al. Solving the Schrodinger eigenvalue problem by imaginary time
     propagation techniques using splitting methods with complex coefficients, J. Chem. Phys., 139, 2013
-    
-    
+
+
     The energy expectation value is given by
     \f[
         \langle E \rangle = \int \psi^*\hat{K}\psi dx + \int \psi^*\hat{V}\psi dx.
@@ -116,12 +113,11 @@ Schrodinger_atom_1D::Schrodinger_atom_1D(XNLO::grid_tw& tw_, double alpha_,
 void Schrodinger_atom_1D::set_GS(int N_it_) {
 
     //maths_textbook maths;
-    
+
     // Create an imaginary time step and zero field
-    std::complex<double> dt(0.0, -0.01);  // Having dt any smaller than this and there are oscillations in the groundstate wavefunction
-                                          // Suggesting the groundstate hasn't been reached yet
+    std::complex<double> dt(0.0, -0.01);
     ArrayXd E_field_zeros = ArrayXd::Zero(N_it_);
-    
+
     // Seed
     double FWHM = 30.0;
     double k = 1.0 / (2.0 * std::pow(FWHM / 2.35, 2));
@@ -133,7 +129,6 @@ void Schrodinger_atom_1D::set_GS(int N_it_) {
     wfn_GS = wfn;
     if (print == true) {
         std::cout << "Energy: "<< energy * 27.211 << " eV" << std::endl;
-//std::cout << "Energy per step: " << acceleration_temp*27.11 << std::endl;
     }
 }
 
@@ -146,13 +141,11 @@ void Schrodinger_atom_1D::set_GS(int N_it_) {
     M. B. Gaarde and K. J. Schafer. Theory of attosecond pulse generation. Springer series in Optical Sciences, 177:11-31, 2013.
 */
 ArrayXd Schrodinger_atom_1D::get_acceleration(int N_it_, double dt_, ArrayXd E_) {
-    
-    //physics_textbook physics;
-    
+
     // Solve TDSE
     acceleration = solve_TDSE_PS(N_it_,
                         std::complex<double> (dt_ / physics.t_at, 0.0), E_ / physics.E_at, 1);
-    
+
     return(acceleration);
 }
 
@@ -182,19 +175,8 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
         }
 
         // Update operator
-        //T = (0.5 * xkx.kx.pow(2)).cast<std::complex<double> >();
-        //V = ArrayXcd::Zero(xkx.N_x);
         V_model = -1 / (alpha + xkx.x.pow(2)).sqrt();
         V = (V_model + (xkx.x * E_(ii))).cast<std::complex<double> >();
-
-        // Set up transform, MKL
-        //mkl_dimension = 1;
-        //mkl_length = xkx.N_x;
-        //mkl_scale_factor = 1.0 / xkx.N_x;
-        //DFTI_DESCRIPTOR_HANDLE transform;
-        //DftiCreateDescriptor(&transform, DFTI_DOUBLE, DFTI_COMPLEX, mkl_dimension, mkl_length);
-        //DftiSetValue(transform, DFTI_BACKWARD_SCALE, mkl_scale_factor);
-        //DftiCommitDescriptor(transform);
 
         // Propagate
         DftiComputeForward(transform, wfn.data());
@@ -220,26 +202,11 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
             energy = maths.trapz(xkx.x, (wfn.conjugate() * wfn_temp).real()) +
                      maths.trapz(xkx.x, (wfn.conjugate() * V * wfn).real());
             output(ii) = energy;
-            
+
             // Re-normalize
             wfn *= std::pow(maths.trapz(xkx.x, wfn.abs2()), -0.5);
 
         } else if (e_ == 1) {
-
-            // Acceleration (from a(t) = -<[H, [H, x]]>)
-            //x_psi = ArrayXcd::Zero(xkx.N_x);
-            //T2_x_psi = ArrayXcd::Zero(xkx.N_x);
-            //T_V_x_psi = ArrayXcd::Zero(xkx.N_x);
-            //V_T_x_psi = ArrayXcd::Zero(xkx.N_x);
-            //V2_x_psi = ArrayXcd::Zero(xkx.N_x);
-            //x_T2_psi = ArrayXcd::Zero(xkx.N_x);
-            //x_T_V_psi = ArrayXcd::Zero(xkx.N_x);
-            //x_V_T_psi = ArrayXcd::Zero(xkx.N_x);
-            //x_V2_psi = ArrayXcd::Zero(xkx.N_x);
-            //T_x_T_psi = ArrayXcd::Zero(xkx.N_x);
-            //T_x_V_psi = ArrayXcd::Zero(xkx.N_x);
-            //V_x_T_psi = ArrayXcd::Zero(xkx.N_x);
-            //V_x_V_psi = ArrayXcd::Zero(xkx.N_x);
 
             x_psi = xkx.x * wfn;
 
@@ -311,16 +278,13 @@ ArrayXd Schrodinger_atom_1D::solve_TDSE_PS(int N_it_, std::complex<double> dt_,
 
             output(ii) = -1.0*maths.trapz(xkx.x, (wfn.conjugate() * wfn_temp).real());
 
-            // Displacement
-            //output(ii) = maths.trapz(xkx.x, (wfn.conjugate() * xkx.x * wfn).real());
-
             if (output_wavefunction == 1) { wfn_output.row(ii) = wfn; }
 
         } else {
             // Spare
-            std::cout << "Invalid expectation value!" << std::endl;   
+            std::cout << "Invalid expectation value!" << std::endl;
         }
-    }    
+    }
     return(output);
 }
 

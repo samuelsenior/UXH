@@ -1,5 +1,4 @@
 #include "propagation.hpp"
-//#include "config_settings.hpp"
 #include "../gas/keldysh_gas.hpp"
 #include "../grid/grid_rkr.hpp"
 #include "../grid/grid_tw.hpp"
@@ -9,15 +8,9 @@
 #include "../../Eigen/Dense"
 
 #include <iostream>
-
-// Remove this if IO for E, f1, f2 goes into another class etc
 #include "../IO/IO.hpp"
 
 #include <complex>
-
-//namespace HHGP {
-
-//using namespace Eigen;
 
 //------------------------------------------------------------------------------------------------//
 //  Class implementation
@@ -35,8 +28,7 @@ propagation::propagation(double E_min_,
                          physics_textbook& physics_,
                          maths_textbook& maths_,
                          DHT& ht_,
-                         bool print_)//,
-                         //HH::Config_Settings config_)
+                         bool print_)
                         :
                          E_min(E_min_),
                          E_max(E_max_),
@@ -47,39 +39,29 @@ propagation::propagation(double E_min_,
                          physics(physics_),
                          maths(maths_),
                          ht(ht_),
-                         print(print_) {//,
-                         //config(config_) {
+                         print(print_) {
 
       z = 0.0;
       k_r = rkr.kr;
       k_excluded = 0;
 
       to_end_only = true;
-      // Put the divides on the other side to become multiplies to save
-      // computational time
-      // Do it like this in the future so less calculations:
-      //    w_min = C * E_min^B
-      //    while () {...}
       while ((physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) < (E_min)) {
             k_excluded++;
-if (print) std::cout << "k_excluded: " << k_excluded << ", w_active_tmp(k_excluded): " << w_active_tmp(k_excluded) << ", E: " << (physics.h / (2.0*maths.pi) * w_active_tmp(k_excluded) * physics.E_eV) << std::endl;
       }
       int count = 0;
       while ((physics.h / (2.0*maths.pi) * w_active_tmp(count) * physics.E_eV) < (E_max)) {
             count++;
       }
-if (print) std::cout << "count: " << count << std::endl;
 
-      n_k = count-k_excluded;//w_active_tmp.rows() - k_excluded;
+      n_k = count-k_excluded;
       w_active = w_active_tmp.segment(k_excluded, n_k);
       k = std::complex<double>(1, 0) * w_active / physics.c;
       A_w_r = Eigen::ArrayXXcd::Zero(n_k, rkr.n_r);
 
       refractiveIndex = Eigen::ArrayXcd::Zero(n_k);
-      Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV!!
+      Eigen::ArrayXd E_grid = w_active * physics.h / (2.0*maths.pi) * 6.241509e18; // In units of eV
 
-      // Put these in their own class or in the physics class?
-      // Also, how to know how much to read in?
       int E_length = 506;  // Length of Ar.nff file
       int ASF_file_cols = 3;  // Number of cols in ASF file
       E_f1_f2_data_path = "../../input/AtomicScatteringFactors/ar.nff";
@@ -103,12 +85,9 @@ if (print) std::cout << "count: " << count << std::endl;
       lamda = 2.0*maths.pi / k;
 
       // Split up the calculation as we don't need to do the full calculation at every
-      // propagation step, only the position dependent atom density bit
-      //refractiveIndex = 1 - (rho_0 * physics.r_0 * lamda.pow(2.0))/(2.0 * maths.pi) * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);//1 - rho * (test_f1 + std::complex<double>(0.0, 1.0) * test_f2);
-      
+      // propagation step, only the position dependent atom density
       refractiveIndex = (physics.r_0 * (lamda.real()).pow(2.0))/(2.0 * maths.pi) * (f1 + std::complex<double>(0.0, 1.0) * f2);
 
-      //config.step_path(i);
       IO RI_output;
       RI_output.overwrite("../output/f1.bin", false);
       RI_output.write_header("../output/f1.bin", n_k, 1, false);
@@ -201,70 +180,11 @@ std::complex<double> propagation::n(int i) {
       // Use 1DInterp to make a grid of n, for the grid of k.
       // k is not linearly spaced so will need to use a grid that is
       // linearly spaced and make sure that n is also in the same form.
-      //
-      // Also need to remember to include gas pressure profile.
-      //
-      // Rename to refractiveIndex or something similar
 
       double z_max_prime = Z_max - (gas.inlet_2 + gas.transitionLength);
       double z_prime = z - (gas.inlet_2 + gas.transitionLength);
 
       if (to_end_only == true) {
-
-
-        //double N_tot = 0.0;
-        //
-        //// Section 1
-        //if (z <= gas.inlet_1 - gas.transitionLength) {
-        //  if (z > 0.0) {
-        //     N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(z, 2.0));
-        //  } else {
-        //     N_tot += (0.8*gas.atom_density_max / (2.0*(gas.inlet_1 - gas.transitionLength))) * (std::pow(gas.inlet_1 - gas.transitionLength, 2.0) - std::pow(0.0, 2.0));
-        //  }
-        //}
-        //// Section 2
-        //double z_2 = 0.0;
-        //double z_3 = gas.inlet_1;
-        //if (z <= z_3) {
-        //  if (z > gas.inlet_1 - gas.transitionLength) {
-        //     z_2 = z;
-        //  } else {
-        //     z_2 = gas.inlet_1 - gas.transitionLength;
-        //  }
-        //  N_tot += (gas.atom_density_max / gas.transitionLength) * (0.1*std::pow(z_3, 2.0) - (0.2*gas.inlet_1 - gas.transitionLength)*z_3 - 0.1*std::pow(z_2, 2.0) + (0.2*gas.inlet_1 - gas.transitionLength)*z_2);
-        //}
-        //// Section 3
-        //double z_4 = gas.inlet_2;
-        //if (z <= z_4) {
-        //   if (z > gas.inlet_1) {
-        //      z_3 = z;
-        //   } else {
-        //      z_3 = gas.inlet_1;
-        //   }
-        //  N_tot += gas.atom_density_max * (z_4 - z_3);
-        //}
-        //// Section 4
-        //double z_5 = gas.inlet_2 + gas.transitionLength;
-        //if (z <= z_5) {
-        //   if (z > gas.inlet_2) {
-        //      z_4 = z;
-        //   } else {
-        //      z_4 = gas.inlet_2;
-        //   }
-        //   N_tot += gas.atom_density_max / gas.transitionLength * (0.1*std::pow(z_4, 2.0) - z_4*(gas.transitionLength + 0.2*gas.inlet_2) - 0.1*std::pow(z_5, 2.0) + z_5*(gas.transitionLength + 0.2*gas.inlet_2));
-        //}
-        //// Section 5
-        //if (z <= Z_max) {
-        //   if ( z > (gas.inlet_2 + gas.transitionLength)) {
-        //      N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - z) - std::pow(Z_max, 2.0) + std::pow(z, 2.0));
-        //   } else {
-        //      N_tot += 0.4*gas.atom_density_max / (Z_max - (gas.inlet_2 + gas.transitionLength)) * (2.0*Z_max*(Z_max - (gas.inlet_2 + gas.transitionLength)) - std::pow(Z_max, 2.0) + std::pow((gas.inlet_2 + gas.transitionLength), 2.0));
-        //   }
-        //}
-
-        // Return the average value
-        // Maybe make this an if statement so can return total if needed as well???
-        //return N_tot / (Z_max - z);
         return (1.0 - (totalNumberOfAtoms() / (Z_max - z)) * refractiveIndex(i));
       } else {
         return (1.0 - gas.atom_density(z) * refractiveIndex(i));
@@ -280,30 +200,6 @@ std::complex<double> propagation::n(int i) {
       \f]
 */
 void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_r_) {
-  // k is from w_active, in terms of t this would be linearly spaced
-
-  // Need to discount the k's that fall below the minimum energy
-  // read in from the E_ev, f1, f2, data file for Ar.
-  // I.e. similar count method to that for n_active
-  // and take block of k's from count to end
-  //    while h*w_active[count] / (2 * pi) * E_ev < 10.0eV
-  //       count++;
-  //    k = w_active.block(count, end) / c;
-  // Need to do this also for the field, as E[i<count] have energies
-  // below the lower limit from the data file and therefore can't be
-  // propagated in the gas. So (e.g.):
-  //    E = E.block(count, end);
-  // Also need a new n_active, not the one passed in from the prop sim
-  // to account for discounted lower energy frequencies.
-
-  // Can an Eigen array be reesized like this?
-  // Or can main (etc) call a propagation class function to resize
-  // it's A array to make it valid for k_r's etc?
-  //    But it would have to do this at each propagation step anyway...
-  // Do a sanatise or block function from the calling loop rather than this here
-  // as source needs to be added to this afterwards and there would be different
-  // numbers of k
-
   // For each active frequency, propagate that frequency a step in z
   if (print) std::cout << "z: " << z << ", delta_z: " << delta_z << ", Z_max - z: " << Z_max - z << std::endl;
   for(int i = 0; i < n_k; i++) {
@@ -325,5 +221,3 @@ void propagation::nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_
 void propagation::farFieldPropagation() {
 
 }
-
-//} // HHGP namespace

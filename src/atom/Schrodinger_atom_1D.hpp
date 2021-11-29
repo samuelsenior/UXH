@@ -30,9 +30,9 @@ class Schrodinger_atom_1D {
 
     maths_textbook maths;
     physics_textbook physics;
-    
+
 public:
-    
+
     // Set up transform, MKL
     MKL_LONG mkl_dimension;
     MKL_LONG mkl_length;
@@ -84,7 +84,7 @@ public:
     void set_GS(int N_it_);
     ArrayXd get_acceleration(int N_it_, double dt_, ArrayXd E_);
     ArrayXd solve_TDSE_PS(int N_it_, std::complex<double> dt_, ArrayXd E_, int e_);
-    
+
 };
 
 #endif

@@ -34,8 +34,7 @@ class keldysh_gas {
     DFTI_DESCRIPTOR_HANDLE ft;
 
     // Functions
-    // Witchcraft to switch around which pressure profile function atom_density
-    // points to.
+    // Change which pressure profile function atom_density points to.
     typedef double (keldysh_gas::*atom_density_func_ptr)(double);
     atom_density_func_ptr atom_density_func;
     void set_atom_density_ptr(atom_density_func_ptr ptr);
@@ -66,7 +65,6 @@ public:
     keldysh_gas(double press_, std::string gas_pressure_profile_, bool print_=false);
     keldysh_gas(double press_, grid_tw& tw_, DFTI_DESCRIPTOR_HANDLE& ft_, maths_textbook& maths_,
                 std::string gas_pressure_profile_, bool print=false);
-    //std::function<double(double)> atom_density;
     double atom_density(double z);
     ArrayXcd nl_polarization(ArrayXd E_t_);
     ArrayXd ionization_rate(ArrayXd E_t_);

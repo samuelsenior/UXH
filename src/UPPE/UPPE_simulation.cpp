@@ -83,7 +83,10 @@ namespace UPPE {
             }
             config_XNLO.read_in(config_XNLO.path_config_file(), false);
             config_XNLO.check_paths(false);
-     
+
+            config_XNLO.N_t_UPPE_set(config.n_t());
+            config_XNLO.N_t_UPPE_description_set("(int) Number of time grid points in laser pulse, set through UPPE");
+
             config.n_m_set(config_XNLO.atoms_per_worker()*(total_processes-1));
             config.n_m_description_set("(int) Number of modes, set through UPPE");
             config.n_r_set(config_XNLO.atoms_per_worker()*(total_processes-1));
@@ -118,7 +121,6 @@ namespace UPPE {
         if (this_process == 0) { std::cout << " - Setting grid_rkr" << std::endl; }
         rkr = grid_rkr(config.n_r(), config.R(), config.n_m(), maths);
 
-        //grid_tw tw;
         if (this_process == 0) { std::cout << " - Setting grid_tw" << std::endl; }
         if (this_process == 0) {
             tw = grid_tw(config.n_t(), config.T(), config.w_active_min(), config.w_active_max(), maths, true, true);
@@ -148,21 +150,14 @@ namespace UPPE {
             std::string tmp = config.path_A_w_R_initial().substr(found+1);
             found = tmp.find_first_of("_");
             std::string sim_no_str = tmp.substr(0, found);
-            
+
             std::size_t found_2 = tmp.find_first_of("_", found+1);
             std::string tmp_2 = tmp.substr(found+1, found_2-found-1);
             sim_no = std::stoi(sim_no_str);
 
             initial_step = stoi(tmp_2);
             initial_step = int(double(config.n_z()) * double(stoi(tmp_2)) / double(config.original_n_z()));
-
-            //propagation_step = initial_step;// + 1;  // The way the main loop works is that it propagates the laser to step i to start with, so the
-            //                                         // initial step being read in is step i-1
-            //initial_position = dz * initial_step;
-        }// else {
-        //    propagation_step = 1;
-        //}
-        //initial_position = dz * propagation_step;
+        }
         initial_position = dz * initial_step;
     }
 
@@ -172,7 +167,6 @@ namespace UPPE {
         if (config.read_in_laser_pulse() == 1 && this_process == 0) {
             std::cout << "Simulation run (read in): " << sim_no << std::endl;
             std::cout << "Initial step: " << initial_step << std::endl;
-            //std::cout << "Next propagation step (read in from initial step): " << propagation_step << std::endl;
             std::cout << "Original position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
             std::cout << "New position: " << double(initial_step) / double(config.n_z()) * config.Z() << std::endl;
         }
@@ -254,7 +248,7 @@ namespace UPPE {
 
             config_HHGP.waist_set(config.waist());
             config_HHGP.waist_description_set("(double) Laser spot radius, set through UPPE");
-            
+
             config_HHGP.gas_pressure_profile_set(config.gas_pressure_profile());
             config_HHGP.gas_pressure_profile_description_set("(std::string) LSwitch for gas pressure profile, set through UPPE");
         }
@@ -315,7 +309,7 @@ namespace UPPE {
                                           config.laser_rel_tol(),
                                           false);
         if (this_process == 0) laser_driving.print = true;
-        
+
         if (this_process == 0) { std::cout << " - Setting capillary_fibre" << std::endl; }
         capillary_driving = capillary_fibre(config.Z(), rkr, tw, physics, maths);
 
@@ -351,20 +345,17 @@ namespace UPPE {
         }
 
         neutral_atoms = ArrayXd::Zero(config.n_r());
-        temp_linSpace_HHG_acceleration = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);  // I think this is wring and should be using T_min/T_max of XNLO???
+        temp_linSpace_HHG_acceleration = ArrayXd::LinSpaced(config_XNLO.N_t(), -500.0e-15, 500.0e-15);
         window_HHG_acceleration = (1 - ((0.5 * maths.pi * temp_linSpace_HHG_acceleration / 500e-15).sin()).pow(50));
         temp_linSpace_HHG_acceleration = 0;
 
         hhg_new = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
         // Initialise HHP to zeros only once per simulation as it nneds to contain the
-        // HHG buildup throughout the capillary to model it correctly. 
+        // HHG buildup throughout the capillary. 
         HHP = ArrayXXcd::Zero(prop.n_k, config.n_r());
-        // Initialise HHP_multiThread_tmp to the correct shape so that in the sim intepr
-        // stage it can correctly recieve data from the other threads through the MPI Recvs
+
         HHP_multiThread_tmp = ArrayXXcd::Zero(prop.n_k, config.n_r());
-        // HHP_multiThread_tmp_2 doesn't actually need to be initialised here as it is set
-        // to zeros in all the worker threads in the interp stage at each sim step
         HHP_multiThread_tmp_2 = ArrayXXcd::Zero(prop.n_k, config.n_r());
 
         hhg_old = ArrayXXcd::Zero(prop.n_k, config.n_r());
@@ -407,7 +398,7 @@ namespace UPPE {
         }
 
         if ((total_processes > 1) && HHGP_starting_z_bool) {
-            atomResponse.run(A_w_active, tw.w_active, tw.w_active_min_index);
+            atomResponse.run(A_w_active, tw.w_active, config.n_t(), tw.w_active_min_index);
         }
 
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
@@ -469,7 +460,7 @@ namespace UPPE {
         }
 
         if ((total_processes > 1) && HHGP_starting_z_bool) {
-            atomResponse.run(A_w_active, tw.w_active, tw.w_active_min_index);
+            atomResponse.run(A_w_active, tw.w_active, config.n_t(), tw.w_active_min_index);
         }
 
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
@@ -510,22 +501,22 @@ namespace UPPE {
         if (this_process == 0 && total_processes > 1 && HHGP_starting_z_bool) {
             std::cout << "Starting interpolation!" << std::endl;
 
-            std::cout << "As a rough estimate," << std::endl;
-            std::cout << "   for n_z/2-n_z, there is a relative HHG source difference/tolerance of: ";
+            //std::cout << "As a rough estimate," << std::endl;
+            //std::cout << "   for n_z/2-n_z, there is a relative HHG source difference/tolerance of: ";
             hhg_old_interp = hhg_old_old + 0.5*(hhg_new - hhg_old_old);
             double hhg_tol_check = (hhg_old - hhg_old_interp).matrix().norm() / hhg_old.matrix().norm();
-            std::cout << hhg_tol_check << std::endl;
+            //std::cout << hhg_tol_check << std::endl;
 
-            std::cout << "   And for wavelengths " << int(2.0*maths.pi/prop.k(wavelength_index_min).real()*1e9) << "-"<< int(2.0*maths.pi/prop.k(wavelength_index_max).real()*1e9) << "nm: " << std::endl;
-            std::cout << "   the nz/2-nz relattive HHG source difference/tolerance is: ";
+            //std::cout << "   And for wavelengths " << int(2.0*maths.pi/prop.k(wavelength_index_min).real()*1e9) << "-"<< int(2.0*maths.pi/prop.k(wavelength_index_max).real()*1e9) << "nm: " << std::endl;
+            //std::cout << "   the nz/2-nz relattive HHG source difference/tolerance is: ";
             hhg_tol_check = (hhg_old.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r()) - hhg_old_interp.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r())).matrix().norm() / hhg_old.block(wavelength_index_min, 0, (wavelength_index_max - wavelength_index_min), config.n_r()).matrix().norm();
-            std::cout << hhg_tol_check << std::endl;
+            //std::cout << hhg_tol_check << std::endl;
 
-            std::cout << "   (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " << (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm() << std::endl;
+            //std::cout << "   (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm(): " << (hhg_new - hhg_old).matrix().norm() / hhg_new.matrix().norm() << std::endl;
 
             std::cout << "Interpolating on to " << config.interp_points() << " internal sites... " << std::endl;
             hhg_new = prop.block(hhg) * (dz / double(config.interp_points() + 1));  // Normalisation to a dz volume
-            
+
             double interp_dz = dz / double(config.interp_points() + 1);
             dS_i = (hhg_new - hhg_old) / double(config.interp_points() + 1);
 
@@ -593,7 +584,6 @@ namespace UPPE {
             // For receiving prop.z and interp_dz
             double HH_z_data_tmp[2];
             MPI_Recv(&HH_z_data_tmp, 2, MPI_DOUBLE, 0, this_process, MPI_COMM_WORLD, &status);
-            // This one can be done before the main loop even starts as it's a const value
             double interp_dz = HH_z_data_tmp[1];
 
             int HH_prop_start_end_step[2];
@@ -634,19 +624,19 @@ namespace UPPE {
         }
 
         if (this_process == 0) {
-            // Output already known variables, in case crashes etc, so they are already saved early on
+            // Output already known variables to save them early on
             file.write(tw.w_active, config.path_w_active());
             file.write(w_active_HHG, config.path_HHG_w());
             file.write(prop.w_active, config.path_HHP_w());
 
-            // Diagnostic stats that may be useful one day:
-            std::cout << "Basic diagnostic values from XNLO frequency grid:" << std::endl;
-            std::cout << "   Min XNLO frequency: " << tw_XNLO.w(1) - tw_XNLO.w(0) << std::endl;
-            std::cout << "   Max XNLO frequency: " << tw_XNLO.w.maxCoeff() << std::endl;
-            std::cout << "   Min allowed HHG wavelength: " << 1.0e9 * physics.c / tw_XNLO.w.maxCoeff() << "nm" << std::endl;
-            std::cout << "   Max allowed HHG wavelength: " << 1.0e9 * physics.c / (tw_XNLO.w(1) - tw_XNLO.w(0)) << "nm" << std::endl;
-            std::cout << "   Min allowed HHG energy: " << 1.2398 / (1.0e6 * physics.c / (tw_XNLO.w(1) - tw_XNLO.w(0))) << "eV" << std::endl;
-            std::cout << "   Max allowed HHG energy: " << 1.2398 / (1.0e6 * physics.c / tw_XNLO.w.maxCoeff()) << "eV" << std::endl;
+            // Diagnostic info that may be useful:
+            //std::cout << "Basic diagnostic values from XNLO frequency grid:" << std::endl;
+            //std::cout << "   Min XNLO frequency: " << tw_XNLO.w(1) - tw_XNLO.w(0) << std::endl;
+            //std::cout << "   Max XNLO frequency: " << tw_XNLO.w.maxCoeff() << std::endl;
+            //std::cout << "   Min allowed HHG wavelength: " << 1.0e9 * physics.c / tw_XNLO.w.maxCoeff() << "nm" << std::endl;
+            //std::cout << "   Max allowed HHG wavelength: " << 1.0e9 * physics.c / (tw_XNLO.w(1) - tw_XNLO.w(0)) << "nm" << std::endl;
+            //std::cout << "   Min allowed HHG energy: " << 1.2398 / (1.0e6 * physics.c / (tw_XNLO.w(1) - tw_XNLO.w(0))) << "eV" << std::endl;
+            //std::cout << "   Max allowed HHG energy: " << 1.2398 / (1.0e6 * physics.c / tw_XNLO.w.maxCoeff()) << "eV" << std::endl;
         }
 
         MPI_Barrier(MPI_COMM_WORLD);
@@ -656,7 +646,6 @@ namespace UPPE {
             ii = initial_step;
         } else {
             ii = 0;
-            //propagation_step = 0;
         }
         if (dz*ii >= config.HHGP_starting_z()) {
             HHGP_starting_z_bool = true;
@@ -674,11 +663,11 @@ namespace UPPE {
         }
 
         // Output varaibles resulting from first initial step
-        if ((ii - initial_step) % config.output_sampling_rate() == 0) {
+        if (this_process == 0 && (ii - initial_step) % config.output_sampling_rate() == 0) {
             config.step_path(ii, "UPPE_A_w");
             file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
             file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
-            
+
             // If config set to output electron density then output it, if not then skip
             if (config.output_electron_density() == 1) {
                 config.step_path(ii, "UPPE_electron_density");
@@ -708,12 +697,12 @@ namespace UPPE {
 
             simulation_step(ii);
 
-            // Output varaibles resulting from first initial step
-            if ((ii - initial_step) % config.output_sampling_rate() == 0) {
+            // Output varaibles resulting from step
+            if (this_process == 0 && (ii - initial_step) % config.output_sampling_rate() == 0) {
                 config.step_path(ii, "UPPE_A_w");
                 file_prop_step.write(laser_driving.A_w_active.real(), config.path_A_w_R_step(), true);
                 file_prop_step.write(laser_driving.A_w_active.imag(), config.path_A_w_I_step(), false);
-                
+
                 // If config set to output electron density then output it, if not then skip
                 if (config.output_electron_density() == 1) {
                     config.step_path(ii, "UPPE_electron_density");
@@ -732,7 +721,8 @@ namespace UPPE {
 
             interpolation_step(ii);
 
-            if ((ii - initial_step) % config.output_sampling_rate() == 0) {
+            // Output results from interpolation step
+            if (this_process == 0 && (ii - initial_step) % config.output_sampling_rate() == 0) {
                 config.step_path(ii, "HHP_A_w");
                 file_prop_step.write(HHP.real(), config.path_HHP_R_step(), true);
                 file_prop_step.write(HHP.imag(), config.path_HHP_I_step(), false);
@@ -780,4 +770,4 @@ namespace UPPE {
             std::cout << "-------------------------------------------------------------------------------\n";
         }
     }
-} // End of UPPE namespace
+} // UPPE namespace

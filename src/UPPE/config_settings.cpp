@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 
-#include <algorithm> // For std::count
+#include <algorithm>
 
 //namespace UPPE {
 
@@ -39,10 +39,10 @@ const char * Config_Settings::setting_name[] = {
   "ending_n_z",
   "interp_points",
   "gas_pressure_profile",
-  "HHG_lambda_min", // default behaviour to have lambda_min from w.max?
+  "HHG_lambda_min",
   "HHG_lambda_max",
-  "HHP_E_min", // do default behaviour of setting at 10eV or energy corresponding to HHG_lambda_max, whichever is the larger
-  "HHP_E_max", // set this to the energy corresponding to HHG_lambda_min eventually (for now selecting the range manually could be useful)
+  "HHP_E_min",
+  "HHP_E_max",
   "flush_HHP_at_output_step",
   "output_electron_density",
   "pend_path",
@@ -120,7 +120,7 @@ void Config_Settings::read_in(const std::string path, bool print_to_screen) {
               lines_read++;
               set_variable(input_name_char, input_value_char, input_description_char, print_to_screen);
             }
-    } //while
+    }
     if (config_file.eof() && print_to_screen == true) {
       std::cout << "Config_Settings::read_in: Info, " << lines_found << " lines found and " << lines_read << " lines read in from config file!\n";
     }
@@ -277,7 +277,7 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
       case SN::HHP_E_min :
         HHP_E_min_set(std::stod(variable_value_str));
         HHP_E_min_description_set(input_description_char);
-        break; 
+        break;
       case SN::HHP_E_max :
         HHP_E_max_set(std::stod(variable_value_str));
         HHP_E_max_description_set(input_description_char);
@@ -369,13 +369,11 @@ void Config_Settings::check_paths(bool print_to_screen) {
   int i = 0, j = 0, k = 0;
   std::string pending_string = std::to_string(static_cast<unsigned long long>(i)) + std::to_string(static_cast<unsigned long long>(j)) + std::to_string(static_cast<unsigned long long>(k));
   std::string path = set_path(path_config_log(), pending_string);
-  //std::string path = set_path(path_A_w_R(), pending_string);
 
   bool unique_path = false;
   if (pend_path() != "false") {
     while (!unique_path) {
       if (std::ifstream(path)) {
-        //std::cout << "Config_Settings::check_paths: " << path << " already exists, trying incremented path\n";
         k++;
           if (k == 10) {
             k = 0;
@@ -399,7 +397,6 @@ void Config_Settings::check_paths(bool print_to_screen) {
     }
   }
 
-  //path_A_w_R_set(path);
   path_config_log_set(path);
 
   path = set_path(path_A_w_R(), pending_string);
@@ -427,8 +424,6 @@ void Config_Settings::check_paths(bool print_to_screen) {
   path = set_path(path_HHP_w(), pending_string);
   path_HHP_w_set(path);
 
-  //path = set_path(path_config_log(), pending_string);
-  //path_config_log_set(path);
 }
 
 void Config_Settings::step_path(int step, std::string variable) {
@@ -454,67 +449,6 @@ void Config_Settings::step_path(int step, std::string variable) {
   found_stepWorkings = path_A_R_stepWorkings.find_last_of("/");
   tmp_stepWorkings = path_A_R_stepWorkings.substr(found_stepWorkings+1);
   count_underscore_stepWorkings = std::count(tmp_stepWorkings.begin(), tmp_stepWorkings.end(), '_');
-
-// Trying something new and clever below
-/*  if (found == -1) {
-    if (step == 1) {
-      path_A_R = path_A_R.substr(0, 3) + "_" + pending_string + "_" + path_A_R.substr(3);
-    } else if (step > 1 && step < 10) {
-      path_A_R = pending_string + "_" + path_A_R.substr(1, path_A_R.size());
-    } else if (step > 10) {
-      path_A_R = pending_string + "_" + path_A_R.substr(2, path_A_R.size());
-    }
-  } else {
-    if (step == 1 || count_underscore <= 3) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+1);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+1);
-      // Only needs to be output once!
-      //path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+1);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+3+1);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+3+1);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+3+1);
-      // Only needs to be output once!
-      //path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+1);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+3+1);
-    } else if (step > 1) {
-      path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+3+2+pending_string_len);
-      path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+3+2+pending_string_len);
-      // Only needs to be output once!
-      //path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+3+2+pending_string_len);
-      path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+3+2+pending_string_len);
-      path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+3+2+pending_string_len);
-      path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+3+2+pending_string_len);
-      // Only needs to be output once!
-      //path_hhg_w = path_hhg_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_w.substr(found+1+3+2+pending_string_len);
-      path_hhg_E = path_hhg_E.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_E.substr(found+1+3+2+pending_string_len);
-    }
-  }
-
-
-  //std::cout << path_A_w_R().substr(3, path_A_w_R().size()) << std::endl;
-  //std::cout << path_A_R << std::endl;
-  //if (step > 1 && step << 10) path_A_w_R_set(path_A_w_R().substr(3, path_A_w_R().size()));
-  //if (step >= 10) path_A_w_R_set(path_A_w_R().substr(3, path_A_w_R().size()));
-  //std::string path = set_path(path_A_w_R(), pending_string, "prepend");
-  //std::cout << path << std::endl;
-  if (variable == "UPPE_A_w") {
-    path_A_w_R_step_set(path_A_R);
-    path_A_w_I_step_set(path_A_I);
-  } else if (variable == "HHG_A_w") {
-    path_HHG_R_step_set(path_hhg_r);
-    path_HHG_I_step_set(path_hhg_i);
-  } else if (variable == "UPPE_electron_density") {
-    path_electron_density_step_set(path_e);
-  } else if (variable == "HHG_electric_field") {
-    path_HHG_E_step_set(path_hhg_E);
-  }
-  //std::string path = set_path(path_A_w_I(), pending_string, "prepend");
-  //path = set_path(path_w_active(), pending_string, "prepend");
-  // Only needs to be output once!
-  //path_w_step_active_set(path_w);
-  // Only needs to be output once!
-  //path_HHG_w_step_set(path_hhg_w);
-*/
 
   if (found_stepWorkings == -1) {
     if (variable == "UPPE_A_w") {
@@ -1029,4 +963,3 @@ void Config_Settings::path_config_log_set(std::string value) { path_config_log_ 
 std::string Config_Settings::path_config_log_description() { return path_config_log_description_; }
 void Config_Settings::path_config_log_description_set(std::string description) { path_config_log_description_ = description; }
 
-//} // UPPE namespace

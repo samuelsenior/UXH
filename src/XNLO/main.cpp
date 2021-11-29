@@ -99,12 +99,10 @@ int main(int argc, char** argv){
     // Control
     if (this_node == 0) {
 
-        std::cout << "--- N_x: " << N_x << std::endl;
-
         // Field
         double ROC = std::numeric_limits<double>::max();
         XNLO::laser_pulse pulse(config.P_av(), config.RR(), config.FWHM(), config.l_0(), config.CEO(), config.spot_radius(), ROC, rkr, tw,
-                          config.path_laser_A_w_R(), config.path_laser_A_w_I(), config.path_laser_w_active(),
+                          config.path_laser_A_w_R(), config.path_laser_A_w_I(), config.path_laser_w_active(), config.N_t_UPPE(),
                           config.read_in_laser_pulse());
 
         // Send
@@ -116,7 +114,7 @@ int main(int argc, char** argv){
         }
 
         // Receive
-        ArrayXXd dipole = ArrayXXd::Zero(tw.N_t, total_atoms);
+        ArrayXXd acceleration = ArrayXXd::Zero(tw.N_t, total_atoms);
 
         ArrayXXcd wavefunction;
         if (config.output_wavefunction() == 1) {
@@ -131,11 +129,8 @@ int main(int argc, char** argv){
             bool send = true;
             MPI_Send(&send, 1, MPI_C_BOOL, jj, 1, MPI_COMM_WORLD);
 
-            MPI_Recv(dipole.block(0, atoms_per_worker * (jj - 1), tw.N_t, atoms_per_worker).data(),
+            MPI_Recv(acceleration.block(0, atoms_per_worker * (jj - 1), tw.N_t, atoms_per_worker).data(),
                      tw.N_t * atoms_per_worker, MPI_DOUBLE, jj, 1, MPI_COMM_WORLD, &status);
-
-            //MPI_Recv(wavefunction.block(0, atoms_per_worker * (jj - 1), 4096, atoms_per_worker).data(),
-            //         4096 * atoms_per_worker, MPI_DOUBLE_COMPLEX, jj, 1, MPI_COMM_WORLD, &status);
 
         }
 
@@ -146,13 +141,11 @@ int main(int argc, char** argv){
 
         // Output
         IO file;
-        //file::write_acsii_double(config.path_dipole(), dipole);
-        //file::write_ascii_double(tw.w, config.path_w());
 
-        file.overwrite(config.path_dipole());
-        file.write_header(config.path_dipole(), config.N_t(), total_atoms);
-        file.write_double(config.path_dipole(), dipole, config.N_t(), total_atoms);
-        //file.write_double(config.path_w(), tw.w, total_atoms, config.N_t());
+        file.overwrite(config.path_acceleration());
+        file.write_header(config.path_acceleration(), config.N_t(), total_atoms);
+        file.write_double(config.path_acceleration(), acceleration, config.N_t(), total_atoms);
+
         file.overwrite(config.path_w());
         file.write_header(config.path_w(), config.N_t(), 1);
         file.write_double(config.path_w(), tw.w, config.N_t(), 1);
@@ -173,7 +166,6 @@ int main(int argc, char** argv){
             file.write_header(config.path_E(), config.N_t(), total_atoms);
             file.write_double(config.path_E(), pulse.E, config.N_t(), total_atoms);
         }
-        
 
     }
 
@@ -185,7 +177,7 @@ int main(int argc, char** argv){
         MPI_Recv(E.data(), tw.N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD, &status);
 
         // Single atom calculations
-        ArrayXXd dipole = ArrayXXd::Zero(tw.N_t, atoms_per_worker);
+        ArrayXXd acceleration = ArrayXXd::Zero(tw.N_t, atoms_per_worker);
 
         ArrayXXcd wavefunction;
         if (config.output_wavefunction() == 1) {
@@ -197,10 +189,10 @@ int main(int argc, char** argv){
         Schrodinger_atom_1D atom(tw, config.alpha(), config.SAR_N_x(), config.SAR_x_min(), config.SAR_x_max(), config.output_wavefunction());
         for (int ii = 0; ii < atoms_per_worker; ii++) {
 
-            dipole.col(ii) = atom.get_acceleration(tw.N_t, tw.dt, E.col(ii));
+            acceleration.col(ii) = atom.get_acceleration(tw.N_t, tw.dt, E.col(ii));
 
         }
-            //wavefunction.col(ii) = atom.wfn_output;
+
         if (config.output_wavefunction() == 1) {
             wavefunction = atom.wfn_output;
         }
@@ -208,7 +200,7 @@ int main(int argc, char** argv){
         // Send
         bool send;
         MPI_Recv(&send, 1, MPI_C_BOOL, 0, 1, MPI_COMM_WORLD, &status);
-        MPI_Send(dipole.data(), tw.N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
+        MPI_Send(acceleration.data(), tw.N_t * atoms_per_worker, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD);
 
         if (config.output_wavefunction() == 1 && this_node == 1) {
             MPI_Send(wavefunction.data(), config.SAR_N_x() * tw.N_t, MPI_DOUBLE_COMPLEX, 0, 1, MPI_COMM_WORLD);
@@ -220,9 +212,6 @@ int main(int argc, char** argv){
     MPI_Finalize();
 
     if (this_node == 0) {
-        // Moved this to higher up so it happens faster and hopefully there's less chance of having
-        // multiple programs write to the same output files
-        //config.print(config.path_config_log());
         std::cout << "\n-------------------------------------------------------------------------------\n";
         std::cout << "XNLO successfully ran!\n";
         std::cout << "-------------------------------------------------------------------------------\n";

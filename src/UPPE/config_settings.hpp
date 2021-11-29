@@ -10,8 +10,6 @@
 
 #include <string>
 
-//namespace UPPE {
-
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
@@ -225,22 +223,22 @@ private:
     static const char * setting_name[];
 
     // Private variables for the step path workings
-    std::string pending_string_stepWorkings;// = std::to_string(static_cast<unsigned long long>(step));
-    int pending_string_len_stepWorkings;// = std::to_string(static_cast<unsigned long long>(step - 1)).length();
-    std::string path_A_R_stepWorkings;// = path_A_w_R();
-    std::string path_A_I_stepWorkings;// = path_A_w_I();
-    std::string path_w_stepWorkings;// = path_w_active();
-    std::string path_e_stepWorkings;// = path_electron_density();
-    std::string path_hhg_r_stepWorkings;// = path_HHG_R();
-    std::string path_hhg_i_stepWorkings;// = path_HHG_I();
-    std::string path_hhg_w_stepWorkings;// = path_HHG_w();
-    std::string path_hhg_E_stepWorkings;// = path_HHG_E();
+    std::string pending_string_stepWorkings;
+    int pending_string_len_stepWorkings;
+    std::string path_A_R_stepWorkings;
+    std::string path_A_I_stepWorkings;
+    std::string path_w_stepWorkings;
+    std::string path_e_stepWorkings;
+    std::string path_hhg_r_stepWorkings;
+    std::string path_hhg_i_stepWorkings;
+    std::string path_hhg_w_stepWorkings;
+    std::string path_hhg_E_stepWorkings;
     std::string path_hhp_r_stepWorkings;
     std::string path_hhp_i_stepWorkings;
     std::string path_hhp_w_stepWorkings;
-    std::size_t found_stepWorkings;// = path_A_R.find_last_of("/");
-    std::string tmp_stepWorkings;// = path_A_R.substr(found+1);
-    size_t count_underscore_stepWorkings;// = std::count(tmp.begin(), tmp.end(), '_');
+    std::size_t found_stepWorkings;
+    std::string tmp_stepWorkings;
+    size_t count_underscore_stepWorkings;
 
     // Private Functions
     void set_variable(std::string&, std::string&, std::string&, bool print_to_screen=true);
@@ -523,7 +521,5 @@ public:
     void path_config_log_description_set(std::string);
 
 };
-
-//} // UPPE namespace
 
 #endif

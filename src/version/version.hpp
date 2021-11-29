@@ -2,7 +2,7 @@
 #define __VERSION_HPP_INCLUDED__
 
 #define _VERSION_MAJOR 2
-#define _VERSION_MINOR 7
-#define _VERSION_SUBMINOR 1
+#define _VERSION_MINOR 8
+#define _VERSION_SUBMINOR 0
 
 #endif

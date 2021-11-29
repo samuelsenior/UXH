@@ -13,8 +13,6 @@
 #include "../../Eigen/Dense"
 #include "../maths/maths_textbook.hpp"
 
-//using namespace Eigen;
-
 
 //------------------------------------------------------------------------------------------------//
 //  Class definition

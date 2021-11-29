@@ -87,7 +87,7 @@ namespace XNLO {
 grid_tw::grid_tw() {}
 
 grid_tw::grid_tw(int N_t_, double t_min_, double t_max_) {
-    
+
     maths_textbook maths;
 
     // Temporal
@@ -102,12 +102,12 @@ grid_tw::grid_tw(int N_t_, double t_min_, double t_max_) {
     w = ArrayXd::Zero(N_t);
     w.setLinSpaced(-N_t / 2, (N_t / 2) - 1);
     w *=  2 * maths.pi / (N_t * (t(1) - t(0)));
-    w.tail(N_t / 2).swap(w.head(N_t / 2));                                                          // Equivalent to fftshift(kx)
+    w.tail(N_t / 2).swap(w.head(N_t / 2));  // Equivalent to fftshift(kx)
 
 }
 
 grid_tw::grid_tw(int N_t_, double t_min_, double t_max_, double w_max_, bool print_) {
-    
+
     maths_textbook maths;
 
     // Temporal
@@ -127,14 +127,14 @@ grid_tw::grid_tw(int N_t_, double t_min_, double t_max_, double w_max_, bool pri
         w = ArrayXd::Zero(N_t);
         w.setLinSpaced(-N_t / 2, (N_t / 2) - 1);
         w *=  2 * maths.pi / (N_t * (t(1) - t(0)));
-        w.tail(N_t / 2).swap(w.head(N_t / 2));                                                          // Equivalent to fftshift(kx)
+        w.tail(N_t / 2).swap(w.head(N_t / 2));  // Equivalent to fftshift(kx)
 
         w_max_tmp = w.maxCoeff();
         if (w_max_tmp < w_max_) N_t = int(N_t + N_t_ * 0.1);
     }
 
     if (N_t != N_t_ && print_) std::cout << "XNLO::w_grid did not reach max needed value, increased XNLO::N_t to " << N_t << std::endl;
-    
+
 }
 
 }

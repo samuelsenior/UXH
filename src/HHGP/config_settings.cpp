@@ -103,7 +103,7 @@ void Config_Settings::read_in(const std::string path, bool print_to_screen) {
               lines_read++;
               set_variable(input_name_char, input_value_char, input_description_char, print_to_screen);
             }
-    } //while
+    }
     if (config_file.eof() && print_to_screen == true) {
       std::cout << "Config_Settings::read_in: Info, " << lines_found << " lines found and " << lines_read << " lines read in from config file!\n";
     }
@@ -268,13 +268,11 @@ void Config_Settings::check_paths(bool print_to_screen) {
   int i = 0, j = 0, k = 0;
   std::string pending_string = std::to_string(static_cast<unsigned long long>(i)) + std::to_string(static_cast<unsigned long long>(j)) + std::to_string(static_cast<unsigned long long>(k));
   std::string path = set_path(path_config_log(), pending_string);
-  //std::string path = set_path(path_A_w_R(), pending_string);
 
   bool unique_path = false;
   if (pend_path() != "false") {
     while (!unique_path) {
       if (std::ifstream(path)) {
-        //std::cout << "Config_Settings::check_paths: " << path << " already exists, trying incremented path\n";
         k++;
           if (k == 10) {
             k = 0;
@@ -298,7 +296,6 @@ void Config_Settings::check_paths(bool print_to_screen) {
     }
   }
 
-  //path_A_w_R_set(path);
   path_config_log_set(path);
 
   path = set_path(path_A_w_R(), pending_string);
@@ -321,9 +318,6 @@ void Config_Settings::check_paths(bool print_to_screen) {
   path_HHG_w_set(path);
   path = set_path(path_HHG_E(), pending_string);
   path_HHG_E_set(path);
-
-  //path = set_path(path_config_log(), pending_string);
-  //path_config_log_set(path);
 }
 
 void Config_Settings::step_path(int step) {
@@ -355,7 +349,6 @@ void Config_Settings::step_path(int step) {
       path_A_R = path_A_R.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_R.substr(found+1+4);
       path_A_I = path_A_I.substr(0, found+1+3) + "_" + pending_string + "_" + path_A_I.substr(found+1+4);
       path_w = path_w.substr(0, found+1+3) + "_" + pending_string + "_" + path_w.substr(found+1+4);
-      //path_A = path_A.substr(0, found+1) + pending_string + "_" + path_A.substr(found+1);
       path_e = path_e.substr(0, found+1+3) + "_" + pending_string + "_" + path_e.substr(found+1+4);
       path_hhg_r = path_hhg_r.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_r.substr(found+1+4);
       path_hhg_i = path_hhg_i.substr(0, found+1+3) + "_" + pending_string + "_" + path_hhg_i.substr(found+1+4);
@@ -500,19 +493,10 @@ void Config_Settings::step_path(int step) {
     }
   }
 
-
-  //std::cout << path_A_w_R().substr(3, path_A_w_R().size()) << std::endl;
-  //std::cout << path_A_R << std::endl;
-  //if (step > 1 && step << 10) path_A_w_R_set(path_A_w_R().substr(3, path_A_w_R().size()));
-  //if (step >= 10) path_A_w_R_set(path_A_w_R().substr(3, path_A_w_R().size()));
-  //std::string path = set_path(path_A_w_R(), pending_string, "prepend");
-  //std::cout << path << std::endl;
   path_A_w_R_set(path_A_R);
 
-  //std::string path = set_path(path_A_w_I(), pending_string, "prepend");
   path_A_w_I_set(path_A_I);
 
-  //path = set_path(path_w_active(), pending_string, "prepend");
   path_w_active_set(path_w);
 
   path_electron_density_set(path_e);

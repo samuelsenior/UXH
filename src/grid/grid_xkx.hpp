@@ -21,9 +21,9 @@ using namespace Eigen;
     accessible.
 */
 class grid_xkx {
-    
+
 public:
-    
+
     // Data
     ArrayXd x;
     ArrayXd kx;
@@ -31,11 +31,11 @@ public:
     double x_min;
     double x_max;
     double dx;
-    
+
     // Functions
     grid_xkx();
     grid_xkx(int N_x_, double x_min_, double x_max_);
-    
+
 };
 
 #endif

@@ -27,7 +27,7 @@ const char * Config_Settings::setting_name[] = {
   "SAR_N_x", "SAR_x_min", "SAR_x_max",
   "P_av", "RR", "FWHM", "l_0", "CEO", "spot_radius",
   "alpha",
-  "read_in_laser_pulse",
+  "read_in_laser_pulse", "N_t_UPPE",
   "output_wavefunction",
   "output_electric_field",
   "pend_path",
@@ -35,7 +35,7 @@ const char * Config_Settings::setting_name[] = {
   "path_laser_A_w_R",
   "path_laser_A_w_I",
   "path_laser_w_active",
-  "path_dipole", "path_w",
+  "path_acceleration", "path_w",
   "path_E",
   "path_config_file", "path_config_log",
 };
@@ -106,7 +106,7 @@ void Config_Settings::read_in(const std::string path, bool print_to_screen_) {
               lines_read++;
               set_variable(input_name_char, input_value_char, input_description_char);
             }
-    } //while
+    }
     if (config_file.eof() && print_to_screen_ == true) {
       std::cout << "Config_Settings::read_in: Info, " << lines_found << " lines found and " << lines_read << " lines read in from config file!\n";
     }
@@ -207,6 +207,11 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
         read_in_laser_pulse_description_set(input_description_char);
         break;
 
+      case SN::N_t_UPPE :
+        N_t_UPPE_set(std::stoi(variable_value_str));
+        N_t_UPPE_description_set(input_description_char);
+        break;
+
       case SN::output_wavefunction :
         output_wavefunction_set(std::stoi(variable_value_str));
         output_wavefunction_description_set(input_description_char);
@@ -239,9 +244,9 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
         path_laser_w_active_description_set(input_description_char);
         break;
 
-      case SN::path_dipole :
-        path_dipole_set(variable_value_str);
-        path_dipole_description_set(input_description_char);
+      case SN::path_acceleration :
+        path_acceleration_set(variable_value_str);
+        path_acceleration_description_set(input_description_char);
         break;
       case SN::path_w :
         path_w_set(variable_value_str);
@@ -278,13 +283,12 @@ void Config_Settings::set_variable(std::string& variable_name, std::string& vari
 void Config_Settings::check_paths(bool print_to_screen_) {
   int i = 0, j = 0, k = 0;
   std::string pending_string = std::to_string(static_cast<unsigned long long>(i)) + std::to_string(static_cast<unsigned long long>(j)) + std::to_string(static_cast<unsigned long long>(k));
-  std::string path = set_path(path_dipole(), pending_string);
+  std::string path = set_path(path_acceleration(), pending_string);
 
   bool unique_path = false;
   if (pend_path() != "false") {
     while (!unique_path) {
       if (std::ifstream(path)) {
-        //std::cout << "Config_Settings::check_paths: " << path << " already exists, trying incremented path\n";
         k++;
           if (k == 10) {
             k = 0;
@@ -298,7 +302,7 @@ void Config_Settings::check_paths(bool print_to_screen_) {
             }
         }
         pending_string =  std::to_string(static_cast<unsigned long long>(i)) + std::to_string(static_cast<unsigned long long>(j)) + std::to_string(static_cast<unsigned long long>(k));
-        path = set_path(path_dipole(), pending_string);
+        path = set_path(path_acceleration(), pending_string);
       } else {
         if (print_to_screen_ == true) {
           std::cout << "Config_Settings::check_paths: Info, unique path " << path << " found!\n";
@@ -308,7 +312,7 @@ void Config_Settings::check_paths(bool print_to_screen_) {
     }
   }
 
-  path_dipole_set(path);
+  path_acceleration_set(path);
 
   path = set_path(path_w(), pending_string);
   path_w_set(path);
@@ -374,6 +378,7 @@ void Config_Settings::print() {
     std::cout << "   spot_radius:         " << spot_radius() << "              " << spot_radius_description() << std::endl;
     std::cout << "   alpha:               " << alpha() << "                 " << alpha_description() << std::endl;
     std::cout << "   read_in_laser_pulse:   " << read_in_laser_pulse() << "                    " << read_in_laser_pulse_description() << std::endl;
+    std::cout << "   N_t_UPPE:              " << N_t_UPPE() << "                " << N_t_UPPE_description() << std::endl;
     std::cout << "   output_wavefunction:   " << output_wavefunction() << "                    " << output_wavefunction_description() << std::endl;
     std::cout << "   output_electric_field: " << output_electric_field() << "                    " << output_electric_field_description() << std::endl;
     std::cout << "   pend_path:           " << pend_path() << "                  " << pend_path_description() << std::endl;
@@ -381,7 +386,7 @@ void Config_Settings::print() {
     std::cout << "   path_laser_A_w_R:    " << path_laser_A_w_R() << "        " << path_laser_A_w_R_description() << std::endl;
     std::cout << "   path_laser_A_w_I:    " << path_laser_A_w_I() << "        " << path_laser_A_w_I_description() << std::endl;
     std::cout << "   path_laser_w_active: " << path_laser_w_active() << "        " << path_laser_w_active_description() << std::endl;
-    std::cout << "   path_dipole:         " << path_dipole() << "     " << path_dipole_description() << std::endl;
+    std::cout << "   path_acceleration:   " << path_acceleration() << "     " << path_acceleration_description() << std::endl;
     std::cout << "   path_w:              " << path_w() << "          " << path_w_description() << std::endl;
     std::cout << "   path_E:              " << path_E() << "          " << path_E_description() << std::endl;
     std::cout << "   path_config_file:    " << path_config_file() << "                 " << path_config_file_description() << std::endl;
@@ -416,6 +421,7 @@ void Config_Settings::print(std::string path_) {
       config_log << "{alpha} {" << alpha() << "} {" << alpha_description() << "}\n";
 
       config_log << "{read_in_laser_pulse} {" << read_in_laser_pulse() << "} {" << read_in_laser_pulse_description() << "}\n";
+      config_log << "{N_t_UPPE} {" << N_t_UPPE() << "} {" << N_t_UPPE_description() << "}\n";
 
       config_log << "{output_wavefunction} {" << output_wavefunction() << "} {" << output_wavefunction_description() << "}\n";
       config_log << "{output_electric_field} {" << output_electric_field() << "} {" << output_electric_field_description() << "}\n";
@@ -428,7 +434,7 @@ void Config_Settings::print(std::string path_) {
       config_log << "{path_laser_A_w_I} {" << path_laser_A_w_I() << "} {" << path_laser_A_w_I_description() << "}\n";
       config_log << "{path_laser_w_active} {" << path_laser_w_active() << "} {" << path_laser_w_active_description() << "}\n";
 
-      config_log << "{path_dipole} {" << path_dipole() << "} {" << path_dipole_description() << "}\n";
+      config_log << "{path_acceleration} {" << path_acceleration() << "} {" << path_acceleration_description() << "}\n";
       config_log << "{path_w} {" << path_w() << "} {" << path_w_description() << "}\n";
 
       config_log << "{path_E} {" << path_E() << "} {" << path_E_description() << "}\n";
@@ -530,6 +536,11 @@ void Config_Settings::read_in_laser_pulse_set(int val) { read_in_laser_pulse_ = 
 std::string Config_Settings::read_in_laser_pulse_description() { return read_in_laser_pulse_description_; }
 void Config_Settings::read_in_laser_pulse_description_set(std::string description) { read_in_laser_pulse_description_ = description; }
 
+int Config_Settings::N_t_UPPE() { return N_t_UPPE_; }
+void Config_Settings::N_t_UPPE_set(int val) { N_t_UPPE_ = val; }
+std::string Config_Settings::N_t_UPPE_description() { return N_t_UPPE_description_; }
+void Config_Settings::N_t_UPPE_description_set(std::string description) { N_t_UPPE_description_ = description; }
+
 int Config_Settings::output_wavefunction() { return output_wavefunction_; }
 void Config_Settings::output_wavefunction_set(int val) { output_wavefunction_ = val; }
 std::string Config_Settings::output_wavefunction_description() { return output_wavefunction_description_; }
@@ -563,10 +574,10 @@ void Config_Settings::path_laser_w_active_set(std::string value) { path_laser_w_
 std::string Config_Settings::path_laser_w_active_description() { return path_laser_w_active_description_; }
 void Config_Settings::path_laser_w_active_description_set(std::string description) { path_laser_w_active_description_ = description; }
 
-std::string Config_Settings::path_dipole() { return path_dipole_; }
-void Config_Settings::path_dipole_set(std::string val) { path_dipole_ = val; }
-std::string Config_Settings::path_dipole_description() { return path_dipole_description_; }
-void Config_Settings::path_dipole_description_set(std::string description) { path_dipole_description_ = description; }
+std::string Config_Settings::path_acceleration() { return path_acceleration_; }
+void Config_Settings::path_acceleration_set(std::string val) { path_acceleration_ = val; }
+std::string Config_Settings::path_acceleration_description() { return path_acceleration_description_; }
+void Config_Settings::path_acceleration_description_set(std::string description) { path_acceleration_description_ = description; }
 
 std::string Config_Settings::path_w() { return path_w_; }
 void Config_Settings::path_w_set(std::string val) { path_w_ = val; }

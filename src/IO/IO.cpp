@@ -26,7 +26,7 @@ IO::IO() {
     binary_format_subversion = -1;
     binary_format_len = binary_format.length();
     data_size = -1;
-    double_size = -1;//sizeof(double);
+    double_size = -1;
     N_row_ = -1;
     N_col_ = -1;
     header_size = -1;
@@ -52,15 +52,14 @@ IO::IO() {
     characters '%XNLO' or 'UPPE', used to specify which file type it is. The next four bytes give
     an integer, which is the version number. The next four give the subversion number as integer,
     and so on.
-
-
     */
+
         if (print == true) {
             std::cout << "binary_format_len+1: " << binary_format_len+1 << std::endl;
         }
         char* temp = new char[binary_format_len+1];
         temp[binary_format_len] = '\0';
-        std::ifstream fs(path, std::ios_base::in | std::ios_base::binary);// | std::ios_base::app);
+        std::ifstream fs(path, std::ios_base::in | std::ios_base::binary);
         if (fs.is_open()) {
             fs.read(temp, binary_format_len);
             if (!fs) {
@@ -203,32 +202,23 @@ ArrayXXd IO::read_ascii_double(const std::string path, int N_row_, int N_col_, b
 Read double to Eigen array from ascii file
 */
 
-    //char test[256];
     std::string test;
     std::string tmp;
 
     ArrayXXd output(N_row_, N_col_);
     std::ifstream fs(path, std::ios_base::in);
     if (fs.is_open()) {
-        //std::cout << "IO::read_double: File " << path << " successfully opened\n";  // Put this back in at some point?
         if (header == true) {
             getline(fs, test);
-//std::cout << test << std::endl;
         }
-//std::cout << "-----" << std::endl;
         int i = 0;
         while(getline(fs, test)) {
             std::stringstream ss(test);
             int j = 0;
-//std::cout << "ss: ";
             while(getline(ss, tmp, '\t')) {
-                //ss >> tmp;
-//std::cout << "'" << tmp << "' ";
                 output.row(i).col(j) = std::stod(tmp);
                 j++;
             }
-//std::cout << std::endl;
-//std::cout << "Output(" << i << "): " << output.row(i) << std::endl;
             i++;
         }
     } else {
@@ -284,7 +274,7 @@ Header takes the form:
     int UPPE_data_size = N_row_ * N_col_;
     int UPPE_double_size = sizeof(double);
 
-    int UPPE_header_size = sizeof(int) +  // Size of header size
+    int UPPE_header_size = sizeof(int) +
                            UPPE_binary_format_len +
                            sizeof(UPPE_binary_format_version) +
                            sizeof(UPPE_binary_format_subversion) +

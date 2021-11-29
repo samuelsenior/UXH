@@ -49,9 +49,9 @@ namespace XNLO {
 	made accessible.
 */
 class grid_tw {
-    
+
 public:
-    
+
     //Data
     ArrayXd t;
     ArrayXd w;
@@ -61,12 +61,12 @@ public:
     double dt;
     double w_max_;
     bool print_;
-    
+
     //Functions
     grid_tw();
     grid_tw(int N_t_, double t_min_, double t_max_);
     grid_tw(int N_t_, double t_min_, double t_max_, double w_max_, bool print_=true);
-    
+
 };
 
 }

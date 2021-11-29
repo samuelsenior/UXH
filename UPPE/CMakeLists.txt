@@ -22,30 +22,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
    MESSAGE("-- Compiling using the GNU compiler")
-   ##Make sure I'm using GCC and not Clang #Should avoid this way really #Also Needs to be for MPI
-   # export CC=/usr/local/bin/gcc-6
-   # export CXX=/usr/local/bin/g++-6
-
    # Set the optimisation level flag
-   #set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -fopenmp -mavx")
    set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -mavx")
-   #set(CMAKE_CXX_FLAGS "-std=c++14 -g -fopenmp -mavx")
-
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
    MESSAGE("-- Compiling using the Intel compiler")
-   ##Make sure I'm using GCC and not Clang #Should avoid this way really #Also Needs to be for MPI
-   # export CC=/usr/local/bin/gcc-6
-   # export CXX=/usr/local/bin/g++-6
-
    # Set the optimisation level flag
    set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -mavx -inline-forceinline")
-   # set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -O3")#-O3 -fopenmp")
-   ## This is the equivalent C flag setting:
-   # set(CMAKE_C_FLAGS "-O3 -fopenmp")
 else ()
    MESSAGE("-- Warning: Complier Specified Not Found!")
    MESSAGE("   Systemm being: ${CMAKE_CXX_COMPILER_ID}")
-
 endif()
 
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
@@ -116,39 +101,17 @@ set(VERSION_NUMBER ${major_version}-${minor_version}-${subminor_version})
 MESSAGE("-- UPPE_version: " ${VERSION_NUMBER})
 
 #----------------------------------------------------------#
-#                    Get Eigen Headers                     #
-#----------------------------------------------------------#
-
-##Bring the Eigen headers into the project
-#isinclude_directories(Eigen)
-
-#----------------------------------------------------------#
 #                    Get MKL Library                       #
 #----------------------------------------------------------#
 
 #Intel MKL Library
-#find_package(MKL REQUIRED)
-#if (NOT MKL_FOUND)
-#   message(FATAL_ERROR “PACKAGE MKL not found”)
-#endif (NOT MKL_FOUND)
-#include_directories(${MKL_INCLUDE_DIR})
-#include_directories(${MKL_LIB_DIR})
-#set(LIBRARIES ${LIBRARIES} ${MKL_LIBRARIES})
 set(LIBRARIES ${LIBRARIES} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm)
 
 #----------------------------------------------------------#
 #                    Get XNLO Library                      #
 #----------------------------------------------------------#
 
-#set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP)
 set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../XNLO/lib -lXNLO)
-
-#----------------------------------------------------------#
-#                    Get HHGP Library                      #
-#----------------------------------------------------------#
-
-set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP)
-#set(LIBRARIES ${LIBRARIES} -L${CMAKE_SOURCE_DIR}/../HHGP/lib -lHHGP-v1-0-0)
 
 message("libraries: " ${LIBRARIES})
 
@@ -156,7 +119,6 @@ message("libraries: " ${LIBRARIES})
 #                    Get OpenMPI                           #
 #----------------------------------------------------------#
 
-#MPI
 find_package(MPI REQUIRED)
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
@@ -170,6 +132,8 @@ set(SOURCES
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/UPPE/UPPE_simulation.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/capillary/capillary_fibre.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/UPPE/config_settings.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/config_settings.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../src/HHGP/propagation.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/DHT/DHT.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_rkr.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/../src/grid/grid_tw.cpp
@@ -192,9 +156,6 @@ set(HEADERS
 #----------------------------------------------------------#
 #                    Make Documentation                    #
 #----------------------------------------------------------#
-
-# first we can indicate the documentation build as an option and set it to ON by default
-#option(BUILD_DOC "Build documentation" ON)
 
 if (BUILD_DOCS)
 

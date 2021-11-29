@@ -29,7 +29,7 @@ public:
     ArrayXd J0_zeros;
 
     bool print;
-    
+
     // Functions
     maths_textbook(bool print_=false);
     maths_textbook(std::string path_input_j0_, bool print_=false);

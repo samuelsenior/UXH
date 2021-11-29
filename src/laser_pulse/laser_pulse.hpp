@@ -35,21 +35,21 @@ namespace XNLO {
 	constructor and field can be updated as it propagates.
 */
 class laser_pulse {
-    
+
 public:
-    
+
     // Data
     ArrayXXd E;
 
     maths_textbook maths;
     physics_textbook physics;
-    
+
     // Functions
     laser_pulse(double P_av_, double RR_, double FWHM_, double l_0_, double CEO_,
                 double spot_radius_, double ROC_, grid_rkr rkr_, grid_tw tw_,
-                std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int read_in_laser_pulse);
+                std::string path_A_w_R, std::string path_A_w_I, std::string path_w_active, int N_t_UPPE, int read_in_laser_pulse);
 
-    laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int w_active_min_index_UPPE,
+    laser_pulse(grid_rkr rkr_, grid_tw tw_, ArrayXXcd A_w_active, ArrayXd w_active, int N_t_UPPE, int w_active_min_index_UPPE,
                 maths_textbook& maths_, physics_textbook& physics_);
 
 };

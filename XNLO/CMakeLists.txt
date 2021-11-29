@@ -22,27 +22,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
    MESSAGE("-- Compiling using the GNU compiler")
-   ##Make sure I’m using GCC and not Clang #Should avoid this way really #Also Needs to be for MPI
-   # export CC=/usr/local/bin/gcc-6
-   # export CXX=/usr/local/bin/g++-6
-
    # Set the optimisation level flag
-   #set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -fopenmp -mavx")
    set(CMAKE_CXX_FLAGS "-std=c++14 -O3 -mavx")
-   #set(CMAKE_CXX_FLAGS "-std=c++14 -g -fopenmp -mavx")
-
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
    MESSAGE("-- Compiling using the Intel compiler")
-   ##Make sure I’m using GCC and not Clang #Should avoid this way really #Also Needs to be for MPI
-   # export CC=/usr/local/bin/gcc-6
-   # export CXX=/usr/local/bin/g++-6
-
    # Set the optimisation level flag
    set(CMAKE_CXX_FLAGS "-std=c++14 -Ofast -mavx -inline-forceinline")
-   # set(CMAKE_CXX_FLAGS "-std=c++14 -qopenmp -O3")#-O3 -fopenmp")
-   ## This is the equivalent C flag setting:
-   # set(CMAKE_C_FLAGS "-O3 -fopenmp")
-
 endif()
 
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR})
@@ -113,34 +98,10 @@ set(VERSION_NUMBER ${major_version}-${minor_version}-${subminor_version})
 MESSAGE("-- XNLO_version: " ${VERSION_NUMBER})
 
 #----------------------------------------------------------#
-#                    Get Eigen Headers                     #
-#----------------------------------------------------------#
-
-##Bring the Eigen headers into the project
-#isinclude_directories(Eigen)
-
-#----------------------------------------------------------#
 #                    Get MKL Library                       #
 #----------------------------------------------------------#
 
-#Intel MKL Library
-#find_package(MKL REQUIRED)
-#if (NOT MKL_FOUND)
-#   message(FATAL_ERROR “PACKAGE MKL not found”)
-#endif (NOT MKL_FOUND)
-
-#include_directories(${MKL_INCLUDE_DIR})
-#include_directories(${MKL_LIB_DIR})
-#set(LIBRARIES ${LIBRARIES} ${MKL_LIBRARIES})
 set(LIBRARIES ${LIBRARIES} -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm)
-
-#----------------------------------------------------------#
-#                    Get OpenMPI                           #
-#----------------------------------------------------------#
-
-#MPI
-#find_package(MPI REQUIRED)
-#include_directories(SYSTEM ${MPI_INCLUDE_PATH})
 
 #----------------------------------------------------------#
 #                    Set Sources                           #
@@ -184,9 +145,6 @@ set(HEADERS
 #                    Make Documentation                    #
 #----------------------------------------------------------#
 
-# first we can indicate the documentation build as an option and set it to ON by default
-#option(BUILD_DOC "Build documentation" ON)
-
 if (BUILD_DOCS)
 
     # check if Doxygen is installed
@@ -220,7 +178,6 @@ add_library(XNLO_Objects OBJECT ${SOURCES})
 
 add_library(${CMAKE_PROJECT_NAME} STATIC $<TARGET_OBJECTS:XNLO_Objects>)
 
-#add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
 add_executable(${CMAKE_PROJECT_NAME}-bin $<TARGET_OBJECTS:XNLO_Objects>)
 target_link_libraries(${CMAKE_PROJECT_NAME}-bin ${CMAKE_PROJECT_NAME})
 set_target_properties(${CMAKE_PROJECT_NAME}-bin

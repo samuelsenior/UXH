@@ -10,17 +10,12 @@
 #include "../DHT/DHT.hpp"
 #include "../../Eigen/Dense"
 
-//using namespace Eigen;
-
-//namespace HHGP {
-
 //------------------------------------------------------------------------------------------------//
 //  Class definition
 //------------------------------------------------------------------------------------------------//
 class propagation{
 
     // Data
-    // E_min should really come from config or a data_config
     double E_min;
     double E_max;
     double Z_max;
@@ -29,22 +24,18 @@ class propagation{
     keldysh_gas gas;
     grid_rkr rkr;              /*!< Radial grid */
     DHT ht;                    /*!< Hankel transform */
-    //HH::Config_Settings config;
 
     bool to_end_only;
 
     Eigen::ArrayXd w_active_tmp;
     int k_excluded;
-//
+
     Eigen::ArrayXcd refractiveIndex;
-//
+
     Eigen::ArrayXcd lamda;
-//
-//
+
     Eigen::ArrayXcd A_w_kr;
 
-
-    // Bug testing...
     std::string E_f1_f2_data_path;
     Eigen::ArrayXXd E_f1_f2_data;
     Eigen::ArrayXd E;
@@ -66,12 +57,11 @@ public:
     bool print;
 
     // Functions
-    // E_min should really come from config or a data_config
     propagation();
     propagation(double E_min_, double E_max_, double Z_max_, Eigen::ArrayXd w_active_,
                 keldysh_gas& gas_, grid_rkr& rkr_,
                 physics_textbook& physics_, maths_textbook& maths_,
-                DHT& ht_, bool print_=false);//, HH::Config_Settings config_);
+                DHT& ht_, bool print_=false);
 
     Eigen::ArrayXd segment(Eigen::ArrayXd k);
     Eigen::ArrayXXcd block(Eigen::ArrayXXcd A_w_e_);
@@ -82,7 +72,5 @@ public:
     void nearFieldPropagationStep(double delta_z, Eigen::ArrayXXcd A_w_r_);
     void farFieldPropagation();
 };
-
-//} // HHGP namespace
 
 #endif
