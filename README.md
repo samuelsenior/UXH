@@ -10,5 +10,5 @@
 
 ### High Harmonic Generation & Propagation
 
-* HHGP - Propagates the generated high harmonics through the gas-filled hollow capillary, and into the far-field.
+* HHGP - Propagates the generated high harmonics through a gas-filled hollow capillary to the capillary end.
 
